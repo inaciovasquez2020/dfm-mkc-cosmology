@@ -1,122 +1,95 @@
 \documentclass[11pt]{article}
+
+% --- Packages ---
 \usepackage{amsmath,amssymb}
 \usepackage{geometry}
-\geometry{margin=1in}
+\usepackage{hyperref}
+\usepackage{setspace}
 
-\title{Resolving Cosmological Tension via Minimal Kinetic Coupling (MKC) and Spectral Rigidity}
+% --- Page setup ---
+\geometry{margin=1in}
+\setstretch{1.15}
+
+% --- Metadata ---
+\title{\textbf{Resolving Cosmological Tension via Minimal Kinetic Coupling (MKC) and Spectral Rigidity}}
 \author{Inacio F. Vasquez}
 \date{2026}
 
 \begin{document}
 \maketitle
 
- Technical Manuscript Outline: DFM-MKC-Draft
-Title: Resolving Cosmological Tension via Minimal Kinetic Coupling (MKC) and Spectral Rigidity
-Registry ID: EXT-COS-01
-Classification: Formal Closure / Information Topology
-1. Introduction: The Topology of Tension
-The Impasse.
-The observed discrepancies in the H₀ (expansion rate) and S₈ (structure growth) parameters are identified not as calibration artifacts, but as structural failures of the ΛCDM assumption that dark matter and dark energy form dynamically disjoint sectors.
-The Proposition.
-Introduction of the Dark Fluid Model (DFM), in which dark matter and dark energy arise as phases of a single information-bearing manifold with continuous kinetic structure.
-2. Theoretical Framework: Minimal Kinetic Coupling (MKC)
-The Action.
-Modification of the Einstein–Hilbert action by the inclusion of a minimal kinetic coupling term
-ξ
- 
-(
-∂
-ϕ
-)
-2
-,
-ξ(∂ϕ) 
-2
- ,
-linking the dark sector scalar field to spacetime dynamics.
-The Coupling Invariant.
-The parameter 
-ξ
-ξ is established as a structural invariant preventing topological tearing during the transition from matter-dominated to energy-dominated cosmological eras.
-Spectral Gap Requirement.
-Application of the URF rigidity condition
-λ
-1
- ⁣
-(
-Δ
-M
-K
-C
-)
->
-0
-,
-λ 
-1
-​	
- (Δ 
-MKC
-​	
- )>0,
+\begin{center}
+\textbf{Registry ID:} EXT-COS-01 \\
+\textbf{Classification:} Formal Closure / Information Topology
+\end{center}
+
+\vspace{1em}
+
+\section{Introduction: The Topology of Tension}
+
+\textbf{The Impasse.}  
+The observed discrepancies in the H$_0$ (expansion rate) and S$_8$ (structure growth) parameters are identified not as calibration artifacts, but as structural failures of the $\Lambda$CDM assumption that dark matter and dark energy form dynamically disjoint sectors.
+
+\textbf{The Proposition.}  
+We introduce the Dark Fluid Model (DFM), in which dark matter and dark energy arise as phases of a single information-bearing manifold with continuous kinetic structure.
+
+\section{Theoretical Framework: Minimal Kinetic Coupling (MKC)}
+
+\textbf{The Action.}  
+The Einstein--Hilbert action is modified by the inclusion of a minimal kinetic coupling term
+\[
+\xi\,(\partial \phi)^2 ,
+\]
+linking the dark-sector scalar field to spacetime dynamics.
+
+\textbf{The Coupling Invariant.}  
+The parameter $\xi$ is established as a structural invariant preventing topological tearing during the transition from matter-dominated to energy-dominated cosmological eras.
+
+\textbf{Spectral Gap Requirement.}  
+We apply the Unified Rigidity Framework (URF) condition
+\[
+\lambda_1\!\left(\Delta_{\mathrm{MKC}}\right) > 0 ,
+\]
 ensuring that global expansion remains rigid whenever local kinetic homogeneity is preserved.
-3. Resolution of the H₀ Parameter
-Mechanism.
-The MKC term induces a smooth interpolation in the effective equation of state 
-w
-e
-f
-f
-w 
-eff
-​	
- , reconciling early-time CMB constraints with late-time distance-ladder measurements.
-Deterministic Fit.
-Derivation of a URF-consistent expansion rate
-H
-0
-≈
-72.9
- 
-k
-m
- 
-s
-−
-1
- 
-M
-p
-c
-−
-1
-,
-H 
-0
-​	
- ≈72.9 kms 
-−1
- Mpc 
-−1
- ,
+
+\section{Resolution of the H$_0$ Parameter}
+
+\textbf{Mechanism.}  
+The MKC term induces a smooth interpolation in the effective equation of state $w_{\mathrm{eff}}$, reconciling early-time CMB constraints with late-time distance-ladder measurements.
+
+\textbf{Deterministic Fit.}  
+Within the URF-consistent regime, the resulting expansion rate satisfies
+\[
+H_0 \approx 72.9 \ \mathrm{km\,s^{-1}\,Mpc^{-1}},
+\]
 in contrast to the mutually inconsistent values produced by disjoint-sector models.
-4. Resolution of the S₈ Growth Parameter
-Stabilized Growth.
-Structure-growth suppression in ΛCDM is reinterpreted as an artifact of neglecting kinetic coupling.
-By analogy with the Biological Friction Framework, MKC stabilizes gravitational potentials without invoking ad hoc damping, yielding the observed S₈ values.
-5. Deterministic Auditing (URF-SG Standard)
-Machine Verifiability.
-Formal verification via executable witnesses (topology_check.json, mkc_solver.py) demonstrating compliance with URF-SG requirements.
-Logical Width Dependency.
-Proof that for 
-k
-≥
-4
-k≥4, local dark-fluid homogeneity in FOᵏ logic forces the globally observed late-time expansion rate.
-6. Conclusion: Remaining External Uncertainty
-Closure Statement.
-All internal mathematical and structural requirements for DFM-MKC closure are satisfied.
-Roadmap.
-Outstanding uncertainty is external: validation, citation, and institutional adoption rather than theoretical consistency.
+
+\section{Resolution of the S$_8$ Growth Parameter}
+
+\textbf{Stabilized Growth.}  
+Structure-growth suppression observed in $\Lambda$CDM is reinterpreted as an artifact of neglecting kinetic coupling.  
+By analogy with the Biological Friction Framework, MKC stabilizes gravitational potentials without introducing ad hoc damping terms, yielding the observed S$_8$ values.
+
+\section{Deterministic Auditing (URF-SG Standard)}
+
+\textbf{Machine Verifiability.}  
+Formal verification is provided by executable witnesses, including \texttt{topology\_check.json} and \texttt{mkc\_solver.py}, demonstrating compliance with URF-SG requirements.
+
+\textbf{Logical Width Dependency.}  
+We establish that for $k \ge 4$, local dark-fluid homogeneity in FO$^k$ logic forces the globally observed late-time expansion rate.
+
+\section{Conclusion: Remaining External Uncertainty}
+
+\textbf{Closure Statement.}  
+All internal mathematical and structural requirements for DFM--MKC closure are satisfied.
+
+\textbf{Roadmap.}  
+The remaining uncertainty is external, concerning validation, citation, and institutional adoption rather than theoretical consistency.
+
+\vspace{1em}
+
+\noindent
+\textit{Target artifact:} \\
+\texttt{dfm-mkc-cosmology/docs/DFM-MKC-Draft.pdf}
 
 \end{document}
