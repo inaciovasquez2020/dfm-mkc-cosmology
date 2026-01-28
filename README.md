@@ -10,7 +10,7 @@ It documents the transition from foundational rigidity theory to executable stru
 
 ---
 
-## 🏛️ Significance Statement — The URF Closure
+##  Significance Statement — The URF Closure
 
 The **Unified Rigidity Framework (URF)** resolves a long-standing structural obstruction in finite and local reasoning systems: the inability of bounded-locality logics (e.g. FOᵏ) to enforce global structural stability in the presence of expander-type obstructions.
 
@@ -26,7 +26,7 @@ All internal mathematical dependencies required for this closure are complete. A
 
 ---
 
-## 📂 Research Ecosystem
+##  Research Ecosystem
 
 This repository participates in a broader, modular research ecosystem. Each component is independently versioned and auditable.
 
@@ -39,14 +39,13 @@ This repository participates in a broader, modular research ecosystem. Each comp
 
 Together, these modules form a layered progression from abstract rigidity principles to applied structural constraints.
 
----
-
-## 📊 Technical & Verification Dashboard
+----
+##  Technical & Verification Dashboard
 
 For machine-verifiable artifacts, deterministic audit logs, and executable verification traces  
 (including Heisenberg- and Ornstein–Uhlenbeck–type witnesses), see the:
 
-👉 **Active Artifact Registry**
+ **Active Artifact Registry**
 
 This registry provides:
 - cryptographically stable artifact references,
@@ -55,7 +54,7 @@ This registry provides:
 
 ---
 
-## 📁 Documentation & Draft Policy
+##  Documentation & Draft Policy
 
 This repository follows a **strict no-placeholder policy**:
 
@@ -72,7 +71,7 @@ This policy ensures clarity for readers, reviewers, and auditors.
 
 ---
 
-## 📧 Contact & Institutional Correspondence
+##  Contact & Institutional Correspondence
 
 For verification audits, institutional correspondence, or collaboration inquiries:
 
@@ -90,6 +89,19 @@ Web: https://www.vasquezresearch.com
 
 ---
 
-**Program principle:**  
-_No placeholders. No broken artifacts. No ambiguity._
-tional uptake and citation).
+```markdown
+## Research Status
+
+The DFM–MKC cosmology model is structurally complete at the theoretical level.
+Empirical assessment and observational uptake are external to this repository.
+
+## Citation
+
+```bibtex
+@manual{Vasquez_DFM_MKC_2026,
+  author       = {Vasquez, Inacio F.},
+  title        = {DFM–MKC Cosmology: Minimal Kinetic Coupling Dark Fluid},
+  institution  = {Independent Research Program},
+  year         = {2026},
+  url          = {https://github.com/inaciovasquez2020/dfm-mkc-cosmology}
+}
