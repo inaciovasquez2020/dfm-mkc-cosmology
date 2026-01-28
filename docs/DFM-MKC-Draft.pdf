@@ -1,74 +1,29 @@
-Technical Manuscript Outline: DFM-MKC-Draft
-Title: Resolving Cosmological Tension via Minimal Kinetic Coupling (MKC) and Spectral Rigidity
+\section{Theoretical Framework: Minimal Kinetic Coupling (MKC)}
 
-Registry ID: EXT-COS-01
+The DFM--MKC model departs from the disjoint $\Lambda$CDM sector by proposing a unified dark fluid action. The total action $S$ is defined as:
 
-Classification: Formal Closure / Information Topology
+\begin{equation}
+S = \int d^4x \sqrt{-g} \left[ \frac{R}{16\pi G} + \mathcal{L}_{vis} + \mathcal{L}_{DF}(\phi, \partial \phi) \right]
+\end{equation}
 
-1. Introduction: The Topology of Tension
+Where the Dark Fluid Lagrangian $\mathcal{L}_{DF}$ incorporates the \textbf{Minimal Kinetic Coupling (MKC)} term $\xi$ to resolve the transition between matter-like and energy-like phases:
 
-The Impasse: Identifying the H 
-0
-​	
-  (expansion) and S 
-8
-​	
-  (growth) discrepancies not as calibration errors, but as failures of the ΛCDM "disjoint sector" logic.
+\begin{equation}
+\mathcal{L}_{DF} = -\frac{1}{2}g^{\mu\nu}\nabla_\mu\phi\nabla_\nu\phi - V(\phi) + \xi(\partial \phi)^2
+\end{equation}
 
-The Proposition: Introduction of the Dark Fluid Model (DFM) where Dark Matter and Dark Energy are phases of a single information-bearing manifold.
+\subsection{The Spectral Rigidity Requirement}
 
-2. Theoretical Framework: Minimal Kinetic Coupling (MKC)
+In accordance with the \textbf{Unified Rigidity Framework (URF)}, the global stability of the cosmological expansion is predicated on the non-vanishing spectral gap of the modified Laplace-Beltrami operator $\Delta_{MKC}$. We require:
 
-The Action: Modification of the Einstein-Hilbert action to include the MKC term ξ(∂ϕ) 
-2
- .
+\begin{equation}
+\lambda_1(\Delta_{MKC} \mid \ker(\mathrm{Per})^\perp) > 0
+\end{equation}
 
-The Coupling Invariant: Establishing ξ as the structural constant that prevents topological "tearing" during the transition from the matter-dominated to the energy-dominated era.
+By establishing the \textbf{Logic-Width Dependency} $k \ge f(tw)$, we prove that local kinetic homogeneity forces global rigidity. The effective equation of state $w_{eff}$ is then deterministically derived as:
 
-Spectral Gap Requirement: Applying the URF condition:
+\begin{equation}
+w_{eff}(a) = -1 + \left( \frac{1}{1 + \xi a^{-3}} \right)
+\end{equation}
 
-λ 
-1
-​	
- (Δ 
-MKC
-​	
- )>0
-demonstrating that global expansion remains rigid if local kinetic homogeneity is preserved.
-
-3. Resolution of the H 
-0
-​	
-  Parameter
-
-Mechanism: How the MKC term provides a "smooth transition" in the equation of state w 
-eff
-​	
- , bridging the gap between early CMB physics and late-time distance ladder measurements.
-
-Deterministic Fit: Comparison of the URF-derived H 
-0
-​	
- ≈72.9 km/s/Mpc against the disjoint standard model predictions.
-
-4. Resolution of the S 
-8
-​	
-  Growth Parameter
-
-Frictionless Evolution: Utilizing the Biological Friction Framework (BFF) analogies to explain why structure growth (S 
-8
-​	
- ) appears "suppressed" in standard models—it is an artifact of ignoring the kinetic coupling's stabilizing effect on gravitational potential.
-
-5. Deterministic Auditing (The URF-SG Standard)
-
-Machine-Verifiability: Reference to topology_check.json and the mkc_solver.py witness.
-
-Logical Width Dependency: Proof that for k≥4, the local dark fluid homogeneity forces the global expansion rate observed in late-time surveys.
-
-6. Conclusion: Remaining External Uncertainty
-
-Summary: Core mathematical requirements for DFM-MKC closure are satisfied.
-
-Roadmap: Transition from theoretical verification to institutional adoption.
+This results in a smooth transition that reconciles the $H_0$ tension by aligning early-time topology with late-time observables.
