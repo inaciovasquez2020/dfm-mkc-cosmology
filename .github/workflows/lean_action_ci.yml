@@ -7,21 +7,19 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  lean:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Lean only (no build)
+      - name: Install Lean (no Lake, no build)
         uses: leanprover/lean-action@v1
         with:
-          auto-config: true
+          auto-config: false
           build: none
           test: none
           lint: false
           mk_all-check: false
-          use-mathlib-cache: auto
-          use-github-cache: true
 
