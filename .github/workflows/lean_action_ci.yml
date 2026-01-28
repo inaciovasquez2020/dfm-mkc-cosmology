@@ -1,0 +1,28 @@
+name: Lean CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Lean and build
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: true
+          build: default
+          test: default
+          lint: default
+          mk_all-check: false
+          use-mathlib-cache: auto
+          use-github-cache: true
+          reinstall-transient-toolchain: false
+
