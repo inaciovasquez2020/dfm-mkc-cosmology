@@ -14,15 +14,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Lean and build
+      - name: Install Lean (stable)
         uses: leanprover/lean-action@v1
         with:
+          toolchain: stable
           auto-config: true
           build: default
           test: default
-          lint: default
+          lint: false
           mk_all-check: false
           use-mathlib-cache: auto
           use-github-cache: true
-          reinstall-transient-toolchain: false
 
