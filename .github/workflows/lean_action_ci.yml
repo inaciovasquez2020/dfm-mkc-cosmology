@@ -14,10 +14,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Lean (stable)
+      - name: Install Lean
         uses: leanprover/lean-action@v1
         with:
-          toolchain: stable
           auto-config: true
           build: default
           test: default
@@ -25,4 +24,7 @@ jobs:
           mk_all-check: false
           use-mathlib-cache: auto
           use-github-cache: true
+
+      - name: Set default Lean toolchain
+        run: elan default stable
 
