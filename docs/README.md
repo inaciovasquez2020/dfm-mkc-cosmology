@@ -1,1 +1,10 @@
-DFM–MKC draft forthcoming. Earlier placeholder removed.
+## Local–Global Information Barrier
+
+Structural FO^k theorem establishing fundamental limits of locality-based inference and refinement.
+
+Source (canonical):
+https://github.com/inaciovasquez2020/final-wall-fo-k-locality/blob/main/docs/local-global-barrier.tex
+
+PDF:
+https://github.com/inaciovasquez2020/final-wall-fo-k-locality/blob/main/docs/local-global-barrier.pdf
+
