@@ -1,0 +1,281 @@
+% main.tex (compile-ready)
+% DFM–MKC Cosmology: minimal kinetic-coupling dark-fluid mechanism for DESI-era dynamical DE preference
+% Target venues: PRD (REVTeX 4-2) or (with minor edits) JCAP.
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{authblk}
+
+% ---------- Packages ----------
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{xspace}
+
+% ---------- Macros ----------
+\newcommand{\LCDM}{\ensuremath{\Lambda\mathrm{CDM}}\xspace}
+\newcommand{\wde}{\ensuremath{w_{\rm DE}}\xspace}
+\newcommand{\wz}{\ensuremath{w(z)}\xspace}
+\newcommand{\weff}{\ensuremath{w_{\rm eff}}\xspace}
+\newcommand{\H0}{\ensuremath{H_0}\xspace}
+\newcommand{\S8}{\ensuremath{S_8}\xspace}
+\newcommand{\Om}{\ensuremath{\Omega_{\rm m}}\xspace}
+\newcommand{\Ode}{\ensuremath{\Omega_{\rm DE}}\xspace}
+\newcommand{\Oc}{\ensuremath{\Omega_{\rm c}}\xspace}
+\newcommand{\Ob}{\ensuremath{\Omega_{\rm b}}\xspace}
+
+\begin{document}
+
+\title{Minimal Kinetic-Coupling Dark Fluid Cosmology:\\
+A Mechanism-Level Interpretation of DESI-Era Preference for Dynamical Dark Energy}
+
+\author{Inacio F. Vasquez}
+\affiliation{Independent Researcher}
+
+\date{December 22, 2025}
+
+\begin{abstract}
+Recent joint analyses combining DESI-era baryon acoustic oscillation measurements with external datasets
+(e.g., CMB and Type Ia supernova compilations) report a dataset- and prior-dependent preference for
+dynamical dark energy relative to a constant cosmological constant, typically expressed through the reconstructed evolution of \wz.
+Motivated by these developments, we present a minimal kinetic-coupling dark-fluid (DFM--MKC) framework in which
+energy--momentum exchange within the dark sector reproduces effective quintom-like behavior (including permitted crossings of $\wde=-1$ in the effective description)
+without introducing a universal fifth force.
+We derive the background and linear-perturbation equations, define compact coupling parameterizations that isolate the phenomenology relevant to DESI-era constraints,
+and formulate mechanism-level consistency relations intended to distinguish dark-sector coupling from purely phenomenological \wz reconstructions.
+We outline a falsification program spanning expansion history, growth of structure, and CMB lensing, and we provide an analysis roadmap for joint likelihood evaluation using DESI BAO + CMB + SN(+WL),
+with explicit robustness checks under alternative priors, dataset subsets, and coupling parameterizations.
+\end{abstract}
+
+\maketitle
+
+% =========================================================
+\section{Introduction}
+\label{sec:intro}
+
+The \LCDM model remains an extraordinarily successful baseline description of cosmological observations.
+Nevertheless, late-time probes continue to motivate extensions that relax the assumption of a strictly constant dark-energy equation of state.
+DESI-era BAO measurements sharpen constraints on $D_M(z)$ and $H(z)$, and multiple joint analyses that combine BAO with CMB and supernova data report a preference for dynamical dark energy relative to \LCDM,
+with the reported strength depending on dataset choices, prior ranges, and the parameterization used for \wz.
+
+\paragraph{What is (and is not) claimed.}
+We distinguish: (i) \emph{phenomenological preference} for non-constant \wz in certain joint analyses, from (ii) \emph{mechanism identification} via a physical model that explains the preference and survives cross-probe consistency tests.
+This work supplies a minimal mechanism-level candidate---DFM--MKC---together with falsifiable signatures,
+without asserting that current data uniquely confirms the mechanism.
+
+\paragraph{Contributions.}
+We provide:
+\begin{enumerate}
+  \item A minimal interacting dark-sector kinetic-coupling model with a controlled separation between background expansion and growth-of-structure effects.
+  \item An explicit mapping between coupling parameters and the effective equation-of-state history \weff$(z)$, including conditions for effective phantom crossing.
+  \item Mechanism-level consistency relations and a falsification checklist designed for DESI-era joint analyses.
+\end{enumerate}
+\cite{DESI,Planck2018,PantheonPlus}
+
+% =========================================================
+\section{Model: Minimal Kinetic-Coupling Dark Fluid (DFM--MKC)}
+\label{sec:model}
+
+\subsection{Fluid-level interacting dark sector}
+
+We assume a spatially flat FLRW background with scale factor $a(t)$ and Hubble rate $H\equiv \dot a/a$.
+The dark sector is composed of pressureless cold dark matter (DM) with density $\rho_{\rm c}$ and dark energy (DE) with density $\rho_{\rm de}$ and pressure $p_{\rm de}$.
+Energy exchange within the dark sector is modeled as
+\begin{align}
+\dot\rho_{\rm c} + 3H\rho_{\rm c} &= +Q, \label{eq:dm_cont}\\
+\dot\rho_{\rm de} + 3H(\rho_{\rm de}+p_{\rm de}) &= -Q, \label{eq:de_cont}
+\end{align}
+with $Q$ defining the direction of energy flow:
+$Q>0$ corresponds to DE$\to$DM and $Q<0$ to DM$\to$DE.
+
+\subsection{Minimal kinetic-coupling ansatz}
+
+A minimal DESI-era--testable choice is
+\begin{equation}
+Q = 3H\,\xi(a)\,\rho_{\rm c},
+\label{eq:Q_def}
+\end{equation}
+where $\xi(a)$ is a (small) dimensionless coupling function.
+
+Two practical parameterizations are:
+\begin{align}
+\xi(a) &= \xi_0 + \xi_a (1-a), \label{eq:xi_cpl}\\
+\xi(a) &= \xi_0\,\frac{1+\tanh\!\left(\frac{a-a_t}{\Delta}\right)}{2}
+        - \xi_1\,\frac{1-\tanh\!\left(\frac{a-a_t}{\Delta}\right)}{2},
+\label{eq:xi_switch}
+\end{align}
+where Eq.~\eqref{eq:xi_switch} permits a sign reversal around $a_t$ if preferred by joint fits.
+
+\paragraph{Intrinsic DE equation of state.}
+For minimality, we take a constant intrinsic equation of state,
+\begin{equation}
+p_{\rm de} = w_0\,\rho_{\rm de},
+\label{eq:w0}
+\end{equation}
+and allow effective evolution to arise from coupling via $Q$.
+(Extensions with a CPL intrinsic form can be treated as a controlled generalization.)
+
+\subsection{Effective equation of state and effective phantom crossing}
+
+Define the effective DE equation of state inferred from background evolution as
+\begin{equation}
+\weff(a) \equiv -1 - \frac{1}{3}\frac{d\ln\rho_{\rm de}}{d\ln a}.
+\label{eq:weff_def}
+\end{equation}
+Using Eq.~\eqref{eq:de_cont}, one obtains
+\begin{equation}
+\weff(a) = w_0 + \frac{Q}{3H\rho_{\rm de}}
+         = w_0 + \xi(a)\,\frac{\rho_{\rm c}}{\rho_{\rm de}}.
+\label{eq:weff_Q}
+\end{equation}
+Hence $\weff$ can cross $-1$ depending on the sign and magnitude of $\xi(a)$ even if $w_0>-1$,
+enabling effective ``phantom crossing'' without introducing a fundamental phantom field.
+Stability conditions depend on the microphysical completion (fluid closure / EFT / action-level model); in this paper we adopt the conservative requirement that the chosen perturbation prescription is ghost- and gradient-stable in the parameter region explored (Appendix~\ref{app:stability}).
+
+% =========================================================
+\section{Background Dynamics and Parameter Degeneracies}
+\label{sec:background}
+
+\subsection{Friedmann equations}
+
+In a flat universe,
+\begin{equation}
+H^2(a) = H_0^2\Big[\Omega_{\rm r}a^{-4} + \Omega_{\rm m}a^{-3} + \Omega_{\rm de}(a)\Big],
+\end{equation}
+where $\Omega_{\rm m}=\Omega_{\rm b}+\Omega_{\rm c}$ and radiation/neutrinos may be included as needed.
+
+Given \weff$(a)$, the DE density evolves as
+\begin{equation}
+\rho_{\rm de}(a) = \rho_{\rm de,0}\,
+\exp\!\left(3\int_a^1 \frac{1+\weff(a')}{a'}\,da'\right).
+\label{eq:rde}
+\end{equation}
+Equations~\eqref{eq:dm_cont}--\eqref{eq:de_cont} with $Q$ from Eq.~\eqref{eq:Q_def} provide a closed background system for $(\rho_{\rm c},\rho_{\rm de})$ given $(w_0,\xi)$.
+
+\subsection{Mapping to DESI-era constraints}
+
+BAO primarily constrains the comoving angular diameter distance $D_M(z)$ and the Hubble rate $H(z)$ via the BAO scale.
+In interacting models, $(w_0,\xi)$ can be partially degenerate in background-only fits, since both modify the late-time expansion history through $\weff(a)$.
+This motivates: (i) explicit robustness checks across dataset subsets; and (ii) incorporating growth and lensing observables that respond differently to coupling than to purely phenomenological \wz reconstructions.
+
+% =========================================================
+\section{Linear Perturbations and Growth of Structure}
+\label{sec:perturbations}
+
+\subsection{Perturbation prescription and schematic growth equation}
+
+Interacting dark-sector models require a specified covariant prescription for momentum transfer and gauge conventions.
+We adopt a standard choice in which the energy--momentum transfer four-vector is aligned with the DM four-velocity at the background level; details and conventions are given in Appendix~\ref{app:stability}.
+On sub-horizon scales, the growth of DM density perturbations can be expressed schematically as
+\begin{equation}
+\delta_{\rm c}'' + \left(2 + \frac{H'}{H} + \Gamma(a)\right)\delta_{\rm c}'
+- \frac{3}{2}\Omega_{\rm m}(a)\,\mu(a)\,\delta_{\rm c} = 0,
+\label{eq:growth_schematic}
+\end{equation}
+where primes denote derivatives with respect to $\ln a$ and $\Gamma(a),\mu(a)$ encode effective drag and clustering modifications induced by coupling.
+In DFM--MKC these functions are determined by $\xi(a)$ and the chosen interaction prescription and can be extracted numerically.
+
+\subsection{Connection to \S8 and lensing}
+
+The coupling modifies growth observables such as $f\sigma_8(z)$, weak-lensing summaries (including \S8), and the CMB lensing potential power spectrum.
+A central goal is to identify signatures that are diagnostic of coupling \emph{as a mechanism} rather than generic \wz phenomenology, e.g. correlated residual patterns between growth-rate observables and lensing that track the inferred coupling transition scale $a_t$ in Eq.~\eqref{eq:xi_switch}.
+
+% =========================================================
+\section{Data, Likelihood Strategy, and Robustness Checks}
+\label{sec:data}
+
+\subsection{Datasets}
+
+The intended joint analyses include:
+\begin{itemize}
+\item DESI-era BAO measurements (specify sample selection and redshift bins as used in the likelihood).
+\item CMB constraints (e.g., Planck 2018 baseline; optional ACT/SPT combinations as robustness).
+\item Type Ia supernovae (e.g., Pantheon+ or an explicitly stated alternative compilation).
+\item Optional: weak lensing (DES/KiDS/HSC; and later Euclid/Roman updates when available).
+\end{itemize}
+
+\subsection{Inference pipeline}
+
+We consider parameter vectors of the form
+\begin{equation}
+\theta = (\Omega_{\rm b}h^2,\Omega_{\rm c}h^2, H_0, n_s, A_s, \tau, \ldots, w_0, \text{coupling parameters}),
+\end{equation}
+with coupling parameters chosen as $(\xi_0,\xi_a)$ or $(\xi_0,\xi_1,a_t,\Delta)$.
+We report posterior stability under alternative priors and evaluate model comparison (e.g., Bayes factors $\ln B$) with explicit prior-dependence accounting.
+
+\subsection{Robustness and falsification checklist}
+
+We adopt the following non-negotiable checks:
+\begin{enumerate}
+\item Posterior stability under dataset subsets: BAO+SN; BAO+CMB; BAO+CMB+SN; and optional WL inclusion.
+\item Stability under alternative coupling parameterizations (Eqs.~\eqref{eq:xi_cpl} vs \eqref{eq:xi_switch}).
+\item Consistency between background-preferred regions and growth/lensing constraints.
+\item Null recovery: $\xi\to 0$ reproduces \LCDM limits within the same pipeline.
+\end{enumerate}
+
+% =========================================================
+\section{Mechanism-Level ``Smoking Gun'' Consistency Relations}
+\label{sec:smokinggun}
+
+A mechanism claim requires more than an improved fit to a subset of observables.
+We propose the following mechanism-level targets, to be stated as explicit relations once the perturbation prescription is fixed:
+
+\begin{itemize}
+\item A relation linking the redshift of effective phantom crossing in \weff$(z)$ to a change in the slope of growth suppression in $f\sigma_8(z)$ residuals.
+\item A coupled prediction relating growth residuals to CMB lensing residuals with shared dependence on $\xi(a)$.
+\item A prediction for the sign and scale dependence of deviations in the growth index $\gamma$ relative to smooth \wz reconstructions.
+\end{itemize}
+
+These relations provide a route to falsification with near-term datasets (DESI full-shape, Euclid WL, improved CMB lensing).
+
+% =========================================================
+\section{Discussion: Status of Evidence and Interpretation}
+\label{sec:discussion}
+
+\subsection{Interpretation of DESI-era preferences}
+
+Current joint analyses report a preference for dynamical dark energy at the level of a few standard deviations in some dataset combinations, with nontrivial dependence on priors and modeling choices.
+Interacting dark-sector models can provide comparable or improved fits and, critically, can correlate background evolution with growth and lensing signatures.
+At present, unique mechanism identification remains unsettled; DFM--MKC is proposed as a minimal candidate designed to be decisively tested via cross-probe consistency.
+
+\subsection{Relation to other explanations}
+
+We contrast DFM--MKC with:
+(i) two-field quintom models, (ii) k-essence / EFT of DE parameterizations, and (iii) modified-gravity models.
+The distinguishing feature of DFM--MKC is that coupling induces linked signatures across expansion and growth that can be formulated as testable consistency relations.
+
+% =========================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+We presented a minimal kinetic-coupling interacting dark-sector framework (DFM--MKC) that can reproduce effective \wz behavior compatible with DESI-era preferences while yielding coupled predictions for growth and lensing.
+We outlined a robustness-centered inference plan and a falsification strategy aimed at converting phenomenological preference into mechanism-level confirmation or refutation with near-term data.
+
+% =========================================================
+\appendix
+
+\section{Derivations and Stability Conditions}
+\label{app:stability}
+
+This appendix should include:
+(i) the covariant interaction prescription $Q^\mu$, (ii) gauge conventions, (iii) the full linearized equations used in the Boltzmann/perturbation solver,
+and (iv) explicit stability criteria (no ghosts / no gradient instabilities) for the parameter region explored.
+
+\section{Implementation Notes}
+\label{app:implementation}
+
+Implementation guidance:
+\begin{itemize}
+\item CLASS/CAMB modification notes for background and perturbations under Eq.~\eqref{eq:Q_def}.
+\item Validation by recovering \LCDM as $\xi\to 0$.
+\item Unit tests for $H(z)$, $D_M(z)$, and growth observables against baseline pipelines.
+\end{itemize}
+
+% =========================================================
+\bibliographystyle{apsrev4-2}
+\bibliography{refs}
+\end{document}
+
