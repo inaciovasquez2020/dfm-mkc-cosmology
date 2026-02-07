@@ -7,6 +7,9 @@ name = "dfm-mkc-cosmology"
 version = "0.1.0"
 description = "DFM-MKC cosmology module (URF-aligned)"
 requires-python = ">=3.8"
+dependencies = [
+  "numpy"
+]
 
 [tool.setuptools]
 packages = ["dfm_mkc"]
