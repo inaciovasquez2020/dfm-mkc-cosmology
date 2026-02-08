@@ -14,6 +14,10 @@ This repository is a registered module of the Vasquez Index. Stable references, 
 * **Stability:** Refer to the Vasquez Index for the latest stable DOI and version history.
 * **Infrastructure:** [scientific-infrastructure](https://github.com/inaciovasquez2020/scientific-infrastructure)
 
+## References
+- Unified framework context: https://inaciovasquez2020.github.io
+- Project index: https://inaciovasquez2020.github.io/vasquez-index/
+
 ---
 
 ## Technical Notes
