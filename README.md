@@ -31,3 +31,9 @@ If you use this research or implementation in your work, please cite it as follo
   year   = {2026},
   url    = {[https://github.com/inaciovasquez2020/dfm-mkc-cosmology](https://github.com/inaciovasquez2020/dfm-mkc-cosmology)}
 }
+
+## Quickstart (60 seconds)
+
+```bash
+./scripts/cosmology check
+```
