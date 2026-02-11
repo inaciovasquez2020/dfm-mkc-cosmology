@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+case "${1:-check}" in
+  check)
+    echo "DFM–MKC cosmology invariant check"
+
+    # Required control files
+    for f in README.md STATUS.md scripts; do
+      test -e "$f" || { echo "Missing $f"; exit 1; }
+    done
+
+    # No generated artifacts tracked
+    if git ls-files | grep -E '^(\.lake/|build/|dist/|__pycache__/)' >/dev/null; then
+      echo "Generated artifacts detected"
+      exit 1
+    fi
+
+    test -x scripts/cosmology || { echo "scripts/cosmology not executable"; exit 1; }
+    echo "OK: invariants satisfied"
+    ;;
+  *)
+    echo "Usage: ./scripts/cosmology check"
+    exit 2
+    ;;
+esac
