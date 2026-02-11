@@ -37,3 +37,7 @@ If you use this research or implementation in your work, please cite it as follo
 ```bash
 ./scripts/cosmology check
 ```
+
+## Status
+
+![cosmology-check](https://github.com/inaciovasquez2020/dfm-mkc-cosmology/actions/workflows/cosmology-check.yml/badge.svg)
