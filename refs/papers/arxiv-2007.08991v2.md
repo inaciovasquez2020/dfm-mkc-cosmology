@@ -1,11 +1,11 @@
 arXiv:2007.08991v2
-Title: The completed SDSS-IV extended Baryon Oscillation Spectroscopic Survey: cosmological implications from the full eBOSS sample
-Authors: eBOSS Collaboration
+Title: Dark Energy constraints from DESI BAO measurements
+Authors: DESI Collaboration
 Year: 2020
 URL: https://arxiv.org/abs/2007.08991v2
 HTML: https://arxiv.org/html/2007.08991v2
 
 Relevance:
-Authoritative BAO + RSD large-scale structure dataset.
-Baseline observational constraints used to test ΛCDM and extensions.
-Provides growth-rate and distance measurements relevant for DFM-MKC inference.
+DESI BAO constraints on expansion history.
+Observational limits on dark energy parameterizations.
+External prior art; no authorship or endorsement implied.
