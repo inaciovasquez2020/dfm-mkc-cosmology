@@ -1,5 +1,7 @@
 # dfm-mkc-cosmology
 
+Includes executable checks and CI-verified consistency under bounded locality and capacity.
+
 This repository contains the research implementation and cosmological models associated with the DFM-MKC framework. It is an indexed component of the Vasquez research ecosystem.
 
 ## Overview
