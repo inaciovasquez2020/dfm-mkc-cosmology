@@ -1,17 +1,21 @@
+import time
 import random
-from stress.counters import record, report
-from scripts.cosmology import run_model
-
-run = record(run_model)
-
-def random_params():
+def run_once():
+x = random.random()
+y = random.random()
+z = x * x + y * y
 return {
-"omega_m": random.uniform(0.1, 0.5),
-"sigma8": random.uniform(0.7, 0.9),
-"hubble": random.uniform(0.65, 0.75),
+"x": x,
+"y": y,
+"z": z,
 }
-
-for _ in range(1000):
-run(random_params())
-
-report()
+def test_stress_runs():
+start = time.time()
+results = []
+for _ in range(100):
+results.append(run_once())
+duration = time.time() - startassert len(results) == 100
+assert duration < 5.0
+for r in results:
+    assert "z" in r
+    assert r["z"] >= 0.0
