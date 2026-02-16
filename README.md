@@ -1,6 +1,15 @@
 # dfm-mkc-cosmology
 
+Includes executable checks and CI-verified consistency under bounded locality and capacity.
+
 This repository contains the research implementation and cosmological models associated with the DFM-MKC framework. It is an indexed component of the Vasquez research ecosystem.
+Cosmology statement
+
+The core cosmological claim supported by this repository is stated independently of the implementation details:
+
+docs/COSMOLOGY_STATEMENT.md
+
+Readers interested in the physics result should start there. This repository exists to make that claim checkable and reproducible.
 
 ## Overview
 The `dfm-mkc-cosmology` module provides specialized analysis and data structures for cosmological applications within the Universal Reference Frame (URF) context.
