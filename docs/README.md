@@ -8,3 +8,12 @@ https://github.com/inaciovasquez2020/final-wall-fo-k-locality/blob/main/docs/loc
 PDF:
 https://github.com/inaciovasquez2020/final-wall-fo-k-locality/blob/main/docs/local-global-barrier.pdf
 
+Documentation index
+
+Start here:
+COSMOLOGY_STATEMENT.md
+
+This document states the cosmological claim in plain physics language, including assumptions and falsifiability conditions.
+
+All other material in this directory exists to support, check, or reproduce that claim.
+
