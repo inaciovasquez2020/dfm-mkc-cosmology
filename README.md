@@ -1,3 +1,7 @@
+## Status
+
+![cosmology-check](https://github.com/inaciovasquez2020/dfm-mkc-cosmology/actions/workflows/cosmology-check.yml/badge.svg)
+
 # dfm-mkc-cosmology
 
 Includes executable checks and CI-verified consistency under bounded locality and capacity.
@@ -51,6 +55,3 @@ If you use this research or implementation in your work, please cite it as follo
 ./scripts/cosmology check
 ```
 
-## Status
-
-![cosmology-check](https://github.com/inaciovasquez2020/dfm-mkc-cosmology/actions/workflows/cosmology-check.yml/badge.svg)
