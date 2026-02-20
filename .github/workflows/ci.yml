@@ -5,6 +5,8 @@ on:
   pull_request:
 
 jobs:
+  core:
+    continue-on-error: true
   test:
     runs-on: ubuntu-latest
 
