@@ -7,3 +7,4 @@ docs/*Notes.bib
 dfm_mkc_cosmology.egg-info/
 __pycache__/
 *.pyc
+.venv/
