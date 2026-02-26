@@ -55,3 +55,5 @@ If you use this research or implementation in your work, please cite it as follo
 ./scripts/cosmology check
 ```
 
+
+In addition to unit tests, the codebase includes basic cosmology consistency checks (e.g. monotonic expansion and distance scaling) to guard against numerical or refactoring regressions.
