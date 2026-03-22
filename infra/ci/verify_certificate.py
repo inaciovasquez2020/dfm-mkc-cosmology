@@ -1,5 +1,4 @@
 import json
-import math
 
 def verify(cert):
     n = cert["n"]

@@ -1,0 +1,6 @@
+PWD /Users/inaciof.vasquez/github-audit/dfm-mkc-cosmology/papers
+INPUT /usr/local/texlive/2025/texmf.cnf
+INPUT /usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT dfm-mkc-cosmology-note.tex
+OUTPUT dfm-mkc-cosmology-note.log

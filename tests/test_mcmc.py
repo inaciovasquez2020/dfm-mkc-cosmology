@@ -1,4 +1,3 @@
-import numpy as np
 from src.inference.mcmc import SimpleMCMC
 
 def loglike(p):

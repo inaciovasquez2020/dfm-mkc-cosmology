@@ -1,4 +1,3 @@
-import numpy as np
 from src.models.lcdm import LCDMModel
 from src.likelihood.hubble_likelihood import HubbleLikelihood
 
