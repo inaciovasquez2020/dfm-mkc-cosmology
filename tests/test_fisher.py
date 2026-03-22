@@ -1,4 +1,3 @@
-import numpy as np
 from src.analysis.fisher_matrix import fisher_matrix
 
 def loglike(p):

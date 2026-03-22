@@ -1,4 +1,3 @@
-import numpy as np
 
 from src.models.lcdm import LCDMModel
 from src.forecast.survey_spec import SurveySpec

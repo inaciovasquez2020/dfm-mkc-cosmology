@@ -1,4 +1,3 @@
-import numpy as np
 from src.forecast.survey_spec import SurveySpec
 
 def test_survey_grid():

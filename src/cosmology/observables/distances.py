@@ -1,4 +1,3 @@
-import numpy as np
 from scipy.integrate import quad
 
 c = 299792.458

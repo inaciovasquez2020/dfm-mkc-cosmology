@@ -1,6 +1,5 @@
 import numpy as np
 from solver.background_solver import solve_background
-from solver.distances import comoving_distance, luminosity_distance
 
 def lcdm_H(z, H0, Om_m0, Om_r0, Om_L0):
     return H0 * np.sqrt(Om_m0*(1+z)**3 + Om_r0*(1+z)**4 + Om_L0)
