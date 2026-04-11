@@ -1,7 +1,7 @@
 import numpy as np
-from src.models.lcdm import LCDMModel
-from src.likelihood.hubble_likelihood import HubbleLikelihood
-from src.inference.mcmc import SimpleMCMC
+from dfm_mkc.models.lcdm import LCDMModel
+from dfm_mkc.likelihood.hubble_likelihood import HubbleLikelihood
+from dfm_mkc.inference.mcmc import SimpleMCMC
 
 z = np.array([0.1,0.2,0.3])
 Hobs = np.array([69,72,78])
