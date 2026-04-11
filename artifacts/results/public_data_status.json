@@ -1,0 +1,22 @@
+{
+  "des_y6": {
+    "missing": [
+      "public_data/des_y6/y6_3x2pt_summary.csv",
+      "public_data/des_y6/y6_covariance.csv"
+    ],
+    "present": false
+  },
+  "desi_dr2": {
+    "missing": [
+      "public_data/desi_dr2/bao_summary.csv",
+      "public_data/desi_dr2/cosmology_chains.csv"
+    ],
+    "present": false
+  },
+  "planck": {
+    "missing": [
+      "public_data/planck/planck_2018_baseline_params.csv"
+    ],
+    "present": false
+  }
+}
