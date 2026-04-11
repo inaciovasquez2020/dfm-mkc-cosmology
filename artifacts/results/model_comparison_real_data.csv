@@ -1,0 +1,5 @@
+model,logL,AIC,BIC,H0_mean,Omega_m_mean,status
+LCDM,,,,,,missing_real_data
+wCDM,,,,,,missing_real_data
+curved_LCDM,,,,,,missing_real_data
+DFM_MKC,,,,,,missing_real_data
