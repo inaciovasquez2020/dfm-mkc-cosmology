@@ -18,12 +18,25 @@ EXPECTED = {
     ],
 }
 
+def _is_synthetic(path: Path) -> bool:
+    if not path.exists():
+        return False
+    try:
+        head = path.read_text(errors="ignore")[:4096]
+    except Exception:
+        return False
+    return "SYNTHETIC_PLACEHOLDER" in head
+
 def dataset_status() -> dict[str, dict[str, object]]:
     out: dict[str, dict[str, object]] = {}
     for name, files in EXPECTED.items():
+        missing = [str(p.relative_to(ROOT)) for p in files if not p.exists()]
+        synthetic = [str(p.relative_to(ROOT)) for p in files if p.exists() and _is_synthetic(p)]
         out[name] = {
-            "present": all(p.exists() for p in files),
-            "missing": [str(p.relative_to(ROOT)) for p in files if not p.exists()],
+            "present": len(missing) == 0 and len(synthetic) == 0,
+            "synthetic_present": len(missing) == 0 and len(synthetic) > 0,
+            "missing": missing,
+            "synthetic_files": synthetic,
         }
     return out
 
@@ -31,9 +44,13 @@ def require_dataset(name: str) -> list[Path]:
     status = dataset_status()
     if name not in status:
         raise KeyError(name)
-    if not status[name]["present"]:
-        missing = "\n".join(status[name]["missing"])
-        raise FileNotFoundError(f"missing public data files for {name}:\n{missing}")
+    if status[name]["missing"] or status[name]["synthetic_files"]:
+        parts: list[str] = []
+        if status[name]["missing"]:
+            parts.append("missing:\n" + "\n".join(status[name]["missing"]))
+        if status[name]["synthetic_files"]:
+            parts.append("synthetic:\n" + "\n".join(status[name]["synthetic_files"]))
+        raise FileNotFoundError(f"dataset {name} is not real-data ready:\n" + "\n".join(parts))
     return EXPECTED[name]
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-def test_real_data_table_writer_marks_missing_real_data():
+def test_real_data_table_writer_marks_synthetic_placeholder_data():
     repo = Path(__file__).resolve().parents[1]
     env = os.environ.copy()
     env["PYTHONPATH"] = str(repo)
@@ -16,4 +16,4 @@ def test_real_data_table_writer_marks_missing_real_data():
     )
     rows = list(csv.DictReader((repo / "artifacts/results/model_comparison_real_data.csv").open()))
     assert len(rows) == 4
-    assert all(r["status"] == "missing_real_data" for r in rows)
+    assert all(r["status"] == "synthetic_placeholder_data" for r in rows)
