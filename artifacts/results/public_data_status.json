@@ -1,22 +1,28 @@
 {
   "des_y6": {
-    "missing": [
+    "missing": [],
+    "present": false,
+    "synthetic_files": [
       "public_data/des_y6/y6_3x2pt_summary.csv",
       "public_data/des_y6/y6_covariance.csv"
     ],
-    "present": false
+    "synthetic_present": true
   },
   "desi_dr2": {
-    "missing": [
+    "missing": [],
+    "present": false,
+    "synthetic_files": [
       "public_data/desi_dr2/cobaya/base/desi-bao-all/chain.1.txt",
       "public_data/desi_dr2/iminuit/base/desi-bao-all/bestfit.minimum.txt"
     ],
-    "present": false
+    "synthetic_present": true
   },
   "planck": {
-    "missing": [
+    "missing": [],
+    "present": false,
+    "synthetic_files": [
       "public_data/planck/planck_2018_baseline_params.csv"
     ],
-    "present": false
+    "synthetic_present": true
   }
 }
