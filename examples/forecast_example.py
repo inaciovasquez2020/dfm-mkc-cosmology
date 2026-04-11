@@ -1,7 +1,7 @@
 
-from dfm_mkc.models.lcdm import LCDMModel
-from dfm_mkc.forecast.survey_spec import SurveySpec
-from dfm_mkc.forecast.mock_data import generate_mock
+from src.models.lcdm import LCDMModel
+from src.forecast.survey_spec import SurveySpec
+from src.forecast.mock_data import generate_mock
 
 survey = SurveySpec("mock",0.1,1.5,15,5)
 
