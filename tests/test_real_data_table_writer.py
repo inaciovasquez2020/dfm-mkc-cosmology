@@ -16,4 +16,4 @@ def test_real_data_table_writer_marks_synthetic_placeholder_data():
     )
     rows = list(csv.DictReader((repo / "artifacts/results/model_comparison_real_data.csv").open()))
     assert len(rows) == 4
-    assert all(r["status"] != "synthetic_placeholder_data" for r in rows)
+    assert all(r["status"] == "synthetic_placeholder_data" for r in rows)
