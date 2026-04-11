@@ -1,0 +1,5 @@
+model,logL,AIC,BIC,H0_mean,Omega_m_mean,status
+LCDM,,,,,,pending
+wCDM,,,,,,pending
+curved_LCDM,,,,,,pending
+DFM_MKC,,,,,,pending
