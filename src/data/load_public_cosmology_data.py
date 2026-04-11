@@ -6,8 +6,8 @@ ROOT = Path(__file__).resolve().parents[2]
 
 EXPECTED = {
     "desi_dr2": [
-        ROOT / "public_data" / "desi_dr2" / "bao_summary.csv",
-        ROOT / "public_data" / "desi_dr2" / "cosmology_chains.csv",
+        ROOT / "public_data" / "desi_dr2" / "cobaya" / "base" / "desi-bao-all" / "chain.1.txt",
+        ROOT / "public_data" / "desi_dr2" / "iminuit" / "base" / "desi-bao-all" / "bestfit.minimum.txt",
     ],
     "des_y6": [
         ROOT / "public_data" / "des_y6" / "y6_3x2pt_summary.csv",

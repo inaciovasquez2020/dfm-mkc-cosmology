@@ -8,8 +8,8 @@
   },
   "desi_dr2": {
     "missing": [
-      "public_data/desi_dr2/bao_summary.csv",
-      "public_data/desi_dr2/cosmology_chains.csv"
+      "public_data/desi_dr2/cobaya/base/desi-bao-all/chain.1.txt",
+      "public_data/desi_dr2/iminuit/base/desi-bao-all/bestfit.minimum.txt"
     ],
     "present": false
   },
