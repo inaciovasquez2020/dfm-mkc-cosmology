@@ -6,8 +6,7 @@ on:
 
 jobs:
   core:
-    continue-on-error: true
-  test:
+      test:
     runs-on: ubuntu-latest
 
     steps:
