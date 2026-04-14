@@ -1,3 +1,9 @@
-SYNTHETIC_PLACEHOLDER,param,value
-true,H0,67.400000
-true,Omega_m,0.315000
+param,value
+omegabh2,0.0223828
+omegach2,0.1201075
+tau,0.05430842
+ns,0.9660499
+H0,67.32117
+omegam,0.3158231
+sigma8,0.8120059
+S8,0.8331448
