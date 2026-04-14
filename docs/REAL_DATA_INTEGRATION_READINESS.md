@@ -19,4 +19,5 @@
 Conditional.
 
 DESI DR2 and Planck 2018 are integrated as authentic public data artifacts.
-Repository closure on the declared three-anchor real-data surface remains open until the two DES Y6 placeholder files are replaced by authentic public data.
+Repository closure on the declared three-anchor real-data surface remains open until the two DES Y6 canonical files are replaced by authentic public data.
+Direct fixed CSV URLs are not required; a reproducible official export recipe from an official DES Y6 public access surface is admissible.
