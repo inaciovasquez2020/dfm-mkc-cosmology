@@ -23,6 +23,13 @@ This repository is a registered module of the Vasquez Index. Stable references, 
 * [Vasquez Index Dashboard](https://inaciovasquez2020.github.io/vasquez-index/dashboard.html)
 
 ## Repository Status
+
+## Current Status on Main
+
+- Canonical repository status: `STATUS.md`
+- Real-data integration state: `docs/REAL_DATA_INTEGRATION_READINESS.md`
+- Next closure target: `docs/status/NEXT_CLOSURE_MOVE.md`
+
 * **Repository Handle:** inaciovasquez2020/dfm-mkc-cosmology
 * **Stability:** Refer to the Vasquez Index for the latest stable DOI and version history.
 * **Infrastructure:** [scientific-infrastructure](https://github.com/inaciovasquez2020/scientific-infrastructure)
