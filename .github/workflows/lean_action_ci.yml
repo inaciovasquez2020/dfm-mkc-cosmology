@@ -1,5 +1,8 @@
 name: Lean CI (disabled)
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   push:
     branches: [ main ]
@@ -12,4 +15,4 @@ jobs:
     steps:
       - name: Lean not enabled yet
         run: echo "Lean CI intentionally disabled until a Lake project is added."
-
+  workflow_dispatch:
