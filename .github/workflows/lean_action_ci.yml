@@ -8,6 +8,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   lean:
@@ -15,4 +16,3 @@ jobs:
     steps:
       - name: Lean not enabled yet
         run: echo "Lean CI intentionally disabled until a Lake project is added."
-  workflow_dispatch:

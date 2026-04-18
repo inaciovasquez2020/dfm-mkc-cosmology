@@ -6,12 +6,11 @@ env:
 on:
   push:
   pull_request:
+  workflow_dispatch:
 
 jobs:
-  core:
-      test:
+  test:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v5
 
@@ -30,4 +29,3 @@ jobs:
       - name: Run tests
         run: |
           pytest -q
-  workflow_dispatch:
