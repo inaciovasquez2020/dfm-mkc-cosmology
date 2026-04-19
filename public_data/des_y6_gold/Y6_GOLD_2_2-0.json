@@ -1,0 +1,3424 @@
+{
+    "file_info": {
+        "files": {
+            "Y6_GOLD_2_2-0-0000.parquet": {
+                "file": "./d2_parquet/Y6_GOLD_2_2/Y6_GOLD_2_2-0-0000.parquet",
+                "md5sum": "07ef54aae2111dae2970307fe74d0325",
+                "size": 3559587192
+            }
+        },
+        "max_dec": 5.37083,
+        "max_ra": 45.448584,
+        "max_rows_any_file": "10198878",
+        "min_dec": 0.003658,
+        "min_ra": 39.37662,
+        "number_files": 1
+    },
+    "meta_info": {
+        "HPX_8_index": "0",
+        "afterburner_ran": "True",
+        "how": [
+            "./parquet_export.py",
+            "parquet2",
+            "-m",
+            "20_000_000_000",
+            "Y6_GOLD_2_2",
+            "0",
+            "where HPIX_32 in (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)"
+        ],
+        "run_begin": "2024-04-29 12:19:56",
+        "run_end": "2024-04-29 12:26:06",
+        "run_machine": "descmp1.cosmology.illinois.edu",
+        "table": "Y6_GOLD_2_2",
+        "what": "Parquet file production report for table Y6_GOLD_2_2",
+        "where_clause": "where HPIX_32 in (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)",
+        "who": "donaldp"
+    },
+    "oracle_info": {
+        "db_machine": "dessci",
+        "rows_this_query": "1849152",
+        "total_table_stats": "   AVG_ROW_LEN   NUM_ROWS\n0         1961  691483608"
+    },
+    "type_info": {
+        "ALPHAWIN_J2000": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "A_FIDUCIAL_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 23312
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "A_FIDUCIAL_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 22832
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "A_FIDUCIAL_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 23104
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "A_FIDUCIAL_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 23344
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "A_FIDUCIAL_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 23696
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "A_IMAGE": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 31178752
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BADPIX_FRAC": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 9654272
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_DEBLEND_FLAGS": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 10.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 1
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "BDF_FLAGS": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 10.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 4
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "BDF_FLUX_COV_1_1": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 689438720
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_1_2": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_1_3": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 687865856
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_1_4": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_1_5": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_2_1": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_2_2": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_2_3": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_2_4": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 682033152
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_2_5": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 685768704
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_3_1": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 684064768
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_3_2": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_3_3": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_3_4": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 687341568
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_3_5": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 685506560
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_4_1": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_4_2": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 676397056
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_4_3": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 690552832
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_4_4": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 687210496
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_4_5": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_5_1": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_5_2": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 689504256
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_5_3": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 690487296
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_5_4": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_COV_5_5": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_ERR_G": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_ERR_G_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 689045504
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_ERR_I": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_ERR_I_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 689045504
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_ERR_R": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 686292992
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_ERR_R_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_ERR_Y": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_ERR_Y_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_ERR_Z": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_ERR_Z_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 685441024
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_G": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_G_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 690028544
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_I": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 690487296
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_I_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_R": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_R_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_Y": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_Y_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_Z": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 683999232
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FLUX_Z_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 689831936
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FRACDEV": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 690356224
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_FRACDEV_ERR": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 690290688
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_GMR_ERR": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_G_1": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 688979968
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_G_2": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_G_COV_1_1": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_G_COV_1_2": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_G_COV_2_1": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_G_COV_2_2": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 684261376
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_IMZ_ERR": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_MAG_ERR_G": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 686751744
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_MAG_ERR_I": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_MAG_ERR_R": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 685309952
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_MAG_ERR_Y": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691339264
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_MAG_ERR_Z": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 689635328
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_MAG_G": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 666370048
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_MAG_G_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 679084032
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_MAG_I": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 667811840
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_MAG_I_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 681377792
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_MAG_R": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 682229760
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_MAG_R_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 689635328
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_MAG_Y": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 600768512
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_MAG_Y_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 606797824
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_MAG_Z": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 689176576
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_MAG_Z_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_NFEV": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 10.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 1995
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "BDF_NTRY": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 5.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 3
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "BDF_PARS_1": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_PARS_2": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 686358528
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_PARS_ERR_1": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 678625280
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_PARS_ERR_2": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_RMI_ERR": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 688390144
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_S2N": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 688848896
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_T": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 682754048
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_T_ERR": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 690159616
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_T_RATIO": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "BDF_ZMY_ERR": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 687800320
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "B_IMAGE": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 33685504
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "COADD_OBJECT_ID": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 11.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "CONC": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "CONC_FLAGS": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 10.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 3
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "COVERFRAC_GRIZ": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 65
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "COVERFRAC_GRIZY": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 65
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "COVERFRAC_RIZ": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 65
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "COVERFRAC_RIZY": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 65
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "DEC": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 9.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 72695808
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "DELTAWIN_J2000": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 687079424
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "DNF_D1": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 668729344
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "DNF_DE1": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 668729344
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "DNF_ID1": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 20.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 536832
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "DNF_NNEIGHBORS": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 81
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "DNF_Z": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 680198144
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "DNF_ZERR_FIT": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 540934144
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "DNF_ZERR_PARAM": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 677904384
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "DNF_ZN": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 349696
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "DNF_ZSIGMA": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 682557440
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "EBV_SFD98": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 23392
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "ERRA_IMAGE": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 51150848
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "ERRB_IMAGE": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 46071808
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "ERRTHETA_IMAGE": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 103677952
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "EXT_COADD": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 3.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 5
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "EXT_FITVD": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 3.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 6
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "EXT_MASH": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 3.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 6
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "EXT_WAVG": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 3.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 5
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "EXT_XGB": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 3.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 6
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "FITVD_FLAGS": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 10.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 5
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "FLAGSTR": {
+            "oracle": {
+                "DATA_LENGTH": 32,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "VARCHAR2",
+                "NUM_DISTINCT": 5
+            },
+            "pandas": "object",
+            "parquet": "string"
+        },
+        "FLAGS_FOOTPRINT": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 5.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 2
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "FLAGS_FOREGROUND": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 3.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 159
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "FLAGS_GOLD": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 5.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 91
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "FLUX_RADIUS_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 48660480
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "FLUX_RADIUS_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 33423360
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "FLUX_RADIUS_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 34930688
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "FLUX_RADIUS_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 89686016
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "FLUX_RADIUS_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 37912576
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "FOF_ID": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 20.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 225024
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "FOF_SIZE": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 5.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 1
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "GAP_FLUX_ERR_G": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_FLUX_ERR_I": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_FLUX_ERR_R": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 688652288
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_FLUX_ERR_Y": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_FLUX_ERR_Z": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 689176576
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_FLUX_G": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 682754048
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_FLUX_I": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 684523520
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_FLUX_R": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_FLUX_Y": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_FLUX_Z": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 683540480
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_MAG_ERR_G": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_MAG_ERR_I": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_MAG_ERR_R": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 685047808
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_MAG_ERR_Y": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 688390144
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_MAG_ERR_Z": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 689504256
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_MAG_G": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 687603712
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_MAG_I": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 682295296
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_MAG_R": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 682885120
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_MAG_Y": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 608370688
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GAP_MAG_Z": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GLAT": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 16859136
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "GLON": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 32645120
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "HPIX_1024": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 10.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 1589376
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "HPIX_16384": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 10.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 335052800
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "HPIX_32": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 10.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 1738
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "HPIX_4096": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 10.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 24989696
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "HPIX_64": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 10.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 6582
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "IMAFLAGS_ISO_G": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 6.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 2
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "IMAFLAGS_ISO_I": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 6.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 2
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "IMAFLAGS_ISO_R": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 6.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 2
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "IMAFLAGS_ISO_Y": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 6.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 2
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "IMAFLAGS_ISO_Z": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 6.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 2
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "KRON_RADIUS": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 12132352
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_APER_4_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 89063424
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_APER_4_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 83525632
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_APER_4_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 84230144
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_APER_4_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 98729984
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_APER_4_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 84672512
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_APER_8_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 97058816
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_APER_8_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 103088128
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_APER_8_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 100007936
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_APER_8_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 96845824
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_APER_8_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 104005632
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_AUTO_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 88653824
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_AUTO_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 82673664
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_AUTO_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 84246528
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_AUTO_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 95977472
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_AUTO_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 84623360
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_DETMODEL_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 89686016
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_DETMODEL_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 80707584
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_DETMODEL_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 83853312
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_DETMODEL_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 100728832
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAGERR_DETMODEL_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 79151104
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_APER_4_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 8687616
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_APER_4_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 6701056
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_APER_4_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 7438336
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_APER_4_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 9039872
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_APER_4_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 6889472
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_APER_8_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 8937472
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_APER_8_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 8437760
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_APER_8_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 8568832
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_APER_8_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 9125888
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_APER_8_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 8495104
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_AUTO_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 8978432
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_AUTO_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 7614464
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_AUTO_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 8192000
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_AUTO_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 9641984
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_AUTO_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 7745536
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_DETMODEL_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 8798208
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_DETMODEL_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 6840320
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_DETMODEL_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 7712768
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_DETMODEL_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 9531392
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MAG_DETMODEL_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 6455296
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MASK_FLAGS": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 10.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 1
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "MOLY_NUMBER_G": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 20.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 51138560
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MOLY_NUMBER_I": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 20.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 49885184
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MOLY_NUMBER_R": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 20.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 51081216
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MOLY_NUMBER_Y": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 20.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 32335872
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MOLY_NUMBER_Z": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 20.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 49188864
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_EFF_MODEL_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 17186816
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_EFF_MODEL_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 14729216
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_EFF_MODEL_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 15425536
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_EFF_MODEL_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 19374080
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_EFF_MODEL_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 15040512
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_MAX_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 6731776
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_MAX_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 5580800
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_MAX_MODEL_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 18358272
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_MAX_MODEL_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 15433728
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_MAX_MODEL_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 16670720
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_MAX_MODEL_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 21651456
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_MAX_MODEL_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 15859712
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_MAX_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 5986304
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_MAX_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 7124992
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_MAX_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 5292032
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_MEAN_MODEL_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 18137088
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_MEAN_MODEL_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 15687680
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_MEAN_MODEL_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 16515072
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_MEAN_MODEL_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 21061632
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_MEAN_MODEL_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 15818752
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_THRESHOLD_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 1099776
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_THRESHOLD_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 1096704
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_THRESHOLD_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 1067520
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_THRESHOLD_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 1092608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "MU_THRESHOLD_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 1074688
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "NEPOCHS_G": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 6.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 21
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "NEPOCHS_I": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 6.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 22
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "NEPOCHS_R": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 6.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 21
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "NEPOCHS_Y": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 6.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 19
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "NEPOCHS_Z": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 6.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 22
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "NITER_MODEL_G": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 5.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 715
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "NITER_MODEL_I": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 5.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 667
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "NITER_MODEL_R": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 5.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 694
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "NITER_MODEL_Y": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 5.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 674
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "NITER_MODEL_Z": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 5.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 679
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "N_IMAGES_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 10128
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "N_IMAGES_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 9964
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "N_IMAGES_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 10044
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "N_IMAGES_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 8748
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "N_IMAGES_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 10192
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "OBJECT_NUMBER": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 6.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 224768
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "PARENT_NUMBER": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 6.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 185856
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "PFW_ATTEMPT_ID": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 12.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 10112
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "PSF_FLUX_APER_8_G": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_APER_8_I": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 686882816
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_APER_8_R": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_APER_8_Y": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 689373184
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_APER_8_Z": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_ERR_APER_8_G": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 687538176
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_ERR_APER_8_I": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 680984576
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_ERR_APER_8_R": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_ERR_APER_8_Y": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_ERR_APER_8_Z": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 685047808
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_FLAGS_G": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 10.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 2
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "PSF_FLUX_FLAGS_I": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 10.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 2
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "PSF_FLUX_FLAGS_R": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 10.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 2
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "PSF_FLUX_FLAGS_Y": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 10.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 2
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "PSF_FLUX_FLAGS_Z": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 10.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 3
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "PSF_FLUX_RATIO_APER_8_G": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 685572096
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_RATIO_APER_8_I": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_RATIO_APER_8_R": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 683081728
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_RATIO_APER_8_Y": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_RATIO_APER_8_Z": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_S2N_APER_8_G": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_S2N_APER_8_I": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_S2N_APER_8_R": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_S2N_APER_8_Y": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_FLUX_S2N_APER_8_Z": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 687407104
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_G_1": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_G_2": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_MAG_APER_8_G": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 675479552
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_MAG_APER_8_G_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 681115648
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_MAG_APER_8_I": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_MAG_APER_8_I_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_MAG_APER_8_R": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 687210496
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_MAG_APER_8_R_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691404800
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_MAG_APER_8_Y": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 614334464
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_MAG_APER_8_Y_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 602079232
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_MAG_APER_8_Z": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_MAG_APER_8_Z_CORRECTED": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 690094080
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_MAG_ERR_APER_8_G": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 688717824
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_MAG_ERR_APER_8_I": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_MAG_ERR_APER_8_R": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 686948352
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_MAG_ERR_APER_8_Y": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_MAG_ERR_APER_8_Z": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 686817280
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "PSF_T": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "RA": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 9.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 152666112
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "SPREADERR_MODEL_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 83525632
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "SPREADERR_MODEL_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 77643776
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "SPREADERR_MODEL_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 78921728
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "SPREADERR_MODEL_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 95780864
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "SPREADERR_MODEL_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 77856768
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "SPREAD_MODEL_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 131858432
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "SPREAD_MODEL_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 124928000
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "SPREAD_MODEL_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 126599168
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "SPREAD_MODEL_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 139591680
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "SPREAD_MODEL_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 124485632
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "S_EXTRACTOR_FLAGS_G": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 3.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 41
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "S_EXTRACTOR_FLAGS_I": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 3.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 44
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "S_EXTRACTOR_FLAGS_R": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 3.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 45
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "S_EXTRACTOR_FLAGS_Y": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 3.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 46
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "S_EXTRACTOR_FLAGS_Z": {
+            "oracle": {
+                "DATA_LENGTH": 22,
+                "DATA_PRECISION": 3.0,
+                "DATA_TYPE": "NUMBER",
+                "NUM_DISTINCT": 44
+            },
+            "pandas": "int64",
+            "parquet": "int64"
+        },
+        "THETA_J2000": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 56639488
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "TILENAME": {
+            "oracle": {
+                "DATA_LENGTH": 12,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "VARCHAR2",
+                "NUM_DISTINCT": 10344
+            },
+            "pandas": "object",
+            "parquet": "string"
+        },
+        "WAVG_MAGERR_PSF_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 60407808
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_MAGERR_PSF_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 67485696
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_MAGERR_PSF_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 67354624
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_MAGERR_PSF_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 49995776
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_MAGERR_PSF_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 65454080
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_MAG_PSF_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 5511168
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_MAG_PSF_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 5081088
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_MAG_PSF_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 5421056
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_MAG_PSF_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 5236736
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_MAG_PSF_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 5011456
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_SPREADERR_MODEL_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 57450496
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_SPREADERR_MODEL_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 63193088
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_SPREADERR_MODEL_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 63651840
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_SPREADERR_MODEL_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 47489024
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_SPREADERR_MODEL_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 60719104
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_SPREAD_MODEL_G": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 103202816
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_SPREAD_MODEL_I": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 101564416
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_SPREAD_MODEL_R": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 108331008
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_SPREAD_MODEL_Y": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 68132864
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "WAVG_SPREAD_MODEL_Z": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 92119040
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "XGB_PRED": {
+            "oracle": {
+                "DATA_LENGTH": 4,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_FLOAT",
+                "NUM_DISTINCT": 26234880
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "XWIN_IMAGE": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 691483608
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        },
+        "YWIN_IMAGE": {
+            "oracle": {
+                "DATA_LENGTH": 8,
+                "DATA_PRECISION": null,
+                "DATA_TYPE": "BINARY_DOUBLE",
+                "NUM_DISTINCT": 683278336
+            },
+            "pandas": "float64",
+            "parquet": "double"
+        }
+    }
+}
