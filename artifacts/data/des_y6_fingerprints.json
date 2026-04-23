@@ -1,0 +1,12 @@
+{
+  "public_data/des_y6/y6_3x2pt_summary.csv": {
+    "bytes": 46,
+    "rows": 2,
+    "sha256": "c850dc6c43c7286c6331134acdeeb58956c6962b103c5a4bbf98425ba59f2617"
+  },
+  "public_data/des_y6/y6_covariance.csv": {
+    "bytes": 966071,
+    "rows": 44101,
+    "sha256": "6e900cdc2002f279fa367d73f4ca217ebd008f32680d63ba1965799f06488fa2"
+  }
+}
