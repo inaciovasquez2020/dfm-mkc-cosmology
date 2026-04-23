@@ -2,17 +2,17 @@
 
 ## Imported Real Data
 - DESI DR2
+- DES Y6
 - Planck 2018
 
-DESI DR2 and Planck 2018 are integrated as authentic public data artifacts.
+DESI DR2, DES Y6, and Planck 2018 are integrated as authentic public data artifacts.
 
 ## Remaining Open Data Objects
-- y6_3x2pt_summary.csv
-- y6_covariance.csv
+- none
 
-Repository closure on the declared three-anchor real-data surface remains open until the two DES Y6 canonical files are replaced by authentic public data.
+`docs/data/DES_Y6_EXPORT_RECIPE.md` is the committed official export recipe for the DES Y6 surface.
 
-Direct fixed CSV URLs are not required; a reproducible official export recipe from an official DES Y6 public access surface is admissible.
+`artifacts/data/des_y6_fingerprints.json` is the frozen provenance artifact for the committed DES Y6 CSV pair.
 
 ## Status
-Conditional.
+Closed.
