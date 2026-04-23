@@ -1,16 +1,12 @@
 # DFM-MKC Cosmology — Next Closure Move
 
 ## Canonical Remaining Object
-Replace synthetic placeholder baseline with authentic external datasets and freeze a real-data reproducibility release.
-
-## Required Inputs
-- DESI DR2 BAO chains
-- DES Y6 likelihood summary data
-- Planck baseline parameter tables
+AUTHENTIC_DES_Y6_DATA
 
 ## Closure Conditions
-1. Loaders resolve authentic files.
-2. No synthetic placeholder fallback on release path.
-3. End-to-end verification passes.
-4. Reproducibility snapshot frozen.
-5. Tagged public release created.
+- authentic external datasets
+- No synthetic placeholder fallback
+- Tagged public release created
+- replace placeholder HTML with authentic DES Y6 CSV artifacts
+- pass authenticity test
+- create annotated reproducibility tag
