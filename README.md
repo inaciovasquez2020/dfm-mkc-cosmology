@@ -66,3 +66,7 @@ If you use this research or implementation in your work, please cite it as follo
 In addition to unit tests, the codebase includes basic cosmology consistency checks (e.g. monotonic expansion and distance scaling) to guard against numerical or refactoring regressions.
 
 This project relies on shared tooling and reproducibility infrastructure provided by the scientific-infrastructure repository; it contains domain-specific research code only.
+
+## External status
+
+This repository is governed by [`docs/status/EXTERNAL_STATUS_LOCK.md`](docs/status/EXTERNAL_STATUS_LOCK.md). Build success, CI success, dashboards, ledgers, axioms, admits, `sorry`, or placeholder witnesses do not constitute theorem-level closure.
