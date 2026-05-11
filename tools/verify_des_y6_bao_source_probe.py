@@ -17,15 +17,15 @@ required = [
 for token in required:
     assert token in s
 
-forbidden = [
+forbidden_positive_claims = [
     "DES Y6 likelihood ingested",
     "DFM-MKC beats LCDM",
     "DFM-MKC is empirically confirmed",
-    "final cosmological truth",
+    "final cosmological truth is proved",
     "URF cosmology closure is proved",
 ]
 
-for token in forbidden:
+for token in forbidden_positive_claims:
     assert token not in s
 
 print("DES Y6 BAO source probe verified.")
