@@ -1,0 +1,12 @@
+{
+  "status": "AWAITING_AUTHENTIC_DES_Y6_MACHINE_READABLE_INPUT",
+  "required_files": [
+    "DES_Y6_data_vector",
+    "DES_Y6_covariance",
+    "DES_Y6_LCDM_baseline_or_likelihood",
+    "DES_Y6_metadata_or_citation"
+  ],
+  "source_requirement": "official_DES_or_authoritative_release_only",
+  "checksum_required": true,
+  "boundary": "No empirical comparison is admissible until authentic DES Y6 machine-readable inputs are materialized."
+}
