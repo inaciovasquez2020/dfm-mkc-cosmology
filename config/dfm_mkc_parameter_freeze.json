@@ -1,0 +1,19 @@
+{
+  "status": "PARAMETER_RULES_FROZEN_BEFORE_DES_Y6_COMPARISON",
+  "date": "2026-05-11",
+  "model": "DFM-MKC",
+  "fitting_policy": "No parameter changes after authentic DES Y6 input materialization.",
+  "baseline": "Lambda-CDM",
+  "allowed_outputs": [
+    "residual_delta",
+    "model_selection_delta",
+    "predictive_score_delta",
+    "boundary_safe_empirical_artifact"
+  ],
+  "forbidden_claims": [
+    "DFM-MKC proves final cosmological truth",
+    "DFM-MKC theorem-level closure",
+    "DFM-MKC unconditionally beats Lambda-CDM",
+    "URF cosmology closure"
+  ]
+}
