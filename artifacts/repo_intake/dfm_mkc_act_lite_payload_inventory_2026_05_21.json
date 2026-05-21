@@ -1,0 +1,345 @@
+{
+  "artifact_id": "dfm_mkc_act_lite_payload_inventory_2026_05_21",
+  "status": "ACT_LITE_PAYLOAD_INVENTORY_ONLY_NO_NUMERICAL_EXTRACTION",
+  "input_payload": "artifacts/public_payloads/act_dr6_act_lite_main_2026_05_21.zip",
+  "depends_on": [
+    "artifacts/repo_intake/dfm_mkc_payload_extraction_classifier_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_downloaded_public_payload_manifest_2026_05_21.json"
+  ],
+  "inventory_counts": {
+    "total_entries": 44,
+    "directories": 10,
+    "source_or_config_entries": 32,
+    "numeric_like_entries": 1,
+    "other_entries": 1
+  },
+  "entries": [
+    {
+      "path": "DR6-ACT-lite-main/",
+      "classification": "DIRECTORY",
+      "compressed_size": 0,
+      "uncompressed_size": 0,
+      "crc": 0
+    },
+    {
+      "path": "DR6-ACT-lite-main/.github/",
+      "classification": "DIRECTORY",
+      "compressed_size": 0,
+      "uncompressed_size": 0,
+      "crc": 0
+    },
+    {
+      "path": "DR6-ACT-lite-main/.github/workflows/",
+      "classification": "DIRECTORY",
+      "compressed_size": 0,
+      "uncompressed_size": 0,
+      "crc": 0
+    },
+    {
+      "path": "DR6-ACT-lite-main/.github/workflows/codestyle.yml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 291,
+      "uncompressed_size": 619,
+      "crc": 3627031675
+    },
+    {
+      "path": "DR6-ACT-lite-main/.github/workflows/testing.yml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 413,
+      "uncompressed_size": 998,
+      "crc": 4012786684
+    },
+    {
+      "path": "DR6-ACT-lite-main/.gitignore",
+      "classification": "OTHER",
+      "compressed_size": 1525,
+      "uncompressed_size": 3148,
+      "crc": 3315725479
+    },
+    {
+      "path": "DR6-ACT-lite-main/README.md",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 1482,
+      "uncompressed_size": 3413,
+      "crc": 3543112729
+    },
+    {
+      "path": "DR6-ACT-lite-main/act_dr6_cmbonly/",
+      "classification": "DIRECTORY",
+      "compressed_size": 0,
+      "uncompressed_size": 0,
+      "crc": 0
+    },
+    {
+      "path": "DR6-ACT-lite-main/act_dr6_cmbonly/PlanckActCut.py",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 616,
+      "uncompressed_size": 1439,
+      "crc": 829993232
+    },
+    {
+      "path": "DR6-ACT-lite-main/act_dr6_cmbonly/PlanckActCut.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 498,
+      "uncompressed_size": 836,
+      "crc": 3312714254
+    },
+    {
+      "path": "DR6-ACT-lite-main/act_dr6_cmbonly/__init__.py",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 214,
+      "uncompressed_size": 324,
+      "crc": 2977593443
+    },
+    {
+      "path": "DR6-ACT-lite-main/act_dr6_cmbonly/act_dr6_cmbonly.py",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 1667,
+      "uncompressed_size": 5043,
+      "crc": 1790532509
+    },
+    {
+      "path": "DR6-ACT-lite-main/act_dr6_cmbonly/data/",
+      "classification": "DIRECTORY",
+      "compressed_size": 0,
+      "uncompressed_size": 0,
+      "crc": 0
+    },
+    {
+      "path": "DR6-ACT-lite-main/act_dr6_cmbonly/data/act_dr6_cmb_sacc.fits",
+      "classification": "NUMERIC_LIKE_FILE_PRESENT_NOT_EXTRACTED",
+      "compressed_size": 207679,
+      "uncompressed_size": 5391360,
+      "crc": 2728156879
+    },
+    {
+      "path": "DR6-ACT-lite-main/act_dr6_cmbonly/tests/",
+      "classification": "DIRECTORY",
+      "compressed_size": 0,
+      "uncompressed_size": 0,
+      "crc": 0
+    },
+    {
+      "path": "DR6-ACT-lite-main/act_dr6_cmbonly/tests/test_act.py",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 685,
+      "uncompressed_size": 2374,
+      "crc": 3904307780
+    },
+    {
+      "path": "DR6-ACT-lite-main/dr6-cmbonly-tests.yml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 110,
+      "uncompressed_size": 149,
+      "crc": 1815311992
+    },
+    {
+      "path": "DR6-ACT-lite-main/requirements.txt",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 36,
+      "uncompressed_size": 36,
+      "crc": 4256570214
+    },
+    {
+      "path": "DR6-ACT-lite-main/setup.py",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 347,
+      "uncompressed_size": 615,
+      "crc": 40454996
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/",
+      "classification": "DIRECTORY",
+      "compressed_size": 0,
+      "uncompressed_size": 0,
+      "crc": 0
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/act-lcdm.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 215,
+      "uncompressed_size": 339,
+      "crc": 291209269
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/likelihoods/",
+      "classification": "DIRECTORY",
+      "compressed_size": 0,
+      "uncompressed_size": 0,
+      "crc": 0
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/likelihoods/act_lite.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 72,
+      "uncompressed_size": 73,
+      "crc": 1987232006
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/likelihoods/bk18.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 22,
+      "uncompressed_size": 22,
+      "crc": 2788096037
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/likelihoods/lensing_desi.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 120,
+      "uncompressed_size": 170,
+      "crc": 1654847655
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/likelihoods/p_act_lite.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 184,
+      "uncompressed_size": 304,
+      "crc": 3760842687
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/likelihoods/planck.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 204,
+      "uncompressed_size": 366,
+      "crc": 941394072
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/likelihoods/wmap.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 120,
+      "uncompressed_size": 131,
+      "crc": 1862193299
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/p-act-lb-lcdm.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 231,
+      "uncompressed_size": 372,
+      "crc": 3608097809
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/p-act-lcdm.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 219,
+      "uncompressed_size": 343,
+      "crc": 93409486
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/parameters/",
+      "classification": "DIRECTORY",
+      "compressed_size": 0,
+      "uncompressed_size": 0,
+      "crc": 0
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/parameters/Alens.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 112,
+      "uncompressed_size": 153,
+      "crc": 2872726800
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/parameters/YHe.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 122,
+      "uncompressed_size": 162,
+      "crc": 532113949
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/parameters/cosmology.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 359,
+      "uncompressed_size": 992,
+      "crc": 2585382868
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/parameters/delta_neff.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 156,
+      "uncompressed_size": 251,
+      "crc": 856697316
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/parameters/mnu.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 118,
+      "uncompressed_size": 158,
+      "crc": 1670577694
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/parameters/neff.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 115,
+      "uncompressed_size": 146,
+      "crc": 2919839561
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/parameters/nrun.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 141,
+      "uncompressed_size": 207,
+      "crc": 1085538423
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/parameters/omk.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 112,
+      "uncompressed_size": 147,
+      "crc": 174452477
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/parameters/r.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 95,
+      "uncompressed_size": 134,
+      "crc": 1139512768
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/parameters/wde.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 96,
+      "uncompressed_size": 128,
+      "crc": 792000180
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/theories/",
+      "classification": "DIRECTORY",
+      "compressed_size": 0,
+      "uncompressed_size": 0,
+      "crc": 0
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/theories/camb.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 423,
+      "uncompressed_size": 1103,
+      "crc": 1746376523
+    },
+    {
+      "path": "DR6-ACT-lite-main/yamls/w-act-lcdm.yaml",
+      "classification": "SOURCE_OR_CONFIG",
+      "compressed_size": 224,
+      "uncompressed_size": 359,
+      "crc": 3958986624
+    }
+  ],
+  "archive_read_success": true,
+  "archive_extracted": false,
+  "numerical_data_vector_extracted": false,
+  "covariance_matrix_extracted": false,
+  "schema_validated": false,
+  "external_payload_verified": false,
+  "protocol_run": false,
+  "evidence_supplied": false,
+  "slot_promoted": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
