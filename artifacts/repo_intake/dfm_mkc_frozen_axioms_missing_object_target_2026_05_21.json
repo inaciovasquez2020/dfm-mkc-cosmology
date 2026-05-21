@@ -1,0 +1,38 @@
+{
+  "artifact_id": "dfm_mkc_frozen_axioms_missing_object_target_2026_05_21",
+  "status": "ROOT_BLOCKER_TARGET_ONLY_AXIOMS_NOT_SUPPLIED",
+  "target_object": "FrozenDFMMKCAxioms",
+  "logical_position": "root_blocker_for_prediction_generation",
+  "required_downstream_map": [
+    "DeterministicDerivationMap",
+    "NonemptyNumericPredictionList"
+  ],
+  "required_axiom_payload_fields": [
+    "axiom_identifier",
+    "formal_statement",
+    "allowed_symbols",
+    "normalization_convention",
+    "parameter_dependency_rule",
+    "prediction_derivation_role",
+    "freeze_hash"
+  ],
+  "unblocks_if_supplied": [
+    "DeterministicDerivationMap",
+    "NonemptyNumericPredictionList",
+    "ACTDR6_NumericalData_Unfixed_evaluation_input"
+  ],
+  "axioms_supplied": false,
+  "prediction_vector_supplied": false,
+  "evidence_supplied": false,
+  "slot_promoted": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
