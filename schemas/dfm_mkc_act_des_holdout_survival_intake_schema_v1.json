@@ -1,0 +1,25 @@
+{
+  "schema_id": "DFM_MKC_ACT_DES_HOLDOUT_SURVIVAL_INTAKE_SCHEMA_V1",
+  "status": "INTAKE_SCHEMA_ONLY_NO_EVIDENCE_SUPPLIED",
+  "target_slot": "ACT_DES_HOLDOUT_SURVIVAL",
+  "base_blocker": "artifacts/repo_intake/dfm_mkc_full_closure_blocker_certificate_2026_05_21.json",
+  "required_future_evidence": [
+    "ACT_HOLDOUT_SURVIVAL_REPORT",
+    "DES_HOLDOUT_SURVIVAL_REPORT",
+    "FROZEN_PREDICTION_VECTOR_BINDING",
+    "PREDECLARED_EVALUATION_PROTOCOL",
+    "RESIDUAL_OR_LIKELIHOOD_COMPARISON"
+  ],
+  "evidence_supplied": false,
+  "slot_promoted": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
