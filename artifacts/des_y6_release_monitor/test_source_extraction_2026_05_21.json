@@ -1,0 +1,37 @@
+{
+  "artifact": "DES_Y6_RELEASE_MONITOR_TEST_SOURCE_EXTRACTION_2026_05_21",
+  "boundary": [
+    "no DES Y6 authentic release ingestion claim",
+    "no DES Y6 3x2pt likelihood/data-vector capture claim",
+    "no DFM-MKC superiority claim",
+    "no S8-tension resolution claim",
+    "no final cosmological truth claim",
+    "no theorem-level URF cosmology closure claim"
+  ],
+  "files": {
+    "monitor_file": {
+      "exists": true,
+      "path": "tools/check_des_y6_release_monitor.py",
+      "sha256": "43394290ce562ac6e91d266bedad30dc97a624e41df2f766aad75238f3ebac0d",
+      "size_bytes": 3342
+    },
+    "test_file": {
+      "exists": true,
+      "path": "tests/test_des_y6_release_monitor.py",
+      "sha256": "d5bd541605d3ef48b60549a490b48e18b57b146e42480f292302339ab6dcf57f",
+      "size_bytes": 1306
+    },
+    "workflow_file": {
+      "exists": true,
+      "path": ".github/workflows/des-y6-release-monitor.yml",
+      "sha256": "18a2dc93e1ddf0dd8f4afa827b478054b29fe0e9a7269006b091511c993f44cd",
+      "size_bytes": 707
+    }
+  },
+  "referenced_paths_in_test": [
+    "/static/manifest.json"
+  ],
+  "repository": "dfm-mkc-cosmology",
+  "source": "tests/test_des_y6_release_monitor.py",
+  "status": "PRIVATE_REPO_TEST_SOURCE_CAPTURED"
+}
