@@ -1,0 +1,38 @@
+{
+  "artifact_id": "dfm_mkc_actdr6_numerical_data_missing_object_target_2026_05_21",
+  "status": "LEVEL_2_DATA_TARGET_ONLY_ACTDR6_NUMERICAL_DATA_NOT_SUPPLIED",
+  "target_object": "ACTDR6_NumericalData_Unfixed",
+  "logical_position": "level_2_empirical_blocker_for_locked_protocol_execution",
+  "depends_on": [
+    "artifacts/repo_intake/dfm_mkc_frozen_axioms_missing_object_target_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_empirical_frontier_missing_objects_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_full_closure_blocker_certificate_2026_05_21.json"
+  ],
+  "required_data_payload_fields": [
+    "data_vector",
+    "covariance_matrix",
+    "mask",
+    "likelihood_rule",
+    "statistical_threshold",
+    "protocol_hash",
+    "actdr6_release_date",
+    "data_freeze_lock"
+  ],
+  "must_match_locked_protocol": true,
+  "protocol_reference": "act_dr6_residual_evaluation_protocol_2026_05_20.json",
+  "real_numerical_data_supplied": false,
+  "fixture_only": false,
+  "protocol_run": false,
+  "evidence_supplied": false,
+  "slot_promoted": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
