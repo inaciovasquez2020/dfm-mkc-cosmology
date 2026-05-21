@@ -1,0 +1,37 @@
+{
+  "schema_version": "DFM_MKC_MATTER_COUPLING_RULE_INTAKE_SCHEMA_V1",
+  "status": "INTAKE_SCHEMA_ONLY_NO_EVIDENCE_SUPPLIED",
+  "date": "2026-05-21",
+  "target_slot": "MatterCouplingRule",
+  "base_blocker": "artifacts/repo_intake/dfm_mkc_full_closure_blocker_certificate_2026_05_21.json",
+  "required_fields_for_future_packet": {
+    "slot_name": "MatterCouplingRule",
+    "coupled_matter_species": null,
+    "stress_energy_definition": null,
+    "density_evolution_rule": null,
+    "pressure_or_equation_of_state": null,
+    "conservation_law": null,
+    "coupling_to_metric_or_background": null,
+    "coupling_to_model_H_z": null,
+    "parameter_dependencies": null,
+    "units_or_normalization": null,
+    "domain_of_validity": null,
+    "evidence_path": null,
+    "evidence_sha256": null,
+    "verifier_path": null,
+    "test_path": null,
+    "classification_status": null
+  },
+  "currently_supplied": false,
+  "currently_promoted": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
