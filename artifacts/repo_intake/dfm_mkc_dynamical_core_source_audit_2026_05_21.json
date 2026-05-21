@@ -1,0 +1,488 @@
+{
+  "admissible_next_step": "Manually classify any concrete equations/couplings/parameters found by this audit before replacing null fields in specs/DFM_MKC_dynamical_core_v1.json.",
+  "aggregate_pattern_hits": {
+    "action_functional": 0,
+    "boundary_conditions": 2,
+    "dark_sector_coupling": 16,
+    "matter_coupling": 8,
+    "parameters": 15,
+    "prediction_vector": 8,
+    "primitive_field_equation": 5,
+    "source_terms": 1
+  },
+  "base_scaffold": "specs/DFM_MKC_dynamical_core_v1.json",
+  "candidate_paths": [
+    "specs/DFM_MKC_dynamical_core_v1.json",
+    "theory/deformation_field.md",
+    "theory/parameters.md",
+    "numerics/background_equations.md",
+    "config/dfm_mkc_parameter_freeze.json",
+    "dfm_mkc/constants.py",
+    "dfm_mkc/model.py",
+    "dfm_mkc/likelihoods.py",
+    "src/models/dfm_mkc.py",
+    "src/cosmology/observables/distances.py",
+    "mkc_solver.py"
+  ],
+  "date": "2026-05-21",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "files": [
+    {
+      "bytes": 2133,
+      "exists": true,
+      "line_count": 62,
+      "path": "specs/DFM_MKC_dynamical_core_v1.json",
+      "pattern_hits": {
+        "action_functional": [],
+        "boundary_conditions": [
+          {
+            "line": 51,
+            "text": "  \"admissible_next_step\": \"Replace null fields only with supplied equations, coupling rules, boundary/source data, frozen predictions, holdout residuals, and independent replication evidence.\","
+          }
+        ],
+        "dark_sector_coupling": [
+          {
+            "line": 51,
+            "text": "  \"admissible_next_step\": \"Replace null fields only with supplied equations, coupling rules, boundary/source data, frozen predictions, holdout residuals, and independent replication evidence.\","
+          },
+          {
+            "line": 53,
+            "text": "    \"DFM-MKC\","
+          },
+          {
+            "line": 57,
+            "text": "    \"dark-energy resolution\","
+          },
+          {
+            "line": 58,
+            "text": "    \"dark-matter resolution\","
+          }
+        ],
+        "matter_coupling": [
+          {
+            "line": 58,
+            "text": "    \"dark-matter resolution\","
+          }
+        ],
+        "parameters": [],
+        "prediction_vector": [
+          {
+            "line": 55,
+            "text": "    \"ACT/DES holdout survival\","
+          }
+        ],
+        "primitive_field_equation": [],
+        "source_terms": [
+          {
+            "line": 51,
+            "text": "  \"admissible_next_step\": \"Replace null fields only with supplied equations, coupling rules, boundary/source data, frozen predictions, holdout residuals, and independent replication evidence.\","
+          }
+        ]
+      },
+      "sha256": "9b259ae06703c7ad643ffd4b343101677a7ef39134f5e3f16285a5c9d1e42e22"
+    },
+    {
+      "bytes": 60,
+      "exists": true,
+      "line_count": 2,
+      "path": "theory/deformation_field.md",
+      "pattern_hits": {
+        "action_functional": [],
+        "boundary_conditions": [],
+        "dark_sector_coupling": [
+          {
+            "line": 1,
+            "text": "## Deformation Field Dynamics"
+          }
+        ],
+        "matter_coupling": [],
+        "parameters": [],
+        "prediction_vector": [],
+        "primitive_field_equation": [],
+        "source_terms": []
+      },
+      "sha256": "435d99fc9af30bad4c4a3fad1ce046f19743cffab7cc42bfa0983c9542623f18"
+    },
+    {
+      "bytes": 101,
+      "exists": true,
+      "line_count": 5,
+      "path": "theory/parameters.md",
+      "pattern_hits": {
+        "action_functional": [],
+        "boundary_conditions": [
+          {
+            "line": 4,
+            "text": "## Normalization"
+          }
+        ],
+        "dark_sector_coupling": [],
+        "matter_coupling": [],
+        "parameters": [
+          {
+            "line": 2,
+            "text": "\u03b8 = (H0, \u03a9m0, \u03a9r0, \u03a9\u039b0, \u03b1, \u03b2)"
+          }
+        ],
+        "prediction_vector": [],
+        "primitive_field_equation": [],
+        "source_terms": []
+      },
+      "sha256": "14f3697d9235f8fe8b6bdfc928e117f52c18b79c0bb54332c0c9401be05e8519"
+    },
+    {
+      "bytes": 577,
+      "exists": true,
+      "line_count": 31,
+      "path": "numerics/background_equations.md",
+      "pattern_hits": {
+        "action_functional": [],
+        "boundary_conditions": [],
+        "dark_sector_coupling": [],
+        "matter_coupling": [],
+        "parameters": [
+          {
+            "line": 7,
+            "text": "theta = (H0, Omega_m0, Omega_r0, Omega_Lambda0, alpha, beta)"
+          },
+          {
+            "line": 19,
+            "text": "dH/dz = f_H(H, Phi, z; theta)"
+          },
+          {
+            "line": 20,
+            "text": "dPhi/dz = f_Phi(H, Phi, z; theta)"
+          },
+          {
+            "line": 23,
+            "text": "H(0) = H0"
+          },
+          {
+            "line": 24,
+            "text": "Phi(0) = H0^2 Omega_Phi0"
+          }
+        ],
+        "prediction_vector": [],
+        "primitive_field_equation": [
+          {
+            "line": 1,
+            "text": "Background Equations Numerical Scaffold"
+          },
+          {
+            "line": 18,
+            "text": "ODE form:"
+          },
+          {
+            "line": 19,
+            "text": "dH/dz = f_H(H, Phi, z; theta)"
+          }
+        ],
+        "source_terms": []
+      },
+      "sha256": "dbfef24692193047de77bb24d387b4c463326615cf9fc2aa36e0f50c7abd8c16"
+    },
+    {
+      "bytes": 567,
+      "exists": true,
+      "line_count": 19,
+      "path": "config/dfm_mkc_parameter_freeze.json",
+      "pattern_hits": {
+        "action_functional": [],
+        "boundary_conditions": [],
+        "dark_sector_coupling": [
+          {
+            "line": 4,
+            "text": "  \"model\": \"DFM-MKC\","
+          },
+          {
+            "line": 14,
+            "text": "    \"DFM-MKC proves final cosmological truth\","
+          },
+          {
+            "line": 15,
+            "text": "    \"DFM-MKC theorem-level closure\","
+          },
+          {
+            "line": 16,
+            "text": "    \"DFM-MKC unconditionally beats Lambda-CDM\","
+          }
+        ],
+        "matter_coupling": [],
+        "parameters": [
+          {
+            "line": 5,
+            "text": "  \"fitting_policy\": \"No parameter changes after authentic DES Y6 input materialization.\","
+          }
+        ],
+        "prediction_vector": [
+          {
+            "line": 5,
+            "text": "  \"fitting_policy\": \"No parameter changes after authentic DES Y6 input materialization.\","
+          }
+        ],
+        "primitive_field_equation": [],
+        "source_terms": []
+      },
+      "sha256": "cec3a6091a1e6f572daceeb471f98d6dd426c17099d8922936cf4bbc90c6faa8"
+    },
+    {
+      "bytes": 221,
+      "exists": true,
+      "line_count": 9,
+      "path": "dfm_mkc/constants.py",
+      "pattern_hits": {
+        "action_functional": [],
+        "boundary_conditions": [],
+        "dark_sector_coupling": [
+          {
+            "line": 1,
+            "text": "# Physical and numerical constants used across the DFM-MKC module"
+          }
+        ],
+        "matter_coupling": [],
+        "parameters": [],
+        "prediction_vector": [
+          {
+            "line": 4,
+            "text": "T_CMB = 2.7255       # CMB temperature in Kelvin"
+          }
+        ],
+        "primitive_field_equation": [],
+        "source_terms": []
+      },
+      "sha256": "d9fc4555ec1edcaa208f3529e90750b3eb30d081e6c1e6cda2eeaea97d065cd8"
+    },
+    {
+      "bytes": 619,
+      "exists": true,
+      "line_count": 25,
+      "path": "dfm_mkc/model.py",
+      "pattern_hits": {
+        "action_functional": [],
+        "boundary_conditions": [],
+        "dark_sector_coupling": [],
+        "matter_coupling": [
+          {
+            "line": 7,
+            "text": "    Omega_m: float"
+          },
+          {
+            "line": 10,
+            "text": "def init_params(H0: float, Omega_m: float, Omega_L: float) -> Parameters:"
+          },
+          {
+            "line": 11,
+            "text": "    return Parameters(H0=H0, Omega_m=Omega_m, Omega_L=Omega_L)"
+          },
+          {
+            "line": 15,
+            "text": "    Om = params.Omega_m"
+          }
+        ],
+        "parameters": [
+          {
+            "line": 6,
+            "text": "    H0: float"
+          },
+          {
+            "line": 10,
+            "text": "def init_params(H0: float, Omega_m: float, Omega_L: float) -> Parameters:"
+          },
+          {
+            "line": 11,
+            "text": "    return Parameters(H0=H0, Omega_m=Omega_m, Omega_L=Omega_L)"
+          },
+          {
+            "line": 14,
+            "text": "    H0 = params.H0"
+          },
+          {
+            "line": 17,
+            "text": "    return H0 * np.sqrt(Om * a**(-3) + OL)"
+          }
+        ],
+        "prediction_vector": [],
+        "primitive_field_equation": [],
+        "source_terms": []
+      },
+      "sha256": "238b98a309ed618d00450c038c4ff5a864f580f375335f7bd8fc398e19c7d9e1"
+    },
+    {
+      "bytes": 719,
+      "exists": true,
+      "line_count": 23,
+      "path": "dfm_mkc/likelihoods.py",
+      "pattern_hits": {
+        "action_functional": [],
+        "boundary_conditions": [],
+        "dark_sector_coupling": [],
+        "matter_coupling": [],
+        "parameters": [],
+        "prediction_vector": [
+          {
+            "line": 10,
+            "text": "    residual = data - model_values"
+          },
+          {
+            "line": 11,
+            "text": "    return -0.5 * np.sum((residual / sigma) ** 2)"
+          }
+        ],
+        "primitive_field_equation": [
+          {
+            "line": 18,
+            "text": "    Likelihood for background expansion data H(a)."
+          }
+        ],
+        "source_terms": []
+      },
+      "sha256": "7be161dd79d5e11fa7382de49fb422325d75242c1bf33edadb0e9ee85997f21f"
+    },
+    {
+      "bytes": 342,
+      "exists": true,
+      "line_count": 10,
+      "path": "src/models/dfm_mkc.py",
+      "pattern_hits": {
+        "action_functional": [],
+        "boundary_conditions": [],
+        "dark_sector_coupling": [],
+        "matter_coupling": [
+          {
+            "line": 5,
+            "text": "    def __init__(self, H0=70.0, Omega_m=0.3, Omega_L=0.7, xi=0.0):"
+          },
+          {
+            "line": 6,
+            "text": "        super().__init__(H0, Omega_m, Omega_L)"
+          }
+        ],
+        "parameters": [
+          {
+            "line": 5,
+            "text": "    def __init__(self, H0=70.0, Omega_m=0.3, Omega_L=0.7, xi=0.0):"
+          },
+          {
+            "line": 6,
+            "text": "        super().__init__(H0, Omega_m, Omega_L)"
+          }
+        ],
+        "prediction_vector": [],
+        "primitive_field_equation": [
+          {
+            "line": 2,
+            "text": "from src.cosmology.background import BackgroundCosmology"
+          }
+        ],
+        "source_terms": []
+      },
+      "sha256": "18d86e3c8a810fabee5f5e03312aa8824234d7aed03293b54f1a63b61c382e2a"
+    },
+    {
+      "bytes": 506,
+      "exists": true,
+      "line_count": 23,
+      "path": "src/cosmology/observables/distances.py",
+      "pattern_hits": {
+        "action_functional": [],
+        "boundary_conditions": [],
+        "dark_sector_coupling": [],
+        "matter_coupling": [],
+        "parameters": [],
+        "prediction_vector": [
+          {
+            "line": 7,
+            "text": "    Line-of-sight comoving distance"
+          },
+          {
+            "line": 15,
+            "text": "    Luminosity distance"
+          },
+          {
+            "line": 21,
+            "text": "    Angular diameter distance"
+          }
+        ],
+        "primitive_field_equation": [],
+        "source_terms": []
+      },
+      "sha256": "d7d54e30439ff9e5aa6d30323a2ed821c4842da6beb8dd4571b1a2e14220b158"
+    },
+    {
+      "bytes": 2609,
+      "exists": true,
+      "line_count": 69,
+      "path": "mkc_solver.py",
+      "pattern_hits": {
+        "action_functional": [],
+        "boundary_conditions": [],
+        "dark_sector_coupling": [
+          {
+            "line": 7,
+            "text": "    Deterministic Verifier for Dark Fluid Model with Minimal Kinetic Coupling."
+          },
+          {
+            "line": 25,
+            "text": "        Confirms if the Dark Fluid coupling maintains a non-zero spectral gap."
+          },
+          {
+            "line": 30,
+            "text": "        # In DFM-MKC, rigidity is preserved if coupling strength xi "
+          },
+          {
+            "line": 37,
+            "text": "        print(f\"Coupling Strength (xi): {self.xi}\")"
+          },
+          {
+            "line": 45,
+            "text": "        Simulates the Dark Fluid pressure-to-density ratio (w_eff)."
+          },
+          {
+            "line": 48,
+            "text": "        # Minimal Kinetic Coupling forces the transition via xi"
+          }
+        ],
+        "matter_coupling": [
+          {
+            "line": 45,
+            "text": "        Simulates the Dark Fluid pressure-to-density ratio (w_eff)."
+          }
+        ],
+        "parameters": [
+          {
+            "line": 31,
+            "text": "        # is within the deterministic stability bounds."
+          }
+        ],
+        "prediction_vector": [],
+        "primitive_field_equation": [],
+        "source_terms": []
+      },
+      "sha256": "1037a45572732ad5766634ea28c847deb6eaa74937a2caa8230431362506bfea"
+    }
+  ],
+  "missing_closure_objects": [
+    "ActionFunctional_or_PrimitiveClosedFormFieldEquations",
+    "MatterCouplingRule",
+    "DarkSectorCouplingRule",
+    "SourceTerms",
+    "BoundaryConditions",
+    "ExhaustiveParameterTable",
+    "FrozenPredictionVector",
+    "ACT_DES_HoldoutData",
+    "ResidualEvaluationResult",
+    "IndependentReplicationResult"
+  ],
+  "schema_version": "DFM_MKC_DYNAMICAL_CORE_SOURCE_AUDIT_V1",
+  "status": "SOURCE_AUDIT_ONLY_NO_CLOSURE_PROMOTION",
+  "supplied_closure_objects": []
+}
