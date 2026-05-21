@@ -1,0 +1,720 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<title>LAMBDA - WMAP Data Products</title>
+<meta name="description" content="LAMBDA - Products">
+
+
+
+<meta http-equiv='content-type' content='text/html'>
+<meta charset='utf-8'>
+<meta name='orgcode'       content='665'>
+<meta name='rno'           content='Thomas M. Essinger-Hileman'>
+<meta name='content-owner' content='Thomas M. Essinger-Hileman'>
+<meta name='webmaster'     content='Michael.R.Greason'>
+<meta name='keywords'      content='CMB,Cosmology,NASA'>
+
+<link href='/common/lambda.css' rel='stylesheet' type='text/css' media='all'>
+<!--[if IE]><link href='/common/lambda_ie.css' rel='stylesheet' type='text/css' media='all'><![endif]-->
+<link href='/common/lambda_print.css' rel='stylesheet' type='text/css' media='print'>
+<link href='/common/google_cse.css' rel='stylesheet' type='text/css' media='all'>
+
+<script type='text/javascript' src='/common/accord.js'></script>
+<script type='text/javascript' src='/common/CSScriptLib.js'></script>
+<script type='text/javascript' src='/common/cookies.js'></script>
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = 'https://platform.twitter.com/widgets.js';
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, 'script', 'twitter-wjs'));</script>
+<script id='_fed_an_ua_tag' type='text/javascript' src='https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC&dclink=true'>
+</script>
+</head>
+<body id='toptwo'>
+
+<div id='astroImage'>
+<div id='pageContainer'>
+<!--
+		NASA header.
+-->
+<div id='nasaHeader' class='nasaBanner'>
+  <!-- Logo -->
+  <a href='https://www.nasa.gov' target='_blank' class='nasaLogo'>
+    <img src='/common/images/nasa-logo.svg'
+         alt='NASA Logo, National Aeronautics and Space Administration'>
+  </a>
+
+  <!-- Text links in the center -->
+  <div id='nasaHeaderLinks'>
+    <h1><a href='https://www.nasa.gov' target='_blank'>National Aeronautics and Space Administration</a></h1>
+    <h2><a href='https://www.nasa.gov/centers/goddard/home/index.html' target='_blank'>Goddard Space Flight Center</a></h2>
+    <h3><a href='https://science.gsfc.nasa.gov/sci/' target='_blank'>Sciences and Exploration</a></h3>
+  </div>
+
+
+  <!-- Search and LAMBDA links on the right -->
+  <div id='nasaHeaderSearch'>
+    <div id='nasaSearchBox'>
+        <!--<script>
+        (function() {
+          var cx = '009395633457503830258:4snyfo-tqye';
+          var gcse = document.createElement('script');
+          gcse.type = 'text/javascript';
+          gcse.async = true;
+          gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(gcse, s);
+        })();
+      </script>
+      <gcse:search></gcse:search>-->
+        
+        
+  <script async src='https://cse.google.com/cse.js?cx=b47e1d6cf1cbf49fc'>
+		</script>
+		<link href='/common/searchform-fix.css' rel='stylesheet' type='text/css' media='all'>
+			<div class='gcse-search'></div>
+    </div>
+   <div>
+    <div id='LambdaAcronyms'>
+      <a href='/lambda_acronyms.html'>LAMBDA ACRONYMS</a>
+    </div>
+
+    <div id='LambdaAboutLink'>
+      <a href='/contact/'>ABOUT LAMBDA</a>
+    </div>
+   </div>
+  </div>
+</div>
+<!-- end of nasaHeader -->
+<!--
+		The primary menu.
+-->
+<ul id='topmenu' class='primarymenu'>
+  <li id='topone'><a href='/'><span>Home</span></a></li>
+  <li id='toptwo'><a href='/product/'><span>Data</span></a></li>
+  <li id='topfour'><a href='/simulation/'><span>Simulations</span></a></li>
+  <li id='topthree'><a href='/toolbox/'><span>Tools</span></a></li>
+  <li id='topsix'><a href='/papers/'><span>Papers</span></a></li>
+  <li id='topseven'><a href='/resources/'><span>Resources/Graphics</span></a></li>
+  <li id='topfive'><a href='/news/'><span>News</span></a></li>
+</ul>		<!-- end of primarymenu -->
+
+<!--
+			The LAMBDA banner/graphic.
+-->
+<div id='lambdasubhead'>
+  <img id='lambdasubheadbga' src='/common/images/LAMBDA_Banner_sub_prod.png' alt=''>
+  <img id='lambdasubheadbgb' src='/common/images/LAMBDA_Banner_subb.png' alt=''>
+</div>
+
+<!--
+			The secondary menu.
+-->
+
+<ul id='subthree' class='secondarymenu'>
+
+<li id='subone'><a href='/product/'><span>Data&nbsp;Hosted</span></a></li>
+
+<li id='subtwo'><a name='space'><span>Experiment&nbsp;Tables</span></a><ul >
+  <li id='subsubone'><a href='/product/expt/'><span>CMB</span></a></li>
+  <li id='subsubtwo'><a href='/product/expt/lim_experiments.html'><span>Intensity Mapping</span></a></li>
+</ul></li>
+
+<li id='subthree'><a name='space'><span><nobr>Space-Based</nobr></span></a><ul id='subsubtwo'>
+  <li id='subsubtwo'><a href='/product/planck/'><span>Planck</span></a></li>
+  <li id='subsubone'><a href='/product/wmap/current/'><span>WMAP</span></a></li>
+  <li id='subsubthree'><a href='/product/cobe/'><span>COBE</span></a></li>
+</ul></li>
+
+<li id='subfour'><a name='space'><span>Suborbital</span></a><ul >
+  <li id='subsubone'><a href='/product/abs/'><span>ABS</span></a></li>
+  <li id='subsubtwo'><a href='/product/act/'><span>ACT</span></a></li>
+  <li id='subsubthree'><a href='/product/bicepkeck/'><span>BICEP/Keck</span></a></li>
+  <li id='subsubfour'><a href='/product/class/'><span>CLASS</span></a></li>
+  <li id='subsubfive'><a href='/product/polarbear/'><span>POLARBEAR</span></a></li>
+  <li id='subsubsix'><a href='/product/quiet/'><span>QUIET</span></a></li>
+  <li id='subsubnine'><a href='/product/quijote/'><span>QUIJOTE</span></a></li>
+  <li id='subsubseven'><a href='/product/spider/index.html'><span>SPIDER</span></a></li>
+  <li id='subsubeight'><a href='/product/spt/'><span>SPT</span></a></li>
+</ul></li>
+
+<li id='subfive'><a name='space'><span>Astrophysical</span></a><ul >
+  <li id='subsubone'><a href='/product/foreground/fg_diffuse.html'><span>Diffuse Foreground</span></a></li>
+  <li id='subsubtwo'><a href='/product/foreground/fg_comp_source.html'><span>Compact Sources</span></a></li>
+  <li id='subsubthree'><a href='/product/foreground/fg_sz_cluster.html'><span>SZ Clusters</span></a></li>
+  <li id='subsubfour'><a href='/product/iras/'><span>IRAS</span></a></li>
+  <li id='subsubfive'><a href='/product/swas/'><span>SWAS</span></a></li>
+  <li id='subsubsix'><a href='/product/lss/'><span>LSS Links</span></a></li>
+</ul></li>
+
+<li id='subsix'><a name='space'><span>About&nbsp;Products</span></a> <ul >
+  <li id='subsubone'><a href='/product/about/'><span>Overview</span></a></li>
+  <li id='subsubtwo'><a href='/product/about/pol_convention.html'><span>Pol Convention</span></a></li>
+</ul></li>
+
+</ul>		<!-- end of secondary menu -->
+
+<!--
+		Border separating menus from the page content and a left menu.
+-->
+<div class='navbar'></div>
+
+<table class='tertiarymenutab'><tr><td class='tertiarymenucell'>
+
+<ul id='termenb' class='tertiarymenu'>
+<li id='termeng'><a href='/product/wmap/current/index.html'>WMAP Overview</a><hr /></li>
+<li id='termena'><a href='/product/wmap/dr2/index.html'>DR2 Overview</a></li>
+<li id='termenb'><a href='/product/wmap/dr2/m_products.html'>Products</a>
+<li id='termenc'><a href='/product/wmap/dr2/m_docs.html'>Documents</a>
+<li id='termend'><a href='/product/wmap/dr2/m_sw.html'>Software</a>
+<li id='termene'><a href='/product/wmap/dr2/m_images.html'>Images</a>
+<li id='termenf'><a href='https://wmap.gsfc.nasa.gov' target='_blank'>Education</a>
+</ul>           <!-- end of tertiarymenu -->
+
+</td><td class='tertiarymenucontent'>
+
+<!--
+		Start of page content.
+-->
+<div id='pageContentBG'>
+<div id='pageContent'>
+<!--
+	Announcements.
+-->
+
+<!--
+			Content begins...
+-->
+<h1>WMAP Data Products</h1>
+
+<p class="warning">
+The data made available through this page has been updated.  The most recent
+version of this data may be accessed through <a href="/product/wmap/current/">https://lambda.gsfc.nasa.gov/product/wmap/current/</a>
+</p>
+
+<style>
+   #TopBtn {
+     display: none;
+     position: fixed;
+     bottom: 20px;
+     right: 30px;
+     z-index.: 99;
+     font-size: 18px;
+     border: none;
+     background-color: #a9a9a9;
+     color: white;
+     cursor: pointer;
+     padding: 15px;
+     border-radius: 4px;
+   }
+
+   #TopBtn: hover {
+     background: #555;
+   }
+</style>
+
+<button onclick="topFunction()" id="TopBtn" title="Go to the Top of the page.">Top</button>
+<script>
+let mybutton = document.getElementById("TopBtn");
+
+// When the user scrolls down 20px from the top of the web page, show the button.
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction () {
+  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+    mybutton.style.display = "block";
+  }
+  else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the web page.
+function topFunction () {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+<button id='accord-toggle-all'>Open All Tables</button><br />
+<a name='mapp2_dcp'></a>
+<div class='accord-collapsible-tables'>
+  <table width='100%' border='1' align='center' class='accord-datatable'>
+    <thead>
+       <tr><th class='accord-dataheader' colspan='3'>Derived CMB Products<div class='accord-float-arrow'><span class='accord-caret'>&#9660;</span></div></th></tr>
+    </thead>
+  </table>
+</div>
+<div class='accord-table-content'>
+  <table class='accord-inner-table'>
+    <thead>
+      <tr>
+        <td axis='prod' width='15%' class='datasubheader' align='center'>Product<br>Download Page</td>
+        <td axis='desc'             class='datasubheader' align='center'>Description</td>
+        <td axis='nfil' width='6%'  class='datasubheader' align='center'>No. of<br>Files/Size</td>
+      </tr>
+    </thead>
+    <tbody class='accord-collapsible-rows expanded'>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/pow_ee_spec_get.html' target='_parent'>EE & BB Power Spectra</a><br>
+<a href='/product/wmap/dr2/pow_ee_spec_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/pow_ee_spec_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Best estimate of the EE & BB power spectra binned for plotting.<br></td>
+    <td axes='nfil' class='datacellcenter'>1 file 2KB<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/pow_tt_spec_get.html' target='_parent'>TT Power Spectra</a><br>
+<a href='/product/wmap/dr2/pow_tt_spec_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/pow_tt_spec_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Best estimates for the TT power spectra of the CMB. Both binned and unbinned versions are provided. <a href='/product/wmap/dr2/pow_tt_spec_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>2 files 4--59kB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/pow_te_spec_get.html' target='_parent'>TE Power Spectra</a><br>
+<a href='/product/wmap/dr2/pow_te_spec_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/pow_te_spec_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Best estimates for the TE power spectra of the CMB. Both binned and unbinned versions are provided. <a href='/product/wmap/dr2/pow_te_spec_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>2 files 2--32kB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/tb_eb_spec_get.html' target='_parent'>TB & EB Power Spectra</a><br>
+<a href='/product/wmap/dr2/tb_eb_spec_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/tb_eb_spec_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Best estimates for the TB and EB power spectra of the CMB, unbinned for analysis. <a href='/product/wmap/dr2/tb_eb_spec_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>2 files 15 KB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/parameters.html' target='_parent'>Cosmological Parameter Table</a><br>
+<br></td>
+    <td axes='desc' class='datacellleft'>Tool to search for WMAP parameter results <a href='/product/wmap/dr2/parameters_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>N/A<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/likelihood_get.html' target='_parent'>Likelihood software</a><br>
+<a href='/product/wmap/dr2/likelihood_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/likelihood_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Fortran90 code to compute Fisher and Master matrices, and to compute model likelihood <a href='/product/wmap/dr2/likelihood_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>1 file 324.4MB<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/pow_sz_spec_get.html' target='_parent'>Predicted SZ Power Spectrum</a><br>
+<a href='/product/wmap/dr2/pow_sz_spec_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/pow_sz_spec_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>The angular power spectrum due to the Sunyaev-Zeldovich effect, as predicted by Komatsu & Seljak (2002). Results for each of the 5 WMAP observing frequencies are given.<br></td>
+    <td axes='nfil' class='datacellcenter'>1 file 694KB<br></td>
+  </tr>
+    </tbody>
+  </table>
+</div>
+<a name='mapp2_csmty'></a>
+<div class='accord-collapsible-tables'>
+  <table width='100%' border='1' align='center' class='accord-datatable'>
+    <thead>
+       <tr><th class='accord-dataheader' colspan='3'>Full Resolution Coadded Three Year Sky Maps<div class='accord-float-arrow'><span class='accord-caret'>&#9660;</span></div></th></tr>
+    </thead>
+  </table>
+</div>
+<div class='accord-table-content'>
+  <table class='accord-inner-table'>
+    <thead>
+      <tr>
+        <td axis='prod' width='15%' class='datasubheader' align='center'>Product<br>Download Page</td>
+        <td axis='desc'             class='datasubheader' align='center'>Description</td>
+        <td axis='nfil' width='6%'  class='datasubheader' align='center'>No. of<br>Files/Size</td>
+      </tr>
+    </thead>
+    <tbody class='accord-collapsible-rows expanded'>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_da_r9_iqu_3yr_get.html' target='_parent'>I, Q, U Maps per Differencing Assembly (D/A)</a><br>
+<a href='/product/wmap/dr2/maps_da_r9_iqu_3yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_da_r9_iqu_3yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Temperature and polarization (I, Q, U) maps for each D/A at HEALPix Nside=512 (Res 9) for TT and high-l polarization analysis. <a href='/product/wmap/dr2/maps_da_iqu_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>10 files 48MB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_da_r9_i_3yr_get.html' target='_parent'>I-Only Maps per D/A</a><br>
+<a href='/product/wmap/dr2/maps_da_r9_i_3yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_da_r9_i_3yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Temperature (I) maps for each D/A at HEALPix Nside=512 (Res 9) for TT. <a href='/product/wmap/dr2/maps_da_iqu_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>10 files 24MB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_band_r9_iqu_3yr_get.html' target='_parent'>I, Q, U Maps per Frequency Band</a><br>
+<a href='/product/wmap/dr2/maps_band_r9_iqu_3yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_band_r9_iqu_3yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Temperature and polarization (I, Q, U) maps for each frequency band at HEALPix Nside=512 (Res 9) for TT and high-l polarization analysis. <a href='/product/wmap/dr2/maps_band_iqu_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>5 files 48MB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_band_r9_i_3yr_get.html' target='_parent'>I-Only Maps per Frequency Band</a><br>
+<a href='/product/wmap/dr2/maps_band_r9_i_3yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_band_r9_i_3yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Temperature (I) maps for each frequency band at HEALPix Nside=512 (Res 9) for TT. <a href='/product/wmap/dr2/maps_band_iqu_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>5 files 24MB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_da_r9_iqu_fg_3yr_get.html' target='_parent'>Foreground Reduced I, Q, U Maps per D/A</a><br>
+<a href='/product/wmap/dr2/maps_da_r9_iqu_fg_3yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_da_r9_iqu_fg_3yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Foreground Reduced I, Q, U maps for each D/A at HEALPix Nside=512 (Res 9) for TT and high-l polarization analysis. <a href='/product/wmap/dr2/maps_da_iqu_fg_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>8 files 48MB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_band_r9_iqu_fg_3yr_get.html' target='_parent'>Foreground Reduced I, Q, U Maps per Frequency Band</a><br>
+<a href='/product/wmap/dr2/maps_band_r9_iqu_fg_3yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_band_r9_iqu_fg_3yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Foreground Reduced I, Q, U maps for each frequency band at HEALPix Nside=512 (Res 9) for TT and high-l polarization analysis. <a href='/product/wmap/dr2/maps_band_iqu_fg_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>3 files 48MB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_band_r9_i_sm_3yr_get.html' target='_parent'>Smoothed I Maps per Frequency Band</a><br>
+<a href='/product/wmap/dr2/maps_band_r9_i_sm_3yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_band_r9_i_sm_3yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>I maps for each frequency band smoothed to 1<sup>o</sup> resolution at HEALPix Nside=512 (Res 9). <a href='/product/wmap/dr2/maps_band_i_sm_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>5 files 24MB each<br></td>
+  </tr>
+    </tbody>
+  </table>
+</div>
+<a name='mapp2_csmsy'></a>
+<div class='accord-collapsible-tables'>
+  <table width='100%' border='1' align='center' class='accord-datatable'>
+    <thead>
+       <tr><th class='accord-dataheader' colspan='3'>Full Resolution Single Year Sky Maps<div class='accord-float-arrow'><span class='accord-caret'>&#9660;</span></div></th></tr>
+    </thead>
+  </table>
+</div>
+<div class='accord-table-content'>
+  <table class='accord-inner-table'>
+    <thead>
+      <tr>
+        <td axis='prod' width='15%' class='datasubheader' align='center'>Product<br>Download Page</td>
+        <td axis='desc'             class='datasubheader' align='center'>Description</td>
+        <td axis='nfil' width='6%'  class='datasubheader' align='center'>No. of<br>Files/Size</td>
+      </tr>
+    </thead>
+    <tbody class='accord-collapsible-rows expanded'>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_da_r9_iqu_1yr_get.html' target='_parent'>I, Q, U Maps per Differencing Assembly (D/A)</a><br>
+<a href='/product/wmap/dr2/maps_da_r9_iqu_1yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_da_r9_iqu_1yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Temperature and polarization (I, Q, U) maps for each D/A at HEALPix Nside=512 (Res 9) for TT and high-l polarization analysis. <a href='/product/wmap/dr2/maps_da_iqu_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>30 files 96MB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_da_r9_i_1yr_get.html' target='_parent'>I-Only Maps per D/A</a><br>
+<a href='/product/wmap/dr2/maps_da_r9_i_1yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_da_r9_i_1yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Temperature (I) maps for each D/A at HEALPix Nside=512 (Res 9) for TT. <a href='/product/wmap/dr2/maps_da_iqu_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>30 files 24MB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_da_r9_iqu_fg_1yr_get.html' target='_parent'>Foreground Reduced I, Q, U Maps per D/A</a><br>
+<a href='/product/wmap/dr2/maps_da_r9_iqu_fg_1yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_da_r9_iqu_fg_1yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Foreground Reduced I, Q, U maps for each D/A at HEALPix Nside=512 (Res 9) for TT and high-l polarization analysis. <a href='/product/wmap/dr2/maps_da_iqu_fg_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>24 files 96MB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_da_r10_i_1yr_get.html' target='_parent'>High Resolution I Maps per D/A</a><br>
+<a href='/product/wmap/dr2/maps_da_r10_i_1yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_da_r10_i_1yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Temperature (I) maps for each V and W band D/A at HEALPix Nside=1024 (Res 10) for high-l TT. <a href='/product/wmap/dr2/maps_da_iqu_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>18 files 96MB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_da_r10_i_fg_1yr_get.html' target='_parent'>Foreground Reduced High Resolution I Maps per D/A</a><br>
+<a href='/product/wmap/dr2/maps_da_r10_i_fg_1yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_da_r10_i_fg_1yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Foreground Reduced Temperature (I) maps for each V and W band D/A at HEALPix Nside=1024 (Res 10) for high-l TT. <a href='/product/wmap/dr2/maps_da_iqu_fg_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>18 files 96MB each<br></td>
+  </tr>
+    </tbody>
+  </table>
+</div>
+<a name='mapp2_rcsmsy'></a>
+<div class='accord-collapsible-tables'>
+  <table width='100%' border='1' align='center' class='accord-datatable'>
+    <thead>
+       <tr><th class='accord-dataheader' colspan='3'>Reduced Resolution Sky Maps<div class='accord-float-arrow'><span class='accord-caret'>&#9660;</span></div></th></tr>
+    </thead>
+  </table>
+</div>
+<div class='accord-table-content'>
+  <table class='accord-inner-table'>
+    <thead>
+      <tr>
+        <td axis='prod' width='15%' class='datasubheader' align='center'>Product<br>Download Page</td>
+        <td axis='desc'             class='datasubheader' align='center'>Description</td>
+        <td axis='nfil' width='6%'  class='datasubheader' align='center'>No. of<br>Files/Size</td>
+      </tr>
+    </thead>
+    <tbody class='accord-collapsible-rows expanded'>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_da_r4_iqus_1yr_get.html' target='_parent'>I, Q, U, S Single Year Coadded Maps per Differencing Assembly (D/A)</a><br>
+<a href='/product/wmap/dr2/maps_da_r4_iqus_1yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_da_r4_iqus_1yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Temperature and polarization (I, Q, U, S) full sky maps for each D/A at HEALPix Nside=16 (Res 4), degraded from Nside=512 (Res 9). <a href='/product/wmap/dr2/maps_r4_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>30 files 158kB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_da_r4_iqus_1yr_get.html' target='_parent'>Inverse Covariance Matrices for the I, Q, U, S Single Year Maps per D/A</a><br>
+<a href='/product/wmap/dr2/maps_da_r4_iqus_1yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_da_r4_iqus_1yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Pixel-to-pixel inverse covariance matrices for each D/A at HEALPix Nside=16 (Res 4) <a href='/product/wmap/dr2/maps_r4_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>30 files 576MB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_band_r4_iqus_3yr_get.html' target='_parent'>I, Q, U, S Three Year Coadded Maps per Frequency Band</a><br>
+<a href='/product/wmap/dr2/maps_band_r4_iqus_3yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_band_r4_iqus_3yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Temperature and polarization (I, Q, U, S) full sky maps for each Frequency Band at HEALPix Nside=16 (Res 4), degraded from Nside=512 (Res 9). <a href='/product/wmap/dr2/maps_r4_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>5 files 158kB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_band_r4_iqus_3yr_get.html' target='_parent'>Inverse Covariance Matrices for the I, Q, U, S Three Year Maps per Frequency Band</a><br>
+<a href='/product/wmap/dr2/maps_band_r4_iqus_3yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_band_r4_iqus_3yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Pixel-to-pixel inverse covariance matrices for each Frequency Band at HEALPix Nside=16 (Res 4) <a href='/product/wmap/dr2/maps_r4_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>5 files 576MB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_band_r4_qu_fg_3yr_get.html' target='_parent'>Q, U Foreground Reduced Three Year Maps per Frequency Band (Q,V only)</a><br>
+<a href='/product/wmap/dr2/maps_band_r4_qu_fg_3yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_band_r4_qu_fg_3yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Foreground Reduced polarization (Q,U) maps for selected frequency bands at HEALPix Nside=16 (Res 4) for low-l polarization analysis. <a href='/product/wmap/dr2/maps_r4_fg_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>3 files 56KB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/maps_band_r4_qu_fg_3yr_get.html' target='_parent'>Inverse Covariance Matrices for the Q, U Foreground Reduced Three Year Maps per Frequency Band (Q,V only)</a><br>
+<a href='/product/wmap/dr2/maps_band_r4_qu_fg_3yr_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/maps_band_r4_qu_fg_3yr_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Foreground Reduced polarization (Q,U) pixel-to-pixel inverse covariance matrices for selected frequency bands at HEALPix Nside=16 (Res 4) <a href='/product/wmap/dr2/maps_r4_fg_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>3 files 144MB each<br></td>
+  </tr>
+    </tbody>
+  </table>
+</div>
+<a name='mapp2_dfp'></a>
+<div class='accord-collapsible-tables'>
+  <table width='100%' border='1' align='center' class='accord-datatable'>
+    <thead>
+       <tr><th class='accord-dataheader' colspan='3'>Derived Foreground Products<div class='accord-float-arrow'><span class='accord-caret'>&#9660;</span></div></th></tr>
+    </thead>
+  </table>
+</div>
+<div class='accord-table-content'>
+  <table class='accord-inner-table'>
+    <thead>
+      <tr>
+        <td axis='prod' width='15%' class='datasubheader' align='center'>Product<br>Download Page</td>
+        <td axis='desc'             class='datasubheader' align='center'>Description</td>
+        <td axis='nfil' width='6%'  class='datasubheader' align='center'>No. of<br>Files/Size</td>
+      </tr>
+    </thead>
+    <tbody class='accord-collapsible-rows expanded'>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/ilc_map_get.html' target='_parent'>Internal Linear Combination Map (includes region definition map)</a><br>
+<a href='/product/wmap/dr2/ilc_map_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/ilc_map_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Reduced-galaxy map produced via linear combination technique. <a href='/product/wmap/dr2/ilc_map_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>1 file 24MB<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/ptsrc_catalog_get.html' target='_parent'>Point Source Catalog</a><br>
+<a href='/product/wmap/dr2/ptsrc_catalog_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/ptsrc_catalog_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Catalog of WMAP point sources. <a href='/product/wmap/dr2/ptsrc_catalog_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>1 file 34KB<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/mem_maps_get.html' target='_parent'>Max Entropy Method Foreground Emission Maps</a><br>
+<a href='/product/wmap/dr2/mem_maps_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/mem_maps_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Maps of foreground synchrotron, free-free, and dust emission for each of the five frequencies derived using the maximum entropy method. <a href='/product/wmap/dr2/mem_maps_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>16 files 6MB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/templates_get.html' target='_parent'>Foreground Templates</a><br>
+<a href='/product/wmap/dr2/templates_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/templates_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Low noise templates for the removal of the foreground from skymaps. <a href='/product/wmap/dr2/templates_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>1 file 24MB<br></td>
+  </tr>
+    </tbody>
+  </table>
+</div>
+<a name='mapp2_ad'></a>
+<div class='accord-collapsible-tables'>
+  <table width='100%' border='1' align='center' class='accord-datatable'>
+    <thead>
+       <tr><th class='accord-dataheader' colspan='3'>Ancillary Data<div class='accord-float-arrow'><span class='accord-caret'>&#9660;</span></div></th></tr>
+    </thead>
+  </table>
+</div>
+<div class='accord-table-content'>
+  <table class='accord-inner-table'>
+    <thead>
+      <tr>
+        <td axis='prod' width='15%' class='datasubheader' align='center'>Product<br>Download Page</td>
+        <td axis='desc'             class='datasubheader' align='center'>Description</td>
+        <td axis='nfil' width='6%'  class='datasubheader' align='center'>No. of<br>Files/Size</td>
+      </tr>
+    </thead>
+    <tbody class='accord-collapsible-rows expanded'>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/masks_get.html' target='_parent'>Masks</a><br>
+<a href='/product/wmap/dr2/masks_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/masks_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Intensity and polarization exclusion masks for analysis and map-making. <a href='/product/wmap/dr2/masks_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>10 files 25-96MB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/xfer_funcs_get.html' target='_parent'>Beam Transfer Functions</a><br>
+<a href='/product/wmap/dr2/xfer_funcs_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/xfer_funcs_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Derived from observations of Jupiter. The beam transfer function is the square root of the window function. <a href='/product/wmap/dr2/beam_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>10 files 13-34kB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/beam_maps_get.html' target='_parent'>Beam Maps</a><br>
+<a href='/product/wmap/dr2/beam_maps_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/beam_maps_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Maps of main and near-sidelobe beam response for the A and B sides of each differencing assembly (D/A). <a href='/product/wmap/dr2/beam_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>10 files 5.6MB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/beam_profiles_get.html' target='_parent'>Beam Radial Profiles</a><br>
+<a href='/product/wmap/dr2/beam_profiles_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/beam_profiles_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Symmetrized radial beam profiles for each WMAP D/A. <a href='/product/wmap/dr2/beam_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>10 files 10-26kB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/farsidelobe_get.html' target='_parent'>Far-Sidelobe Beam Maps</a><br>
+<a href='/product/wmap/dr2/farsidelobe_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/farsidelobe_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Maps of beam response to signal across the entire sky in spacecraft coordinates for each D/A. <a href='/product/wmap/dr2/farsidelobe_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>10 files 1.6MB each<br></td>
+  </tr>
+    </tbody>
+  </table>
+</div>
+<a name='mapp2_tod'></a>
+<div class='accord-collapsible-tables'>
+  <table width='100%' border='1' align='center' class='accord-datatable'>
+    <thead>
+       <tr><th class='accord-dataheader' colspan='3'>Time-Ordered Data<div class='accord-float-arrow'><span class='accord-caret'>&#9660;</span></div></th></tr>
+    </thead>
+  </table>
+</div>
+<div class='accord-table-content'>
+  <table class='accord-inner-table'>
+    <thead>
+      <tr>
+        <td axis='prod' width='15%' class='datasubheader' align='center'>Product<br>Download Page</td>
+        <td axis='desc'             class='datasubheader' align='center'>Description</td>
+        <td axis='nfil' width='6%'  class='datasubheader' align='center'>No. of<br>Files/Size</td>
+      </tr>
+    </thead>
+    <tbody class='accord-collapsible-rows expanded'>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/tod_cal_get.html' target='_parent'>Calibrated Time-Ordered Data</a><br>
+<a href='/product/wmap/dr2/tod_cal_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/tod_cal_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Compressed tar files containing the calibrated time-ordered data. <a href='/product/wmap/dr2/tod_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>55 files 1.7GB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/tod_uncal_get.html' target='_parent'>Uncalibrated Time-Ordered Data</a><br>
+<a href='/product/wmap/dr2/tod_uncal_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/tod_uncal_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Compressed tar files containing the raw time-ordered data. <a href='/product/wmap/dr2/tod_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>55 files 1.7GB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/tod_fcal_get.html' target='_parent'>Filtered Calibrated Time-Ordered Data</a><br>
+<a href='/product/wmap/dr2/tod_fcal_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/tod_fcal_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Compressed tar files containing the filtered calibrated time-ordered data. <a href='/product/wmap/dr2/tod_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>55 files 1.7GB each<br></td>
+  </tr>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/tod_filters_get.html' target='_parent'>Optimal Time-Domain Filters</a><br>
+<a href='/product/wmap/dr2/tod_filters_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/tod_filters_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Optimal time-domain filters used in the map-making procedure. <a href='/product/wmap/dr2/tod_filters_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>3 files 4MB each<br></td>
+  </tr>
+    </tbody>
+  </table>
+</div>
+<a name='mapp2_tp'></a>
+<div class='accord-collapsible-tables'>
+  <table width='100%' border='1' align='center' class='accord-datatable'>
+    <thead>
+       <tr><th class='accord-dataheader' colspan='3'>Third Party Products<div class='accord-float-arrow'><span class='accord-caret'>&#9660;</span></div></th></tr>
+    </thead>
+  </table>
+</div>
+<div class='accord-table-content'>
+  <table class='accord-inner-table'>
+    <thead>
+      <tr>
+        <td axis='prod' width='15%' class='datasubheader' align='center'>Product<br>Download Page</td>
+        <td axis='desc'             class='datasubheader' align='center'>Description</td>
+        <td axis='nfil' width='6%'  class='datasubheader' align='center'>No. of<br>Files/Size</td>
+      </tr>
+    </thead>
+    <tbody class='accord-collapsible-rows expanded'>
+  <tr>
+    <td axes='prod' class='datacellcenter'><a href='/product/wmap/dr2/third_party_get.html' target='_parent'>Low-l Likelihood Software</a><br>
+<a href='/product/wmap/dr2/third_party_wget.sh' target='_parent'><img src='/common/images/wget_dl_icon.png' height='16' width='64' alt='wget download script'></a>&nbsp;&nbsp;&nbsp;<a href='/product/wmap/dr2/third_party_curl.sh' target='_parent'><img src='/common/images/curl_dl_icon.png' height='16' width='64' alt='curl download script'></a><br></td>
+    <td axes='desc' class='datacellleft'>Code and data from Eriksen et al. used to estimate the low-l TT likelihood using a Blackwell-Rao estimator in conjunction with pre-computed Gibbs samples. <a href='/product/wmap/dr2/third_party_info.html' target='_parent'>More...</a><br></td>
+    <td axes='nfil' class='datacellcenter'>5 files<br></td>
+  </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!--
+			...Content ends.
+-->
+<p></p>
+</div>				<!-- End of pageContent   -->
+</div>				<!-- End of pageContentBG -->
+
+</td></tr></table>	<!-- End of tertiary menu environment -->
+
+<!--
+		Border for the bottom of the page.
+-->
+<div class='navbar'></div>
+<!--
+		Insert the page footers.
+-->
+<div class='footers'>
+
+  <!-- Service Footer -->
+  <div id='serviceFooter' class='nasaBanner'>
+    A service of the
+    <a href='https://heasarc.gsfc.nasa.gov/' target='_blank'>HEASARC</a>
+    and of the
+    <a href='https://science.gsfc.nasa.gov/astrophysics/' target='_blank'>Astrophysics Science Division</a>
+    at NASA/GSFC
+  </div>
+
+  <!-- Multi-component bottom banner -->
+  <div id='nasaFooter' class='nasaBanner'>
+    
+    <!-- Logos -->
+    <div class='footerLogos'>
+      <a href='https://www.nasa.gov' target='_blank' class='nasaLogo'>
+        <img src='/common/images/nasa-logo.svg'
+             alt='NASA Logo, National Aeronautics and Space Administration'>
+      </a>
+      <a href='https://www.nasa.gov/centers/goddard/home/index.html' target='_blank'>
+        <img class='signature' src='/common/images/goddardsignature2.png'
+             alt='Logo - Goddard Space Flight Center, National Aeronautics and Space Administration'>
+      </a>
+    </div>
+    
+    <!-- People -->
+    <div id='nasaFooterPeople'>
+      <p>HEASARC Director: Dr. Andrew F. Ptak</p>
+      <p>LAMBDA Director: Dr. Thomas M. Essinger-Hileman</p>
+      <p>NASA Official: Dr. Thomas M. Essinger-Hileman</p>
+      <p>Web Curator: Mr. Michael R. Greason</p>
+    </div>
+
+    <!-- Footer links -->
+    <div id='nasaFooterLinks'>
+      <a href='/contact/contact.html'>Comments/Feedback</a>
+      <a href='https://science.gsfc.nasa.gov/astrophysics/' target='_blank'>NASA Astrophysics</a>
+      <a href='https://www.nasa.gov/about/highlights/HP_Privacy.html' target='_blank'>Privacy Policy & Important&nbsp;Notices</a>
+      <a href='https://www.nasa.gov/accessibility/'>Accessibility</a>
+    </div>
+
+  </div><!-- End nasaFooter -->
+</div><!-- End footers -->
+<!--
+		Close out the page.
+-->
+</div>						<!-- End of 'pageContainer'  -->
+</div>						<!-- End of 'astroImage'     -->
+</body></html>
+
