@@ -1,0 +1,21 @@
+{
+  "schema_version": "DFM_MKC_ACTION_FUNCTIONAL_OR_FIELD_EQUATIONS_INTAKE_SCHEMA_ARTIFACT_V1",
+  "status": "INTAKE_SCHEMA_ONLY_NO_EVIDENCE_SUPPLIED",
+  "date": "2026-05-21",
+  "schema_path": "schemas/dfm_mkc_action_functional_or_field_equations_intake_schema_v1.json",
+  "target_slot": "ActionFunctional_or_PrimitiveClosedFormFieldEquations",
+  "base_blocker": "artifacts/repo_intake/dfm_mkc_full_closure_blocker_certificate_2026_05_21.json",
+  "currently_supplied": false,
+  "currently_promoted": false,
+  "next_required_input": "Supply either an action functional or primitive closed-form field equations with derivation of model.H(z).",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}

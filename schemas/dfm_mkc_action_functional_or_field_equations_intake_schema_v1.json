@@ -1,0 +1,47 @@
+{
+  "schema_version": "DFM_MKC_ACTION_FUNCTIONAL_OR_FIELD_EQUATIONS_INTAKE_SCHEMA_V1",
+  "status": "INTAKE_SCHEMA_ONLY_NO_EVIDENCE_SUPPLIED",
+  "date": "2026-05-21",
+  "target_slot": "ActionFunctional_or_PrimitiveClosedFormFieldEquations",
+  "base_blocker": "artifacts/repo_intake/dfm_mkc_full_closure_blocker_certificate_2026_05_21.json",
+  "required_fields_for_future_packet": {
+    "slot_name": "ActionFunctional_or_PrimitiveClosedFormFieldEquations",
+    "representation_kind": null,
+    "action_functional": null,
+    "primitive_closed_form_field_equations": null,
+    "state_variables": null,
+    "independent_variables": null,
+    "units_or_normalization": null,
+    "domain_of_validity": null,
+    "derivation_of_model_H_z": null,
+    "parameter_dependencies": null,
+    "source_terms_dependency": null,
+    "boundary_condition_dependency": null,
+    "evidence_path": null,
+    "evidence_sha256": null,
+    "verifier_path": null,
+    "test_path": null,
+    "classification_status": null
+  },
+  "allowed_representation_kinds": [
+    "ACTION_FUNCTIONAL",
+    "PRIMITIVE_CLOSED_FORM_FIELD_EQUATIONS"
+  ],
+  "allowed_future_classification_statuses": [
+    "SUPPLIED_UNVERIFIED_INPUT",
+    "VERIFIED_FORMAT_ONLY",
+    "VERIFIED_REPOSITORY_LOCAL_ONLY"
+  ],
+  "currently_supplied": false,
+  "currently_promoted": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
