@@ -1,0 +1,49 @@
+{
+  "schema_version": "DFM_MKC_SINGLE_SLOT_EVIDENCE_REGISTRY_V1",
+  "status": "REGISTRY_ONLY_NO_FULL_CLOSURE_PROMOTION",
+  "date": "2026-05-21",
+  "base_gap_matrix": "artifacts/repo_intake/dfm_mkc_dynamical_core_gap_matrix_2026_05_21.json",
+  "base_gate": "artifacts/repo_intake/dfm_mkc_single_slot_promotion_gate_2026_05_21.json",
+  "registered_packets": [
+    {
+      "slot_name": "ExhaustiveParameterTable",
+      "packet_path": "artifacts/repo_intake/dfm_mkc_exhaustive_parameter_table_evidence_packet_2026_05_21.json",
+      "classification_status": "SUPPLIED_UNVERIFIED_INPUT",
+      "promotion_status": "NOT_PROMOTED_TO_FULL_CLOSURE"
+    }
+  ],
+  "slot_status": {
+    "ActionFunctional_or_PrimitiveClosedFormFieldEquations": "NOT_SUPPLIED",
+    "MatterCouplingRule": "NOT_SUPPLIED",
+    "DarkSectorCouplingRule": "NOT_SUPPLIED",
+    "SourceTerms": "NOT_SUPPLIED",
+    "BoundaryConditions": "NOT_SUPPLIED",
+    "ExhaustiveParameterTable": "SUPPLIED_UNVERIFIED_INPUT",
+    "FrozenPredictionVector": "NOT_SUPPLIED",
+    "ACT_DES_HoldoutData": "NOT_SUPPLIED",
+    "ResidualEvaluationResult": "NOT_SUPPLIED",
+    "IndependentReplicationResult": "NOT_SUPPLIED"
+  },
+  "full_closure_status": "BLOCKED_MISSING_REQUIRED_SLOTS",
+  "missing_required_slots": [
+    "ActionFunctional_or_PrimitiveClosedFormFieldEquations",
+    "MatterCouplingRule",
+    "DarkSectorCouplingRule",
+    "SourceTerms",
+    "BoundaryConditions",
+    "FrozenPredictionVector",
+    "ACT_DES_HoldoutData",
+    "ResidualEvaluationResult",
+    "IndependentReplicationResult"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
