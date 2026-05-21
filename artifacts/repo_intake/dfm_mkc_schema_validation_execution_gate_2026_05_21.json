@@ -1,0 +1,44 @@
+{
+  "artifact": "dfm_mkc_schema_validation_execution_gate",
+  "artifact_sha256": "1a972c965edbec12ebe98fa0b168890c74a3246b62fb17046180a8bdb5bfdfa1",
+  "boundary": [
+    "frontier object only",
+    "does not validate authentic ACT DR6 payload bytes",
+    "does not extract a numerical data vector",
+    "does not extract a covariance matrix",
+    "does not execute the likelihood",
+    "does not supply evidence",
+    "does not promote any empirical slot"
+  ],
+  "date": "2026-05-21",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "hard_blocker": "schema validation gate is not executed against authentic payload",
+  "next_admissible_object": "authentic_payload_schema_validation_run",
+  "object_index": 5,
+  "predecessor": {
+    "merge_commit": "11a518b",
+    "pull_request": 103,
+    "status": "PREDICATE_TO_SCHEMA_VALIDATOR_BRIDGE_ONLY_NO_AUTHENTIC_PAYLOAD_VALIDATION"
+  },
+  "purpose": "Define the final pre-run gate that must pass before any authentic payload schema-validation run.",
+  "required_fields": [
+    "data_vector",
+    "covariance_matrix",
+    "mask",
+    "likelihood_rule",
+    "statistical_threshold",
+    "protocol_hash",
+    "actdr6_release_date",
+    "data_freeze_lock"
+  ],
+  "status": "SCHEMA_VALIDATION_EXECUTION_GATE_ONLY_NOT_EXECUTED"
+}
