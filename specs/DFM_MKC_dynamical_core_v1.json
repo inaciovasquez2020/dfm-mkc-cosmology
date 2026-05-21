@@ -1,0 +1,62 @@
+{
+  "schema_version": "DFM_MKC_DYNAMICAL_CORE_V1",
+  "status": "SCAFFOLD_ONLY_DYNAMICAL_CORE_NOT_SUPPLIED",
+  "date": "2026-05-21",
+  "repo_evidence": {
+    "head_observed": "edab7ec58a6c395599e1c4f3eb7802216a877ffc",
+    "theory_digest": "artifacts/repo_intake/dfm_mkc_theory_content_digest_2026_05_21.json",
+    "observable_distance_layer": "src/cosmology/observables/distances.py",
+    "theory_files": [
+      "theory/deformation_field.md",
+      "theory/parameters.md",
+      "numerics/background_equations.md",
+      "config/dfm_mkc_parameter_freeze.json",
+      "dfm_mkc/model.py",
+      "src/models/dfm_mkc.py",
+      "mkc_solver.py"
+    ]
+  },
+  "available_observable_interface": {
+    "distance_functions": [
+      "comoving_distance(model, z)",
+      "luminosity_distance(model, z)",
+      "angular_diameter_distance(model, z)"
+    ],
+    "required_model_method": "model.H(z)"
+  },
+  "required_full_closure_input": {
+    "action_functional_or_primitive_closed_form_field_equations": null,
+    "matter_coupling_rule": null,
+    "dark_sector_coupling_rule": null,
+    "source_terms": null,
+    "boundary_conditions": null,
+    "exhaustive_parameter_table": null,
+    "frozen_prediction_vector": null,
+    "act_des_holdout_data": null,
+    "residual_evaluation_result": null,
+    "independent_replication_result": null
+  },
+  "missing_objects": [
+    "ActionFunctional_or_PrimitiveClosedFormFieldEquations",
+    "MatterCouplingRule",
+    "DarkSectorCouplingRule",
+    "SourceTerms",
+    "BoundaryConditions",
+    "ExhaustiveParameterTable",
+    "FrozenPredictionVector",
+    "ACT_DES_HoldoutData",
+    "ResidualEvaluationResult",
+    "IndependentReplicationResult"
+  ],
+  "admissible_next_step": "Replace null fields only with supplied equations, coupling rules, boundary/source data, frozen predictions, holdout residuals, and independent replication evidence.",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
