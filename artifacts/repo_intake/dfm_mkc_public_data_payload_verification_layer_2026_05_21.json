@@ -1,0 +1,53 @@
+{
+  "artifact_id": "dfm_mkc_public_data_payload_verification_layer_2026_05_21",
+  "status": "PAYLOAD_VERIFICATION_LAYER_ONLY_NO_DATA_IMPORTED",
+  "purpose": "define local payload verification requirements before any ACTDR6 or independent public data slot can be promoted",
+  "depends_on": [
+    "artifacts/repo_intake/dfm_mkc_public_data_source_seek_registry_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_terminal_blocker_exhaustion_certificate_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_actdr6_numerical_data_missing_object_target_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_independent_public_data_missing_object_target_2026_05_21.json"
+  ],
+  "payload_classes": [
+    "ACTDR6_NumericalData_Unfixed",
+    "IndependentPublicData"
+  ],
+  "required_verification_fields": [
+    "source_name",
+    "source_url",
+    "download_timestamp_utc",
+    "local_path",
+    "file_size_bytes",
+    "sha256",
+    "license_or_terms_reference",
+    "payload_role",
+    "expected_schema",
+    "checksum_verified",
+    "schema_validated",
+    "external_payload_verified"
+  ],
+  "promotion_requirements": [
+    "payload_exists_locally",
+    "sha256_recorded",
+    "file_size_recorded",
+    "source_url_recorded",
+    "checksum_verified_true",
+    "schema_validated_true",
+    "external_payload_verified_true"
+  ],
+  "data_imported": false,
+  "payload_verified": false,
+  "protocol_run": false,
+  "evidence_supplied": false,
+  "slot_promoted": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
