@@ -1,0 +1,32 @@
+{
+  "artifact_id": "dfm_mkc_terminal_blocker_exhaustion_certificate_2026_05_21",
+  "status": "TERMINAL_BLOCKERS_EXPLICIT_NO_SUPPLIED_OBJECTS",
+  "terminal_blockers": [
+    "FrozenDFMMKCAxioms",
+    "ACTDR6_NumericalData_Unfixed",
+    "IndependentPublicData"
+  ],
+  "target_artifacts": [
+    "artifacts/repo_intake/dfm_mkc_frozen_axioms_missing_object_target_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_actdr6_numerical_data_missing_object_target_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_independent_public_data_missing_object_target_2026_05_21.json"
+  ],
+  "exhaustion_claim": "all_current_logical_missing_objects_have_target_artifacts",
+  "remaining_progress_requires_supplied_object": true,
+  "schema_only_progress_exhausted": true,
+  "frozen_axioms_supplied": false,
+  "actdr6_numerical_data_supplied": false,
+  "independent_public_data_supplied": false,
+  "evidence_supplied": false,
+  "slot_promoted": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
