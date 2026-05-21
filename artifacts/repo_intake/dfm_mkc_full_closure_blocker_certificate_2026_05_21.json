@@ -1,0 +1,40 @@
+{
+  "schema_version": "DFM_MKC_FULL_CLOSURE_BLOCKER_CERTIFICATE_V1",
+  "status": "FULL_CLOSURE_BLOCKED_CERTIFICATE",
+  "date": "2026-05-21",
+  "base_registry": "artifacts/repo_intake/dfm_mkc_single_slot_evidence_registry_2026_05_21.json",
+  "total_required_slots": 10,
+  "registered_slot_count": 1,
+  "missing_required_slot_count": 9,
+  "registered_slots": [
+    {
+      "slot_name": "ExhaustiveParameterTable",
+      "classification_status": "SUPPLIED_UNVERIFIED_INPUT",
+      "promotion_status": "NOT_PROMOTED_TO_FULL_CLOSURE"
+    }
+  ],
+  "missing_required_slots": [
+    "ActionFunctional_or_PrimitiveClosedFormFieldEquations",
+    "MatterCouplingRule",
+    "DarkSectorCouplingRule",
+    "SourceTerms",
+    "BoundaryConditions",
+    "FrozenPredictionVector",
+    "ACT_DES_HoldoutData",
+    "ResidualEvaluationResult",
+    "IndependentReplicationResult"
+  ],
+  "closure_possible": false,
+  "blocking_reason": "Full closure requires all required slots; only ExhaustiveParameterTable has a supplied unverified packet, and nine required slots remain not supplied.",
+  "weakest_next_admissible_input": "One supplied evidence packet for exactly one missing required slot.",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
