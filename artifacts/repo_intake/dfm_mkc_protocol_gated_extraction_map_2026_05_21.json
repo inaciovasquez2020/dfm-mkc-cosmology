@@ -1,0 +1,536 @@
+{
+  "artifact_id": "dfm_mkc_protocol_gated_extraction_map_2026_05_21",
+  "status": "PROTOCOL_GATED_EXTRACTION_MAP_ONLY_NOT_VALIDATION",
+  "depends_on": [
+    "artifacts/repo_intake/dfm_mkc_act_lite_schema_protocol_array_read_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_actdr6_numerical_data_missing_object_target_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_act_lite_fits_schema_inspection_2026_05_21.json"
+  ],
+  "input_array_read_artifact": "artifacts/repo_intake/dfm_mkc_act_lite_schema_protocol_array_read_2026_05_21.json",
+  "input_protocol_target_artifact": "artifacts/repo_intake/dfm_mkc_actdr6_numerical_data_missing_object_target_2026_05_21.json",
+  "protocol_required_fields": [
+    "data_vector",
+    "covariance_matrix",
+    "mask",
+    "likelihood_rule",
+    "statistical_threshold",
+    "protocol_hash",
+    "actdr6_release_date",
+    "data_freeze_lock"
+  ],
+  "available_array_columns": [
+    {
+      "hdu_index": 1,
+      "name": "id      ",
+      "format": "D       ",
+      "array_read": true,
+      "values_read": 0,
+      "classification": "NUMERIC_ARRAY_READ_ATTEMPT_EMPTY_COLUMN_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 1,
+      "name": "min     ",
+      "format": "D       ",
+      "array_read": true,
+      "values_read": 0,
+      "classification": "NUMERIC_ARRAY_READ_ATTEMPT_EMPTY_COLUMN_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 1,
+      "name": "max     ",
+      "format": "D       ",
+      "array_read": true,
+      "values_read": 0,
+      "classification": "NUMERIC_ARRAY_READ_ATTEMPT_EMPTY_COLUMN_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 2,
+      "name": "id      ",
+      "format": "D       ",
+      "array_read": true,
+      "values_read": 0,
+      "classification": "NUMERIC_ARRAY_READ_ATTEMPT_EMPTY_COLUMN_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 2,
+      "name": "min     ",
+      "format": "D       ",
+      "array_read": true,
+      "values_read": 0,
+      "classification": "NUMERIC_ARRAY_READ_ATTEMPT_EMPTY_COLUMN_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 2,
+      "name": "max     ",
+      "format": "D       ",
+      "array_read": true,
+      "values_read": 0,
+      "classification": "NUMERIC_ARRAY_READ_ATTEMPT_EMPTY_COLUMN_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 3,
+      "name": "values  ",
+      "format": "K       ",
+      "array_read": true,
+      "values_read": 6501,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 3,
+      "name": "weight  ",
+      "format": "45D     ",
+      "array_read": true,
+      "values_read": 292545,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 4,
+      "name": "values  ",
+      "format": "K       ",
+      "array_read": true,
+      "values_read": 4201,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 4,
+      "name": "weight  ",
+      "format": "40D     ",
+      "array_read": true,
+      "values_read": 168040,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 5,
+      "name": "values  ",
+      "format": "K       ",
+      "array_read": true,
+      "values_read": 4201,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 5,
+      "name": "weight  ",
+      "format": "42D     ",
+      "array_read": true,
+      "values_read": 176442,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 6,
+      "name": "name    ",
+      "format": "10A     ",
+      "array_read": false,
+      "values_read": 0,
+      "classification": null,
+      "summary_present": false
+    },
+    {
+      "hdu_index": 6,
+      "name": "quantity",
+      "format": "7A      ",
+      "array_read": false,
+      "values_read": 0,
+      "classification": null,
+      "summary_present": false
+    },
+    {
+      "hdu_index": 7,
+      "name": "tracer_0",
+      "format": "10A     ",
+      "array_read": false,
+      "values_read": 0,
+      "classification": null,
+      "summary_present": false
+    },
+    {
+      "hdu_index": 7,
+      "name": "tracer_1",
+      "format": "10A     ",
+      "array_read": false,
+      "values_read": 0,
+      "classification": null,
+      "summary_present": false
+    },
+    {
+      "hdu_index": 7,
+      "name": "value   ",
+      "format": "D       ",
+      "array_read": true,
+      "values_read": 45,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 7,
+      "name": "window  ",
+      "format": "K       ",
+      "array_read": true,
+      "values_read": 45,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 7,
+      "name": "ell     ",
+      "format": "D       ",
+      "array_read": true,
+      "values_read": 45,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 7,
+      "name": "window_ind",
+      "format": "K       ",
+      "array_read": true,
+      "values_read": 45,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 8,
+      "name": "tracer_0",
+      "format": "10A     ",
+      "array_read": false,
+      "values_read": 0,
+      "classification": null,
+      "summary_present": false
+    },
+    {
+      "hdu_index": 8,
+      "name": "tracer_1",
+      "format": "10A     ",
+      "array_read": false,
+      "values_read": 0,
+      "classification": null,
+      "summary_present": false
+    },
+    {
+      "hdu_index": 8,
+      "name": "value   ",
+      "format": "D       ",
+      "array_read": true,
+      "values_read": 40,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 8,
+      "name": "window  ",
+      "format": "K       ",
+      "array_read": true,
+      "values_read": 40,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 8,
+      "name": "ell     ",
+      "format": "D       ",
+      "array_read": true,
+      "values_read": 40,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 8,
+      "name": "window_ind",
+      "format": "K       ",
+      "array_read": true,
+      "values_read": 40,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 9,
+      "name": "tracer_0",
+      "format": "10A     ",
+      "array_read": false,
+      "values_read": 0,
+      "classification": null,
+      "summary_present": false
+    },
+    {
+      "hdu_index": 9,
+      "name": "tracer_1",
+      "format": "10A     ",
+      "array_read": false,
+      "values_read": 0,
+      "classification": null,
+      "summary_present": false
+    },
+    {
+      "hdu_index": 9,
+      "name": "value   ",
+      "format": "D       ",
+      "array_read": true,
+      "values_read": 42,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 9,
+      "name": "window  ",
+      "format": "K       ",
+      "array_read": true,
+      "values_read": 42,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 9,
+      "name": "ell     ",
+      "format": "D       ",
+      "array_read": true,
+      "values_read": 42,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    },
+    {
+      "hdu_index": 9,
+      "name": "window_ind",
+      "format": "K       ",
+      "array_read": true,
+      "values_read": 42,
+      "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+      "summary_present": true
+    }
+  ],
+  "protocol_field_candidate_map": [
+    {
+      "protocol_field": "data_vector",
+      "candidate_columns": [
+        {
+          "hdu_index": 3,
+          "name": "values  ",
+          "format": "K       ",
+          "array_read": true,
+          "values_read": 6501,
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+          "summary_present": true
+        },
+        {
+          "hdu_index": 4,
+          "name": "values  ",
+          "format": "K       ",
+          "array_read": true,
+          "values_read": 4201,
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+          "summary_present": true
+        },
+        {
+          "hdu_index": 5,
+          "name": "values  ",
+          "format": "K       ",
+          "array_read": true,
+          "values_read": 4201,
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+          "summary_present": true
+        },
+        {
+          "hdu_index": 7,
+          "name": "value   ",
+          "format": "D       ",
+          "array_read": true,
+          "values_read": 45,
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+          "summary_present": true
+        },
+        {
+          "hdu_index": 7,
+          "name": "ell     ",
+          "format": "D       ",
+          "array_read": true,
+          "values_read": 45,
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+          "summary_present": true
+        },
+        {
+          "hdu_index": 8,
+          "name": "value   ",
+          "format": "D       ",
+          "array_read": true,
+          "values_read": 40,
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+          "summary_present": true
+        },
+        {
+          "hdu_index": 8,
+          "name": "ell     ",
+          "format": "D       ",
+          "array_read": true,
+          "values_read": 40,
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+          "summary_present": true
+        },
+        {
+          "hdu_index": 9,
+          "name": "value   ",
+          "format": "D       ",
+          "array_read": true,
+          "values_read": 42,
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+          "summary_present": true
+        },
+        {
+          "hdu_index": 9,
+          "name": "ell     ",
+          "format": "D       ",
+          "array_read": true,
+          "values_read": 42,
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+          "summary_present": true
+        }
+      ],
+      "candidate_count": 9,
+      "mapped": true,
+      "promotion_status": "CANDIDATE_ONLY_NOT_VALIDATED_NOT_EVIDENCE",
+      "validation_status": "NOT_SCHEMA_VALIDATED_AGAINST_PROTOCOL"
+    },
+    {
+      "protocol_field": "covariance_matrix",
+      "candidate_columns": [],
+      "candidate_count": 0,
+      "mapped": false,
+      "promotion_status": "CANDIDATE_ONLY_NOT_VALIDATED_NOT_EVIDENCE",
+      "validation_status": "NOT_SCHEMA_VALIDATED_AGAINST_PROTOCOL"
+    },
+    {
+      "protocol_field": "mask",
+      "candidate_columns": [
+        {
+          "hdu_index": 7,
+          "name": "window  ",
+          "format": "K       ",
+          "array_read": true,
+          "values_read": 45,
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+          "summary_present": true
+        },
+        {
+          "hdu_index": 7,
+          "name": "window_ind",
+          "format": "K       ",
+          "array_read": true,
+          "values_read": 45,
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+          "summary_present": true
+        },
+        {
+          "hdu_index": 8,
+          "name": "window  ",
+          "format": "K       ",
+          "array_read": true,
+          "values_read": 40,
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+          "summary_present": true
+        },
+        {
+          "hdu_index": 8,
+          "name": "window_ind",
+          "format": "K       ",
+          "array_read": true,
+          "values_read": 40,
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+          "summary_present": true
+        },
+        {
+          "hdu_index": 9,
+          "name": "window  ",
+          "format": "K       ",
+          "array_read": true,
+          "values_read": 42,
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+          "summary_present": true
+        },
+        {
+          "hdu_index": 9,
+          "name": "window_ind",
+          "format": "K       ",
+          "array_read": true,
+          "values_read": 42,
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE",
+          "summary_present": true
+        }
+      ],
+      "candidate_count": 6,
+      "mapped": true,
+      "promotion_status": "CANDIDATE_ONLY_NOT_VALIDATED_NOT_EVIDENCE",
+      "validation_status": "NOT_SCHEMA_VALIDATED_AGAINST_PROTOCOL"
+    },
+    {
+      "protocol_field": "likelihood_rule",
+      "candidate_columns": [],
+      "candidate_count": 0,
+      "mapped": false,
+      "promotion_status": "CANDIDATE_ONLY_NOT_VALIDATED_NOT_EVIDENCE",
+      "validation_status": "NOT_SCHEMA_VALIDATED_AGAINST_PROTOCOL"
+    },
+    {
+      "protocol_field": "statistical_threshold",
+      "candidate_columns": [],
+      "candidate_count": 0,
+      "mapped": false,
+      "promotion_status": "CANDIDATE_ONLY_NOT_VALIDATED_NOT_EVIDENCE",
+      "validation_status": "NOT_SCHEMA_VALIDATED_AGAINST_PROTOCOL"
+    },
+    {
+      "protocol_field": "protocol_hash",
+      "candidate_columns": [],
+      "candidate_count": 0,
+      "mapped": false,
+      "promotion_status": "CANDIDATE_ONLY_NOT_VALIDATED_NOT_EVIDENCE",
+      "validation_status": "NOT_SCHEMA_VALIDATED_AGAINST_PROTOCOL"
+    },
+    {
+      "protocol_field": "actdr6_release_date",
+      "candidate_columns": [],
+      "candidate_count": 0,
+      "mapped": false,
+      "promotion_status": "CANDIDATE_ONLY_NOT_VALIDATED_NOT_EVIDENCE",
+      "validation_status": "NOT_SCHEMA_VALIDATED_AGAINST_PROTOCOL"
+    },
+    {
+      "protocol_field": "data_freeze_lock",
+      "candidate_columns": [],
+      "candidate_count": 0,
+      "mapped": false,
+      "promotion_status": "CANDIDATE_ONLY_NOT_VALIDATED_NOT_EVIDENCE",
+      "validation_status": "NOT_SCHEMA_VALIDATED_AGAINST_PROTOCOL"
+    }
+  ],
+  "candidate_mapping_performed": true,
+  "mapped_field_count": 2,
+  "unmapped_field_count": 6,
+  "numeric_arrays_read": true,
+  "numerical_data_vector_extracted": false,
+  "covariance_matrix_extracted": false,
+  "protocol_fields_validated": false,
+  "schema_validated_against_protocol": false,
+  "external_payload_verified": false,
+  "protocol_run": false,
+  "evidence_supplied": false,
+  "slot_promoted": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
