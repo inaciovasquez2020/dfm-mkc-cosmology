@@ -1,0 +1,39 @@
+{
+  "schema_version": "DFM_MKC_FROZEN_PREDICTION_VECTOR_INTAKE_SCHEMA_V1",
+  "status": "INTAKE_SCHEMA_ONLY_NO_EVIDENCE_SUPPLIED",
+  "date": "2026-05-21",
+  "target_slot": "FrozenPredictionVector",
+  "base_blocker": "artifacts/repo_intake/dfm_mkc_full_closure_blocker_certificate_2026_05_21.json",
+  "required_fields_for_future_packet": {
+    "slot_name": "FrozenPredictionVector",
+    "observable_names": null,
+    "observable_values": null,
+    "observable_units": null,
+    "redshift_or_scale_factor_points": null,
+    "covariance_or_uncertainty_model": null,
+    "model_version": null,
+    "parameter_table_dependency": null,
+    "dynamical_core_dependency": null,
+    "generation_script": null,
+    "generation_command": null,
+    "freeze_timestamp": null,
+    "hash_of_prediction_vector": null,
+    "evidence_path": null,
+    "evidence_sha256": null,
+    "verifier_path": null,
+    "test_path": null,
+    "classification_status": null
+  },
+  "currently_supplied": false,
+  "currently_promoted": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
