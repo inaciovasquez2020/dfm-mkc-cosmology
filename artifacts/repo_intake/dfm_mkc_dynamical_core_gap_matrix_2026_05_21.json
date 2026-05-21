@@ -1,0 +1,440 @@
+{
+  "all_required_slots_status": "NOT_SUPPLIED",
+  "base_audit": "artifacts/repo_intake/dfm_mkc_dynamical_core_source_audit_2026_05_21.json",
+  "date": "2026-05-21",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "gap_matrix": {
+    "ACT_DES_HoldoutData": {
+      "candidate_repository_signals": [],
+      "promotion_rule": "May be promoted only by supplied explicit equations, coupling rules, source/boundary data, frozen predictions, holdout residuals, or independent replication evidence.",
+      "status": "NOT_SUPPLIED"
+    },
+    "ActionFunctional_or_PrimitiveClosedFormFieldEquations": {
+      "candidate_repository_signals": [
+        {
+          "hit_count": 3,
+          "path": "numerics/background_equations.md",
+          "pattern": "primitive_field_equation",
+          "sample_hits": [
+            {
+              "line": 1,
+              "text": "Background Equations Numerical Scaffold"
+            },
+            {
+              "line": 18,
+              "text": "ODE form:"
+            },
+            {
+              "line": 19,
+              "text": "dH/dz = f_H(H, Phi, z; theta)"
+            }
+          ]
+        },
+        {
+          "hit_count": 1,
+          "path": "dfm_mkc/likelihoods.py",
+          "pattern": "primitive_field_equation",
+          "sample_hits": [
+            {
+              "line": 18,
+              "text": "    Likelihood for background expansion data H(a)."
+            }
+          ]
+        },
+        {
+          "hit_count": 1,
+          "path": "src/models/dfm_mkc.py",
+          "pattern": "primitive_field_equation",
+          "sample_hits": [
+            {
+              "line": 2,
+              "text": "from src.cosmology.background import BackgroundCosmology"
+            }
+          ]
+        }
+      ],
+      "promotion_rule": "May be promoted only by supplied explicit equations, coupling rules, source/boundary data, frozen predictions, holdout residuals, or independent replication evidence.",
+      "status": "NOT_SUPPLIED"
+    },
+    "BoundaryConditions": {
+      "candidate_repository_signals": [
+        {
+          "hit_count": 1,
+          "path": "specs/DFM_MKC_dynamical_core_v1.json",
+          "pattern": "boundary_conditions",
+          "sample_hits": [
+            {
+              "line": 51,
+              "text": "  \"admissible_next_step\": \"Replace null fields only with supplied equations, coupling rules, boundary/source data, frozen predictions, holdout residuals, and independent replication evidence.\","
+            }
+          ]
+        },
+        {
+          "hit_count": 1,
+          "path": "theory/parameters.md",
+          "pattern": "boundary_conditions",
+          "sample_hits": [
+            {
+              "line": 4,
+              "text": "## Normalization"
+            }
+          ]
+        }
+      ],
+      "promotion_rule": "May be promoted only by supplied explicit equations, coupling rules, source/boundary data, frozen predictions, holdout residuals, or independent replication evidence.",
+      "status": "NOT_SUPPLIED"
+    },
+    "DarkSectorCouplingRule": {
+      "candidate_repository_signals": [
+        {
+          "hit_count": 4,
+          "path": "specs/DFM_MKC_dynamical_core_v1.json",
+          "pattern": "dark_sector_coupling",
+          "sample_hits": [
+            {
+              "line": 51,
+              "text": "  \"admissible_next_step\": \"Replace null fields only with supplied equations, coupling rules, boundary/source data, frozen predictions, holdout residuals, and independent replication evidence.\","
+            },
+            {
+              "line": 53,
+              "text": "    \"DFM-MKC\","
+            },
+            {
+              "line": 57,
+              "text": "    \"dark-energy resolution\","
+            }
+          ]
+        },
+        {
+          "hit_count": 1,
+          "path": "theory/deformation_field.md",
+          "pattern": "dark_sector_coupling",
+          "sample_hits": [
+            {
+              "line": 1,
+              "text": "## Deformation Field Dynamics"
+            }
+          ]
+        },
+        {
+          "hit_count": 4,
+          "path": "config/dfm_mkc_parameter_freeze.json",
+          "pattern": "dark_sector_coupling",
+          "sample_hits": [
+            {
+              "line": 4,
+              "text": "  \"model\": \"DFM-MKC\","
+            },
+            {
+              "line": 14,
+              "text": "    \"DFM-MKC proves final cosmological truth\","
+            },
+            {
+              "line": 15,
+              "text": "    \"DFM-MKC theorem-level closure\","
+            }
+          ]
+        },
+        {
+          "hit_count": 1,
+          "path": "dfm_mkc/constants.py",
+          "pattern": "dark_sector_coupling",
+          "sample_hits": [
+            {
+              "line": 1,
+              "text": "# Physical and numerical constants used across the DFM-MKC module"
+            }
+          ]
+        },
+        {
+          "hit_count": 6,
+          "path": "mkc_solver.py",
+          "pattern": "dark_sector_coupling",
+          "sample_hits": [
+            {
+              "line": 7,
+              "text": "    Deterministic Verifier for Dark Fluid Model with Minimal Kinetic Coupling."
+            },
+            {
+              "line": 25,
+              "text": "        Confirms if the Dark Fluid coupling maintains a non-zero spectral gap."
+            },
+            {
+              "line": 30,
+              "text": "        # In DFM-MKC, rigidity is preserved if coupling strength xi "
+            }
+          ]
+        }
+      ],
+      "promotion_rule": "May be promoted only by supplied explicit equations, coupling rules, source/boundary data, frozen predictions, holdout residuals, or independent replication evidence.",
+      "status": "NOT_SUPPLIED"
+    },
+    "ExhaustiveParameterTable": {
+      "candidate_repository_signals": [
+        {
+          "hit_count": 1,
+          "path": "theory/parameters.md",
+          "pattern": "parameters",
+          "sample_hits": [
+            {
+              "line": 2,
+              "text": "\u03b8 = (H0, \u03a9m0, \u03a9r0, \u03a9\u039b0, \u03b1, \u03b2)"
+            }
+          ]
+        },
+        {
+          "hit_count": 5,
+          "path": "numerics/background_equations.md",
+          "pattern": "parameters",
+          "sample_hits": [
+            {
+              "line": 7,
+              "text": "theta = (H0, Omega_m0, Omega_r0, Omega_Lambda0, alpha, beta)"
+            },
+            {
+              "line": 19,
+              "text": "dH/dz = f_H(H, Phi, z; theta)"
+            },
+            {
+              "line": 20,
+              "text": "dPhi/dz = f_Phi(H, Phi, z; theta)"
+            }
+          ]
+        },
+        {
+          "hit_count": 1,
+          "path": "config/dfm_mkc_parameter_freeze.json",
+          "pattern": "parameters",
+          "sample_hits": [
+            {
+              "line": 5,
+              "text": "  \"fitting_policy\": \"No parameter changes after authentic DES Y6 input materialization.\","
+            }
+          ]
+        },
+        {
+          "hit_count": 5,
+          "path": "dfm_mkc/model.py",
+          "pattern": "parameters",
+          "sample_hits": [
+            {
+              "line": 6,
+              "text": "    H0: float"
+            },
+            {
+              "line": 10,
+              "text": "def init_params(H0: float, Omega_m: float, Omega_L: float) -> Parameters:"
+            },
+            {
+              "line": 11,
+              "text": "    return Parameters(H0=H0, Omega_m=Omega_m, Omega_L=Omega_L)"
+            }
+          ]
+        },
+        {
+          "hit_count": 2,
+          "path": "src/models/dfm_mkc.py",
+          "pattern": "parameters",
+          "sample_hits": [
+            {
+              "line": 5,
+              "text": "    def __init__(self, H0=70.0, Omega_m=0.3, Omega_L=0.7, xi=0.0):"
+            },
+            {
+              "line": 6,
+              "text": "        super().__init__(H0, Omega_m, Omega_L)"
+            }
+          ]
+        },
+        {
+          "hit_count": 1,
+          "path": "mkc_solver.py",
+          "pattern": "parameters",
+          "sample_hits": [
+            {
+              "line": 31,
+              "text": "        # is within the deterministic stability bounds."
+            }
+          ]
+        }
+      ],
+      "promotion_rule": "May be promoted only by supplied explicit equations, coupling rules, source/boundary data, frozen predictions, holdout residuals, or independent replication evidence.",
+      "status": "NOT_SUPPLIED"
+    },
+    "FrozenPredictionVector": {
+      "candidate_repository_signals": [
+        {
+          "hit_count": 1,
+          "path": "specs/DFM_MKC_dynamical_core_v1.json",
+          "pattern": "prediction_vector",
+          "sample_hits": [
+            {
+              "line": 55,
+              "text": "    \"ACT/DES holdout survival\","
+            }
+          ]
+        },
+        {
+          "hit_count": 1,
+          "path": "config/dfm_mkc_parameter_freeze.json",
+          "pattern": "prediction_vector",
+          "sample_hits": [
+            {
+              "line": 5,
+              "text": "  \"fitting_policy\": \"No parameter changes after authentic DES Y6 input materialization.\","
+            }
+          ]
+        },
+        {
+          "hit_count": 1,
+          "path": "dfm_mkc/constants.py",
+          "pattern": "prediction_vector",
+          "sample_hits": [
+            {
+              "line": 4,
+              "text": "T_CMB = 2.7255       # CMB temperature in Kelvin"
+            }
+          ]
+        },
+        {
+          "hit_count": 2,
+          "path": "dfm_mkc/likelihoods.py",
+          "pattern": "prediction_vector",
+          "sample_hits": [
+            {
+              "line": 10,
+              "text": "    residual = data - model_values"
+            },
+            {
+              "line": 11,
+              "text": "    return -0.5 * np.sum((residual / sigma) ** 2)"
+            }
+          ]
+        },
+        {
+          "hit_count": 3,
+          "path": "src/cosmology/observables/distances.py",
+          "pattern": "prediction_vector",
+          "sample_hits": [
+            {
+              "line": 7,
+              "text": "    Line-of-sight comoving distance"
+            },
+            {
+              "line": 15,
+              "text": "    Luminosity distance"
+            },
+            {
+              "line": 21,
+              "text": "    Angular diameter distance"
+            }
+          ]
+        }
+      ],
+      "promotion_rule": "May be promoted only by supplied explicit equations, coupling rules, source/boundary data, frozen predictions, holdout residuals, or independent replication evidence.",
+      "status": "NOT_SUPPLIED"
+    },
+    "IndependentReplicationResult": {
+      "candidate_repository_signals": [],
+      "promotion_rule": "May be promoted only by supplied explicit equations, coupling rules, source/boundary data, frozen predictions, holdout residuals, or independent replication evidence.",
+      "status": "NOT_SUPPLIED"
+    },
+    "MatterCouplingRule": {
+      "candidate_repository_signals": [
+        {
+          "hit_count": 1,
+          "path": "specs/DFM_MKC_dynamical_core_v1.json",
+          "pattern": "matter_coupling",
+          "sample_hits": [
+            {
+              "line": 58,
+              "text": "    \"dark-matter resolution\","
+            }
+          ]
+        },
+        {
+          "hit_count": 4,
+          "path": "dfm_mkc/model.py",
+          "pattern": "matter_coupling",
+          "sample_hits": [
+            {
+              "line": 7,
+              "text": "    Omega_m: float"
+            },
+            {
+              "line": 10,
+              "text": "def init_params(H0: float, Omega_m: float, Omega_L: float) -> Parameters:"
+            },
+            {
+              "line": 11,
+              "text": "    return Parameters(H0=H0, Omega_m=Omega_m, Omega_L=Omega_L)"
+            }
+          ]
+        },
+        {
+          "hit_count": 2,
+          "path": "src/models/dfm_mkc.py",
+          "pattern": "matter_coupling",
+          "sample_hits": [
+            {
+              "line": 5,
+              "text": "    def __init__(self, H0=70.0, Omega_m=0.3, Omega_L=0.7, xi=0.0):"
+            },
+            {
+              "line": 6,
+              "text": "        super().__init__(H0, Omega_m, Omega_L)"
+            }
+          ]
+        },
+        {
+          "hit_count": 1,
+          "path": "mkc_solver.py",
+          "pattern": "matter_coupling",
+          "sample_hits": [
+            {
+              "line": 45,
+              "text": "        Simulates the Dark Fluid pressure-to-density ratio (w_eff)."
+            }
+          ]
+        }
+      ],
+      "promotion_rule": "May be promoted only by supplied explicit equations, coupling rules, source/boundary data, frozen predictions, holdout residuals, or independent replication evidence.",
+      "status": "NOT_SUPPLIED"
+    },
+    "ResidualEvaluationResult": {
+      "candidate_repository_signals": [],
+      "promotion_rule": "May be promoted only by supplied explicit equations, coupling rules, source/boundary data, frozen predictions, holdout residuals, or independent replication evidence.",
+      "status": "NOT_SUPPLIED"
+    },
+    "SourceTerms": {
+      "candidate_repository_signals": [
+        {
+          "hit_count": 1,
+          "path": "specs/DFM_MKC_dynamical_core_v1.json",
+          "pattern": "source_terms",
+          "sample_hits": [
+            {
+              "line": 51,
+              "text": "  \"admissible_next_step\": \"Replace null fields only with supplied equations, coupling rules, boundary/source data, frozen predictions, holdout residuals, and independent replication evidence.\","
+            }
+          ]
+        }
+      ],
+      "promotion_rule": "May be promoted only by supplied explicit equations, coupling rules, source/boundary data, frozen predictions, holdout residuals, or independent replication evidence.",
+      "status": "NOT_SUPPLIED"
+    }
+  },
+  "next_admissible_object": "A supplied primitive equation/coupling/parameter/prediction packet that can fill exactly one slot.",
+  "schema_version": "DFM_MKC_DYNAMICAL_CORE_GAP_MATRIX_V1",
+  "source_audit_status": "SOURCE_AUDIT_ONLY_NO_CLOSURE_PROMOTION",
+  "status": "GAP_MATRIX_ONLY_NO_CLOSURE_PROMOTION"
+}
