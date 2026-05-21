@@ -1,0 +1,662 @@
+{
+  "artifact_id": "dfm_mkc_act_lite_schema_protocol_array_read_2026_05_21",
+  "status": "SCHEMA_PROTOCOL_COMPARISON_WITH_ARRAY_READING_NOT_EVIDENCE",
+  "input_payload": "artifacts/public_payloads/act_lite_numeric_like_extracted_2026_05_21/DR6-ACT-lite-main__act_dr6_cmbonly__data__act_dr6_cmb_sacc.fits",
+  "depends_on": [
+    "artifacts/repo_intake/dfm_mkc_act_lite_fits_schema_inspection_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_act_lite_numeric_like_extraction_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_act_lite_payload_inventory_2026_05_21.json"
+  ],
+  "file_size_bytes": 5391360,
+  "sha256": "9506da7b482c10b60571c5a3805fc392853d50f81244485754566d21b85219ad",
+  "protocol_candidates": [
+    {
+      "path": "artifacts/repo_intake/act_dr6_residual_evaluation_protocol_2026_05_20.json",
+      "available": false
+    },
+    {
+      "path": "artifacts/cosmology/act_dr6_residual_evaluation_protocol_2026_05_20.json",
+      "available": false
+    },
+    {
+      "path": "specs/act_dr6_residual_evaluation_protocol_2026_05_20.json",
+      "available": false
+    },
+    {
+      "path": "artifacts/repo_intake/dfm_mkc_actdr6_numerical_data_missing_object_target_2026_05_21.json",
+      "status": "LEVEL_2_DATA_TARGET_ONLY_ACTDR6_NUMERICAL_DATA_NOT_SUPPLIED",
+      "keys": [
+        "artifact_id",
+        "depends_on",
+        "does_not_prove",
+        "evidence_supplied",
+        "fixture_only",
+        "logical_position",
+        "must_match_locked_protocol",
+        "protocol_reference",
+        "protocol_run",
+        "real_numerical_data_supplied",
+        "required_data_payload_fields",
+        "slot_promoted",
+        "status",
+        "target_object"
+      ],
+      "available": true
+    }
+  ],
+  "schema_hdu_count": 11,
+  "array_read_hdu_count": 11,
+  "numeric_columns_read": 18,
+  "array_reads": [
+    {
+      "hdu_index": 0,
+      "xtension": "PRIMARY",
+      "array_read": false,
+      "reason": "not_binary_table",
+      "columns": []
+    },
+    {
+      "hdu_index": 1,
+      "xtension": "BINTABLE",
+      "array_read": true,
+      "row_size": 24,
+      "row_count": 0,
+      "tfields": 3,
+      "columns": [
+        {
+          "index": 1,
+          "name": "id      ",
+          "format": "D       ",
+          "byte_offset": 0,
+          "repeat": 1,
+          "fits_code": "D",
+          "values_read": 0,
+          "array_read": true,
+          "summary": {
+            "finite_count": 0,
+            "min": null,
+            "max": null,
+            "mean": null
+          },
+          "classification": "NUMERIC_ARRAY_READ_ATTEMPT_EMPTY_COLUMN_NOT_EVIDENCE",
+          "empty_array_read": true
+        },
+        {
+          "index": 2,
+          "name": "min     ",
+          "format": "D       ",
+          "byte_offset": 8,
+          "repeat": 1,
+          "fits_code": "D",
+          "values_read": 0,
+          "array_read": true,
+          "summary": {
+            "finite_count": 0,
+            "min": null,
+            "max": null,
+            "mean": null
+          },
+          "classification": "NUMERIC_ARRAY_READ_ATTEMPT_EMPTY_COLUMN_NOT_EVIDENCE",
+          "empty_array_read": true
+        },
+        {
+          "index": 3,
+          "name": "max     ",
+          "format": "D       ",
+          "byte_offset": 16,
+          "repeat": 1,
+          "fits_code": "D",
+          "values_read": 0,
+          "array_read": true,
+          "summary": {
+            "finite_count": 0,
+            "min": null,
+            "max": null,
+            "mean": null
+          },
+          "classification": "NUMERIC_ARRAY_READ_ATTEMPT_EMPTY_COLUMN_NOT_EVIDENCE",
+          "empty_array_read": true
+        }
+      ]
+    },
+    {
+      "hdu_index": 2,
+      "xtension": "BINTABLE",
+      "array_read": true,
+      "row_size": 24,
+      "row_count": 0,
+      "tfields": 3,
+      "columns": [
+        {
+          "index": 1,
+          "name": "id      ",
+          "format": "D       ",
+          "byte_offset": 0,
+          "repeat": 1,
+          "fits_code": "D",
+          "values_read": 0,
+          "array_read": true,
+          "summary": {
+            "finite_count": 0,
+            "min": null,
+            "max": null,
+            "mean": null
+          },
+          "classification": "NUMERIC_ARRAY_READ_ATTEMPT_EMPTY_COLUMN_NOT_EVIDENCE",
+          "empty_array_read": true
+        },
+        {
+          "index": 2,
+          "name": "min     ",
+          "format": "D       ",
+          "byte_offset": 8,
+          "repeat": 1,
+          "fits_code": "D",
+          "values_read": 0,
+          "array_read": true,
+          "summary": {
+            "finite_count": 0,
+            "min": null,
+            "max": null,
+            "mean": null
+          },
+          "classification": "NUMERIC_ARRAY_READ_ATTEMPT_EMPTY_COLUMN_NOT_EVIDENCE",
+          "empty_array_read": true
+        },
+        {
+          "index": 3,
+          "name": "max     ",
+          "format": "D       ",
+          "byte_offset": 16,
+          "repeat": 1,
+          "fits_code": "D",
+          "values_read": 0,
+          "array_read": true,
+          "summary": {
+            "finite_count": 0,
+            "min": null,
+            "max": null,
+            "mean": null
+          },
+          "classification": "NUMERIC_ARRAY_READ_ATTEMPT_EMPTY_COLUMN_NOT_EVIDENCE",
+          "empty_array_read": true
+        }
+      ]
+    },
+    {
+      "hdu_index": 3,
+      "xtension": "BINTABLE",
+      "array_read": true,
+      "row_size": 368,
+      "row_count": 6501,
+      "tfields": 2,
+      "columns": [
+        {
+          "index": 1,
+          "name": "values  ",
+          "format": "K       ",
+          "byte_offset": 0,
+          "repeat": 1,
+          "fits_code": "K",
+          "values_read": 6501,
+          "array_read": true,
+          "summary": {
+            "finite_count": 6501,
+            "min": 2,
+            "max": 6502,
+            "mean": 3252.0
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        },
+        {
+          "index": 2,
+          "name": "weight  ",
+          "format": "45D     ",
+          "byte_offset": 8,
+          "repeat": 45,
+          "fits_code": "D",
+          "values_read": 292545,
+          "array_read": true,
+          "summary": {
+            "finite_count": 292545,
+            "min": 0.0,
+            "max": 0.02,
+            "mean": 0.00015382248884784837
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        }
+      ]
+    },
+    {
+      "hdu_index": 4,
+      "xtension": "BINTABLE",
+      "array_read": true,
+      "row_size": 328,
+      "row_count": 4201,
+      "tfields": 2,
+      "columns": [
+        {
+          "index": 1,
+          "name": "values  ",
+          "format": "K       ",
+          "byte_offset": 0,
+          "repeat": 1,
+          "fits_code": "K",
+          "values_read": 4201,
+          "array_read": true,
+          "summary": {
+            "finite_count": 4201,
+            "min": 2,
+            "max": 4202,
+            "mean": 2102.0
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        },
+        {
+          "index": 2,
+          "name": "weight  ",
+          "format": "40D     ",
+          "byte_offset": 8,
+          "repeat": 40,
+          "fits_code": "D",
+          "values_read": 168040,
+          "array_read": true,
+          "summary": {
+            "finite_count": 168040,
+            "min": 0.0,
+            "max": 0.02,
+            "mean": 0.00023620864079980142
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        }
+      ]
+    },
+    {
+      "hdu_index": 5,
+      "xtension": "BINTABLE",
+      "array_read": true,
+      "row_size": 344,
+      "row_count": 4201,
+      "tfields": 2,
+      "columns": [
+        {
+          "index": 1,
+          "name": "values  ",
+          "format": "K       ",
+          "byte_offset": 0,
+          "repeat": 1,
+          "fits_code": "K",
+          "values_read": 4201,
+          "array_read": true,
+          "summary": {
+            "finite_count": 4201,
+            "min": 2,
+            "max": 4202,
+            "mean": 2102.0
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        },
+        {
+          "index": 2,
+          "name": "weight  ",
+          "format": "42D     ",
+          "byte_offset": 8,
+          "repeat": 42,
+          "fits_code": "D",
+          "values_read": 176442,
+          "array_read": true,
+          "summary": {
+            "finite_count": 176442,
+            "min": 0.0,
+            "max": 0.02,
+            "mean": 0.00023629577991633442
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        }
+      ]
+    },
+    {
+      "hdu_index": 6,
+      "xtension": "BINTABLE",
+      "array_read": false,
+      "row_size": 17,
+      "row_count": 2,
+      "tfields": 2,
+      "columns": [
+        {
+          "index": 1,
+          "name": "name    ",
+          "format": "10A     ",
+          "byte_offset": 0,
+          "array_read": false,
+          "reason": "character_column_not_numeric"
+        },
+        {
+          "index": 2,
+          "name": "quantity",
+          "format": "7A      ",
+          "byte_offset": 10,
+          "array_read": false,
+          "reason": "character_column_not_numeric"
+        }
+      ]
+    },
+    {
+      "hdu_index": 7,
+      "xtension": "BINTABLE",
+      "array_read": true,
+      "row_size": 52,
+      "row_count": 45,
+      "tfields": 6,
+      "columns": [
+        {
+          "index": 1,
+          "name": "tracer_0",
+          "format": "10A     ",
+          "byte_offset": 0,
+          "array_read": false,
+          "reason": "character_column_not_numeric"
+        },
+        {
+          "index": 2,
+          "name": "tracer_1",
+          "format": "10A     ",
+          "byte_offset": 10,
+          "array_read": false,
+          "reason": "character_column_not_numeric"
+        },
+        {
+          "index": 3,
+          "name": "value   ",
+          "format": "D       ",
+          "byte_offset": 20,
+          "repeat": 1,
+          "fits_code": "D",
+          "values_read": 45,
+          "array_read": true,
+          "summary": {
+            "finite_count": 45,
+            "min": -1.0663392013226873,
+            "max": 2500.707544884462,
+            "mean": 685.2224526022593
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        },
+        {
+          "index": 4,
+          "name": "window  ",
+          "format": "K       ",
+          "byte_offset": 28,
+          "repeat": 1,
+          "fits_code": "K",
+          "values_read": 45,
+          "array_read": true,
+          "summary": {
+            "finite_count": 45,
+            "min": 139862792915408,
+            "max": 139862792915408,
+            "mean": 139862792915408.0
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        },
+        {
+          "index": 5,
+          "name": "ell     ",
+          "format": "D       ",
+          "byte_offset": 36,
+          "repeat": 1,
+          "fits_code": "D",
+          "values_read": 45,
+          "array_read": true,
+          "summary": {
+            "finite_count": 45,
+            "min": 598.5,
+            "max": 6123.5,
+            "mean": 2117.3888888888887
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        },
+        {
+          "index": 6,
+          "name": "window_ind",
+          "format": "K       ",
+          "byte_offset": 44,
+          "repeat": 1,
+          "fits_code": "K",
+          "values_read": 45,
+          "array_read": true,
+          "summary": {
+            "finite_count": 45,
+            "min": 0,
+            "max": 44,
+            "mean": 22.0
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        }
+      ]
+    },
+    {
+      "hdu_index": 8,
+      "xtension": "BINTABLE",
+      "array_read": true,
+      "row_size": 52,
+      "row_count": 40,
+      "tfields": 6,
+      "columns": [
+        {
+          "index": 1,
+          "name": "tracer_0",
+          "format": "10A     ",
+          "byte_offset": 0,
+          "array_read": false,
+          "reason": "character_column_not_numeric"
+        },
+        {
+          "index": 2,
+          "name": "tracer_1",
+          "format": "10A     ",
+          "byte_offset": 10,
+          "array_read": false,
+          "reason": "character_column_not_numeric"
+        },
+        {
+          "index": 3,
+          "name": "value   ",
+          "format": "D       ",
+          "byte_offset": 20,
+          "repeat": 1,
+          "fits_code": "D",
+          "values_read": 40,
+          "array_read": true,
+          "summary": {
+            "finite_count": 40,
+            "min": -128.6570515200125,
+            "max": 52.889599071621284,
+            "mean": -18.85325085970586
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        },
+        {
+          "index": 4,
+          "name": "window  ",
+          "format": "K       ",
+          "byte_offset": 28,
+          "repeat": 1,
+          "fits_code": "K",
+          "values_read": 40,
+          "array_read": true,
+          "summary": {
+            "finite_count": 40,
+            "min": 139862792919824,
+            "max": 139862792919824,
+            "mean": 139862792919824.0
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        },
+        {
+          "index": 5,
+          "name": "ell     ",
+          "format": "D       ",
+          "byte_offset": 36,
+          "repeat": 1,
+          "fits_code": "D",
+          "values_read": 40,
+          "array_read": true,
+          "summary": {
+            "finite_count": 40,
+            "min": 598.5,
+            "max": 4123.5,
+            "mean": 1716.625
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        },
+        {
+          "index": 6,
+          "name": "window_ind",
+          "format": "K       ",
+          "byte_offset": 44,
+          "repeat": 1,
+          "fits_code": "K",
+          "values_read": 40,
+          "array_read": true,
+          "summary": {
+            "finite_count": 40,
+            "min": 0,
+            "max": 39,
+            "mean": 19.5
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        }
+      ]
+    },
+    {
+      "hdu_index": 9,
+      "xtension": "BINTABLE",
+      "array_read": true,
+      "row_size": 52,
+      "row_count": 42,
+      "tfields": 6,
+      "columns": [
+        {
+          "index": 1,
+          "name": "tracer_0",
+          "format": "10A     ",
+          "byte_offset": 0,
+          "array_read": false,
+          "reason": "character_column_not_numeric"
+        },
+        {
+          "index": 2,
+          "name": "tracer_1",
+          "format": "10A     ",
+          "byte_offset": 10,
+          "array_read": false,
+          "reason": "character_column_not_numeric"
+        },
+        {
+          "index": 3,
+          "name": "value   ",
+          "format": "D       ",
+          "byte_offset": 20,
+          "repeat": 1,
+          "fits_code": "D",
+          "values_read": 42,
+          "array_read": true,
+          "summary": {
+            "finite_count": 42,
+            "min": -0.14494233666397965,
+            "max": 41.22152338429344,
+            "mean": 15.046923949773358
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        },
+        {
+          "index": 4,
+          "name": "window  ",
+          "format": "K       ",
+          "byte_offset": 28,
+          "repeat": 1,
+          "fits_code": "K",
+          "values_read": 42,
+          "array_read": true,
+          "summary": {
+            "finite_count": 42,
+            "min": 139862792923760,
+            "max": 139862792923760,
+            "mean": 139862792923760.0
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        },
+        {
+          "index": 5,
+          "name": "ell     ",
+          "format": "D       ",
+          "byte_offset": 36,
+          "repeat": 1,
+          "fits_code": "D",
+          "values_read": 42,
+          "array_read": true,
+          "summary": {
+            "finite_count": 42,
+            "min": 498.5,
+            "max": 4123.5,
+            "mean": 1659.8095238095239
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        },
+        {
+          "index": 6,
+          "name": "window_ind",
+          "format": "K       ",
+          "byte_offset": 44,
+          "repeat": 1,
+          "fits_code": "K",
+          "values_read": 42,
+          "array_read": true,
+          "summary": {
+            "finite_count": 42,
+            "min": 0,
+            "max": 41,
+            "mean": 20.5
+          },
+          "classification": "NUMERIC_ARRAY_READ_SUMMARY_ONLY_NOT_EVIDENCE"
+        }
+      ]
+    },
+    {
+      "hdu_index": 10,
+      "xtension": "IMAGE",
+      "array_read": false,
+      "reason": "not_binary_table",
+      "columns": []
+    }
+  ],
+  "schema_to_protocol_comparison": {
+    "comparison_performed": true,
+    "comparison_scope": "available_protocol_metadata_and_fits_schema_only",
+    "full_protocol_execution": false,
+    "protocol_reference_fully_loaded": true,
+    "result": "STRUCTURAL_COMPARISON_ONLY_NO_PROTOCOL_RUN"
+  },
+  "numeric_arrays_read": true,
+  "numerical_data_vector_extracted": false,
+  "covariance_matrix_extracted": false,
+  "schema_validated_against_protocol": false,
+  "external_payload_verified": false,
+  "protocol_run": false,
+  "evidence_supplied": false,
+  "slot_promoted": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "numeric_array_read_attempt_columns": 24,
+  "empty_array_reads_allowed": true,
+  "array_read_boundary": "array-read attempts may encounter zero-row or empty columns; no evidence promotion follows"
+}
