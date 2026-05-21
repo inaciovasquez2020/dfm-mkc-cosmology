@@ -1,0 +1,45 @@
+{
+  "artifact": "dfm_mkc_frozen_axioms_placeholder",
+  "date": "2026-05-21",
+  "status": "FROZEN_AXIOMS_PLACEHOLDER_ONLY_FIELD_EQUATIONS_NOT_SUPPLIED",
+  "predecessor": {
+    "branch": "analysis/dfm-mkc-act-dr6-authentic-payload-validation-run-2026-05-21",
+    "prior_object": "ACTDR6_NUMERICAL_DATA_UNFIXED_EXTRACTED_FROM_AUTHENTIC_PAYLOAD"
+  },
+  "frozen_axiom_slots": {
+    "action_functional": null,
+    "field_equations": null,
+    "matter_coupling_rule": null,
+    "parameter_table": null,
+    "boundary_conditions": null,
+    "prediction_map": null
+  },
+  "required_before_execution": [
+    "closed-form action functional or primitive field equations",
+    "matter coupling rule",
+    "complete parameter table",
+    "boundary conditions",
+    "deterministic prediction map"
+  ],
+  "remaining_blocker": "DFM-MKC field equations and likelihood rule remain unsupplied",
+  "boundary": [
+    "placeholder only",
+    "does not supply DFM-MKC field equations",
+    "does not supply an action functional",
+    "does not supply a likelihood rule",
+    "does not execute the likelihood",
+    "does not compute residuals",
+    "does not supply empirical evidence",
+    "does not promote any empirical slot"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
