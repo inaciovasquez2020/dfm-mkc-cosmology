@@ -1,0 +1,44 @@
+{
+  "artifact": "dfm_mkc_payload_digest_freeze_lock_target",
+  "artifact_sha256": "344878c7b239db1c1a45a64fc17e9110249357d9749885506c7177b059dcfd81",
+  "boundary": [
+    "frontier object only",
+    "does not validate authentic ACT DR6 payload bytes",
+    "does not extract a numerical data vector",
+    "does not extract a covariance matrix",
+    "does not execute the likelihood",
+    "does not supply evidence",
+    "does not promote any empirical slot"
+  ],
+  "date": "2026-05-21",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "hard_blocker": "immutable authentic payload digest is not verified",
+  "next_admissible_object": "schema_validation_execution_gate",
+  "object_index": 4,
+  "predecessor": {
+    "merge_commit": "11a518b",
+    "pull_request": 103,
+    "status": "PREDICATE_TO_SCHEMA_VALIDATOR_BRIDGE_ONLY_NO_AUTHENTIC_PAYLOAD_VALIDATION"
+  },
+  "purpose": "Define the target for freezing authentic payload identity by immutable digest before schema validation.",
+  "required_fields": [
+    "data_vector",
+    "covariance_matrix",
+    "mask",
+    "likelihood_rule",
+    "statistical_threshold",
+    "protocol_hash",
+    "actdr6_release_date",
+    "data_freeze_lock"
+  ],
+  "status": "DIGEST_FREEZE_LOCK_TARGET_ONLY_NO_DIGEST_VERIFICATION"
+}

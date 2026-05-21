@@ -1,0 +1,44 @@
+{
+  "artifact": "dfm_mkc_authentic_payload_validation_target",
+  "artifact_sha256": "410726bfc5e6b072849d2caaa8d9603b10cf1af7ad92291783fab76562dcde3b",
+  "boundary": [
+    "frontier object only",
+    "does not validate authentic ACT DR6 payload bytes",
+    "does not extract a numerical data vector",
+    "does not extract a covariance matrix",
+    "does not execute the likelihood",
+    "does not supply evidence",
+    "does not promote any empirical slot"
+  ],
+  "date": "2026-05-21",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "hard_blocker": "authentic ACT DR6 payload validation remains unexecuted",
+  "next_admissible_object": "payload_field_binding_requirement_surface",
+  "object_index": 2,
+  "predecessor": {
+    "merge_commit": "11a518b",
+    "pull_request": 103,
+    "status": "PREDICATE_TO_SCHEMA_VALIDATOR_BRIDGE_ONLY_NO_AUTHENTIC_PAYLOAD_VALIDATION"
+  },
+  "purpose": "Define the target surface for validating authentic ACT DR6 payload bytes without performing validation.",
+  "required_fields": [
+    "data_vector",
+    "covariance_matrix",
+    "mask",
+    "likelihood_rule",
+    "statistical_threshold",
+    "protocol_hash",
+    "actdr6_release_date",
+    "data_freeze_lock"
+  ],
+  "status": "AUTHENTIC_PAYLOAD_VALIDATION_TARGET_ONLY_NO_PAYLOAD_VALIDATION"
+}

@@ -1,0 +1,44 @@
+{
+  "artifact": "dfm_mkc_authentic_payload_schema_validation_blocker_certificate",
+  "artifact_sha256": "03fe30c97eccc86c19d716c3e0f982a5c9284a5d9506e57829c0bc4f499344c4",
+  "boundary": [
+    "frontier object only",
+    "does not validate authentic ACT DR6 payload bytes",
+    "does not extract a numerical data vector",
+    "does not extract a covariance matrix",
+    "does not execute the likelihood",
+    "does not supply evidence",
+    "does not promote any empirical slot"
+  ],
+  "date": "2026-05-21",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "hard_blocker": "authentic ACT DR6 payload bytes are not supplied",
+  "next_admissible_object": "authentic_payload_validation_target",
+  "object_index": 1,
+  "predecessor": {
+    "merge_commit": "11a518b",
+    "pull_request": 103,
+    "status": "PREDICATE_TO_SCHEMA_VALIDATOR_BRIDGE_ONLY_NO_AUTHENTIC_PAYLOAD_VALIDATION"
+  },
+  "purpose": "Certify that schema validation cannot be promoted until authentic ACT DR6 payload bytes are supplied and bound.",
+  "required_fields": [
+    "data_vector",
+    "covariance_matrix",
+    "mask",
+    "likelihood_rule",
+    "statistical_threshold",
+    "protocol_hash",
+    "actdr6_release_date",
+    "data_freeze_lock"
+  ],
+  "status": "AUTHENTIC_PAYLOAD_SCHEMA_VALIDATION_BLOCKED_NO_PAYLOAD_SUPPLIED"
+}
