@@ -1,0 +1,45 @@
+{
+  "artifact": "dfm_mkc_schema_acceptance_predicate_implementation_surface",
+  "artifact_sha256": "e87f3661e4578737d3c311b697f81e59d6f46656e4ab5f9f87c83f04c180167d",
+  "boundary": [
+    "implementation surface only",
+    "predicate implementation consumes candidate metadata only",
+    "does not validate authentic ACT DR6 payload bytes",
+    "does not extract a numerical data vector",
+    "does not extract a covariance matrix",
+    "does not execute the likelihood",
+    "does not supply evidence",
+    "does not promote any empirical slot"
+  ],
+  "date": "2026-05-21",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "hard_blocker": "schema validation remains blocked",
+  "implementation_file": "tools/dfm_mkc_schema_acceptance_predicates.py",
+  "implemented_fields": [
+    "data_vector",
+    "covariance_matrix",
+    "mask",
+    "likelihood_rule",
+    "statistical_threshold",
+    "protocol_hash",
+    "actdr6_release_date",
+    "data_freeze_lock"
+  ],
+  "predecessor": {
+    "merge_commit": "e1566df",
+    "pull_request": 101,
+    "status": "REQUIREMENT_TARGET_ONLY_ACCEPTANCE_PREDICATES_NOT_IMPLEMENTED"
+  },
+  "status": "PREDICATE_IMPLEMENTATION_SURFACE_ONLY_NO_PAYLOAD_VALIDATION",
+  "test": "tests/test_dfm_mkc_schema_acceptance_predicate_implementation_surface.py",
+  "verifier": "tools/verify_dfm_mkc_schema_acceptance_predicate_implementation_surface.py"
+}
