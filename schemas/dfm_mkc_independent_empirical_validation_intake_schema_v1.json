@@ -1,0 +1,26 @@
+{
+  "schema_id": "DFM_MKC_INDEPENDENT_EMPIRICAL_VALIDATION_INTAKE_SCHEMA_V1",
+  "status": "INTAKE_SCHEMA_ONLY_NO_EVIDENCE_SUPPLIED",
+  "target_slot": "INDEPENDENT_EMPIRICAL_VALIDATION",
+  "base_blocker": "artifacts/repo_intake/dfm_mkc_full_closure_blocker_certificate_2026_05_21.json",
+  "required_future_evidence": [
+    "INDEPENDENT_DATASET_IDENTIFIER",
+    "INDEPENDENT_PIPELINE_OR_REANALYSIS_REPORT",
+    "FROZEN_PREDICTION_VECTOR_BINDING",
+    "PREDECLARED_EVALUATION_PROTOCOL",
+    "MODEL_COMPARISON_STATISTIC",
+    "REPRODUCIBILITY_ARTIFACT_OR_EXTERNAL_REFERENCE"
+  ],
+  "evidence_supplied": false,
+  "slot_promoted": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
