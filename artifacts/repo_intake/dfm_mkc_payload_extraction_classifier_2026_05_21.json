@@ -1,0 +1,64 @@
+{
+  "artifact_id": "dfm_mkc_payload_extraction_classifier_2026_05_21",
+  "status": "PAYLOAD_CLASSIFIER_ONLY_NO_NUMERICAL_EXTRACTION",
+  "depends_on": [
+    "artifacts/repo_intake/dfm_mkc_downloaded_public_payload_manifest_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_public_data_payload_verification_layer_2026_05_21.json"
+  ],
+  "classification_domain": [
+    "SOURCE_PAYLOAD",
+    "NUMERICAL_DATA_VECTOR",
+    "COVARIANCE_MATRIX",
+    "INDEX_ONLY",
+    "UNUSABLE"
+  ],
+  "classifications": [
+    {
+      "source_name": "ACT DR6 CMB-only lite likelihood source archive",
+      "local_path": "artifacts/public_payloads/act_dr6_act_lite_main_2026_05_21.zip",
+      "sha256": "ab195b084e3c52eb15fdac886a1cbebc6244d19afd41f826dd872efb0d08d301",
+      "payload_role": "ACTDR6_source_payload_not_numerical_data_vector",
+      "classification": "SOURCE_PAYLOAD",
+      "reason": "compressed_source_or_likelihood_package_not_extracted_numeric_vector",
+      "numerical_data_vector_extracted": false,
+      "covariance_matrix_extracted": false,
+      "schema_validated": false,
+      "external_payload_verified": false,
+      "slot_promoted": false,
+      "zip_entry_count": 44,
+      "has_python_files": true,
+      "has_yaml_files": true,
+      "has_numeric_data_like_files": true
+    },
+    {
+      "source_name": "WMAP LAMBDA data products index",
+      "local_path": "artifacts/public_payloads/wmap_products_index_2026_05_21.html",
+      "sha256": "fcea6fb068a1de83b5c2cfff063b0860df12ab65acfff6f0139637c134e53fee",
+      "payload_role": "IndependentPublicData_source_index_not_likelihood_payload",
+      "classification": "INDEX_ONLY",
+      "reason": "html_index_or_catalog_page_not_numeric_payload",
+      "numerical_data_vector_extracted": false,
+      "covariance_matrix_extracted": false,
+      "schema_validated": false,
+      "external_payload_verified": false,
+      "slot_promoted": false
+    }
+  ],
+  "numerical_data_vector_extracted": false,
+  "covariance_matrix_extracted": false,
+  "schema_validated": false,
+  "external_payload_verified": false,
+  "protocol_run": false,
+  "evidence_supplied": false,
+  "slot_promoted": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
