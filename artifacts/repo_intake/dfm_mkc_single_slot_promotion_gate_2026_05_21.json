@@ -1,0 +1,46 @@
+{
+  "schema_version": "DFM_MKC_SINGLE_SLOT_PROMOTION_GATE_V1",
+  "status": "PROMOTION_GATE_ONLY_NO_SLOT_PROMOTED",
+  "date": "2026-05-21",
+  "base_gap_matrix": "artifacts/repo_intake/dfm_mkc_dynamical_core_gap_matrix_2026_05_21.json",
+  "rule": "At most one required full-closure slot may be promoted per future patch, and only with explicit supplied evidence.",
+  "eligible_slots": [
+    "ActionFunctional_or_PrimitiveClosedFormFieldEquations",
+    "MatterCouplingRule",
+    "DarkSectorCouplingRule",
+    "SourceTerms",
+    "BoundaryConditions",
+    "ExhaustiveParameterTable",
+    "FrozenPredictionVector",
+    "ACT_DES_HoldoutData",
+    "ResidualEvaluationResult",
+    "IndependentReplicationResult"
+  ],
+  "currently_promoted_slots": [],
+  "required_evidence_fields_for_future_promotion": [
+    "slot_name",
+    "evidence_path",
+    "evidence_sha256",
+    "verifier_path",
+    "test_path",
+    "classification_status",
+    "does_not_prove"
+  ],
+  "allowed_future_classification_statuses": [
+    "SUPPLIED_UNVERIFIED_INPUT",
+    "VERIFIED_FORMAT_ONLY",
+    "VERIFIED_REPOSITORY_LOCAL_ONLY",
+    "VERIFIED_EXTERNAL_HOLDOUT_ONLY",
+    "INDEPENDENT_REPLICATION_RECORDED"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
