@@ -1,0 +1,246 @@
+{
+  "artifact": "DFM_MKC_THEORY_CONTENT_DIGEST_2026_05_21",
+  "boundary": [
+    "content digest only",
+    "no DFM-MKC proof",
+    "no Lambda-CDM failure claim",
+    "no ACT/DES holdout survival claim",
+    "no final cosmological truth claim"
+  ],
+  "items": [
+    {
+      "content_excerpt": "## Status\n\n![cosmology-check](https://github.com/inaciovasquez2020/dfm-mkc-cosmology/actions/workflows/cosmology-check.yml/badge.svg)\n\n# dfm-mkc-cosmology\n\nIncludes executable checks and CI-verified consistency under bounded locality and capacity.\n\nThis repository contains the research implementation and cosmological models associated with the DFM-MKC framework. It is an indexed component of the Vasquez research ecosystem.\nCosmology statement\n\nThe core cosmological claim supported by this repository is stated independently of the implementation details:\n\ndocs/COSMOLOGY_STATEMENT.md\n\nReaders interested in the physics result should start there. This repository exists to make that claim checkable and reproducible.\n\n## Overview\nThe `dfm-mkc-cosmology` module provides specialized analysis and data structures for cosmological applications within the Universal Reference Frame (URF) context.\n\n## Canonical Registry\nThis repository is a registered module of the Vasquez Index. Stable references, archival DOIs, and reproducibility links are maintained at:\n* [Vasquez Index Dashboard](https://inaciovasquez2020.github.io/vasquez-index/dashboard.html)\n\n## Repository Status\n\n## Current Status on Main\n\n- Canonical repository status: `STATUS.md`\n- Real-data integration state: `docs/REAL_DATA_INTEGRATION_READINESS.md`\n- Next closure target: `docs/status/NEXT_CLOSURE_MOVE.md`\n\n* **Repository Handle:** inaciovasquez2020/dfm-mkc-cosmology\n* **Stability:** Refer to the Vasquez Index for the latest stable DOI and version history.\n* **Infrastructure:** [scientific-infrastructure](https://github.com/inaciovasquez2020/scientific-infrastructure)\n\n## References\n- Unified framework context: https://inaciovasquez2020.github.io\n- Project index: https://inaciovasquez2020.github.io/vasquez-index/\n\n---\n\n## Technical Notes\n* **Integration:** This module is designed to interface with `urf-core` and `urf-axioms`.\n* **Reproducibility:** To ensure consistent computational results, utilize the environment configurations defined in the `scientific-infrastructure` module.\n* **Access:** This is a public repository supporting open science and reproducibility.\n\n## Citation\nIf you use this research or implementation in your work, please cite it as follows:\n\n```bibtex\n@manual{Vasquez_DFM_MKC_2026,\n  author = {Vasquez, Inacio F.},\n  title  = {dfm-mkc-cosmology: Cosmological Implementation and Analysis},\n  year   = {2026},\n  url    = {[https://github.com/inaciovasquez2020/dfm-mkc-cosmology](https://github.com/inaciovasquez2020/dfm-mkc-cosmology)}\n}\n\n## Quickstart (60 seconds)\n\n```bash\n./scripts/cosmology check\n```\n\n\nIn addition to unit tests, the codebase includes basic cosmology consistency checks (e.g. monotonic expansion and distance scaling) to guard against numerical or refactoring regressions.\n\nThis project relies on shared tooling and reproducibility infrastructure provided by the scientific-infrastructure repository; it contains domain-specific research code only.\n\n## External status\n\nThis repository is governed by [`docs/status/EXTERNAL_STATUS_LOCK.md`](docs/status/EXTERNAL_STATUS_LOCK.md). Build success, CI success, dashboards, ledgers, axioms, admits, `sorry`, or placeholder witnesses do not constitute theorem-level closure.\n",
+      "exists": true,
+      "path": "README.md",
+      "sha256": "76415baad05c861e91b08e400cac2b79e12993768f35cdfbaa056dcc529c8d3e",
+      "size_bytes": 3245,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "Status: Closed\nCI: required and passing\nReproducibility: deterministic\nPackage version: 1.0.0\nRole in URF: Application / Executable Checks\nClosure basis:\n- repository tests pass\n- CI failures are blocking\n- public data layout aligned with repository loader\n- DESI DR2, DES Y6, and Planck 2018 are integrated as authentic public data artifacts\n- tagged public reproducibility release created\n- DES Y6 export recipe committed\n- DES Y6 fingerprints frozen and tested\n",
+      "exists": true,
+      "path": "STATUS.md",
+      "sha256": "0470324a0116488a43c68fa63ea5bfb03ed1f6ae327c4d4d6c639b8a81cd1aaf",
+      "size_bytes": 464,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "--- BEGIN VLAB REGISTRY SIGNATURE ---\nARTIFACT_NAME: DFM\u2013MKC Cosmology (Dark Fluid Model)\nREGISTRY_ID: EXT-COS-01\nFRAMEWORK_VERSION: URF-2026.1.0\nAUTHOR_ORCID: 0009-0008-8459-3400\nSTATUS: MATHEMATICALLY_CLOSED\nVERIFICATION_TYPE: DETERMINISTIC_AUDIT\n\nLOGIC_GATEWAY:\n  - Witness: topology_check.json\n  - Operator: Delta_MKC\n  - Rigid_Bound: lambda_1 > 0\n\nMANIFEST_HASH: sha256:7f9c3a1b4e2d8f6a5c1b0e9d8f7a6c5b4e3d2f1a0b9c8d7e6f5a4b3c2d1e0f9\nTIMESTAMP: 2026-01-27T22:15:00Z\n--- END VLAB REGISTRY SIGNATURE ---\n",
+      "exists": true,
+      "path": "registry_id.txt",
+      "sha256": "5f35d81621521fd80d79e03405860f0516c5c86e88f44689799aaf1c44a054e5",
+      "size_bytes": 509,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "[2026-01-27 22:18:04] [INFO] Initializing Vasquez Lab Deterministic Auditor...\n[2026-01-27 22:18:04] [INFO] Loading Registry ID: EXT-COS-01 (DFM-MKC Cosmology)\n[2026-01-27 22:18:04] [INFO] Target Manifold: Expanding FLRW (Modified)\n\n--- BEGIN URF SPECTRAL AUDIT ---\n[CHECK] Invariant xi: 0.0834 ................................ [PASS]\n[CHECK] Spectral Gap lambda_1: 1.0 .......................... [PASS]\n[CHECK] Logic-Width Dependency (k >= 4): TRUE ............... [PASS]\n[CHECK] Kinetic Coupling Stability Bound (< 0.125): 0.0834 .. [PASS]\n[CHECK] Evolution Trace (a=1.0): w_eff = -0.9231 ............ [PASS]\n--- END URF SPECTRAL AUDIT ---\n\n[2026-01-27 22:18:05] [RESULT] STATUS: VERIFIED\n[2026-01-27 22:18:05] [RESULT] RIGIDITY_INDEX: 1.0 (Optimal)\n[2026-01-27 22:18:05] [RESULT] TENSION_RESIDUAL: < 0.2 sigma\n\n[2026-01-27 22:18:05] [NOTICE] Core mathematical requirements CLOSED.\n[2026-01-27 22:18:05] [NOTICE] Witness Hash: sha256:7f9c3a1b4e2d8f6a... verified.\n[2026-01-27 22:18:05] [NOTICE] No further internal iterations required.\n",
+      "exists": true,
+      "path": "verification_audit.log",
+      "sha256": "7a9680676cba41cf3fab81c646bb3fde9d38b05a0bbab7a022f31219d4063380",
+      "size_bytes": 1038,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "import json\nimport numpy as np\nimport sys\n\nclass MKCSolver:\n    \"\"\"\n    Deterministic Verifier for Dark Fluid Model with Minimal Kinetic Coupling.\n    Validates structural rigidity within the Unified Rigidity Framework (URF).\n    \"\"\"\n    def __init__(self, config_path='topology_check.json'):\n        self.config = self._load_config(config_path)\n        self.xi = self.config['parameters']['coupling_invariant_xi']\n        self.lambda_1 = self.config['parameters']['spectral_gap_lambda_1']\n        \n    def _load_config(self, path):\n        try:\n            with open(path, 'r') as f:\n                return json.load(f)\n        except FileNotFoundError:\n            print(f\"Error: {path} not found. Audit failed.\")\n            sys.exit(1)\n\n    def verify_spectral_rigidity(self):\n        \"\"\"\n        Confirms if the Dark Fluid coupling maintains a non-zero spectral gap.\n        Requirement: lambda_1(Delta_MKC) > 0\n        \"\"\"\n        print(f\"--- URF Audit: {self.config['registry_id']} ---\")\n        \n        # In DFM-MKC, rigidity is preserved if coupling strength xi \n        # is within the deterministic stability bounds.\n        stability_threshold = 0.125  # Theoretical upper bound for xi in URF-SG\n        \n        is_rigid = (0 < self.xi < stability_threshold) and (self.lambda_1 > 0)\n        \n        status = \"VERIFIED\" if is_rigid else \"STABILITY_BREACH\"\n        print(f\"Coupling Strength (xi): {self.xi}\")\n        print(f\"Spectral Gap (lambda_1): {self.lambda_1}\")\n        print(f\"Result: {status}\")\n        \n        return is_rigid\n\n    def solve_evolution(self, scale_factor_array):\n        \"\"\"\n        Simulates the Dark Fluid pressure-to-density ratio (w_eff).\n        Demonstrates the transition from DM (w=0) to DE (w=-1).\n        \"\"\"\n        # Minimal Kinetic Coupling forces the transition via xi\n        # w_eff = -1 + (1 / (1 + xi * a^-3))\n        w_eff = -1 + (1 / (1 + self.xi * (scale_factor_array**-3)))\n        return w_eff\n\nif __name__ == \"__main__\":\n    solver = MKCSolver()\n    \n    # Perform URF Deterministic Audit\n    if solver.verify_spectral_rigidity():\n        print(\"Model structural stability confirmed for 2026 Research Cycle.\")\n        \n        # Example: Trace evolution from early universe (a=0.1) to present (a=1.0)\n        a_range = np.linspace(0.1, 1.0, 5)\n        w_results = solver.solve_evolution(a_range)\n        \n        print(\"\\nEvolution Trace (w_eff):\")\n        for a, w in zip(a_range, w_results):\n            print(f\"  a={a:.2f} | w_eff={w:.4f}\")\n    else:\n        print(\"Audit Failed: Structural Rigidity requirements not met.\")\n        sys.exit(1)\n",
+      "exists": true,
+      "path": "mkc_solver.py",
+      "sha256": "1037a45572732ad5766634ea28c847deb6eaa74937a2caa8230431362506bfea",
+      "size_bytes": 2609,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "from dataclasses import dataclass\nimport numpy as np\n\n@dataclass(frozen=True)\nclass Parameters:\n    H0: float\n    Omega_m: float\n    Omega_L: float\n\ndef init_params(H0: float, Omega_m: float, Omega_L: float) -> Parameters:\n    return Parameters(H0=H0, Omega_m=Omega_m, Omega_L=Omega_L)\n\ndef evolve_background(params: Parameters, a: np.ndarray) -> np.ndarray:\n    H0 = params.H0\n    Om = params.Omega_m\n    OL = params.Omega_L\n    return H0 * np.sqrt(Om * a**(-3) + OL)\n\ndef observables(params: Parameters, a: np.ndarray) -> dict:\n    H = evolve_background(params, a)\n    return {\n        \"a\": a,\n        \"H\": H,\n    }\n\n",
+      "exists": true,
+      "path": "dfm_mkc/model.py",
+      "sha256": "238b98a309ed618d00450c038c4ff5a864f580f375335f7bd8fc398e19c7d9e1",
+      "size_bytes": 619,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "# Physical and numerical constants used across the DFM-MKC module\n\nC_LIGHT = 299792.458  # speed of light in km/s\nT_CMB = 2.7255       # CMB temperature in Kelvin\n\n# Default numerical tolerances\nRTOL = 1e-8\nATOL = 1e-10\n\n",
+      "exists": true,
+      "path": "dfm_mkc/constants.py",
+      "sha256": "d9fc4555ec1edcaa208f3529e90750b3eb30d081e6c1e6cda2eeaea97d065cd8",
+      "size_bytes": 221,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "import numpy as np\nfrom .model import Parameters, observables\n\ndef gaussian_likelihood(model_values: np.ndarray,\n                        data: np.ndarray,\n                        sigma: np.ndarray) -> float:\n    \"\"\"\n    Standard Gaussian log-likelihood.\n    \"\"\"\n    residual = data - model_values\n    return -0.5 * np.sum((residual / sigma) ** 2)\n\ndef background_likelihood(params: Parameters,\n                          a: np.ndarray,\n                          data_H: np.ndarray,\n                          sigma_H: np.ndarray) -> float:\n    \"\"\"\n    Likelihood for background expansion data H(a).\n    \"\"\"\n    obs = observables(params, a)\n    H_model = obs[\"H\"]\n    return gaussian_likelihood(H_model, data_H, sigma_H)\n\n",
+      "exists": true,
+      "path": "dfm_mkc/likelihoods.py",
+      "sha256": "7be161dd79d5e11fa7382de49fb422325d75242c1bf33edadb0e9ee85997f21f",
+      "size_bytes": 719,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "## Deformation Field Dynamics\n\u03a6\u0307 + 3H\u03a6 = \u03b1 H\u00b2 + \u03b2 \u1e22\n",
+      "exists": true,
+      "path": "theory/deformation_field.md",
+      "sha256": "435d99fc9af30bad4c4a3fad1ce046f19743cffab7cc42bfa0983c9542623f18",
+      "size_bytes": 60,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "## Modified Friedmann Equation\nH\u00b2 = (8\u03c0G/3) \u03c1 + \u03a6\n",
+      "exists": true,
+      "path": "theory/friedmann.md",
+      "sha256": "b698677f897d226badd62c58b52e384a1fb6b259e5be7db1f672867f5e6ae1ab",
+      "size_bytes": 54,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "## Geometry\nFlat FLRW spacetime\n\nds\u00b2 = -dt\u00b2 + a(t)\u00b2 dx\u00b2\n\nH(t) = (da/dt)/a\n",
+      "exists": true,
+      "path": "theory/geometry.md",
+      "sha256": "35bc6014130b1d6f0d5ef45acde1e7d3526f32c24fa105a6868dda2c388ef304",
+      "size_bytes": 78,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "## Interpretation of the Deformation Field \u03a6\n\n\u03a6(t) is an effective geometric deformation term entering the Friedmann equation.\n\nIt is not a fluid with independent conservation, but a derived scalar capturing\nbackreaction, geometric deformation, or effective stress from non-Einsteinian dynamics.\n\n\u03a6 contributes to expansion through:\nH^2 = (8\u03c0G/3)\u03c1 + \u03a6\n\nIts evolution is governed by:\n\u03a6\u0307 + 3H\u03a6 = \u03b1 H^2 + \u03b2 \u1e22\n\nSpecial cases:\n\u03b1 = \u03b2 = 0 recovers standard FLRW.\n\u03a6 = const mimics a cosmological constant.\n",
+      "exists": true,
+      "path": "theory/interpretation.md",
+      "sha256": "a961bdff390ad1627f19408e133aff987a26531d7d4da0f15a18dabbd091da63",
+      "size_bytes": 514,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "## Limits and Background Solutions\n\nMatter domination (w = 0):\n\u03c1 \u221d a^{-3}\n\nRadiation domination (w = 1/3):\n\u03c1 \u221d a^{-4}\n\nStandard \u039bCDM limit:\n\u03b1 = 0, \u03b2 = 0, \u03a6 = \u039b/3\n\nDeformation-dominated regime:\nIf \u03a6 >> (8\u03c0G/3)\u03c1 then expansion is controlled by \u03a6 dynamics.\n\nStability requires \u03a6/H^2 bounded as t \u2192 \u221e.\n",
+      "exists": true,
+      "path": "theory/limits.md",
+      "sha256": "cd5b8d9acc7e0a8bd75df2fd603537b0f43937dc08c5871a4421af453f3a471d",
+      "size_bytes": 318,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "## Observational Dictionary\n\nRedshift:\n1 + z = a_0 / a(t)\n\nHubble parameter:\nH(z) from solution of modified Friedmann system\n\nComoving distance:\n\u03c7(z) = \u222b_0^z dz'/H(z')\n\nLuminosity distance:\nd_L(z) = (1+z) \u03c7(z)\n\nAngular diameter distance:\nd_A(z) = \u03c7(z)/(1+z)\n\nObservational constraints act on (H0, \u03a9m0, \u03a9r0, \u03a9\u039b0, \u03b1, \u03b2).\n",
+      "exists": true,
+      "path": "theory/observables.md",
+      "sha256": "a31251ab60bd28bcfb894eba22b75cbe0370eeba14595c26d062fc8947d2dd31",
+      "size_bytes": 330,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "## Parameters\n\u03b8 = (H0, \u03a9m0, \u03a9r0, \u03a9\u039b0, \u03b1, \u03b2)\n\n## Normalization\n1 = \u03a9m0 + \u03a9r0 + \u03a9\u039b0 + \u03a9\u03a60\n",
+      "exists": true,
+      "path": "theory/parameters.md",
+      "sha256": "14f3697d9235f8fe8b6bdfc928e117f52c18b79c0bb54332c0c9401be05e8519",
+      "size_bytes": 101,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "Parameter Priors and Admissible Ranges\n\nCosmological parameters:\nH0 > 0\n\nDensity parameters:\nOmega_m0 >= 0\nOmega_r0 >= 0\nOmega_Lambda0 >= 0\nOmega_Phi0 = 1 - (Omega_m0 + Omega_r0 + Omega_Lambda0)\n\nDeformation parameters:\nalpha in [-1, 1]\nbeta in [-1, 1]\n\nStability conditions:\nH(z) finite for all z >= 0\n|Phi(z)| / H(z)^2 bounded for all z >= 0\n\nIdentifiability:\nalpha and beta are degenerate with Omega_Phi0 at z = 0\nDegeneracy broken by redshift evolution\n\nPriors:\nFlat priors on alpha and beta within admissible ranges\nStandard observational priors on H0 and density parameters\n",
+      "exists": true,
+      "path": "theory/priors.md",
+      "sha256": "910349efbb181e0d089012e33b22c635353739a8a6f4c86f37263fefe711b207",
+      "size_bytes": 580,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "Redshift-Form Dynamics\n\nRedshift:\n1 + z = a0 / a\n\nTime\u2013redshift relation:\ndt/dz = -1 / ((1+z) H)\n\nEnergy densities:\nrho_i(z) = rho_i0 (1+z)^{3(1+w_i)}\n\nFriedmann constraint:\nH^2 = (8\u03c0G/3) rho + Phi\n\nHubble evolution:\ndH/dz = (1/(1+z)) * [4\u03c0G (rho + p)/H - (Phi + alpha H^2 + beta -(1+z) H dH/dz)/(2H)]\n\nDeformation field evolution:\ndPhi/dz = (1/(1+z)) * [3 Phi - (alpha H^2 + beta -(1+z) H dH/dz)]\n\nSystem closure:\np_i = w_i rho_i\n",
+      "exists": true,
+      "path": "theory/redshift_dynamics.md",
+      "sha256": "57baf9f041bca4919f7d692f12d50f7839d7b47d2e10dfbec8e888a98bb2d718",
+      "size_bytes": 435,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "Linear Scalar Perturbations\n\nGauge\nNewtonian gauge\nds^2 = -(1+2Psi) dt^2 + a(t)^2 (1-2Phi_N) dx^2\n\nBackground\nH(z), Phi(z) from solver\nrho_i(z), p_i(z) with p_i = w_i rho_i\n\nMatter growth equation (quasi-static, subhorizon, minimal)\ndelta_m''(a) + [ (3/a) + (H'(a)/H(a)) ] delta_m'(a) - (3/2) (Omega_m(a)/a^2) mu(a) delta_m(a) = 0\n\nDefinitions\nprime means d/da\nOmega_m(a) = rho_m(a) / (3 H(a)^2 / (8 pi G))\nmu(a) is effective gravitational strength modifier\nMinimal choice mu(a) = 1\n\nOptional mapping for deformation contributions\nDefine Omega_Phi(a) = Phi(a)/H(a)^2\nAllow mu(a) = 1 + c_mu Omega_Phi(a) with c_mu constant to be constrained\n\nOutputs\nGrowth factor D(a) with D(a0)=1\nGrowth rate f(a)=d ln D / d ln a\nf sigma8 if sigma8 is supplied as nuisance parameter\n",
+      "exists": true,
+      "path": "perturbations/linear_scalar.md",
+      "sha256": "15abd52f6b9b1968321b2449e72b72c73eaaa0ab2ce343409e322f34346dc766",
+      "size_bytes": 767,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "import numpy as np\nfrom scipy.integrate import solve_ivp\n\ndef background_odes(z, y, params):\n    H, Phi = y\n    H0, Om_m0, Om_r0, Om_L0, alpha, beta = params\n\n    Om_Phi0 = 1.0 - (Om_m0 + Om_r0 + Om_L0)\n\n    rho_m = Om_m0 * H0**2 * (1 + z)**3\n    rho_r = Om_r0 * H0**2 * (1 + z)**4\n    rho_L = Om_L0 * H0**2\n\n    rho = rho_m + rho_r + rho_L\n    p = (1/3) * rho_r - rho_L\n\n    dH_dz = (1/(1+z)) * (4*np.pi*(rho + p)/H - (Phi + alpha*H**2)/(2*H))\n    dPhi_dz = (1/(1+z)) * (3*Phi - alpha*H**2)\n\n    return [dH_dz, dPhi_dz]\n\ndef solve_background(zmax, params, nz=1000):\n    H0, Om_m0, Om_r0, Om_L0, alpha, beta = params\n    Om_Phi0 = 1.0 - (Om_m0 + Om_r0 + Om_L0)\n\n    y0 = [H0, H0**2 * Om_Phi0]\n    z_span = (0.0, zmax)\n    z_eval = np.linspace(0.0, zmax, nz)\n\n    sol = solve_ivp(\n        lambda z, y: background_odes(z, y, params),\n        z_span,\n        y0,\n        t_eval=z_eval,\n        rtol=1e-8,\n        atol=1e-10\n    )\n\n    return sol.t, sol.y[0], sol.y[1]\n",
+      "exists": true,
+      "path": "solver/background_solver.py",
+      "sha256": "eb79e1b88c789bbad23379c7e42243ff8dea916654690222b72eac3c9893175f",
+      "size_bytes": 965,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "import numpy as np\n\ndef comoving_distance(z_grid, H_grid):\n    z = np.asarray(z_grid)\n    H = np.asarray(H_grid)\n    dz = np.diff(z)\n    invH_mid = 0.5*(1.0/H[:-1] + 1.0/H[1:])\n    chi = np.zeros_like(z)\n    chi[1:] = np.cumsum(dz * invH_mid)\n    return chi\n\ndef luminosity_distance(z_grid, chi_grid):\n    z = np.asarray(z_grid)\n    chi = np.asarray(chi_grid)\n    return (1.0 + z) * chi\n\ndef angular_diameter_distance(z_grid, chi_grid):\n    z = np.asarray(z_grid)\n    chi = np.asarray(chi_grid)\n    return chi / (1.0 + z)\n",
+      "exists": true,
+      "path": "solver/distances.py",
+      "sha256": "4b9fa098da07568da5b6941d14e33950ea2edfba17af1481c4a0950ba013c974",
+      "size_bytes": 522,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "import numpy as np\nfrom solver.background_solver import solve_background\nfrom solver.distances import comoving_distance, luminosity_distance, angular_diameter_distance\n\ndef lcdm_H(z, H0, Om_m0, Om_r0, Om_L0):\n    return H0 * np.sqrt(Om_m0*(1+z)**3 + Om_r0*(1+z)**4 + Om_L0)\n\ndef compare(zmax, params, nz=2000):\n    z, H, Phi = solve_background(zmax, params, nz=nz)\n    H0, Om_m0, Om_r0, Om_L0, alpha, beta = params\n    H_lcdm = lcdm_H(z, H0, Om_m0, Om_r0, Om_L0)\n\n    chi = comoving_distance(z, H)\n    chi_lcdm = comoving_distance(z, H_lcdm)\n\n    out = {\n        \"z\": z,\n        \"H\": H,\n        \"H_lcdm\": H_lcdm,\n        \"Phi\": Phi,\n        \"chi\": chi,\n        \"chi_lcdm\": chi_lcdm,\n        \"dL\": luminosity_distance(z, chi),\n        \"dL_lcdm\": luminosity_distance(z, chi_lcdm),\n        \"dA\": angular_diameter_distance(z, chi),\n        \"dA_lcdm\": angular_diameter_distance(z, chi_lcdm),\n    }\n    return out\n\nif __name__ == \"__main__\":\n    params = (70.0, 0.3, 8.4e-5, 0.699916, 0.0, 0.0)\n    out = compare(3.0, params, nz=2000)\n    z = out[\"z\"]\n    relH = (out[\"H\"] - out[\"H_lcdm\"]) / out[\"H_lcdm\"]\n    relDL = (out[\"dL\"] - out[\"dL_lcdm\"]) / out[\"dL_lcdm\"]\n    print(\"max rel H\", np.max(np.abs(relH)))\n    print(\"max rel dL\", np.max(np.abs(relDL)))\n",
+      "exists": true,
+      "path": "solver/lcdm_compare.py",
+      "sha256": "d8323e2c00d9885e032040e93139b154df7a622e05835b8223dae8a50885b266",
+      "size_bytes": 1250,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "import numpy as np\nfrom solver.background_solver import solve_background\n\ndef lcdm_H(z, H0, Om_m0, Om_r0, Om_L0):\n    return H0 * np.sqrt(Om_m0*(1+z)**3 + Om_r0*(1+z)**4 + Om_L0)\n\ndef score_against_lcdm(z, H, H_lcdm):\n    rel = (H - H_lcdm) / H_lcdm\n    return float(np.max(np.abs(rel)))\n\ndef run_scan(zmax, base_params, alpha_grid, beta_grid, nz=1200):\n    H0, Om_m0, Om_r0, Om_L0, _, _ = base_params\n    results = []\n    for a in alpha_grid:\n        for b in beta_grid:\n            params = (H0, Om_m0, Om_r0, Om_L0, float(a), float(b))\n            z, H, Phi = solve_background(zmax, params, nz=nz)\n            H_lcdm = lcdm_H(z, H0, Om_m0, Om_r0, Om_L0)\n            s = score_against_lcdm(z, H, H_lcdm)\n            results.append((float(a), float(b), s))\n    return results\n\nif __name__ == \"__main__\":\n    base = (70.0, 0.3, 8.4e-5, 0.699916, 0.0, 0.0)\n    grid = np.linspace(-0.2, 0.2, 9)\n    res = run_scan(3.0, base, grid, grid, nz=1200)\n    res.sort(key=lambda t: t[2])\n    print(\"best 10 by max relative H deviation\")\n    for a, b, s in res[:10]:\n        print(a, b, s)\n",
+      "exists": true,
+      "path": "solver/scan.py",
+      "sha256": "3d17a127cf30c7e39781aba000777f2154dcd8b5556e529447ab392714abec47",
+      "size_bytes": 1078,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "import numpy as np\nfrom src.cosmology.background import BackgroundCosmology\n\nclass DFMMKCModel(BackgroundCosmology):\n    def __init__(self, H0=70.0, Omega_m=0.3, Omega_L=0.7, xi=0.0):\n        super().__init__(H0, Omega_m, Omega_L)\n        self.xi = xi\n\n    def E(self, z):\n        return np.sqrt(self.Om*(1+z)**3 + self.OL + self.xi*z*(1+z))\n",
+      "exists": true,
+      "path": "src/models/dfm_mkc.py",
+      "sha256": "18d86e3c8a810fabee5f5e03312aa8824234d7aed03293b54f1a63b61c382e2a",
+      "size_bytes": 342,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "Background Equations Numerical Scaffold\n\nState:\ny(z) = [H(z), Phi(z)]\n\nInputs:\ntheta = (H0, Omega_m0, Omega_r0, Omega_Lambda0, alpha, beta)\n\nAuxiliary:\nrho_i(z) = rho_i0 (1+z)^(3(1+w_i))\np_i(z) = w_i rho_i(z)\nrho(z) = sum_i rho_i(z)\np(z) = sum_i p_i(z)\n\nConstraint:\nH(z)^2 = (8\u03c0G/3) rho(z) + Phi(z)\n\nODE form:\ndH/dz = f_H(H, Phi, z; theta)\ndPhi/dz = f_Phi(H, Phi, z; theta)\n\nInitial conditions:\nH(0) = H0\nPhi(0) = H0^2 Omega_Phi0\nOmega_Phi0 = 1 - (Omega_m0 + Omega_r0 + Omega_Lambda0)\n\nOutput targets:\nH(z)\nchi(z) = \u222b_0^z dz'/H(z')\ndL(z) = (1+z) chi(z)\ndA(z) = chi(z)/(1+z)\n",
+      "exists": true,
+      "path": "numerics/background_equations.md",
+      "sha256": "dbfef24692193047de77bb24d387b4c463326615cf9fc2aa36e0f50c7abd8c16",
+      "size_bytes": 577,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "CLASS Interface Stub\n\nGoal\nExpose a background module returning H(z) and derived distances for the deformation model.\n\nInputs\ntheta = (H0, Omega_m0, Omega_r0, Omega_Lambda0, alpha, beta)\n\nBackground ODEs\nUse redshift-form system to integrate y(z) = [H(z), Phi(z)] with initial conditions at z = 0.\n\nRequired callable surfaces\nH_of_z(z, theta)\nbackground_table(z_array, theta) returning arrays for H, Phi, chi, dL, dA\n\nDerived distances\nchi(z) = integral_0^z dz'/H(z')\ndL(z) = (1+z) chi(z)\ndA(z) = chi(z)/(1+z)\n\nValidation\nH(z) > 0 on integration domain\nfinite H(z) and bounded Phi(z)/H(z)^2 on integration domain\n",
+      "exists": true,
+      "path": "numerics/class_interface.md",
+      "sha256": "5e7db11f5dc2300022c561c37627fc3cbc400f8e05015c9d7e3eeaca18d80dc6",
+      "size_bytes": 613,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "Numerics Interface Notes\n\nGoal:\nProvide a minimal background module interface compatible with CLASS-style pipelines.\n\nRequired functions:\nH_of_z(z, theta)\ndH_dz(z, y, theta)\ndPhi_dz(z, y, theta)\n\nRequired constants:\nG\nc set to 1 if using natural units\n\nValidation checks:\nH(z) > 0 for z >= 0\nH(z) finite for z in [0, zmax]\nPhi(z)/H(z)^2 bounded for z in [0, zmax]\n",
+      "exists": true,
+      "path": "numerics/interface_notes.md",
+      "sha256": "865edd4f58b5805ff2d5361ba99f83f0cb5fc16685e0a92ab5e44df95c293c0a",
+      "size_bytes": 364,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "Likelihood API\n\nInputs\nDataset must be provided as CSV in data/\nUser supplies file paths and columns\n\nRequired model functions\nH_of_z(z, theta)\ndL_of_z(z, theta)\nOptional\ndA_of_z(z, theta)\nchi_of_z(z, theta)\n\nSupernova likelihood\nmu_model(z) = 5 log10(dL(z)) + M\nchi2 = sum_i ((mu_i - mu_model(z_i))/sigma_i)^2\nM is nuisance parameter analytically or numerically marginalized\n\nBAO likelihood (generic)\nUse supplied observable columns, e.g.\nDV_over_rd(z) or DM_over_rd(z) or DH_over_rd(z)\nCompute model values from H(z), chi(z) and a supplied rd\n\nCMB distance priors (optional)\nUse compressed parameters provided by the user\n",
+      "exists": true,
+      "path": "likelihoods/likelihood_api.md",
+      "sha256": "d630748ba40077ed48aa2b63766ec8fd7c235abb00caf13b774bcd3bcc0eb4fd",
+      "size_bytes": 624,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "{\n  \"status\": \"AWAITING_AUTHENTIC_DES_Y6_MACHINE_READABLE_INPUT\",\n  \"required_files\": [\n    \"DES_Y6_data_vector\",\n    \"DES_Y6_covariance\",\n    \"DES_Y6_LCDM_baseline_or_likelihood\",\n    \"DES_Y6_metadata_or_citation\"\n  ],\n  \"source_requirement\": \"official_DES_or_authoritative_release_only\",\n  \"checksum_required\": true,\n  \"boundary\": \"No empirical comparison is admissible until authentic DES Y6 machine-readable inputs are materialized.\"\n}\n",
+      "exists": true,
+      "path": "data/des_y6/AUTHENTIC_INPUT_MANIFEST.json",
+      "sha256": "e68d186daf37467dda653da2a2fab2771740a69f9a5502ea85e4195e16850672",
+      "size_bytes": 440,
+      "truncated": false
+    },
+    {
+      "content_excerpt": "{\n  \"artifact_name\": \"DFM\u2013MKC Cosmology Stability Witness\",\n  \"registry_id\": \"EXT-COS-01\",\n  \"version\": \"2026.1.0\",\n  \"author\": \"Inacio F. Vasquez\",\n  \"status\": \"MATHEMATICALLY_CLOSED\",\n  \"parameters\": {\n    \"coupling_invariant_xi\": 0.0834,\n    \"kinetic_degree_freedom\": 1,\n    \"logic_width_k\": 4,\n    \"spectral_gap_lambda_1\": 1.0,\n    \"h_0_resolution\": \"73.2 km/s/Mpc\",\n    \"s_8_consistency\": 0.822\n  },\n  \"rigidity_witness\": {\n    \"operator\": \"Laplace-Beltrami (Modified MKC)\",\n    \"manifold_type\": \"Expanding FLRW\",\n    \"boundary_conditions\": \"Neumann-Local\",\n    \"spectral_rigidity_check\": {\n      \"is_closed\": true,\n      \"lower_bound_verified\": \"lambda_1 > 0\",\n      \"logic_width_dependency\": \"k >= f(tw)\",\n      \"audit_hash\": \"sha256:8f2d3a1c9e4b7f...\"\n    }\n  },\n  \"logical_structure\": {\n    \"framework\": \"Unified Rigidity Framework (URF)\",\n    \"local_homogeneity_forced\": true,\n    \"global_rigidity_satisfied\": true\n  },\n  \"verification_timestamp\": \"2026-01-27T22:00:00Z\"\n}\n",
+      "exists": true,
+      "path": "models",
+      "sha256": "24f5cbb54d286131e05a623cab05079eec44dbf6057f21cbf84118003f4ff83e",
+      "size_bytes": 985,
+      "truncated": false
+    }
+  ],
+  "repository": "dfm-mkc-cosmology",
+  "status": "THEORY_CONTENT_DIGEST_CREATED"
+}
