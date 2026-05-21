@@ -1,8 +1,8 @@
 {
-  "artifact": "dfm_mkc_act_dr6_authentic_payload_validation_run",
+  "artifact": "dfm_mkc_act_dr6_payload_file_presence_inspection",
   "artifact_sha256": "34ebe3be31ffa7db5ca5776d332843d5103d6f4abdcf7d6cfa1695dedab91e36",
   "boundary": [
-    "authentic payload file-presence validation only",
+    "payload file-presence inspection only",
     "does not extract a numerical data vector",
     "does not extract a covariance matrix",
     "does not bind protocol fields to FITS HDUs",
@@ -16,7 +16,7 @@
     "DFM-MKC",
     "Lambda-CDM failure",
     "ACT/DES holdout survival",
-    "independent empirical validation",
+    "independent empirical inspection",
     "dark-energy resolution",
     "dark-matter resolution",
     "Nobel-level physical discovery",
@@ -29,13 +29,13 @@
     "status": "SCHEMA_VALIDATION_EXECUTION_GATE_ONLY_NOT_EXECUTED"
   },
   "remaining_blocker": "protocol field binding and numerical extraction remain unexecuted",
-  "status": "AUTHENTIC_ACT_DR6_PAYLOAD_FILE_VALIDATED_NO_NUMERICAL_EXTRACTION",
-  "validated_payload": {
+  "status": "ACT_DR6_PAYLOAD_FILE_PRESENCE_INSPECTED_NO_SCHEMA_VALIDATION",
+  "inspected_payload": {
     "path": "artifacts/public_payloads/act_lite_numeric_like_extracted_2026_05_21/DR6-ACT-lite-main__act_dr6_cmbonly__data__act_dr6_cmb_sacc.fits",
     "sha256": "9506da7b482c10b60571c5a3805fc392853d50f81244485754566d21b85219ad",
     "size_bytes": 5391360
   },
-  "validation_performed": [
+  "inspection_performed": [
     "payload path exists",
     "payload path is a file",
     "payload file is nonempty",

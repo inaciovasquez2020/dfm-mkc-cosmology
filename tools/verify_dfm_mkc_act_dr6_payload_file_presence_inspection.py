@@ -6,8 +6,8 @@ import hashlib
 import json
 import sys
 
-ARTIFACT = Path("artifacts/repo_intake/dfm_mkc_act_dr6_authentic_payload_validation_run_2026_05_21.json")
-STATUS_DOC = Path("docs/status/DFM_MKC_ACT_DR6_AUTHENTIC_PAYLOAD_VALIDATION_RUN_2026_05_21.md")
+ARTIFACT = Path("artifacts/repo_intake/dfm_mkc_act_dr6_payload_file_presence_inspection_2026_05_21.json")
+STATUS_DOC = Path("docs/status/DFM_MKC_ACT_DR6_PAYLOAD_FILE_PRESENCE_INSPECTION_2026_05_21.md")
 
 PAYLOAD_CANDIDATES = [
     Path("artifacts/public_payloads/act_lite_numeric_like_extracted_2026_05_21/DR6-ACT-lite-main__act_dr6_cmbonly__data__act_dr6_cmb_sacc.fits"),
@@ -15,7 +15,7 @@ PAYLOAD_CANDIDATES = [
 ]
 
 REQUIRED_BOUNDARIES = [
-    "authentic payload file-presence validation only",
+    "payload file-presence inspection only",
     "does not extract a numerical data vector",
     "does not extract a covariance matrix",
     "does not bind protocol fields to FITS HDUs",
@@ -29,7 +29,7 @@ REQUIRED_NONCLAIMS = [
     "DFM-MKC",
     "Lambda-CDM failure",
     "ACT/DES holdout survival",
-    "independent empirical validation",
+    "independent empirical inspection",
     "dark-energy resolution",
     "dark-matter resolution",
     "Nobel-level physical discovery",
@@ -56,14 +56,14 @@ def main() -> None:
     data = json.loads(ARTIFACT.read_text())
     text = STATUS_DOC.read_text()
 
-    if data.get("status") != "AUTHENTIC_ACT_DR6_PAYLOAD_FILE_VALIDATED_NO_NUMERICAL_EXTRACTION":
+    if data.get("status") != "ACT_DR6_PAYLOAD_FILE_PRESENCE_INSPECTED_NO_SCHEMA_VALIDATION":
         fail("unexpected status")
     if data.get("predecessor", {}).get("pull_request") != 104:
         fail("missing predecessor PR #104")
     if data.get("predecessor", {}).get("merge_commit") != "920c260":
         fail("missing predecessor merge commit 920c260")
 
-    payload = data.get("validated_payload", {})
+    payload = data.get("inspected_payload", {})
     payload_path = Path(payload.get("path", ""))
 
     if payload_path not in PAYLOAD_CANDIDATES:
@@ -93,7 +93,7 @@ def main() -> None:
         if nonclaim not in text:
             fail(f"missing status nonclaim: {nonclaim}")
 
-    print("DFM-MKC ACT DR6 authentic payload validation run verification OK.")
+    print("DFM-MKC ACT DR6 payload file-presence inspection verification OK.")
     print(f"Status: {data['status']}")
     print(f"Payload: {payload_path}")
     print(f"sha256: {digest}")
