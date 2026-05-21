@@ -1,0 +1,21 @@
+{
+  "schema_version": "DFM_MKC_SOURCE_TERMS_INTAKE_SCHEMA_ARTIFACT_V1",
+  "status": "INTAKE_SCHEMA_ONLY_NO_EVIDENCE_SUPPLIED",
+  "date": "2026-05-21",
+  "schema_path": "schemas/dfm_mkc_source_terms_intake_schema_v1.json",
+  "target_slot": "SourceTerms",
+  "base_blocker": "artifacts/repo_intake/dfm_mkc_full_closure_blocker_certificate_2026_05_21.json",
+  "currently_supplied": false,
+  "currently_promoted": false,
+  "next_required_input": "Supply explicit source-term definitions/equations and their matter, dark-sector, deformation-field, balance-law, and model.H(z) dependencies.",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
