@@ -1,0 +1,109 @@
+{
+  "artifact": "dfm_mkc_minimal_schema_validation_requirement_target",
+  "artifact_sha256": "527210dd88b2542a7cc4266abe45a70f10d352cf1f0e5aa5484cd7aca87060e4",
+  "boundary": [
+    "requirement target only",
+    "acceptance predicates specified but not implemented as schema validation",
+    "candidate protocol field map exists but is not validated",
+    "numerical data vector not extracted",
+    "covariance matrix not extracted",
+    "full protocol execution not performed",
+    "no evidence supplied",
+    "no slot promoted"
+  ],
+  "date": "2026-05-21",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "hard_blocker": "schema validation remains blocked",
+  "minimal_schema_validation_requirement_target": {
+    "acceptance_predicates": {
+      "actdr6_release_date": [
+        "field is present",
+        "date is ISO-8601 formatted",
+        "date identifies the ACT DR6 public-release snapshot admitted by the protocol",
+        "date is not later than data_freeze_lock timestamp"
+      ],
+      "covariance_matrix": [
+        "field is present",
+        "field is bound to the protocol-approved covariance source",
+        "value is a two-dimensional numeric matrix",
+        "matrix is square",
+        "all entries are finite real numbers",
+        "row count equals data_vector length",
+        "column count equals data_vector length",
+        "matrix satisfies the protocol symmetry predicate",
+        "matrix satisfies the protocol positive-semidefinite predicate",
+        "value is covered by data_freeze_lock"
+      ],
+      "data_freeze_lock": [
+        "field is present",
+        "lock identifies the frozen admissible payload",
+        "lock records timestamp or immutable content digest",
+        "lock covers data_vector, covariance_matrix, mask, likelihood_rule, statistical_threshold, protocol_hash, and actdr6_release_date"
+      ],
+      "data_vector": [
+        "field is present",
+        "field is bound to the protocol-approved data-vector source",
+        "value is a one-dimensional numeric array",
+        "array is nonempty",
+        "all entries are finite real numbers",
+        "length equals mask length",
+        "length equals covariance_matrix row count",
+        "value is covered by data_freeze_lock"
+      ],
+      "likelihood_rule": [
+        "field is present",
+        "field identifies the exact protocol likelihood rule",
+        "rule consumes data_vector, covariance_matrix, and mask",
+        "rule output type is the protocol likelihood statistic",
+        "rule version is frozen by protocol_hash"
+      ],
+      "mask": [
+        "field is present",
+        "field is bound to the protocol-approved mask source",
+        "value is a one-dimensional boolean or zero-one array",
+        "length equals data_vector length",
+        "at least one entry is active",
+        "masked covariance restriction remains square",
+        "value is covered by data_freeze_lock"
+      ],
+      "protocol_hash": [
+        "field is present",
+        "hash is a nonempty string",
+        "hash identifies the frozen protocol specification",
+        "hash covers field keys, field sources, acceptance predicates, likelihood_rule, statistical_threshold, and data_freeze_lock"
+      ],
+      "statistical_threshold": [
+        "field is present",
+        "threshold is numeric",
+        "threshold is finite",
+        "threshold comparison direction is specified",
+        "threshold is frozen by protocol_hash"
+      ]
+    },
+    "required_protocol_fields": [
+      "data_vector",
+      "covariance_matrix",
+      "mask",
+      "likelihood_rule",
+      "statistical_threshold",
+      "protocol_hash",
+      "actdr6_release_date",
+      "data_freeze_lock"
+    ]
+  },
+  "predecessor": {
+    "merge_commit": "0923660",
+    "pull_request": 100,
+    "status": "SCHEMA_VALIDATION_BLOCKED_CANDIDATE_MAP_EXISTS"
+  },
+  "status": "REQUIREMENT_TARGET_ONLY_ACCEPTANCE_PREDICATES_NOT_IMPLEMENTED"
+}
