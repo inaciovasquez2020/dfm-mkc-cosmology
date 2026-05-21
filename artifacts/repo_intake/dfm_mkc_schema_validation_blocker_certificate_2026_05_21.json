@@ -1,0 +1,105 @@
+{
+  "artifact_id": "dfm_mkc_schema_validation_blocker_certificate_2026_05_21",
+  "status": "SCHEMA_VALIDATION_BLOCKED_CANDIDATE_MAP_EXISTS",
+  "depends_on": [
+    "artifacts/repo_intake/dfm_mkc_protocol_gated_extraction_map_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_act_lite_schema_protocol_array_read_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_actdr6_numerical_data_missing_object_target_2026_05_21.json"
+  ],
+  "candidate_map_exists": true,
+  "candidate_field_record_count": 8,
+  "required_protocol_field_count": 8,
+  "mapped_field_count": 2,
+  "unmapped_field_count": 6,
+  "candidate_field_records": [
+    {
+      "protocol_field": "data_vector",
+      "candidate_count": 9,
+      "mapped": true,
+      "promotion_status": "CANDIDATE_ONLY_NOT_VALIDATED_NOT_EVIDENCE",
+      "validation_status": "NOT_SCHEMA_VALIDATED_AGAINST_PROTOCOL"
+    },
+    {
+      "protocol_field": "covariance_matrix",
+      "candidate_count": 0,
+      "mapped": false,
+      "promotion_status": "CANDIDATE_ONLY_NOT_VALIDATED_NOT_EVIDENCE",
+      "validation_status": "NOT_SCHEMA_VALIDATED_AGAINST_PROTOCOL"
+    },
+    {
+      "protocol_field": "mask",
+      "candidate_count": 6,
+      "mapped": true,
+      "promotion_status": "CANDIDATE_ONLY_NOT_VALIDATED_NOT_EVIDENCE",
+      "validation_status": "NOT_SCHEMA_VALIDATED_AGAINST_PROTOCOL"
+    },
+    {
+      "protocol_field": "likelihood_rule",
+      "candidate_count": 0,
+      "mapped": false,
+      "promotion_status": "CANDIDATE_ONLY_NOT_VALIDATED_NOT_EVIDENCE",
+      "validation_status": "NOT_SCHEMA_VALIDATED_AGAINST_PROTOCOL"
+    },
+    {
+      "protocol_field": "statistical_threshold",
+      "candidate_count": 0,
+      "mapped": false,
+      "promotion_status": "CANDIDATE_ONLY_NOT_VALIDATED_NOT_EVIDENCE",
+      "validation_status": "NOT_SCHEMA_VALIDATED_AGAINST_PROTOCOL"
+    },
+    {
+      "protocol_field": "protocol_hash",
+      "candidate_count": 0,
+      "mapped": false,
+      "promotion_status": "CANDIDATE_ONLY_NOT_VALIDATED_NOT_EVIDENCE",
+      "validation_status": "NOT_SCHEMA_VALIDATED_AGAINST_PROTOCOL"
+    },
+    {
+      "protocol_field": "actdr6_release_date",
+      "candidate_count": 0,
+      "mapped": false,
+      "promotion_status": "CANDIDATE_ONLY_NOT_VALIDATED_NOT_EVIDENCE",
+      "validation_status": "NOT_SCHEMA_VALIDATED_AGAINST_PROTOCOL"
+    },
+    {
+      "protocol_field": "data_freeze_lock",
+      "candidate_count": 0,
+      "mapped": false,
+      "promotion_status": "CANDIDATE_ONLY_NOT_VALIDATED_NOT_EVIDENCE",
+      "validation_status": "NOT_SCHEMA_VALIDATED_AGAINST_PROTOCOL"
+    }
+  ],
+  "schema_validation_blocked": true,
+  "blocking_reasons": [
+    "protocol_fields_not_validated",
+    "schema_not_validated_against_protocol",
+    "external_payload_not_verified",
+    "numerical_data_vector_not_extracted",
+    "covariance_matrix_not_extracted",
+    "full_protocol_not_executed",
+    "evidence_not_supplied",
+    "slot_not_promoted"
+  ],
+  "numeric_arrays_read_or_attempted": true,
+  "protocol_gated_extraction_map_status": "PROTOCOL_GATED_EXTRACTION_MAP_ONLY_NOT_VALIDATION",
+  "array_read_status": "SCHEMA_PROTOCOL_COMPARISON_WITH_ARRAY_READING_NOT_EVIDENCE",
+  "target_status": "LEVEL_2_DATA_TARGET_ONLY_ACTDR6_NUMERICAL_DATA_NOT_SUPPLIED",
+  "protocol_fields_validated": false,
+  "schema_validated_against_protocol": false,
+  "external_payload_verified": false,
+  "numerical_data_vector_extracted": false,
+  "covariance_matrix_extracted": false,
+  "protocol_run": false,
+  "evidence_supplied": false,
+  "slot_promoted": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
