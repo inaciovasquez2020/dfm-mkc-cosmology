@@ -1,0 +1,47 @@
+{
+  "artifact_id": "dfm_mkc_act_lite_numeric_like_extraction_2026_05_21",
+  "status": "ACT_LITE_NUMERIC_LIKE_EXTRACTION_ONLY_NOT_EVIDENCE",
+  "input_payload": "artifacts/public_payloads/act_dr6_act_lite_main_2026_05_21.zip",
+  "output_directory": "artifacts/public_payloads/act_lite_numeric_like_extracted_2026_05_21",
+  "depends_on": [
+    "artifacts/repo_intake/dfm_mkc_act_lite_payload_inventory_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_payload_extraction_classifier_2026_05_21.json",
+    "artifacts/repo_intake/dfm_mkc_downloaded_public_payload_manifest_2026_05_21.json"
+  ],
+  "extracted_files": [
+    {
+      "archive_path": "DR6-ACT-lite-main/act_dr6_cmbonly/data/act_dr6_cmb_sacc.fits",
+      "local_path": "artifacts/public_payloads/act_lite_numeric_like_extracted_2026_05_21/DR6-ACT-lite-main__act_dr6_cmbonly__data__act_dr6_cmb_sacc.fits",
+      "compressed_size": 207679,
+      "uncompressed_size": 5391360,
+      "sha256": "9506da7b482c10b60571c5a3805fc392853d50f81244485754566d21b85219ad",
+      "classification": "NUMERIC_LIKE_FILE_EXTRACTED_NOT_SCHEMA_VALIDATED",
+      "numerical_data_vector_extracted": false,
+      "covariance_matrix_extracted": false,
+      "schema_validated": false,
+      "external_payload_verified": false,
+      "evidence_supplied": false,
+      "slot_promoted": false
+    }
+  ],
+  "skipped_count": 43,
+  "archive_extracted_partially": true,
+  "numeric_like_files_extracted": 1,
+  "numerical_data_vector_extracted": false,
+  "covariance_matrix_extracted": false,
+  "schema_validated": false,
+  "external_payload_verified": false,
+  "protocol_run": false,
+  "evidence_supplied": false,
+  "slot_promoted": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "ACT/DES holdout survival",
+    "independent empirical validation",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
