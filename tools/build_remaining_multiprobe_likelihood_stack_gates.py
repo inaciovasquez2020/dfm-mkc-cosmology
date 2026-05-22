@@ -224,7 +224,7 @@ def main():
         "likelihood_run_executed": False,
         "profiled_log_likelihoods": None,
         "test_statistic": None,
-        "required_next_object": "OUT_OF_SAMPLE_MULTIPROBE_LCDM_REJECTION_CERTIFICATE",
+        "required_next_object": "MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST_WITH_REAL_DATA_PATHS",
         "does_not_prove": sorted(set(DOES_NOT_PROVE + [
             "Lambda-CDM failure",
             "empirical validation",
