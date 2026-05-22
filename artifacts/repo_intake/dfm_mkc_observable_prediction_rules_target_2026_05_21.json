@@ -1,0 +1,92 @@
+{
+  "artifact": "DFM_MKC_OBSERVABLE_PREDICTION_RULES_TARGET",
+  "date": "2026-05-21",
+  "status": "OBSERVABLE_PREDICTION_RULES_TARGET_ONLY_NOT_SUPPLIED",
+  "claim_level": "target_schema_only",
+  "observable_prediction_rules_supplied": false,
+  "channel_projection_rules_supplied": false,
+  "residual_vector_rules_supplied": false,
+  "covariance_compatibility_supplied": false,
+  "likelihood_ready": false,
+  "root_blocker": "DFM_OBSERVABLE_PREDICTION_RULES_NOT_SUPPLIED",
+  "upstream_required_objects": [
+    "DFM_FIELD_EQUATIONS_OR_ACTION_FUNCTIONAL",
+    "DFM_PARAMETER_MAP"
+  ],
+  "required_prediction_rule_fields": [
+    "observable_channel_name",
+    "input_parameter_dependencies",
+    "input_initial_condition_dependencies",
+    "input_boundary_condition_dependencies",
+    "forward_model_equations",
+    "projection_from_dfm_state_to_observable",
+    "units_and_normalization",
+    "redshift_domain",
+    "scale_domain",
+    "nuisance_parameter_separation",
+    "calibration_rule",
+    "covariance_compatibility_rule",
+    "residual_vector_definition",
+    "lambda_cdm_baseline_comparison_rule",
+    "holdout_freeze_rule",
+    "failure_mode_definition"
+  ],
+  "required_observable_channels": {
+    "CMB_TT_TE_EE": {
+      "required_output": "predicted TT TE EE spectra and residual vector",
+      "status": "blocked_no_dfm_observable_prediction_rule"
+    },
+    "CMB_LENSING": {
+      "required_output": "predicted CMB lensing bandpowers and residual vector",
+      "status": "blocked_no_dfm_observable_prediction_rule"
+    },
+    "BAO_DISTANCES": {
+      "required_output": "predicted DM_over_rd, DH_over_rd, DV_over_rd by redshift bin",
+      "status": "blocked_no_dfm_observable_prediction_rule"
+    },
+    "SNIA_DISTANCES": {
+      "required_output": "predicted distance moduli and Hubble residuals",
+      "status": "blocked_no_dfm_observable_prediction_rule"
+    },
+    "WEAK_LENSING_AND_CLUSTERING": {
+      "required_output": "predicted xi_plus, xi_minus, w_theta, gamma_t, and nuisance-aware residual vector",
+      "status": "blocked_no_dfm_observable_prediction_rule"
+    },
+    "CLUSTER_ABUNDANCE": {
+      "required_output": "predicted cluster-count and mass-calibration residual vector",
+      "status": "blocked_no_dfm_observable_prediction_rule"
+    }
+  },
+  "downstream_blocked_objects": [
+    "DFM_FROZEN_PREDICTION_VECTOR",
+    "DFM_LIKELIHOOD_RULE",
+    "DFM_HOLDOUT_SPLIT",
+    "DFM_VS_LAMBDA_CDM_COMPARISON"
+  ],
+  "admissibility_rule": "DFM predictions remain inadmissible until observable prediction rules map the supplied DFM equations and parameter map into each required cosmological observable channel before likelihood execution.",
+  "boundary": [
+    "Target schema only.",
+    "Does not supply DFM field equations.",
+    "Does not supply DFM action functional.",
+    "Does not supply DFM parameter map.",
+    "Does not supply DFM observable prediction rules.",
+    "Does not supply channel projection rules.",
+    "Does not supply residual vector rules.",
+    "Does not supply covariance compatibility rules.",
+    "Does not supply frozen predictions.",
+    "Does not execute any likelihood.",
+    "Does not produce empirical evidence.",
+    "Does not prove DFM.",
+    "Does not disprove Lambda-CDM.",
+    "Does not replace CDM."
+  ],
+  "does_not_prove": [
+    "DFM",
+    "Lambda-CDM failure",
+    "CDM replacement",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
