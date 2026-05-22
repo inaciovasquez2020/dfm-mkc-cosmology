@@ -1,0 +1,84 @@
+{
+  "id": "EXECUTED_MULTIPROBE_PROFILED_LIKELIHOOD_RUN",
+  "status": "INPUT_GATED_EXECUTION_TARGET_ONLY_NO_LIKELIHOOD_RUN",
+  "created": "2026-05-22",
+  "purpose": "Define the executable gate for a real multiprobe profiled likelihood run against six-parameter flat Lambda-CDM and alternative models.",
+  "null_model": "six-parameter spatially-flat Lambda-CDM",
+  "required_input_manifest": "data/likelihood_inputs/multiprobe_likelihood_input_manifest.json",
+  "required_probe_inputs": [
+    {
+      "probe": "CMB",
+      "required_files": [
+        "planck_2018_likelihood",
+        "planck_2018_lensing",
+        "act_dr6_likelihood_or_chains"
+      ]
+    },
+    {
+      "probe": "BAO",
+      "required_files": [
+        "desi_dr2_bao_likelihood_or_covariance",
+        "desi_dr2_bao_bestfit_or_chain"
+      ]
+    },
+    {
+      "probe": "SN_H0",
+      "required_files": [
+        "pantheon_plus_data",
+        "pantheon_plus_covariance",
+        "sh0es_calibrator_data",
+        "union3_or_des_sn_crosscheck"
+      ]
+    },
+    {
+      "probe": "GROWTH_LENSING",
+      "required_files": [
+        "des_y6_3x2pt_likelihood_or_chain",
+        "kids_legacy_likelihood_or_chain",
+        "hsc_y3_likelihood_or_chain",
+        "cmb_lensing_likelihood_or_chain"
+      ]
+    },
+    {
+      "probe": "SYSTEMATICS",
+      "required_files": [
+        "nuisance_prior_table",
+        "systematics_profile_config",
+        "holdout_split_manifest"
+      ]
+    }
+  ],
+  "execution_outputs_required": [
+    "profiled_lcdm_best_fit",
+    "profiled_systematics_vector",
+    "delta_chi2_by_probe",
+    "global_delta_chi2",
+    "look_elsewhere_adjusted_sigma",
+    "posterior_predictive_p_value",
+    "holdout_survival_table",
+    "alternative_model_stability_scorecard",
+    "independent_reproduction_log"
+  ],
+  "current_execution_status": {
+    "input_manifest_present": false,
+    "all_required_probe_inputs_present": false,
+    "likelihood_backend_present": false,
+    "profiled_lcdm_run_executed": false,
+    "alternative_model_run_executed": false,
+    "holdout_validation_executed": false,
+    "independent_reproduction_executed": false
+  },
+  "blocking_reason": "Required real likelihood inputs and backend execution products are not present in this repository.",
+  "required_next_object": "MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST_WITH_REAL_DATA_PATHS",
+  "boundary": "Input-gated execution target only. This does not execute a real likelihood, reject Lambda-CDM, validate DFM-MKC, promote an alternative model, or resolve any Clay problem.",
+  "does_not_prove": [
+    "Lambda-CDM failure",
+    "six-parameter flat Lambda-CDM rejection",
+    "dark energy evolution",
+    "modified gravity",
+    "DFM-MKC validation",
+    "dark matter detection or resolution",
+    "empirical discovery",
+    "any Clay problem"
+  ]
+}
