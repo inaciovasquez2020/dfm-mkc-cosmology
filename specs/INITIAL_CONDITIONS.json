@@ -1,0 +1,216 @@
+{
+  "object_id": "INITIAL_CONDITIONS",
+  "status": "INITIAL_CONDITIONS_SUPPLIED_REFERENCE_CANDIDATE_ONLY_NOT_CONSTRAINT_SOLVED",
+  "date": "2026-05-22",
+  "input_objects": [
+    "FILLED_SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL",
+    "VARIATIONAL_DERIVATION_CHECK",
+    "PARAMETER_DOMAIN_AND_UNITS_TABLE",
+    "COSMOLOGICAL_REDUCTION_ANSATZ",
+    "FROZEN_PREDICTION_VECTOR",
+    "EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON",
+    "DERIVED_REDUCED_BACKGROUND_EQUATIONS",
+    "PERTURBATION_CLOSURE_EQUATIONS",
+    "NUMERICAL_PARAMETER_VECTOR"
+  ],
+  "input_specs": [
+    "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+    "specs/VARIATIONAL_DERIVATION_CHECK.json",
+    "specs/PARAMETER_DOMAIN_AND_UNITS_TABLE.json",
+    "specs/COSMOLOGICAL_REDUCTION_ANSATZ.json",
+    "specs/FROZEN_PREDICTION_VECTOR.json",
+    "specs/EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON.json",
+    "specs/DERIVED_REDUCED_BACKGROUND_EQUATIONS.json",
+    "specs/PERTURBATION_CLOSURE_EQUATIONS.json",
+    "specs/NUMERICAL_PARAMETER_VECTOR.json"
+  ],
+  "initial_condition_policy": {
+    "reference_epoch_locked": true,
+    "background_initial_conditions_supplied": true,
+    "perturbation_initial_conditions_supplied": true,
+    "constraint_solution_claimed": false,
+    "fit_to_data": false,
+    "posterior_sample": false,
+    "physical_calibration_claimed": false,
+    "reference_candidate_only": true
+  },
+  "reference_epoch": {
+    "time_label": "t_ref",
+    "redshift_label": "z_ref",
+    "value_policy": "dimensionless_reference_epoch",
+    "t_ref": 0.0,
+    "z_ref": 0.0
+  },
+  "background_initial_conditions": [
+    {
+      "index": 0,
+      "symbol": "N(t_ref)",
+      "value": 1.0,
+      "constraint_status": "positive_reference_value",
+      "role": "lapse normalization"
+    },
+    {
+      "index": 1,
+      "symbol": "a(t_ref)",
+      "value": 1.0,
+      "constraint_status": "positive_reference_value",
+      "role": "scale-factor normalization"
+    },
+    {
+      "index": 2,
+      "symbol": "H(t_ref)",
+      "value": 1.0,
+      "constraint_status": "finite_reference_value_not_constraint_solved",
+      "role": "reference expansion rate"
+    },
+    {
+      "index": 3,
+      "symbol": "phi(t_ref)",
+      "value": 0.0,
+      "constraint_status": "finite_reference_value",
+      "role": "scalar background value"
+    },
+    {
+      "index": 4,
+      "symbol": "dot_phi(t_ref)",
+      "value": 0.0,
+      "constraint_status": "finite_reference_value",
+      "role": "scalar background velocity"
+    },
+    {
+      "index": 5,
+      "symbol": "A_0(t_ref)",
+      "value": 0.0,
+      "constraint_status": "finite_reference_value",
+      "role": "temporal vector background value"
+    },
+    {
+      "index": 6,
+      "symbol": "rho_m(t_ref)",
+      "value": 3.0,
+      "constraint_status": "nonnegative_reference_value_not_constraint_solved",
+      "role": "matter density reference value"
+    },
+    {
+      "index": 7,
+      "symbol": "p_m(t_ref)",
+      "value": 0.0,
+      "constraint_status": "finite_reference_value",
+      "role": "matter pressure reference value"
+    }
+  ],
+  "perturbation_initial_conditions": [
+    {
+      "index": 0,
+      "symbol": "Phi(t_ref,q)",
+      "value": 0.0,
+      "constraint_status": "finite_reference_value_not_mode_solved",
+      "role": "Newtonian lapse potential"
+    },
+    {
+      "index": 1,
+      "symbol": "Psi_metric(t_ref,q)",
+      "value": 0.0,
+      "constraint_status": "finite_reference_value_not_mode_solved",
+      "role": "spatial curvature potential"
+    },
+    {
+      "index": 2,
+      "symbol": "delta_phi(t_ref,q)",
+      "value": 0.0,
+      "constraint_status": "finite_reference_value_not_mode_solved",
+      "role": "scalar perturbation"
+    },
+    {
+      "index": 3,
+      "symbol": "dot_delta_phi(t_ref,q)",
+      "value": 0.0,
+      "constraint_status": "finite_reference_value_not_mode_solved",
+      "role": "scalar perturbation velocity"
+    },
+    {
+      "index": 4,
+      "symbol": "delta_A0(t_ref,q)",
+      "value": 0.0,
+      "constraint_status": "finite_reference_value_not_mode_solved",
+      "role": "temporal vector perturbation"
+    },
+    {
+      "index": 5,
+      "symbol": "delta_A_parallel(t_ref,q)",
+      "value": 0.0,
+      "constraint_status": "finite_reference_value_not_mode_solved",
+      "role": "longitudinal vector perturbation"
+    },
+    {
+      "index": 6,
+      "symbol": "dot_delta_A_parallel(t_ref,q)",
+      "value": 0.0,
+      "constraint_status": "finite_reference_value_not_mode_solved",
+      "role": "longitudinal vector perturbation velocity"
+    },
+    {
+      "index": 7,
+      "symbol": "delta_m(t_ref,q)",
+      "value": 0.0,
+      "constraint_status": "finite_reference_value_not_mode_solved",
+      "role": "matter density contrast"
+    },
+    {
+      "index": 8,
+      "symbol": "theta_m(t_ref,q)",
+      "value": 0.0,
+      "constraint_status": "finite_reference_value_not_mode_solved",
+      "role": "matter velocity divergence"
+    }
+  ],
+  "admissibility_checks": [
+    "background initial-condition symbols are contained in the reduced background variable surface",
+    "perturbation initial-condition symbols are contained in the perturbation closure variable surface",
+    "N(t_ref) is positive",
+    "a(t_ref) is positive",
+    "rho_m(t_ref) is nonnegative",
+    "all supplied values are finite real numbers",
+    "no initial condition is claimed to be fit, calibrated, or empirically validated",
+    "no background constraint equation is claimed to be solved",
+    "no perturbation mode constraint is claimed to be solved"
+  ],
+  "execution_effect": {
+    "removes_missing_object": "INITIAL_CONDITIONS",
+    "remaining_blockers": [
+      "OBSERVABLE_EVALUATION_GRID",
+      "DATA_VECTOR_SCHEMA",
+      "COVARIANCE_MATRIX",
+      "LIKELIHOOD_RULE",
+      "LAMBDA_CDM_BASELINE_VECTOR",
+      "INDEPENDENT_EMPIRICAL_VALIDATION"
+    ]
+  },
+  "check_result": "PASS_REFERENCE_INITIAL_CONDITIONS_ONLY",
+  "initial_conditions_supplied": true,
+  "constraint_solution_claimed": false,
+  "numerical_integration_supplied": false,
+  "observable_evaluation_grid_supplied": false,
+  "data_vector_supplied": false,
+  "covariance_matrix_supplied": false,
+  "likelihood_rule_supplied": false,
+  "lambda_cdm_baseline_supplied": false,
+  "empirical_validation_claimed": false,
+  "model_selection_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "OBSERVABLE_EVALUATION_GRID",
+    "DATA_VECTOR_SCHEMA",
+    "COVARIANCE_MATRIX",
+    "LIKELIHOOD_RULE",
+    "LAMBDA_CDM_BASELINE_VECTOR",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}
