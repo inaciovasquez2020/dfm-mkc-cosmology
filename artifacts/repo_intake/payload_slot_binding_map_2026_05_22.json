@@ -1,0 +1,29 @@
+{
+  "artifact_id": "payload_slot_binding_map_2026_05_22",
+  "status": "PAYLOAD_SLOT_BINDING_MAP_BLOCKED_NO_AUTHENTIC_PAYLOAD",
+  "required_object_blocked": "PAYLOAD_SLOT_BINDING_MAP",
+  "source_spec": "specs/PAYLOAD_SLOT_BINDING_MAP.json",
+  "root_blocker_preserved": "PAYLOAD_SLOT_BINDING_MAP_NOT_SUPPLIED",
+  "terminal_blocker": "AUTHENTIC_EXTERNAL_DATA_PAYLOAD_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_AUTHENTIC_PAYLOAD",
+  "boundary": [
+    "records that payload slot binding is blocked",
+    "does not map empirical payload columns to schema slots",
+    "does not bind empirical values to slots",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "AUTHENTIC_EXTERNAL_DATA_PAYLOAD",
+    "PAYLOAD_COLUMN_MAP",
+    "PAYLOAD_SLOT_INDEX_MAP",
+    "PAYLOAD_SCHEMA_VALIDATION_RESULT"
+  ]
+}

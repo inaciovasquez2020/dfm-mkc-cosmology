@@ -1,0 +1,29 @@
+{
+  "artifact_id": "dfm_chi_square_value_2026_05_22",
+  "status": "DFM_CHI_SQUARE_VALUE_BLOCKED_NO_LIKELIHOOD_EXECUTION_INPUTS",
+  "required_object_blocked": "DFM_CHI_SQUARE_VALUE",
+  "source_spec": "specs/DFM_CHI_SQUARE_VALUE.json",
+  "root_blocker_preserved": "DFM_CHI_SQUARE_VALUE_NOT_SUPPLIED",
+  "terminal_blocker": "EMPIRICAL_DATA_AND_PREDICTION_VALUES_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_LIKELIHOOD_EXECUTION_INPUTS",
+  "boundary": [
+    "records that DFM chi-square computation is blocked",
+    "does not compute a DFM chi-square value",
+    "does not execute the likelihood",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "EMPIRICAL_VALUE_ARRAY",
+    "PREDICTION_VALUE_ARRAY",
+    "PAYLOAD_BOUND_COVARIANCE_MATRIX",
+    "EXECUTED_DFM_CHI_SQUARE_COMPUTATION"
+  ]
+}

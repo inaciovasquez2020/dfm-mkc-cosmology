@@ -1,0 +1,29 @@
+{
+  "artifact_id": "delta_chi_square_value_2026_05_22",
+  "status": "DELTA_CHI_SQUARE_VALUE_BLOCKED_NO_COMPONENT_CHI_SQUARE_VALUES",
+  "required_object_blocked": "DELTA_CHI_SQUARE_VALUE",
+  "source_spec": "specs/DELTA_CHI_SQUARE_VALUE.json",
+  "root_blocker_preserved": "DELTA_CHI_SQUARE_VALUE_NOT_SUPPLIED",
+  "terminal_blocker": "DFM_AND_LAMBDA_CDM_CHI_SQUARE_VALUES_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_COMPONENT_CHI_SQUARE_VALUES",
+  "boundary": [
+    "records that delta chi-square computation is blocked",
+    "does not compute model-comparison statistics",
+    "does not claim model selection",
+    "does not claim Lambda-CDM failure",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "DFM_CHI_SQUARE_VALUE",
+    "LAMBDA_CDM_CHI_SQUARE_VALUE",
+    "DELTA_CHI_SQUARE_COMPUTATION"
+  ]
+}

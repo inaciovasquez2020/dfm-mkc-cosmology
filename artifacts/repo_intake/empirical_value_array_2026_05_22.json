@@ -1,0 +1,28 @@
+{
+  "artifact_id": "empirical_value_array_2026_05_22",
+  "status": "EMPIRICAL_VALUE_ARRAY_BLOCKED_NO_PAYLOAD_SLOT_BINDING",
+  "required_object_blocked": "EMPIRICAL_VALUE_ARRAY",
+  "source_spec": "specs/EMPIRICAL_VALUE_ARRAY.json",
+  "root_blocker_preserved": "EMPIRICAL_VALUE_ARRAY_NOT_SUPPLIED",
+  "terminal_blocker": "PAYLOAD_SLOT_BINDING_MAP_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_PAYLOAD_SLOT_BINDING",
+  "boundary": [
+    "records that empirical value extraction is blocked",
+    "does not extract empirical data values",
+    "does not populate the data vector schema",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "PAYLOAD_SLOT_BINDING_MAP",
+    "EMPIRICAL_SLOT_VALUE_EXTRACTION",
+    "EMPIRICAL_VALUE_ARRAY_DIGEST_LOCK"
+  ]
+}

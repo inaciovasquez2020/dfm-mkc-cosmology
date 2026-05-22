@@ -1,0 +1,32 @@
+{
+  "artifact_id": "claim_boundary_audit_2026_05_22",
+  "status": "CLAIM_BOUNDARY_AUDIT_SUPPLIED_TERMINAL_NO_EMPIRICAL_CLAIM",
+  "required_object_blocked": "CLAIM_BOUNDARY_AUDIT",
+  "source_spec": "specs/CLAIM_BOUNDARY_AUDIT.json",
+  "root_blocker_preserved": "CLAIM_BOUNDARY_AUDIT_NOT_SUPPLIED",
+  "terminal_blocker": "NO_EMPIRICAL_CLAIM_PERMITTED_WITHOUT_PAYLOAD_AND_EXECUTION",
+  "check_result": "PASS_TERMINAL_NO_EMPIRICAL_CLAIM_AUDIT",
+  "boundary": [
+    "supplies a terminal no-empirical-claim audit",
+    "confirms empirical validation remains blocked",
+    "does not claim DFM-MKC validation",
+    "does not claim Lambda-CDM failure",
+    "does not claim holdout survival",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "EMPIRICAL_DATA_VALUES",
+    "EXECUTABLE_DFM_PREDICTION_VALUES",
+    "PAYLOAD_BOUND_COVARIANCE_MATRIX",
+    "EXECUTED_LIKELIHOOD_RESULT",
+    "REPRODUCIBLE_HOLDOUT_REPORT"
+  ]
+}

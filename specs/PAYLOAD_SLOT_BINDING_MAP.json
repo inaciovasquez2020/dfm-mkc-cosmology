@@ -1,0 +1,43 @@
+{
+  "object_id": "PAYLOAD_SLOT_BINDING_MAP",
+  "status": "PAYLOAD_SLOT_BINDING_MAP_BLOCKED_NO_AUTHENTIC_PAYLOAD",
+  "date": "2026-05-22",
+  "input_specs": [
+    "specs/DATA_VECTOR_SCHEMA.json",
+    "specs/COVARIANCE_MATRIX.json",
+    "specs/LIKELIHOOD_RULE.json",
+    "specs/LAMBDA_CDM_BASELINE_VECTOR.json",
+    "specs/INDEPENDENT_EMPIRICAL_VALIDATION.json",
+    "specs/EMPIRICAL_DATA_VALUES.json",
+    "specs/EXECUTABLE_DFM_PREDICTION_VALUES.json",
+    "specs/PAYLOAD_BOUND_COVARIANCE_MATRIX.json",
+    "specs/EXECUTED_LIKELIHOOD_RESULT.json",
+    "specs/REPRODUCIBLE_HOLDOUT_REPORT.json"
+  ],
+  "blocked_reason": "AUTHENTIC_EXTERNAL_DATA_PAYLOAD_NOT_SUPPLIED",
+  "blocking_missing_objects": [
+    "AUTHENTIC_EXTERNAL_DATA_PAYLOAD",
+    "PAYLOAD_COLUMN_MAP",
+    "PAYLOAD_SLOT_INDEX_MAP",
+    "PAYLOAD_SCHEMA_VALIDATION_RESULT"
+  ],
+  "check_result": "BLOCKED_NO_AUTHENTIC_PAYLOAD",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "AUTHENTIC_EXTERNAL_DATA_PAYLOAD",
+    "PAYLOAD_COLUMN_MAP",
+    "PAYLOAD_SLOT_INDEX_MAP",
+    "PAYLOAD_SCHEMA_VALIDATION_RESULT"
+  ],
+  "payload_slot_binding_map_supplied": false,
+  "external_payload_bound": false,
+  "empirical_values_supplied": false,
+  "empirical_validation_claimed": false
+}

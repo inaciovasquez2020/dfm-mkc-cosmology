@@ -1,0 +1,29 @@
+{
+  "artifact_id": "holdout_payload_digest_lock_2026_05_22",
+  "status": "HOLDOUT_PAYLOAD_DIGEST_LOCK_BLOCKED_NO_HOLDOUT_PAYLOAD_BYTES",
+  "required_object_blocked": "HOLDOUT_PAYLOAD_DIGEST_LOCK",
+  "source_spec": "specs/HOLDOUT_PAYLOAD_DIGEST_LOCK.json",
+  "root_blocker_preserved": "HOLDOUT_PAYLOAD_DIGEST_LOCK_NOT_SUPPLIED",
+  "terminal_blocker": "HOLDOUT_PAYLOAD_BYTES_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_HOLDOUT_PAYLOAD_BYTES",
+  "boundary": [
+    "records that holdout payload digest locking is blocked",
+    "does not hash holdout payload bytes",
+    "does not bind a holdout payload",
+    "does not claim holdout survival",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "HOLDOUT_PAYLOAD_BYTES",
+    "HOLDOUT_PAYLOAD_SHA256_DIGEST",
+    "HOLDOUT_PAYLOAD_SOURCE_RECORD"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "artifact_id": "reproduction_commands_2026_05_22",
+  "status": "REPRODUCTION_COMMANDS_BLOCKED_NO_EXECUTABLE_PIPELINE",
+  "required_object_blocked": "REPRODUCTION_COMMANDS",
+  "source_spec": "specs/REPRODUCTION_COMMANDS.json",
+  "root_blocker_preserved": "REPRODUCTION_COMMANDS_NOT_SUPPLIED",
+  "terminal_blocker": "EXECUTABLE_PIPELINE_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_EXECUTABLE_PIPELINE",
+  "boundary": [
+    "records that reproduction commands are blocked",
+    "does not supply executable empirical pipeline commands",
+    "does not execute the likelihood",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "PIPELINE_ENTRYPOINT",
+    "EMPIRICAL_PAYLOAD_BINDING_COMMAND",
+    "PREDICTION_EXECUTION_COMMAND",
+    "LIKELIHOOD_EXECUTION_COMMAND"
+  ]
+}

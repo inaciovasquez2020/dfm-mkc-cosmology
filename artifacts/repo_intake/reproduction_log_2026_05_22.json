@@ -1,0 +1,28 @@
+{
+  "artifact_id": "reproduction_log_2026_05_22",
+  "status": "REPRODUCTION_LOG_BLOCKED_NO_REPRODUCTION_COMMANDS_OR_EXECUTION",
+  "required_object_blocked": "REPRODUCTION_LOG",
+  "source_spec": "specs/REPRODUCTION_LOG.json",
+  "root_blocker_preserved": "REPRODUCTION_LOG_NOT_SUPPLIED",
+  "terminal_blocker": "REPRODUCTION_COMMANDS_AND_EXECUTION_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_REPRODUCTION_COMMANDS_OR_EXECUTION",
+  "boundary": [
+    "records that reproduction logging is blocked",
+    "does not supply a reproduction log",
+    "does not execute a reproduction run",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "REPRODUCTION_COMMANDS",
+    "REPRODUCTION_RUN_OUTPUT",
+    "REPRODUCTION_RUN_DIGEST_LOCK"
+  ]
+}
