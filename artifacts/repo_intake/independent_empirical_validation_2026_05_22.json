@@ -1,0 +1,34 @@
+{
+  "artifact_id": "independent_empirical_validation_2026_05_22",
+  "status": "INDEPENDENT_EMPIRICAL_VALIDATION_BLOCKED_NO_EMPIRICAL_PAYLOAD_OR_EXECUTION",
+  "required_object_blocked": "INDEPENDENT_EMPIRICAL_VALIDATION",
+  "source_spec": "specs/INDEPENDENT_EMPIRICAL_VALIDATION.json",
+  "root_blocker_preserved": "INDEPENDENT_EMPIRICAL_VALIDATION_NOT_SUPPLIED",
+  "terminal_blocker": "EMPIRICAL_PAYLOAD_AND_EXECUTED_LIKELIHOOD_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_EMPIRICAL_PAYLOAD_OR_EXECUTION",
+  "boundary": [
+    "records that independent empirical validation is blocked",
+    "identifies missing empirical payload and execution objects",
+    "does not supply empirical data values",
+    "does not execute DFM-MKC predictions",
+    "does not execute a likelihood comparison",
+    "does not claim holdout survival",
+    "does not claim Lambda-CDM failure",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "EMPIRICAL_DATA_VALUES",
+    "EXECUTABLE_DFM_PREDICTION_VALUES",
+    "PAYLOAD_BOUND_COVARIANCE_MATRIX",
+    "EXECUTED_LIKELIHOOD_RESULT",
+    "REPRODUCIBLE_HOLDOUT_REPORT"
+  ]
+}
