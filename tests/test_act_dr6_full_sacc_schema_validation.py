@@ -17,7 +17,7 @@ def test_required_checks_present():
     data = json.loads(ARTIFACT.read_text())
     assert set(data["checks"]) == module.REQUIRED_CHECKS
 
-def test_reproducible_payload_preconditions_hold:
+def test_reproducible_payload_preconditions_hold():
     data = json.loads(ARTIFACT.read_text())
     assert data["checks"]["local_payload_exists"] is True
     assert data["checks"]["reproducible_download_sha256_matched"] is True
