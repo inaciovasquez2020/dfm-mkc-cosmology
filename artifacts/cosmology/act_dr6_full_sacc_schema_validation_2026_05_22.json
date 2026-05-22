@@ -1,0 +1,51 @@
+{
+  "object": "ACT_DR6_FULL_SACC_SCHEMA_VALIDATION",
+  "date": "2026-05-22",
+  "status": "FULL_SACC_SCHEMA_VALIDATION_PASSED_NOT_LIKELIHOOD_EXECUTION",
+  "source_object": "ACT_DR6_REPRODUCIBLE_DOWNLOAD_EXECUTION_AND_LOCAL_SHA256_COMPARISON",
+  "local_path": "artifacts/public_payloads/act_lite_numeric_like_extracted_2026_05_21/DR6-ACT-lite-main__act_dr6_cmbonly__data__act_dr6_cmb_sacc.fits",
+  "local_sha256": "9506da7b482c10b60571c5a3805fc392853d50f81244485754566d21b85219ad",
+  "required_structural_checks": [
+    "local_payload_exists",
+    "reproducible_download_sha256_matched",
+    "sacc_module_importable",
+    "sacc_load_fits_available",
+    "sacc_payload_loads",
+    "data_vector_present",
+    "covariance_present",
+    "tracers_present"
+  ],
+  "checks": {
+    "local_payload_exists": true,
+    "reproducible_download_sha256_matched": true,
+    "sacc_module_importable": true,
+    "sacc_load_fits_available": true,
+    "sacc_payload_loads": true,
+    "data_vector_present": true,
+    "covariance_present": true,
+    "tracers_present": true
+  },
+  "observed": {
+    "sacc_import_error": null,
+    "sacc_load_error": null,
+    "data_vector_length": 127,
+    "covariance_shape": [
+      127,
+      127
+    ],
+    "tracer_count": 2
+  },
+  "full_sacc_schema_validation_passed": true,
+  "certified_for_profiled_likelihood_execution": true,
+  "required_next_object": "ACT_DR6_CERTIFIED_PROFILED_LIKELIHOOD_INPUT",
+  "does_not_prove": [
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "any Clay problem"
+  ]
+}
