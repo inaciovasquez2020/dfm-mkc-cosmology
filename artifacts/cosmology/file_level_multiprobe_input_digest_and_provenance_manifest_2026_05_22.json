@@ -1,0 +1,73 @@
+{
+  "object": "FILE_LEVEL_MULTIPROBE_INPUT_DIGEST_AND_PROVENANCE_MANIFEST",
+  "date": "2026-05-22",
+  "status": "PARTIAL_DIGEST_AND_PROVENANCE_MANIFEST_ONLY_NOT_CERTIFIED",
+  "input_entries": {
+    "act_dr6_cmb_lite": {
+      "path": "artifacts/public_payloads/act_lite_numeric_like_extracted_2026_05_21/DR6-ACT-lite-main__act_dr6_cmbonly__data__act_dr6_cmb_sacc.fits",
+      "exists": true,
+      "is_file": true,
+      "is_dir": false
+    },
+    "pantheon_plus_shoes": {
+      "path": "artifacts/external_data_sources/pantheon_plus_shoes_1_data",
+      "exists": true,
+      "is_file": false,
+      "is_dir": true
+    },
+    "desi_dr2": {
+      "path": "public_data/desi_dr2",
+      "exists": true,
+      "is_file": false,
+      "is_dir": true
+    },
+    "planck_baseline": {
+      "path": "public_data/planck/planck_2018_baseline_params.csv",
+      "exists": true,
+      "is_file": true,
+      "is_dir": false
+    },
+    "des_y6": {
+      "path": "public_data/des_y6",
+      "exists": true,
+      "is_file": false,
+      "is_dir": true
+    },
+    "growth_sector_holdout": {
+      "path": "artifacts/cosmology/growth_sector_holdout_compatibility_test_2026_05_22.json",
+      "exists": true,
+      "is_file": true,
+      "is_dir": false
+    },
+    "h0_distance_ladder": {
+      "path": "artifacts/cosmology/h0_distance_ladder_systematics_profile_2026_05_22.json",
+      "exists": true,
+      "is_file": true,
+      "is_dir": false
+    }
+  },
+  "missing_inputs": [
+    "union3_or_des_sn_crosscheck",
+    "kids_legacy_likelihood_or_chain",
+    "hsc_y3_likelihood_or_chain",
+    "nuisance_prior_table"
+  ],
+  "summary": {
+    "candidate_inputs_found": 7,
+    "candidate_inputs_required": 7,
+    "certified_likelihood_inputs": 0,
+    "ready_for_executed_likelihood_run": false
+  },
+  "required_next_object": "CERTIFIED_FILE_LEVEL_MULTIPROBE_LIKELIHOOD_INPUTS",
+  "does_not_prove": [
+    "complete certified likelihood manifest",
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "any Clay problem"
+  ]
+}
