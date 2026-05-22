@@ -1,0 +1,100 @@
+{
+  "object_id": "EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON",
+  "status": "EXECUTION_BLOCKED_SYMBOLIC_VECTOR_ONLY_NO_NUMERICAL_COMPARISON",
+  "date": "2026-05-22",
+  "input_objects": [
+    "FILLED_SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL",
+    "VARIATIONAL_DERIVATION_CHECK",
+    "PARAMETER_DOMAIN_AND_UNITS_TABLE",
+    "COSMOLOGICAL_REDUCTION_ANSATZ",
+    "FROZEN_PREDICTION_VECTOR"
+  ],
+  "input_specs": [
+    "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+    "specs/VARIATIONAL_DERIVATION_CHECK.json",
+    "specs/PARAMETER_DOMAIN_AND_UNITS_TABLE.json",
+    "specs/COSMOLOGICAL_REDUCTION_ANSATZ.json",
+    "specs/FROZEN_PREDICTION_VECTOR.json"
+  ],
+  "comparison_target": {
+    "model_a": "DFM-MKC",
+    "model_b": "Lambda-CDM",
+    "comparison_type": "holdout likelihood or chi-square comparison",
+    "target_result": "executed numerical comparison over a frozen data vector with covariance and likelihood rule"
+  },
+  "execution_preconditions": [
+    {
+      "object": "DERIVED_REDUCED_BACKGROUND_EQUATIONS",
+      "status": "missing",
+      "required_for": "computing H_DFM(z), distances, and early-time background quantities"
+    },
+    {
+      "object": "PERTURBATION_CLOSURE_EQUATIONS",
+      "status": "missing",
+      "required_for": "computing growth observables and CMB spectra"
+    },
+    {
+      "object": "NUMERICAL_PARAMETER_VECTOR",
+      "status": "missing",
+      "required_for": "evaluating the frozen symbolic prediction vector"
+    },
+    {
+      "object": "INITIAL_CONDITIONS",
+      "status": "missing",
+      "required_for": "integrating background and perturbation equations"
+    },
+    {
+      "object": "OBSERVABLE_EVALUATION_GRID",
+      "status": "missing",
+      "required_for": "matching model predictions to data bins or redshift/ell samples"
+    },
+    {
+      "object": "DATA_VECTOR_SCHEMA",
+      "status": "missing",
+      "required_for": "aligning model observables with empirical data slots"
+    },
+    {
+      "object": "COVARIANCE_MATRIX",
+      "status": "missing",
+      "required_for": "computing chi-square or Gaussian likelihood"
+    },
+    {
+      "object": "LIKELIHOOD_RULE",
+      "status": "missing",
+      "required_for": "executing a model-vs-model comparison"
+    },
+    {
+      "object": "LAMBDA_CDM_BASELINE_VECTOR",
+      "status": "missing",
+      "required_for": "comparing DFM-MKC against a fixed baseline under the same data schema"
+    }
+  ],
+  "blocked_execution_statement": "The DFM-MKC vs Lambda-CDM comparison cannot be executed from the current repository objects because the frozen prediction vector is symbolic-only and the numerical data vector, covariance matrix, likelihood rule, parameter vector, initial conditions, reduced equations, perturbation closure, and Lambda-CDM baseline vector are not supplied.",
+  "comparison_executed": false,
+  "numerical_predictions_evaluated": false,
+  "data_vector_supplied": false,
+  "covariance_matrix_supplied": false,
+  "likelihood_rule_supplied": false,
+  "lambda_cdm_baseline_supplied": false,
+  "empirical_validation_claimed": false,
+  "model_selection_claimed": false,
+  "check_result": "BLOCKED_REQUIRED_INPUTS_NOT_SUPPLIED",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "DERIVED_REDUCED_BACKGROUND_EQUATIONS",
+    "PERTURBATION_CLOSURE_EQUATIONS",
+    "NUMERICAL_PARAMETER_VECTOR",
+    "DATA_VECTOR_SCHEMA",
+    "COVARIANCE_MATRIX",
+    "LIKELIHOOD_RULE",
+    "LAMBDA_CDM_BASELINE_VECTOR",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}
