@@ -1,0 +1,53 @@
+{
+  "combined_certification_closed": false,
+  "complete_manifest_ready_before_this_object": false,
+  "covariance_chain_compatibility_certified": false,
+  "date": "2026-05-22",
+  "does_not_prove": [
+    "complete certified multiprobe likelihood manifest",
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "Lambda-CDM failure",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "missing_certifications": [
+    "per-probe nuisance prior table values",
+    "shared parameter compatibility map",
+    "cross-probe covariance compatibility rule",
+    "profiled likelihood nuisance-handling rule",
+    "manifest promotion rule from certified nuisance and covariance gates"
+  ],
+  "nuisance_prior_table_certified": false,
+  "object": "NUISANCE_PRIOR_TABLE_CERTIFICATION_AND_COVARIANCE_CHAIN_COMPATIBILITY",
+  "required_inputs": {
+    "covariance_chain_compatibility": [
+      "per-probe covariance availability",
+      "shared-parameter compatibility",
+      "nuisance-prior compatibility",
+      "profiled-likelihood execution compatibility",
+      "holdout split compatibility"
+    ],
+    "nuisance_prior_table": [
+      "ACT nuisance priors",
+      "Pantheon+/SH0ES nuisance priors",
+      "DESI nuisance/systematic priors",
+      "Planck nuisance priors",
+      "DES Y6 nuisance priors",
+      "growth-sector nuisance priors",
+      "H0 distance-ladder nuisance priors"
+    ]
+  },
+  "required_next_object": "CERTIFIED_NUISANCE_PRIOR_TABLE_VALUES_AND_COVARIANCE_COMPATIBILITY_RULE",
+  "source_objects": [
+    "NUISANCE_PRIOR_TABLE_CERTIFICATION",
+    "COVARIANCE_CHAIN_COMPATIBILITY_CERTIFICATION",
+    "COMPLETE_CERTIFIED_MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST"
+  ],
+  "status": "COMBINED_GATE_MATERIALIZED_CERTIFICATION_NOT_CLOSED"
+}
