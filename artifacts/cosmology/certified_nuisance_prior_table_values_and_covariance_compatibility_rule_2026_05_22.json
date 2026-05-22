@@ -1,0 +1,356 @@
+{
+  "combined_certification_closed": false,
+  "covariance_compatibility_rule_certified": false,
+  "covariance_compatibility_slots": {
+    "ACT_DR6__DESI_DR2": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "ACT_DR6__DES_Y6": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "ACT_DR6__GROWTH_SECTOR": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "ACT_DR6__H0_DISTANCE_LADDER": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "ACT_DR6__PANTHEON_PLUS_SHOES": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "ACT_DR6__PLANCK_2018": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "DESI_DR2__DES_Y6": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "DESI_DR2__GROWTH_SECTOR": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "DESI_DR2__H0_DISTANCE_LADDER": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "DESI_DR2__PLANCK_2018": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "DES_Y6__GROWTH_SECTOR": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "DES_Y6__H0_DISTANCE_LADDER": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "GROWTH_SECTOR__H0_DISTANCE_LADDER": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "PANTHEON_PLUS_SHOES__DESI_DR2": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "PANTHEON_PLUS_SHOES__DES_Y6": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "PANTHEON_PLUS_SHOES__GROWTH_SECTOR": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "PANTHEON_PLUS_SHOES__H0_DISTANCE_LADDER": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "PANTHEON_PLUS_SHOES__PLANCK_2018": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "PLANCK_2018__DES_Y6": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "PLANCK_2018__GROWTH_SECTOR": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    },
+    "PLANCK_2018__H0_DISTANCE_LADDER": {
+      "compatibility_certified": false,
+      "required_fields": [
+        "probe_pair",
+        "shared_parameters",
+        "cross_covariance_policy",
+        "independence_assumption_source",
+        "compatibility_certified"
+      ],
+      "rule_supplied": false
+    }
+  },
+  "date": "2026-05-22",
+  "does_not_prove": [
+    "complete certified multiprobe likelihood manifest",
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "Lambda-CDM failure",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "nuisance_prior_slots": {
+    "ACT_DR6": {
+      "certified": false,
+      "required_fields": [
+        "parameter_name",
+        "probe",
+        "prior_family",
+        "central_value",
+        "lower_bound",
+        "upper_bound",
+        "source_reference",
+        "certified"
+      ],
+      "values_supplied": false
+    },
+    "DESI_DR2": {
+      "certified": false,
+      "required_fields": [
+        "parameter_name",
+        "probe",
+        "prior_family",
+        "central_value",
+        "lower_bound",
+        "upper_bound",
+        "source_reference",
+        "certified"
+      ],
+      "values_supplied": false
+    },
+    "DES_Y6": {
+      "certified": false,
+      "required_fields": [
+        "parameter_name",
+        "probe",
+        "prior_family",
+        "central_value",
+        "lower_bound",
+        "upper_bound",
+        "source_reference",
+        "certified"
+      ],
+      "values_supplied": false
+    },
+    "GROWTH_SECTOR": {
+      "certified": false,
+      "required_fields": [
+        "parameter_name",
+        "probe",
+        "prior_family",
+        "central_value",
+        "lower_bound",
+        "upper_bound",
+        "source_reference",
+        "certified"
+      ],
+      "values_supplied": false
+    },
+    "H0_DISTANCE_LADDER": {
+      "certified": false,
+      "required_fields": [
+        "parameter_name",
+        "probe",
+        "prior_family",
+        "central_value",
+        "lower_bound",
+        "upper_bound",
+        "source_reference",
+        "certified"
+      ],
+      "values_supplied": false
+    },
+    "PANTHEON_PLUS_SHOES": {
+      "certified": false,
+      "required_fields": [
+        "parameter_name",
+        "probe",
+        "prior_family",
+        "central_value",
+        "lower_bound",
+        "upper_bound",
+        "source_reference",
+        "certified"
+      ],
+      "values_supplied": false
+    },
+    "PLANCK_2018": {
+      "certified": false,
+      "required_fields": [
+        "parameter_name",
+        "probe",
+        "prior_family",
+        "central_value",
+        "lower_bound",
+        "upper_bound",
+        "source_reference",
+        "certified"
+      ],
+      "values_supplied": false
+    }
+  },
+  "nuisance_prior_values_certified": false,
+  "object": "CERTIFIED_NUISANCE_PRIOR_TABLE_VALUES_AND_COVARIANCE_COMPATIBILITY_RULE",
+  "required_next_object": "PER_PROBE_NUISANCE_PRIOR_VALUES_AND_CROSS_COVARIANCE_POLICY_TABLE",
+  "source_object": "NUISANCE_PRIOR_TABLE_CERTIFICATION_AND_COVARIANCE_CHAIN_COMPATIBILITY",
+  "status": "RULE_SURFACE_MATERIALIZED_VALUES_AND_COMPATIBILITY_NOT_CERTIFIED"
+}
