@@ -1,0 +1,155 @@
+{
+  "blocked_until": [
+    "real external source identifiers are supplied",
+    "real source locators are supplied",
+    "release/version metadata is supplied",
+    "SHA-256 digests are supplied or explicit digest blockers are recorded",
+    "schema field paths are supplied",
+    "cross-covariance policy records are supplied",
+    "real multiprobe likelihood data paths are supplied"
+  ],
+  "date": "2026-05-22",
+  "does_not_prove": [
+    "supplied external nuisance records",
+    "certified nuisance prior values",
+    "certified cross-covariance policies",
+    "complete certified multiprobe manifest",
+    "likelihood execution",
+    "DFM-MKC versus Lambda-CDM comparison",
+    "Lambda-CDM rejection",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "empirical validation",
+    "any Clay problem"
+  ],
+  "downstream_chain": [
+    "CERTIFIED_SUPPLIED_NUISANCE_RECORDS_COMPATIBLE_WITH_PER_PROBE_TABLE",
+    "CERTIFIED_SUPPLIED_NUISANCE_RECORDS_COMPATIBLE_WITH_COVARIANCE_CHAIN_POLICY",
+    "CERTIFIED_SUPPLIED_NUISANCE_RECORDS_COMPATIBLE_WITH_MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST",
+    "COMPLETE_CERTIFIED_MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST_WITH_REAL_DATA_PATHS",
+    "EXECUTED_REAL_MULTIPROBE_PROFILED_LIKELIHOOD_RUN",
+    "EXECUTED_REAL_DFM_MKC_VS_LAMBDA_CDM_COMPARISON",
+    "OUT_OF_SAMPLE_REJECTION_OR_VALIDATION_CERTIFICATE_IF_SUPPORTED"
+  ],
+  "object": "SUPPLIED_BOUND_EXTERNAL_NUISANCE_PRIOR_SOURCE_RECORDS_WITH_DIGESTS",
+  "purpose": "Materialize the supplied-record target for external nuisance-prior source records with digests.",
+  "record_schema": {
+    "digest_requirement": "sha256_required_or_explicit_missing_digest_blocker",
+    "policy_binding_requirement": "every cross-covariance policy must state its cross-probe dependency scope",
+    "required_fields": [
+      "probe",
+      "nuisance_parameter",
+      "external_source_identifier",
+      "external_source_locator",
+      "source_release_or_version",
+      "source_digest_sha256",
+      "schema_field_path",
+      "prior_family",
+      "prior_value_or_distribution",
+      "cross_covariance_policy",
+      "cross_probe_dependency_scope",
+      "compatibility_role",
+      "certification_status"
+    ],
+    "schema_binding_requirement": "every nuisance record must map to a likelihood-input schema path",
+    "source_binding_requirement": "every nuisance record must bind to an external locator and versioned release"
+  },
+  "required_next_object": "REAL_EXTERNAL_NUISANCE_PRIOR_SOURCE_RECORDS_DIGESTS_SCHEMA_PATHS_AND_POLICY_VALUES",
+  "required_probe_records": [
+    {
+      "probe": "ACT_DR6",
+      "record_status": "payload_not_supplied",
+      "required_payload": [
+        "source_identifier",
+        "source_locator",
+        "release_or_version",
+        "sha256_digest",
+        "schema_field_path",
+        "prior_value_or_distribution",
+        "cross_covariance_policy_record"
+      ]
+    },
+    {
+      "probe": "Planck_2018",
+      "record_status": "payload_not_supplied",
+      "required_payload": [
+        "source_identifier",
+        "source_locator",
+        "release_or_version",
+        "sha256_digest",
+        "schema_field_path",
+        "prior_value_or_distribution",
+        "cross_covariance_policy_record"
+      ]
+    },
+    {
+      "probe": "PantheonPlusSH0ES",
+      "record_status": "payload_not_supplied",
+      "required_payload": [
+        "source_identifier",
+        "source_locator",
+        "release_or_version",
+        "sha256_digest",
+        "schema_field_path",
+        "prior_value_or_distribution",
+        "cross_covariance_policy_record"
+      ]
+    },
+    {
+      "probe": "DESI_DR2_BAO",
+      "record_status": "payload_not_supplied",
+      "required_payload": [
+        "source_identifier",
+        "source_locator",
+        "release_or_version",
+        "sha256_digest",
+        "schema_field_path",
+        "prior_value_or_distribution",
+        "cross_covariance_policy_record"
+      ]
+    },
+    {
+      "probe": "DES_Y6",
+      "record_status": "payload_not_supplied",
+      "required_payload": [
+        "source_identifier",
+        "source_locator",
+        "release_or_version",
+        "sha256_digest",
+        "schema_field_path",
+        "prior_value_or_distribution",
+        "cross_covariance_policy_record"
+      ]
+    },
+    {
+      "probe": "GrowthSector",
+      "record_status": "payload_not_supplied",
+      "required_payload": [
+        "source_identifier",
+        "source_locator",
+        "release_or_version",
+        "sha256_digest",
+        "schema_field_path",
+        "prior_value_or_distribution",
+        "cross_covariance_policy_record"
+      ]
+    },
+    {
+      "probe": "H0DistanceLadder",
+      "record_status": "payload_not_supplied",
+      "required_payload": [
+        "source_identifier",
+        "source_locator",
+        "release_or_version",
+        "sha256_digest",
+        "schema_field_path",
+        "prior_value_or_distribution",
+        "cross_covariance_policy_record"
+      ]
+    }
+  ],
+  "status": "SUPPLIED_BOUND_RECORD_TARGET_MATERIALIZED_RECORD_PAYLOADS_NOT_SUPPLIED",
+  "upstream_required_object": "BOUND_EXTERNAL_NUISANCE_PRIOR_SOURCES_AND_COVARIANCE_POLICY_RECORDS"
+}
