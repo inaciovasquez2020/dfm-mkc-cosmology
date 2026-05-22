@@ -1,0 +1,251 @@
+{
+  "object_id": "OBSERVABLE_EVALUATION_GRID",
+  "status": "OBSERVABLE_EVALUATION_GRID_SUPPLIED_REFERENCE_ONLY_NOT_DATA_BOUND",
+  "date": "2026-05-22",
+  "input_objects": [
+    "FILLED_SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL",
+    "VARIATIONAL_DERIVATION_CHECK",
+    "PARAMETER_DOMAIN_AND_UNITS_TABLE",
+    "COSMOLOGICAL_REDUCTION_ANSATZ",
+    "FROZEN_PREDICTION_VECTOR",
+    "EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON",
+    "DERIVED_REDUCED_BACKGROUND_EQUATIONS",
+    "PERTURBATION_CLOSURE_EQUATIONS",
+    "NUMERICAL_PARAMETER_VECTOR",
+    "INITIAL_CONDITIONS"
+  ],
+  "input_specs": [
+    "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+    "specs/VARIATIONAL_DERIVATION_CHECK.json",
+    "specs/PARAMETER_DOMAIN_AND_UNITS_TABLE.json",
+    "specs/COSMOLOGICAL_REDUCTION_ANSATZ.json",
+    "specs/FROZEN_PREDICTION_VECTOR.json",
+    "specs/EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON.json",
+    "specs/DERIVED_REDUCED_BACKGROUND_EQUATIONS.json",
+    "specs/PERTURBATION_CLOSURE_EQUATIONS.json",
+    "specs/NUMERICAL_PARAMETER_VECTOR.json",
+    "specs/INITIAL_CONDITIONS.json"
+  ],
+  "grid_policy": {
+    "reference_grid_only": true,
+    "observable_order_locked": true,
+    "bound_to_data_vector": false,
+    "covariance_aligned": false,
+    "likelihood_ready": false,
+    "fit_to_data": false,
+    "physical_calibration_claimed": false
+  },
+  "evaluation_grids": [
+    {
+      "grid_id": "background_redshift_grid",
+      "variable": "z",
+      "applies_to": [
+        "E_DFM(z)",
+        "D_A_DFM(z)",
+        "D_L_DFM(z)",
+        "mu_DFM(z)"
+      ],
+      "values": [
+        0.0,
+        0.1,
+        0.2,
+        0.5,
+        1.0,
+        2.0
+      ],
+      "domain_constraint": "z >= 0",
+      "status": "reference_grid_not_data_bound"
+    },
+    {
+      "grid_id": "growth_redshift_grid",
+      "variable": "z",
+      "applies_to": [
+        "f_sigma8_DFM(z)",
+        "S8_DFM"
+      ],
+      "values": [
+        0.0,
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ],
+      "domain_constraint": "z >= 0",
+      "status": "reference_grid_not_data_bound"
+    },
+    {
+      "grid_id": "cmb_multipole_grid",
+      "variable": "ell",
+      "applies_to": [
+        "C_ell_TT_DFM",
+        "C_ell_TE_DFM",
+        "C_ell_EE_DFM"
+      ],
+      "values": [
+        2,
+        10,
+        30,
+        100,
+        300,
+        800,
+        1500,
+        2500
+      ],
+      "domain_constraint": "ell integer and ell >= 2",
+      "status": "reference_grid_not_data_bound"
+    },
+    {
+      "grid_id": "perturbation_wavenumber_grid",
+      "variable": "q",
+      "applies_to": [
+        "f_sigma8_DFM(z)",
+        "S8_DFM",
+        "C_ell_TT_DFM",
+        "C_ell_TE_DFM",
+        "C_ell_EE_DFM"
+      ],
+      "values": [
+        0.001,
+        0.01,
+        0.1,
+        1.0
+      ],
+      "domain_constraint": "q > 0",
+      "status": "reference_grid_not_data_bound"
+    },
+    {
+      "grid_id": "sound_horizon_epoch_grid",
+      "variable": "z",
+      "applies_to": [
+        "r_d_DFM"
+      ],
+      "values": [
+        1050.0,
+        1060.0,
+        1070.0
+      ],
+      "domain_constraint": "z > 0",
+      "status": "reference_grid_not_data_bound"
+    }
+  ],
+  "observable_coverage": [
+    {
+      "observable": "E_DFM(z)",
+      "grid_ids": [
+        "background_redshift_grid"
+      ],
+      "coverage_status": "covered_by_reference_grid"
+    },
+    {
+      "observable": "D_A_DFM(z)",
+      "grid_ids": [
+        "background_redshift_grid"
+      ],
+      "coverage_status": "covered_by_reference_grid"
+    },
+    {
+      "observable": "D_L_DFM(z)",
+      "grid_ids": [
+        "background_redshift_grid"
+      ],
+      "coverage_status": "covered_by_reference_grid"
+    },
+    {
+      "observable": "mu_DFM(z)",
+      "grid_ids": [
+        "background_redshift_grid"
+      ],
+      "coverage_status": "covered_by_reference_grid"
+    },
+    {
+      "observable": "f_sigma8_DFM(z)",
+      "grid_ids": [
+        "growth_redshift_grid",
+        "perturbation_wavenumber_grid"
+      ],
+      "coverage_status": "covered_by_reference_grid"
+    },
+    {
+      "observable": "C_ell_TT_DFM",
+      "grid_ids": [
+        "cmb_multipole_grid",
+        "perturbation_wavenumber_grid"
+      ],
+      "coverage_status": "covered_by_reference_grid"
+    },
+    {
+      "observable": "C_ell_TE_DFM",
+      "grid_ids": [
+        "cmb_multipole_grid",
+        "perturbation_wavenumber_grid"
+      ],
+      "coverage_status": "covered_by_reference_grid"
+    },
+    {
+      "observable": "C_ell_EE_DFM",
+      "grid_ids": [
+        "cmb_multipole_grid",
+        "perturbation_wavenumber_grid"
+      ],
+      "coverage_status": "covered_by_reference_grid"
+    },
+    {
+      "observable": "S8_DFM",
+      "grid_ids": [
+        "growth_redshift_grid",
+        "perturbation_wavenumber_grid"
+      ],
+      "coverage_status": "covered_by_reference_grid"
+    },
+    {
+      "observable": "r_d_DFM",
+      "grid_ids": [
+        "sound_horizon_epoch_grid"
+      ],
+      "coverage_status": "covered_by_reference_grid"
+    }
+  ],
+  "admissibility_checks": [
+    "every frozen prediction-vector observable has at least one evaluation grid",
+    "every grid value is finite",
+    "redshift grids are nonnegative and strictly increasing",
+    "multipole grid values are integers with ell >= 2 and strictly increasing",
+    "wavenumber grid values are positive and strictly increasing",
+    "no grid is claimed to be matched to an empirical data vector",
+    "no covariance alignment is claimed",
+    "no likelihood readiness is claimed"
+  ],
+  "execution_effect": {
+    "removes_missing_object": "OBSERVABLE_EVALUATION_GRID",
+    "remaining_blockers": [
+      "DATA_VECTOR_SCHEMA",
+      "COVARIANCE_MATRIX",
+      "LIKELIHOOD_RULE",
+      "LAMBDA_CDM_BASELINE_VECTOR",
+      "INDEPENDENT_EMPIRICAL_VALIDATION"
+    ]
+  },
+  "check_result": "PASS_REFERENCE_GRID_ONLY",
+  "observable_evaluation_grid_supplied": true,
+  "data_vector_supplied": false,
+  "covariance_matrix_supplied": false,
+  "likelihood_rule_supplied": false,
+  "lambda_cdm_baseline_supplied": false,
+  "empirical_validation_claimed": false,
+  "model_selection_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "DATA_VECTOR_SCHEMA",
+    "COVARIANCE_MATRIX",
+    "LIKELIHOOD_RULE",
+    "LAMBDA_CDM_BASELINE_VECTOR",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}
