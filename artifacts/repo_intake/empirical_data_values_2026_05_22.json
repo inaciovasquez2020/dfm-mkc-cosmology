@@ -1,0 +1,31 @@
+{
+  "artifact_id": "empirical_data_values_2026_05_22",
+  "status": "EMPIRICAL_DATA_VALUES_BLOCKED_NO_EXTERNAL_PAYLOAD_BOUND",
+  "required_object_blocked": "EMPIRICAL_DATA_VALUES",
+  "source_spec": "specs/EMPIRICAL_DATA_VALUES.json",
+  "root_blocker_preserved": "EMPIRICAL_DATA_VALUES_NOT_SUPPLIED",
+  "terminal_blocker": "AUTHENTIC_EXTERNAL_DATA_PAYLOAD_NOT_BOUND",
+  "check_result": "BLOCKED_NO_EXTERNAL_PAYLOAD_BOUND",
+  "boundary": [
+    "records that empirical data values are blocked",
+    "identifies the missing external payload binding objects",
+    "does not supply empirical data values",
+    "does not bind an external payload",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "AUTHENTIC_EXTERNAL_DATA_PAYLOAD",
+    "PAYLOAD_SLOT_BINDING_MAP",
+    "PAYLOAD_DIGEST_LOCK",
+    "EMPIRICAL_VALUE_ARRAY",
+    "EMPIRICAL_UNCERTAINTY_ARRAY"
+  ]
+}

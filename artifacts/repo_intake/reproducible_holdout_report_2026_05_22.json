@@ -1,0 +1,31 @@
+{
+  "artifact_id": "reproducible_holdout_report_2026_05_22",
+  "status": "REPRODUCIBLE_HOLDOUT_REPORT_BLOCKED_NO_EXECUTED_LIKELIHOOD_OR_HOLDOUT_PAYLOAD",
+  "required_object_blocked": "REPRODUCIBLE_HOLDOUT_REPORT",
+  "source_spec": "specs/REPRODUCIBLE_HOLDOUT_REPORT.json",
+  "root_blocker_preserved": "REPRODUCIBLE_HOLDOUT_REPORT_NOT_SUPPLIED",
+  "terminal_blocker": "HOLDOUT_PAYLOAD_AND_EXECUTED_LIKELIHOOD_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_EXECUTED_LIKELIHOOD_OR_HOLDOUT_PAYLOAD",
+  "boundary": [
+    "records that a reproducible holdout report is blocked",
+    "identifies missing holdout payload and likelihood execution objects",
+    "does not claim holdout survival",
+    "does not claim Lambda-CDM failure",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "HOLDOUT_PAYLOAD_DIGEST_LOCK",
+    "EXECUTED_LIKELIHOOD_RESULT",
+    "REPRODUCTION_COMMANDS",
+    "REPRODUCTION_LOG",
+    "CLAIM_BOUNDARY_AUDIT"
+  ]
+}

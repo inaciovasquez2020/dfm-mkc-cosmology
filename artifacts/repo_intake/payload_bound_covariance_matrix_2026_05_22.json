@@ -1,0 +1,30 @@
+{
+  "artifact_id": "payload_bound_covariance_matrix_2026_05_22",
+  "status": "PAYLOAD_BOUND_COVARIANCE_MATRIX_BLOCKED_NO_EMPIRICAL_PAYLOAD_BINDING",
+  "required_object_blocked": "PAYLOAD_BOUND_COVARIANCE_MATRIX",
+  "source_spec": "specs/PAYLOAD_BOUND_COVARIANCE_MATRIX.json",
+  "root_blocker_preserved": "PAYLOAD_BOUND_COVARIANCE_MATRIX_NOT_SUPPLIED",
+  "terminal_blocker": "PAYLOAD_COVARIANCE_ARRAY_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_EMPIRICAL_PAYLOAD_BINDING",
+  "boundary": [
+    "records that payload-bound covariance is blocked",
+    "distinguishes reference covariance from empirical payload-bound covariance",
+    "does not supply empirical covariance",
+    "does not bind covariance to an external payload",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "PAYLOAD_COVARIANCE_ARRAY",
+    "PAYLOAD_COVARIANCE_SLOT_ORDER",
+    "PAYLOAD_COVARIANCE_DIGEST_LOCK",
+    "PAYLOAD_COVARIANCE_POSITIVE_DEFINITE_CHECK"
+  ]
+}
