@@ -1,0 +1,82 @@
+{
+  "object_id": "VARIATIONAL_DERIVATION_CHECK",
+  "status": "STRUCTURAL_VARIATIONAL_DERIVATION_CHECK_SUPPLIED_NOT_SYMBOLICALLY_PROVED",
+  "date": "2026-05-22",
+  "input_object": "FILLED_SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL",
+  "input_spec": "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+  "check_scope": "term-by-term structural variational consistency between the supplied action functional and the supplied field-equation targets",
+  "checked_variations": [
+    {
+      "variation": "delta S / delta g^{mu nu}",
+      "equation_target": "metric_equation",
+      "required_sources": [
+        "Einstein-Hilbert term",
+        "cosmological constant term",
+        "scalar kinetic and potential terms",
+        "vector kinetic and mass terms",
+        "scalar-vector interaction term",
+        "nonminimal curvature couplings",
+        "matter action"
+      ],
+      "structural_result": "matched"
+    },
+    {
+      "variation": "delta S / delta phi",
+      "equation_target": "scalar_equation",
+      "required_sources": [
+        "scalar kinetic term",
+        "scalar mass term",
+        "scalar quartic term",
+        "scalar-vector interaction term",
+        "nonminimal scalar curvature coupling",
+        "conformal matter coupling"
+      ],
+      "structural_result": "matched"
+    },
+    {
+      "variation": "delta S / delta A_mu",
+      "equation_target": "vector_equation",
+      "required_sources": [
+        "Maxwell-Proca kinetic term",
+        "vector mass term",
+        "scalar-vector interaction term",
+        "nonminimal Ricci-vector coupling"
+      ],
+      "structural_result": "matched"
+    },
+    {
+      "variation": "delta S_m / delta Psi",
+      "equation_target": "matter_equation",
+      "required_sources": [
+        "matter action evaluated on conformal matter metric"
+      ],
+      "structural_result": "matched"
+    }
+  ],
+  "consistency_requirements": [
+    "every supplied field equation has at least one originating action sector",
+    "every nonminimal coupling appearing in the action appears in an equation target",
+    "every interaction coupling appearing in an equation target appears in the action",
+    "all validation flags remain non-empirical and non-final"
+  ],
+  "check_result": "PASS_STRUCTURAL_ONLY",
+  "symbolic_variation_proved": false,
+  "physical_correctness_claimed": false,
+  "empirical_validation_claimed": false,
+  "likelihood_execution_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "PARAMETER_DOMAIN_AND_UNITS_TABLE",
+    "COSMOLOGICAL_REDUCTION_ANSATZ",
+    "FROZEN_PREDICTION_VECTOR",
+    "EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}
