@@ -214,15 +214,24 @@ def main():
     write_json(OUT["manifest"], manifest)
 
     run = {
+        "id": "EXECUTED_MULTIPROBE_PROFILED_LIKELIHOOD_RUN",
         "object": "EXECUTED_MULTIPROBE_PROFILED_LIKELIHOOD_RUN",
         "date": "2026-05-22",
-        "status": "EXECUTION_BLOCKED_COMPLETE_CERTIFIED_MANIFEST_NOT_READY",
+        "status": "INPUT_GATED_EXECUTION_TARGET_ONLY_NO_LIKELIHOOD_RUN",
         "complete_manifest_ready": complete_manifest_ready,
+        "input_gated": True,
         "execution_performed": False,
+        "likelihood_run_executed": False,
         "profiled_log_likelihoods": None,
         "test_statistic": None,
         "required_next_object": "OUT_OF_SAMPLE_MULTIPROBE_LCDM_REJECTION_CERTIFICATE",
-        "does_not_prove": DOES_NOT_PROVE,
+        "does_not_prove": sorted(set(DOES_NOT_PROVE + [
+            "Lambda-CDM failure",
+            "empirical validation",
+            "ACT validation",
+            "DESI validation",
+            "DES validation"
+        ])),
     }
     write_json(OUT["run"], run)
 
