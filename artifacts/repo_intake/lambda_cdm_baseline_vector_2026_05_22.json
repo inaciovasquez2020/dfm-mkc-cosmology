@@ -1,0 +1,28 @@
+{
+  "artifact_id": "lambda_cdm_baseline_vector_2026_05_22",
+  "status": "LAMBDA_CDM_BASELINE_VECTOR_SUPPLIED_REFERENCE_ONLY_NOT_EMPIRICAL",
+  "required_object_filled": "LAMBDA_CDM_BASELINE_VECTOR",
+  "source_spec": "specs/LAMBDA_CDM_BASELINE_VECTOR.json",
+  "root_blocker_removed": "LAMBDA_CDM_BASELINE_VECTOR_NOT_SUPPLIED",
+  "new_root_blocker": "INDEPENDENT_EMPIRICAL_VALIDATION_NOT_SUPPLIED",
+  "check_result": "PASS_REFERENCE_BASELINE_ONLY",
+  "boundary": [
+    "supplies a reference Lambda-CDM baseline vector",
+    "checks baseline slot order against the data vector schema",
+    "does not claim the baseline is fit to data",
+    "does not claim a best-fit Lambda-CDM solution",
+    "does not execute model selection",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}
