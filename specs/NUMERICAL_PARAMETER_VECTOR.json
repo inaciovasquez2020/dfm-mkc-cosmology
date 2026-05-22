@@ -1,0 +1,185 @@
+{
+  "object_id": "NUMERICAL_PARAMETER_VECTOR",
+  "status": "NUMERICAL_PARAMETER_VECTOR_SUPPLIED_REFERENCE_CANDIDATE_ONLY_NOT_FIT",
+  "date": "2026-05-22",
+  "input_objects": [
+    "FILLED_SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL",
+    "VARIATIONAL_DERIVATION_CHECK",
+    "PARAMETER_DOMAIN_AND_UNITS_TABLE",
+    "COSMOLOGICAL_REDUCTION_ANSATZ",
+    "FROZEN_PREDICTION_VECTOR",
+    "EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON",
+    "DERIVED_REDUCED_BACKGROUND_EQUATIONS",
+    "PERTURBATION_CLOSURE_EQUATIONS"
+  ],
+  "input_specs": [
+    "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+    "specs/VARIATIONAL_DERIVATION_CHECK.json",
+    "specs/PARAMETER_DOMAIN_AND_UNITS_TABLE.json",
+    "specs/COSMOLOGICAL_REDUCTION_ANSATZ.json",
+    "specs/FROZEN_PREDICTION_VECTOR.json",
+    "specs/EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON.json",
+    "specs/DERIVED_REDUCED_BACKGROUND_EQUATIONS.json",
+    "specs/PERTURBATION_CLOSURE_EQUATIONS.json"
+  ],
+  "unit_system": "natural_units_c_equals_hbar_equals_1",
+  "vector_policy": {
+    "parameter_order_locked": true,
+    "numerical_values_supplied": true,
+    "fit_to_data": false,
+    "posterior_sample": false,
+    "best_fit_claimed": false,
+    "physical_calibration_claimed": false,
+    "reference_candidate_only": true
+  },
+  "parameter_vector_order": [
+    "M_Pl",
+    "Lambda_0",
+    "alpha_phi",
+    "m_phi",
+    "lambda_phi",
+    "alpha_A",
+    "m_A",
+    "beta_phi_A",
+    "xi_phi",
+    "xi_A",
+    "gamma_m"
+  ],
+  "parameter_values": [
+    {
+      "index": 0,
+      "symbol": "M_Pl",
+      "value": 1.0,
+      "mass_dimension": 1,
+      "constraint_status": "satisfies_positive_domain",
+      "selection_rule": "reference natural-unit normalization"
+    },
+    {
+      "index": 1,
+      "symbol": "Lambda_0",
+      "value": 0.0,
+      "mass_dimension": 4,
+      "constraint_status": "satisfies_real_domain",
+      "selection_rule": "zero reference cosmological term"
+    },
+    {
+      "index": 2,
+      "symbol": "alpha_phi",
+      "value": 1.0,
+      "mass_dimension": 0,
+      "constraint_status": "satisfies_positive_domain",
+      "selection_rule": "canonical scalar kinetic normalization"
+    },
+    {
+      "index": 3,
+      "symbol": "m_phi",
+      "value": 0.0,
+      "mass_dimension": 1,
+      "constraint_status": "satisfies_nonnegative_domain",
+      "selection_rule": "massless scalar reference point"
+    },
+    {
+      "index": 4,
+      "symbol": "lambda_phi",
+      "value": 0.0,
+      "mass_dimension": 0,
+      "constraint_status": "satisfies_nonnegative_domain",
+      "selection_rule": "zero quartic self-coupling reference point"
+    },
+    {
+      "index": 5,
+      "symbol": "alpha_A",
+      "value": 1.0,
+      "mass_dimension": 0,
+      "constraint_status": "satisfies_positive_domain",
+      "selection_rule": "canonical vector kinetic normalization"
+    },
+    {
+      "index": 6,
+      "symbol": "m_A",
+      "value": 0.0,
+      "mass_dimension": 1,
+      "constraint_status": "satisfies_nonnegative_domain",
+      "selection_rule": "massless vector reference point"
+    },
+    {
+      "index": 7,
+      "symbol": "beta_phi_A",
+      "value": 0.0,
+      "mass_dimension": 0,
+      "constraint_status": "satisfies_real_domain",
+      "selection_rule": "zero scalar-vector interaction reference point"
+    },
+    {
+      "index": 8,
+      "symbol": "xi_phi",
+      "value": 0.0,
+      "mass_dimension": 0,
+      "constraint_status": "satisfies_real_domain",
+      "selection_rule": "minimal scalar-curvature coupling reference point"
+    },
+    {
+      "index": 9,
+      "symbol": "xi_A",
+      "value": 0.0,
+      "mass_dimension": 0,
+      "constraint_status": "satisfies_real_domain",
+      "selection_rule": "minimal vector-curvature coupling reference point"
+    },
+    {
+      "index": 10,
+      "symbol": "gamma_m",
+      "value": 0.0,
+      "mass_dimension": -1,
+      "constraint_status": "satisfies_real_domain",
+      "selection_rule": "zero conformal matter-coupling reference point"
+    }
+  ],
+  "admissibility_checks": [
+    "parameter symbols match PARAMETER_DOMAIN_AND_UNITS_TABLE exactly",
+    "parameter vector order is fixed and indexed from 0",
+    "positive-domain parameters have strictly positive values",
+    "nonnegative-domain parameters have nonnegative values",
+    "real-domain parameters have real finite values",
+    "no value is claimed to be fit, calibrated, or empirically validated"
+  ],
+  "execution_effect": {
+    "removes_missing_object": "NUMERICAL_PARAMETER_VECTOR",
+    "remaining_blockers": [
+      "INITIAL_CONDITIONS",
+      "OBSERVABLE_EVALUATION_GRID",
+      "DATA_VECTOR_SCHEMA",
+      "COVARIANCE_MATRIX",
+      "LIKELIHOOD_RULE",
+      "LAMBDA_CDM_BASELINE_VECTOR",
+      "INDEPENDENT_EMPIRICAL_VALIDATION"
+    ]
+  },
+  "check_result": "PASS_REFERENCE_VECTOR_ONLY",
+  "numerical_parameter_vector_supplied": true,
+  "initial_conditions_supplied": false,
+  "observable_evaluation_grid_supplied": false,
+  "data_vector_supplied": false,
+  "covariance_matrix_supplied": false,
+  "likelihood_rule_supplied": false,
+  "lambda_cdm_baseline_supplied": false,
+  "empirical_validation_claimed": false,
+  "model_selection_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "INITIAL_CONDITIONS",
+    "OBSERVABLE_EVALUATION_GRID",
+    "DATA_VECTOR_SCHEMA",
+    "COVARIANCE_MATRIX",
+    "LIKELIHOOD_RULE",
+    "LAMBDA_CDM_BASELINE_VECTOR",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}
