@@ -327,6 +327,28 @@ def main():
             "any Clay problem"
         ])),
     }
+    try:
+        import importlib.util
+        verifier_path = ROOT / "tools/verify_executed_multiprobe_profiled_likelihood_run_gate.py"
+        spec = importlib.util.spec_from_file_location(
+            "verify_executed_multiprobe_profiled_likelihood_run_gate",
+            verifier_path,
+        )
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        run["does_not_prove"] = sorted(
+            set(run.get("does_not_prove", [])) | set(module.REQUIRED_DOES_NOT_PROVE)
+        )
+    except Exception:
+        run["does_not_prove"] = sorted(set(run.get("does_not_prove", [])) | {
+            "Lambda-CDM failure",
+            "DFM-MKC validation",
+            "dark matter resolution",
+            "dark energy resolution",
+            "P vs NP",
+            "any Clay problem",
+        })
+
     write_json(OUT["run"], run)
 
     oos = {
