@@ -1,0 +1,49 @@
+{
+  "object_id": "LIKELIHOOD_RULE",
+  "status": "LIKELIHOOD_RULE_SUPPLIED_FORMAL_ONLY_NOT_EXECUTED",
+  "date": "2026-05-22",
+  "input_specs": [
+    "specs/DATA_VECTOR_SCHEMA.json",
+    "specs/COVARIANCE_MATRIX.json",
+    "specs/FROZEN_PREDICTION_VECTOR.json"
+  ],
+  "likelihood_policy": {
+    "formal_rule_supplied": true,
+    "gaussian_chi_square_rule": true,
+    "executed": false,
+    "empirical_data_bound": false,
+    "lambda_cdm_baseline_bound": false,
+    "model_selection_claimed": false
+  },
+  "rule": {
+    "residual": "r(theta) = y_data - y_model(theta)",
+    "chi_square": "chi2(theta) = r(theta)^T C^{-1} r(theta)",
+    "log_likelihood": "logL(theta) = -1/2 chi2(theta) - 1/2 log det(2 pi C)",
+    "comparison_statistic": "Delta_chi2 = chi2_DFM - chi2_LambdaCDM"
+  },
+  "required_inputs_for_execution": [
+    "EMPIRICAL_DATA_VALUES",
+    "EXECUTABLE_DFM_PREDICTION_VALUES",
+    "LAMBDA_CDM_BASELINE_VECTOR",
+    "COVARIANCE_MATRIX"
+  ],
+  "check_result": "PASS_FORMAL_RULE_ONLY",
+  "likelihood_rule_supplied": true,
+  "likelihood_executed": false,
+  "empirical_values_supplied": false,
+  "lambda_cdm_baseline_supplied": false,
+  "empirical_validation_claimed": false,
+  "model_selection_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "LAMBDA_CDM_BASELINE_VECTOR",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}
