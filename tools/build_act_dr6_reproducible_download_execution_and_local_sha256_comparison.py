@@ -49,8 +49,12 @@ def find_candidate_payloads(root: Path):
             or p.name.endswith(".fits.gz")
             or "sacc" in p.name.lower()
         ):
+            try:
+                display_path = str(p.relative_to(ROOT))
+            except ValueError:
+                display_path = str(p)
             candidates.append({
-                "path": str(p.relative_to(ROOT)),
+                "path": display_path,
                 "size_bytes": p.stat().st_size,
                 "sha256": sha256_file(p),
             })
