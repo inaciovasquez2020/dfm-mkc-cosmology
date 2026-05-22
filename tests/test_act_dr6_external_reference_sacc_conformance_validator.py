@@ -18,7 +18,7 @@ def test_official_references_bound():
     assert "act_dr6_data_products" in data["official_external_references"]
     assert "act_dr6_lite_repository" in data["official_external_references"]
 
-def test_external_digest_not_overclaimed:
+def test_external_digest_not_overclaimed():
     data = json.loads(ARTIFACT.read_text())
     assert data["external_digest"] is None
     assert data["external_digest_supplied"] is False
