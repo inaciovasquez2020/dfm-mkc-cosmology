@@ -1,0 +1,33 @@
+{
+  "id": "MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST_TEMPLATE",
+  "status": "TEMPLATE_ONLY_REAL_DATA_PATHS_NOT_SUPPLIED",
+  "created": "2026-05-22",
+  "purpose": "Template for supplying real local paths or reproducible fetch instructions for the multiprobe likelihood execution gate.",
+  "inputs": {
+    "planck_2018_likelihood": null,
+    "planck_2018_lensing": null,
+    "act_dr6_likelihood_or_chains": null,
+    "desi_dr2_bao_likelihood_or_covariance": null,
+    "desi_dr2_bao_bestfit_or_chain": null,
+    "pantheon_plus_data": null,
+    "pantheon_plus_covariance": null,
+    "sh0es_calibrator_data": null,
+    "union3_or_des_sn_crosscheck": null,
+    "des_y6_3x2pt_likelihood_or_chain": null,
+    "kids_legacy_likelihood_or_chain": null,
+    "hsc_y3_likelihood_or_chain": null,
+    "cmb_lensing_likelihood_or_chain": null,
+    "nuisance_prior_table": null,
+    "systematics_profile_config": null,
+    "holdout_split_manifest": null
+  },
+  "required_next_object": "MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST_WITH_REAL_DATA_PATHS",
+  "boundary": "Template only. No real data paths are supplied and no likelihood is executed.",
+  "does_not_prove": [
+    "Lambda-CDM failure",
+    "six-parameter flat Lambda-CDM rejection",
+    "DFM-MKC validation",
+    "empirical discovery",
+    "any Clay problem"
+  ]
+}
