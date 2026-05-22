@@ -1,0 +1,115 @@
+{
+  "id": "MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST_WITH_REAL_DATA_PATHS",
+  "status": "PARTIAL_REAL_PATHS_CANDIDATE_ONLY_INCOMPLETE_LIKELIHOOD_INPUTS",
+  "created": "2026-05-22",
+  "purpose": "Record discovered local candidate paths for the multiprobe likelihood input manifest while preserving that the complete executable likelihood input set is not yet certified.",
+  "inputs": {
+    "planck_2018_likelihood": {
+      "path": "public_data/planck",
+      "classification": "CANDIDATE_DIRECTORY_ONLY_NOT_FULL_PLANCK_LIKELIHOOD",
+      "present_in_find_output": true
+    },
+    "planck_2018_lensing": {
+      "path": "public_data/planck/planck_2018_baseline_params.csv",
+      "classification": "PARAMETER_CSV_ONLY_NOT_LENSING_LIKELIHOOD",
+      "present_in_find_output": true
+    },
+    "act_dr6_likelihood_or_chains": {
+      "path": "artifacts/public_payloads/act_lite_numeric_like_extracted_2026_05_21/DR6-ACT-lite-main__act_dr6_cmbonly__data__act_dr6_cmb_sacc.fits",
+      "classification": "LOCAL_ACT_LITE_FITS_CANDIDATE",
+      "present_in_find_output": true
+    },
+    "desi_dr2_bao_likelihood_or_covariance": {
+      "path": "public_data/desi_dr2",
+      "classification": "CANDIDATE_DIRECTORY_ONLY_CONTENT_NOT_CERTIFIED",
+      "present_in_find_output": true
+    },
+    "desi_dr2_bao_bestfit_or_chain": {
+      "path": "artifacts/cosmology/desi_dr2_cmb_sn_rejection_reproducer_2026_05_22.json",
+      "classification": "REPRODUCER_SPEC_ONLY_NOT_BESTFIT_CHAIN",
+      "present_in_find_output": true
+    },
+    "pantheon_plus_data": {
+      "path": "artifacts/external_data_sources/pantheon_plus_shoes_1_data",
+      "classification": "LOCAL_PANTHEON_PLUS_SHOES_DIRECTORY_CANDIDATE",
+      "present_in_find_output": true
+    },
+    "pantheon_plus_covariance": {
+      "path": "artifacts/external_data_sources/pantheon_plus_shoes_1_data",
+      "classification": "CANDIDATE_DIRECTORY_COVARIANCE_FILE_NOT_SEPARATELY_CERTIFIED",
+      "present_in_find_output": true
+    },
+    "sh0es_calibrator_data": {
+      "path": "artifacts/external_data_sources/pantheon_plus_shoes_1_data",
+      "classification": "CANDIDATE_DIRECTORY_SH0ES_FILE_NOT_SEPARATELY_CERTIFIED",
+      "present_in_find_output": true
+    },
+    "union3_or_des_sn_crosscheck": {
+      "path": null,
+      "classification": "MISSING",
+      "present_in_find_output": false
+    },
+    "des_y6_3x2pt_likelihood_or_chain": {
+      "path": "artifacts/des_y6",
+      "classification": "CANDIDATE_DIRECTORY_ONLY_CONTENT_NOT_CERTIFIED",
+      "present_in_find_output": true
+    },
+    "kids_legacy_likelihood_or_chain": {
+      "path": null,
+      "classification": "MISSING",
+      "present_in_find_output": false
+    },
+    "hsc_y3_likelihood_or_chain": {
+      "path": null,
+      "classification": "MISSING",
+      "present_in_find_output": false
+    },
+    "cmb_lensing_likelihood_or_chain": {
+      "path": "public_data/planck",
+      "classification": "CANDIDATE_DIRECTORY_ONLY_NOT_CERTIFIED_CMB_LENSING_CHAIN",
+      "present_in_find_output": true
+    },
+    "nuisance_prior_table": {
+      "path": null,
+      "classification": "MISSING",
+      "present_in_find_output": false
+    },
+    "systematics_profile_config": {
+      "path": "artifacts/cosmology/h0_distance_ladder_systematics_profile_2026_05_22.json",
+      "classification": "PROFILE_SPEC_ONLY_NOT_FULL_SYSTEMATICS_CONFIG",
+      "present_in_find_output": true
+    },
+    "holdout_split_manifest": {
+      "path": "artifacts/repo_intake/dfm_mkc_holdout_split_target_2026_05_21.json",
+      "classification": "HOLDOUT_TARGET_ONLY_NOT_FINAL_SPLIT_MANIFEST",
+      "present_in_find_output": true
+    }
+  },
+  "missing_or_uncertified_inputs": [
+    "full Planck 2018 likelihood",
+    "Planck lensing likelihood or chain",
+    "certified DESI DR2 BAO covariance/likelihood file",
+    "DESI DR2 bestfit or chain file",
+    "Union3 or DES-SN crosscheck likelihood/data",
+    "DES Y6 3x2pt likelihood or chain file",
+    "KiDS-Legacy likelihood or chain",
+    "HSC-Y3 likelihood or chain",
+    "certified CMB lensing likelihood or chain",
+    "nuisance prior table",
+    "full systematics profile config",
+    "final holdout split manifest"
+  ],
+  "required_next_object": "COMPLETE_CERTIFIED_MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST_WITH_REAL_DATA_PATHS",
+  "boundary": "Partial real-path candidate manifest only. This does not certify complete likelihood inputs, execute a likelihood, reject Lambda-CDM, validate DFM-MKC, promote an alternative model, or resolve any Clay problem.",
+  "does_not_prove": [
+    "complete multiprobe likelihood input availability",
+    "Lambda-CDM failure",
+    "six-parameter flat Lambda-CDM rejection",
+    "dark energy evolution",
+    "modified gravity",
+    "DFM-MKC validation",
+    "dark matter detection or resolution",
+    "empirical discovery",
+    "any Clay problem"
+  ]
+}
