@@ -1,0 +1,124 @@
+{
+  "id": "COMPLETE_CERTIFIED_MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST_WITH_REAL_DATA_PATHS",
+  "status": "CERTIFICATION_TARGET_ONLY_REQUIRED_INPUTS_MISSING",
+  "created": "2026-05-22",
+  "purpose": "Define the exact complete certified real-path manifest required before the executed multiprobe profiled likelihood run can be promoted from input-gated target to executable evidence run.",
+  "depends_on": [
+    "MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST_WITH_REAL_DATA_PATHS",
+    "EXECUTED_MULTIPROBE_PROFILED_LIKELIHOOD_RUN"
+  ],
+  "required_certified_inputs": {
+    "planck_2018_likelihood": {
+      "required": true,
+      "current_status": "UNCERTIFIED_DIRECTORY_OR_MISSING_FULL_LIKELIHOOD",
+      "certification_required": "file-level Planck 2018 likelihood path with provenance, checksum, and backend compatibility"
+    },
+    "planck_2018_lensing": {
+      "required": true,
+      "current_status": "UNCERTIFIED_OR_MISSING_LENSING_LIKELIHOOD",
+      "certification_required": "file-level Planck lensing likelihood or chain path with provenance and checksum"
+    },
+    "act_dr6_likelihood_or_chains": {
+      "required": true,
+      "current_status": "CANDIDATE_ACT_LITE_FITS_PRESENT_NOT_FULL_CERTIFIED_LIKELIHOOD",
+      "certification_required": "ACT DR6 likelihood/chains with provenance, checksum, and expected schema"
+    },
+    "desi_dr2_bao_likelihood_or_covariance": {
+      "required": true,
+      "current_status": "UNCERTIFIED_DIRECTORY_ONLY",
+      "certification_required": "DESI DR2 BAO covariance or likelihood file with provenance and checksum"
+    },
+    "desi_dr2_bao_bestfit_or_chain": {
+      "required": true,
+      "current_status": "MISSING_CERTIFIED_BESTFIT_OR_CHAIN",
+      "certification_required": "DESI DR2 bestfit table or posterior chain with provenance and checksum"
+    },
+    "pantheon_plus_data": {
+      "required": true,
+      "current_status": "CANDIDATE_DIRECTORY_PRESENT_NOT_FILE_CERTIFIED",
+      "certification_required": "Pantheon+ data file with provenance, checksum, and schema"
+    },
+    "pantheon_plus_covariance": {
+      "required": true,
+      "current_status": "CANDIDATE_DIRECTORY_PRESENT_COVARIANCE_NOT_FILE_CERTIFIED",
+      "certification_required": "Pantheon+ covariance file with provenance, checksum, and schema"
+    },
+    "sh0es_calibrator_data": {
+      "required": true,
+      "current_status": "CANDIDATE_DIRECTORY_PRESENT_CALIBRATOR_FILE_NOT_CERTIFIED",
+      "certification_required": "SH0ES calibrator file with provenance, checksum, and schema"
+    },
+    "union3_or_des_sn_crosscheck": {
+      "required": true,
+      "current_status": "MISSING",
+      "certification_required": "Union3 or DES-SN crosscheck data/likelihood with provenance and checksum"
+    },
+    "des_y6_3x2pt_likelihood_or_chain": {
+      "required": true,
+      "current_status": "UNCERTIFIED_DIRECTORY_ONLY",
+      "certification_required": "DES Y6 3x2pt likelihood or chain file with provenance and checksum"
+    },
+    "kids_legacy_likelihood_or_chain": {
+      "required": true,
+      "current_status": "MISSING",
+      "certification_required": "KiDS-Legacy likelihood or chain with provenance and checksum"
+    },
+    "hsc_y3_likelihood_or_chain": {
+      "required": true,
+      "current_status": "MISSING",
+      "certification_required": "HSC-Y3 likelihood or chain with provenance and checksum"
+    },
+    "cmb_lensing_likelihood_or_chain": {
+      "required": true,
+      "current_status": "UNCERTIFIED_DIRECTORY_ONLY",
+      "certification_required": "CMB lensing likelihood or chain with provenance and checksum"
+    },
+    "nuisance_prior_table": {
+      "required": true,
+      "current_status": "MISSING",
+      "certification_required": "nuisance prior table covering CMB, BAO, SN/H0, growth, lensing, baryonic feedback, intrinsic alignment, photo-z, and calibration nuisances"
+    },
+    "systematics_profile_config": {
+      "required": true,
+      "current_status": "SPEC_ONLY_NOT_FULL_CONFIG",
+      "certification_required": "full systematics profiling config with nuisance priors and marginalization/profile rules"
+    },
+    "holdout_split_manifest": {
+      "required": true,
+      "current_status": "TARGET_ONLY_NOT_FINAL_SPLIT_MANIFEST",
+      "certification_required": "final blind/holdout split manifest with frozen split hash"
+    }
+  },
+  "certification_rules": [
+    "every required input must have a non-null local path",
+    "every local path must exist",
+    "every file or directory must have a checksum or digest manifest",
+    "every source must include provenance",
+    "every source must be classified as likelihood, chain, covariance, data table, prior table, config, or holdout manifest",
+    "candidate directories alone are insufficient unless they include a certified file-level digest manifest",
+    "no source-map paper or critique can substitute for likelihood input data"
+  ],
+  "current_certification_status": {
+    "all_required_paths_present": false,
+    "all_required_paths_certified": false,
+    "all_probe_classes_covered": false,
+    "all_checksums_present": false,
+    "all_provenance_records_present": false,
+    "ready_for_executed_likelihood_run": false
+  },
+  "blocking_reason": "The repository currently has partial candidate paths but not a complete certified file-level manifest with all required likelihood, covariance, chain, nuisance, systematics, and holdout inputs.",
+  "required_next_object": "FILE_LEVEL_MULTIPROBE_INPUT_DIGEST_AND_PROVENANCE_MANIFEST",
+  "boundary": "Certification target only. This does not certify complete likelihood inputs, execute a likelihood, reject Lambda-CDM, validate DFM-MKC, promote an alternative model, or resolve any Clay problem.",
+  "does_not_prove": [
+    "complete multiprobe likelihood input availability",
+    "certified multiprobe likelihood execution readiness",
+    "Lambda-CDM failure",
+    "six-parameter flat Lambda-CDM rejection",
+    "dark energy evolution",
+    "modified gravity",
+    "DFM-MKC validation",
+    "dark matter detection or resolution",
+    "empirical discovery",
+    "any Clay problem"
+  ]
+}
