@@ -1,0 +1,99 @@
+{
+  "id": "COMPLETE_DFM_PARAMETER_PRIOR_AND_NUMERICAL_SOLVER_INTERFACE",
+  "date": "2026-05-22",
+  "status": "SOLVER_INTERFACE_ONLY_NO_EXECUTED_VALIDATION",
+  "depends_on": [
+    "FILLED_CLOSED_DFM_FIELD_EQUATIONS_OR_ACTION_FUNCTIONAL",
+    "MINIMAL_INTERACTING_SCALAR_DFM_CORE_V1"
+  ],
+  "parameter_vector": [
+    {"symbol": "H0", "meaning": "present Hubble parameter", "units": "km s^-1 Mpc^-1", "prior_type": "uniform", "range": [40.0, 100.0], "status": "free"},
+    {"symbol": "Omega_b0", "meaning": "present baryon density fraction", "units": "dimensionless", "prior_type": "uniform", "range": [0.01, 0.12], "status": "free_or_external_prior"},
+    {"symbol": "Omega_c0", "meaning": "present coupled cold dark-sector density fraction", "units": "dimensionless", "prior_type": "uniform", "range": [0.0, 0.6], "status": "free"},
+    {"symbol": "Omega_r0", "meaning": "present radiation density fraction", "units": "dimensionless", "prior_type": "fixed_or_external", "range": [0.0, 0.001], "status": "fixed_or_external"},
+    {"symbol": "V0", "meaning": "DFM scalar potential amplitude", "units": "critical_density_units", "prior_type": "log_uniform", "range": [1.0e-8, 10.0], "status": "free"},
+    {"symbol": "lambda", "meaning": "exponential-potential slope", "units": "dimensionless", "prior_type": "uniform", "range": [0.0, 10.0], "status": "free"},
+    {"symbol": "beta", "meaning": "dark-sector conformal coupling", "units": "dimensionless", "prior_type": "uniform", "range": [-2.0, 2.0], "status": "free"},
+    {"symbol": "Phi_i", "meaning": "initial scalar value", "units": "M_Pl", "prior_type": "uniform", "range": [-10.0, 10.0], "status": "free"},
+    {"symbol": "dot_Phi_i", "meaning": "initial scalar velocity", "units": "M_Pl H0", "prior_type": "uniform", "range": [-10.0, 10.0], "status": "free"}
+  ],
+  "state_vector": [
+    "a",
+    "Phi",
+    "dot_Phi",
+    "rho_b",
+    "rho_c",
+    "rho_r"
+  ],
+  "solver_interface": {
+    "independent_variable": "N=ln(a)",
+    "domain": "N in [N_initial, 0]",
+    "default_N_initial": -10.0,
+    "rhs_required_outputs": [
+      "dPhi_dN",
+      "ddot_Phi_dN",
+      "drho_b_dN",
+      "drho_c_dN",
+      "drho_r_dN",
+      "H_of_N"
+    ],
+    "constraints": [
+      "H^2=(1/(3M_Pl^2))(rho_b+rho_r+rho_c+0.5 dot_Phi^2+V0 exp(-lambda Phi/M_Pl))",
+      "rho_b>=0",
+      "rho_c>=0",
+      "rho_r>=0",
+      "H>0",
+      "V0>0"
+    ],
+    "lambda_cdm_limit": "beta=0, lambda=0, dot_Phi_i=0, V0=constant"
+  },
+  "observable_interface": {
+    "background_outputs": [
+      "H(z)",
+      "D_C(z)",
+      "D_A(z)",
+      "D_L(z)"
+    ],
+    "bao_outputs": [
+      "D_M(z)/r_d",
+      "H(z) r_d",
+      "D_V(z)/r_d"
+    ],
+    "cmb_act_compressed_outputs": [
+      "R",
+      "ell_A",
+      "omega_b",
+      "omega_c"
+    ],
+    "sne_des_outputs": [
+      "mu(z)"
+    ],
+    "growth_outputs": [
+      "f_sigma8(z)",
+      "G_eff(a)=G(1+2 beta^2)"
+    ],
+    "score_rule": "chi2_total=chi2_BAO+chi2_CMB_compressed+chi2_SNe+chi2_growth",
+    "likelihood_rule": "logL(theta)=-(1/2)chi2_total(theta)"
+  },
+  "validation_gates": [
+    "parameter_vector_complete",
+    "solver_rhs_defined",
+    "lambda_cdm_limit_checked",
+    "observable_prediction_map_defined",
+    "holdout_likelihood_not_executed"
+  ],
+  "does_not_prove": [
+    "DFM-MKC validation",
+    "Lambda-CDM failure",
+    "dark matter resolution",
+    "dark energy resolution",
+    "gravity closure",
+    "empirical validation",
+    "ACT validation",
+    "DESI validation",
+    "DES validation",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "next_admissible_object": "EXECUTABLE_DFM_BACKGROUND_SOLVER_WITH_SYNTHETIC_SANITY_CHECK"
+}
