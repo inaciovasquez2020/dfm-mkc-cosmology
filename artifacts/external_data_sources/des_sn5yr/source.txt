@@ -1,0 +1,13 @@
+DES-SN5YR 0_DATA
+https://github.com/des-science/DES-SN5YR/tree/main/0_DATA
+
+Required role:
+SN Ia light-curve / distance-data source for DFM-vs-Lambda-CDM holdout testing.
+
+Boundary:
+Data source only.
+Does not supply DFM equations.
+Does not supply DFM prediction map.
+Does not execute likelihood.
+Does not prove DFM.
+Does not disprove Lambda-CDM.
