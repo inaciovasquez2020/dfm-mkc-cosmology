@@ -24,7 +24,7 @@ def test_external_digest_not_overclaimed():
     assert data["external_digest_supplied"] is False
     assert data["external_digest_matches_local_payload"] is False
 
-def test_partial_validator_not_certification:
+def test_partial_validator_not_certification():
     data = json.loads(ARTIFACT.read_text())
     checks = data["sacc_conformance_validator"]["checks"]
     assert checks["fits_payload_opens"] is True
