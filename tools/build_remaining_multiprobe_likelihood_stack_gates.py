@@ -244,7 +244,15 @@ def main():
             "empirical validation",
             "ACT validation",
             "DESI validation",
-            "DES validation"
+            "DES validation",
+            "ACT validation",
+            "DES validation",
+            "DESI validation",
+            "Lambda-CDM failure",
+            "dark matter resolution",
+            "dark energy resolution",
+            "P vs NP",
+            "any Clay problem"
         ])),
     }
     write_json(OUT["run"], run)
