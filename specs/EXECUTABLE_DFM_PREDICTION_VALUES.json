@@ -1,0 +1,48 @@
+{
+  "object_id": "EXECUTABLE_DFM_PREDICTION_VALUES",
+  "status": "EXECUTABLE_DFM_PREDICTION_VALUES_BLOCKED_NO_NUMERICAL_SOLVER_EXECUTION",
+  "date": "2026-05-22",
+  "input_specs": [
+    "specs/FROZEN_PREDICTION_VECTOR.json",
+    "specs/DERIVED_REDUCED_BACKGROUND_EQUATIONS.json",
+    "specs/PERTURBATION_CLOSURE_EQUATIONS.json",
+    "specs/NUMERICAL_PARAMETER_VECTOR.json",
+    "specs/INITIAL_CONDITIONS.json",
+    "specs/OBSERVABLE_EVALUATION_GRID.json"
+  ],
+  "execution_policy": {
+    "numerical_solver_required": true,
+    "background_solver_executed": false,
+    "perturbation_solver_executed": false,
+    "boltzmann_transfer_executed": false,
+    "prediction_values_supplied": false,
+    "claim_blocked": true
+  },
+  "blocked_reason": "No numerical solver execution has produced DFM-MKC prediction values on the observable evaluation grid.",
+  "required_execution_objects": [
+    "BACKGROUND_NUMERICAL_SOLVER_RUN",
+    "PERTURBATION_NUMERICAL_SOLVER_RUN",
+    "TRANSFER_FUNCTION_SOLVER_RUN",
+    "PREDICTION_VALUE_ARRAY",
+    "PREDICTION_RUN_DIGEST_LOCK"
+  ],
+  "check_result": "BLOCKED_NO_NUMERICAL_SOLVER_EXECUTION",
+  "executable_prediction_values_supplied": false,
+  "solver_execution_claimed": false,
+  "empirical_validation_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "BACKGROUND_NUMERICAL_SOLVER_RUN",
+    "PERTURBATION_NUMERICAL_SOLVER_RUN",
+    "TRANSFER_FUNCTION_SOLVER_RUN",
+    "PREDICTION_VALUE_ARRAY",
+    "PREDICTION_RUN_DIGEST_LOCK"
+  ]
+}

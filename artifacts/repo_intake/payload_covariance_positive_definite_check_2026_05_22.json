@@ -1,0 +1,28 @@
+{
+  "artifact_id": "payload_covariance_positive_definite_check_2026_05_22",
+  "status": "PAYLOAD_COVARIANCE_POSITIVE_DEFINITE_CHECK_BLOCKED_NO_PAYLOAD_COVARIANCE_ARRAY",
+  "required_object_blocked": "PAYLOAD_COVARIANCE_POSITIVE_DEFINITE_CHECK",
+  "source_spec": "specs/PAYLOAD_COVARIANCE_POSITIVE_DEFINITE_CHECK.json",
+  "root_blocker_preserved": "PAYLOAD_COVARIANCE_POSITIVE_DEFINITE_CHECK_NOT_SUPPLIED",
+  "terminal_blocker": "PAYLOAD_COVARIANCE_ARRAY_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_PAYLOAD_COVARIANCE_ARRAY",
+  "boundary": [
+    "records that payload covariance positive-definite checking is blocked",
+    "does not prove covariance positive definiteness",
+    "does not supply payload-bound covariance",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "PAYLOAD_COVARIANCE_ARRAY",
+    "COVARIANCE_SYMMETRY_CHECK",
+    "COVARIANCE_POSITIVE_DEFINITE_CERTIFICATE"
+  ]
+}

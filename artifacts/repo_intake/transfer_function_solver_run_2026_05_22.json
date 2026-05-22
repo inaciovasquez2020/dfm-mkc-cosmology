@@ -1,0 +1,29 @@
+{
+  "artifact_id": "transfer_function_solver_run_2026_05_22",
+  "status": "TRANSFER_FUNCTION_SOLVER_RUN_BLOCKED_NO_TRANSFER_SOLVER_IMPLEMENTATION",
+  "required_object_blocked": "TRANSFER_FUNCTION_SOLVER_RUN",
+  "source_spec": "specs/TRANSFER_FUNCTION_SOLVER_RUN.json",
+  "root_blocker_preserved": "TRANSFER_FUNCTION_SOLVER_RUN_NOT_SUPPLIED",
+  "terminal_blocker": "TRANSFER_FUNCTION_SOLVER_IMPLEMENTATION_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_TRANSFER_SOLVER_IMPLEMENTATION",
+  "boundary": [
+    "records that transfer-function solver execution is blocked",
+    "does not execute Boltzmann or transfer-function computation",
+    "does not produce CMB spectrum prediction values",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "TRANSFER_FUNCTION_SOLVER_IMPLEMENTATION",
+    "RECOMBINATION_CLOSURE",
+    "TRANSFER_FUNCTION_OUTPUT_ARRAY",
+    "TRANSFER_FUNCTION_DIGEST_LOCK"
+  ]
+}

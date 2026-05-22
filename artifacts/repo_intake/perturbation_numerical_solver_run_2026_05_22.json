@@ -1,0 +1,29 @@
+{
+  "artifact_id": "perturbation_numerical_solver_run_2026_05_22",
+  "status": "PERTURBATION_NUMERICAL_SOLVER_RUN_BLOCKED_NO_SOLVER_IMPLEMENTATION",
+  "required_object_blocked": "PERTURBATION_NUMERICAL_SOLVER_RUN",
+  "source_spec": "specs/PERTURBATION_NUMERICAL_SOLVER_RUN.json",
+  "root_blocker_preserved": "PERTURBATION_NUMERICAL_SOLVER_RUN_NOT_SUPPLIED",
+  "terminal_blocker": "PERTURBATION_SOLVER_IMPLEMENTATION_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_SOLVER_IMPLEMENTATION",
+  "boundary": [
+    "records that perturbation numerical solver execution is blocked",
+    "does not execute perturbation numerical integration",
+    "does not produce growth prediction values",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "PERTURBATION_SOLVER_IMPLEMENTATION",
+    "PERTURBATION_SOLVER_CONFIGURATION",
+    "PERTURBATION_SOLVER_OUTPUT_ARRAY",
+    "PERTURBATION_SOLVER_DIGEST_LOCK"
+  ]
+}

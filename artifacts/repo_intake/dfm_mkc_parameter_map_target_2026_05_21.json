@@ -1,0 +1,75 @@
+{
+  "artifact": "DFM_MKC_PARAMETER_MAP_TARGET",
+  "date": "2026-05-21",
+  "status": "PARAMETER_MAP_TARGET_ONLY_NOT_SUPPLIED",
+  "claim_level": "target_schema_only",
+  "parameter_map_supplied": false,
+  "parameter_values_frozen": false,
+  "prior_ranges_supplied": false,
+  "dimension_units_supplied": false,
+  "observable_parameter_projection_enabled": false,
+  "root_blocker": "DFM_PARAMETER_MAP_NOT_SUPPLIED",
+  "upstream_required_objects": [
+    "DFM_FIELD_EQUATIONS_OR_ACTION_FUNCTIONAL"
+  ],
+  "required_parameter_object_fields": [
+    "primitive_parameter_names",
+    "parameter_definitions",
+    "dimensional_units",
+    "allowed_domains",
+    "prior_ranges",
+    "frozen_values_or_free_status",
+    "physical_interpretation",
+    "degeneracy_structure",
+    "lambda_cdm_parameter_correspondence_or_explicit_noncorrespondence",
+    "matter_sector_parameters",
+    "dark_sector_parameters",
+    "initial_condition_parameters",
+    "boundary_condition_parameters",
+    "nuisance_parameter_separation",
+    "observable_channel_dependencies",
+    "calibration_parameters",
+    "holdout_freeze_certificate"
+  ],
+  "required_prediction_channels_blocked": [
+    "CMB_TT_TE_EE",
+    "CMB_LENSING",
+    "BAO_DISTANCES",
+    "SNIA_DISTANCES",
+    "WEAK_LENSING_AND_CLUSTERING",
+    "CLUSTER_ABUNDANCE"
+  ],
+  "downstream_blocked_objects": [
+    "DFM_OBSERVABLE_PREDICTION_RULES",
+    "DFM_FROZEN_PREDICTION_VECTOR",
+    "DFM_LIKELIHOOD_RULE",
+    "DFM_HOLDOUT_SPLIT",
+    "DFM_VS_LAMBDA_CDM_COMPARISON"
+  ],
+  "admissibility_rule": "DFM predictions remain inadmissible until a complete parameter map with domains, priors, units, frozen/free status, and observable-channel dependencies is supplied before likelihood execution.",
+  "boundary": [
+    "Target schema only.",
+    "Does not supply DFM field equations.",
+    "Does not supply DFM action functional.",
+    "Does not supply DFM parameter map.",
+    "Does not supply parameter values.",
+    "Does not supply prior ranges.",
+    "Does not freeze DFM parameters.",
+    "Does not supply observable prediction rules.",
+    "Does not supply frozen predictions.",
+    "Does not execute any likelihood.",
+    "Does not produce empirical evidence.",
+    "Does not prove DFM.",
+    "Does not disprove Lambda-CDM.",
+    "Does not replace CDM."
+  ],
+  "does_not_prove": [
+    "DFM",
+    "Lambda-CDM failure",
+    "CDM replacement",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}

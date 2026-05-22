@@ -1,0 +1,29 @@
+Pantheon+ / SH0ES 1_DATA Source
+
+Source:
+PantheonPlusSH0ES/DataRelease
+Pantheon+_Data/1_DATA
+https://github.com/PantheonPlusSH0ES/DataRelease/tree/main/Pantheon%2B_Data/1_DATA
+
+Required role:
+Type Ia supernova light-curve / redshift / distance-data source for DFM-vs-Lambda-CDM holdout testing.
+
+Data layer supplied:
+- Pantheon+ photometry directory
+- Pantheon+ header_overrides directory
+- all_redshifts_PVs.csv
+- light-curve photometry metadata context
+- SN Ia redshift / peculiar-velocity input context
+- low-redshift expansion-history comparison layer
+- distance-ladder / Hubble-tension comparison layer
+
+Boundary:
+Data source only.
+Does not supply DFM equations.
+Does not supply DFM action functional.
+Does not supply DFM prediction map.
+Does not execute Pantheon+ likelihood.
+Does not execute SH0ES likelihood.
+Does not prove DFM.
+Does not disprove Lambda-CDM.
+Does not replace CDM.

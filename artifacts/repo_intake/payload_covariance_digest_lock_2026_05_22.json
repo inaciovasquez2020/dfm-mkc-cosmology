@@ -1,0 +1,28 @@
+{
+  "artifact_id": "payload_covariance_digest_lock_2026_05_22",
+  "status": "PAYLOAD_COVARIANCE_DIGEST_LOCK_BLOCKED_NO_COVARIANCE_BYTES",
+  "required_object_blocked": "PAYLOAD_COVARIANCE_DIGEST_LOCK",
+  "source_spec": "specs/PAYLOAD_COVARIANCE_DIGEST_LOCK.json",
+  "root_blocker_preserved": "PAYLOAD_COVARIANCE_DIGEST_LOCK_NOT_SUPPLIED",
+  "terminal_blocker": "COVARIANCE_PAYLOAD_BYTES_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_COVARIANCE_BYTES",
+  "boundary": [
+    "records that covariance digest locking is blocked",
+    "does not hash covariance payload bytes",
+    "does not freeze covariance payload version",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "COVARIANCE_PAYLOAD_BYTES",
+    "COVARIANCE_SHA256_DIGEST",
+    "COVARIANCE_VERSION_RECORD"
+  ]
+}

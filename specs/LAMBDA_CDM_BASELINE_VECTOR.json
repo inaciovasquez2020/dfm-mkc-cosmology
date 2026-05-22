@@ -1,0 +1,72 @@
+{
+  "object_id": "LAMBDA_CDM_BASELINE_VECTOR",
+  "status": "LAMBDA_CDM_BASELINE_VECTOR_SUPPLIED_REFERENCE_ONLY_NOT_EMPIRICAL",
+  "date": "2026-05-22",
+  "input_specs": [
+    "specs/DATA_VECTOR_SCHEMA.json",
+    "specs/COVARIANCE_MATRIX.json",
+    "specs/LIKELIHOOD_RULE.json"
+  ],
+  "baseline_policy": {
+    "reference_baseline_only": true,
+    "slot_order_locked": true,
+    "matches_data_vector_schema": true,
+    "fit_to_data": false,
+    "best_fit_claimed": false,
+    "external_payload_bound": false,
+    "model_selection_claimed": false
+  },
+  "baseline_slot_order": [
+    "slot_E_DFM",
+    "slot_D_A_DFM",
+    "slot_D_L_DFM",
+    "slot_mu_DFM",
+    "slot_f_sigma8_DFM",
+    "slot_C_ell_TT_DFM",
+    "slot_C_ell_TE_DFM",
+    "slot_C_ell_EE_DFM",
+    "slot_S8_DFM",
+    "slot_r_d_DFM"
+  ],
+  "baseline_values": [
+    1.0,
+    1.0,
+    1.0,
+    0.0,
+    0.5,
+    1.0,
+    0.0,
+    1.0,
+    0.8,
+    147.0
+  ],
+  "value_units": [
+    "dimensionless",
+    "reference_distance_unit",
+    "reference_distance_unit",
+    "mag",
+    "dimensionless",
+    "reference_spectrum_unit",
+    "reference_spectrum_unit",
+    "reference_spectrum_unit",
+    "dimensionless",
+    "reference_distance_unit"
+  ],
+  "check_result": "PASS_REFERENCE_BASELINE_ONLY",
+  "lambda_cdm_baseline_supplied": true,
+  "fit_to_data": false,
+  "best_fit_claimed": false,
+  "empirical_validation_claimed": false,
+  "model_selection_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}

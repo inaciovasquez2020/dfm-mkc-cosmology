@@ -1,0 +1,114 @@
+{
+  "artifact": "DFM_MKC_HOLDOUT_SPLIT_TARGET",
+  "date": "2026-05-21",
+  "status": "HOLDOUT_SPLIT_TARGET_ONLY_NOT_SUPPLIED",
+  "claim_level": "target_schema_only",
+  "holdout_split_supplied": false,
+  "holdout_execution_supplied": false,
+  "training_split_supplied": false,
+  "validation_split_supplied": false,
+  "test_split_supplied": false,
+  "blind_protocol_supplied": false,
+  "no_post_hoc_tuning_certificate_supplied": false,
+  "likelihood_executed": false,
+  "empirical_evidence_supplied": false,
+  "root_blocker": "DFM_HOLDOUT_SPLIT_NOT_SUPPLIED",
+  "upstream_required_objects": [
+    "DFM_FIELD_EQUATIONS_OR_ACTION_FUNCTIONAL",
+    "DFM_PARAMETER_MAP",
+    "DFM_OBSERVABLE_PREDICTION_RULES",
+    "DFM_FROZEN_PREDICTION_VECTOR",
+    "DFM_LIKELIHOOD_RULE",
+    "DFM_EXTERNAL_DATA_MANIFEST"
+  ],
+  "required_holdout_split_fields": [
+    "split_identifier",
+    "split_timestamp",
+    "source_commit",
+    "registered_data_manifest_reference",
+    "frozen_prediction_vector_reference",
+    "likelihood_rule_reference",
+    "training_data_sources",
+    "validation_data_sources",
+    "holdout_data_sources",
+    "blind_data_sources",
+    "data_access_status",
+    "pre_unblinding_allowed_operations",
+    "post_unblinding_forbidden_operations",
+    "parameter_freeze_reference",
+    "prediction_freeze_reference",
+    "likelihood_freeze_reference",
+    "no_post_hoc_tuning_certificate",
+    "failure_thresholds",
+    "model_comparison_metrics",
+    "reproduction_command"
+  ],
+  "candidate_data_source_roles": {
+    "training_or_calibration": {
+      "allowed_role": "used only before freeze if explicitly declared",
+      "status": "blocked_no_holdout_split"
+    },
+    "validation": {
+      "allowed_role": "used for pipeline sanity checks before final blind holdout",
+      "status": "blocked_no_holdout_split"
+    },
+    "blind_holdout": {
+      "allowed_role": "reserved for frozen prediction evaluation only",
+      "status": "blocked_no_holdout_split"
+    }
+  },
+  "required_probe_coverage": {
+    "CMB_TT_TE_EE": {
+      "status": "blocked_no_holdout_assignment"
+    },
+    "CMB_LENSING": {
+      "status": "blocked_no_holdout_assignment"
+    },
+    "BAO_DISTANCES": {
+      "status": "blocked_no_holdout_assignment"
+    },
+    "SNIA_DISTANCES": {
+      "status": "blocked_no_holdout_assignment"
+    },
+    "WEAK_LENSING_AND_CLUSTERING": {
+      "status": "blocked_no_holdout_assignment"
+    },
+    "CLUSTER_ABUNDANCE": {
+      "status": "blocked_no_holdout_assignment"
+    }
+  },
+  "downstream_blocked_objects": [
+    "DFM_HOLDOUT_SPLIT_EXECUTION",
+    "DFM_VS_LAMBDA_CDM_COMPARISON",
+    "DFM_EMPIRICAL_EVIDENCE_CLAIM",
+    "DFM_CDM_REPLACEMENT_CLAIM"
+  ],
+  "admissibility_rule": "DFM empirical comparison remains inadmissible until data sources are assigned to training, validation, and blind holdout roles before holdout execution, with frozen predictions and likelihood rules fixed before blind evaluation.",
+  "boundary": [
+    "Target schema only.",
+    "Does not assign training data.",
+    "Does not assign validation data.",
+    "Does not assign blind holdout data.",
+    "Does not execute holdout evaluation.",
+    "Does not supply DFM field equations.",
+    "Does not supply DFM action functional.",
+    "Does not supply DFM parameter map.",
+    "Does not supply DFM observable prediction rules.",
+    "Does not supply frozen DFM prediction values.",
+    "Does not supply likelihood equations.",
+    "Does not execute any likelihood.",
+    "Does not produce empirical evidence.",
+    "Does not prove DFM.",
+    "Does not disprove Lambda-CDM.",
+    "Does not replace CDM."
+  ],
+  "does_not_prove": [
+    "DFM",
+    "Lambda-CDM failure",
+    "CDM replacement",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}

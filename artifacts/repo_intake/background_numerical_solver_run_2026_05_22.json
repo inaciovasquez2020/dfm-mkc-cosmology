@@ -1,0 +1,29 @@
+{
+  "artifact_id": "background_numerical_solver_run_2026_05_22",
+  "status": "BACKGROUND_NUMERICAL_SOLVER_RUN_BLOCKED_NO_SOLVER_IMPLEMENTATION",
+  "required_object_blocked": "BACKGROUND_NUMERICAL_SOLVER_RUN",
+  "source_spec": "specs/BACKGROUND_NUMERICAL_SOLVER_RUN.json",
+  "root_blocker_preserved": "BACKGROUND_NUMERICAL_SOLVER_RUN_NOT_SUPPLIED",
+  "terminal_blocker": "BACKGROUND_SOLVER_IMPLEMENTATION_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_SOLVER_IMPLEMENTATION",
+  "boundary": [
+    "records that background numerical solver execution is blocked",
+    "does not execute background numerical integration",
+    "does not produce background prediction values",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "BACKGROUND_SOLVER_IMPLEMENTATION",
+    "BACKGROUND_SOLVER_CONFIGURATION",
+    "BACKGROUND_SOLVER_OUTPUT_ARRAY",
+    "BACKGROUND_SOLVER_DIGEST_LOCK"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "object_id": "PERTURBATION_NUMERICAL_SOLVER_RUN",
+  "status": "PERTURBATION_NUMERICAL_SOLVER_RUN_BLOCKED_NO_SOLVER_IMPLEMENTATION",
+  "date": "2026-05-22",
+  "input_specs": [
+    "specs/DATA_VECTOR_SCHEMA.json",
+    "specs/COVARIANCE_MATRIX.json",
+    "specs/LIKELIHOOD_RULE.json",
+    "specs/LAMBDA_CDM_BASELINE_VECTOR.json",
+    "specs/INDEPENDENT_EMPIRICAL_VALIDATION.json",
+    "specs/EMPIRICAL_DATA_VALUES.json",
+    "specs/EXECUTABLE_DFM_PREDICTION_VALUES.json",
+    "specs/PAYLOAD_BOUND_COVARIANCE_MATRIX.json",
+    "specs/EXECUTED_LIKELIHOOD_RESULT.json",
+    "specs/REPRODUCIBLE_HOLDOUT_REPORT.json"
+  ],
+  "blocked_reason": "PERTURBATION_SOLVER_IMPLEMENTATION_NOT_SUPPLIED",
+  "blocking_missing_objects": [
+    "PERTURBATION_SOLVER_IMPLEMENTATION",
+    "PERTURBATION_SOLVER_CONFIGURATION",
+    "PERTURBATION_SOLVER_OUTPUT_ARRAY",
+    "PERTURBATION_SOLVER_DIGEST_LOCK"
+  ],
+  "check_result": "BLOCKED_NO_SOLVER_IMPLEMENTATION",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "PERTURBATION_SOLVER_IMPLEMENTATION",
+    "PERTURBATION_SOLVER_CONFIGURATION",
+    "PERTURBATION_SOLVER_OUTPUT_ARRAY",
+    "PERTURBATION_SOLVER_DIGEST_LOCK"
+  ],
+  "perturbation_solver_run_supplied": false,
+  "perturbation_numerical_integration_executed": false,
+  "prediction_values_supplied": false,
+  "empirical_validation_claimed": false
+}

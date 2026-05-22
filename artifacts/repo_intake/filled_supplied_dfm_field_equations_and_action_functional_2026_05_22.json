@@ -1,0 +1,32 @@
+{
+  "artifact_id": "filled_supplied_dfm_field_equations_and_action_functional_2026_05_22",
+  "status": "FILLED_STRUCTURAL_CANDIDATE_ONLY_NOT_VALIDATED",
+  "required_object_filled": "FILLED_SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL",
+  "source_spec": "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+  "root_blocker_removed": "SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL_NOT_FILLED",
+  "new_root_blocker": "VARIATIONAL_DERIVATION_CHECK_NOT_SUPPLIED",
+  "boundary": [
+    "supplies a structural candidate action functional",
+    "supplies primitive closed-form Euler-Lagrange equation targets",
+    "does not verify the variational derivation",
+    "does not validate physical correctness",
+    "does not supply a frozen prediction vector",
+    "does not execute a likelihood comparison",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "VARIATIONAL_DERIVATION_CHECK",
+    "PARAMETER_DOMAIN_AND_UNITS_TABLE",
+    "COSMOLOGICAL_REDUCTION_ANSATZ",
+    "FROZEN_PREDICTION_VECTOR",
+    "EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON"
+  ]
+}

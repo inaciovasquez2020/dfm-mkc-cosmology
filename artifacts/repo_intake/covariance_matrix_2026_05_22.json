@@ -1,0 +1,31 @@
+{
+  "artifact_id": "covariance_matrix_2026_05_22",
+  "status": "COVARIANCE_MATRIX_SUPPLIED_REFERENCE_DIAGONAL_ONLY_NOT_EMPIRICAL",
+  "required_object_filled": "COVARIANCE_MATRIX",
+  "source_spec": "specs/COVARIANCE_MATRIX.json",
+  "root_blocker_removed": "COVARIANCE_MATRIX_NOT_SUPPLIED",
+  "new_root_blocker": "LIKELIHOOD_RULE_NOT_SUPPLIED",
+  "check_result": "PASS_REFERENCE_DIAGONAL_MATRIX_ONLY",
+  "boundary": [
+    "supplies a reference diagonal covariance matrix",
+    "checks covariance slot order against the data vector schema",
+    "does not supply empirical covariance",
+    "does not bind covariance to an external payload",
+    "does not supply a likelihood rule",
+    "does not execute a likelihood comparison",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "LIKELIHOOD_RULE",
+    "LAMBDA_CDM_BASELINE_VECTOR",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}

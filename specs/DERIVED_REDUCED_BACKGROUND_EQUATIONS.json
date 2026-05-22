@@ -1,0 +1,180 @@
+{
+  "object_id": "DERIVED_REDUCED_BACKGROUND_EQUATIONS",
+  "status": "DERIVED_REDUCED_BACKGROUND_EQUATIONS_SUPPLIED_STRUCTURAL_ONLY_NOT_NUMERICAL",
+  "date": "2026-05-22",
+  "input_objects": [
+    "FILLED_SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL",
+    "VARIATIONAL_DERIVATION_CHECK",
+    "PARAMETER_DOMAIN_AND_UNITS_TABLE",
+    "COSMOLOGICAL_REDUCTION_ANSATZ",
+    "FROZEN_PREDICTION_VECTOR",
+    "EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON"
+  ],
+  "input_specs": [
+    "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+    "specs/VARIATIONAL_DERIVATION_CHECK.json",
+    "specs/PARAMETER_DOMAIN_AND_UNITS_TABLE.json",
+    "specs/COSMOLOGICAL_REDUCTION_ANSATZ.json",
+    "specs/FROZEN_PREDICTION_VECTOR.json",
+    "specs/EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON.json"
+  ],
+  "reduction_domain": {
+    "background": "homogeneous_isotropic_FLRW_background",
+    "metric": "ds2 = -N(t)^2 dt^2 + a(t)^2 gamma_ij(k) dx^i dx^j",
+    "scalar": "phi = phi(t)",
+    "vector": "A_mu dx^mu = A_0(t) dt",
+    "matter": "T^mu_nu = diag(-rho_m(t), p_m(t), p_m(t), p_m(t))"
+  },
+  "derived_background_equations": [
+    {
+      "equation_id": "friedmann_constraint",
+      "source_target": "friedmann_constraint_target",
+      "source_equation": "metric_equation",
+      "structural_equation": "E_N := 3 M_Pl^2 (H^2 + k/a^2) - rho_m - rho_phi - rho_A - rho_interaction - rho_nonminimal - Lambda_0 = 0",
+      "principal_variables": [
+        "N(t)",
+        "a(t)",
+        "H(t)",
+        "phi(t)",
+        "A_0(t)",
+        "rho_m(t)"
+      ],
+      "status": "structural_candidate"
+    },
+    {
+      "equation_id": "acceleration_equation",
+      "source_target": "acceleration_equation_target",
+      "source_equation": "metric_equation",
+      "structural_equation": "E_a := M_Pl^2 (2 dot_H/N + 3 H^2 + k/a^2) + p_m + p_phi + p_A + p_interaction + p_nonminimal - Lambda_0 = 0",
+      "principal_variables": [
+        "N(t)",
+        "a(t)",
+        "H(t)",
+        "phi(t)",
+        "A_0(t)",
+        "p_m(t)"
+      ],
+      "status": "structural_candidate"
+    },
+    {
+      "equation_id": "scalar_background_equation",
+      "source_target": "scalar_background_equation_target",
+      "source_equation": "scalar_equation",
+      "structural_equation": "E_phi := alpha_phi (ddot_phi/N^2 + 3 H dot_phi/N - dot_N dot_phi/N^3) + m_phi^2 phi + lambda_phi phi^3 + beta_phi_A phi A_mu_A_mu + xi_phi R_FLRW phi - gamma_m T_matter = 0",
+      "principal_variables": [
+        "N(t)",
+        "a(t)",
+        "H(t)",
+        "phi(t)",
+        "A_0(t)",
+        "rho_m(t)",
+        "p_m(t)"
+      ],
+      "status": "structural_candidate"
+    },
+    {
+      "equation_id": "vector_background_constraint",
+      "source_target": "vector_background_constraint_target",
+      "source_equation": "vector_equation",
+      "structural_equation": "E_A0 := (m_A^2 + beta_phi_A phi^2 + xi_A R00_FLRW/N^2) A_0 = 0",
+      "principal_variables": [
+        "N(t)",
+        "a(t)",
+        "H(t)",
+        "phi(t)",
+        "A_0(t)"
+      ],
+      "status": "structural_candidate"
+    },
+    {
+      "equation_id": "matter_background_continuity",
+      "source_target": "matter_background_equation_target",
+      "source_equation": "matter_equation",
+      "structural_equation": "E_m := dot_rho_m/N + 3 H (rho_m + p_m) - gamma_m dot_phi T_matter/N = 0",
+      "principal_variables": [
+        "N(t)",
+        "a(t)",
+        "H(t)",
+        "phi(t)",
+        "rho_m(t)",
+        "p_m(t)"
+      ],
+      "status": "structural_candidate"
+    }
+  ],
+  "auxiliary_definitions": [
+    {
+      "symbol": "H",
+      "definition": "H(t) = (1/N(t)) d(log a)/dt"
+    },
+    {
+      "symbol": "R_FLRW",
+      "definition": "R_FLRW is the scalar curvature induced by the FLRW ansatz"
+    },
+    {
+      "symbol": "R00_FLRW",
+      "definition": "R00_FLRW is the time-time Ricci component induced by the FLRW ansatz"
+    },
+    {
+      "symbol": "T_matter",
+      "definition": "T_matter = -rho_m + 3 p_m"
+    },
+    {
+      "symbol": "A_mu_A_mu",
+      "definition": "A_mu A^mu under the temporal-vector FLRW ansatz"
+    }
+  ],
+  "closure_for_prediction_vector": [
+    {
+      "observable": "E_DFM(z)",
+      "background_dependency": "friedmann_constraint plus acceleration equation",
+      "status": "structural_dependency_supplied_not_numerically_integrated"
+    },
+    {
+      "observable": "D_A_DFM(z)",
+      "background_dependency": "E_DFM(z) and spatial curvature k",
+      "status": "structural_dependency_supplied_not_numerically_integrated"
+    },
+    {
+      "observable": "D_L_DFM(z)",
+      "background_dependency": "D_A_DFM(z)",
+      "status": "structural_dependency_supplied_not_numerically_integrated"
+    },
+    {
+      "observable": "mu_DFM(z)",
+      "background_dependency": "D_L_DFM(z)",
+      "status": "structural_dependency_supplied_not_numerically_integrated"
+    },
+    {
+      "observable": "r_d_DFM",
+      "background_dependency": "early-time background solution plus radiation-sector closure",
+      "status": "blocked_by_missing_radiation_and_recombination_closure"
+    }
+  ],
+  "check_result": "PASS_STRUCTURAL_ONLY",
+  "symbolic_derivation_proved": false,
+  "numerical_integration_supplied": false,
+  "perturbation_closure_supplied": false,
+  "parameter_values_supplied": false,
+  "initial_conditions_supplied": false,
+  "empirical_validation_claimed": false,
+  "likelihood_execution_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "PERTURBATION_CLOSURE_EQUATIONS",
+    "NUMERICAL_PARAMETER_VECTOR",
+    "INITIAL_CONDITIONS",
+    "DATA_VECTOR_SCHEMA",
+    "COVARIANCE_MATRIX",
+    "LIKELIHOOD_RULE",
+    "LAMBDA_CDM_BASELINE_VECTOR",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}

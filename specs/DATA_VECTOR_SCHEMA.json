@@ -1,0 +1,232 @@
+{
+  "object_id": "DATA_VECTOR_SCHEMA",
+  "status": "DATA_VECTOR_SCHEMA_SUPPLIED_SCHEMA_ONLY_NO_EMPIRICAL_VALUES",
+  "date": "2026-05-22",
+  "input_objects": [
+    "FILLED_SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL",
+    "VARIATIONAL_DERIVATION_CHECK",
+    "PARAMETER_DOMAIN_AND_UNITS_TABLE",
+    "COSMOLOGICAL_REDUCTION_ANSATZ",
+    "FROZEN_PREDICTION_VECTOR",
+    "EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON",
+    "DERIVED_REDUCED_BACKGROUND_EQUATIONS",
+    "PERTURBATION_CLOSURE_EQUATIONS",
+    "NUMERICAL_PARAMETER_VECTOR",
+    "INITIAL_CONDITIONS",
+    "OBSERVABLE_EVALUATION_GRID"
+  ],
+  "input_specs": [
+    "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+    "specs/VARIATIONAL_DERIVATION_CHECK.json",
+    "specs/PARAMETER_DOMAIN_AND_UNITS_TABLE.json",
+    "specs/COSMOLOGICAL_REDUCTION_ANSATZ.json",
+    "specs/FROZEN_PREDICTION_VECTOR.json",
+    "specs/EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON.json",
+    "specs/DERIVED_REDUCED_BACKGROUND_EQUATIONS.json",
+    "specs/PERTURBATION_CLOSURE_EQUATIONS.json",
+    "specs/NUMERICAL_PARAMETER_VECTOR.json",
+    "specs/INITIAL_CONDITIONS.json",
+    "specs/OBSERVABLE_EVALUATION_GRID.json"
+  ],
+  "schema_policy": {
+    "schema_only": true,
+    "slot_order_locked": true,
+    "observable_order_matches_frozen_prediction_vector": true,
+    "empirical_values_supplied": false,
+    "covariance_matrix_supplied": false,
+    "likelihood_ready": false,
+    "bound_to_external_payload": false,
+    "fit_to_data": false,
+    "model_selection_claimed": false
+  },
+  "data_vector_slot_order": [
+    "slot_E_DFM",
+    "slot_D_A_DFM",
+    "slot_D_L_DFM",
+    "slot_mu_DFM",
+    "slot_f_sigma8_DFM",
+    "slot_C_ell_TT_DFM",
+    "slot_C_ell_TE_DFM",
+    "slot_C_ell_EE_DFM",
+    "slot_S8_DFM",
+    "slot_r_d_DFM"
+  ],
+  "data_slots": [
+    {
+      "index": 0,
+      "slot_id": "slot_E_DFM",
+      "observable": "E_DFM(z)",
+      "model_observable": "E_DFM(z)",
+      "grid_ids": [
+        "background_redshift_grid"
+      ],
+      "data_value_supplied": false,
+      "uncertainty_supplied": false,
+      "unit": "dimensionless",
+      "payload_binding": "unbound"
+    },
+    {
+      "index": 1,
+      "slot_id": "slot_D_A_DFM",
+      "observable": "D_A_DFM(z)",
+      "model_observable": "D_A_DFM(z)",
+      "grid_ids": [
+        "background_redshift_grid"
+      ],
+      "data_value_supplied": false,
+      "uncertainty_supplied": false,
+      "unit": "distance_unit_to_be_bound",
+      "payload_binding": "unbound"
+    },
+    {
+      "index": 2,
+      "slot_id": "slot_D_L_DFM",
+      "observable": "D_L_DFM(z)",
+      "model_observable": "D_L_DFM(z)",
+      "grid_ids": [
+        "background_redshift_grid"
+      ],
+      "data_value_supplied": false,
+      "uncertainty_supplied": false,
+      "unit": "distance_unit_to_be_bound",
+      "payload_binding": "unbound"
+    },
+    {
+      "index": 3,
+      "slot_id": "slot_mu_DFM",
+      "observable": "mu_DFM(z)",
+      "model_observable": "mu_DFM(z)",
+      "grid_ids": [
+        "background_redshift_grid"
+      ],
+      "data_value_supplied": false,
+      "uncertainty_supplied": false,
+      "unit": "mag",
+      "payload_binding": "unbound"
+    },
+    {
+      "index": 4,
+      "slot_id": "slot_f_sigma8_DFM",
+      "observable": "f_sigma8_DFM(z)",
+      "model_observable": "f_sigma8_DFM(z)",
+      "grid_ids": [
+        "growth_redshift_grid",
+        "perturbation_wavenumber_grid"
+      ],
+      "data_value_supplied": false,
+      "uncertainty_supplied": false,
+      "unit": "dimensionless",
+      "payload_binding": "unbound"
+    },
+    {
+      "index": 5,
+      "slot_id": "slot_C_ell_TT_DFM",
+      "observable": "C_ell_TT_DFM",
+      "model_observable": "C_ell_TT_DFM",
+      "grid_ids": [
+        "cmb_multipole_grid",
+        "perturbation_wavenumber_grid"
+      ],
+      "data_value_supplied": false,
+      "uncertainty_supplied": false,
+      "unit": "spectrum_unit_to_be_bound",
+      "payload_binding": "unbound"
+    },
+    {
+      "index": 6,
+      "slot_id": "slot_C_ell_TE_DFM",
+      "observable": "C_ell_TE_DFM",
+      "model_observable": "C_ell_TE_DFM",
+      "grid_ids": [
+        "cmb_multipole_grid",
+        "perturbation_wavenumber_grid"
+      ],
+      "data_value_supplied": false,
+      "uncertainty_supplied": false,
+      "unit": "spectrum_unit_to_be_bound",
+      "payload_binding": "unbound"
+    },
+    {
+      "index": 7,
+      "slot_id": "slot_C_ell_EE_DFM",
+      "observable": "C_ell_EE_DFM",
+      "model_observable": "C_ell_EE_DFM",
+      "grid_ids": [
+        "cmb_multipole_grid",
+        "perturbation_wavenumber_grid"
+      ],
+      "data_value_supplied": false,
+      "uncertainty_supplied": false,
+      "unit": "spectrum_unit_to_be_bound",
+      "payload_binding": "unbound"
+    },
+    {
+      "index": 8,
+      "slot_id": "slot_S8_DFM",
+      "observable": "S8_DFM",
+      "model_observable": "S8_DFM",
+      "grid_ids": [
+        "growth_redshift_grid",
+        "perturbation_wavenumber_grid"
+      ],
+      "data_value_supplied": false,
+      "uncertainty_supplied": false,
+      "unit": "dimensionless",
+      "payload_binding": "unbound"
+    },
+    {
+      "index": 9,
+      "slot_id": "slot_r_d_DFM",
+      "observable": "r_d_DFM",
+      "model_observable": "r_d_DFM",
+      "grid_ids": [
+        "sound_horizon_epoch_grid"
+      ],
+      "data_value_supplied": false,
+      "uncertainty_supplied": false,
+      "unit": "distance_unit_to_be_bound",
+      "payload_binding": "unbound"
+    }
+  ],
+  "admissibility_checks": [
+    "data slot order is locked and indexed from 0",
+    "data slot observables match the frozen prediction-vector observable order exactly",
+    "every data slot references at least one supplied observable evaluation grid",
+    "no slot supplies empirical values",
+    "no slot supplies uncertainties",
+    "no slot is bound to an external payload",
+    "no covariance matrix is supplied",
+    "no likelihood rule is supplied"
+  ],
+  "execution_effect": {
+    "removes_missing_object": "DATA_VECTOR_SCHEMA",
+    "remaining_blockers": [
+      "COVARIANCE_MATRIX",
+      "LIKELIHOOD_RULE",
+      "LAMBDA_CDM_BASELINE_VECTOR",
+      "INDEPENDENT_EMPIRICAL_VALIDATION"
+    ]
+  },
+  "check_result": "PASS_SCHEMA_ONLY",
+  "data_vector_schema_supplied": true,
+  "empirical_values_supplied": false,
+  "covariance_matrix_supplied": false,
+  "likelihood_rule_supplied": false,
+  "lambda_cdm_baseline_supplied": false,
+  "empirical_validation_claimed": false,
+  "model_selection_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "COVARIANCE_MATRIX",
+    "LIKELIHOOD_RULE",
+    "LAMBDA_CDM_BASELINE_VECTOR",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "artifact_id": "payload_covariance_slot_order_2026_05_22",
+  "status": "PAYLOAD_COVARIANCE_SLOT_ORDER_BLOCKED_NO_COVARIANCE_PAYLOAD",
+  "required_object_blocked": "PAYLOAD_COVARIANCE_SLOT_ORDER",
+  "source_spec": "specs/PAYLOAD_COVARIANCE_SLOT_ORDER.json",
+  "root_blocker_preserved": "PAYLOAD_COVARIANCE_SLOT_ORDER_NOT_SUPPLIED",
+  "terminal_blocker": "EMPIRICAL_COVARIANCE_PAYLOAD_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_COVARIANCE_PAYLOAD",
+  "boundary": [
+    "records that covariance slot-order binding is blocked",
+    "does not align empirical covariance to schema order",
+    "does not supply payload-bound covariance",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "EMPIRICAL_COVARIANCE_PAYLOAD",
+    "COVARIANCE_PAYLOAD_SLOT_MAP",
+    "COVARIANCE_SCHEMA_ALIGNMENT_CHECK"
+  ]
+}

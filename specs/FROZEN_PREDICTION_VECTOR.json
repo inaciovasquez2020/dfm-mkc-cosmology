@@ -1,0 +1,183 @@
+{
+  "object_id": "FROZEN_PREDICTION_VECTOR",
+  "status": "FROZEN_PREDICTION_VECTOR_SUPPLIED_SYMBOLIC_ONLY_NOT_EXECUTABLE",
+  "date": "2026-05-22",
+  "input_objects": [
+    "FILLED_SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL",
+    "VARIATIONAL_DERIVATION_CHECK",
+    "PARAMETER_DOMAIN_AND_UNITS_TABLE",
+    "COSMOLOGICAL_REDUCTION_ANSATZ"
+  ],
+  "input_specs": [
+    "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+    "specs/VARIATIONAL_DERIVATION_CHECK.json",
+    "specs/PARAMETER_DOMAIN_AND_UNITS_TABLE.json",
+    "specs/COSMOLOGICAL_REDUCTION_ANSATZ.json"
+  ],
+  "freeze_policy": {
+    "vector_order_locked": true,
+    "observable_names_locked": true,
+    "symbolic_definitions_locked": true,
+    "numerical_values_supplied": false,
+    "covariance_matrix_supplied": false,
+    "likelihood_rule_supplied": false
+  },
+  "prediction_vector_kind": "symbolic_cosmological_observable_target_vector",
+  "observable_vector_order": [
+    "E_DFM(z)",
+    "D_A_DFM(z)",
+    "D_L_DFM(z)",
+    "mu_DFM(z)",
+    "f_sigma8_DFM(z)",
+    "C_ell_TT_DFM",
+    "C_ell_TE_DFM",
+    "C_ell_EE_DFM",
+    "S8_DFM",
+    "r_d_DFM"
+  ],
+  "observable_definitions": [
+    {
+      "index": 0,
+      "name": "E_DFM(z)",
+      "definition": "E_DFM(z) = H_DFM(z) / H0",
+      "depends_on": [
+        "reduced background equations",
+        "parameter values",
+        "initial conditions"
+      ],
+      "numerical_value_supplied": false
+    },
+    {
+      "index": 1,
+      "name": "D_A_DFM(z)",
+      "definition": "angular-diameter distance induced by the DFM-MKC FLRW background",
+      "depends_on": [
+        "E_DFM(z)",
+        "spatial curvature parameter k"
+      ],
+      "numerical_value_supplied": false
+    },
+    {
+      "index": 2,
+      "name": "D_L_DFM(z)",
+      "definition": "D_L_DFM(z) = (1 + z)^2 D_A_DFM(z)",
+      "depends_on": [
+        "D_A_DFM(z)"
+      ],
+      "numerical_value_supplied": false
+    },
+    {
+      "index": 3,
+      "name": "mu_DFM(z)",
+      "definition": "mu_DFM(z) = 5 log10(D_L_DFM(z) / 10 pc)",
+      "depends_on": [
+        "D_L_DFM(z)"
+      ],
+      "numerical_value_supplied": false
+    },
+    {
+      "index": 4,
+      "name": "f_sigma8_DFM(z)",
+      "definition": "linear-growth observable induced by the DFM-MKC perturbation closure",
+      "depends_on": [
+        "background solution",
+        "perturbation equations",
+        "normalization convention"
+      ],
+      "numerical_value_supplied": false
+    },
+    {
+      "index": 5,
+      "name": "C_ell_TT_DFM",
+      "definition": "CMB temperature power-spectrum target induced by the DFM-MKC Boltzmann/transfer closure",
+      "depends_on": [
+        "background solution",
+        "perturbation equations",
+        "transfer functions",
+        "primordial spectrum"
+      ],
+      "numerical_value_supplied": false
+    },
+    {
+      "index": 6,
+      "name": "C_ell_TE_DFM",
+      "definition": "CMB temperature-polarization cross-spectrum target induced by the DFM-MKC Boltzmann/transfer closure",
+      "depends_on": [
+        "background solution",
+        "perturbation equations",
+        "transfer functions",
+        "primordial spectrum"
+      ],
+      "numerical_value_supplied": false
+    },
+    {
+      "index": 7,
+      "name": "C_ell_EE_DFM",
+      "definition": "CMB E-mode polarization power-spectrum target induced by the DFM-MKC Boltzmann/transfer closure",
+      "depends_on": [
+        "background solution",
+        "perturbation equations",
+        "transfer functions",
+        "primordial spectrum"
+      ],
+      "numerical_value_supplied": false
+    },
+    {
+      "index": 8,
+      "name": "S8_DFM",
+      "definition": "late-time clustering-amplitude target induced by the DFM-MKC growth closure",
+      "depends_on": [
+        "matter power spectrum",
+        "growth normalization",
+        "Omega_m convention"
+      ],
+      "numerical_value_supplied": false
+    },
+    {
+      "index": 9,
+      "name": "r_d_DFM",
+      "definition": "sound-horizon target induced by the DFM-MKC background and radiation-sector closure",
+      "depends_on": [
+        "early-time background solution",
+        "baryon-photon sound speed model",
+        "recombination or drag-epoch convention"
+      ],
+      "numerical_value_supplied": false
+    }
+  ],
+  "required_execution_inputs": [
+    "DERIVED_REDUCED_BACKGROUND_EQUATIONS",
+    "PERTURBATION_CLOSURE_EQUATIONS",
+    "NUMERICAL_PARAMETER_VECTOR",
+    "INITIAL_CONDITIONS",
+    "OBSERVABLE_EVALUATION_GRID",
+    "DATA_VECTOR_SCHEMA",
+    "COVARIANCE_MATRIX",
+    "LIKELIHOOD_RULE"
+  ],
+  "consistency_requirements": [
+    "observable vector order is fixed and indexed from 0",
+    "every observable has a locked symbolic definition",
+    "no observable supplies a numerical value",
+    "all validation flags remain non-empirical and non-final",
+    "execution remains blocked until numerical parameter values, perturbation closure, data schema, covariance matrix, and likelihood rule are supplied"
+  ],
+  "check_result": "PASS_STRUCTURAL_ONLY",
+  "numerical_prediction_claimed": false,
+  "covariance_matrix_claimed": false,
+  "likelihood_execution_claimed": false,
+  "empirical_validation_claimed": false,
+  "physical_correctness_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}

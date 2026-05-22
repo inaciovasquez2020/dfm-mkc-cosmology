@@ -1,0 +1,43 @@
+{
+  "object_id": "REPRODUCTION_COMMANDS",
+  "status": "REPRODUCTION_COMMANDS_BLOCKED_NO_EXECUTABLE_PIPELINE",
+  "date": "2026-05-22",
+  "input_specs": [
+    "specs/DATA_VECTOR_SCHEMA.json",
+    "specs/COVARIANCE_MATRIX.json",
+    "specs/LIKELIHOOD_RULE.json",
+    "specs/LAMBDA_CDM_BASELINE_VECTOR.json",
+    "specs/INDEPENDENT_EMPIRICAL_VALIDATION.json",
+    "specs/EMPIRICAL_DATA_VALUES.json",
+    "specs/EXECUTABLE_DFM_PREDICTION_VALUES.json",
+    "specs/PAYLOAD_BOUND_COVARIANCE_MATRIX.json",
+    "specs/EXECUTED_LIKELIHOOD_RESULT.json",
+    "specs/REPRODUCIBLE_HOLDOUT_REPORT.json"
+  ],
+  "blocked_reason": "EXECUTABLE_PIPELINE_NOT_SUPPLIED",
+  "blocking_missing_objects": [
+    "PIPELINE_ENTRYPOINT",
+    "EMPIRICAL_PAYLOAD_BINDING_COMMAND",
+    "PREDICTION_EXECUTION_COMMAND",
+    "LIKELIHOOD_EXECUTION_COMMAND"
+  ],
+  "check_result": "BLOCKED_NO_EXECUTABLE_PIPELINE",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "PIPELINE_ENTRYPOINT",
+    "EMPIRICAL_PAYLOAD_BINDING_COMMAND",
+    "PREDICTION_EXECUTION_COMMAND",
+    "LIKELIHOOD_EXECUTION_COMMAND"
+  ],
+  "reproduction_commands_supplied": false,
+  "pipeline_executable_claimed": false,
+  "empirical_validation_claimed": false,
+  "model_selection_claimed": false
+}

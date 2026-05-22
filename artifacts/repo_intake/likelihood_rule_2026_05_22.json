@@ -1,0 +1,29 @@
+{
+  "artifact_id": "likelihood_rule_2026_05_22",
+  "status": "LIKELIHOOD_RULE_SUPPLIED_FORMAL_ONLY_NOT_EXECUTED",
+  "required_object_filled": "LIKELIHOOD_RULE",
+  "source_spec": "specs/LIKELIHOOD_RULE.json",
+  "root_blocker_removed": "LIKELIHOOD_RULE_NOT_SUPPLIED",
+  "new_root_blocker": "LAMBDA_CDM_BASELINE_VECTOR_NOT_SUPPLIED",
+  "check_result": "PASS_FORMAL_RULE_ONLY",
+  "boundary": [
+    "supplies a formal Gaussian chi-square likelihood rule",
+    "does not execute the likelihood rule",
+    "does not bind empirical data values",
+    "does not bind a Lambda-CDM baseline vector",
+    "does not compute model-selection statistics",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "LAMBDA_CDM_BASELINE_VECTOR",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}

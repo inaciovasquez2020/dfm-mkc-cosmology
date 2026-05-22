@@ -1,0 +1,69 @@
+{
+  "artifact": "DFM_MKC_EXTERNAL_DATA_MANIFEST",
+  "date": "2026-05-21",
+  "status": "EXTERNAL_DATA_MANIFEST_CONSOLIDATED_TARGET_ONLY",
+  "claim_level": "source_manifest_only",
+  "registered_source_count": 3,
+  "frozen_prediction_target_registered": true,
+  "likelihood_executed": false,
+  "empirical_evidence_supplied": false,
+  "root_blocker": "DFM_FROZEN_PREDICTION_MAP_NOT_SUPPLIED",
+  "registered_sources": [
+    {
+      "id": "DES_SN5YR_0_DATA",
+      "path": "artifacts/external_data_sources/des_sn5yr/source.txt",
+      "role": "SN Ia light-curve / distance-data source",
+      "status": "registered_pointer_only"
+    },
+    {
+      "id": "DES_Y3_MAGNIFICATION_SYSTEMATICS",
+      "path": "artifacts/external_data_sources/des_y3_magnification_systematics/source.txt",
+      "role": "weak-lensing / galaxy-clustering systematics source",
+      "status": "registered_pointer_only"
+    },
+    {
+      "id": "PANTHEON_PLUS_SHOES_1_DATA",
+      "path": "artifacts/external_data_sources/pantheon_plus_shoes_1_data/source.txt",
+      "role": "SN Ia redshift / light-curve / distance-data source",
+      "status": "registered_pointer_only"
+    }
+  ],
+  "registered_target": {
+    "id": "DFM_MKC_FROZEN_PREDICTION_MAP_TARGET",
+    "path": "artifacts/repo_intake/dfm_mkc_frozen_prediction_map_target_2026_05_21.json",
+    "status": "FROZEN_PREDICTION_MAP_TARGET_ONLY_PREDICTIONS_NOT_SUPPLIED"
+  },
+  "required_unregistered_sources": [
+    "Planck 2018 CMB likelihoods / chains",
+    "ACT DR6 CMB-only likelihood",
+    "ACT DR6 lensing likelihood",
+    "DESI DR2 BAO products",
+    "DES Y3 / Y6 3x2pt likelihood products",
+    "cluster abundance likelihood products"
+  ],
+  "admissibility_rule": "The registered sources may support a future DFM-vs-Lambda-CDM test only after DFM field equations, parameter map, observable prediction rules, frozen prediction vector, likelihood rule, holdout split, and no-post-hoc-tuning certificate are supplied.",
+  "boundary": [
+    "Manifest only.",
+    "Does not import numerical data vectors.",
+    "Does not validate external payloads.",
+    "Does not supply DFM equations.",
+    "Does not supply DFM action functional.",
+    "Does not supply DFM parameter map.",
+    "Does not supply DFM observable prediction rules.",
+    "Does not supply frozen DFM predictions.",
+    "Does not execute any likelihood.",
+    "Does not produce empirical evidence.",
+    "Does not prove DFM.",
+    "Does not disprove Lambda-CDM.",
+    "Does not replace CDM."
+  ],
+  "does_not_prove": [
+    "DFM",
+    "Lambda-CDM failure",
+    "CDM replacement",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}

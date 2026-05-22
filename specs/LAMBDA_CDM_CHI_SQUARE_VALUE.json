@@ -1,0 +1,44 @@
+{
+  "object_id": "LAMBDA_CDM_CHI_SQUARE_VALUE",
+  "status": "LAMBDA_CDM_CHI_SQUARE_VALUE_BLOCKED_NO_LIKELIHOOD_EXECUTION_INPUTS",
+  "date": "2026-05-22",
+  "input_specs": [
+    "specs/DATA_VECTOR_SCHEMA.json",
+    "specs/COVARIANCE_MATRIX.json",
+    "specs/LIKELIHOOD_RULE.json",
+    "specs/LAMBDA_CDM_BASELINE_VECTOR.json",
+    "specs/INDEPENDENT_EMPIRICAL_VALIDATION.json",
+    "specs/EMPIRICAL_DATA_VALUES.json",
+    "specs/EXECUTABLE_DFM_PREDICTION_VALUES.json",
+    "specs/PAYLOAD_BOUND_COVARIANCE_MATRIX.json",
+    "specs/EXECUTED_LIKELIHOOD_RESULT.json",
+    "specs/REPRODUCIBLE_HOLDOUT_REPORT.json"
+  ],
+  "blocked_reason": "EMPIRICAL_DATA_AND_BASELINE_VALUES_NOT_SUPPLIED",
+  "blocking_missing_objects": [
+    "EMPIRICAL_VALUE_ARRAY",
+    "PAYLOAD_BOUND_COVARIANCE_MATRIX",
+    "LAMBDA_CDM_PAYLOAD_ALIGNED_BASELINE",
+    "EXECUTED_LAMBDA_CDM_CHI_SQUARE_COMPUTATION"
+  ],
+  "check_result": "BLOCKED_NO_LIKELIHOOD_EXECUTION_INPUTS",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "EMPIRICAL_VALUE_ARRAY",
+    "PAYLOAD_BOUND_COVARIANCE_MATRIX",
+    "LAMBDA_CDM_PAYLOAD_ALIGNED_BASELINE",
+    "EXECUTED_LAMBDA_CDM_CHI_SQUARE_COMPUTATION"
+  ],
+  "lambda_cdm_chi_square_supplied": false,
+  "likelihood_executed": false,
+  "model_selection_claimed": false,
+  "lambda_cdm_failure_claimed": false,
+  "empirical_validation_claimed": false
+}

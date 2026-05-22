@@ -1,0 +1,812 @@
+{
+  "action_count": 112,
+  "all_actions_completed": false,
+  "artifact": "DFM_MKC_REMAINING_STRUCTURE_ACTIONS_REGISTRY",
+  "boundary": [
+    "Does not supply DFM field equations.",
+    "Does not supply DFM action functional.",
+    "Does not supply DFM parameter values.",
+    "Does not supply DFM observable prediction rules.",
+    "Does not supply frozen DFM prediction values.",
+    "Does not execute any likelihood.",
+    "Does not execute DFM-vs-Lambda-CDM comparison.",
+    "Does not supply empirical evidence.",
+    "Does not prove DFM.",
+    "Does not disprove Lambda-CDM.",
+    "Does not replace CDM.",
+    "Does not claim final cosmology closure.",
+    "Does not claim Nobel-level physical discovery.",
+    "Does not claim any Clay problem."
+  ],
+  "cdm_replaced": false,
+  "claim_level": "registry_only",
+  "current_root_blocker": "DFM_FIELD_EQUATIONS_OR_ACTION_FUNCTIONAL_NOT_SUPPLIED",
+  "current_safe_next_action": "DFM_MKC_TERMINAL_BLOCKER_EXHAUSTION_CERTIFICATE",
+  "date": "2026-05-21",
+  "dfm_proved": false,
+  "does_not_prove": [
+    "DFM",
+    "Lambda-CDM failure",
+    "CDM replacement",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "final cosmology closure",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "empirical_evidence_supplied": false,
+  "lambda_cdm_disproved": false,
+  "likelihood_executed": false,
+  "phase_count": 16,
+  "phases": [
+    {
+      "actions": [
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "DFM_MKC_TERMINAL_BLOCKER_EXHAUSTION_CERTIFICATE",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_1_BLOCKER_COMPLETION_ACTION_02",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_1_BLOCKER_COMPLETION_ACTION_03",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_1_BLOCKER_COMPLETION_ACTION_04",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_1_BLOCKER_COMPLETION_ACTION_05",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_1_BLOCKER_COMPLETION_ACTION_06",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_1_BLOCKER_COMPLETION_ACTION_07",
+          "status": "pending"
+        }
+      ],
+      "phase": "PHASE_1_BLOCKER_COMPLETION",
+      "status": "open"
+    },
+    {
+      "actions": [
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PLANCK_2018_CMB_SOURCE_POINTER",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_2_EXTERNAL_SOURCE_POINTERS_ACTION_02",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_2_EXTERNAL_SOURCE_POINTERS_ACTION_03",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_2_EXTERNAL_SOURCE_POINTERS_ACTION_04",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_2_EXTERNAL_SOURCE_POINTERS_ACTION_05",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_2_EXTERNAL_SOURCE_POINTERS_ACTION_06",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_2_EXTERNAL_SOURCE_POINTERS_ACTION_07",
+          "status": "pending"
+        }
+      ],
+      "phase": "PHASE_2_EXTERNAL_SOURCE_POINTERS",
+      "status": "open"
+    },
+    {
+      "actions": [
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_3_PAYLOAD_ACQUISITION_ACTION_01",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_3_PAYLOAD_ACQUISITION_ACTION_02",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_3_PAYLOAD_ACQUISITION_ACTION_03",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_3_PAYLOAD_ACQUISITION_ACTION_04",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_3_PAYLOAD_ACQUISITION_ACTION_05",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_3_PAYLOAD_ACQUISITION_ACTION_06",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_3_PAYLOAD_ACQUISITION_ACTION_07",
+          "status": "pending"
+        }
+      ],
+      "phase": "PHASE_3_PAYLOAD_ACQUISITION",
+      "status": "open"
+    },
+    {
+      "actions": [
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_4_PAYLOAD_VERIFICATION_ACTION_01",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_4_PAYLOAD_VERIFICATION_ACTION_02",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_4_PAYLOAD_VERIFICATION_ACTION_03",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_4_PAYLOAD_VERIFICATION_ACTION_04",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_4_PAYLOAD_VERIFICATION_ACTION_05",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_4_PAYLOAD_VERIFICATION_ACTION_06",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_4_PAYLOAD_VERIFICATION_ACTION_07",
+          "status": "pending"
+        }
+      ],
+      "phase": "PHASE_4_PAYLOAD_VERIFICATION",
+      "status": "open"
+    },
+    {
+      "actions": [
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_5_THEORY_INTAKE_ACTION_01",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_5_THEORY_INTAKE_ACTION_02",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_5_THEORY_INTAKE_ACTION_03",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_5_THEORY_INTAKE_ACTION_04",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_5_THEORY_INTAKE_ACTION_05",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_5_THEORY_INTAKE_ACTION_06",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_5_THEORY_INTAKE_ACTION_07",
+          "status": "pending"
+        }
+      ],
+      "phase": "PHASE_5_THEORY_INTAKE",
+      "status": "open"
+    },
+    {
+      "actions": [
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "DFM_FIELD_EQUATIONS_SUPPLIED_TARGET",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_6_DFM_CORE_TARGETS_ACTION_02",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_6_DFM_CORE_TARGETS_ACTION_03",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_6_DFM_CORE_TARGETS_ACTION_04",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_6_DFM_CORE_TARGETS_ACTION_05",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_6_DFM_CORE_TARGETS_ACTION_06",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_6_DFM_CORE_TARGETS_ACTION_07",
+          "status": "pending"
+        }
+      ],
+      "phase": "PHASE_6_DFM_CORE_TARGETS",
+      "status": "open"
+    },
+    {
+      "actions": [
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_7_PARAMETER_LAYER_ACTION_01",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_7_PARAMETER_LAYER_ACTION_02",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_7_PARAMETER_LAYER_ACTION_03",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_7_PARAMETER_LAYER_ACTION_04",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_7_PARAMETER_LAYER_ACTION_05",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_7_PARAMETER_LAYER_ACTION_06",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_7_PARAMETER_LAYER_ACTION_07",
+          "status": "pending"
+        }
+      ],
+      "phase": "PHASE_7_PARAMETER_LAYER",
+      "status": "open"
+    },
+    {
+      "actions": [
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_8_OBSERVABLE_PREDICTION_LAYER_ACTION_01",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_8_OBSERVABLE_PREDICTION_LAYER_ACTION_02",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_8_OBSERVABLE_PREDICTION_LAYER_ACTION_03",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_8_OBSERVABLE_PREDICTION_LAYER_ACTION_04",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_8_OBSERVABLE_PREDICTION_LAYER_ACTION_05",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_8_OBSERVABLE_PREDICTION_LAYER_ACTION_06",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_8_OBSERVABLE_PREDICTION_LAYER_ACTION_07",
+          "status": "pending"
+        }
+      ],
+      "phase": "PHASE_8_OBSERVABLE_PREDICTION_LAYER",
+      "status": "open"
+    },
+    {
+      "actions": [
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_9_FROZEN_PREDICTION_LAYER_ACTION_01",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_9_FROZEN_PREDICTION_LAYER_ACTION_02",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_9_FROZEN_PREDICTION_LAYER_ACTION_03",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_9_FROZEN_PREDICTION_LAYER_ACTION_04",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_9_FROZEN_PREDICTION_LAYER_ACTION_05",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_9_FROZEN_PREDICTION_LAYER_ACTION_06",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_9_FROZEN_PREDICTION_LAYER_ACTION_07",
+          "status": "pending"
+        }
+      ],
+      "phase": "PHASE_9_FROZEN_PREDICTION_LAYER",
+      "status": "open"
+    },
+    {
+      "actions": [
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_10_LIKELIHOOD_TARGETS_ACTION_01",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_10_LIKELIHOOD_TARGETS_ACTION_02",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_10_LIKELIHOOD_TARGETS_ACTION_03",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_10_LIKELIHOOD_TARGETS_ACTION_04",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_10_LIKELIHOOD_TARGETS_ACTION_05",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_10_LIKELIHOOD_TARGETS_ACTION_06",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_10_LIKELIHOOD_TARGETS_ACTION_07",
+          "status": "pending"
+        }
+      ],
+      "phase": "PHASE_10_LIKELIHOOD_TARGETS",
+      "status": "open"
+    },
+    {
+      "actions": [
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_11_HOLDOUT_SPLIT_LAYER_ACTION_01",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_11_HOLDOUT_SPLIT_LAYER_ACTION_02",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_11_HOLDOUT_SPLIT_LAYER_ACTION_03",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_11_HOLDOUT_SPLIT_LAYER_ACTION_04",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_11_HOLDOUT_SPLIT_LAYER_ACTION_05",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_11_HOLDOUT_SPLIT_LAYER_ACTION_06",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_11_HOLDOUT_SPLIT_LAYER_ACTION_07",
+          "status": "pending"
+        }
+      ],
+      "phase": "PHASE_11_HOLDOUT_SPLIT_LAYER",
+      "status": "open"
+    },
+    {
+      "actions": [
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "DFM_LIKELIHOOD_EXECUTION_TARGET",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_12_EXECUTED_COMPARISON_LAYER_ACTION_02",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_12_EXECUTED_COMPARISON_LAYER_ACTION_03",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_12_EXECUTED_COMPARISON_LAYER_ACTION_04",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_12_EXECUTED_COMPARISON_LAYER_ACTION_05",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_12_EXECUTED_COMPARISON_LAYER_ACTION_06",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_12_EXECUTED_COMPARISON_LAYER_ACTION_07",
+          "status": "pending"
+        }
+      ],
+      "phase": "PHASE_12_EXECUTED_COMPARISON_LAYER",
+      "status": "open"
+    },
+    {
+      "actions": [
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_13_EMPIRICAL_EVIDENCE_LAYER_ACTION_01",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_13_EMPIRICAL_EVIDENCE_LAYER_ACTION_02",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_13_EMPIRICAL_EVIDENCE_LAYER_ACTION_03",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_13_EMPIRICAL_EVIDENCE_LAYER_ACTION_04",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_13_EMPIRICAL_EVIDENCE_LAYER_ACTION_05",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_13_EMPIRICAL_EVIDENCE_LAYER_ACTION_06",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_13_EMPIRICAL_EVIDENCE_LAYER_ACTION_07",
+          "status": "pending"
+        }
+      ],
+      "phase": "PHASE_13_EMPIRICAL_EVIDENCE_LAYER",
+      "status": "open"
+    },
+    {
+      "actions": [
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "INDEPENDENT_REPRODUCTION_TARGET",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_14_INDEPENDENT_REPRODUCTION_LAYER_ACTION_02",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_14_INDEPENDENT_REPRODUCTION_LAYER_ACTION_03",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_14_INDEPENDENT_REPRODUCTION_LAYER_ACTION_04",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_14_INDEPENDENT_REPRODUCTION_LAYER_ACTION_05",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_14_INDEPENDENT_REPRODUCTION_LAYER_ACTION_06",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_14_INDEPENDENT_REPRODUCTION_LAYER_ACTION_07",
+          "status": "pending"
+        }
+      ],
+      "phase": "PHASE_14_INDEPENDENT_REPRODUCTION_LAYER",
+      "status": "open"
+    },
+    {
+      "actions": [
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "FINAL_COSMOLOGY_CLOSURE_DECISION_LOCK",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_15_TERMINAL_DECISION_LAYER_ACTION_02",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_15_TERMINAL_DECISION_LAYER_ACTION_03",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_15_TERMINAL_DECISION_LAYER_ACTION_04",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_15_TERMINAL_DECISION_LAYER_ACTION_05",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_15_TERMINAL_DECISION_LAYER_ACTION_06",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_15_TERMINAL_DECISION_LAYER_ACTION_07",
+          "status": "pending"
+        }
+      ],
+      "phase": "PHASE_15_TERMINAL_DECISION_LAYER",
+      "status": "open"
+    },
+    {
+      "actions": [
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_16_PUBLIC_COMMUNICATION_LAYER_ACTION_01",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_16_PUBLIC_COMMUNICATION_LAYER_ACTION_02",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_16_PUBLIC_COMMUNICATION_LAYER_ACTION_03",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_16_PUBLIC_COMMUNICATION_LAYER_ACTION_04",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_16_PUBLIC_COMMUNICATION_LAYER_ACTION_05",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_16_PUBLIC_COMMUNICATION_LAYER_ACTION_06",
+          "status": "pending"
+        },
+        {
+          "claim_level": "target_or_blocker_only",
+          "completed": false,
+          "name": "PHASE_16_PUBLIC_COMMUNICATION_LAYER_ACTION_07",
+          "status": "pending"
+        }
+      ],
+      "phase": "PHASE_16_PUBLIC_COMMUNICATION_LAYER",
+      "status": "open"
+    }
+  ],
+  "status": "REMAINING_STRUCTURE_ACTIONS_REGISTRY_ONLY"
+}

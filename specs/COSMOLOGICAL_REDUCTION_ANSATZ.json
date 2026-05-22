@@ -1,0 +1,127 @@
+{
+  "object_id": "COSMOLOGICAL_REDUCTION_ANSATZ",
+  "status": "COSMOLOGICAL_REDUCTION_ANSATZ_SUPPLIED_STRUCTURAL_ONLY",
+  "date": "2026-05-22",
+  "input_objects": [
+    "FILLED_SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL",
+    "VARIATIONAL_DERIVATION_CHECK",
+    "PARAMETER_DOMAIN_AND_UNITS_TABLE"
+  ],
+  "input_specs": [
+    "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+    "specs/VARIATIONAL_DERIVATION_CHECK.json",
+    "specs/PARAMETER_DOMAIN_AND_UNITS_TABLE.json"
+  ],
+  "ansatz_class": "homogeneous_isotropic_FLRW_background",
+  "coordinate_chart": {
+    "time_coordinate": "t",
+    "spatial_coordinates": [
+      "x1",
+      "x2",
+      "x3"
+    ],
+    "spatial_curvature_parameter": "k in {-1, 0, 1}"
+  },
+  "metric_ansatz": {
+    "line_element": "ds2 = -N(t)^2 dt^2 + a(t)^2 gamma_ij(k) dx^i dx^j",
+    "lapse": "N(t) > 0",
+    "scale_factor": "a(t) > 0",
+    "spatial_metric": "gamma_ij(k) is a maximally symmetric three-metric",
+    "hubble_variable": "H(t) = (1/N(t)) d(log a)/dt"
+  },
+  "field_ansatz": [
+    {
+      "symbol": "phi",
+      "reduction": "phi = phi(t)",
+      "symmetry_reason": "homogeneity and isotropy permit a scalar depending only on cosmic time"
+    },
+    {
+      "symbol": "A_mu",
+      "reduction": "A_mu dx^mu = A_0(t) dt",
+      "symmetry_reason": "homogeneity and isotropy exclude a preferred spatial vector direction at the background level"
+    },
+    {
+      "symbol": "Psi",
+      "reduction": "perfect-fluid effective matter sector",
+      "symmetry_reason": "homogeneous isotropic matter stress tensor"
+    }
+  ],
+  "matter_ansatz": {
+    "stress_tensor_form": "T^mu_nu = diag(-rho_m(t), p_m(t), p_m(t), p_m(t))",
+    "equation_of_state_placeholder": "p_m(t) = w_m(t) rho_m(t)",
+    "conservation_target": "background matter continuity equation under conformal matter coupling"
+  },
+  "background_equation_targets": [
+    {
+      "target_id": "friedmann_constraint_target",
+      "source_equation": "metric_equation",
+      "structural_form": "E_N[N,a,phi,A_0,rho_m; parameters] = 0",
+      "role": "lapse variation or time-time metric equation"
+    },
+    {
+      "target_id": "acceleration_equation_target",
+      "source_equation": "metric_equation",
+      "structural_form": "E_a[N,a,phi,A_0,p_m; parameters] = 0",
+      "role": "scale-factor variation or spatial metric equation"
+    },
+    {
+      "target_id": "scalar_background_equation_target",
+      "source_equation": "scalar_equation",
+      "structural_form": "E_phi[N,a,phi,A_0,rho_m,p_m; parameters] = 0",
+      "role": "homogeneous scalar evolution equation"
+    },
+    {
+      "target_id": "vector_background_constraint_target",
+      "source_equation": "vector_equation",
+      "structural_form": "E_A0[N,a,phi,A_0; parameters] = 0",
+      "role": "homogeneous temporal vector constraint or evolution target"
+    },
+    {
+      "target_id": "matter_background_equation_target",
+      "source_equation": "matter_equation",
+      "structural_form": "E_m[N,a,phi,rho_m,p_m; parameters] = 0",
+      "role": "effective matter continuity target"
+    }
+  ],
+  "reduced_variable_set": [
+    "N(t)",
+    "a(t)",
+    "H(t)",
+    "phi(t)",
+    "A_0(t)",
+    "rho_m(t)",
+    "p_m(t)"
+  ],
+  "gauge_policy": {
+    "lapse_gauge": "unfixed in the structural ansatz",
+    "cosmic_time_specialization": "N(t) = 1 may be imposed only after deriving reduced equations",
+    "spatial_shift": "zero by FLRW symmetry"
+  },
+  "consistency_requirements": [
+    "metric ansatz preserves homogeneity and isotropy",
+    "scalar ansatz preserves homogeneity and isotropy",
+    "vector ansatz contains no background spatial vector component",
+    "matter ansatz has perfect-fluid diagonal stress tensor",
+    "each supplied field-equation target has a corresponding background-equation target",
+    "all validation flags remain non-empirical and non-final"
+  ],
+  "check_result": "PASS_STRUCTURAL_ONLY",
+  "reduced_equations_derived": false,
+  "numerical_prediction_claimed": false,
+  "physical_correctness_claimed": false,
+  "empirical_validation_claimed": false,
+  "likelihood_execution_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "FROZEN_PREDICTION_VECTOR",
+    "EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}

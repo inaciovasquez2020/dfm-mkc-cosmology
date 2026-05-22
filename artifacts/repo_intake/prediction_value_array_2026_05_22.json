@@ -1,0 +1,29 @@
+{
+  "artifact_id": "prediction_value_array_2026_05_22",
+  "status": "PREDICTION_VALUE_ARRAY_BLOCKED_NO_SOLVER_OUTPUTS",
+  "required_object_blocked": "PREDICTION_VALUE_ARRAY",
+  "source_spec": "specs/PREDICTION_VALUE_ARRAY.json",
+  "root_blocker_preserved": "PREDICTION_VALUE_ARRAY_NOT_SUPPLIED",
+  "terminal_blocker": "SOLVER_OUTPUT_ARRAYS_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_SOLVER_OUTPUTS",
+  "boundary": [
+    "records that prediction value assembly is blocked",
+    "does not assemble executable DFM prediction values",
+    "does not populate model prediction slots",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "BACKGROUND_SOLVER_OUTPUT_ARRAY",
+    "PERTURBATION_SOLVER_OUTPUT_ARRAY",
+    "TRANSFER_FUNCTION_OUTPUT_ARRAY",
+    "PREDICTION_SLOT_ASSEMBLY_MAP"
+  ]
+}

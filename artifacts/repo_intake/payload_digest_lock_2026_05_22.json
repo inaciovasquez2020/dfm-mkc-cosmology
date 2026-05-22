@@ -1,0 +1,28 @@
+{
+  "artifact_id": "payload_digest_lock_2026_05_22",
+  "status": "PAYLOAD_DIGEST_LOCK_BLOCKED_NO_PAYLOAD_BYTES",
+  "required_object_blocked": "PAYLOAD_DIGEST_LOCK",
+  "source_spec": "specs/PAYLOAD_DIGEST_LOCK.json",
+  "root_blocker_preserved": "PAYLOAD_DIGEST_LOCK_NOT_SUPPLIED",
+  "terminal_blocker": "EXTERNAL_PAYLOAD_BYTES_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_PAYLOAD_BYTES",
+  "boundary": [
+    "records that payload digest locking is blocked",
+    "does not hash external payload bytes",
+    "does not freeze an empirical payload version",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "EXTERNAL_PAYLOAD_BYTES",
+    "SHA256_PAYLOAD_DIGEST",
+    "PAYLOAD_VERSION_RECORD"
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "object_id": "PARAMETER_DOMAIN_AND_UNITS_TABLE",
+  "status": "PARAMETER_DOMAIN_AND_UNITS_TABLE_SUPPLIED_STRUCTURAL_ONLY",
+  "date": "2026-05-22",
+  "input_objects": [
+    "FILLED_SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL",
+    "VARIATIONAL_DERIVATION_CHECK"
+  ],
+  "input_specs": [
+    "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+    "specs/VARIATIONAL_DERIVATION_CHECK.json"
+  ],
+  "unit_system": {
+    "name": "natural_units",
+    "assumptions": [
+      "c = 1",
+      "hbar = 1",
+      "spacetime_dimension = 4",
+      "action_dimension = 0",
+      "lagrangian_density_mass_dimension = 4"
+    ]
+  },
+  "field_dimensions": [
+    {
+      "symbol": "g_{mu nu}",
+      "mass_dimension": 0,
+      "domain": "nondegenerate Lorentzian metric with signature -+++",
+      "role": "metric field"
+    },
+    {
+      "symbol": "phi",
+      "mass_dimension": 1,
+      "domain": "real scalar field",
+      "role": "DFM scalar deformation field"
+    },
+    {
+      "symbol": "A_mu",
+      "mass_dimension": 1,
+      "domain": "real one-form field",
+      "role": "MKC vector connection-like field"
+    },
+    {
+      "symbol": "Psi",
+      "mass_dimension": "sector-dependent",
+      "domain": "matter-sector field configuration",
+      "role": "ordinary matter and radiation sector"
+    }
+  ],
+  "parameter_table": [
+    {
+      "symbol": "M_Pl",
+      "mass_dimension": 1,
+      "domain": "positive real",
+      "constraint": "M_Pl > 0",
+      "appears_in": [
+        "Einstein-Hilbert term"
+      ]
+    },
+    {
+      "symbol": "Lambda_0",
+      "mass_dimension": 4,
+      "domain": "real",
+      "constraint": "Lambda_0 in R",
+      "appears_in": [
+        "cosmological constant term"
+      ]
+    },
+    {
+      "symbol": "alpha_phi",
+      "mass_dimension": 0,
+      "domain": "positive real",
+      "constraint": "alpha_phi > 0",
+      "appears_in": [
+        "scalar kinetic term"
+      ]
+    },
+    {
+      "symbol": "m_phi",
+      "mass_dimension": 1,
+      "domain": "nonnegative real",
+      "constraint": "m_phi >= 0",
+      "appears_in": [
+        "scalar mass term"
+      ]
+    },
+    {
+      "symbol": "lambda_phi",
+      "mass_dimension": 0,
+      "domain": "nonnegative real",
+      "constraint": "lambda_phi >= 0",
+      "appears_in": [
+        "scalar quartic term"
+      ]
+    },
+    {
+      "symbol": "alpha_A",
+      "mass_dimension": 0,
+      "domain": "positive real",
+      "constraint": "alpha_A > 0",
+      "appears_in": [
+        "vector kinetic term"
+      ]
+    },
+    {
+      "symbol": "m_A",
+      "mass_dimension": 1,
+      "domain": "nonnegative real",
+      "constraint": "m_A >= 0",
+      "appears_in": [
+        "vector mass term"
+      ]
+    },
+    {
+      "symbol": "beta_phi_A",
+      "mass_dimension": 0,
+      "domain": "real",
+      "constraint": "beta_phi_A in R",
+      "appears_in": [
+        "scalar-vector interaction term"
+      ]
+    },
+    {
+      "symbol": "xi_phi",
+      "mass_dimension": 0,
+      "domain": "real",
+      "constraint": "xi_phi in R",
+      "appears_in": [
+        "nonminimal scalar curvature coupling"
+      ]
+    },
+    {
+      "symbol": "xi_A",
+      "mass_dimension": 0,
+      "domain": "real",
+      "constraint": "xi_A in R",
+      "appears_in": [
+        "nonminimal Ricci-vector coupling"
+      ]
+    },
+    {
+      "symbol": "gamma_m",
+      "mass_dimension": -1,
+      "domain": "real",
+      "constraint": "gamma_m in R",
+      "appears_in": [
+        "conformal matter coupling"
+      ]
+    }
+  ],
+  "consistency_requirements": [
+    "every coupling constant from the supplied action appears exactly once in the parameter table",
+    "every listed parameter has a domain constraint",
+    "every listed parameter has a mass dimension",
+    "kinetic normalization constants are positive",
+    "mass scales are nonnegative",
+    "all validation flags remain non-empirical and non-final"
+  ],
+  "check_result": "PASS_STRUCTURAL_ONLY",
+  "physical_correctness_claimed": false,
+  "empirical_validation_claimed": false,
+  "prediction_vector_claimed": false,
+  "likelihood_execution_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "COSMOLOGICAL_REDUCTION_ANSATZ",
+    "FROZEN_PREDICTION_VECTOR",
+    "EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}

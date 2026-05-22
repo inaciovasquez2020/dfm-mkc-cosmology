@@ -1,0 +1,45 @@
+{
+  "artifact_id": "executed_dfm_vs_lambda_cdm_comparison_2026_05_22",
+  "status": "EXECUTION_BLOCKED_SYMBOLIC_VECTOR_ONLY_NO_NUMERICAL_COMPARISON",
+  "required_object_blocked": "EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON",
+  "source_spec": "specs/EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON.json",
+  "input_specs": [
+    "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+    "specs/VARIATIONAL_DERIVATION_CHECK.json",
+    "specs/PARAMETER_DOMAIN_AND_UNITS_TABLE.json",
+    "specs/COSMOLOGICAL_REDUCTION_ANSATZ.json",
+    "specs/FROZEN_PREDICTION_VECTOR.json"
+  ],
+  "root_blocker_preserved": "EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON_NOT_SUPPLIED",
+  "new_root_blocker": "NUMERICAL_COMPARISON_EXECUTION_INPUTS_NOT_SUPPLIED",
+  "check_result": "BLOCKED_REQUIRED_INPUTS_NOT_SUPPLIED",
+  "boundary": [
+    "records that the DFM-MKC vs Lambda-CDM comparison is blocked",
+    "identifies the missing execution preconditions",
+    "does not execute a numerical comparison",
+    "does not evaluate numerical predictions",
+    "does not supply a data vector",
+    "does not supply a covariance matrix",
+    "does not supply a likelihood rule",
+    "does not supply a Lambda-CDM baseline vector",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "DERIVED_REDUCED_BACKGROUND_EQUATIONS",
+    "PERTURBATION_CLOSURE_EQUATIONS",
+    "NUMERICAL_PARAMETER_VECTOR",
+    "DATA_VECTOR_SCHEMA",
+    "COVARIANCE_MATRIX",
+    "LIKELIHOOD_RULE",
+    "LAMBDA_CDM_BASELINE_VECTOR",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}

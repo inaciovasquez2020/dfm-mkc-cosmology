@@ -1,0 +1,103 @@
+{
+  "artifact": "DFM_MKC_EMPIRICAL_EVIDENCE_CLAIM_BLOCKER",
+  "date": "2026-05-21",
+  "status": "EMPIRICAL_EVIDENCE_CLAIM_BLOCKED_NO_EXECUTED_COMPARISON",
+  "claim_level": "blocker_certificate_only",
+  "empirical_evidence_claim_admissible": false,
+  "empirical_evidence_supplied": false,
+  "comparison_executed": false,
+  "holdout_evaluation_executed": false,
+  "independent_validation_supplied": false,
+  "dfm_metrics_supplied": false,
+  "lambda_cdm_metrics_supplied": false,
+  "model_comparison_metrics_supplied": false,
+  "root_blocker": "NO_EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON",
+  "blocking_missing_objects": [
+    "DFM_FIELD_EQUATIONS_OR_ACTION_FUNCTIONAL",
+    "DFM_PARAMETER_MAP",
+    "DFM_OBSERVABLE_PREDICTION_RULES",
+    "DFM_FROZEN_PREDICTION_VECTOR",
+    "DFM_LIKELIHOOD_RULE",
+    "DFM_HOLDOUT_SPLIT",
+    "DFM_VS_LAMBDA_CDM_COMPARISON",
+    "INDEPENDENT_VALIDATION"
+  ],
+  "upstream_registered_targets": [
+    "DFM_MKC_FIELD_EQUATIONS_OR_ACTION_FUNCTIONAL_TARGET",
+    "DFM_MKC_PARAMETER_MAP_TARGET",
+    "DFM_MKC_OBSERVABLE_PREDICTION_RULES_TARGET",
+    "DFM_MKC_FROZEN_PREDICTION_VECTOR_TARGET",
+    "DFM_MKC_LIKELIHOOD_RULE_TARGET",
+    "DFM_MKC_HOLDOUT_SPLIT_TARGET",
+    "DFM_MKC_VS_LAMBDA_CDM_COMPARISON_TARGET"
+  ],
+  "blocked_claims": [
+    {
+      "claim": "DFM has empirical evidence",
+      "status": "blocked"
+    },
+    {
+      "claim": "DFM beats Lambda-CDM",
+      "status": "blocked"
+    },
+    {
+      "claim": "Lambda-CDM is empirically disproved",
+      "status": "blocked"
+    },
+    {
+      "claim": "CDM is replaced by DFM",
+      "status": "blocked"
+    },
+    {
+      "claim": "DFM resolves dark energy",
+      "status": "blocked"
+    },
+    {
+      "claim": "DFM resolves dark matter",
+      "status": "blocked"
+    },
+    {
+      "claim": "DFM gives final cosmology closure",
+      "status": "blocked"
+    }
+  ],
+  "minimum_unblock_conditions": [
+    "supply DFM field equations or action functional",
+    "supply DFM parameter map",
+    "supply observable prediction rules",
+    "supply frozen prediction vector",
+    "supply likelihood rule",
+    "supply holdout split",
+    "execute DFM-vs-Lambda-CDM comparison",
+    "report DFM and Lambda-CDM metrics",
+    "report delta chi-square, delta AIC, and delta BIC",
+    "execute independent validation or reproduction"
+  ],
+  "admissibility_rule": "No empirical-evidence claim is admissible until the DFM-vs-Lambda-CDM comparison is executed on declared holdout data with frozen predictions, frozen likelihood rules, reported comparison metrics, and independent validation.",
+  "boundary": [
+    "Blocker certificate only.",
+    "Does not supply empirical evidence.",
+    "Does not execute DFM-vs-Lambda-CDM comparison.",
+    "Does not execute holdout evaluation.",
+    "Does not supply independent validation.",
+    "Does not supply DFM metrics.",
+    "Does not supply Lambda-CDM metrics.",
+    "Does not compute delta chi-square.",
+    "Does not compute delta AIC.",
+    "Does not compute delta BIC.",
+    "Does not prove DFM.",
+    "Does not disprove Lambda-CDM.",
+    "Does not replace CDM.",
+    "Does not claim final cosmology closure."
+  ],
+  "does_not_prove": [
+    "DFM",
+    "Lambda-CDM failure",
+    "CDM replacement",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "final cosmology closure",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}

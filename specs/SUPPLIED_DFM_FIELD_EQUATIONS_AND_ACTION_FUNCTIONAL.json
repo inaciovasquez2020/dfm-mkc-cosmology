@@ -1,0 +1,74 @@
+{
+  "object_id": "FILLED_SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL",
+  "status": "FILLED_STRUCTURAL_CANDIDATE_ONLY_NOT_VALIDATED",
+  "date": "2026-05-22",
+  "theory_name": "DFM-MKC",
+  "primitive_fields": [
+    {
+      "symbol": "g_{mu nu}",
+      "type": "Lorentzian metric",
+      "role": "geometric background and variational metric field"
+    },
+    {
+      "symbol": "phi",
+      "type": "real scalar field",
+      "role": "DFM scalar deformation field"
+    },
+    {
+      "symbol": "A_mu",
+      "type": "real one-form field",
+      "role": "MKC vector connection-like field"
+    },
+    {
+      "symbol": "Psi",
+      "type": "matter sector fields",
+      "role": "ordinary matter/radiation sector"
+    }
+  ],
+  "coupling_constants": [
+    "M_Pl",
+    "Lambda_0",
+    "alpha_phi",
+    "m_phi",
+    "lambda_phi",
+    "alpha_A",
+    "m_A",
+    "beta_phi_A",
+    "xi_phi",
+    "xi_A",
+    "gamma_m"
+  ],
+  "action_functional": {
+    "spacetime_dimension": 4,
+    "signature": "-+++",
+    "definition": "S[g,phi,A,Psi] = int d^4x sqrt(-g) [ M_Pl^2/2 R - Lambda_0 - alpha_phi/2 g^{mu nu} nabla_mu phi nabla_nu phi - m_phi^2/2 phi^2 - lambda_phi/4 phi^4 - alpha_A/4 F_{mu nu}F^{mu nu} - m_A^2/2 A_mu A^mu - beta_phi_A/2 phi^2 A_mu A^mu - xi_phi/2 R phi^2 - xi_A/2 R_{mu nu} A^mu A^nu ] + S_m[e^{2 gamma_m phi} g_{mu nu}, Psi]",
+    "field_strength": "F_{mu nu} = nabla_mu A_nu - nabla_nu A_mu",
+    "matter_metric": "tilde_g_{mu nu} = e^{2 gamma_m phi} g_{mu nu}"
+  },
+  "field_equations": {
+    "metric_equation": "M_Pl^2 G_{mu nu} + Lambda_0 g_{mu nu} = T^{matter}_{mu nu} + T^{phi}_{mu nu} + T^{A}_{mu nu} + T^{interaction}_{mu nu} + T^{nonminimal}_{mu nu}",
+    "scalar_equation": "alpha_phi Box_g phi - m_phi^2 phi - lambda_phi phi^3 - beta_phi_A phi A_mu A^mu - xi_phi R phi + gamma_m T_matter = 0",
+    "vector_equation": "alpha_A nabla_mu F^{mu nu} - m_A^2 A^nu - beta_phi_A phi^2 A^nu - xi_A R^{nu}_{ mu} A^mu = 0",
+    "matter_equation": "delta S_m[e^{2 gamma_m phi} g, Psi] / delta Psi = 0",
+    "stress_energy_definition": "T_{mu nu}^{sector} = -2/sqrt(-g) delta S_sector / delta g^{mu nu}"
+  },
+  "mathematical_closure_claimed": false,
+  "empirical_validation_claimed": false,
+  "prediction_vector_claimed": false,
+  "likelihood_execution_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "VARIATIONAL_DERIVATION_CHECK",
+    "PARAMETER_DOMAIN_AND_UNITS_TABLE",
+    "COSMOLOGICAL_REDUCTION_ANSATZ",
+    "FROZEN_PREDICTION_VECTOR",
+    "EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "object_id": "PAYLOAD_BOUND_COVARIANCE_MATRIX",
+  "status": "PAYLOAD_BOUND_COVARIANCE_MATRIX_BLOCKED_NO_EMPIRICAL_PAYLOAD_BINDING",
+  "date": "2026-05-22",
+  "input_specs": [
+    "specs/COVARIANCE_MATRIX.json",
+    "specs/DATA_VECTOR_SCHEMA.json",
+    "specs/EMPIRICAL_DATA_VALUES.json"
+  ],
+  "covariance_policy": {
+    "payload_bound_covariance_required": true,
+    "reference_covariance_exists": true,
+    "payload_bound_covariance_supplied": false,
+    "empirical_covariance_claimed": false,
+    "positive_definite_payload_covariance_claimed": false,
+    "claim_blocked": true
+  },
+  "blocked_reason": "Only a reference diagonal covariance exists; no payload-bound empirical covariance matrix is supplied.",
+  "required_covariance_objects": [
+    "PAYLOAD_COVARIANCE_ARRAY",
+    "PAYLOAD_COVARIANCE_SLOT_ORDER",
+    "PAYLOAD_COVARIANCE_DIGEST_LOCK",
+    "PAYLOAD_COVARIANCE_POSITIVE_DEFINITE_CHECK"
+  ],
+  "check_result": "BLOCKED_NO_EMPIRICAL_PAYLOAD_BINDING",
+  "payload_bound_covariance_supplied": false,
+  "empirical_covariance_claimed": false,
+  "empirical_validation_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "PAYLOAD_COVARIANCE_ARRAY",
+    "PAYLOAD_COVARIANCE_SLOT_ORDER",
+    "PAYLOAD_COVARIANCE_DIGEST_LOCK",
+    "PAYLOAD_COVARIANCE_POSITIVE_DEFINITE_CHECK"
+  ]
+}

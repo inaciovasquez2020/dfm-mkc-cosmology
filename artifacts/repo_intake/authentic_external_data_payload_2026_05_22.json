@@ -1,0 +1,29 @@
+{
+  "artifact_id": "authentic_external_data_payload_2026_05_22",
+  "status": "AUTHENTIC_EXTERNAL_DATA_PAYLOAD_BLOCKED_NO_PAYLOAD_SUPPLIED",
+  "required_object_blocked": "AUTHENTIC_EXTERNAL_DATA_PAYLOAD",
+  "source_spec": "specs/AUTHENTIC_EXTERNAL_DATA_PAYLOAD.json",
+  "root_blocker_preserved": "AUTHENTIC_EXTERNAL_DATA_PAYLOAD_NOT_BOUND",
+  "terminal_blocker": "EXTERNAL_EMPIRICAL_PAYLOAD_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_PAYLOAD_SUPPLIED",
+  "boundary": [
+    "records that authentic external empirical payload is blocked",
+    "does not supply an external payload file",
+    "does not bind an external empirical payload",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "EXTERNAL_PAYLOAD_FILE",
+    "EXTERNAL_PAYLOAD_SOURCE_RECORD",
+    "EXTERNAL_PAYLOAD_LICENSE_RECORD",
+    "EXTERNAL_PAYLOAD_DIGEST_LOCK"
+  ]
+}

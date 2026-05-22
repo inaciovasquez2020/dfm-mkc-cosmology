@@ -1,0 +1,40 @@
+{
+  "object_id": "PAYLOAD_COVARIANCE_DIGEST_LOCK",
+  "status": "PAYLOAD_COVARIANCE_DIGEST_LOCK_BLOCKED_NO_COVARIANCE_BYTES",
+  "date": "2026-05-22",
+  "input_specs": [
+    "specs/DATA_VECTOR_SCHEMA.json",
+    "specs/COVARIANCE_MATRIX.json",
+    "specs/LIKELIHOOD_RULE.json",
+    "specs/LAMBDA_CDM_BASELINE_VECTOR.json",
+    "specs/INDEPENDENT_EMPIRICAL_VALIDATION.json",
+    "specs/EMPIRICAL_DATA_VALUES.json",
+    "specs/EXECUTABLE_DFM_PREDICTION_VALUES.json",
+    "specs/PAYLOAD_BOUND_COVARIANCE_MATRIX.json",
+    "specs/EXECUTED_LIKELIHOOD_RESULT.json",
+    "specs/REPRODUCIBLE_HOLDOUT_REPORT.json"
+  ],
+  "blocked_reason": "COVARIANCE_PAYLOAD_BYTES_NOT_SUPPLIED",
+  "blocking_missing_objects": [
+    "COVARIANCE_PAYLOAD_BYTES",
+    "COVARIANCE_SHA256_DIGEST",
+    "COVARIANCE_VERSION_RECORD"
+  ],
+  "check_result": "BLOCKED_NO_COVARIANCE_BYTES",
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "COVARIANCE_PAYLOAD_BYTES",
+    "COVARIANCE_SHA256_DIGEST",
+    "COVARIANCE_VERSION_RECORD"
+  ],
+  "payload_covariance_digest_lock_supplied": false,
+  "payload_bound_covariance_supplied": false,
+  "empirical_validation_claimed": false
+}

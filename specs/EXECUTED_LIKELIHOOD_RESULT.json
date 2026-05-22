@@ -1,0 +1,51 @@
+{
+  "object_id": "EXECUTED_LIKELIHOOD_RESULT",
+  "status": "EXECUTED_LIKELIHOOD_RESULT_BLOCKED_NO_EMPIRICAL_DATA_OR_PREDICTION_VALUES",
+  "date": "2026-05-22",
+  "input_specs": [
+    "specs/LIKELIHOOD_RULE.json",
+    "specs/EMPIRICAL_DATA_VALUES.json",
+    "specs/EXECUTABLE_DFM_PREDICTION_VALUES.json",
+    "specs/PAYLOAD_BOUND_COVARIANCE_MATRIX.json",
+    "specs/LAMBDA_CDM_BASELINE_VECTOR.json"
+  ],
+  "execution_policy": {
+    "likelihood_rule_exists": true,
+    "empirical_data_values_required": true,
+    "dfm_prediction_values_required": true,
+    "payload_bound_covariance_required": true,
+    "likelihood_executed": false,
+    "model_selection_claimed": false,
+    "claim_blocked": true
+  },
+  "blocked_reason": "Likelihood execution is blocked because empirical data values, executable DFM prediction values, and payload-bound covariance are not supplied.",
+  "required_execution_objects": [
+    "EMPIRICAL_DATA_VALUES",
+    "EXECUTABLE_DFM_PREDICTION_VALUES",
+    "PAYLOAD_BOUND_COVARIANCE_MATRIX",
+    "DFM_CHI_SQUARE_VALUE",
+    "LAMBDA_CDM_CHI_SQUARE_VALUE",
+    "DELTA_CHI_SQUARE_VALUE"
+  ],
+  "check_result": "BLOCKED_NO_EMPIRICAL_DATA_OR_PREDICTION_VALUES",
+  "likelihood_executed": false,
+  "dfm_chi_square_supplied": false,
+  "lambda_cdm_chi_square_supplied": false,
+  "delta_chi_square_supplied": false,
+  "model_selection_claimed": false,
+  "empirical_validation_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "DFM_CHI_SQUARE_VALUE",
+    "LAMBDA_CDM_CHI_SQUARE_VALUE",
+    "DELTA_CHI_SQUARE_VALUE",
+    "EXECUTED_LIKELIHOOD_DIGEST_LOCK"
+  ]
+}

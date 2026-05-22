@@ -1,0 +1,28 @@
+{
+  "artifact_id": "empirical_uncertainty_array_2026_05_22",
+  "status": "EMPIRICAL_UNCERTAINTY_ARRAY_BLOCKED_NO_PAYLOAD_SLOT_BINDING",
+  "required_object_blocked": "EMPIRICAL_UNCERTAINTY_ARRAY",
+  "source_spec": "specs/EMPIRICAL_UNCERTAINTY_ARRAY.json",
+  "root_blocker_preserved": "EMPIRICAL_UNCERTAINTY_ARRAY_NOT_SUPPLIED",
+  "terminal_blocker": "PAYLOAD_SLOT_BINDING_MAP_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_PAYLOAD_SLOT_BINDING",
+  "boundary": [
+    "records that empirical uncertainty extraction is blocked",
+    "does not extract observational uncertainties",
+    "does not populate uncertainty slots",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "PAYLOAD_SLOT_BINDING_MAP",
+    "EMPIRICAL_UNCERTAINTY_EXTRACTION",
+    "EMPIRICAL_UNCERTAINTY_ARRAY_DIGEST_LOCK"
+  ]
+}

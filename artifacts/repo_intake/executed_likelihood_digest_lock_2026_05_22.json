@@ -1,0 +1,28 @@
+{
+  "artifact_id": "executed_likelihood_digest_lock_2026_05_22",
+  "status": "EXECUTED_LIKELIHOOD_DIGEST_LOCK_BLOCKED_NO_EXECUTED_LIKELIHOOD_RESULT",
+  "required_object_blocked": "EXECUTED_LIKELIHOOD_DIGEST_LOCK",
+  "source_spec": "specs/EXECUTED_LIKELIHOOD_DIGEST_LOCK.json",
+  "root_blocker_preserved": "EXECUTED_LIKELIHOOD_DIGEST_LOCK_NOT_SUPPLIED",
+  "terminal_blocker": "EXECUTED_LIKELIHOOD_RESULT_NOT_SUPPLIED",
+  "check_result": "BLOCKED_NO_EXECUTED_LIKELIHOOD_RESULT",
+  "boundary": [
+    "records that executed likelihood digest locking is blocked",
+    "does not hash likelihood execution outputs",
+    "does not freeze likelihood execution results",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "EXECUTED_LIKELIHOOD_RESULT",
+    "LIKELIHOOD_OUTPUT_BYTES",
+    "LIKELIHOOD_OUTPUT_SHA256_DIGEST"
+  ]
+}

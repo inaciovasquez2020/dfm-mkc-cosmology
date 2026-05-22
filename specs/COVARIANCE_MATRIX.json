@@ -1,0 +1,63 @@
+{
+  "object_id": "COVARIANCE_MATRIX",
+  "status": "COVARIANCE_MATRIX_SUPPLIED_REFERENCE_DIAGONAL_ONLY_NOT_EMPIRICAL",
+  "date": "2026-05-22",
+  "input_specs": [
+    "specs/FROZEN_PREDICTION_VECTOR.json",
+    "specs/OBSERVABLE_EVALUATION_GRID.json",
+    "specs/DATA_VECTOR_SCHEMA.json"
+  ],
+  "matrix_policy": {
+    "reference_diagonal_only": true,
+    "empirical_covariance": false,
+    "positive_definite_claimed": true,
+    "payload_bound": false,
+    "likelihood_ready": false
+  },
+  "slot_order_source": "specs/DATA_VECTOR_SCHEMA.json",
+  "covariance_slot_order": [
+    "slot_E_DFM",
+    "slot_D_A_DFM",
+    "slot_D_L_DFM",
+    "slot_mu_DFM",
+    "slot_f_sigma8_DFM",
+    "slot_C_ell_TT_DFM",
+    "slot_C_ell_TE_DFM",
+    "slot_C_ell_EE_DFM",
+    "slot_S8_DFM",
+    "slot_r_d_DFM"
+  ],
+  "diagonal_variances": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "matrix_dimension": 10,
+  "check_result": "PASS_REFERENCE_DIAGONAL_MATRIX_ONLY",
+  "covariance_matrix_supplied": true,
+  "empirical_covariance_claimed": false,
+  "likelihood_rule_supplied": false,
+  "lambda_cdm_baseline_supplied": false,
+  "empirical_validation_claimed": false,
+  "model_selection_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "LIKELIHOOD_RULE",
+    "LAMBDA_CDM_BASELINE_VECTOR",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}
