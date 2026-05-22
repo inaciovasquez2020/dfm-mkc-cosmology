@@ -1,0 +1,337 @@
+{
+  "cross_covariance_policy_certified": false,
+  "cross_covariance_policy_rows": [
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "ACT_DR6",
+        "PANTHEON_PLUS_SHOES"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "ACT_DR6",
+        "DESI_DR2"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "ACT_DR6",
+        "PLANCK_2018"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "ACT_DR6",
+        "DES_Y6"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "ACT_DR6",
+        "GROWTH_SECTOR"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "ACT_DR6",
+        "H0_DISTANCE_LADDER"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "PANTHEON_PLUS_SHOES",
+        "DESI_DR2"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "PANTHEON_PLUS_SHOES",
+        "PLANCK_2018"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "PANTHEON_PLUS_SHOES",
+        "DES_Y6"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "PANTHEON_PLUS_SHOES",
+        "GROWTH_SECTOR"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "PANTHEON_PLUS_SHOES",
+        "H0_DISTANCE_LADDER"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "DESI_DR2",
+        "PLANCK_2018"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "DESI_DR2",
+        "DES_Y6"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "DESI_DR2",
+        "GROWTH_SECTOR"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "DESI_DR2",
+        "H0_DISTANCE_LADDER"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "PLANCK_2018",
+        "DES_Y6"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "PLANCK_2018",
+        "GROWTH_SECTOR"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "PLANCK_2018",
+        "H0_DISTANCE_LADDER"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "DES_Y6",
+        "GROWTH_SECTOR"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "DES_Y6",
+        "H0_DISTANCE_LADDER"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    },
+    {
+      "compatibility_certified": false,
+      "cross_covariance_policy": null,
+      "independence_assumption_source": null,
+      "probe_pair": [
+        "GROWTH_SECTOR",
+        "H0_DISTANCE_LADDER"
+      ],
+      "rule_supplied": false,
+      "shared_parameters": []
+    }
+  ],
+  "date": "2026-05-22",
+  "does_not_prove": [
+    "certified nuisance prior values",
+    "certified cross-covariance compatibility",
+    "complete certified multiprobe likelihood manifest",
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "Lambda-CDM failure",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "nuisance_prior_rows": [
+    {
+      "central_value": null,
+      "certified": false,
+      "lower_bound": null,
+      "parameter_name": null,
+      "prior_family": null,
+      "probe": "ACT_DR6",
+      "source_reference": null,
+      "upper_bound": null,
+      "value_supplied": false
+    },
+    {
+      "central_value": null,
+      "certified": false,
+      "lower_bound": null,
+      "parameter_name": null,
+      "prior_family": null,
+      "probe": "PANTHEON_PLUS_SHOES",
+      "source_reference": null,
+      "upper_bound": null,
+      "value_supplied": false
+    },
+    {
+      "central_value": null,
+      "certified": false,
+      "lower_bound": null,
+      "parameter_name": null,
+      "prior_family": null,
+      "probe": "DESI_DR2",
+      "source_reference": null,
+      "upper_bound": null,
+      "value_supplied": false
+    },
+    {
+      "central_value": null,
+      "certified": false,
+      "lower_bound": null,
+      "parameter_name": null,
+      "prior_family": null,
+      "probe": "PLANCK_2018",
+      "source_reference": null,
+      "upper_bound": null,
+      "value_supplied": false
+    },
+    {
+      "central_value": null,
+      "certified": false,
+      "lower_bound": null,
+      "parameter_name": null,
+      "prior_family": null,
+      "probe": "DES_Y6",
+      "source_reference": null,
+      "upper_bound": null,
+      "value_supplied": false
+    },
+    {
+      "central_value": null,
+      "certified": false,
+      "lower_bound": null,
+      "parameter_name": null,
+      "prior_family": null,
+      "probe": "GROWTH_SECTOR",
+      "source_reference": null,
+      "upper_bound": null,
+      "value_supplied": false
+    },
+    {
+      "central_value": null,
+      "certified": false,
+      "lower_bound": null,
+      "parameter_name": null,
+      "prior_family": null,
+      "probe": "H0_DISTANCE_LADDER",
+      "source_reference": null,
+      "upper_bound": null,
+      "value_supplied": false
+    }
+  ],
+  "nuisance_prior_values_certified": false,
+  "object": "PER_PROBE_NUISANCE_PRIOR_VALUES_AND_CROSS_COVARIANCE_POLICY_TABLE",
+  "required_next_object": "SUPPLIED_PER_PROBE_NUISANCE_PRIOR_VALUES_AND_CROSS_COVARIANCE_POLICY_TABLE",
+  "source_object": "CERTIFIED_NUISANCE_PRIOR_TABLE_VALUES_AND_COVARIANCE_COMPATIBILITY_RULE",
+  "status": "TABLE_SURFACE_MATERIALIZED_VALUES_AND_POLICY_NOT_SUPPLIED",
+  "table_certified": false
+}
