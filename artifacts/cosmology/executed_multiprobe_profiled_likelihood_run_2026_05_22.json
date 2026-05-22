@@ -44,9 +44,22 @@
       "certified": true,
       "id": "ACT_DR6_CERTIFIED_PROFILED_LIKELIHOOD_INPUT",
       "required_files": {
-        "covariance_matrix": false,
-        "data_vector": false,
-        "likelihood_rule": false
+        "act_dr6_likelihood_or_chains": false,
+        "cmb_lensing_likelihood_or_chain": false,
+        "des_y6_3x2pt_likelihood_or_chain": false,
+        "desi_dr2_bao_bestfit_or_chain": false,
+        "desi_dr2_bao_likelihood_or_covariance": false,
+        "holdout_split_manifest": false,
+        "hsc_y3_likelihood_or_chain": false,
+        "kids_legacy_likelihood_or_chain": false,
+        "nuisance_prior_table": false,
+        "pantheon_plus_covariance": false,
+        "pantheon_plus_data": false,
+        "planck_2018_lensing": false,
+        "planck_2018_likelihood": false,
+        "sh0es_calibrator_data": false,
+        "systematics_profile_config": false,
+        "union3_or_des_sn_crosscheck": false
       },
       "status": "CERTIFIED_INPUT_AVAILABLE_NO_LIKELIHOOD_EXECUTION"
     },
@@ -54,9 +67,22 @@
       "certified": false,
       "id": "PANTHEON_PLUS_SHOES_EXTERNAL_DIGEST_AND_SCHEMA_READER",
       "required_files": {
-        "covariance_matrix": false,
-        "data_vector": false,
-        "likelihood_rule": false
+        "act_dr6_likelihood_or_chains": false,
+        "cmb_lensing_likelihood_or_chain": false,
+        "des_y6_3x2pt_likelihood_or_chain": false,
+        "desi_dr2_bao_bestfit_or_chain": false,
+        "desi_dr2_bao_likelihood_or_covariance": false,
+        "holdout_split_manifest": false,
+        "hsc_y3_likelihood_or_chain": false,
+        "kids_legacy_likelihood_or_chain": false,
+        "nuisance_prior_table": false,
+        "pantheon_plus_covariance": false,
+        "pantheon_plus_data": false,
+        "planck_2018_lensing": false,
+        "planck_2018_likelihood": false,
+        "sh0es_calibrator_data": false,
+        "systematics_profile_config": false,
+        "union3_or_des_sn_crosscheck": false
       },
       "status": "GATE_MATERIALIZED_NOT_EXECUTED"
     },
@@ -64,9 +90,22 @@
       "certified": false,
       "id": "DESI_DR2_EXTERNAL_DIGEST_AND_BAO_SCHEMA_READER",
       "required_files": {
-        "covariance_matrix": false,
-        "data_vector": false,
-        "likelihood_rule": false
+        "act_dr6_likelihood_or_chains": false,
+        "cmb_lensing_likelihood_or_chain": false,
+        "des_y6_3x2pt_likelihood_or_chain": false,
+        "desi_dr2_bao_bestfit_or_chain": false,
+        "desi_dr2_bao_likelihood_or_covariance": false,
+        "holdout_split_manifest": false,
+        "hsc_y3_likelihood_or_chain": false,
+        "kids_legacy_likelihood_or_chain": false,
+        "nuisance_prior_table": false,
+        "pantheon_plus_covariance": false,
+        "pantheon_plus_data": false,
+        "planck_2018_lensing": false,
+        "planck_2018_likelihood": false,
+        "sh0es_calibrator_data": false,
+        "systematics_profile_config": false,
+        "union3_or_des_sn_crosscheck": false
       },
       "status": "GATE_MATERIALIZED_NOT_EXECUTED"
     },
@@ -74,9 +113,22 @@
       "certified": false,
       "id": "PLANCK_2018_EXTERNAL_DIGEST_AND_PARAMETER_SCHEMA_READER",
       "required_files": {
-        "covariance_matrix": false,
-        "data_vector": false,
-        "likelihood_rule": false
+        "act_dr6_likelihood_or_chains": false,
+        "cmb_lensing_likelihood_or_chain": false,
+        "des_y6_3x2pt_likelihood_or_chain": false,
+        "desi_dr2_bao_bestfit_or_chain": false,
+        "desi_dr2_bao_likelihood_or_covariance": false,
+        "holdout_split_manifest": false,
+        "hsc_y3_likelihood_or_chain": false,
+        "kids_legacy_likelihood_or_chain": false,
+        "nuisance_prior_table": false,
+        "pantheon_plus_covariance": false,
+        "pantheon_plus_data": false,
+        "planck_2018_lensing": false,
+        "planck_2018_likelihood": false,
+        "sh0es_calibrator_data": false,
+        "systematics_profile_config": false,
+        "union3_or_des_sn_crosscheck": false
       },
       "status": "GATE_MATERIALIZED_NOT_EXECUTED"
     },
@@ -84,9 +136,22 @@
       "certified": false,
       "id": "DES_Y6_EXTERNAL_DIGEST_AND_LIKELIHOOD_SCHEMA_READER",
       "required_files": {
-        "covariance_matrix": false,
-        "data_vector": false,
-        "likelihood_rule": false
+        "act_dr6_likelihood_or_chains": false,
+        "cmb_lensing_likelihood_or_chain": false,
+        "des_y6_3x2pt_likelihood_or_chain": false,
+        "desi_dr2_bao_bestfit_or_chain": false,
+        "desi_dr2_bao_likelihood_or_covariance": false,
+        "holdout_split_manifest": false,
+        "hsc_y3_likelihood_or_chain": false,
+        "kids_legacy_likelihood_or_chain": false,
+        "nuisance_prior_table": false,
+        "pantheon_plus_covariance": false,
+        "pantheon_plus_data": false,
+        "planck_2018_lensing": false,
+        "planck_2018_likelihood": false,
+        "sh0es_calibrator_data": false,
+        "systematics_profile_config": false,
+        "union3_or_des_sn_crosscheck": false
       },
       "status": "GATE_MATERIALIZED_NOT_EXECUTED"
     },
@@ -94,9 +159,22 @@
       "certified": false,
       "id": "GROWTH_SECTOR_EXTERNAL_DIGEST_AND_SCHEMA_READER",
       "required_files": {
-        "covariance_matrix": false,
-        "data_vector": false,
-        "likelihood_rule": false
+        "act_dr6_likelihood_or_chains": false,
+        "cmb_lensing_likelihood_or_chain": false,
+        "des_y6_3x2pt_likelihood_or_chain": false,
+        "desi_dr2_bao_bestfit_or_chain": false,
+        "desi_dr2_bao_likelihood_or_covariance": false,
+        "holdout_split_manifest": false,
+        "hsc_y3_likelihood_or_chain": false,
+        "kids_legacy_likelihood_or_chain": false,
+        "nuisance_prior_table": false,
+        "pantheon_plus_covariance": false,
+        "pantheon_plus_data": false,
+        "planck_2018_lensing": false,
+        "planck_2018_likelihood": false,
+        "sh0es_calibrator_data": false,
+        "systematics_profile_config": false,
+        "union3_or_des_sn_crosscheck": false
       },
       "status": "GATE_MATERIALIZED_NOT_EXECUTED"
     },
@@ -104,9 +182,22 @@
       "certified": false,
       "id": "H0_DISTANCE_LADDER_EXTERNAL_DIGEST_AND_SCHEMA_READER",
       "required_files": {
-        "covariance_matrix": false,
-        "data_vector": false,
-        "likelihood_rule": false
+        "act_dr6_likelihood_or_chains": false,
+        "cmb_lensing_likelihood_or_chain": false,
+        "des_y6_3x2pt_likelihood_or_chain": false,
+        "desi_dr2_bao_bestfit_or_chain": false,
+        "desi_dr2_bao_likelihood_or_covariance": false,
+        "holdout_split_manifest": false,
+        "hsc_y3_likelihood_or_chain": false,
+        "kids_legacy_likelihood_or_chain": false,
+        "nuisance_prior_table": false,
+        "pantheon_plus_covariance": false,
+        "pantheon_plus_data": false,
+        "planck_2018_lensing": false,
+        "planck_2018_likelihood": false,
+        "sh0es_calibrator_data": false,
+        "systematics_profile_config": false,
+        "union3_or_des_sn_crosscheck": false
       },
       "status": "GATE_MATERIALIZED_NOT_EXECUTED"
     }

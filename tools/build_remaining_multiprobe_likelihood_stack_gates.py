@@ -339,6 +339,11 @@ def main():
         run["does_not_prove"] = sorted(
             set(run.get("does_not_prove", [])) | set(module.REQUIRED_DOES_NOT_PROVE)
         )
+        required_file_gates = {
+            key: False for key in getattr(module, "REQUIRED_INPUT_KEYS", set())
+        }
+        for block in run.get("required_probe_inputs", []):
+            block["required_files"] = dict(required_file_gates)
     except Exception:
         run["does_not_prove"] = sorted(set(run.get("does_not_prove", [])) | {
             "Lambda-CDM failure",
