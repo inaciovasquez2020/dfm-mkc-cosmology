@@ -1,0 +1,125 @@
+{
+  "artifact": "DFM_MKC_VS_LAMBDA_CDM_COMPARISON_TARGET",
+  "date": "2026-05-21",
+  "status": "DFM_VS_LAMBDA_CDM_COMPARISON_TARGET_ONLY_NOT_SUPPLIED",
+  "claim_level": "target_schema_only",
+  "comparison_executed": false,
+  "dfm_metrics_supplied": false,
+  "lambda_cdm_metrics_supplied": false,
+  "model_comparison_metrics_supplied": false,
+  "holdout_evaluation_executed": false,
+  "independent_validation_supplied": false,
+  "empirical_evidence_supplied": false,
+  "dfm_proved": false,
+  "lambda_cdm_disproved": false,
+  "cdm_replaced": false,
+  "root_blocker": "DFM_VS_LAMBDA_CDM_COMPARISON_NOT_SUPPLIED",
+  "upstream_required_objects": [
+    "DFM_FIELD_EQUATIONS_OR_ACTION_FUNCTIONAL",
+    "DFM_PARAMETER_MAP",
+    "DFM_OBSERVABLE_PREDICTION_RULES",
+    "DFM_FROZEN_PREDICTION_VECTOR",
+    "DFM_LIKELIHOOD_RULE",
+    "DFM_HOLDOUT_SPLIT",
+    "DFM_EXTERNAL_DATA_MANIFEST"
+  ],
+  "required_comparison_fields": [
+    "comparison_identifier",
+    "source_commit",
+    "external_data_manifest_reference",
+    "field_equations_or_action_functional_reference",
+    "parameter_map_reference",
+    "observable_prediction_rules_reference",
+    "frozen_prediction_vector_reference",
+    "likelihood_rule_reference",
+    "holdout_split_reference",
+    "lambda_cdm_baseline_reference",
+    "dfm_metric_outputs",
+    "lambda_cdm_metric_outputs",
+    "delta_chi_square",
+    "delta_aic",
+    "delta_bic",
+    "posterior_predictive_checks",
+    "probe_by_probe_residuals",
+    "joint_likelihood_result",
+    "holdout_survival_status",
+    "independent_reproduction_status",
+    "claim_interpretation_rule",
+    "failure_thresholds",
+    "reproduction_command"
+  ],
+  "required_probe_comparison_channels": {
+    "CMB_TT_TE_EE": {
+      "required_comparison": "DFM-vs-Lambda-CDM likelihood and residual comparison for primary CMB spectra",
+      "status": "blocked_no_comparison_execution"
+    },
+    "CMB_LENSING": {
+      "required_comparison": "DFM-vs-Lambda-CDM likelihood and residual comparison for CMB lensing",
+      "status": "blocked_no_comparison_execution"
+    },
+    "BAO_DISTANCES": {
+      "required_comparison": "DFM-vs-Lambda-CDM likelihood and residual comparison for BAO distances",
+      "status": "blocked_no_comparison_execution"
+    },
+    "SNIA_DISTANCES": {
+      "required_comparison": "DFM-vs-Lambda-CDM likelihood and residual comparison for SN Ia distances",
+      "status": "blocked_no_comparison_execution"
+    },
+    "WEAK_LENSING_AND_CLUSTERING": {
+      "required_comparison": "DFM-vs-Lambda-CDM likelihood and residual comparison for weak lensing and clustering",
+      "status": "blocked_no_comparison_execution"
+    },
+    "CLUSTER_ABUNDANCE": {
+      "required_comparison": "DFM-vs-Lambda-CDM likelihood and residual comparison for cluster abundance",
+      "status": "blocked_no_comparison_execution"
+    }
+  },
+  "required_decision_outputs": [
+    "dfm_chi_square",
+    "lambda_cdm_chi_square",
+    "delta_chi_square",
+    "dfm_aic",
+    "lambda_cdm_aic",
+    "delta_aic",
+    "dfm_bic",
+    "lambda_cdm_bic",
+    "delta_bic",
+    "holdout_survival_boolean",
+    "probe_consistency_table",
+    "failure_mode_report",
+    "no_post_hoc_tuning_audit"
+  ],
+  "downstream_blocked_objects": [
+    "DFM_EMPIRICAL_EVIDENCE_CLAIM",
+    "DFM_LAMBDA_CDM_FAILURE_CLAIM",
+    "DFM_CDM_REPLACEMENT_CLAIM",
+    "DFM_FINAL_COSMOLOGY_CLOSURE_CLAIM"
+  ],
+  "admissibility_rule": "A DFM-vs-Lambda-CDM comparison remains inadmissible until all upstream objects are supplied, frozen, and evaluated through a declared likelihood and holdout split before any empirical or replacement claim is made.",
+  "boundary": [
+    "Target schema only.",
+    "Does not execute DFM-vs-Lambda-CDM comparison.",
+    "Does not supply DFM metrics.",
+    "Does not supply Lambda-CDM metrics.",
+    "Does not compute delta chi-square.",
+    "Does not compute delta AIC.",
+    "Does not compute delta BIC.",
+    "Does not execute holdout evaluation.",
+    "Does not supply independent validation.",
+    "Does not produce empirical evidence.",
+    "Does not prove DFM.",
+    "Does not disprove Lambda-CDM.",
+    "Does not replace CDM.",
+    "Does not claim final cosmology closure."
+  ],
+  "does_not_prove": [
+    "DFM",
+    "Lambda-CDM failure",
+    "CDM replacement",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "final cosmology closure",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
