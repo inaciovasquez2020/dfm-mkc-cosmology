@@ -1,0 +1,121 @@
+{
+  "object": "CERTIFIED_FILE_LEVEL_MULTIPROBE_LIKELIHOOD_INPUTS",
+  "date": "2026-05-22",
+  "status": "CERTIFICATION_GATE_ONLY_NO_INPUT_CERTIFIED",
+  "source_object": "FILE_LEVEL_MULTIPROBE_INPUT_DIGEST_AND_PROVENANCE_MANIFEST",
+  "required_certification_fields": [
+    "exists",
+    "sha256_or_tree_sha256",
+    "source_provenance_status",
+    "format_validation_status",
+    "likelihood_role",
+    "independent_source_hash_verified",
+    "schema_or_likelihood_reader_verified",
+    "certified_for_profiled_likelihood_execution"
+  ],
+  "inputs": {
+    "act_dr6_cmb_lite": {
+      "path": "artifacts/public_payloads/act_lite_numeric_like_extracted_2026_05_21/DR6-ACT-lite-main__act_dr6_cmbonly__data__act_dr6_cmb_sacc.fits",
+      "exists": true,
+      "sha256_or_tree_sha256": "9506da7b482c10b60571c5a3805fc392853d50f81244485754566d21b85219ad",
+      "source_provenance_status": "LOCAL_CANDIDATE_ONLY_NOT_INDEPENDENTLY_CERTIFIED",
+      "format_validation_status": "OBSERVED_PATH_ONLY_SCHEMA_NOT_CERTIFIED",
+      "likelihood_role": "cmb_lite_sacc_likelihood_input_candidate",
+      "independent_source_hash_verified": false,
+      "schema_or_likelihood_reader_verified": false,
+      "certified_for_profiled_likelihood_execution": false
+    },
+    "pantheon_plus_shoes": {
+      "path": "artifacts/external_data_sources/pantheon_plus_shoes_1_data",
+      "exists": true,
+      "sha256_or_tree_sha256": "24948be17fbcae64e7b16ccde51f5eec651220bfdafef9d512178599682939b4",
+      "source_provenance_status": "LOCAL_CANDIDATE_ONLY_NOT_INDEPENDENTLY_CERTIFIED",
+      "format_validation_status": "OBSERVED_PATH_ONLY_SCHEMA_NOT_CERTIFIED",
+      "likelihood_role": "supernova_distance_ladder_input_candidate",
+      "independent_source_hash_verified": false,
+      "schema_or_likelihood_reader_verified": false,
+      "certified_for_profiled_likelihood_execution": false
+    },
+    "desi_dr2": {
+      "path": "public_data/desi_dr2",
+      "exists": true,
+      "sha256_or_tree_sha256": "89586caa13f22798742c9ed4b5bb1bd818f88d367d2698d0a2721c3e4ba4e30a",
+      "source_provenance_status": "LOCAL_CANDIDATE_ONLY_NOT_INDEPENDENTLY_CERTIFIED",
+      "format_validation_status": "OBSERVED_PATH_ONLY_SCHEMA_NOT_CERTIFIED",
+      "likelihood_role": "bao_expansion_history_input_candidate",
+      "independent_source_hash_verified": false,
+      "schema_or_likelihood_reader_verified": false,
+      "certified_for_profiled_likelihood_execution": false
+    },
+    "planck_baseline": {
+      "path": "public_data/planck/planck_2018_baseline_params.csv",
+      "exists": true,
+      "sha256_or_tree_sha256": "3ed5134cf80858868c760a452aacf2d77967ff5b52715280644a770f961d70f5",
+      "source_provenance_status": "LOCAL_CANDIDATE_ONLY_NOT_INDEPENDENTLY_CERTIFIED",
+      "format_validation_status": "OBSERVED_PATH_ONLY_SCHEMA_NOT_CERTIFIED",
+      "likelihood_role": "cmb_baseline_parameter_anchor_candidate",
+      "independent_source_hash_verified": false,
+      "schema_or_likelihood_reader_verified": false,
+      "certified_for_profiled_likelihood_execution": false
+    },
+    "des_y6": {
+      "path": "public_data/des_y6",
+      "exists": true,
+      "sha256_or_tree_sha256": "ad18c5b00c5116c3e1abb6a7ad137ad7848ea2f569851797cd3885bbecf2d841",
+      "source_provenance_status": "LOCAL_CANDIDATE_ONLY_NOT_INDEPENDENTLY_CERTIFIED",
+      "format_validation_status": "OBSERVED_PATH_ONLY_SCHEMA_NOT_CERTIFIED",
+      "likelihood_role": "growth_lensing_holdout_input_candidate",
+      "independent_source_hash_verified": false,
+      "schema_or_likelihood_reader_verified": false,
+      "certified_for_profiled_likelihood_execution": false
+    },
+    "growth_sector_holdout": {
+      "path": "artifacts/cosmology/growth_sector_holdout_compatibility_test_2026_05_22.json",
+      "exists": true,
+      "sha256_or_tree_sha256": "ed2101fceb2d71ce635b9d3f04f307435c4aa131a3ce32bb486dd77ce56ffc21",
+      "source_provenance_status": "LOCAL_CANDIDATE_ONLY_NOT_INDEPENDENTLY_CERTIFIED",
+      "format_validation_status": "OBSERVED_PATH_ONLY_SCHEMA_NOT_CERTIFIED",
+      "likelihood_role": "growth_sector_holdout_summary_candidate",
+      "independent_source_hash_verified": false,
+      "schema_or_likelihood_reader_verified": false,
+      "certified_for_profiled_likelihood_execution": false
+    },
+    "h0_distance_ladder": {
+      "path": "artifacts/cosmology/h0_distance_ladder_systematics_profile_2026_05_22.json",
+      "exists": true,
+      "sha256_or_tree_sha256": "88ab25f97f7b8dc41b1e99de9959d334e61d95d071a3ad3a4e2e86752b67b5a8",
+      "source_provenance_status": "LOCAL_CANDIDATE_ONLY_NOT_INDEPENDENTLY_CERTIFIED",
+      "format_validation_status": "OBSERVED_PATH_ONLY_SCHEMA_NOT_CERTIFIED",
+      "likelihood_role": "local_distance_ladder_systematics_candidate",
+      "independent_source_hash_verified": false,
+      "schema_or_likelihood_reader_verified": false,
+      "certified_for_profiled_likelihood_execution": false
+    }
+  },
+  "summary": {
+    "total_inputs": 7,
+    "inputs_with_existing_local_paths": 7,
+    "inputs_with_digest": 7,
+    "certified_inputs": 0,
+    "ready_for_executed_multiprobe_profiled_likelihood_run": false
+  },
+  "remaining_missing_certifications": [
+    "independent source hash verification for every input",
+    "schema or likelihood-reader validation for every input",
+    "nuisance prior table certification",
+    "covariance or chain compatibility certification",
+    "profiled likelihood execution harness binding"
+  ],
+  "required_next_object": "INDEPENDENT_SOURCE_HASH_AND_SCHEMA_VALIDATION_FOR_EACH_MULTIPROBE_INPUT",
+  "does_not_prove": [
+    "complete certified likelihood manifest",
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "any Clay problem"
+  ]
+}
