@@ -1,0 +1,103 @@
+{
+  "artifact": "DFM_MKC_LIKELIHOOD_RULE_TARGET",
+  "date": "2026-05-21",
+  "status": "LIKELIHOOD_RULE_TARGET_ONLY_NOT_SUPPLIED",
+  "claim_level": "target_schema_only",
+  "likelihood_rule_supplied": false,
+  "joint_likelihood_supplied": false,
+  "probe_likelihoods_supplied": false,
+  "covariance_rule_supplied": false,
+  "model_comparison_rule_supplied": false,
+  "likelihood_executed": false,
+  "empirical_evidence_supplied": false,
+  "root_blocker": "DFM_LIKELIHOOD_RULE_NOT_SUPPLIED",
+  "upstream_required_objects": [
+    "DFM_FIELD_EQUATIONS_OR_ACTION_FUNCTIONAL",
+    "DFM_PARAMETER_MAP",
+    "DFM_OBSERVABLE_PREDICTION_RULES",
+    "DFM_FROZEN_PREDICTION_VECTOR",
+    "DFM_EXTERNAL_DATA_MANIFEST"
+  ],
+  "required_likelihood_rule_fields": [
+    "likelihood_identifier",
+    "data_vector_reference",
+    "frozen_prediction_vector_reference",
+    "covariance_matrix_reference",
+    "inverse_covariance_rule",
+    "residual_vector_definition",
+    "probe_likelihood_blocks",
+    "joint_likelihood_composition_rule",
+    "nuisance_parameter_handling",
+    "prior_application_rule",
+    "scale_cut_rule",
+    "masking_rule",
+    "calibration_systematics_rule",
+    "cross_probe_covariance_rule",
+    "chi_square_definition",
+    "log_likelihood_definition",
+    "model_comparison_metrics",
+    "lambda_cdm_baseline_reference",
+    "holdout_execution_rule",
+    "failure_thresholds",
+    "reproduction_command"
+  ],
+  "required_probe_likelihood_channels": {
+    "CMB_TT_TE_EE": {
+      "required_likelihood": "CMB spectra likelihood block with covariance-compatible residuals",
+      "status": "blocked_no_dfm_likelihood_rule"
+    },
+    "CMB_LENSING": {
+      "required_likelihood": "CMB lensing likelihood block with bandpower covariance",
+      "status": "blocked_no_dfm_likelihood_rule"
+    },
+    "BAO_DISTANCES": {
+      "required_likelihood": "BAO distance likelihood over DM_over_rd, DH_over_rd, DV_over_rd",
+      "status": "blocked_no_dfm_likelihood_rule"
+    },
+    "SNIA_DISTANCES": {
+      "required_likelihood": "SN Ia distance-modulus likelihood with covariance and calibration handling",
+      "status": "blocked_no_dfm_likelihood_rule"
+    },
+    "WEAK_LENSING_AND_CLUSTERING": {
+      "required_likelihood": "3x2pt weak-lensing and clustering likelihood with nuisance/systematics handling",
+      "status": "blocked_no_dfm_likelihood_rule"
+    },
+    "CLUSTER_ABUNDANCE": {
+      "required_likelihood": "cluster-count likelihood with mass-calibration and selection-function handling",
+      "status": "blocked_no_dfm_likelihood_rule"
+    }
+  },
+  "downstream_blocked_objects": [
+    "DFM_HOLDOUT_SPLIT_EXECUTION",
+    "DFM_VS_LAMBDA_CDM_COMPARISON",
+    "DFM_EMPIRICAL_EVIDENCE_CLAIM",
+    "DFM_CDM_REPLACEMENT_CLAIM"
+  ],
+  "admissibility_rule": "DFM empirical comparison remains inadmissible until a likelihood rule maps frozen DFM predictions and registered data vectors into probe likelihoods, joint likelihoods, and model-comparison metrics before holdout execution.",
+  "boundary": [
+    "Target schema only.",
+    "Does not supply DFM field equations.",
+    "Does not supply DFM action functional.",
+    "Does not supply DFM parameter map.",
+    "Does not supply DFM observable prediction rules.",
+    "Does not supply frozen DFM prediction values.",
+    "Does not supply likelihood equations.",
+    "Does not supply covariance matrices.",
+    "Does not supply probe likelihoods.",
+    "Does not supply joint likelihood.",
+    "Does not execute any likelihood.",
+    "Does not produce empirical evidence.",
+    "Does not prove DFM.",
+    "Does not disprove Lambda-CDM.",
+    "Does not replace CDM."
+  ],
+  "does_not_prove": [
+    "DFM",
+    "Lambda-CDM failure",
+    "CDM replacement",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
