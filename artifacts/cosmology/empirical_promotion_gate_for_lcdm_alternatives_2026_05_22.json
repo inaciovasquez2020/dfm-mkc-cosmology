@@ -1,0 +1,47 @@
+{
+  "id": "EMPIRICAL_PROMOTION_GATE_FOR_LCDM_ALTERNATIVES",
+  "status": "PROMOTION_GATE_ONLY_NO_MODEL_PROMOTED",
+  "created": "2026-05-22",
+  "purpose": "Define the promotion gate for any alternative model attempting to replace or outperform six-parameter flat Lambda-CDM.",
+  "candidate_models": [
+    "CPL_w0wa",
+    "early_dark_energy",
+    "interacting_dark_sector",
+    "modified_gravity_mu_Sigma",
+    "modified_initial_power_spectrum",
+    "small_patch_hypothesis",
+    "phenomenological_DFM_MKC_candidate"
+  ],
+  "promotion_requirements": [
+    "closed dynamical specification or explicit phenomenological likelihood rule",
+    "frozen prediction vector before holdout inspection",
+    "executed likelihood on CMB + BAO + SN + H0",
+    "growth and lensing holdout survival",
+    "stable parameters across independent probes",
+    "complexity penalty survival",
+    "independent reproduction",
+    "explicit no-overclaim boundary audit"
+  ],
+  "automatic_rejection_conditions": [
+    "fits only one anomaly",
+    "requires post-hoc parameter changes after holdout",
+    "degrades CMB fit beyond calibrated tolerance",
+    "degrades growth or lensing holdout",
+    "has no executable likelihood",
+    "has no frozen prediction vector",
+    "lacks independent reproduction"
+  ],
+  "current_promoted_models": [],
+  "required_next_object": "MODEL_SPECIFIC_FROZEN_PREDICTION_VECTOR_AND_LIKELIHOOD_RULE",
+  "boundary": "Promotion gate only. No alternative model is promoted, validated, or claimed to replace Lambda-CDM.",
+  "does_not_prove": [
+    "Lambda-CDM failure",
+    "six-parameter flat Lambda-CDM rejection",
+    "dark energy evolution",
+    "modified gravity",
+    "DFM-MKC validation",
+    "dark matter detection or resolution",
+    "empirical discovery",
+    "any Clay problem"
+  ]
+}

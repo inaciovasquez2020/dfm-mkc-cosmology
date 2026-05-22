@@ -1,0 +1,52 @@
+{
+  "id": "OUT_OF_SAMPLE_MULTIPROBE_LCDM_REJECTION_CERTIFICATE",
+  "status": "CERTIFICATE_TARGET_ONLY_NO_REJECTION",
+  "created": "2026-05-22",
+  "purpose": "Define the exact certificate object required to claim out-of-sample rejection of six-parameter flat Lambda-CDM.",
+  "certificate_target": {
+    "null_model": "six-parameter spatially-flat Lambda-CDM",
+    "quantified_condition": "for every theta in the flat Lambda-CDM parameter space, the profiled likelihood over calibrated systematics is rejected by the independent multiprobe dataset battery",
+    "dataset_battery": [
+      "CMB",
+      "BAO",
+      "SN",
+      "H0",
+      "LENSING",
+      "GROWTH",
+      "NEUTRINO_MASS_CONSISTENCY"
+    ],
+    "minimum_rejection_threshold": ">= 5 sigma global after systematics and look-elsewhere correction",
+    "holdout_requirement": "at least one alternative model must fit blind or out-of-sample holdout data with stable parameters across CMB + BAO + SN + lensing + growth",
+    "required_evidence_files": [
+      "executed_likelihood_manifest",
+      "chain_or_grid_outputs",
+      "systematics_profile",
+      "global_test_statistic",
+      "holdout_split_manifest",
+      "alternative_model_parameter_stability_table",
+      "independent_reproduction_log"
+    ]
+  },
+  "current_evidence_status": {
+    "executed_likelihood_manifest": false,
+    "chain_or_grid_outputs": false,
+    "systematics_profile": false,
+    "global_test_statistic": false,
+    "holdout_split_manifest": false,
+    "alternative_model_parameter_stability_table": false,
+    "independent_reproduction_log": false
+  },
+  "blocking_reason": "The required executed multiprobe likelihood and holdout-stability evidence are not present in this repository.",
+  "required_next_object": "EXECUTED_MULTIPROBE_PROFILED_LIKELIHOOD_RUN",
+  "boundary": "Certificate target only. The repository does not currently contain the evidence required to certify Lambda-CDM rejection.",
+  "does_not_prove": [
+    "Lambda-CDM failure",
+    "six-parameter flat Lambda-CDM rejection",
+    "dark energy evolution",
+    "modified gravity",
+    "DFM-MKC validation",
+    "dark matter detection or resolution",
+    "empirical discovery",
+    "any Clay problem"
+  ]
+}
