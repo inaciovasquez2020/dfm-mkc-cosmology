@@ -1,0 +1,93 @@
+{
+  "artifact": "DFM_MKC_FROZEN_PREDICTION_VECTOR_TARGET",
+  "date": "2026-05-21",
+  "status": "FROZEN_PREDICTION_VECTOR_TARGET_ONLY_NOT_SUPPLIED",
+  "claim_level": "target_schema_only",
+  "frozen_prediction_vector_supplied": false,
+  "prediction_values_frozen": false,
+  "observable_prediction_rules_supplied": false,
+  "parameter_values_frozen": false,
+  "likelihood_ready": false,
+  "root_blocker": "DFM_FROZEN_PREDICTION_VECTOR_NOT_SUPPLIED",
+  "upstream_required_objects": [
+    "DFM_FIELD_EQUATIONS_OR_ACTION_FUNCTIONAL",
+    "DFM_PARAMETER_MAP",
+    "DFM_OBSERVABLE_PREDICTION_RULES"
+  ],
+  "required_frozen_vector_fields": [
+    "freeze_identifier",
+    "freeze_timestamp",
+    "source_commit",
+    "dfm_equation_object_reference",
+    "dfm_parameter_map_reference",
+    "observable_prediction_rules_reference",
+    "frozen_parameter_values",
+    "frozen_prior_ranges",
+    "holdout_split_reference",
+    "no_post_hoc_tuning_certificate",
+    "prediction_channel_vectors",
+    "residual_vector_definitions",
+    "covariance_alignment_metadata",
+    "likelihood_input_format",
+    "failure_mode_thresholds",
+    "lambda_cdm_baseline_reference",
+    "reproduction_command"
+  ],
+  "required_prediction_channels": {
+    "CMB_TT_TE_EE": {
+      "required_vector": "frozen TT TE EE spectra or binned residual-ready vector",
+      "status": "blocked_no_frozen_prediction_vector"
+    },
+    "CMB_LENSING": {
+      "required_vector": "frozen CMB lensing bandpower residual-ready vector",
+      "status": "blocked_no_frozen_prediction_vector"
+    },
+    "BAO_DISTANCES": {
+      "required_vector": "frozen DM_over_rd, DH_over_rd, DV_over_rd vector by redshift bin",
+      "status": "blocked_no_frozen_prediction_vector"
+    },
+    "SNIA_DISTANCES": {
+      "required_vector": "frozen distance-modulus / Hubble-residual vector",
+      "status": "blocked_no_frozen_prediction_vector"
+    },
+    "WEAK_LENSING_AND_CLUSTERING": {
+      "required_vector": "frozen xi_plus, xi_minus, w_theta, gamma_t residual-ready vector",
+      "status": "blocked_no_frozen_prediction_vector"
+    },
+    "CLUSTER_ABUNDANCE": {
+      "required_vector": "frozen cluster abundance / mass-calibration residual-ready vector",
+      "status": "blocked_no_frozen_prediction_vector"
+    }
+  },
+  "downstream_blocked_objects": [
+    "DFM_LIKELIHOOD_RULE",
+    "DFM_HOLDOUT_SPLIT_EXECUTION",
+    "DFM_VS_LAMBDA_CDM_COMPARISON",
+    "EMPIRICAL_EVIDENCE_CLAIM"
+  ],
+  "admissibility_rule": "DFM likelihood execution remains inadmissible until a frozen prediction vector is supplied before holdout evaluation and before comparison against Lambda-CDM.",
+  "boundary": [
+    "Target schema only.",
+    "Does not supply DFM field equations.",
+    "Does not supply DFM action functional.",
+    "Does not supply DFM parameter map.",
+    "Does not supply DFM observable prediction rules.",
+    "Does not supply frozen DFM prediction values.",
+    "Does not supply frozen parameter values.",
+    "Does not supply holdout split execution.",
+    "Does not execute any likelihood.",
+    "Does not produce empirical evidence.",
+    "Does not prove DFM.",
+    "Does not disprove Lambda-CDM.",
+    "Does not replace CDM."
+  ],
+  "does_not_prove": [
+    "DFM",
+    "Lambda-CDM failure",
+    "CDM replacement",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ]
+}
