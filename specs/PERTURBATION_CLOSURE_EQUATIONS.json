@@ -1,0 +1,237 @@
+{
+  "object_id": "PERTURBATION_CLOSURE_EQUATIONS",
+  "status": "PERTURBATION_CLOSURE_EQUATIONS_SUPPLIED_STRUCTURAL_ONLY_NOT_NUMERICAL",
+  "date": "2026-05-22",
+  "input_objects": [
+    "FILLED_SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL",
+    "VARIATIONAL_DERIVATION_CHECK",
+    "PARAMETER_DOMAIN_AND_UNITS_TABLE",
+    "COSMOLOGICAL_REDUCTION_ANSATZ",
+    "FROZEN_PREDICTION_VECTOR",
+    "EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON",
+    "DERIVED_REDUCED_BACKGROUND_EQUATIONS"
+  ],
+  "input_specs": [
+    "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+    "specs/VARIATIONAL_DERIVATION_CHECK.json",
+    "specs/PARAMETER_DOMAIN_AND_UNITS_TABLE.json",
+    "specs/COSMOLOGICAL_REDUCTION_ANSATZ.json",
+    "specs/FROZEN_PREDICTION_VECTOR.json",
+    "specs/EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON.json",
+    "specs/DERIVED_REDUCED_BACKGROUND_EQUATIONS.json"
+  ],
+  "perturbation_domain": {
+    "background": "homogeneous_isotropic_FLRW_background",
+    "perturbation_sector": "linear_scalar_perturbations",
+    "gauge": "Newtonian gauge structural closure",
+    "metric_perturbation_ansatz": "ds2 = -(1 + 2 Phi) N(t)^2 dt^2 + a(t)^2 (1 - 2 Psi_metric) gamma_ij dx^i dx^j",
+    "Fourier_policy": "mode-wise symbolic equations indexed by comoving wavenumber q",
+    "closure_level": "linearized structural candidate equations only"
+  },
+  "perturbation_variables": [
+    {
+      "symbol": "Phi(t,q)",
+      "role": "Newtonian lapse potential",
+      "source": "metric perturbation"
+    },
+    {
+      "symbol": "Psi_metric(t,q)",
+      "role": "spatial curvature potential",
+      "source": "metric perturbation"
+    },
+    {
+      "symbol": "delta_phi(t,q)",
+      "role": "scalar-field perturbation",
+      "source": "DFM scalar sector"
+    },
+    {
+      "symbol": "delta_A0(t,q)",
+      "role": "temporal vector perturbation",
+      "source": "MKC vector sector"
+    },
+    {
+      "symbol": "delta_A_parallel(t,q)",
+      "role": "longitudinal vector perturbation",
+      "source": "MKC vector sector"
+    },
+    {
+      "symbol": "delta_m(t,q)",
+      "role": "matter density contrast",
+      "source": "matter sector"
+    },
+    {
+      "symbol": "theta_m(t,q)",
+      "role": "matter velocity divergence",
+      "source": "matter sector"
+    }
+  ],
+  "closure_equations": [
+    {
+      "equation_id": "scalar_metric_poisson_constraint",
+      "source_equation": "metric_equation",
+      "structural_equation": "P_00 := A_Phi Phi + A_Psi Psi_metric + A_phi delta_phi + A_A0 delta_A0 + A_m delta_m = 0",
+      "coefficient_policy": "A_* are background-dependent coefficient functionals determined by the action, background solution, and parameter vector",
+      "observable_role": [
+        "growth closure",
+        "CMB transfer closure"
+      ],
+      "status": "structural_candidate"
+    },
+    {
+      "equation_id": "gravitational_slip_equation",
+      "source_equation": "metric_equation",
+      "structural_equation": "P_slip := B_Phi Phi + B_Psi Psi_metric + B_phi delta_phi + B_A delta_A_parallel + B_pi pi_m = 0",
+      "coefficient_policy": "B_* encode anisotropic-stress and nonminimal-coupling contributions",
+      "observable_role": [
+        "lensing closure",
+        "CMB transfer closure"
+      ],
+      "status": "structural_candidate"
+    },
+    {
+      "equation_id": "scalar_field_perturbation_equation",
+      "source_equation": "scalar_equation",
+      "structural_equation": "P_delta_phi := C_2 ddot_delta_phi + C_1 dot_delta_phi + C_0 delta_phi + C_Phi Phi + C_Psi Psi_metric + C_A0 delta_A0 + C_m delta_m = 0",
+      "coefficient_policy": "C_* are background-dependent coefficient functionals determined by scalar kinetic, mass, quartic, interaction, curvature, and matter-coupling terms",
+      "observable_role": [
+        "growth closure",
+        "CMB transfer closure"
+      ],
+      "status": "structural_candidate"
+    },
+    {
+      "equation_id": "vector_temporal_constraint_perturbation",
+      "source_equation": "vector_equation",
+      "structural_equation": "P_delta_A0 := D_A0 delta_A0 + D_Apar dot_delta_A_parallel + D_phi delta_phi + D_Phi Phi + D_Psi Psi_metric = 0",
+      "coefficient_policy": "D_* are background-dependent coefficient functionals determined by Proca, scalar-vector, and Ricci-vector terms",
+      "observable_role": [
+        "vector-sector constraint closure"
+      ],
+      "status": "structural_candidate"
+    },
+    {
+      "equation_id": "vector_longitudinal_perturbation_equation",
+      "source_equation": "vector_equation",
+      "structural_equation": "P_delta_A_parallel := E_2 ddot_delta_A_parallel + E_1 dot_delta_A_parallel + E_0 delta_A_parallel + E_A0 delta_A0 + E_phi delta_phi + E_Phi Phi + E_Psi Psi_metric = 0",
+      "coefficient_policy": "E_* are background-dependent coefficient functionals determined by vector kinetic, mass, interaction, and curvature terms",
+      "observable_role": [
+        "growth closure",
+        "CMB transfer closure"
+      ],
+      "status": "structural_candidate"
+    },
+    {
+      "equation_id": "matter_density_contrast_equation",
+      "source_equation": "matter_equation",
+      "structural_equation": "P_delta_m := dot_delta_m + theta_m - 3 dot_Psi_metric + gamma_m dot_delta_phi + M_phi dot_phi Phi = 0",
+      "coefficient_policy": "matter coupling coefficients are fixed by the conformal matter coupling and background matter equation",
+      "observable_role": [
+        "growth closure",
+        "f_sigma8_DFM(z)"
+      ],
+      "status": "structural_candidate"
+    },
+    {
+      "equation_id": "matter_velocity_equation",
+      "source_equation": "matter_equation",
+      "structural_equation": "P_theta_m := dot_theta_m + H theta_m - q^2 Phi - q^2 c_s_m^2 delta_m + gamma_m q^2 delta_phi = 0",
+      "coefficient_policy": "matter sound-speed and conformal-coupling terms are placeholders until matter-sector closure is supplied",
+      "observable_role": [
+        "growth closure",
+        "f_sigma8_DFM(z)"
+      ],
+      "status": "structural_candidate"
+    },
+    {
+      "equation_id": "transfer_function_closure_target",
+      "source_equation": "combined_linearized_system",
+      "structural_equation": "P_transfer := Transfer_DFM[background_solution, perturbation_solution, primordial_spectrum, recombination_rule] -> {C_ell_TT_DFM, C_ell_TE_DFM, C_ell_EE_DFM}",
+      "coefficient_policy": "transfer functions remain symbolic until numerical Boltzmann/transfer implementation and recombination or drag-epoch closure are supplied",
+      "observable_role": [
+        "C_ell_TT_DFM",
+        "C_ell_TE_DFM",
+        "C_ell_EE_DFM"
+      ],
+      "status": "structural_candidate"
+    }
+  ],
+  "observable_closure_map": [
+    {
+      "observable": "f_sigma8_DFM(z)",
+      "required_equations": [
+        "scalar_metric_poisson_constraint",
+        "gravitational_slip_equation",
+        "scalar_field_perturbation_equation",
+        "vector_temporal_constraint_perturbation",
+        "vector_longitudinal_perturbation_equation",
+        "matter_density_contrast_equation",
+        "matter_velocity_equation"
+      ],
+      "status": "structural_dependency_supplied_not_numerically_integrated"
+    },
+    {
+      "observable": "C_ell_TT_DFM",
+      "required_equations": [
+        "transfer_function_closure_target"
+      ],
+      "status": "blocked_by_missing_boltzmann_transfer_implementation"
+    },
+    {
+      "observable": "C_ell_TE_DFM",
+      "required_equations": [
+        "transfer_function_closure_target"
+      ],
+      "status": "blocked_by_missing_boltzmann_transfer_implementation"
+    },
+    {
+      "observable": "C_ell_EE_DFM",
+      "required_equations": [
+        "transfer_function_closure_target"
+      ],
+      "status": "blocked_by_missing_boltzmann_transfer_implementation"
+    },
+    {
+      "observable": "S8_DFM",
+      "required_equations": [
+        "matter_density_contrast_equation",
+        "matter_velocity_equation"
+      ],
+      "status": "structural_dependency_supplied_not_numerically_integrated"
+    }
+  ],
+  "required_next_execution_inputs": [
+    "NUMERICAL_PARAMETER_VECTOR",
+    "INITIAL_CONDITIONS",
+    "OBSERVABLE_EVALUATION_GRID",
+    "DATA_VECTOR_SCHEMA",
+    "COVARIANCE_MATRIX",
+    "LIKELIHOOD_RULE",
+    "LAMBDA_CDM_BASELINE_VECTOR"
+  ],
+  "check_result": "PASS_STRUCTURAL_ONLY",
+  "symbolic_linearization_proved": false,
+  "numerical_integration_supplied": false,
+  "boltzmann_solver_supplied": false,
+  "recombination_closure_supplied": false,
+  "parameter_values_supplied": false,
+  "initial_conditions_supplied": false,
+  "empirical_validation_claimed": false,
+  "likelihood_execution_claimed": false,
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "NUMERICAL_PARAMETER_VECTOR",
+    "INITIAL_CONDITIONS",
+    "DATA_VECTOR_SCHEMA",
+    "COVARIANCE_MATRIX",
+    "LIKELIHOOD_RULE",
+    "LAMBDA_CDM_BASELINE_VECTOR",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}

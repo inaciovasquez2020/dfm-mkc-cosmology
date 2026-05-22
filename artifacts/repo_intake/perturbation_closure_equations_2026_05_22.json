@@ -1,0 +1,46 @@
+{
+  "artifact_id": "perturbation_closure_equations_2026_05_22",
+  "status": "PERTURBATION_CLOSURE_EQUATIONS_SUPPLIED_STRUCTURAL_ONLY_NOT_NUMERICAL",
+  "required_object_filled": "PERTURBATION_CLOSURE_EQUATIONS",
+  "source_spec": "specs/PERTURBATION_CLOSURE_EQUATIONS.json",
+  "input_specs": [
+    "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+    "specs/VARIATIONAL_DERIVATION_CHECK.json",
+    "specs/PARAMETER_DOMAIN_AND_UNITS_TABLE.json",
+    "specs/COSMOLOGICAL_REDUCTION_ANSATZ.json",
+    "specs/FROZEN_PREDICTION_VECTOR.json",
+    "specs/EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON.json",
+    "specs/DERIVED_REDUCED_BACKGROUND_EQUATIONS.json"
+  ],
+  "root_blocker_removed": "PERTURBATION_CLOSURE_EQUATIONS_NOT_SUPPLIED",
+  "new_root_blocker": "NUMERICAL_PARAMETER_VECTOR_NOT_SUPPLIED",
+  "check_result": "PASS_STRUCTURAL_ONLY",
+  "boundary": [
+    "supplies structural perturbation closure equation candidates",
+    "maps growth and CMB symbolic observables to perturbation closure dependencies",
+    "does not prove a full symbolic linearization",
+    "does not supply numerical integration",
+    "does not supply a Boltzmann solver",
+    "does not supply recombination closure",
+    "does not supply numerical parameter values",
+    "does not execute a likelihood comparison",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "NUMERICAL_PARAMETER_VECTOR",
+    "INITIAL_CONDITIONS",
+    "DATA_VECTOR_SCHEMA",
+    "COVARIANCE_MATRIX",
+    "LIKELIHOOD_RULE",
+    "LAMBDA_CDM_BASELINE_VECTOR",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}
