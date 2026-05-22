@@ -229,6 +229,13 @@ def main():
             "profiled_likelihoods_computed": False,
             "test_statistic_computed": False
         },
+        "boundary": [
+            "does not execute a real likelihood",
+            "does not compute profiled log-likelihoods",
+            "does not compute a test statistic",
+            "does not claim Lambda-CDM failure",
+            "does not claim DFM-MKC validation"
+        ],
         "profiled_log_likelihoods": None,
         "test_statistic": None,
         "required_next_object": "MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST_WITH_REAL_DATA_PATHS",

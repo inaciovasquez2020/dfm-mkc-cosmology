@@ -1,4 +1,11 @@
 {
+  "boundary": [
+    "does not execute a real likelihood",
+    "does not compute profiled log-likelihoods",
+    "does not compute a test statistic",
+    "does not claim Lambda-CDM failure",
+    "does not claim DFM-MKC validation"
+  ],
   "complete_manifest_ready": false,
   "current_execution_status": {
     "complete_certified_manifest_ready": false,
