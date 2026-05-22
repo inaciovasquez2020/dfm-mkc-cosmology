@@ -1,0 +1,88 @@
+{
+  "id": "LCDM_REJECTION_EXTERNAL_SOURCE_MAP",
+  "status": "EXTERNAL_SOURCE_MAP_ONLY_NO_LCDM_REJECTION",
+  "created": "2026-05-22",
+  "purpose": "Register external source material relevant to Lambda-CDM pressure, alternative initial-condition routes, and beyond-Lambda-CDM model classes without promoting any empirical rejection claim.",
+  "sources": [
+    {
+      "id": "KAMELI_BAGHRAM_2025_MODIFIED_INITIAL_POWER_SPECTRUM",
+      "title": "Addressing the too-big-to-fail problem and the void phenomenon through a modified initial power spectrum",
+      "venue": "MNRAS 542, 3331-3345 (2025)",
+      "doi": "10.1093/mnras/staf1431",
+      "role": "small-scale-structure and initial-power-spectrum source",
+      "claim_class": "SMALL_SCALE_STRUCTURE_PRESSURE_ONLY",
+      "usable_for": [
+        "initial-power-spectrum alternative model class",
+        "too-big-to-fail source-map entry",
+        "void-phenomenon source-map entry",
+        "growth-sector holdout design"
+      ],
+      "not_usable_for": [
+        "Lambda-CDM disproof",
+        "six-parameter flat Lambda-CDM rejection",
+        "executed multiprobe likelihood",
+        "DFM-MKC validation"
+      ]
+    },
+    {
+      "id": "SHIMON_2026_SMALL_PATCH_HYPOTHESIS",
+      "title": "A Small Patch Hypothesis in Cosmology",
+      "venue": "arXiv:2602.09420 / Astronomy",
+      "doi": "10.48550/arXiv.2602.09420",
+      "role": "conceptual early-universe and primordial-spectrum alternative",
+      "claim_class": "CONCEPTUAL_ALTERNATIVE_INITIAL_CONDITIONS_ONLY",
+      "usable_for": [
+        "inflation-alternative source-map entry",
+        "primordial-spectrum alternative route",
+        "future 21-cm falsifiability target"
+      ],
+      "not_usable_for": [
+        "current observational rejection of Lambda-CDM",
+        "executed CMB likelihood",
+        "executed BAO likelihood",
+        "empirical validation"
+      ]
+    },
+    {
+      "id": "BULL_ET_AL_2016_BEYOND_LCDM_REVIEW",
+      "title": "Beyond LambdaCDM: Problems, solutions, and the road ahead",
+      "venue": "Physics of the Dark Universe 12 (2016) 56-99",
+      "doi": "10.1016/j.dark.2016.02.001",
+      "arxiv": "1512.05356",
+      "role": "beyond-Lambda-CDM review and taxonomy source",
+      "claim_class": "REVIEW_AND_TAXONOMY_ONLY",
+      "usable_for": [
+        "alternative-model taxonomy",
+        "cosmological-constant problem source-map entry",
+        "dark-matter-nature source-map entry",
+        "modified-gravity source-map entry",
+        "inflation-predictivity source-map entry"
+      ],
+      "not_usable_for": [
+        "new empirical rejection",
+        "executed likelihood",
+        "DFM-MKC validation",
+        "Lambda-CDM failure claim"
+      ]
+    }
+  ],
+  "integration_targets": [
+    "MULTIPROBE_LCDM_REJECTION_DATASET_REGISTRY",
+    "DESI_DR2_CMB_SN_REJECTION_REPRODUCER",
+    "GROWTH_SECTOR_HOLDOUT_COMPATIBILITY_TEST",
+    "H0_DISTANCE_LADDER_SYSTEMATICS_PROFILE",
+    "ALTERNATIVE_MODEL_STABILITY_SCORECARD"
+  ],
+  "required_next_object": "SOURCE_WEIGHTED_MULTIPROBE_LIKELIHOOD_EXECUTION_PLAN",
+  "boundary": "This source map registers papers and model-pressure classes only. It does not execute a likelihood, reject Lambda-CDM, validate any alternative model, validate DFM-MKC, or resolve any Clay problem.",
+  "does_not_prove": [
+    "Lambda-CDM failure",
+    "six-parameter flat Lambda-CDM rejection",
+    "dark energy evolution",
+    "modified gravity",
+    "DFM-MKC validation",
+    "dark matter detection or resolution",
+    "empirical discovery",
+    "any Clay problem"
+  ]
+}
