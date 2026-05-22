@@ -1,0 +1,81 @@
+{
+  "id": "FILLED_CLOSED_DFM_FIELD_EQUATIONS_OR_ACTION_FUNCTIONAL",
+  "date": "2026-05-22",
+  "status": "SUPPLIED_CANDIDATE_DYNAMICAL_CORE_ONLY_NO_VALIDATION",
+  "model_name": "MINIMAL_INTERACTING_SCALAR_DFM_CORE_V1",
+  "primitive_fields": [
+    "g_munu Lorentzian metric with signature (-,+,+,+)",
+    "Phi real scalar DFM dark-sector field",
+    "psi_b baryonic matter fields",
+    "psi_c cold dark-sector matter fields",
+    "psi_r radiation fields",
+    "T_b_munu baryonic stress-energy tensor",
+    "T_c_munu cold dark-sector stress-energy tensor",
+    "T_r_munu radiation stress-energy tensor",
+    "T_Phi_munu scalar DFM stress-energy tensor",
+    "T_int_munu interaction-transfer bookkeeping tensor defined through Q_nu"
+  ],
+  "action_functional": {
+    "M_Pl_convention": "M_Pl^{-2}=8*pi*G",
+    "S": "Integral sqrt(-g)[(M_Pl^2/2)R - 1/2 g^{mu nu} nabla_mu Phi nabla_nu Phi - V0 exp(-lambda Phi/M_Pl)] + S_b[g,psi_b] + S_r[g,psi_r] + S_c[A(Phi)^2 g,psi_c]",
+    "A_Phi": "exp(beta Phi/M_Pl)"
+  },
+  "closed_equations": {
+    "einstein": "G_munu = M_Pl^{-2}(T_b_munu + T_r_munu + T_c_munu + T_Phi_munu)",
+    "scalar_stress_energy": "T_Phi_munu = nabla_mu Phi nabla_nu Phi - g_munu[1/2 nabla_alpha Phi nabla^alpha Phi + V0 exp(-lambda Phi/M_Pl)]",
+    "scalar": "Box Phi - dV/dPhi = -(beta/M_Pl) T_c",
+    "dV_dPhi": "dV/dPhi = -(lambda/M_Pl) V0 exp(-lambda Phi/M_Pl)",
+    "exchange_cdm": "nabla^mu T_c_munu = (beta/M_Pl) T_c nabla_nu Phi",
+    "exchange_scalar": "nabla^mu T_Phi_munu = -(beta/M_Pl) T_c nabla_nu Phi",
+    "total_conservation": "nabla^mu(T_b_munu + T_r_munu + T_c_munu + T_Phi_munu)=0"
+  },
+  "flrw_reduction": {
+    "metric": "ds^2=-dt^2+a(t)^2 delta_ij dx^i dx^j",
+    "H": "dot(a)/a",
+    "rho_Phi": "1/2 dot(Phi)^2 + V0 exp(-lambda Phi/M_Pl)",
+    "p_Phi": "1/2 dot(Phi)^2 - V0 exp(-lambda Phi/M_Pl)",
+    "friedmann": "H^2=(1/(3M_Pl^2))(rho_b+rho_r+rho_c+rho_Phi)",
+    "acceleration": "dot(H)=-(1/(2M_Pl^2))(rho_b+rho_c+4rho_r/3+dot(Phi)^2)",
+    "rho_b": "dot(rho_b)+3H rho_b=0",
+    "rho_r": "dot(rho_r)+4H rho_r=0",
+    "rho_c": "dot(rho_c)+3H rho_c=-(beta/M_Pl)rho_c dot(Phi)",
+    "scalar": "ddot(Phi)+3H dot(Phi)-(lambda/M_Pl)V0 exp(-lambda Phi/M_Pl)=(beta/M_Pl)rho_c"
+  },
+  "parameters": [
+    {"symbol": "H0", "meaning": "present Hubble parameter", "allowed_range": "H0>0", "units": "km s^-1 Mpc^-1", "status": "free"},
+    {"symbol": "Omega_b0", "meaning": "present baryon density fraction", "allowed_range": "0<Omega_b0<1", "units": "dimensionless", "status": "free_or_fixed"},
+    {"symbol": "Omega_c0", "meaning": "present coupled dark matter density fraction", "allowed_range": "0<=Omega_c0<1", "units": "dimensionless", "status": "free"},
+    {"symbol": "Omega_r0", "meaning": "present radiation density fraction", "allowed_range": "Omega_r0>=0", "units": "dimensionless", "status": "fixed"},
+    {"symbol": "V0", "meaning": "DFM scalar potential amplitude", "allowed_range": "V0>0", "units": "energy_density", "status": "free"},
+    {"symbol": "lambda", "meaning": "exponential-potential slope", "allowed_range": "lambda>=0", "units": "dimensionless", "status": "free"},
+    {"symbol": "beta", "meaning": "dark-sector conformal coupling", "allowed_range": "beta in R", "units": "dimensionless", "status": "free"},
+    {"symbol": "Phi_i", "meaning": "initial scalar value", "allowed_range": "Phi_i in R", "units": "mass", "status": "free"},
+    {"symbol": "dot_Phi_i", "meaning": "initial scalar velocity", "allowed_range": "dot_Phi_i in R", "units": "mass^2", "status": "free"}
+  ],
+  "observable_prediction_map": {
+    "input": "theta={H0,Omega_b0,Omega_c0,Omega_r0,V0,lambda,beta,Phi_i,dot_Phi_i}",
+    "evolution": "solve FLRW system for H(a), Phi(a), rho_b(a), rho_c(a), rho_r(a)",
+    "distances": ["H(z)", "D_C(z)=int_0^z dzprime/H(zprime)", "D_A(z)=D_C(z)/(1+z)", "D_L(z)=(1+z)D_C(z)"],
+    "bao": ["D_M(z)/r_d", "H(z) r_d", "D_V(z)/r_d"],
+    "cmb_act_compressed": ["R=sqrt(Omega_m0)H0D_M(z_star)/c", "ell_A=pi D_M(z_star)/r_s(z_star)", "omega_b=Omega_b0 h^2", "omega_c=Omega_c0 h^2"],
+    "sne_des": ["mu(z)=5 log10(D_L(z)/Mpc)+25+M_abs"],
+    "growth": "delta_c'' + [2+H'/H-(beta/M_Pl)Phi']delta_c' - (3/2)G_eff(a)Omega_c(a)delta_c=0 with G_eff=G(1+2beta^2)",
+    "score": "chi2_total=chi2_BAO+chi2_CMB_compressed+chi2_SNe+chi2_growth",
+    "likelihood": "logL(theta)=-(1/2)chi2_total(theta)"
+  },
+  "lambda_cdm_embedding": {
+    "limit": "beta=0, lambda=0, dot_Phi_i=0, V0=constant",
+    "result": "rho_Phi=V0, p_Phi=-V0, Lambda_eff=V0/M_Pl^2"
+  },
+  "does_not_prove": [
+    "DFM-MKC validation",
+    "Lambda-CDM failure",
+    "dark matter resolution",
+    "dark energy resolution",
+    "gravity closure",
+    "empirical validation",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "next_admissible_object": "COMPLETE_DFM_PARAMETER_PRIOR_AND_NUMERICAL_SOLVER_INTERFACE"
+}
