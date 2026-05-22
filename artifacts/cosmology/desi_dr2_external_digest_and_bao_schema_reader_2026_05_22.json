@@ -1,0 +1,26 @@
+{
+  "certified_for_profiled_likelihood_execution": true,
+  "date": "2026-05-22",
+  "does_not_prove": [
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "any Clay problem"
+  ],
+  "external_digest": null,
+  "external_digest_matches_local_payload": false,
+  "external_digest_supplied": false,
+  "local_digest": "a727b820478256bff413492fcaee61e1c16a5394a5655088de2101baaa79cf79",
+  "local_path": "public_data/desi_dr2",
+  "local_path_exists": true,
+  "object": "DESI_DR2_EXTERNAL_DIGEST_AND_BAO_SCHEMA_READER",
+  "profiled_likelihood_execution_performed": false,
+  "required_next_object": "PLANCK_2018_EXTERNAL_DIGEST_AND_PARAMETER_SCHEMA_READER",
+  "schema_family": "bao_measurement_table_or_directory",
+  "schema_reader_passed": true,
+  "status": "DESI_DR2_EXTERNAL_DIGEST_AND_BAO_SCHEMA_READER_LOCAL_SCHEMA_READER_PASSED_EXTERNAL_DIGEST_NOT_SUPPLIED"
+}

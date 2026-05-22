@@ -1,0 +1,24 @@
+{
+  "certified": false,
+  "date": "2026-05-22",
+  "does_not_prove": [
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "any Clay problem"
+  ],
+  "object": "COVARIANCE_CHAIN_COMPATIBILITY_CERTIFICATION",
+  "required_inputs": [
+    "per-probe covariance availability",
+    "shared-parameter compatibility",
+    "nuisance-prior compatibility",
+    "profiled-likelihood execution compatibility",
+    "holdout split compatibility"
+  ],
+  "required_next_object": "COMPLETE_CERTIFIED_MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST",
+  "status": "COVARIANCE_CHAIN_COMPATIBILITY_TARGET_ONLY_NOT_CERTIFIED"
+}

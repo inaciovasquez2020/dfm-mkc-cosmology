@@ -1,0 +1,26 @@
+{
+  "certified_for_profiled_likelihood_execution": true,
+  "date": "2026-05-22",
+  "does_not_prove": [
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "any Clay problem"
+  ],
+  "external_digest": null,
+  "external_digest_matches_local_payload": false,
+  "external_digest_supplied": false,
+  "local_digest": "32b2de7ea9b81cb2c79c4e06366cf6dedea08617f86eb3acb41075d6840b2d64",
+  "local_path": "artifacts/external_data_sources/pantheon_plus_shoes_1_data",
+  "local_path_exists": true,
+  "object": "PANTHEON_PLUS_SHOES_EXTERNAL_DIGEST_AND_SCHEMA_READER",
+  "profiled_likelihood_execution_performed": false,
+  "required_next_object": "DESI_DR2_EXTERNAL_DIGEST_AND_BAO_SCHEMA_READER",
+  "schema_family": "supernova_distance_ladder_table_or_directory",
+  "schema_reader_passed": true,
+  "status": "PANTHEON_PLUS_SHOES_EXTERNAL_DIGEST_AND_SCHEMA_READER_LOCAL_SCHEMA_READER_PASSED_EXTERNAL_DIGEST_NOT_SUPPLIED"
+}

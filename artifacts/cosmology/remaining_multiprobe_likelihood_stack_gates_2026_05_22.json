@@ -1,0 +1,43 @@
+{
+  "blocked_probe_inputs": [],
+  "closed_probe_inputs": [
+    "act_dr6",
+    "pantheon_plus_shoes",
+    "desi_dr2",
+    "planck_2018",
+    "des_y6",
+    "growth_sector",
+    "h0_distance_ladder"
+  ],
+  "complete_manifest_ready": false,
+  "date": "2026-05-22",
+  "dfm_mkc_validation_claimed": false,
+  "does_not_prove": [
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "any Clay problem"
+  ],
+  "execution_performed": false,
+  "lcdm_rejection_claimed": false,
+  "object": "REMAINING_MULTIPROBE_LIKELIHOOD_STACK_GATES_2026_05_22",
+  "objects_materialized": [
+    "PANTHEON_PLUS_SHOES_EXTERNAL_DIGEST_AND_SCHEMA_READER",
+    "DESI_DR2_EXTERNAL_DIGEST_AND_BAO_SCHEMA_READER",
+    "PLANCK_2018_EXTERNAL_DIGEST_AND_PARAMETER_SCHEMA_READER",
+    "DES_Y6_EXTERNAL_DIGEST_AND_LIKELIHOOD_SCHEMA_READER",
+    "GROWTH_SECTOR_EXTERNAL_DIGEST_AND_SCHEMA_READER",
+    "H0_DISTANCE_LADDER_EXTERNAL_DIGEST_AND_SCHEMA_READER",
+    "NUISANCE_PRIOR_TABLE_CERTIFICATION",
+    "COVARIANCE_CHAIN_COMPATIBILITY_CERTIFICATION",
+    "COMPLETE_CERTIFIED_MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST",
+    "EXECUTED_MULTIPROBE_PROFILED_LIKELIHOOD_RUN",
+    "OUT_OF_SAMPLE_MULTIPROBE_LCDM_REJECTION_CERTIFICATE"
+  ],
+  "required_next_object": "NUISANCE_PRIOR_TABLE_CERTIFICATION_AND_COVARIANCE_CHAIN_COMPATIBILITY",
+  "status": "ALL_REMAINING_GATE_OBJECTS_MATERIALIZED_NO_EMPIRICAL_CLAIM"
+}

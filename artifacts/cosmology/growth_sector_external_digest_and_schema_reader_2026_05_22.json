@@ -1,0 +1,26 @@
+{
+  "certified_for_profiled_likelihood_execution": true,
+  "date": "2026-05-22",
+  "does_not_prove": [
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "any Clay problem"
+  ],
+  "external_digest": null,
+  "external_digest_matches_local_payload": false,
+  "external_digest_supplied": false,
+  "local_digest": "ed2101fceb2d71ce635b9d3f04f307435c4aa131a3ce32bb486dd77ce56ffc21",
+  "local_path": "artifacts/cosmology/growth_sector_holdout_compatibility_test_2026_05_22.json",
+  "local_path_exists": true,
+  "object": "GROWTH_SECTOR_EXTERNAL_DIGEST_AND_SCHEMA_READER",
+  "profiled_likelihood_execution_performed": false,
+  "required_next_object": "H0_DISTANCE_LADDER_EXTERNAL_DIGEST_AND_SCHEMA_READER",
+  "schema_family": "growth_sector_holdout_summary",
+  "schema_reader_passed": true,
+  "status": "GROWTH_SECTOR_EXTERNAL_DIGEST_AND_SCHEMA_READER_LOCAL_SCHEMA_READER_PASSED_EXTERNAL_DIGEST_NOT_SUPPLIED"
+}

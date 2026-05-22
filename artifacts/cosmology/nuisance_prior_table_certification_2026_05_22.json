@@ -1,0 +1,26 @@
+{
+  "certified": false,
+  "date": "2026-05-22",
+  "does_not_prove": [
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "any Clay problem"
+  ],
+  "object": "NUISANCE_PRIOR_TABLE_CERTIFICATION",
+  "required_inputs": [
+    "ACT nuisance priors",
+    "Pantheon+/SH0ES nuisance priors",
+    "DESI nuisance/systematic priors",
+    "Planck nuisance priors",
+    "DES Y6 nuisance priors",
+    "growth-sector nuisance priors",
+    "H0 distance-ladder nuisance priors"
+  ],
+  "required_next_object": "COVARIANCE_CHAIN_COMPATIBILITY_CERTIFICATION",
+  "status": "NUISANCE_PRIOR_TABLE_TARGET_ONLY_NOT_CERTIFIED"
+}
