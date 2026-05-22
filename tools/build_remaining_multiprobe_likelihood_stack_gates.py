@@ -222,6 +222,13 @@ def main():
         "input_gated": True,
         "execution_performed": False,
         "likelihood_run_executed": False,
+        "current_execution_status": {
+            "complete_certified_manifest_ready": False,
+            "likelihood_inputs_bound": False,
+            "multiprobe_runner_executed": False,
+            "profiled_likelihoods_computed": False,
+            "test_statistic_computed": False
+        },
         "profiled_log_likelihoods": None,
         "test_statistic": None,
         "required_next_object": "MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST_WITH_REAL_DATA_PATHS",

@@ -1,5 +1,12 @@
 {
   "complete_manifest_ready": false,
+  "current_execution_status": {
+    "complete_certified_manifest_ready": false,
+    "likelihood_inputs_bound": false,
+    "multiprobe_runner_executed": false,
+    "profiled_likelihoods_computed": false,
+    "test_statistic_computed": false
+  },
   "date": "2026-05-22",
   "does_not_prove": [
     "ACT validation",
