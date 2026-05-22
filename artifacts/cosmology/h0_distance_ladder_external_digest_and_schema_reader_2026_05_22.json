@@ -1,0 +1,26 @@
+{
+  "certified_for_profiled_likelihood_execution": true,
+  "date": "2026-05-22",
+  "does_not_prove": [
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "any Clay problem"
+  ],
+  "external_digest": null,
+  "external_digest_matches_local_payload": false,
+  "external_digest_supplied": false,
+  "local_digest": "88ab25f97f7b8dc41b1e99de9959d334e61d95d071a3ad3a4e2e86752b67b5a8",
+  "local_path": "artifacts/cosmology/h0_distance_ladder_systematics_profile_2026_05_22.json",
+  "local_path_exists": true,
+  "object": "H0_DISTANCE_LADDER_EXTERNAL_DIGEST_AND_SCHEMA_READER",
+  "profiled_likelihood_execution_performed": false,
+  "required_next_object": "NUISANCE_PRIOR_TABLE_CERTIFICATION",
+  "schema_family": "distance_ladder_systematics_profile",
+  "schema_reader_passed": true,
+  "status": "H0_DISTANCE_LADDER_EXTERNAL_DIGEST_AND_SCHEMA_READER_LOCAL_SCHEMA_READER_PASSED_EXTERNAL_DIGEST_NOT_SUPPLIED"
+}

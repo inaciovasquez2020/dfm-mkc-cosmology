@@ -1,0 +1,20 @@
+{
+  "date": "2026-05-22",
+  "dfm_mkc_validation_claimed": false,
+  "does_not_prove": [
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "any Clay problem"
+  ],
+  "executed_multiprobe_run_available": false,
+  "holdout_protocol_available": false,
+  "lcdm_rejection_claimed": false,
+  "object": "OUT_OF_SAMPLE_MULTIPROBE_LCDM_REJECTION_CERTIFICATE",
+  "required_next_object": "COMPLETE_CERTIFIED_MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST",
+  "status": "OUT_OF_SAMPLE_CERTIFICATE_BLOCKED_NO_EXECUTED_MULTIPROBE_RUN"
+}

@@ -1,0 +1,26 @@
+{
+  "certified_for_profiled_likelihood_execution": true,
+  "date": "2026-05-22",
+  "does_not_prove": [
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "any Clay problem"
+  ],
+  "external_digest": null,
+  "external_digest_matches_local_payload": false,
+  "external_digest_supplied": false,
+  "local_digest": "3ed5134cf80858868c760a452aacf2d77967ff5b52715280644a770f961d70f5",
+  "local_path": "public_data/planck/planck_2018_baseline_params.csv",
+  "local_path_exists": true,
+  "object": "PLANCK_2018_EXTERNAL_DIGEST_AND_PARAMETER_SCHEMA_READER",
+  "profiled_likelihood_execution_performed": false,
+  "required_next_object": "DES_Y6_EXTERNAL_DIGEST_AND_LIKELIHOOD_SCHEMA_READER",
+  "schema_family": "cmb_parameter_table",
+  "schema_reader_passed": true,
+  "status": "PLANCK_2018_EXTERNAL_DIGEST_AND_PARAMETER_SCHEMA_READER_LOCAL_SCHEMA_READER_PASSED_EXTERNAL_DIGEST_NOT_SUPPLIED"
+}

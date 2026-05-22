@@ -1,0 +1,28 @@
+{
+  "complete_manifest_ready": false,
+  "covariance_chain_compatibility_certified": false,
+  "date": "2026-05-22",
+  "does_not_prove": [
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "any Clay problem"
+  ],
+  "nuisance_prior_table_certified": false,
+  "object": "COMPLETE_CERTIFIED_MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST",
+  "probe_certifications": {
+    "act_dr6": true,
+    "des_y6": true,
+    "desi_dr2": true,
+    "growth_sector": true,
+    "h0_distance_ladder": true,
+    "pantheon_plus_shoes": true,
+    "planck_2018": true
+  },
+  "required_next_object": "EXECUTED_MULTIPROBE_PROFILED_LIKELIHOOD_RUN",
+  "status": "COMPLETE_CERTIFIED_MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST_BLOCKED"
+}

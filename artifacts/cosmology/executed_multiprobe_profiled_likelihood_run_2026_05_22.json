@@ -1,84 +1,207 @@
 {
+  "boundary": [
+    "does not execute a real likelihood",
+    "does not compute profiled log-likelihoods",
+    "does not compute a test statistic",
+    "does not claim Lambda-CDM failure",
+    "does not claim DFM-MKC validation"
+  ],
+  "complete_manifest_ready": false,
+  "current_execution_status": {
+    "complete_certified_manifest_ready": false,
+    "likelihood_inputs_bound": false,
+    "multiprobe_runner_executed": false,
+    "profiled_likelihoods_computed": false,
+    "test_statistic_computed": false
+  },
+  "date": "2026-05-22",
+  "does_not_prove": [
+    "ACT validation",
+    "DES validation",
+    "DESI validation",
+    "DFM-MKC validation",
+    "Lambda-CDM failure",
+    "Lambda-CDM rejection",
+    "P vs NP",
+    "alternative-model validation",
+    "any Clay problem",
+    "dark energy resolution",
+    "dark matter resolution",
+    "empirical discovery",
+    "empirical validation",
+    "executed multiprobe likelihood run",
+    "six-parameter flat Lambda-CDM rejection"
+  ],
+  "execution_performed": false,
   "id": "EXECUTED_MULTIPROBE_PROFILED_LIKELIHOOD_RUN",
-  "status": "INPUT_GATED_EXECUTION_TARGET_ONLY_NO_LIKELIHOOD_RUN",
-  "created": "2026-05-22",
-  "purpose": "Define the executable gate for a real multiprobe profiled likelihood run against six-parameter flat Lambda-CDM and alternative models.",
-  "null_model": "six-parameter spatially-flat Lambda-CDM",
-  "required_input_manifest": "data/likelihood_inputs/multiprobe_likelihood_input_manifest.json",
+  "input_gated": true,
+  "likelihood_run_executed": false,
+  "object": "EXECUTED_MULTIPROBE_PROFILED_LIKELIHOOD_RUN",
+  "profiled_log_likelihoods": null,
+  "required_next_object": "MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST_WITH_REAL_DATA_PATHS",
   "required_probe_inputs": [
     {
-      "probe": "CMB",
-      "required_files": [
-        "planck_2018_likelihood",
-        "planck_2018_lensing",
-        "act_dr6_likelihood_or_chains"
-      ]
+      "certified": true,
+      "id": "ACT_DR6_CERTIFIED_PROFILED_LIKELIHOOD_INPUT",
+      "required_files": {
+        "act_dr6_likelihood_or_chains": false,
+        "cmb_lensing_likelihood_or_chain": false,
+        "des_y6_3x2pt_likelihood_or_chain": false,
+        "desi_dr2_bao_bestfit_or_chain": false,
+        "desi_dr2_bao_likelihood_or_covariance": false,
+        "holdout_split_manifest": false,
+        "hsc_y3_likelihood_or_chain": false,
+        "kids_legacy_likelihood_or_chain": false,
+        "nuisance_prior_table": false,
+        "pantheon_plus_covariance": false,
+        "pantheon_plus_data": false,
+        "planck_2018_lensing": false,
+        "planck_2018_likelihood": false,
+        "sh0es_calibrator_data": false,
+        "systematics_profile_config": false,
+        "union3_or_des_sn_crosscheck": false
+      },
+      "status": "CERTIFIED_INPUT_AVAILABLE_NO_LIKELIHOOD_EXECUTION"
     },
     {
-      "probe": "BAO",
-      "required_files": [
-        "desi_dr2_bao_likelihood_or_covariance",
-        "desi_dr2_bao_bestfit_or_chain"
-      ]
+      "certified": false,
+      "id": "PANTHEON_PLUS_SHOES_EXTERNAL_DIGEST_AND_SCHEMA_READER",
+      "required_files": {
+        "act_dr6_likelihood_or_chains": false,
+        "cmb_lensing_likelihood_or_chain": false,
+        "des_y6_3x2pt_likelihood_or_chain": false,
+        "desi_dr2_bao_bestfit_or_chain": false,
+        "desi_dr2_bao_likelihood_or_covariance": false,
+        "holdout_split_manifest": false,
+        "hsc_y3_likelihood_or_chain": false,
+        "kids_legacy_likelihood_or_chain": false,
+        "nuisance_prior_table": false,
+        "pantheon_plus_covariance": false,
+        "pantheon_plus_data": false,
+        "planck_2018_lensing": false,
+        "planck_2018_likelihood": false,
+        "sh0es_calibrator_data": false,
+        "systematics_profile_config": false,
+        "union3_or_des_sn_crosscheck": false
+      },
+      "status": "GATE_MATERIALIZED_NOT_EXECUTED"
     },
     {
-      "probe": "SN_H0",
-      "required_files": [
-        "pantheon_plus_data",
-        "pantheon_plus_covariance",
-        "sh0es_calibrator_data",
-        "union3_or_des_sn_crosscheck"
-      ]
+      "certified": false,
+      "id": "DESI_DR2_EXTERNAL_DIGEST_AND_BAO_SCHEMA_READER",
+      "required_files": {
+        "act_dr6_likelihood_or_chains": false,
+        "cmb_lensing_likelihood_or_chain": false,
+        "des_y6_3x2pt_likelihood_or_chain": false,
+        "desi_dr2_bao_bestfit_or_chain": false,
+        "desi_dr2_bao_likelihood_or_covariance": false,
+        "holdout_split_manifest": false,
+        "hsc_y3_likelihood_or_chain": false,
+        "kids_legacy_likelihood_or_chain": false,
+        "nuisance_prior_table": false,
+        "pantheon_plus_covariance": false,
+        "pantheon_plus_data": false,
+        "planck_2018_lensing": false,
+        "planck_2018_likelihood": false,
+        "sh0es_calibrator_data": false,
+        "systematics_profile_config": false,
+        "union3_or_des_sn_crosscheck": false
+      },
+      "status": "GATE_MATERIALIZED_NOT_EXECUTED"
     },
     {
-      "probe": "GROWTH_LENSING",
-      "required_files": [
-        "des_y6_3x2pt_likelihood_or_chain",
-        "kids_legacy_likelihood_or_chain",
-        "hsc_y3_likelihood_or_chain",
-        "cmb_lensing_likelihood_or_chain"
-      ]
+      "certified": false,
+      "id": "PLANCK_2018_EXTERNAL_DIGEST_AND_PARAMETER_SCHEMA_READER",
+      "required_files": {
+        "act_dr6_likelihood_or_chains": false,
+        "cmb_lensing_likelihood_or_chain": false,
+        "des_y6_3x2pt_likelihood_or_chain": false,
+        "desi_dr2_bao_bestfit_or_chain": false,
+        "desi_dr2_bao_likelihood_or_covariance": false,
+        "holdout_split_manifest": false,
+        "hsc_y3_likelihood_or_chain": false,
+        "kids_legacy_likelihood_or_chain": false,
+        "nuisance_prior_table": false,
+        "pantheon_plus_covariance": false,
+        "pantheon_plus_data": false,
+        "planck_2018_lensing": false,
+        "planck_2018_likelihood": false,
+        "sh0es_calibrator_data": false,
+        "systematics_profile_config": false,
+        "union3_or_des_sn_crosscheck": false
+      },
+      "status": "GATE_MATERIALIZED_NOT_EXECUTED"
     },
     {
-      "probe": "SYSTEMATICS",
-      "required_files": [
-        "nuisance_prior_table",
-        "systematics_profile_config",
-        "holdout_split_manifest"
-      ]
+      "certified": false,
+      "id": "DES_Y6_EXTERNAL_DIGEST_AND_LIKELIHOOD_SCHEMA_READER",
+      "required_files": {
+        "act_dr6_likelihood_or_chains": false,
+        "cmb_lensing_likelihood_or_chain": false,
+        "des_y6_3x2pt_likelihood_or_chain": false,
+        "desi_dr2_bao_bestfit_or_chain": false,
+        "desi_dr2_bao_likelihood_or_covariance": false,
+        "holdout_split_manifest": false,
+        "hsc_y3_likelihood_or_chain": false,
+        "kids_legacy_likelihood_or_chain": false,
+        "nuisance_prior_table": false,
+        "pantheon_plus_covariance": false,
+        "pantheon_plus_data": false,
+        "planck_2018_lensing": false,
+        "planck_2018_likelihood": false,
+        "sh0es_calibrator_data": false,
+        "systematics_profile_config": false,
+        "union3_or_des_sn_crosscheck": false
+      },
+      "status": "GATE_MATERIALIZED_NOT_EXECUTED"
+    },
+    {
+      "certified": false,
+      "id": "GROWTH_SECTOR_EXTERNAL_DIGEST_AND_SCHEMA_READER",
+      "required_files": {
+        "act_dr6_likelihood_or_chains": false,
+        "cmb_lensing_likelihood_or_chain": false,
+        "des_y6_3x2pt_likelihood_or_chain": false,
+        "desi_dr2_bao_bestfit_or_chain": false,
+        "desi_dr2_bao_likelihood_or_covariance": false,
+        "holdout_split_manifest": false,
+        "hsc_y3_likelihood_or_chain": false,
+        "kids_legacy_likelihood_or_chain": false,
+        "nuisance_prior_table": false,
+        "pantheon_plus_covariance": false,
+        "pantheon_plus_data": false,
+        "planck_2018_lensing": false,
+        "planck_2018_likelihood": false,
+        "sh0es_calibrator_data": false,
+        "systematics_profile_config": false,
+        "union3_or_des_sn_crosscheck": false
+      },
+      "status": "GATE_MATERIALIZED_NOT_EXECUTED"
+    },
+    {
+      "certified": false,
+      "id": "H0_DISTANCE_LADDER_EXTERNAL_DIGEST_AND_SCHEMA_READER",
+      "required_files": {
+        "act_dr6_likelihood_or_chains": false,
+        "cmb_lensing_likelihood_or_chain": false,
+        "des_y6_3x2pt_likelihood_or_chain": false,
+        "desi_dr2_bao_bestfit_or_chain": false,
+        "desi_dr2_bao_likelihood_or_covariance": false,
+        "holdout_split_manifest": false,
+        "hsc_y3_likelihood_or_chain": false,
+        "kids_legacy_likelihood_or_chain": false,
+        "nuisance_prior_table": false,
+        "pantheon_plus_covariance": false,
+        "pantheon_plus_data": false,
+        "planck_2018_lensing": false,
+        "planck_2018_likelihood": false,
+        "sh0es_calibrator_data": false,
+        "systematics_profile_config": false,
+        "union3_or_des_sn_crosscheck": false
+      },
+      "status": "GATE_MATERIALIZED_NOT_EXECUTED"
     }
   ],
-  "execution_outputs_required": [
-    "profiled_lcdm_best_fit",
-    "profiled_systematics_vector",
-    "delta_chi2_by_probe",
-    "global_delta_chi2",
-    "look_elsewhere_adjusted_sigma",
-    "posterior_predictive_p_value",
-    "holdout_survival_table",
-    "alternative_model_stability_scorecard",
-    "independent_reproduction_log"
-  ],
-  "current_execution_status": {
-    "input_manifest_present": false,
-    "all_required_probe_inputs_present": false,
-    "likelihood_backend_present": false,
-    "profiled_lcdm_run_executed": false,
-    "alternative_model_run_executed": false,
-    "holdout_validation_executed": false,
-    "independent_reproduction_executed": false
-  },
-  "blocking_reason": "Required real likelihood inputs and backend execution products are not present in this repository.",
-  "required_next_object": "MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST_WITH_REAL_DATA_PATHS",
-  "boundary": "Input-gated execution target only. This does not execute a real likelihood, reject Lambda-CDM, validate DFM-MKC, promote an alternative model, or resolve any Clay problem.",
-  "does_not_prove": [
-    "Lambda-CDM failure",
-    "six-parameter flat Lambda-CDM rejection",
-    "dark energy evolution",
-    "modified gravity",
-    "DFM-MKC validation",
-    "dark matter detection or resolution",
-    "empirical discovery",
-    "any Clay problem"
-  ]
+  "status": "INPUT_GATED_EXECUTION_TARGET_ONLY_NO_LIKELIHOOD_RUN",
+  "test_statistic": null
 }
