@@ -1,0 +1,353 @@
+{
+  "combined_certification_closed": false,
+  "covariance_policies_supplied": false,
+  "covariance_sources_bound": false,
+  "date": "2026-05-22",
+  "does_not_prove": [
+    "certified nuisance prior values",
+    "certified cross-covariance compatibility",
+    "complete certified multiprobe likelihood manifest",
+    "executed multiprobe likelihood run",
+    "Lambda-CDM rejection",
+    "six-parameter flat Lambda-CDM rejection",
+    "Lambda-CDM failure",
+    "alternative-model validation",
+    "DFM-MKC validation",
+    "dark matter resolution",
+    "dark energy resolution",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "external_cross_covariance_policy_rows": [
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "ACT_DR6",
+        "PANTHEON_PLUS_SHOES"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "ACT_DR6",
+        "DESI_DR2"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "ACT_DR6",
+        "PLANCK_2018"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "ACT_DR6",
+        "DES_Y6"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "ACT_DR6",
+        "GROWTH_SECTOR"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "ACT_DR6",
+        "H0_DISTANCE_LADDER"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "PANTHEON_PLUS_SHOES",
+        "DESI_DR2"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "PANTHEON_PLUS_SHOES",
+        "PLANCK_2018"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "PANTHEON_PLUS_SHOES",
+        "DES_Y6"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "PANTHEON_PLUS_SHOES",
+        "GROWTH_SECTOR"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "PANTHEON_PLUS_SHOES",
+        "H0_DISTANCE_LADDER"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "DESI_DR2",
+        "PLANCK_2018"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "DESI_DR2",
+        "DES_Y6"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "DESI_DR2",
+        "GROWTH_SECTOR"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "DESI_DR2",
+        "H0_DISTANCE_LADDER"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "PLANCK_2018",
+        "DES_Y6"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "PLANCK_2018",
+        "GROWTH_SECTOR"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "PLANCK_2018",
+        "H0_DISTANCE_LADDER"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "DES_Y6",
+        "GROWTH_SECTOR"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "DES_Y6",
+        "H0_DISTANCE_LADDER"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    },
+    {
+      "compatibility_certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "policy_record_supplied": false,
+      "probe_pair": [
+        "GROWTH_SECTOR",
+        "H0_DISTANCE_LADDER"
+      ],
+      "schema_validated": false,
+      "source_bound": false
+    }
+  ],
+  "external_nuisance_source_rows": [
+    {
+      "certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "parameter_name": null,
+      "probe": "ACT_DR6",
+      "schema_validated": false,
+      "source_bound": false,
+      "value_record_supplied": false
+    },
+    {
+      "certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "parameter_name": null,
+      "probe": "PANTHEON_PLUS_SHOES",
+      "schema_validated": false,
+      "source_bound": false,
+      "value_record_supplied": false
+    },
+    {
+      "certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "parameter_name": null,
+      "probe": "DESI_DR2",
+      "schema_validated": false,
+      "source_bound": false,
+      "value_record_supplied": false
+    },
+    {
+      "certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "parameter_name": null,
+      "probe": "PLANCK_2018",
+      "schema_validated": false,
+      "source_bound": false,
+      "value_record_supplied": false
+    },
+    {
+      "certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "parameter_name": null,
+      "probe": "DES_Y6",
+      "schema_validated": false,
+      "source_bound": false,
+      "value_record_supplied": false
+    },
+    {
+      "certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "parameter_name": null,
+      "probe": "GROWTH_SECTOR",
+      "schema_validated": false,
+      "source_bound": false,
+      "value_record_supplied": false
+    },
+    {
+      "certified": false,
+      "external_source_digest": null,
+      "external_source_reference": null,
+      "parameter_name": null,
+      "probe": "H0_DISTANCE_LADDER",
+      "schema_validated": false,
+      "source_bound": false,
+      "value_record_supplied": false
+    }
+  ],
+  "nuisance_sources_bound": false,
+  "nuisance_values_supplied": false,
+  "object": "EXTERNAL_NUISANCE_PRIOR_SOURCE_TABLE_AND_CROSS_COVARIANCE_POLICY_VALUES",
+  "required_next_object": "BOUND_EXTERNAL_NUISANCE_PRIOR_SOURCES_AND_COVARIANCE_POLICY_RECORDS",
+  "source_object": "SUPPLIED_PER_PROBE_NUISANCE_PRIOR_VALUES_AND_CROSS_COVARIANCE_POLICY_TABLE",
+  "status": "EXTERNAL_SOURCE_VALUE_TABLE_TARGET_MATERIALIZED_VALUES_NOT_SUPPLIED"
+}
