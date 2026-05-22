@@ -27,7 +27,6 @@
     "any Clay problem",
     "dark energy resolution",
     "dark matter resolution",
-    "empirical discovery",
     "empirical validation",
     "executed multiprobe likelihood run",
     "six-parameter flat Lambda-CDM rejection"
@@ -43,36 +42,71 @@
     {
       "certified": true,
       "id": "ACT_DR6_CERTIFIED_PROFILED_LIKELIHOOD_INPUT",
+      "required_files": {
+        "covariance_matrix": false,
+        "data_vector": false,
+        "likelihood_rule": false
+      },
       "status": "CERTIFIED_INPUT_AVAILABLE_NO_LIKELIHOOD_EXECUTION"
     },
     {
       "certified": false,
       "id": "PANTHEON_PLUS_SHOES_EXTERNAL_DIGEST_AND_SCHEMA_READER",
+      "required_files": {
+        "covariance_matrix": false,
+        "data_vector": false,
+        "likelihood_rule": false
+      },
       "status": "GATE_MATERIALIZED_NOT_EXECUTED"
     },
     {
       "certified": false,
       "id": "DESI_DR2_EXTERNAL_DIGEST_AND_BAO_SCHEMA_READER",
+      "required_files": {
+        "covariance_matrix": false,
+        "data_vector": false,
+        "likelihood_rule": false
+      },
       "status": "GATE_MATERIALIZED_NOT_EXECUTED"
     },
     {
       "certified": false,
       "id": "PLANCK_2018_EXTERNAL_DIGEST_AND_PARAMETER_SCHEMA_READER",
+      "required_files": {
+        "covariance_matrix": false,
+        "data_vector": false,
+        "likelihood_rule": false
+      },
       "status": "GATE_MATERIALIZED_NOT_EXECUTED"
     },
     {
       "certified": false,
       "id": "DES_Y6_EXTERNAL_DIGEST_AND_LIKELIHOOD_SCHEMA_READER",
+      "required_files": {
+        "covariance_matrix": false,
+        "data_vector": false,
+        "likelihood_rule": false
+      },
       "status": "GATE_MATERIALIZED_NOT_EXECUTED"
     },
     {
       "certified": false,
       "id": "GROWTH_SECTOR_EXTERNAL_DIGEST_AND_SCHEMA_READER",
+      "required_files": {
+        "covariance_matrix": false,
+        "data_vector": false,
+        "likelihood_rule": false
+      },
       "status": "GATE_MATERIALIZED_NOT_EXECUTED"
     },
     {
       "certified": false,
       "id": "H0_DISTANCE_LADDER_EXTERNAL_DIGEST_AND_SCHEMA_READER",
+      "required_files": {
+        "covariance_matrix": false,
+        "data_vector": false,
+        "likelihood_rule": false
+      },
       "status": "GATE_MATERIALIZED_NOT_EXECUTED"
     }
   ],

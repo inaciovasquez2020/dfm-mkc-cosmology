@@ -240,37 +240,72 @@ def main():
             {
                 "id": "ACT_DR6_CERTIFIED_PROFILED_LIKELIHOOD_INPUT",
                 "status": "CERTIFIED_INPUT_AVAILABLE_NO_LIKELIHOOD_EXECUTION",
-                "certified": True
+                "certified": True,
+                "required_files": {
+                    "data_vector": False,
+                    "covariance_matrix": False,
+                    "likelihood_rule": False
+                }
             },
             {
                 "id": "PANTHEON_PLUS_SHOES_EXTERNAL_DIGEST_AND_SCHEMA_READER",
                 "status": "GATE_MATERIALIZED_NOT_EXECUTED",
-                "certified": False
+                "certified": False,
+                "required_files": {
+                    "data_vector": False,
+                    "covariance_matrix": False,
+                    "likelihood_rule": False
+                }
             },
             {
                 "id": "DESI_DR2_EXTERNAL_DIGEST_AND_BAO_SCHEMA_READER",
                 "status": "GATE_MATERIALIZED_NOT_EXECUTED",
-                "certified": False
+                "certified": False,
+                "required_files": {
+                    "data_vector": False,
+                    "covariance_matrix": False,
+                    "likelihood_rule": False
+                }
             },
             {
                 "id": "PLANCK_2018_EXTERNAL_DIGEST_AND_PARAMETER_SCHEMA_READER",
                 "status": "GATE_MATERIALIZED_NOT_EXECUTED",
-                "certified": False
+                "certified": False,
+                "required_files": {
+                    "data_vector": False,
+                    "covariance_matrix": False,
+                    "likelihood_rule": False
+                }
             },
             {
                 "id": "DES_Y6_EXTERNAL_DIGEST_AND_LIKELIHOOD_SCHEMA_READER",
                 "status": "GATE_MATERIALIZED_NOT_EXECUTED",
-                "certified": False
+                "certified": False,
+                "required_files": {
+                    "data_vector": False,
+                    "covariance_matrix": False,
+                    "likelihood_rule": False
+                }
             },
             {
                 "id": "GROWTH_SECTOR_EXTERNAL_DIGEST_AND_SCHEMA_READER",
                 "status": "GATE_MATERIALIZED_NOT_EXECUTED",
-                "certified": False
+                "certified": False,
+                "required_files": {
+                    "data_vector": False,
+                    "covariance_matrix": False,
+                    "likelihood_rule": False
+                }
             },
             {
                 "id": "H0_DISTANCE_LADDER_EXTERNAL_DIGEST_AND_SCHEMA_READER",
                 "status": "GATE_MATERIALIZED_NOT_EXECUTED",
-                "certified": False
+                "certified": False,
+                "required_files": {
+                    "data_vector": False,
+                    "covariance_matrix": False,
+                    "likelihood_rule": False
+                }
             }
         ],
         "profiled_log_likelihoods": None,
