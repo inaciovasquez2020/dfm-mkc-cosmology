@@ -1,0 +1,54 @@
+{
+  "id": "LCDM_METHODOLOGICAL_COUNTER_SOURCE_MAP",
+  "status": "METHODOLOGICAL_COUNTER_SOURCE_ONLY_NO_LCDM_REJECTION",
+  "created": "2026-05-22",
+  "purpose": "Register a peer-reviewed methodological counter-source arguing that many claimed Lambda-CDM falsifications are tensions or interpretive disputes rather than strict reproducible falsifications.",
+  "sources": [
+    {
+      "id": "BLANCHARD_2025_FALLACIES_OF_LCDM_FALSIFICATIONS",
+      "title": "The Fallacies of Lambda-CDM Falsifications",
+      "author": "Alain Blanchard",
+      "venue": "IntechOpen chapter in Cosmology Research - Addressing Current Problems with Astrophysics",
+      "published": "2025-06-11",
+      "doi": "10.5772/intechopen.1010549",
+      "role": "methodological counter-source and falsification-criterion control",
+      "claim_class": "PEER_REVIEWED_METHODOLOGICAL_COUNTER_SOURCE_ONLY",
+      "usable_for": [
+        "falsification-criterion audit",
+        "methodology source map",
+        "control source against overclaiming Lambda-CDM failure",
+        "Popperian falsification standard registry",
+        "source-weighted likelihood execution plan boundary"
+      ],
+      "not_usable_for": [
+        "proof that Lambda-CDM is final",
+        "proof that Lambda-CDM tensions are irrelevant",
+        "Lambda-CDM disproof",
+        "six-parameter flat Lambda-CDM rejection",
+        "executed multiprobe likelihood",
+        "DFM-MKC validation",
+        "alternative-model rejection"
+      ]
+    }
+  ],
+  "integration_targets": [
+    "SOURCE_WEIGHTED_MULTIPROBE_LIKELIHOOD_EXECUTION_PLAN",
+    "OUT_OF_SAMPLE_MULTIPROBE_LCDM_REJECTION_CERTIFICATE",
+    "EMPIRICAL_PROMOTION_GATE_FOR_LCDM_ALTERNATIVES",
+    "LCDM_POPULAR_CRITIQUE_SOURCE_MAP",
+    "LCDM_REJECTION_EXTERNAL_SOURCE_MAP"
+  ],
+  "required_next_object": "METHODOLOGICAL_CLAIM_EXTRACTION_AND_FALSIFICATION_CRITERION_AUDIT",
+  "boundary": "Methodological counter-source map only. This does not execute a likelihood, prove Lambda-CDM final, reject Lambda-CDM, validate DFM-MKC, promote or reject an alternative model, or resolve any Clay problem.",
+  "does_not_prove": [
+    "Lambda-CDM correctness",
+    "Lambda-CDM failure",
+    "six-parameter flat Lambda-CDM rejection",
+    "dark energy evolution",
+    "modified gravity",
+    "DFM-MKC validation",
+    "dark matter detection or resolution",
+    "empirical discovery",
+    "any Clay problem"
+  ]
+}
