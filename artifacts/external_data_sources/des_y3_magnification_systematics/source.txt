@@ -1,0 +1,37 @@
+DES Y3 Magnification Modeling and Systematics Source
+
+Source:
+Dark Energy Survey Year 3 results: Magnification modeling and impact on cosmological constraints from galaxy clustering and galaxy-galaxy lensing
+J. Elvin-Poole, N. MacCrann, et al.
+DES Collaboration
+29 May 2023
+
+Required role:
+Weak-lensing / galaxy-clustering systematics source for DFM-vs-Lambda-CDM holdout testing.
+
+Data/systematics layer supplied:
+- DES Y3 galaxy clustering w(theta)
+- DES Y3 galaxy-galaxy lensing gamma_t(theta)
+- DES Y3 2x2pt / 3x2pt observable context
+- MagLim lens sample
+- redMaGiC lens sample
+- DES Y3 footprint and mask assumptions
+- source-galaxy sample assumptions
+- lens redshift distributions
+- source redshift distributions
+- magnification coefficients C_sample
+- Balrog magnification calibration
+- Buzzard validation simulations
+- MICE validation simulations
+- covariance / nuisance-systematics context
+- scale-cut and modeling context
+
+Boundary:
+Data/systematics source only.
+Does not supply DFM equations.
+Does not supply DFM action functional.
+Does not supply DFM prediction map.
+Does not execute DES likelihood.
+Does not prove DFM.
+Does not disprove Lambda-CDM.
+Does not replace CDM.
