@@ -1,0 +1,44 @@
+{
+  "id": "LCDM_POPULAR_CRITIQUE_SOURCE_MAP",
+  "status": "POPULAR_CRITIQUE_SOURCE_ONLY_NO_LCDM_REJECTION",
+  "created": "2026-05-22",
+  "purpose": "Register non-peer-reviewed public critique material as contextual source material only, without using it as empirical evidence for Lambda-CDM rejection.",
+  "sources": [
+    {
+      "id": "KRIGER_2026_BANKRUPT_COSMOLOGY_MEDIUM",
+      "title": "The Bankrupt Cosmology: How Billions Sustain a Model That Cannot Explain the Universe",
+      "author": "Boris (Bruce) Kriger",
+      "venue": "Medium",
+      "date": "2026-04-20",
+      "url": "https://medium.com/@krigerbruce/the-bankrupt-cosmology-how-billions-sustain-a-model-that-cannot-explain-the-universe-3389f74458fa",
+      "role": "popular critique and claim-source intake",
+      "claim_class": "POPULAR_POLEMICAL_CRITIQUE_ONLY",
+      "usable_for": [
+        "public-critique source registry",
+        "claim extraction target",
+        "future independent-claim audit",
+        "sociology-of-science context"
+      ],
+      "not_usable_for": [
+        "Lambda-CDM disproof",
+        "six-parameter flat Lambda-CDM rejection",
+        "executed multiprobe likelihood",
+        "peer-reviewed empirical evidence",
+        "DFM-MKC validation",
+        "alternative-model promotion"
+      ]
+    }
+  ],
+  "required_next_object": "POPULAR_CRITIQUE_CLAIM_EXTRACTION_AND_EVIDENCE_AUDIT",
+  "boundary": "Popular critique source map only. This does not execute a likelihood, reject Lambda-CDM, validate DFM-MKC, promote an alternative model, or resolve any Clay problem.",
+  "does_not_prove": [
+    "Lambda-CDM failure",
+    "six-parameter flat Lambda-CDM rejection",
+    "dark energy evolution",
+    "modified gravity",
+    "DFM-MKC validation",
+    "dark matter detection or resolution",
+    "empirical discovery",
+    "any Clay problem"
+  ]
+}

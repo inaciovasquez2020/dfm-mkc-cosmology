@@ -1,0 +1,101 @@
+{
+  "id": "SOURCE_WEIGHTED_MULTIPROBE_LIKELIHOOD_EXECUTION_PLAN",
+  "status": "EXECUTION_PLAN_ONLY_NO_LIKELIHOOD_RUN",
+  "created": "2026-05-22",
+  "purpose": "Define the source-weighted multiprobe execution plan required before any Lambda-CDM rejection certificate can be claimed.",
+  "null_model": "six-parameter spatially-flat Lambda-CDM",
+  "source_inputs": [
+    {
+      "id": "PLANCK_2018_CMB",
+      "probe_class": "CMB",
+      "weight_class": "ANCHOR",
+      "role": "early-universe parameter anchor",
+      "execution_required": true
+    },
+    {
+      "id": "ACT_DR6_CMB",
+      "probe_class": "CMB",
+      "weight_class": "INDEPENDENT_CMB_CROSSCHECK",
+      "role": "high-resolution CMB cross-check",
+      "execution_required": true
+    },
+    {
+      "id": "DESI_DR2_BAO",
+      "probe_class": "BAO",
+      "weight_class": "PRIMARY_LATE_TIME_PRESSURE",
+      "role": "late-time expansion pressure point",
+      "execution_required": true
+    },
+    {
+      "id": "PANTHEON_PLUS_SH0ES",
+      "probe_class": "SN_H0",
+      "weight_class": "DISTANCE_LADDER_AND_SN",
+      "role": "supernova and local-H0 layer",
+      "execution_required": true
+    },
+    {
+      "id": "DES_Y6_3X2PT",
+      "probe_class": "GROWTH",
+      "weight_class": "HOLDOUT",
+      "role": "growth-sector holdout",
+      "execution_required": true
+    },
+    {
+      "id": "KAMELI_BAGHRAM_2025_MODIFIED_INITIAL_POWER_SPECTRUM",
+      "probe_class": "THEORY_SOURCE",
+      "weight_class": "SOURCE_MAP_ONLY",
+      "role": "small-scale-structure alternative source",
+      "execution_required": false
+    },
+    {
+      "id": "SHIMON_2026_SMALL_PATCH_HYPOTHESIS",
+      "probe_class": "THEORY_SOURCE",
+      "weight_class": "SOURCE_MAP_ONLY",
+      "role": "primordial-spectrum alternative source",
+      "execution_required": false
+    },
+    {
+      "id": "BULL_ET_AL_2016_BEYOND_LCDM_REVIEW",
+      "probe_class": "REVIEW_SOURCE",
+      "weight_class": "TAXONOMY_ONLY",
+      "role": "beyond-Lambda-CDM taxonomy source",
+      "execution_required": false
+    }
+  ],
+  "execution_blocks": [
+    "CMB_ANCHOR_FIT",
+    "BAO_INCREMENTAL_FIT",
+    "SN_SPLIT_FIT",
+    "H0_SYSTEMATICS_PROFILE",
+    "GROWTH_HOLDOUT_VALIDATION",
+    "ALTERNATIVE_MODEL_STABILITY_RUN",
+    "GLOBAL_PROFILED_LIKELIHOOD_COMPARISON"
+  ],
+  "required_outputs": [
+    "profiled_lcdm_best_fit",
+    "profiled_systematics_vector",
+    "delta_chi2_by_probe",
+    "global_delta_chi2",
+    "look_elsewhere_adjusted_sigma",
+    "posterior_predictive_p_value",
+    "holdout_survival_table",
+    "alternative_model_stability_scorecard",
+    "promotion_or_blocker_decision"
+  ],
+  "promotion_threshold": {
+    "lambda_cdm_rejection": "global significance >= 5 sigma after calibrated systematics and look-elsewhere correction",
+    "alternative_model_promotion": "stable parameters across CMB + BAO + SN + H0 + lensing + growth holdouts",
+    "forbidden_shortcut": "No source-map paper, single anomaly, or synthetic sanity check can substitute for executed multiprobe likelihood."
+  },
+  "boundary": "Execution plan only. No likelihood has been run here. No Lambda-CDM rejection, no DFM-MKC validation, no empirical discovery, and no Clay-problem claim are made.",
+  "does_not_prove": [
+    "Lambda-CDM failure",
+    "six-parameter flat Lambda-CDM rejection",
+    "dark energy evolution",
+    "modified gravity",
+    "DFM-MKC validation",
+    "dark matter detection or resolution",
+    "empirical discovery",
+    "any Clay problem"
+  ]
+}
