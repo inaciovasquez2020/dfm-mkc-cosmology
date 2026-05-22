@@ -1,0 +1,37 @@
+{
+  "artifact_id": "parameter_domain_and_units_table_2026_05_22",
+  "status": "PARAMETER_DOMAIN_AND_UNITS_TABLE_SUPPLIED_STRUCTURAL_ONLY",
+  "required_object_filled": "PARAMETER_DOMAIN_AND_UNITS_TABLE",
+  "source_spec": "specs/PARAMETER_DOMAIN_AND_UNITS_TABLE.json",
+  "input_specs": [
+    "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+    "specs/VARIATIONAL_DERIVATION_CHECK.json"
+  ],
+  "root_blocker_removed": "PARAMETER_DOMAIN_AND_UNITS_TABLE_NOT_SUPPLIED",
+  "new_root_blocker": "COSMOLOGICAL_REDUCTION_ANSATZ_NOT_SUPPLIED",
+  "check_result": "PASS_STRUCTURAL_ONLY",
+  "boundary": [
+    "supplies parameter domains and mass-dimension units structurally",
+    "checks that supplied action couplings are represented in the parameter table",
+    "does not prove physical correctness of the parameter choices",
+    "does not supply numerical parameter values",
+    "does not supply a cosmological reduction ansatz",
+    "does not supply a frozen prediction vector",
+    "does not execute a likelihood comparison",
+    "does not supply empirical evidence"
+  ],
+  "does_not_prove": [
+    "DFM-MKC",
+    "Lambda-CDM failure",
+    "dark-energy resolution",
+    "dark-matter resolution",
+    "Nobel-level physical discovery",
+    "any Clay problem"
+  ],
+  "next_missing_objects": [
+    "COSMOLOGICAL_REDUCTION_ANSATZ",
+    "FROZEN_PREDICTION_VECTOR",
+    "EXECUTED_DFM_VS_LAMBDA_CDM_COMPARISON",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ]
+}
