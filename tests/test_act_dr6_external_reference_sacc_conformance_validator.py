@@ -32,7 +32,7 @@ def test_partial_validator_not_certification():
     assert data["sacc_conformance_validator"]["full_sacc_schema_conformance_established"] is False
     assert data["certified_for_profiled_likelihood_execution"] is False
 
-def test_no_overclaim_boundaries:
+def test_no_overclaim_boundaries():
     data = json.loads(ARTIFACT.read_text())
     assert "ACT DR6 public release digest certification" in data["does_not_prove"]
     assert "ACT DR6 full SACC schema certification" in data["does_not_prove"]
