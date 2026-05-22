@@ -1,0 +1,49 @@
+{
+  "boundary": "Frontier/specification surface only; no executed empirical likelihood and no Lambda-CDM rejection certificate.",
+  "candidate_models": [
+    "CPL_w0wa",
+    "early_dark_energy",
+    "interacting_dark_sector",
+    "modified_gravity_mu_Sigma",
+    "phenomenological_DFM_MKC_candidate"
+  ],
+  "does_not_prove": [
+    "Lambda-CDM failure",
+    "six-parameter flat Lambda-CDM rejection",
+    "dark energy evolution",
+    "modified gravity",
+    "DFM-MKC validation",
+    "dark matter detection or resolution",
+    "empirical discovery",
+    "any Clay problem"
+  ],
+  "id": "ALTERNATIVE_MODEL_STABILITY_SCORECARD",
+  "required_next_object": "BLIND_HOLDOUT_ALTERNATIVE_MODEL_STABILITY_CERTIFICATE",
+  "source_basis": [
+    {
+      "id": "PLANCK_2018_COSMOLOGICAL_PARAMETERS",
+      "role": "CMB early-universe anchor"
+    },
+    {
+      "id": "ACT_DR6_POWER_SPECTRA_LIKELIHOODS",
+      "role": "independent high-resolution CMB layer"
+    },
+    {
+      "id": "DESI_DR2_BAO",
+      "role": "late-time BAO pressure point"
+    },
+    {
+      "id": "PANTHEON_PLUS_SH0ES_DATA_RELEASE",
+      "role": "SN and H0 likelihood layer"
+    },
+    {
+      "id": "DES_Y6_3X2PT",
+      "role": "growth-sector holdout"
+    },
+    {
+      "id": "JWST_SH0ES_CEPHEID_CROSSCHECK",
+      "role": "local-distance-ladder systematics audit"
+    }
+  ],
+  "status": "SCORECARD_ONLY_NO_ALTERNATIVE_VALIDATED"
+}
