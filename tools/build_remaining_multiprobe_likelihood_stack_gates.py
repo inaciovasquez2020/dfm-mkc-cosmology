@@ -236,6 +236,43 @@ def main():
             "does not claim Lambda-CDM failure",
             "does not claim DFM-MKC validation"
         ],
+        "required_probe_inputs": [
+            {
+                "id": "ACT_DR6_CERTIFIED_PROFILED_LIKELIHOOD_INPUT",
+                "status": "CERTIFIED_INPUT_AVAILABLE_NO_LIKELIHOOD_EXECUTION",
+                "certified": True
+            },
+            {
+                "id": "PANTHEON_PLUS_SHOES_EXTERNAL_DIGEST_AND_SCHEMA_READER",
+                "status": "GATE_MATERIALIZED_NOT_EXECUTED",
+                "certified": False
+            },
+            {
+                "id": "DESI_DR2_EXTERNAL_DIGEST_AND_BAO_SCHEMA_READER",
+                "status": "GATE_MATERIALIZED_NOT_EXECUTED",
+                "certified": False
+            },
+            {
+                "id": "PLANCK_2018_EXTERNAL_DIGEST_AND_PARAMETER_SCHEMA_READER",
+                "status": "GATE_MATERIALIZED_NOT_EXECUTED",
+                "certified": False
+            },
+            {
+                "id": "DES_Y6_EXTERNAL_DIGEST_AND_LIKELIHOOD_SCHEMA_READER",
+                "status": "GATE_MATERIALIZED_NOT_EXECUTED",
+                "certified": False
+            },
+            {
+                "id": "GROWTH_SECTOR_EXTERNAL_DIGEST_AND_SCHEMA_READER",
+                "status": "GATE_MATERIALIZED_NOT_EXECUTED",
+                "certified": False
+            },
+            {
+                "id": "H0_DISTANCE_LADDER_EXTERNAL_DIGEST_AND_SCHEMA_READER",
+                "status": "GATE_MATERIALIZED_NOT_EXECUTED",
+                "certified": False
+            }
+        ],
         "profiled_log_likelihoods": None,
         "test_statistic": None,
         "required_next_object": "MULTIPROBE_LIKELIHOOD_INPUT_MANIFEST_WITH_REAL_DATA_PATHS",
