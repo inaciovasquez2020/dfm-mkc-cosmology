@@ -10,7 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "artifacts/cosmology/act_dr6_reproducible_download_command_or_external_sha256_digest_2026_05_22.json"
 OUT = ROOT / "artifacts/cosmology/act_dr6_reproducible_download_execution_and_local_sha256_comparison_2026_05_22.json"
-WORK = ROOT / "artifacts/reproducible_downloads/act_dr6_2026_05_22"
+WORK = Path("/tmp/dfm_mkc_reproducible_downloads/act_dr6_2026_05_22")
 
 def sha256_file(path: Path) -> str:
     h = hashlib.sha256()
