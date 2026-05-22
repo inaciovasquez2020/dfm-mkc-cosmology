@@ -1,0 +1,28 @@
+{
+  "id": "CLOSED_DFM_FIELD_EQUATIONS_OR_ACTION_FUNCTIONAL_TARGET",
+  "date": "2026-05-22",
+  "status": "TARGET_ONLY_OBJECT_NOT_SUPPLIED",
+  "minimal_missing_object": "CLOSED_DFM_FIELD_EQUATIONS_OR_ACTION_FUNCTIONAL",
+  "required_payload": [
+    "primitive fields",
+    "dynamical equations or variational action",
+    "source terms",
+    "coupling constants",
+    "units and dimensions",
+    "gauge or symmetry assumptions",
+    "boundary or initial conditions",
+    "parameter table",
+    "prediction map to observables"
+  ],
+  "does_not_prove": [
+    "DFM-MKC validation",
+    "Lambda-CDM failure",
+    "dark matter resolution",
+    "dark energy resolution",
+    "gravity closure",
+    "empirical validation",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "next_admissible_object": "FILLED_CLOSED_DFM_FIELD_EQUATIONS_OR_ACTION_FUNCTIONAL"
+}
