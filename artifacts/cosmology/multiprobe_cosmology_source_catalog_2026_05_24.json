@@ -1,0 +1,228 @@
+{
+  "record_id": "MULTIPROBE_COSMOLOGY_SOURCE_CATALOG_2026_05_24",
+  "status": "SOURCE_CATALOG_RECORD_ONLY_DIGESTS_AND_LIKELIHOOD_RUNS_PENDING",
+  "strand": "DFM-MKC / cosmology",
+  "date_recorded": "2026-05-24",
+  "purpose": "Organize external cosmology datasets and likelihood frameworks for later certified ΛCDM vs DFM-MKC comparison.",
+  "datasets": [
+    {
+      "dataset_id": "DESI_DR2_BAO",
+      "probe": "BAO / expansion history",
+      "recommendation": "USE",
+      "role": "primary expansion-history anchor",
+      "source_url": "https://github.com/CobayaSampler/bao_data",
+      "release_version": "DR2",
+      "claimed_vector": "D_V/r_d, D_M/r_d, D_H/r_d redshift-bin measurements",
+      "claimed_covariance": "public covariance matrix",
+      "cobaya_status": "claimed ready",
+      "required_next_certification": [
+        "download exact files",
+        "record data-vector path",
+        "record covariance path",
+        "record likelihood config path",
+        "compute SHA256 digests",
+        "run ΛCDM baseline",
+        "run DFM-MKC comparator"
+      ]
+    },
+    {
+      "dataset_id": "PLANCK_2018_PLIK_LOWELL",
+      "probe": "CMB / early-time constraints",
+      "recommendation": "USE",
+      "role": "CMB gold-standard baseline",
+      "source_url": "https://lambda.gsfc.nasa.gov/product/planck/",
+      "release_version": "Planck 2018 / PLC 3.0",
+      "claimed_vector": "TT, TE, EE power spectra and low-ell likelihood products",
+      "claimed_covariance": "Planck likelihood covariance products",
+      "cobaya_status": "claimed ready",
+      "required_next_certification": [
+        "download exact likelihood files",
+        "record clik/native likelihood path",
+        "record covariance/resource paths",
+        "compute SHA256 digests",
+        "run ΛCDM baseline",
+        "run DFM-MKC comparator"
+      ]
+    },
+    {
+      "dataset_id": "ACT_DR6_CMB_LENSING",
+      "probe": "CMB / high-ell and lensing",
+      "recommendation": "USE",
+      "role": "ground-based CMB extension and lensing cross-check",
+      "source_url": "https://act.princeton.edu/act-dr6-data-products",
+      "release_version": "DR6",
+      "claimed_vector": "ACT DR6 spectra and lensing products",
+      "claimed_covariance": "ACT DR6 likelihood covariance products",
+      "cobaya_status": "claimed ready",
+      "required_next_certification": [
+        "download exact ACT DR6 files",
+        "record likelihood package version",
+        "record data-vector and covariance paths",
+        "compute SHA256 digests",
+        "run ΛCDM baseline",
+        "run DFM-MKC comparator"
+      ]
+    },
+    {
+      "dataset_id": "SPT_3G_DR1",
+      "probe": "CMB / complementary ground-based spectra",
+      "recommendation": "DEVELOPING",
+      "role": "complementary CMB consistency check",
+      "source_url": "https://pole.uchicago.edu/public/data/camphuis25/",
+      "release_version": "DR1 candidate/source-catalog entry",
+      "claimed_vector": "SPT-3G spectra products",
+      "claimed_covariance": "SPT likelihood/candl covariance products",
+      "cobaya_status": "not certified in this repo",
+      "required_next_certification": [
+        "validate source availability",
+        "download exact files",
+        "record likelihood package/version",
+        "compute SHA256 digests",
+        "decide whether to include in first baseline"
+      ]
+    },
+    {
+      "dataset_id": "DES_Y6_3X2PT",
+      "probe": "weak lensing + galaxy clustering",
+      "recommendation": "AVAILABLE_REGISTRATION_OR_WRAPPER_REQUIRED",
+      "role": "late-time growth and S8 comparison",
+      "source_url": "https://www.darkenergysurvey.org/des-y6-cosmology-results-papers/",
+      "release_version": "Y6 source-catalog entry",
+      "claimed_vector": "3x2pt correlation data vector",
+      "claimed_covariance": "full covariance with systematics treatment",
+      "cobaya_status": "external wrapper or registration required",
+      "required_next_certification": [
+        "obtain exact data release files",
+        "record data-vector path",
+        "record covariance path",
+        "record nuisance-prior path",
+        "compute SHA256 digests",
+        "run ΛCDM baseline",
+        "run DFM-MKC comparator"
+      ]
+    },
+    {
+      "dataset_id": "PANTHEON_PLUS",
+      "probe": "supernovae / distance ladder",
+      "recommendation": "USE",
+      "role": "low-redshift distance baseline",
+      "source_url": "https://github.com/scolnic/Pantheon_Analysis",
+      "release_version": "Pantheon+",
+      "claimed_vector": "Type Ia supernova distance-modulus data",
+      "claimed_covariance": "statistical plus systematic covariance",
+      "cobaya_status": "claimed ready through wrappers",
+      "required_next_certification": [
+        "download exact data files",
+        "record distance vector path",
+        "record covariance path",
+        "compute SHA256 digests",
+        "run ΛCDM baseline",
+        "run DFM-MKC comparator"
+      ]
+    },
+    {
+      "dataset_id": "ROMAN_MOCK_SN",
+      "probe": "future high-redshift supernova forecast",
+      "recommendation": "FORECAST_ONLY",
+      "role": "future-data high-redshift discriminator reference",
+      "source_url": "https://conference.ipac.caltech.edu/romantimedomain/",
+      "release_version": "mock/forecast source-catalog entry",
+      "claimed_vector": "simulated Roman high-redshift supernova data",
+      "claimed_covariance": "mock covariance / forecast covariance",
+      "cobaya_status": "not real-data likelihood certified",
+      "required_next_certification": [
+        "identify exact mock packet",
+        "record simulation version",
+        "record covariance/modeling assumptions",
+        "compute SHA256 digests",
+        "keep separate from real-data evidence"
+      ]
+    },
+    {
+      "dataset_id": "ESGB_SCALAR_DARK_SECTOR_COMPARATOR_2507_05207_V3",
+      "probe": "external dark-sector modified-gravity comparator",
+      "recommendation": "COMPARATOR_ONLY",
+      "role": "Gauss-Bonnet scalar dark-sector benchmark and Roman high-redshift discriminator reference",
+      "source_url": "https://arxiv.org/html/2507.05207v3",
+      "release_version": "arXiv:2507.05207v3",
+      "claimed_vector": "paper-level comparator only",
+      "claimed_covariance": "none supplied in this source-catalog record",
+      "cobaya_status": "not implemented",
+      "required_next_certification": [
+        "keep external comparator only",
+        "do not use as Chronos proof input",
+        "do not use as DFM-MKC validation",
+        "implement only if exact likelihood/model equations are supplied"
+      ]
+    }
+  ],
+  "software_frameworks": [
+    {
+      "software_id": "COBAYA",
+      "role": "Bayesian cosmology inference framework",
+      "url": "https://github.com/CobayaSampler/cobaya",
+      "required_next_certification": [
+        "record installed version",
+        "record Python environment",
+        "record theory backend CAMB or CLASS",
+        "record exact YAML configs"
+      ]
+    },
+    {
+      "software_id": "CAMB",
+      "role": "Boltzmann solver backend",
+      "url": "https://github.com/cmbant/CAMB",
+      "required_next_certification": [
+        "record installed version",
+        "record cosmological parameter conventions"
+      ]
+    },
+    {
+      "software_id": "GETDIST",
+      "role": "posterior analysis and plotting",
+      "url": "https://github.com/cmbant/getdist",
+      "required_next_certification": [
+        "record installed version",
+        "record chain paths and convergence diagnostics"
+      ]
+    }
+  ],
+  "first_certified_packet_target": {
+    "target_id": "CERTIFIED_EXTERNAL_COSMOLOGY_LIKELIHOOD_INPUT_PACKET",
+    "minimal_dataset_choice": "DESI_DR2_BAO",
+    "required_fields": [
+      "dataset_name",
+      "source_url",
+      "release_version",
+      "data_vector_path",
+      "covariance_path",
+      "nuisance_prior_path_or_null",
+      "likelihood_config_path",
+      "data_vector_sha256",
+      "covariance_sha256",
+      "nuisance_priors_sha256_or_null",
+      "likelihood_config_sha256",
+      "cross_covariance_policy",
+      "lcdm_baseline_command",
+      "dfm_mkc_comparison_command",
+      "boundary"
+    ]
+  },
+  "negative_use_lock": [
+    "source catalog only",
+    "no downloaded data vectors certified",
+    "no covariance digests certified",
+    "no likelihood execution",
+    "no Lambda-CDM rejection",
+    "no DFM-MKC validation",
+    "not Chronos proof input",
+    "not evidence for R1",
+    "not evidence for R2",
+    "not evidence for R3",
+    "not evidence for NON_FACTORISATION",
+    "not evidence for Chronos-RR",
+    "not evidence for H4.1/FGL",
+    "not evidence for P vs NP",
+    "not evidence for any Clay problem"
+  ]
+}
