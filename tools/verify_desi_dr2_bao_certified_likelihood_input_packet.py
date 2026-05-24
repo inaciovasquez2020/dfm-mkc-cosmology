@@ -1,9 +1,29 @@
 #!/usr/bin/env python3
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 
 ROOT = Path.cwd()
+
+def ensure_external_source(data: dict) -> None:
+    source_root = ROOT / data["local_source_root"]
+    repo_root = ROOT / "external_data/desi_dr2_bao/bao_data"
+    if source_root.exists():
+        return
+    repo_root.parent.mkdir(parents=True, exist_ok=True)
+    if repo_root.exists():
+        return
+    subprocess.check_call([
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "--branch",
+        data["release_version"],
+        data["source_url"] + ".git",
+        str(repo_root),
+    ])
 ART = ROOT / "artifacts/cosmology/desi_dr2_bao_certified_likelihood_input_packet_2026_05_24.json"
 DOC = ROOT / "docs/status/DESI_DR2_BAO_CERTIFIED_LIKELIHOOD_INPUT_PACKET_2026_05_24.md"
 
@@ -71,6 +91,8 @@ def main() -> None:
     assert len(data["source_commit_sha"]) == 40
     assert data["file_count"] == len(data["file_manifest"])
     assert data["file_count"] > 0
+
+    ensure_external_source(data)
 
     roles = {entry["role"] for entry in data["file_manifest"]}
     assert "covariance" in roles
