@@ -1,0 +1,31 @@
+likelihood:
+  bao.desi_dr2.desi_bao_all: null
+
+theory:
+  camb:
+    extra_args:
+      N_eff: 3.046
+      N_ncdm: 0
+
+params:
+  omegam:
+    prior:
+      min: 0.1
+      max: 0.6
+  H0:
+    prior:
+      min: 50
+      max: 90
+  omegab:
+    prior:
+      min: 0.01
+      max: 0.1
+  omegak:
+    value: 0.0
+  rdrag:
+    derived: true
+
+sampler:
+  evaluate: null
+
+output: chains/desi_dr2_bao_lcdm_baseline_target
