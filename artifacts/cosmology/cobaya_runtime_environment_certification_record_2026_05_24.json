@@ -1,0 +1,48 @@
+{
+  "record_id": "COBAYA_RUNTIME_ENVIRONMENT_CERTIFICATION_RECORD_2026_05_24",
+  "status": "RUNTIME_ENVIRONMENT_CERTIFIED_NO_LIKELIHOOD_EXECUTION",
+  "strand": "DFM-MKC / cosmology",
+  "target_dependency": "COBAYA_RUNTIME_ENVIRONMENT_CERTIFICATION_TARGET_2026_05_24",
+  "python_executable": "/Users/inaciof.vasquez/dfm-mkc-cosmology/.runtime_envs/cobaya_runtime_2026_05_24/bin/python",
+  "python_version": "3.9.6 (default, Dec  2 2025, 07:27:58) \n[Clang 17.0.0 (clang-1700.6.3.2)]",
+  "platform": "macOS-26.3.1-arm64-arm-64bit",
+  "cobaya_version": "3.5.7",
+  "camb_version": "1.6.0",
+  "numpy_version": "2.0.2",
+  "scipy_version": "1.13.1",
+  "pip_freeze_path": "artifacts/results/cobaya_runtime_environment_pip_freeze_2026_05_24.txt",
+  "pip_freeze_digest": "464bd9e4d24c103f98994727e47a2d93f56bff53e722657ee32dd47f4bae12ab",
+  "environment_log_path": "artifacts/results/cobaya_runtime_environment_log_2026_05_24.json",
+  "environment_log_digest": "bf149268a329561c5425036de607aea4310f1076f498f2cb6e36b39c574c5f4f",
+  "certified_imports": [
+    "cobaya",
+    "camb",
+    "numpy",
+    "scipy"
+  ],
+  "pending_outputs": [
+    "DESI DR2 BAO likelihood import smoke test",
+    "Lambda-CDM evaluate run",
+    "DFM-MKC parameter-to-observable map",
+    "DFM-MKC evaluate run",
+    "model comparison result"
+  ],
+  "negative_use_lock": [
+    "runtime environment certification only",
+    "no DESI DR2 BAO likelihood import smoke test",
+    "no likelihood execution",
+    "no posterior chains",
+    "no best-fit value",
+    "no Lambda-CDM rejection",
+    "no DFM-MKC validation",
+    "not Chronos proof input",
+    "not evidence for R1",
+    "not evidence for R2",
+    "not evidence for R3",
+    "not evidence for NON_FACTORISATION",
+    "not evidence for Chronos-RR",
+    "not evidence for H4.1/FGL",
+    "not evidence for P vs NP",
+    "not evidence for any Clay problem"
+  ]
+}
