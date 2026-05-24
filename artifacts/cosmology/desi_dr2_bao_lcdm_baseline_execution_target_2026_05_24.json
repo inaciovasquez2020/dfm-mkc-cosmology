@@ -1,0 +1,46 @@
+{
+  "record_id": "DESI_DR2_BAO_LCDM_BASELINE_EXECUTION_TARGET_2026_05_24",
+  "status": "EXECUTION_TARGET_ONLY_NO_LIKELIHOOD_RUN",
+  "strand": "DFM-MKC / cosmology",
+  "dataset_dependency": "DESI_DR2_BAO_CERTIFIED_EXTERNAL_COSMOLOGY_LIKELIHOOD_INPUT_PACKET_2026_05_24",
+  "dataset_id": "DESI_DR2_BAO",
+  "baseline_model": "Lambda-CDM / DESI BAO-only target",
+  "config_path": "configs/cosmology/desi_dr2_bao_lcdm_baseline_target.yaml",
+  "intended_likelihood": "bao.desi_dr2.desi_bao_all",
+  "intended_theory_backend": "camb",
+  "intended_sampler": "evaluate",
+  "execution_command": "cobaya run configs/cosmology/desi_dr2_bao_lcdm_baseline_target.yaml",
+  "certified_inputs_required_before_execution": [
+    "DESI DR2 BAO digest-certified input packet",
+    "Cobaya installed version",
+    "CAMB installed version",
+    "Cobaya likelihood import succeeds",
+    "DESI DR2 BAO likelihood data path resolves"
+  ],
+  "pending_outputs": [
+    "best_fit_loglike",
+    "best_fit_chi2",
+    "derived_parameters",
+    "runtime_environment_record",
+    "execution_log_digest",
+    "posterior_or_evaluate_output_path"
+  ],
+  "negative_use_lock": [
+    "execution target only",
+    "no likelihood execution",
+    "no posterior chains",
+    "no best-fit value",
+    "no Lambda-CDM rejection",
+    "no DFM-MKC comparison",
+    "no DFM-MKC validation",
+    "not Chronos proof input",
+    "not evidence for R1",
+    "not evidence for R2",
+    "not evidence for R3",
+    "not evidence for NON_FACTORISATION",
+    "not evidence for Chronos-RR",
+    "not evidence for H4.1/FGL",
+    "not evidence for P vs NP",
+    "not evidence for any Clay problem"
+  ]
+}
