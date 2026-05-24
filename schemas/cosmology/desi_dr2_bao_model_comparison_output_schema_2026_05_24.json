@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "DESI_DR2_BAO_MODEL_COMPARISON_OUTPUT_SCHEMA_2026_05_24",
+  "title": "DESI DR2 BAO Model Comparison Output Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_id",
+    "status",
+    "dataset_id",
+    "baseline_model",
+    "comparison_model",
+    "lcdm_loglike",
+    "dfm_mkc_loglike",
+    "lcdm_chi2",
+    "dfm_mkc_chi2",
+    "delta_chi2",
+    "AICc",
+    "BICc",
+    "posterior_predictive_distribution_p",
+    "runtime_environment_record",
+    "execution_log_digest",
+    "boundary"
+  ],
+  "properties": {
+    "record_id": {
+      "const": "DESI_DR2_BAO_MODEL_COMPARISON_OUTPUT_RESULT"
+    },
+    "status": {
+      "enum": [
+        "RESULT_SCHEMA_ONLY_NO_LIKELIHOOD_EXECUTION",
+        "RESULT_SUPPLIED_PENDING_VERIFICATION",
+        "RESULT_VERIFIED"
+      ]
+    },
+    "dataset_id": {
+      "const": "DESI_DR2_BAO"
+    },
+    "baseline_model": {
+      "const": "Lambda-CDM"
+    },
+    "comparison_model": {
+      "const": "DFM-MKC"
+    },
+    "lcdm_loglike": {
+      "type": ["number", "null"]
+    },
+    "dfm_mkc_loglike": {
+      "type": ["number", "null"]
+    },
+    "lcdm_chi2": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "dfm_mkc_chi2": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "delta_chi2": {
+      "type": ["number", "null"],
+      "description": "dfm_mkc_chi2 - lcdm_chi2"
+    },
+    "AICc": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["lcdm", "dfm_mkc", "delta_AICc"],
+      "properties": {
+        "lcdm": {"type": "number"},
+        "dfm_mkc": {"type": "number"},
+        "delta_AICc": {"type": "number"}
+      }
+    },
+    "BICc": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["lcdm", "dfm_mkc", "delta_BICc"],
+      "properties": {
+        "lcdm": {"type": "number"},
+        "dfm_mkc": {"type": "number"},
+        "delta_BICc": {"type": "number"}
+      }
+    },
+    "posterior_predictive_distribution_p": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "runtime_environment_record": {
+      "type": ["string", "null"]
+    },
+    "execution_log_digest": {
+      "type": ["string", "null"],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "boundary": {
+      "type": "array",
+      "items": {"type": "string"},
+      "contains": {"const": "not Chronos proof input"}
+    }
+  }
+}
