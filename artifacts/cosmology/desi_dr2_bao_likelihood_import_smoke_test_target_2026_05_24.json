@@ -1,0 +1,59 @@
+{
+  "record_id": "DESI_DR2_BAO_LIKELIHOOD_IMPORT_SMOKE_TEST_TARGET_2026_05_24",
+  "status": "SMOKE_TEST_TARGET_ONLY_NOT_EXECUTED",
+  "strand": "DFM-MKC / cosmology",
+  "dataset_id": "DESI_DR2_BAO",
+  "purpose": "Define the import smoke-test required before DESI DR2 BAO likelihood execution.",
+  "required_fields": [
+    "python_executable",
+    "cobaya_import_result",
+    "likelihood_name",
+    "data_path_resolution_result",
+    "runtime_environment_record",
+    "smoke_test_command",
+    "smoke_test_log_digest"
+  ],
+  "pending_outputs": [
+    "Cobaya import succeeds",
+    "DESI DR2 BAO likelihood import succeeds",
+    "DESI DR2 BAO likelihood data path resolves",
+    "smoke_test_log_digest"
+  ],
+  "negative_use_lock": [
+    "smoke-test target only",
+    "smoke test not executed",
+    "likelihood import not certified",
+    "data path resolution not certified",
+    "no likelihood execution",
+    "no posterior chains",
+    "no best-fit value",
+    "no Lambda-CDM rejection",
+    "no DFM-MKC validation",
+    "not Chronos proof input",
+    "not evidence for R1",
+    "not evidence for R2",
+    "not evidence for R3",
+    "not evidence for NON_FACTORISATION",
+    "not evidence for Chronos-RR",
+    "not evidence for H4.1/FGL",
+    "not evidence for P vs NP",
+    "not evidence for any Clay problem"
+  ],
+  "boundary": [
+    "does not execute the smoke test",
+    "does not certify Cobaya import",
+    "does not certify DESI DR2 BAO likelihood import",
+    "does not certify data path resolution",
+    "does not run a likelihood",
+    "does not produce posterior chains",
+    "does not reject Lambda-CDM",
+    "does not validate DFM-MKC",
+    "does not provide Chronos proof input",
+    "does not prove R1/R2/R3",
+    "does not prove NON_FACTORISATION",
+    "does not prove Chronos-RR",
+    "does not prove H4.1/FGL",
+    "does not prove P vs NP",
+    "does not prove any Clay problem"
+  ]
+}
