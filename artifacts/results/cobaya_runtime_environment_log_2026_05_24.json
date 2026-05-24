@@ -1,0 +1,12 @@
+{
+  "python_executable": "/Users/inaciof.vasquez/dfm-mkc-cosmology/.runtime_envs/cobaya_runtime_2026_05_24/bin/python",
+  "python_version": "3.9.6 (default, Dec  2 2025, 07:27:58) \n[Clang 17.0.0 (clang-1700.6.3.2)]",
+  "platform": "macOS-26.3.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "processor": "arm",
+  "cobaya_version": "3.5.7",
+  "camb_version": "1.6.0",
+  "numpy_version": "2.0.2",
+  "scipy_version": "1.13.1",
+  "pip_freeze_path": "artifacts/results/cobaya_runtime_environment_pip_freeze_2026_05_24.txt"
+}
