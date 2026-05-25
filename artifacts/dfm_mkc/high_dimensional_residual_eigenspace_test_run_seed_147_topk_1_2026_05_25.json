@@ -1,0 +1,27 @@
+{
+  "baseline_condition_number": 3.464261641613971,
+  "baseline_min_eigenvalue": 0.462642034111952,
+  "baseline_rank": 12,
+  "boundary_guard_passed": true,
+  "candidate_condition_number": 4.243317685504184,
+  "candidate_min_eigenvalue": 0.4373324345195345,
+  "candidate_rank": 12,
+  "dimension": 12,
+  "does_not_prove": [
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter resolution",
+    "dark energy resolution",
+    "dark matter is liquid",
+    "dark matter is solid"
+  ],
+  "physical_dark_matter_phase_claim_status": "HYPOTHESIS_ONLY",
+  "samples": 96,
+  "seed": 147,
+  "singular_failure_rank": 11,
+  "singular_min_eigenvalue": -7.279858858961068e-16,
+  "status": "SYNTHETIC_HARNESS_ONLY_NO_EMPIRICAL_EVIDENCE",
+  "synthetic_singular_boundary_guard_passed": false,
+  "top_eigenspace_projection_distance": 0.812440260170102,
+  "top_k": 1
+}
