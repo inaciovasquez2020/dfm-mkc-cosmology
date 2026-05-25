@@ -1,0 +1,65 @@
+{
+  "id": "HIGH_DIMENSIONAL_RESIDUAL_EIGENSPACE_TEST_HARNESS_2026_05_25",
+  "status": "SYNTHETIC_HARNESS_ONLY_NO_EMPIRICAL_EVIDENCE",
+  "program": "DFM_MKC_DARK_SECTOR_VALIDATION",
+  "created_utc_date": "2026-05-25",
+  "depends_on": [
+    "COVARIANCE_SPECTRAL_VALIDATION_SOURCE_MAP",
+    "HIGH_DIMENSIONAL_RESIDUAL_EIGENSPACE_TEST_TARGET",
+    "BOUNDARY_COVARIANCE_ESTIMATE_FAILURE_GUARD",
+    "DFM_MKC_COMPARATOR_COVARIANCE_DIAGNOSTIC_REQUIREMENT"
+  ],
+  "objects_added": [
+    {
+      "id": "HIGH_DIMENSIONAL_RESIDUAL_EIGENSPACE_SYNTHETIC_TEST_HARNESS",
+      "status": "ADDED",
+      "role": "Creates a deterministic synthetic residual/covariance diagnostic harness for future DFM-MKC comparator validation."
+    },
+    {
+      "id": "RESIDUAL_COVARIANCE_EIGENSPECTRUM_DIAGNOSTIC",
+      "status": "ADDED",
+      "role": "Computes covariance eigenvalue diagnostics from residual matrices."
+    },
+    {
+      "id": "TOP_EIGENSPACE_PROJECTION_DIAGNOSTIC",
+      "status": "ADDED",
+      "role": "Computes top-k eigenspace projection distance between residual covariance structures."
+    },
+    {
+      "id": "BOUNDARY_COVARIANCE_SYNTHETIC_FAILURE_CASE",
+      "status": "ADDED",
+      "role": "Includes a deterministic singular covariance failure case to test the boundary guard."
+    }
+  ],
+  "synthetic_harness_expected_outputs": [
+    "baseline_rank",
+    "candidate_rank",
+    "baseline_min_eigenvalue",
+    "candidate_min_eigenvalue",
+    "baseline_condition_number",
+    "candidate_condition_number",
+    "top_eigenspace_projection_distance",
+    "boundary_guard_passed"
+  ],
+  "physical_dark_matter_phase_claim_status": "HYPOTHESIS_ONLY",
+  "does_not_prove": [
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter is liquid",
+    "dark matter is solid",
+    "dark matter phase transition is physically real",
+    "dark matter resolution",
+    "dark energy resolution",
+    "ACT validation",
+    "DES validation",
+    "CMB validation",
+    "BAO validation",
+    "independent empirical replication",
+    "gravity closure",
+    "Chronos proof input",
+    "Chronos-RR",
+    "H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ]
+}
