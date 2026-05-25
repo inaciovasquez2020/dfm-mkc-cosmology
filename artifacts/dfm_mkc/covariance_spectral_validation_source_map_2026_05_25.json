@@ -1,0 +1,88 @@
+{
+  "id": "COVARIANCE_SPECTRAL_VALIDATION_SOURCE_MAP_2026_05_25",
+  "status": "SOURCE_MAP_AND_REQUIREMENT_LAYER_ONLY",
+  "program": "DFM_MKC_DARK_SECTOR_VALIDATION",
+  "created_utc_date": "2026-05-25",
+  "objects_added": [
+    {
+      "id": "COVARIANCE_SPECTRAL_VALIDATION_SOURCE_MAP",
+      "status": "ADDED",
+      "role": "Maps covariance-estimation and spectral-statistics literature into the DFM-MKC empirical-validation layer."
+    },
+    {
+      "id": "HIGH_DIMENSIONAL_RESIDUAL_EIGENSPACE_TEST_TARGET",
+      "status": "OPEN_TEST_TARGET",
+      "role": "Requires future residual tests to compare model residual covariance, eigenspectrum, and eigenspace structure against baseline cosmological comparators."
+    },
+    {
+      "id": "BOUNDARY_COVARIANCE_ESTIMATE_FAILURE_GUARD",
+      "status": "ADDED_GUARD",
+      "role": "Prevents empirical promotion when covariance estimates collapse to boundary, singular, rank-deficient, unstable, or penalty-dependent artifacts."
+    },
+    {
+      "id": "DFM_MKC_COMPARATOR_COVARIANCE_DIAGNOSTIC_REQUIREMENT",
+      "status": "ADDED_REQUIREMENT",
+      "role": "Requires DFM-MKC comparator runs to report covariance diagnostics, spectral diagnostics, residual eigenspace diagnostics, and baseline Lambda-CDM comparison before empirical promotion."
+    }
+  ],
+  "source_map": [
+    {
+      "label": "Generalized linear spectral statistics of high-dimensional sample covariance matrices",
+      "source_type": "statistics_literature",
+      "canonical_identifier": "10.1214/25-AOS2601",
+      "use_in_program": "High-dimensional sample-covariance spectral diagnostics for cosmological residual validation."
+    },
+    {
+      "label": "Covariance Estimation, Chapter 12, Statistical Planning and Inference",
+      "source_type": "statistics_reference",
+      "canonical_identifier": "10.1002/9781118958896.ch12",
+      "use_in_program": "Baseline covariance-estimation reference for empirical-validation documentation."
+    },
+    {
+      "label": "Non-boundary covariance matrix estimation in generalized linear mixed models",
+      "source_type": "statistical_methodology",
+      "canonical_identifier": "ujag013",
+      "use_in_program": "Boundary-covariance failure guard for hierarchical, mixed, nuisance-parameter, and residual-stability models."
+    },
+    {
+      "label": "Symmetry volume 18 issue 2 dark-sector comparison sources",
+      "source_type": "comparison_literature",
+      "canonical_identifier": "Symmetry_18_2",
+      "use_in_program": "Comparison map only for alternative dark-sector and cosmology proposals."
+    }
+  ],
+  "promotion_requirements": [
+    "Authentic data vector supplied",
+    "Authentic covariance matrix supplied",
+    "Covariance matrix schema validated",
+    "Covariance matrix positive semidefinite or justified regularized substitute certified",
+    "Baseline Lambda-CDM comparator executed",
+    "DFM-MKC comparator executed",
+    "Residual covariance diagnostic reported",
+    "Residual eigenspectrum diagnostic reported",
+    "Residual eigenspace diagnostic reported",
+    "Boundary covariance failure guard passed",
+    "Independent reproduction command supplied"
+  ],
+  "physical_dark_matter_phase_claim_status": "HYPOTHESIS_ONLY",
+  "does_not_prove": [
+    "dark matter is liquid",
+    "dark matter is solid",
+    "dark matter phase transition is physically real",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter resolution",
+    "dark energy resolution",
+    "ACT validation",
+    "DES validation",
+    "CMB validation",
+    "BAO validation",
+    "independent empirical replication",
+    "gravity closure",
+    "Chronos proof input",
+    "Chronos-RR",
+    "H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ]
+}
