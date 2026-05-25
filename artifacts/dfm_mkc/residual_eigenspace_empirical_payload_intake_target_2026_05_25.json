@@ -1,0 +1,67 @@
+{
+  "id": "RESIDUAL_EIGENSPACE_EMPIRICAL_PAYLOAD_INTAKE_TARGET_2026_05_25",
+  "status": "EMPIRICAL_PAYLOAD_TARGET_ONLY_NO_DATA_BOUND",
+  "program": "DFM_MKC_DARK_SECTOR_VALIDATION",
+  "created_utc_date": "2026-05-25",
+  "depends_on": [
+    "COVARIANCE_SPECTRAL_VALIDATION_SOURCE_MAP_2026_05_25",
+    "HIGH_DIMENSIONAL_RESIDUAL_EIGENSPACE_TEST_HARNESS_2026_05_25"
+  ],
+  "object_added": {
+    "id": "RESIDUAL_EIGENSPACE_EMPIRICAL_PAYLOAD_INTAKE_TARGET",
+    "status": "OPEN_TARGET",
+    "role": "Defines the exact empirical payload required before the synthetic residual eigenspace harness can be promoted to an authentic cosmology-data test."
+  },
+  "required_payload_fields": [
+    "dataset_id",
+    "dataset_release",
+    "source_url_or_release_doi",
+    "payload_sha256",
+    "data_vector_path",
+    "covariance_matrix_path",
+    "baseline_prediction_vector_path",
+    "candidate_prediction_vector_path",
+    "nuisance_parameter_table_path",
+    "likelihood_configuration_path",
+    "reproduction_command",
+    "schema_validation_report_path"
+  ],
+  "required_validation_checks": [
+    "data_vector_is_authentic",
+    "covariance_matrix_is_authentic",
+    "data_covariance_dimensions_match",
+    "covariance_is_symmetric",
+    "covariance_is_positive_semidefinite_or_regularized_with_certificate",
+    "baseline_prediction_dimensions_match",
+    "candidate_prediction_dimensions_match",
+    "residual_vectors_constructible",
+    "residual_covariance_constructible",
+    "residual_eigenspace_diagnostic_runnable",
+    "boundary_covariance_failure_guard_passed",
+    "independent_reproduction_command_supplied"
+  ],
+  "allowed_empirical_promotion_status_after_success": "EMPIRICAL_TEST_READY_NOT_VALIDATED",
+  "physical_dark_matter_phase_claim_status": "HYPOTHESIS_ONLY",
+  "does_not_prove": [
+    "authentic empirical data has been supplied",
+    "residual eigenspace empirical test has been run",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter is liquid",
+    "dark matter is solid",
+    "dark matter phase transition is physically real",
+    "dark matter resolution",
+    "dark energy resolution",
+    "ACT validation",
+    "DES validation",
+    "CMB validation",
+    "BAO validation",
+    "independent empirical replication",
+    "gravity closure",
+    "Chronos proof input",
+    "Chronos-RR",
+    "H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ]
+}
