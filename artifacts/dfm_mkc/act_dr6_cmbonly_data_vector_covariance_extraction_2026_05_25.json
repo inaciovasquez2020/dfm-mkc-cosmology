@@ -1,0 +1,445 @@
+{
+  "baseline_lcdm_prediction_vector_status": "NOT_EXTRACTED",
+  "covariance_matrix_status": "CANDIDATE_ARRAYS_IDENTIFIED_NOT_PROMOTED",
+  "data_vector_status": "CANDIDATE_ARRAYS_IDENTIFIED_NOT_PROMOTED",
+  "dfm_mkc_prediction_vector_status": "NOT_AVAILABLE_NO_DFM_MKC_ACT_SOLVER_BOUND",
+  "does_not_prove": [
+    "ACT DR6 empirical comparison has been run",
+    "baseline LCDM prediction vector has been extracted",
+    "DFM-MKC prediction vector exists",
+    "residual eigenspace empirical comparison has been run",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter resolution",
+    "dark energy resolution",
+    "dark matter is liquid",
+    "dark matter is solid",
+    "dark matter phase transition is physically real",
+    "ACT validation of DFM-MKC",
+    "CMB validation of DFM-MKC",
+    "independent empirical replication",
+    "gravity closure",
+    "Chronos-RR",
+    "H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "hdu_count": 11,
+  "hdu_summaries": [
+    {
+      "class": "PrimaryHDU",
+      "columns": [],
+      "index": 0,
+      "name": "PRIMARY",
+      "naxis": 0,
+      "shape": []
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "id",
+        "min",
+        "max"
+      ],
+      "index": 1,
+      "name": "window:TopHat",
+      "naxis": 2,
+      "shape": [
+        0
+      ]
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "id",
+        "min",
+        "max"
+      ],
+      "index": 2,
+      "name": "window:LogTopHat",
+      "naxis": 2,
+      "shape": [
+        0
+      ]
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "values",
+        "weight"
+      ],
+      "index": 3,
+      "name": "window:Bandpower",
+      "naxis": 2,
+      "shape": [
+        8500
+      ]
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "values",
+        "weight"
+      ],
+      "index": 4,
+      "name": "window:Bandpower",
+      "naxis": 2,
+      "shape": [
+        8500
+      ]
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "values",
+        "weight"
+      ],
+      "index": 5,
+      "name": "window:Bandpower",
+      "naxis": 2,
+      "shape": [
+        8500
+      ]
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "name",
+        "quantity"
+      ],
+      "index": 6,
+      "name": "tracer:Misc",
+      "naxis": 2,
+      "shape": [
+        2
+      ]
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "tracer_0",
+        "tracer_1",
+        "value",
+        "window_ind",
+        "window",
+        "ell"
+      ],
+      "index": 7,
+      "name": "data:cl_00",
+      "naxis": 2,
+      "shape": [
+        45
+      ]
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "tracer_0",
+        "tracer_1",
+        "value",
+        "window_ind",
+        "window",
+        "ell"
+      ],
+      "index": 8,
+      "name": "data:cl_0e",
+      "naxis": 2,
+      "shape": [
+        45
+      ]
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "tracer_0",
+        "tracer_1",
+        "value",
+        "window_ind",
+        "window",
+        "ell"
+      ],
+      "index": 9,
+      "name": "data:cl_ee",
+      "naxis": 2,
+      "shape": [
+        45
+      ]
+    },
+    {
+      "class": "ImageHDU",
+      "columns": [],
+      "index": 10,
+      "name": "covariance",
+      "naxis": 2,
+      "shape": [
+        135,
+        135
+      ]
+    }
+  ],
+  "id": "ACT_DR6_CMBONLY_DATA_VECTOR_COVARIANCE_EXTRACTION_2026_05_25",
+  "numeric_candidate_count": 9,
+  "numeric_candidates": [
+    {
+      "index": 1,
+      "name": "window:TopHat",
+      "numeric_summary": {
+        "id": {
+          "dtype": ">f8",
+          "finite_count": 0,
+          "shape": [
+            0
+          ],
+          "size": 0
+        },
+        "max": {
+          "dtype": ">f8",
+          "finite_count": 0,
+          "shape": [
+            0
+          ],
+          "size": 0
+        },
+        "min": {
+          "dtype": ">f8",
+          "finite_count": 0,
+          "shape": [
+            0
+          ],
+          "size": 0
+        }
+      }
+    },
+    {
+      "index": 2,
+      "name": "window:LogTopHat",
+      "numeric_summary": {
+        "id": {
+          "dtype": ">f8",
+          "finite_count": 0,
+          "shape": [
+            0
+          ],
+          "size": 0
+        },
+        "max": {
+          "dtype": ">f8",
+          "finite_count": 0,
+          "shape": [
+            0
+          ],
+          "size": 0
+        },
+        "min": {
+          "dtype": ">f8",
+          "finite_count": 0,
+          "shape": [
+            0
+          ],
+          "size": 0
+        }
+      }
+    },
+    {
+      "index": 3,
+      "name": "window:Bandpower",
+      "numeric_summary": {
+        "values": {
+          "dtype": ">i8",
+          "finite_count": 8500,
+          "shape": [
+            8500
+          ],
+          "size": 8500
+        },
+        "weight": {
+          "dtype": ">f8",
+          "finite_count": 382500,
+          "shape": [
+            8500,
+            45
+          ],
+          "size": 382500
+        }
+      }
+    },
+    {
+      "index": 4,
+      "name": "window:Bandpower",
+      "numeric_summary": {
+        "values": {
+          "dtype": ">i8",
+          "finite_count": 8500,
+          "shape": [
+            8500
+          ],
+          "size": 8500
+        },
+        "weight": {
+          "dtype": ">f8",
+          "finite_count": 382500,
+          "shape": [
+            8500,
+            45
+          ],
+          "size": 382500
+        }
+      }
+    },
+    {
+      "index": 5,
+      "name": "window:Bandpower",
+      "numeric_summary": {
+        "values": {
+          "dtype": ">i8",
+          "finite_count": 8500,
+          "shape": [
+            8500
+          ],
+          "size": 8500
+        },
+        "weight": {
+          "dtype": ">f8",
+          "finite_count": 382500,
+          "shape": [
+            8500,
+            45
+          ],
+          "size": 382500
+        }
+      }
+    },
+    {
+      "index": 7,
+      "name": "data:cl_00",
+      "numeric_summary": {
+        "ell": {
+          "dtype": ">f8",
+          "finite_count": 45,
+          "shape": [
+            45
+          ],
+          "size": 45
+        },
+        "value": {
+          "dtype": ">f8",
+          "finite_count": 45,
+          "shape": [
+            45
+          ],
+          "size": 45
+        },
+        "window": {
+          "dtype": ">i8",
+          "finite_count": 45,
+          "shape": [
+            45
+          ],
+          "size": 45
+        },
+        "window_ind": {
+          "dtype": ">i8",
+          "finite_count": 45,
+          "shape": [
+            45
+          ],
+          "size": 45
+        }
+      }
+    },
+    {
+      "index": 8,
+      "name": "data:cl_0e",
+      "numeric_summary": {
+        "ell": {
+          "dtype": ">f8",
+          "finite_count": 45,
+          "shape": [
+            45
+          ],
+          "size": 45
+        },
+        "value": {
+          "dtype": ">f8",
+          "finite_count": 45,
+          "shape": [
+            45
+          ],
+          "size": 45
+        },
+        "window": {
+          "dtype": ">i8",
+          "finite_count": 45,
+          "shape": [
+            45
+          ],
+          "size": 45
+        },
+        "window_ind": {
+          "dtype": ">i8",
+          "finite_count": 45,
+          "shape": [
+            45
+          ],
+          "size": 45
+        }
+      }
+    },
+    {
+      "index": 9,
+      "name": "data:cl_ee",
+      "numeric_summary": {
+        "ell": {
+          "dtype": ">f8",
+          "finite_count": 45,
+          "shape": [
+            45
+          ],
+          "size": 45
+        },
+        "value": {
+          "dtype": ">f8",
+          "finite_count": 45,
+          "shape": [
+            45
+          ],
+          "size": 45
+        },
+        "window": {
+          "dtype": ">i8",
+          "finite_count": 45,
+          "shape": [
+            45
+          ],
+          "size": 45
+        },
+        "window_ind": {
+          "dtype": ">i8",
+          "finite_count": 45,
+          "shape": [
+            45
+          ],
+          "size": 45
+        }
+      }
+    },
+    {
+      "index": 10,
+      "name": "covariance",
+      "numeric_summary": {
+        "dtype": ">f8",
+        "finite_count": 18225,
+        "ndim": 2,
+        "shape": [
+          135,
+          135
+        ],
+        "size": 18225
+      }
+    }
+  ],
+  "payload_path": "data/act_dr6_cmbonly/dr6_data_cmbonly.fits",
+  "physical_dark_matter_phase_claim_status": "HYPOTHESIS_ONLY",
+  "residual_eigenspace_empirical_run_status": "NOT_RUN",
+  "status": "SCHEMA_LEVEL_EXTRACTION_ONLY_NO_EMPIRICAL_COMPARISON"
+}
