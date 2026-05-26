@@ -1,0 +1,119 @@
+{
+  "id": "ACT_DR6_OFFICIAL_BEST_FITS_DR6_LCDM_PAYLOAD_MANIFEST_2026_05_25",
+  "status": "PAYLOAD_MANIFEST_ONLY_LARGE_FILES_NOT_COMMITTED",
+  "source_url": "https://lambda.gsfc.nasa.gov/data/act/pspipe/best_fits/act_dr6.02_best_fits_dr6_lcdm.tar.gz",
+  "file_count": 22,
+  "files": [
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/act_dr6.02_best_fits_dr6_lcdm.tar.gz",
+      "size_bytes": 7488682,
+      "sha256": "f63d900ac986bd5b5bd3f523556e42b7b4743c13a81547697675432590514992"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/act_dr6_baseline_lcdm_official_best_fit_row_mapping_trial.json",
+      "size_bytes": 70631,
+      "sha256": "a7fa257d58d7c6e1b931eb878be6573af075eb78881810d7905f9df760e2da9f"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/act_dr6_baseline_lcdm_official_best_fit_row_order_audit_trial.json",
+      "size_bytes": 154,
+      "sha256": "4a6774f92539edb5c815b3869aa2d3b87b176d86b18252e17cb675b9dfb56976"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/act_dr6_best_fit_combined_numeric_table.txt",
+      "size_bytes": 36198432,
+      "sha256": "9aa8cb713493fa67fa8f4c1f620d142857225b7fff5688f4c51fa00f8d78d249"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/act_dr6_best_fit_combined_numeric_table_metadata.json",
+      "size_bytes": 63389750,
+      "sha256": "b237349183002a8f0dd912aa26e8653a6bbfd71688b42b7f16ed960bc6ecfaca"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/act_dr6_cmbonly_sacc_row_order_metadata.json",
+      "size_bytes": 51178,
+      "sha256": "15df845b8c0878df6ff14c1db747250bc503c2a0452f48c962952ad0eff377b7"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/extracted/dr6_lcdm_best_fits/cmb.dat",
+      "size_bytes": 2266366,
+      "sha256": "8a83622627c48b925f01c8f14347f7a6877f11e87a4a7cedd086366af96f82b1"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/extracted/dr6_lcdm_best_fits/cmb_and_fg_dr6_pa4_f220xdr6_pa4_f220.dat",
+      "size_bytes": 2253678,
+      "sha256": "c004537b9866f5be1a3c0043fb8fa814fe266e135b302940bf8cf19aae7616a9"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/extracted/dr6_lcdm_best_fits/cmb_and_fg_dr6_pa4_f220xdr6_pa5_f090.dat",
+      "size_bytes": 2260338,
+      "sha256": "05441d879855d283ee95776e5c596abc6a87b58343c4caf8257206be98c28a6e"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/extracted/dr6_lcdm_best_fits/cmb_and_fg_dr6_pa4_f220xdr6_pa5_f150.dat",
+      "size_bytes": 2255060,
+      "sha256": "f4e775ce77a093c5740d7616354a925440c3111b5d903f6e1da689cb8aa32f0e"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/extracted/dr6_lcdm_best_fits/cmb_and_fg_dr6_pa4_f220xdr6_pa6_f090.dat",
+      "size_bytes": 2260526,
+      "sha256": "1a325821216071c362b7767ad3451bd59270491f603eeb5703ab979cf501ea2b"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/extracted/dr6_lcdm_best_fits/cmb_and_fg_dr6_pa4_f220xdr6_pa6_f150.dat",
+      "size_bytes": 2255070,
+      "sha256": "4c049f22c7980e49694bab4e4d32db8d47725adf8a33fdb119fccf6b82641e7e"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/extracted/dr6_lcdm_best_fits/cmb_and_fg_dr6_pa5_f090xdr6_pa5_f090.dat",
+      "size_bytes": 2266364,
+      "sha256": "234c86b32da53453cadd326e8365857c8698812e0310b3899d863f633e1e67b6"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/extracted/dr6_lcdm_best_fits/cmb_and_fg_dr6_pa5_f090xdr6_pa5_f150.dat",
+      "size_bytes": 2266358,
+      "sha256": "bd26817de04e78c41c89c473578841d8a382c8e79c332cad3140225dbbfd5d17"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/extracted/dr6_lcdm_best_fits/cmb_and_fg_dr6_pa5_f090xdr6_pa6_f090.dat",
+      "size_bytes": 2266364,
+      "sha256": "1d714c7cbe55fee35f735665624180465ce0133e8264ef5939e2ccddd1ec6130"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/extracted/dr6_lcdm_best_fits/cmb_and_fg_dr6_pa5_f090xdr6_pa6_f150.dat",
+      "size_bytes": 2266358,
+      "sha256": "c38a9bb8744089b69fcd38bd412d698721f165f642f611fa0b274486216e271f"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/extracted/dr6_lcdm_best_fits/cmb_and_fg_dr6_pa5_f150xdr6_pa5_f150.dat",
+      "size_bytes": 2261096,
+      "sha256": "367c3f4e2f22e7a3ea80a2ac4ca6822d236c41325e000d29eb26df780386548f"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/extracted/dr6_lcdm_best_fits/cmb_and_fg_dr6_pa5_f150xdr6_pa6_f090.dat",
+      "size_bytes": 2266358,
+      "sha256": "6c19191efdfce1a16967c7bd4dd87a60c8f50b0a773440cc006f746c84a3545a"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/extracted/dr6_lcdm_best_fits/cmb_and_fg_dr6_pa5_f150xdr6_pa6_f150.dat",
+      "size_bytes": 2261264,
+      "sha256": "9bc1d90e4ec1e84c17241c6dc64eb3ba176a078817e9eb40692467bcfbd1516a"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/extracted/dr6_lcdm_best_fits/cmb_and_fg_dr6_pa6_f090xdr6_pa6_f090.dat",
+      "size_bytes": 2266364,
+      "sha256": "7fdbdb18ea47fcf773f3edbbcace1e9f275621421649a526cab6d13c6757938d"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/extracted/dr6_lcdm_best_fits/cmb_and_fg_dr6_pa6_f090xdr6_pa6_f150.dat",
+      "size_bytes": 2266358,
+      "sha256": "0ba993493bbff6f272282ce6e0c8948c058774317a2d809c2193c33ff4631105"
+    },
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/extracted/dr6_lcdm_best_fits/cmb_and_fg_dr6_pa6_f150xdr6_pa6_f150.dat",
+      "size_bytes": 2261438,
+      "sha256": "e3436a99c83f5e0012c5bfa8c8371385129684f6b205ca2742407c6dfeee0e02"
+    }
+  ],
+  "large_payload_policy": "Large downloaded/extracted payload files are not committed; only source URL, sizes, and SHA256 digests are retained."
+}

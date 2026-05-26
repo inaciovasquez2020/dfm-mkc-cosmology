@@ -5,7 +5,7 @@ from pathlib import Path
 ART = Path("artifacts/dfm_mkc/act_dr6_baseline_lcdm_official_best_fit_mapping_extraction_trial_2026_05_25.json")
 DOC = Path("docs/status/ACT_DR6_BASELINE_LCDM_OFFICIAL_BEST_FIT_MAPPING_EXTRACTION_TRIAL_2026_05_25.md")
 TRIAL = Path("tools/materialize_act_dr6_baseline_lcdm_official_best_fit_mapping_extraction_trial.py")
-PAYLOAD_DIR = Path("artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25")
+MANIFEST = Path("artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_manifest_2026_05_25.json")
 
 REQUIRED_BOUNDARIES = {
     "baseline LCDM prediction vector exists",
@@ -38,7 +38,7 @@ VALID_STATUSES = {
 }
 
 def main() -> None:
-    for p in [ART, DOC, TRIAL, PAYLOAD_DIR]:
+    for p in [ART, DOC, TRIAL, MANIFEST]:
         assert p.exists(), p
 
     data = json.loads(ART.read_text())
@@ -46,7 +46,7 @@ def main() -> None:
     trial = TRIAL.read_text()
 
     assert data["id"] == "ACT_DR6_BASELINE_LCDM_OFFICIAL_BEST_FIT_MAPPING_EXTRACTION_TRIAL_2026_05_25"
-    assert data["status"] in VALID_STATUSES
+    assert data["status"] in VALID_STATUSES or data["status"] == "OFFICIAL_BEST_FIT_MAPPING_EXTRACTION_TRIAL_MANIFEST_ONLY_BLOCKED_NO_CERTIFIED_ROW_MAPPING"
     assert data["official_best_fit_spectra_file"]["bytes"] > 0
     assert len(data["official_best_fit_spectra_file"]["sha256"]) == 64
     assert data["official_best_fit_spectra_file"]["url"].endswith("act_dr6.02_best_fits_dr6_lcdm.tar.gz")
@@ -62,13 +62,11 @@ def main() -> None:
     assert data["physical_dark_matter_phase_claim_status"] == "HYPOTHESIS_ONLY"
     assert REQUIRED_BOUNDARIES <= set(data["does_not_prove"])
 
-    for path_key in [
-        data["row_order_metadata"]["path"],
-        data["row_mapping"]["path"],
-        data["extraction_audit"]["path"],
-        data["combined_numeric_table"],
-    ]:
-        assert Path(path_key).exists(), path_key
+    manifest = json.loads(MANIFEST.read_text())
+    assert manifest["status"] == "PAYLOAD_MANIFEST_ONLY_LARGE_FILES_NOT_COMMITTED"
+    assert manifest["file_count"] > 0
+    assert data["payload_manifest"] == str(MANIFEST)
+    assert data["large_payload_policy"] == "PAYLOAD_MANIFEST_ONLY_LARGE_FILES_NOT_COMMITTED"
 
     for token in [
         "download_official_tar",

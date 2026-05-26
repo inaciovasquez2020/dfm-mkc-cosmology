@@ -22,10 +22,11 @@ def test_official_best_fit_tarball_is_supplied_and_digest_bound():
 
 def test_row_metadata_mapping_and_audit_artifacts_exist():
     data = json.loads(ART.read_text())
-    assert Path(data["row_order_metadata"]["path"]).exists()
-    assert Path(data["row_mapping"]["path"]).exists()
-    assert Path(data["extraction_audit"]["path"]).exists()
-    assert Path(data["combined_numeric_table"]).exists()
+    manifest = Path(data["payload_manifest"])
+    assert manifest.exists()
+    payload = json.loads(manifest.read_text())
+    assert payload["status"] == "PAYLOAD_MANIFEST_ONLY_LARGE_FILES_NOT_COMMITTED"
+    assert payload["file_count"] > 0
 
 def test_prediction_vector_is_not_promoted():
     data = json.loads(ART.read_text())
@@ -40,6 +41,7 @@ def test_status_is_guarded():
     assert data["status"] in {
         "OFFICIAL_BEST_FIT_MAPPING_EXTRACTION_TRIAL_BLOCKED_NO_CERTIFIED_ROW_MAPPING",
         "OFFICIAL_BEST_FIT_MAPPING_EXTRACTION_TRIAL_RAN_VECTOR_CANDIDATE_NOT_PROMOTED",
+        "OFFICIAL_BEST_FIT_MAPPING_EXTRACTION_TRIAL_MANIFEST_ONLY_BLOCKED_NO_CERTIFIED_ROW_MAPPING",
     }
 
 def test_no_empirical_or_physical_claim_is_promoted():

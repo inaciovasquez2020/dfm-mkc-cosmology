@@ -24,6 +24,12 @@ The trial may construct `row_mapping` only if every ACT DR6 CMB-only target row 
 - unique source column;
 - full target-index coverage.
 
+## Large payload policy
+
+`PAYLOAD_MANIFEST_ONLY_LARGE_FILES_NOT_COMMITTED`
+
+Downloaded and extracted best-fit payload files are represented by a compact manifest of source URL, file sizes, and SHA256 digests; large payload files are not committed.
+
 ## Promotion rule
 
 `ACT_DR6_BASELINE_LCDM_PREDICTION_VECTOR` is not promoted by this record.
