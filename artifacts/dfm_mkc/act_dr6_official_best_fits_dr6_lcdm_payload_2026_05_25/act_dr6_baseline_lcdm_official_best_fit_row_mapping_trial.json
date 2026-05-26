@@ -1,0 +1,2714 @@
+{
+  "status": "ROW_MAPPING_BLOCKED_UNCERTIFIED_SACC_TO_BEST_FIT_MATCH",
+  "source": "official ACT DR6.02 LCDM best-fit tarball plus ACT DR6 CMB-only SACC row metadata",
+  "mapping_file": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/act_dr6_baseline_lcdm_official_best_fit_row_mapping_trial.json",
+  "combined_table": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/act_dr6_best_fit_combined_numeric_table.txt",
+  "combined_table_metadata": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/act_dr6_best_fit_combined_numeric_table_metadata.json",
+  "official_best_fit_tar_sha256": "f63d900ac986bd5b5bd3f523556e42b7b4743c13a81547697675432590514992",
+  "ordering_certificate": "artifacts/dfm_mkc/act_dr6_prediction_vector_ordering_certificate_2026_05_25.json",
+  "row_mapping": [],
+  "failure_count": 135,
+  "failures": [
+    {
+      "target_index": 0,
+      "reason": "no best-fit ell match for ell=600.5",
+      "row": {
+        "target_index": 0,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "0",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "600.5"
+        },
+        "ell": 600.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 1,
+      "reason": "no best-fit ell match for ell=650.5",
+      "row": {
+        "target_index": 1,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "1",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "650.5"
+        },
+        "ell": 650.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 2,
+      "reason": "no best-fit ell match for ell=700.4999999999999",
+      "row": {
+        "target_index": 2,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "2",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "700.4999999999999"
+        },
+        "ell": 700.4999999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 3,
+      "reason": "no best-fit ell match for ell=750.5000000000001",
+      "row": {
+        "target_index": 3,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "3",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "750.5000000000001"
+        },
+        "ell": 750.5000000000001,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 4,
+      "reason": "no best-fit ell match for ell=800.4999999999999",
+      "row": {
+        "target_index": 4,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "4",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "800.4999999999999"
+        },
+        "ell": 800.4999999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 5,
+      "reason": "no best-fit ell match for ell=850.5000000000001",
+      "row": {
+        "target_index": 5,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "5",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "850.5000000000001"
+        },
+        "ell": 850.5000000000001,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 6,
+      "reason": "no best-fit ell match for ell=900.4999999999999",
+      "row": {
+        "target_index": 6,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "6",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "900.4999999999999"
+        },
+        "ell": 900.4999999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 7,
+      "reason": "no best-fit ell match for ell=950.5000000000002",
+      "row": {
+        "target_index": 7,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "7",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "950.5000000000002"
+        },
+        "ell": 950.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 8,
+      "reason": "no best-fit ell match for ell=1000.4999999999999",
+      "row": {
+        "target_index": 8,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "8",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1000.4999999999999"
+        },
+        "ell": 1000.4999999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 9,
+      "reason": "no best-fit ell match for ell=1050.5000000000002",
+      "row": {
+        "target_index": 9,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "9",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1050.5000000000002"
+        },
+        "ell": 1050.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 10,
+      "reason": "no best-fit ell match for ell=1100.5",
+      "row": {
+        "target_index": 10,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "10",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1100.5"
+        },
+        "ell": 1100.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 11,
+      "reason": "no best-fit ell match for ell=1150.5",
+      "row": {
+        "target_index": 11,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "11",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1150.5"
+        },
+        "ell": 1150.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 12,
+      "reason": "no best-fit ell match for ell=1200.5",
+      "row": {
+        "target_index": 12,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "12",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1200.5"
+        },
+        "ell": 1200.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 13,
+      "reason": "no best-fit ell match for ell=1250.5",
+      "row": {
+        "target_index": 13,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "13",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1250.5"
+        },
+        "ell": 1250.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 14,
+      "reason": "no best-fit ell match for ell=1300.5",
+      "row": {
+        "target_index": 14,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "14",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1300.5"
+        },
+        "ell": 1300.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 15,
+      "reason": "no best-fit ell match for ell=1350.5",
+      "row": {
+        "target_index": 15,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "15",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1350.5"
+        },
+        "ell": 1350.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 16,
+      "reason": "no best-fit ell match for ell=1400.5",
+      "row": {
+        "target_index": 16,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "16",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1400.5"
+        },
+        "ell": 1400.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 17,
+      "reason": "no best-fit ell match for ell=1450.5",
+      "row": {
+        "target_index": 17,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "17",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1450.5"
+        },
+        "ell": 1450.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 18,
+      "reason": "no best-fit ell match for ell=1500.5",
+      "row": {
+        "target_index": 18,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "18",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1500.5"
+        },
+        "ell": 1500.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 19,
+      "reason": "no best-fit ell match for ell=1550.5",
+      "row": {
+        "target_index": 19,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "19",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1550.5"
+        },
+        "ell": 1550.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 20,
+      "reason": "no best-fit ell match for ell=1600.5000000000002",
+      "row": {
+        "target_index": 20,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "20",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1600.5000000000002"
+        },
+        "ell": 1600.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 21,
+      "reason": "no best-fit ell match for ell=1650.5",
+      "row": {
+        "target_index": 21,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "21",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1650.5"
+        },
+        "ell": 1650.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 22,
+      "reason": "no best-fit ell match for ell=1700.5000000000002",
+      "row": {
+        "target_index": 22,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "22",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1700.5000000000002"
+        },
+        "ell": 1700.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 23,
+      "reason": "no best-fit ell match for ell=1750.5",
+      "row": {
+        "target_index": 23,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "23",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1750.5"
+        },
+        "ell": 1750.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 24,
+      "reason": "no best-fit ell match for ell=1800.5000000000002",
+      "row": {
+        "target_index": 24,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "24",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1800.5000000000002"
+        },
+        "ell": 1800.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 25,
+      "reason": "no best-fit ell match for ell=1850.5",
+      "row": {
+        "target_index": 25,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "25",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1850.5"
+        },
+        "ell": 1850.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 26,
+      "reason": "no best-fit ell match for ell=1900.5000000000002",
+      "row": {
+        "target_index": 26,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "26",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1900.5000000000002"
+        },
+        "ell": 1900.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 27,
+      "reason": "no best-fit ell match for ell=1950.5",
+      "row": {
+        "target_index": 27,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "27",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "1950.5"
+        },
+        "ell": 1950.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 28,
+      "reason": "no best-fit ell match for ell=2000.5",
+      "row": {
+        "target_index": 28,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "28",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "2000.5"
+        },
+        "ell": 2000.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 29,
+      "reason": "no best-fit ell match for ell=2075.5",
+      "row": {
+        "target_index": 29,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "29",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "2075.5"
+        },
+        "ell": 2075.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 30,
+      "reason": "no best-fit ell match for ell=2175.5000000000005",
+      "row": {
+        "target_index": 30,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "30",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "2175.5000000000005"
+        },
+        "ell": 2175.5000000000005,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 31,
+      "reason": "no best-fit ell match for ell=2275.5000000000005",
+      "row": {
+        "target_index": 31,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "31",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "2275.5000000000005"
+        },
+        "ell": 2275.5000000000005,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 32,
+      "reason": "no best-fit ell match for ell=2375.5",
+      "row": {
+        "target_index": 32,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "32",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "2375.5"
+        },
+        "ell": 2375.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 33,
+      "reason": "no best-fit ell match for ell=2475.5",
+      "row": {
+        "target_index": 33,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "33",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "2475.5"
+        },
+        "ell": 2475.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 34,
+      "reason": "no best-fit ell match for ell=2625.5",
+      "row": {
+        "target_index": 34,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "34",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "2625.5"
+        },
+        "ell": 2625.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 35,
+      "reason": "no best-fit ell match for ell=2825.5",
+      "row": {
+        "target_index": 35,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "35",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "2825.5"
+        },
+        "ell": 2825.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 36,
+      "reason": "no best-fit ell match for ell=3025.5",
+      "row": {
+        "target_index": 36,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "36",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "3025.5"
+        },
+        "ell": 3025.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 37,
+      "reason": "no best-fit ell match for ell=3325.4999999999995",
+      "row": {
+        "target_index": 37,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "37",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "3325.4999999999995"
+        },
+        "ell": 3325.4999999999995,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 38,
+      "reason": "no best-fit ell match for ell=3725.5",
+      "row": {
+        "target_index": 38,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "38",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "3725.5"
+        },
+        "ell": 3725.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 39,
+      "reason": "no best-fit ell match for ell=4125.5",
+      "row": {
+        "target_index": 39,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "39",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "4125.5"
+        },
+        "ell": 4125.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 40,
+      "reason": "no best-fit ell match for ell=4525.499999999999",
+      "row": {
+        "target_index": 40,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "40",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "4525.499999999999"
+        },
+        "ell": 4525.499999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 41,
+      "reason": "no best-fit ell match for ell=4925.499999999999",
+      "row": {
+        "target_index": 41,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "41",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "4925.499999999999"
+        },
+        "ell": 4925.499999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 42,
+      "reason": "no best-fit ell match for ell=5325.500000000001",
+      "row": {
+        "target_index": 42,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "42",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "5325.500000000001"
+        },
+        "ell": 5325.500000000001,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 43,
+      "reason": "no best-fit ell match for ell=5725.499999999999",
+      "row": {
+        "target_index": 43,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "43",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "5725.499999999999"
+        },
+        "ell": 5725.499999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 44,
+      "reason": "no best-fit ell match for ell=6125.500000000001",
+      "row": {
+        "target_index": 44,
+        "data_type": "cl_00",
+        "spectrum_label": "TT",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s0"
+        ],
+        "tags": {
+          "window_ind": "44",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a06d0>",
+          "ell": "6125.500000000001"
+        },
+        "ell": 6125.500000000001,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 45,
+      "reason": "no best-fit ell match for ell=600.5",
+      "row": {
+        "target_index": 45,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "0",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "600.5"
+        },
+        "ell": 600.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 46,
+      "reason": "no best-fit ell match for ell=650.5",
+      "row": {
+        "target_index": 46,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "1",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "650.5"
+        },
+        "ell": 650.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 47,
+      "reason": "no best-fit ell match for ell=700.4999999999999",
+      "row": {
+        "target_index": 47,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "2",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "700.4999999999999"
+        },
+        "ell": 700.4999999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 48,
+      "reason": "no best-fit ell match for ell=750.5000000000001",
+      "row": {
+        "target_index": 48,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "3",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "750.5000000000001"
+        },
+        "ell": 750.5000000000001,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 49,
+      "reason": "no best-fit ell match for ell=800.4999999999999",
+      "row": {
+        "target_index": 49,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "4",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "800.4999999999999"
+        },
+        "ell": 800.4999999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 50,
+      "reason": "no best-fit ell match for ell=850.5000000000001",
+      "row": {
+        "target_index": 50,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "5",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "850.5000000000001"
+        },
+        "ell": 850.5000000000001,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 51,
+      "reason": "no best-fit ell match for ell=900.4999999999999",
+      "row": {
+        "target_index": 51,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "6",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "900.4999999999999"
+        },
+        "ell": 900.4999999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 52,
+      "reason": "no best-fit ell match for ell=950.5000000000002",
+      "row": {
+        "target_index": 52,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "7",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "950.5000000000002"
+        },
+        "ell": 950.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 53,
+      "reason": "no best-fit ell match for ell=1000.4999999999999",
+      "row": {
+        "target_index": 53,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "8",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1000.4999999999999"
+        },
+        "ell": 1000.4999999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 54,
+      "reason": "no best-fit ell match for ell=1050.5000000000002",
+      "row": {
+        "target_index": 54,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "9",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1050.5000000000002"
+        },
+        "ell": 1050.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 55,
+      "reason": "no best-fit ell match for ell=1100.5",
+      "row": {
+        "target_index": 55,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "10",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1100.5"
+        },
+        "ell": 1100.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 56,
+      "reason": "no best-fit ell match for ell=1150.5",
+      "row": {
+        "target_index": 56,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "11",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1150.5"
+        },
+        "ell": 1150.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 57,
+      "reason": "no best-fit ell match for ell=1200.5",
+      "row": {
+        "target_index": 57,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "12",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1200.5"
+        },
+        "ell": 1200.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 58,
+      "reason": "no best-fit ell match for ell=1250.5",
+      "row": {
+        "target_index": 58,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "13",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1250.5"
+        },
+        "ell": 1250.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 59,
+      "reason": "no best-fit ell match for ell=1300.5",
+      "row": {
+        "target_index": 59,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "14",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1300.5"
+        },
+        "ell": 1300.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 60,
+      "reason": "no best-fit ell match for ell=1350.5",
+      "row": {
+        "target_index": 60,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "15",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1350.5"
+        },
+        "ell": 1350.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 61,
+      "reason": "no best-fit ell match for ell=1400.5",
+      "row": {
+        "target_index": 61,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "16",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1400.5"
+        },
+        "ell": 1400.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 62,
+      "reason": "no best-fit ell match for ell=1450.5",
+      "row": {
+        "target_index": 62,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "17",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1450.5"
+        },
+        "ell": 1450.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 63,
+      "reason": "no best-fit ell match for ell=1500.5",
+      "row": {
+        "target_index": 63,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "18",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1500.5"
+        },
+        "ell": 1500.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 64,
+      "reason": "no best-fit ell match for ell=1550.5",
+      "row": {
+        "target_index": 64,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "19",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1550.5"
+        },
+        "ell": 1550.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 65,
+      "reason": "no best-fit ell match for ell=1600.5000000000002",
+      "row": {
+        "target_index": 65,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "20",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1600.5000000000002"
+        },
+        "ell": 1600.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 66,
+      "reason": "no best-fit ell match for ell=1650.5",
+      "row": {
+        "target_index": 66,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "21",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1650.5"
+        },
+        "ell": 1650.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 67,
+      "reason": "no best-fit ell match for ell=1700.5000000000002",
+      "row": {
+        "target_index": 67,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "22",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1700.5000000000002"
+        },
+        "ell": 1700.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 68,
+      "reason": "no best-fit ell match for ell=1750.5",
+      "row": {
+        "target_index": 68,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "23",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1750.5"
+        },
+        "ell": 1750.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 69,
+      "reason": "no best-fit ell match for ell=1800.5000000000002",
+      "row": {
+        "target_index": 69,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "24",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1800.5000000000002"
+        },
+        "ell": 1800.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 70,
+      "reason": "no best-fit ell match for ell=1850.5",
+      "row": {
+        "target_index": 70,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "25",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1850.5"
+        },
+        "ell": 1850.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 71,
+      "reason": "no best-fit ell match for ell=1900.5000000000002",
+      "row": {
+        "target_index": 71,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "26",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1900.5000000000002"
+        },
+        "ell": 1900.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 72,
+      "reason": "no best-fit ell match for ell=1950.5",
+      "row": {
+        "target_index": 72,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "27",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "1950.5"
+        },
+        "ell": 1950.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 73,
+      "reason": "no best-fit ell match for ell=2000.5",
+      "row": {
+        "target_index": 73,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "28",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "2000.5"
+        },
+        "ell": 2000.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 74,
+      "reason": "no best-fit ell match for ell=2075.5",
+      "row": {
+        "target_index": 74,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "29",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "2075.5"
+        },
+        "ell": 2075.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 75,
+      "reason": "no best-fit ell match for ell=2175.5000000000005",
+      "row": {
+        "target_index": 75,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "30",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "2175.5000000000005"
+        },
+        "ell": 2175.5000000000005,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 76,
+      "reason": "no best-fit ell match for ell=2275.5000000000005",
+      "row": {
+        "target_index": 76,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "31",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "2275.5000000000005"
+        },
+        "ell": 2275.5000000000005,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 77,
+      "reason": "no best-fit ell match for ell=2375.5",
+      "row": {
+        "target_index": 77,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "32",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "2375.5"
+        },
+        "ell": 2375.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 78,
+      "reason": "no best-fit ell match for ell=2475.5",
+      "row": {
+        "target_index": 78,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "33",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "2475.5"
+        },
+        "ell": 2475.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 79,
+      "reason": "no best-fit ell match for ell=2625.5",
+      "row": {
+        "target_index": 79,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "34",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "2625.5"
+        },
+        "ell": 2625.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 80,
+      "reason": "no best-fit ell match for ell=2825.5",
+      "row": {
+        "target_index": 80,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "35",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "2825.5"
+        },
+        "ell": 2825.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 81,
+      "reason": "no best-fit ell match for ell=3025.5",
+      "row": {
+        "target_index": 81,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "36",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "3025.5"
+        },
+        "ell": 3025.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 82,
+      "reason": "no best-fit ell match for ell=3325.4999999999995",
+      "row": {
+        "target_index": 82,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "37",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "3325.4999999999995"
+        },
+        "ell": 3325.4999999999995,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 83,
+      "reason": "no best-fit ell match for ell=3725.5",
+      "row": {
+        "target_index": 83,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "38",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "3725.5"
+        },
+        "ell": 3725.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 84,
+      "reason": "no best-fit ell match for ell=4125.5",
+      "row": {
+        "target_index": 84,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "39",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "4125.5"
+        },
+        "ell": 4125.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 85,
+      "reason": "no best-fit ell match for ell=4525.499999999999",
+      "row": {
+        "target_index": 85,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "40",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "4525.499999999999"
+        },
+        "ell": 4525.499999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 86,
+      "reason": "no best-fit ell match for ell=4925.499999999999",
+      "row": {
+        "target_index": 86,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "41",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "4925.499999999999"
+        },
+        "ell": 4925.499999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 87,
+      "reason": "no best-fit ell match for ell=5325.500000000001",
+      "row": {
+        "target_index": 87,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "42",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "5325.500000000001"
+        },
+        "ell": 5325.500000000001,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 88,
+      "reason": "no best-fit ell match for ell=5725.499999999999",
+      "row": {
+        "target_index": 88,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "43",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "5725.499999999999"
+        },
+        "ell": 5725.499999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 89,
+      "reason": "no best-fit ell match for ell=6125.500000000001",
+      "row": {
+        "target_index": 89,
+        "data_type": "cl_0e",
+        "spectrum_label": "TE",
+        "tracers": [
+          "dr6_cmb_s0",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "44",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0760>",
+          "ell": "6125.500000000001"
+        },
+        "ell": 6125.500000000001,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 90,
+      "reason": "no best-fit ell match for ell=600.5",
+      "row": {
+        "target_index": 90,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "0",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "600.5"
+        },
+        "ell": 600.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 91,
+      "reason": "no best-fit ell match for ell=650.5",
+      "row": {
+        "target_index": 91,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "1",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "650.5"
+        },
+        "ell": 650.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 92,
+      "reason": "no best-fit ell match for ell=700.4999999999999",
+      "row": {
+        "target_index": 92,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "2",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "700.4999999999999"
+        },
+        "ell": 700.4999999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 93,
+      "reason": "no best-fit ell match for ell=750.5000000000001",
+      "row": {
+        "target_index": 93,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "3",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "750.5000000000001"
+        },
+        "ell": 750.5000000000001,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 94,
+      "reason": "no best-fit ell match for ell=800.4999999999999",
+      "row": {
+        "target_index": 94,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "4",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "800.4999999999999"
+        },
+        "ell": 800.4999999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 95,
+      "reason": "no best-fit ell match for ell=850.5000000000001",
+      "row": {
+        "target_index": 95,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "5",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "850.5000000000001"
+        },
+        "ell": 850.5000000000001,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 96,
+      "reason": "no best-fit ell match for ell=900.4999999999999",
+      "row": {
+        "target_index": 96,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "6",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "900.4999999999999"
+        },
+        "ell": 900.4999999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 97,
+      "reason": "no best-fit ell match for ell=950.5000000000002",
+      "row": {
+        "target_index": 97,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "7",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "950.5000000000002"
+        },
+        "ell": 950.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 98,
+      "reason": "no best-fit ell match for ell=1000.4999999999999",
+      "row": {
+        "target_index": 98,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "8",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1000.4999999999999"
+        },
+        "ell": 1000.4999999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 99,
+      "reason": "no best-fit ell match for ell=1050.5000000000002",
+      "row": {
+        "target_index": 99,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "9",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1050.5000000000002"
+        },
+        "ell": 1050.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 100,
+      "reason": "no best-fit ell match for ell=1100.5",
+      "row": {
+        "target_index": 100,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "10",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1100.5"
+        },
+        "ell": 1100.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 101,
+      "reason": "no best-fit ell match for ell=1150.5",
+      "row": {
+        "target_index": 101,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "11",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1150.5"
+        },
+        "ell": 1150.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 102,
+      "reason": "no best-fit ell match for ell=1200.5",
+      "row": {
+        "target_index": 102,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "12",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1200.5"
+        },
+        "ell": 1200.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 103,
+      "reason": "no best-fit ell match for ell=1250.5",
+      "row": {
+        "target_index": 103,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "13",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1250.5"
+        },
+        "ell": 1250.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 104,
+      "reason": "no best-fit ell match for ell=1300.5",
+      "row": {
+        "target_index": 104,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "14",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1300.5"
+        },
+        "ell": 1300.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 105,
+      "reason": "no best-fit ell match for ell=1350.5",
+      "row": {
+        "target_index": 105,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "15",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1350.5"
+        },
+        "ell": 1350.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 106,
+      "reason": "no best-fit ell match for ell=1400.5",
+      "row": {
+        "target_index": 106,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "16",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1400.5"
+        },
+        "ell": 1400.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 107,
+      "reason": "no best-fit ell match for ell=1450.5",
+      "row": {
+        "target_index": 107,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "17",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1450.5"
+        },
+        "ell": 1450.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 108,
+      "reason": "no best-fit ell match for ell=1500.5",
+      "row": {
+        "target_index": 108,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "18",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1500.5"
+        },
+        "ell": 1500.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 109,
+      "reason": "no best-fit ell match for ell=1550.5",
+      "row": {
+        "target_index": 109,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "19",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1550.5"
+        },
+        "ell": 1550.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 110,
+      "reason": "no best-fit ell match for ell=1600.5000000000002",
+      "row": {
+        "target_index": 110,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "20",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1600.5000000000002"
+        },
+        "ell": 1600.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 111,
+      "reason": "no best-fit ell match for ell=1650.5",
+      "row": {
+        "target_index": 111,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "21",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1650.5"
+        },
+        "ell": 1650.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 112,
+      "reason": "no best-fit ell match for ell=1700.5000000000002",
+      "row": {
+        "target_index": 112,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "22",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1700.5000000000002"
+        },
+        "ell": 1700.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 113,
+      "reason": "no best-fit ell match for ell=1750.5",
+      "row": {
+        "target_index": 113,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "23",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1750.5"
+        },
+        "ell": 1750.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 114,
+      "reason": "no best-fit ell match for ell=1800.5000000000002",
+      "row": {
+        "target_index": 114,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "24",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1800.5000000000002"
+        },
+        "ell": 1800.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 115,
+      "reason": "no best-fit ell match for ell=1850.5",
+      "row": {
+        "target_index": 115,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "25",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1850.5"
+        },
+        "ell": 1850.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 116,
+      "reason": "no best-fit ell match for ell=1900.5000000000002",
+      "row": {
+        "target_index": 116,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "26",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1900.5000000000002"
+        },
+        "ell": 1900.5000000000002,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 117,
+      "reason": "no best-fit ell match for ell=1950.5",
+      "row": {
+        "target_index": 117,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "27",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "1950.5"
+        },
+        "ell": 1950.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 118,
+      "reason": "no best-fit ell match for ell=2000.5",
+      "row": {
+        "target_index": 118,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "28",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "2000.5"
+        },
+        "ell": 2000.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 119,
+      "reason": "no best-fit ell match for ell=2075.5",
+      "row": {
+        "target_index": 119,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "29",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "2075.5"
+        },
+        "ell": 2075.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 120,
+      "reason": "no best-fit ell match for ell=2175.5000000000005",
+      "row": {
+        "target_index": 120,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "30",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "2175.5000000000005"
+        },
+        "ell": 2175.5000000000005,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 121,
+      "reason": "no best-fit ell match for ell=2275.5000000000005",
+      "row": {
+        "target_index": 121,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "31",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "2275.5000000000005"
+        },
+        "ell": 2275.5000000000005,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 122,
+      "reason": "no best-fit ell match for ell=2375.5",
+      "row": {
+        "target_index": 122,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "32",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "2375.5"
+        },
+        "ell": 2375.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 123,
+      "reason": "no best-fit ell match for ell=2475.5",
+      "row": {
+        "target_index": 123,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "33",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "2475.5"
+        },
+        "ell": 2475.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 124,
+      "reason": "no best-fit ell match for ell=2625.5",
+      "row": {
+        "target_index": 124,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "34",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "2625.5"
+        },
+        "ell": 2625.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 125,
+      "reason": "no best-fit ell match for ell=2825.5",
+      "row": {
+        "target_index": 125,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "35",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "2825.5"
+        },
+        "ell": 2825.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 126,
+      "reason": "no best-fit ell match for ell=3025.5",
+      "row": {
+        "target_index": 126,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "36",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "3025.5"
+        },
+        "ell": 3025.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 127,
+      "reason": "no best-fit ell match for ell=3325.4999999999995",
+      "row": {
+        "target_index": 127,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "37",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "3325.4999999999995"
+        },
+        "ell": 3325.4999999999995,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 128,
+      "reason": "no best-fit ell match for ell=3725.5",
+      "row": {
+        "target_index": 128,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "38",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "3725.5"
+        },
+        "ell": 3725.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 129,
+      "reason": "no best-fit ell match for ell=4125.5",
+      "row": {
+        "target_index": 129,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "39",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "4125.5"
+        },
+        "ell": 4125.5,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 130,
+      "reason": "no best-fit ell match for ell=4525.499999999999",
+      "row": {
+        "target_index": 130,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "40",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "4525.499999999999"
+        },
+        "ell": 4525.499999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 131,
+      "reason": "no best-fit ell match for ell=4925.499999999999",
+      "row": {
+        "target_index": 131,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "41",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "4925.499999999999"
+        },
+        "ell": 4925.499999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 132,
+      "reason": "no best-fit ell match for ell=5325.500000000001",
+      "row": {
+        "target_index": 132,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "42",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "5325.500000000001"
+        },
+        "ell": 5325.500000000001,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 133,
+      "reason": "no best-fit ell match for ell=5725.499999999999",
+      "row": {
+        "target_index": 133,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "43",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "5725.499999999999"
+        },
+        "ell": 5725.499999999999,
+        "value_present": true
+      }
+    },
+    {
+      "target_index": 134,
+      "reason": "no best-fit ell match for ell=6125.500000000001",
+      "row": {
+        "target_index": 134,
+        "data_type": "cl_ee",
+        "spectrum_label": "EE",
+        "tracers": [
+          "dr6_cmb_s2",
+          "dr6_cmb_s2"
+        ],
+        "tags": {
+          "window_ind": "44",
+          "window": "<sacc.windows.BandpowerWindow object at 0x1292a0250>",
+          "ell": "6125.500000000001"
+        },
+        "ell": 6125.500000000001,
+        "value_present": true
+      }
+    }
+  ],
+  "failure_truncated": false
+}
