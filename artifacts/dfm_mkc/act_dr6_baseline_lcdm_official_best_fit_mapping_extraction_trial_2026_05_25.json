@@ -1,0 +1,73 @@
+{
+  "id": "ACT_DR6_BASELINE_LCDM_OFFICIAL_BEST_FIT_MAPPING_EXTRACTION_TRIAL_2026_05_25",
+  "status": "OFFICIAL_BEST_FIT_MAPPING_EXTRACTION_TRIAL_MANIFEST_ONLY_BLOCKED_NO_CERTIFIED_ROW_MAPPING",
+  "program": "DFM_MKC_DARK_SECTOR_VALIDATION",
+  "depends_on": [
+    "ACT_DR6_BASELINE_LCDM_OFFICIAL_BEST_FIT_VECTOR_ROW_ORDER_MAPPING_TARGET_2026_05_25",
+    "ACT_DR6_BASELINE_LCDM_OFFICIAL_BEST_FIT_VECTOR_EXTRACTION_HARNESS_2026_05_25",
+    "ACT_DR6_PREDICTION_VECTOR_ORDERING_CERTIFICATE_2026_05_25"
+  ],
+  "official_best_fit_spectra_file": {
+    "url": "https://lambda.gsfc.nasa.gov/data/act/pspipe/best_fits/act_dr6.02_best_fits_dr6_lcdm.tar.gz",
+    "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/act_dr6.02_best_fits_dr6_lcdm.tar.gz",
+    "bytes": 7488682,
+    "sha256": "f63d900ac986bd5b5bd3f523556e42b7b4743c13a81547697675432590514992"
+  },
+  "official_source_info_url": "https://lambda.gsfc.nasa.gov/product/act/act_dr6.02/act_dr6.02_pspipe_best_fits_info.html",
+  "official_source_download_page": "https://lambda.gsfc.nasa.gov/product/act/act_dr6.02/act_dr6.02_pspipe_best_fits_get.html",
+  "extracted_member_count": 17,
+  "combined_numeric_table": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/act_dr6_best_fit_combined_numeric_table.txt",
+  "combined_numeric_table_sha256": "9aa8cb713493fa67fa8f4c1f620d142857225b7fff5688f4c51fa00f8d78d249",
+  "row_order_metadata": {
+    "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/act_dr6_cmbonly_sacc_row_order_metadata.json",
+    "status": "SACC_ROW_METADATA_MATERIALIZED",
+    "row_count": 135
+  },
+  "row_mapping": {
+    "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/act_dr6_baseline_lcdm_official_best_fit_row_mapping_trial.json",
+    "status": "ROW_MAPPING_BLOCKED_UNCERTIFIED_SACC_TO_BEST_FIT_MATCH",
+    "mapped_rows": 0,
+    "failure_count": 135
+  },
+  "extraction_audit": {
+    "path": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_2026_05_25/act_dr6_baseline_lcdm_official_best_fit_row_order_audit_trial.json",
+    "status": "EXTRACTION_NOT_RUN_ROW_MAPPING_NOT_CERTIFIED"
+  },
+  "row_order_mapping_target_status": "ROW_ORDER_MAPPING_TARGET_ONLY_NO_MAPPING_SUPPLIED",
+  "required_prediction_vector_shape": [
+    135
+  ],
+  "promotion_decision": "DO_NOT_PROMOTE_TO_ACT_DR6_BASELINE_LCDM_PREDICTION_VECTOR",
+  "allowed_next_object": "ACT_DR6_BASELINE_LCDM_OFFICIAL_BEST_FIT_VECTOR_ROW_ORDER_MAPPING",
+  "still_missing_objects_after_this_trial": [
+    "ACT_DR6_BASELINE_LCDM_PREDICTION_VECTOR",
+    "ACT_DR6_DFM_MKC_PREDICTION_VECTOR"
+  ],
+  "physical_dark_matter_phase_claim_status": "HYPOTHESIS_ONLY",
+  "does_not_prove": [
+    "baseline LCDM prediction vector exists",
+    "baseline LCDM prediction vector has been promoted",
+    "baseline LCDM prediction vector is fully row-audited",
+    "baseline LCDM prediction vector is physically correct",
+    "DFM-MKC prediction vector exists",
+    "DFM-MKC prediction vector is correct",
+    "ACT DR6 residual eigenspace empirical comparison has been run",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter resolution",
+    "dark energy resolution",
+    "dark matter is liquid",
+    "dark matter is solid",
+    "dark matter phase transition is physically real",
+    "ACT validation of DFM-MKC",
+    "CMB validation of DFM-MKC",
+    "independent empirical replication",
+    "gravity closure",
+    "Chronos-RR",
+    "H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "payload_manifest": "artifacts/dfm_mkc/act_dr6_official_best_fits_dr6_lcdm_payload_manifest_2026_05_25.json",
+  "large_payload_policy": "PAYLOAD_MANIFEST_ONLY_LARGE_FILES_NOT_COMMITTED"
+}
