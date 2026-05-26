@@ -45,3 +45,12 @@ def test_no_empirical_or_physical_claim_is_promoted():
     assert "dark matter is liquid" in data["does_not_prove"]
     assert "dark matter is solid" in data["does_not_prove"]
     assert "any Clay problem" in data["does_not_prove"]
+
+def test_bound_candidate_artifact_is_committed_when_probe_finds_match():
+    result = json.loads(RESULT.read_text())
+    if result["status"] == "MATCHING_CANDIDATE_FOUND_AND_BOUND":
+        binding = Path(result["binding_result"]["output"])
+        assert binding.exists(), binding
+        bound = json.loads(binding.read_text())
+        assert bound["status"] == "SHAPE_AND_ORDER_BINDING_CANDIDATE_ONLY_NOT_VALIDATED"
+        assert "baseline LCDM prediction vector is official" in bound["does_not_prove"]

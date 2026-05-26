@@ -1,0 +1,21 @@
+{
+  "id": "ACT_DR6_BASELINE_LCDM_PREDICTION_VECTOR_BINDING_CANDIDATE",
+  "status": "SHAPE_AND_ORDER_BINDING_CANDIDATE_ONLY_NOT_VALIDATED",
+  "candidate_path": "artifacts/dfm_mkc/act_dr6_cmbonly_official_data_covariance_2026_05_25.npz",
+  "candidate_key": "covariance_eigenvalues",
+  "candidate_shape": [
+    135
+  ],
+  "candidate_dtype": "float64",
+  "candidate_sha256": "6cab5b6876f05a13b988cb0e8059252c1fe02337e50ab8e0274f3b87a1ef29d8",
+  "ordering_certificate": "artifacts/dfm_mkc/act_dr6_prediction_vector_ordering_certificate_2026_05_25.json",
+  "ordering_certificate_id": "ACT_DR6_PREDICTION_VECTOR_ORDERING_CERTIFICATE_2026_05_25",
+  "row_binding_rule": "candidate entry i is bound to frozen ACT DR6 CMB-only official data-vector row index i",
+  "does_not_prove": [
+    "baseline LCDM prediction vector is official",
+    "baseline LCDM prediction vector is physically correct",
+    "ACT DR6 residual eigenspace empirical comparison has been run",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure"
+  ]
+}

@@ -54,6 +54,16 @@ def main() -> None:
     assert data["required_prediction_vector_shape"] == order["ordering_rule"]["required_prediction_vector_shape"]
     assert data["probe_result_status"] == result["status"]
     assert data["matching_candidate_count"] == result["matching_candidate_count"]
+
+    binding_result = result.get("binding_result")
+    if result["status"] == "MATCHING_CANDIDATE_FOUND_AND_BOUND":
+        assert binding_result is not None
+        assert binding_result["bound"] is True
+        binding_output = Path(binding_result["output"])
+        assert binding_output.exists(), binding_output
+        bound = json.loads(binding_output.read_text())
+        assert bound["status"] == "SHAPE_AND_ORDER_BINDING_CANDIDATE_ONLY_NOT_VALIDATED"
+        assert bound["ordering_certificate_id"] == order["id"]
     assert data["still_missing_objects_after_this_probe"] == [
         "ACT_DR6_BASELINE_LCDM_PREDICTION_VECTOR",
         "ACT_DR6_DFM_MKC_PREDICTION_VECTOR",
