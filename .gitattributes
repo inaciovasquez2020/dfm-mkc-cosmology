@@ -1,1 +1,5 @@
 artifacts/results/model_comparison_real_data.csv text eol=lf
+
+# Binary empirical payloads
+*.fits binary
+*.fits.gz binary
