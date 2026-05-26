@@ -1,0 +1,60 @@
+{
+  "id": "ACT_DR6_BASELINE_LCDM_PREDICTION_VECTOR_CANDIDATE_PROBE_RESULT",
+  "status": "MATCHING_CANDIDATE_FOUND_AND_BOUND",
+  "required_prediction_vector_shape": [
+    135
+  ],
+  "files_scanned": 373,
+  "matching_candidate_count": 1,
+  "matching_candidates": [
+    {
+      "path": "artifacts/dfm_mkc/act_dr6_cmbonly_official_data_covariance_2026_05_25.npz",
+      "suffix": ".npz",
+      "name_score": 2,
+      "matching_vectors": [
+        {
+          "key": "covariance_eigenvalues",
+          "shape": [
+            135
+          ],
+          "ndim": 1
+        },
+        {
+          "key": "data_vector",
+          "shape": [
+            135
+          ],
+          "ndim": 1
+        }
+      ],
+      "rejected_vectors": [
+        {
+          "key": "covariance_matrix",
+          "shape": [
+            135,
+            135
+          ],
+          "ndim": 2
+        }
+      ],
+      "error": null
+    }
+  ],
+  "binding_result": {
+    "candidate": "artifacts/dfm_mkc/act_dr6_cmbonly_official_data_covariance_2026_05_25.npz",
+    "key": "covariance_eigenvalues",
+    "output": "artifacts/dfm_mkc/act_dr6_baseline_lcdm_prediction_vector_binding_candidate_from_probe.json",
+    "returncode": 0,
+    "stdout": "WROTE artifacts/dfm_mkc/act_dr6_baseline_lcdm_prediction_vector_binding_candidate_from_probe.json\n",
+    "stderr": "",
+    "bound": true
+  },
+  "does_not_prove": [
+    "matched candidate is official",
+    "matched candidate is physically correct",
+    "baseline LCDM prediction vector is validated",
+    "ACT DR6 residual eigenspace empirical comparison has been run",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure"
+  ]
+}
