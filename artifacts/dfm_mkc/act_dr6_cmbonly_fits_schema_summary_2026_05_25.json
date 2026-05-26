@@ -1,0 +1,125 @@
+{
+  "hdu_count": 11,
+  "hdus": [
+    {
+      "class": "PrimaryHDU",
+      "columns": [],
+      "index": 0,
+      "name": "PRIMARY",
+      "shape": null
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "id",
+        "min",
+        "max"
+      ],
+      "index": 1,
+      "name": "window:TopHat",
+      "shape": "(0,)"
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "id",
+        "min",
+        "max"
+      ],
+      "index": 2,
+      "name": "window:LogTopHat",
+      "shape": "(0,)"
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "values",
+        "weight"
+      ],
+      "index": 3,
+      "name": "window:Bandpower",
+      "shape": "(8500,)"
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "values",
+        "weight"
+      ],
+      "index": 4,
+      "name": "window:Bandpower",
+      "shape": "(8500,)"
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "values",
+        "weight"
+      ],
+      "index": 5,
+      "name": "window:Bandpower",
+      "shape": "(8500,)"
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "name",
+        "quantity"
+      ],
+      "index": 6,
+      "name": "tracer:Misc",
+      "shape": "(2,)"
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "tracer_0",
+        "tracer_1",
+        "value",
+        "window_ind",
+        "window",
+        "ell"
+      ],
+      "index": 7,
+      "name": "data:cl_00",
+      "shape": "(45,)"
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "tracer_0",
+        "tracer_1",
+        "value",
+        "window_ind",
+        "window",
+        "ell"
+      ],
+      "index": 8,
+      "name": "data:cl_0e",
+      "shape": "(45,)"
+    },
+    {
+      "class": "BinTableHDU",
+      "columns": [
+        "tracer_0",
+        "tracer_1",
+        "value",
+        "window_ind",
+        "window",
+        "ell"
+      ],
+      "index": 9,
+      "name": "data:cl_ee",
+      "shape": "(45,)"
+    },
+    {
+      "class": "ImageHDU",
+      "columns": [],
+      "index": 10,
+      "name": "covariance",
+      "shape": "(135, 135)"
+    }
+  ],
+  "source_file": "data/act_dr6_cmbonly/dr6_data_cmbonly.fits",
+  "status": "ACT_DR6_CMBONLY_FITS_SCHEMA_SUMMARY"
+}
