@@ -1,0 +1,158 @@
+{
+  "id": "DFM_MKC_CLOSED_ACTION_FUNCTIONAL_V1",
+  "date": "2026-05-27",
+  "status": "CONCRETE_ACTION_FUNCTIONAL_SUPPLIED_PHENOMENOLOGICAL_ONLY",
+  "source_dependency": "DFM_MKC_DARK_SECTOR_CLOSED_OBJECT_TARGET_PACKET_2026_05_27",
+  "object_type": "closed covariant action functional",
+  "purpose": "Supply the first concrete mathematical object required by the dark-sector closed-object target packet: a closed variational action for a minimal DFM-MKC rigidity/order sector coupled to gravity.",
+  "spacetime_domain": {
+    "manifold": "A smooth oriented four-dimensional Lorentzian manifold M with boundary partial M allowed.",
+    "metric": "g_{mu nu} with signature (-,+,+,+).",
+    "measure": "d^4x sqrt(-g).",
+    "units": "Natural units c = hbar = 1."
+  },
+  "field_inventory": {
+    "geometric_fields": [
+      "Lorentzian metric g_{mu nu}"
+    ],
+    "dfm_mkc_dark_sector_fields": [
+      "rigidity amplitude phi: M -> R",
+      "periodic structural phase theta: M -> R / 2pi Z"
+    ],
+    "visible_sector_fields": [
+      "ordinary matter fields psi_vis appearing only through L_vis(psi_vis, g) in this V1 action"
+    ]
+  },
+  "dynamical_variables": [
+    "g_{mu nu}",
+    "phi",
+    "theta",
+    "psi_vis"
+  ],
+  "allowed_parameters": {
+    "G": {
+      "role": "Newton gravitational constant",
+      "constraint": "G > 0"
+    },
+    "Lambda": {
+      "role": "bare cosmological constant",
+      "constraint": "real"
+    },
+    "alpha": {
+      "role": "rigidity-amplitude kinetic coefficient",
+      "constraint": "alpha > 0"
+    },
+    "beta": {
+      "role": "phase-gradient stiffness coefficient",
+      "constraint": "beta > 0"
+    },
+    "m_phi_squared": {
+      "role": "quadratic rigidity potential coefficient",
+      "constraint": "real"
+    },
+    "lambda_phi": {
+      "role": "quartic rigidity potential coefficient",
+      "constraint": "lambda_phi >= 0"
+    },
+    "rho_star": {
+      "role": "constant vacuum-offset coefficient in the dark-sector potential",
+      "constraint": "real"
+    }
+  },
+  "potential": {
+    "symbol": "U(phi)",
+    "definition": "U(phi) = rho_star + (1/2) m_phi_squared phi^2 + (1/4) lambda_phi phi^4",
+    "closed_form": true
+  },
+  "lagrangian_density": {
+    "symbol": "L_total",
+    "definition": "L_total = (R - 2 Lambda)/(16 pi G) - (alpha/2) g^{mu nu} nabla_mu phi nabla_nu phi - (beta/2) phi^2 g^{mu nu} nabla_mu theta nabla_nu theta - U(phi) + L_vis(psi_vis, g)",
+    "dark_sector_part": "L_DFM_MKC = - (alpha/2) g^{mu nu} nabla_mu phi nabla_nu phi - (beta/2) phi^2 g^{mu nu} nabla_mu theta nabla_nu theta - U(phi)",
+    "gravity_part": "L_grav = (R - 2 Lambda)/(16 pi G)",
+    "visible_part": "L_vis(psi_vis, g)"
+  },
+  "action_integral": {
+    "symbol": "S_DFM_MKC_V1[g, phi, theta, psi_vis]",
+    "definition": "S = int_M d^4x sqrt(-g) L_total + S_GHY[g]",
+    "boundary_term": "S_GHY[g] = (1/(8 pi G)) int_{partial M} d^3y sqrt(|h|) K when partial M is nonempty",
+    "closed_action": true,
+    "post_hoc_terms_allowed": false
+  },
+  "variation_rules": {
+    "metric_variation": "Vary g^{mu nu} with fixed induced boundary metric for the Einstein-Hilbert term.",
+    "rigidity_amplitude_variation": "Vary phi with compact support or fixed boundary value.",
+    "phase_variation": "Vary theta as a periodic scalar with compact support or fixed boundary value.",
+    "visible_sector_variation": "Vary psi_vis according to the chosen visible-sector Lagrangian L_vis.",
+    "field_equation_derivation_status": "Derivation deferred to DFM_MKC_FIELD_EQUATIONS_V1."
+  },
+  "boundary_terms": {
+    "gravitational_boundary": "Gibbons-Hawking-York term included for metric variation on manifolds with boundary.",
+    "scalar_boundary": "Dirichlet or compact-support variations for phi and theta.",
+    "no_extra_boundary_sources": true
+  },
+  "units_and_dimensions": {
+    "convention": "Natural units c = hbar = 1 in four spacetime dimensions.",
+    "action_dimension": "dimensionless",
+    "lagrangian_density_dimension": "mass^4",
+    "phi_dimension": "mass",
+    "theta_dimension": "dimensionless",
+    "alpha_dimension": "dimensionless",
+    "beta_dimension": "dimensionless",
+    "m_phi_squared_dimension": "mass^2",
+    "lambda_phi_dimension": "dimensionless",
+    "rho_star_dimension": "mass^4",
+    "G_dimension": "mass^-2",
+    "Lambda_dimension": "mass^2"
+  },
+  "reduction_to_known_limits": [
+    {
+      "limit": "phi = 0 and rho_star absorbed into Lambda",
+      "result": "Einstein-Hilbert gravity with cosmological constant and visible matter."
+    },
+    {
+      "limit": "theta constant",
+      "result": "Single real scalar rigidity-amplitude action minimally coupled to gravity."
+    },
+    {
+      "limit": "g_{mu nu} -> eta_{mu nu}",
+      "result": "Flat-spacetime scalar amplitude-phase field theory with quartic potential."
+    },
+    {
+      "limit": "alpha = beta = 0 and U(phi) constant",
+      "result": "No propagating DFM-MKC dark-sector degrees of freedom; only a vacuum-energy shift remains."
+    }
+  ],
+  "acceptance_test_result": {
+    "target": "DFM_MKC_CLOSED_ACTION_FUNCTIONAL_V1",
+    "required_contents_present": true,
+    "closed_variational_principle_present": true,
+    "field_equations_derivable_without_post_hoc_terms": true,
+    "empirical_status_promoted": false
+  },
+  "downstream_objects_still_required": [
+    "DFM_MKC_FIELD_EQUATIONS_V1",
+    "DFM_MKC_MATTER_COUPLING_RULE_V1",
+    "DFM_MKC_LINEAR_PERTURBATION_SYSTEM_V1",
+    "DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1"
+  ],
+  "does_not_prove": [
+    "DFM-MKC field equations",
+    "DFM-MKC matter coupling law",
+    "DFM-MKC linear perturbation system",
+    "DFM-MKC ACT Planck DESI prediction vector",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter replacement",
+    "dark matter is liquid",
+    "dark matter is solid",
+    "dark matter is a phase",
+    "dark energy resolution",
+    "dark matter resolution",
+    "gravity closure",
+    "Chronos-RR",
+    "unrestricted H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "next_admissible_step": "Derive DFM_MKC_FIELD_EQUATIONS_V1 from this action functional."
+}
