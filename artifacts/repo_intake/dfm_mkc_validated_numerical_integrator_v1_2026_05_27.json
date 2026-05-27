@@ -1,0 +1,76 @@
+{
+  "id": "DFM_MKC_VALIDATED_NUMERICAL_INTEGRATOR_V1",
+  "date": "2026-05-27",
+  "status": "VALIDATED_NUMERICAL_INTEGRATOR_GATE_SUPPLIED_NO_NUMERICAL_RUN",
+  "source_dependencies": [
+    "DFM_MKC_PRODUCTION_SOLVER_CODE_V1",
+    "DFM_MKC_EXECUTABLE_SOLVER_IMPLEMENTATION_V1",
+    "DFM_MKC_NUMERICAL_BOLTZMANN_SOLVER_V1"
+  ],
+  "code_file": "src/dfm_mkc_solver/validated_integrator_v1.py",
+  "entrypoints": [
+    "validate_integrator_config",
+    "validate_integrator_diagnostics",
+    "run_validated_integrator_gate"
+  ],
+  "required_config_blocks": [
+    "cosmological_parameters",
+    "dfm_mkc_parameters",
+    "grid_parameters",
+    "solver_parameters",
+    "reproducibility_parameters"
+  ],
+  "required_validation_blocks": [
+    "finite_output_check",
+    "constraint_residual_check",
+    "grid_convergence_check",
+    "ell_max_convergence_check",
+    "hash_reproducibility_check"
+  ],
+  "acceptance_test_result": {
+    "target": "DFM_MKC_VALIDATED_NUMERICAL_INTEGRATOR_V1",
+    "code_file_present": true,
+    "entrypoints_present": true,
+    "config_schema_validation_present": true,
+    "diagnostic_schema_validation_present": true,
+    "numerical_integration_run": false,
+    "prediction_vector_computed": false,
+    "likelihood_run_supplied": false,
+    "empirical_status_promoted": false
+  },
+  "downstream_objects_still_required": [
+    "DFM_MKC_NUMERICAL_PREDICTION_VECTOR_RUN_V1",
+    "DFM_MKC_ACT_PLANCK_DESI_LIKELIHOOD_RUN_V1",
+    "INDEPENDENT_REPLICATION_PROTOCOL_V1"
+  ],
+  "does_not_prove": [
+    "DFM-MKC numerical integration run",
+    "DFM-MKC numerical prediction vector",
+    "DFM-MKC data comparison run",
+    "DFM-MKC likelihood improvement",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter replacement",
+    "dark matter is liquid",
+    "dark matter is solid",
+    "dark matter is a phase",
+    "galaxy rotation curve fit",
+    "CMB fit",
+    "ACT fit",
+    "Planck fit",
+    "DESI fit",
+    "BAO fit",
+    "weak lensing fit",
+    "Bullet Cluster explanation",
+    "matter power spectrum fit",
+    "cosmic shear fit",
+    "dark energy resolution",
+    "dark matter resolution",
+    "gravity closure",
+    "Chronos-RR",
+    "unrestricted H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "next_admissible_step": "Supply DFM_MKC_NUMERICAL_PREDICTION_VECTOR_RUN_V1 only after a real finite-output numerical integration is executed and hash-locked."
+}
