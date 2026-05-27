@@ -1,0 +1,88 @@
+{
+  "id": "DARK_MATTER_REPLACEMENT_VALIDATION_TOOLKIT_2026_05_27",
+  "date": "2026-05-27",
+  "status": "VALIDATION_TOOLKIT_ONLY_NOT_EXPERIMENTALLY_VALIDATED",
+  "purpose": "Define the minimum closed-object chain required for DFM-MKC/URF to become an experimentally validated replacement candidate for mainstream dark matter physics.",
+  "mainstream_target_to_replace": {
+    "description": "Dark matter is currently inferred from gravitational effects across galaxy rotation curves, gravitational lensing, cluster collisions, CMB acoustic structure, BAO, and large-scale structure.",
+    "replacement_standard": "A candidate replacement must match or exceed Lambda-CDM/CDM performance on public data with a frozen model, limited parameters, reproducible predictions, and blind validation."
+  },
+  "required_closed_objects": [
+    "closed_action_functional_or_field_equations",
+    "matter_coupling_rule",
+    "cosmological_background_solution",
+    "linear_perturbation_system",
+    "nonlinear_or_effective_structure_growth_rule",
+    "prediction_vector_generator",
+    "likelihood_rule",
+    "parameter_table",
+    "public_dataset_binding",
+    "baseline_lcdm_comparison",
+    "blind_forecast_protocol",
+    "external_replication_packet"
+  ],
+  "required_observables": [
+    "galaxy_rotation_curves",
+    "weak_lensing",
+    "strong_lensing",
+    "cluster_lensing_mass_offsets",
+    "bullet_cluster_type_separation",
+    "cmb_tt_te_ee_spectra",
+    "cmb_lensing",
+    "bao_distance_ladder",
+    "matter_power_spectrum",
+    "growth_rate_observables",
+    "cluster_abundance",
+    "cosmic_shear"
+  ],
+  "minimum_victory_condition": {
+    "statement": "A frozen DFM-MKC/URF dark-sector model with explicit equations and a bounded parameter set must reproduce the major dark-matter observables at Lambda-CDM-level accuracy or better, and must correctly predict at least one nontrivial blind observable before the data are used.",
+    "required_before_claim": [
+      "frozen_equations",
+      "frozen_parameters",
+      "frozen_likelihood",
+      "public_reproducible_code",
+      "same_data_comparison_against_lcdm",
+      "blind_holdout_success",
+      "independent_reproduction"
+    ]
+  },
+  "current_missing_objects": [
+    "DFM-MKC closed action functional",
+    "DFM-MKC field equations",
+    "ordinary-matter coupling law",
+    "photon/geodesic lensing rule",
+    "background FLRW solution",
+    "linear perturbation equations",
+    "CMB prediction vector",
+    "matter power spectrum prediction vector",
+    "lensing prediction vector",
+    "rotation-curve prediction vector",
+    "cluster-offset prediction vector",
+    "joint likelihood rule",
+    "frozen parameter table",
+    "blind forecast ledger"
+  ],
+  "does_not_prove": [
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter replacement",
+    "dark matter is liquid",
+    "dark matter is solid",
+    "dark matter is a phase",
+    "dark energy resolution",
+    "dark matter resolution",
+    "gravity closure",
+    "Chronos-RR",
+    "unrestricted H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "next_admissible_objects": [
+    "DFM_MKC_CLOSED_ACTION_FUNCTIONAL_V1",
+    "DFM_MKC_FIELD_EQUATIONS_V1",
+    "DFM_MKC_MATTER_COUPLING_RULE_V1",
+    "DFM_MKC_LINEAR_PERTURBATION_SYSTEM_V1",
+    "DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1"
+  ]
+}
