@@ -1,0 +1,178 @@
+{
+  "id": "DFM_MKC_LINEAR_PERTURBATION_SYSTEM_V1",
+  "date": "2026-05-27",
+  "status": "CONCRETE_LINEAR_PERTURBATION_SYSTEM_SUPPLIED_PHENOMENOLOGICAL_ONLY",
+  "source_dependencies": [
+    "DFM_MKC_FIELD_EQUATIONS_V1",
+    "DFM_MKC_MATTER_COUPLING_RULE_V1"
+  ],
+  "source_artifacts": [
+    "artifacts/repo_intake/dfm_mkc_field_equations_v1_2026_05_27.json",
+    "artifacts/repo_intake/dfm_mkc_matter_coupling_rule_v1_2026_05_27.json"
+  ],
+  "object_type": "linear cosmological perturbation system for DFM-MKC metric, rigidity amplitude, structural phase, visible matter, and photons",
+  "purpose": "Supply the linearized DFM-MKC perturbation system required after the field-equation and matter-coupling objects, while leaving numerical prediction vectors and data comparison as downstream objects.",
+  "background_solution": {
+    "spacetime": "Spatially flat FLRW background",
+    "metric": "ds^2 = a(eta)^2[-deta^2 + delta_ij dx^i dx^j]",
+    "fields": {
+      "phi": "phi(eta, x) = phi_bar(eta) + delta_phi(eta, x)",
+      "theta": "theta(eta, x) = theta_bar(eta) + delta_theta(eta, x)",
+      "visible_density": "rho_vis(eta, x) = rho_vis_bar(eta) + delta_rho_vis(eta, x)",
+      "radiation_density": "rho_gamma(eta, x) = rho_gamma_bar(eta) + delta_rho_gamma(eta, x)"
+    },
+    "conformal_hubble": "Hc = a_prime / a",
+    "background_equations_status": "Background equations are inherited from DFM_MKC_FIELD_EQUATIONS_V1 after imposing FLRW symmetry; explicit numerical background solving is deferred to the prediction-vector object."
+  },
+  "gauge_choice": {
+    "name": "Newtonian gauge",
+    "metric_perturbation": "ds^2 = a(eta)^2[-(1+2 Psi)deta^2 + (1-2 Phi)delta_ij dx^i dx^j]",
+    "scalar_metric_variables": [
+      "Psi",
+      "Phi"
+    ],
+    "vector_tensor_modes": "Not included in V1; scalar sector only.",
+    "residual_gauge_status": "Fixed at scalar linear order by Newtonian gauge assumptions."
+  },
+  "perturbation_variables": {
+    "metric": [
+      "Psi(k, eta)",
+      "Phi(k, eta)"
+    ],
+    "dfm_mkc": [
+      "delta_phi(k, eta)",
+      "delta_theta(k, eta)"
+    ],
+    "visible_matter": [
+      "delta_b(k, eta)",
+      "v_b(k, eta)"
+    ],
+    "radiation": [
+      "delta_gamma(k, eta)",
+      "v_gamma(k, eta)"
+    ],
+    "optional_cdm_baseline_comparison": [
+      "delta_cdm(k, eta)",
+      "v_cdm(k, eta)"
+    ]
+  },
+  "linearized_equations": {
+    "poisson_constraint": "k^2 Phi + 3 Hc(Phi_prime + Hc Psi) = -4 pi G a^2 delta_rho_total",
+    "momentum_constraint": "k^2(Phi_prime + Hc Psi) = 4 pi G a^2 sum_A[(rho_A + p_A) theta_A]",
+    "anisotropy_relation": "k^2(Phi - Psi) = 12 pi G a^2 (rho_total + p_total) sigma_total",
+    "dfm_delta_phi_equation": "alpha[delta_phi_double_prime + 2 Hc delta_phi_prime + (k^2 + a^2 U_double_prime(phi_bar))delta_phi - phi_bar_prime(Psi_prime + 3 Phi_prime) + 2 a^2 Psi U_prime(phi_bar)] - beta[delta_phi theta_bar_prime^2 + 2 phi_bar theta_bar_prime delta_theta_prime - 2 phi_bar theta_bar_prime^2 Psi] = 0",
+    "dfm_delta_theta_equation": "(beta phi_bar^2 delta_theta_prime)_prime + 2 beta phi_bar phi_bar_prime delta_theta_prime + beta phi_bar^2 k^2 delta_theta + metric_source_theta + amplitude_source_theta = 0",
+    "visible_baryon_continuity": "delta_b_prime = -k v_b + 3 Phi_prime",
+    "visible_baryon_euler": "v_b_prime + Hc v_b = k Psi + photon_baryon_drag_terms",
+    "photon_continuity": "delta_gamma_prime = -(4/3)k v_gamma + 4 Phi_prime",
+    "photon_euler": "v_gamma_prime = k(delta_gamma/4 + Psi) + photon_higher_moment_terms",
+    "closure_status": "Boltzmann hierarchy closure, recombination physics, and numerical source functions are deferred to the prediction-vector object."
+  },
+  "source_terms": {
+    "delta_rho_total": "delta_rho_total = delta_rho_vis + delta_rho_gamma + delta_rho_DFM_MKC",
+    "delta_p_total": "delta_p_total = delta_p_vis + delta_p_gamma + delta_p_DFM_MKC",
+    "sigma_total": "sigma_total is the total scalar anisotropic stress.",
+    "stress_tensor_source": "Computed by linearizing T_DFM_MKC_{mu nu} from DFM_MKC_FIELD_EQUATIONS_V1.",
+    "delta_rho_DFM_MKC_status": "Computed by linearizing T_DFM_MKC_{00} from DFM_MKC_FIELD_EQUATIONS_V1.",
+    "delta_p_DFM_MKC_status": "Computed by linearizing spatial trace of T_DFM_MKC_{ij}.",
+    "momentum_DFM_MKC_status": "Computed by linearizing T_DFM_MKC_{0i}."
+  },
+  "initial_conditions": {
+    "adiabatic_mode_template": "All species begin with common primordial curvature perturbation R_star, with DFM-MKC perturbations initialized consistently with the linearized constraint equations.",
+    "isocurvature_mode_template": "Optional DFM-MKC isocurvature perturbations may be tracked but are not promoted as fit parameters in V1.",
+    "normalization_status": "Primordial amplitude and spectral tilt are not fit here; prediction-vector object must bind them.",
+    "frozen_before_data_claim": true
+  },
+  "transfer_functions": {
+    "metric_transfer_functions": [
+      "T_Psi(k, eta)",
+      "T_Phi(k, eta)"
+    ],
+    "dfm_mkc_transfer_functions": [
+      "T_delta_phi(k, eta)",
+      "T_delta_theta(k, eta)"
+    ],
+    "visible_transfer_functions": [
+      "T_delta_b(k, eta)",
+      "T_v_b(k, eta)",
+      "T_delta_gamma(k, eta)",
+      "T_v_gamma(k, eta)"
+    ],
+    "observable_transfer_status": "CMB, lensing, BAO, and matter-power transfer-to-observable maps are downstream prediction-vector objects."
+  },
+  "growth_equation": {
+    "matter_density_contrast": "delta_m = weighted visible-matter density contrast after specifying species weights.",
+    "generic_growth_form": "delta_m_double_prime + A(k, eta) delta_m_prime + B(k, eta) delta_m = S_DFM_MKC(k, eta)",
+    "source_meaning": "S_DFM_MKC is induced by the DFM-MKC metric and stress-energy perturbations.",
+    "growth_observable_status": "No numerical f sigma_8 or P(k) prediction is supplied in V1."
+  },
+  "stability_conditions": {
+    "kinetic_signs": [
+      "alpha > 0",
+      "beta > 0"
+    ],
+    "gradient_stability_template": "Principal scalar-sector gradient terms have positive sign under alpha > 0 and beta > 0.",
+    "tachyonic_status": "Potential-dependent instabilities depend on U_double_prime(phi_bar) and are not globally ruled out here.",
+    "ghost_status": "No ghost claim beyond the displayed positive kinetic-sign template.",
+    "full_well_posedness_proved": false
+  },
+  "cmb_observable_mapping": {
+    "temperature_source_status": "Deferred to DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1.",
+    "polarization_source_status": "Deferred to DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1.",
+    "cmb_lensing_status": "Deferred to DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1.",
+    "no_cmb_fit_claim": true
+  },
+  "matter_power_mapping": {
+    "linear_matter_power_status": "Deferred to DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1.",
+    "bao_mapping_status": "Deferred to DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1.",
+    "weak_lensing_mapping_status": "Deferred to DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1.",
+    "no_matter_power_fit_claim": true
+  },
+  "acceptance_test_result": {
+    "target": "DFM_MKC_LINEAR_PERTURBATION_SYSTEM_V1",
+    "background_solution_present": true,
+    "perturbation_variables_present": true,
+    "gauge_choice_present": true,
+    "linearized_equations_present": true,
+    "initial_conditions_present": true,
+    "transfer_functions_present": true,
+    "growth_equation_present": true,
+    "stability_conditions_present": true,
+    "cmb_observable_mapping_present": true,
+    "matter_power_mapping_present": true,
+    "prediction_vector_supplied": false,
+    "data_comparison_supplied": false,
+    "empirical_status_promoted": false
+  },
+  "downstream_objects_still_required": [
+    "DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1",
+    "DFM_MKC_DATA_COMPARISON_PROTOCOL_V1"
+  ],
+  "does_not_prove": [
+    "DFM-MKC ACT Planck DESI prediction vector",
+    "DFM-MKC data comparison",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter replacement",
+    "dark matter is liquid",
+    "dark matter is solid",
+    "dark matter is a phase",
+    "galaxy rotation curve fit",
+    "CMB fit",
+    "BAO fit",
+    "weak lensing fit",
+    "Bullet Cluster explanation",
+    "linear perturbation numerical solution",
+    "Boltzmann solver implementation",
+    "matter power spectrum fit",
+    "cosmic shear fit",
+    "dark energy resolution",
+    "dark matter resolution",
+    "gravity closure",
+    "Chronos-RR",
+    "unrestricted H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "next_admissible_step": "Supply DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1 from the linear perturbation system."
+}
