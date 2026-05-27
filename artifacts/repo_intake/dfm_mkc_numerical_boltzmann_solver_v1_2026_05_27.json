@@ -1,0 +1,207 @@
+{
+  "id": "DFM_MKC_NUMERICAL_BOLTZMANN_SOLVER_V1",
+  "date": "2026-05-27",
+  "status": "SOLVER_INTERFACE_SUPPLIED_NO_NUMERICAL_INTEGRATION",
+  "source_dependencies": [
+    "DFM_MKC_CLOSED_ACTION_FUNCTIONAL_V1",
+    "DFM_MKC_FIELD_EQUATIONS_V1",
+    "DFM_MKC_MATTER_COUPLING_RULE_V1",
+    "DFM_MKC_LINEAR_PERTURBATION_SYSTEM_V1",
+    "DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1",
+    "DFM_MKC_DATA_COMPARISON_PROTOCOL_V1"
+  ],
+  "source_artifacts": [
+    "artifacts/repo_intake/dfm_mkc_closed_action_functional_v1_2026_05_27.json",
+    "artifacts/repo_intake/dfm_mkc_field_equations_v1_2026_05_27.json",
+    "artifacts/repo_intake/dfm_mkc_matter_coupling_rule_v1_2026_05_27.json",
+    "artifacts/repo_intake/dfm_mkc_linear_perturbation_system_v1_2026_05_27.json",
+    "artifacts/repo_intake/dfm_mkc_act_planck_desi_prediction_vector_v1_2026_05_27.json",
+    "artifacts/repo_intake/dfm_mkc_data_comparison_protocol_v1_2026_05_27.json"
+  ],
+  "object_type": "numerical Boltzmann solver interface and implementation contract for DFM-MKC cosmological perturbations",
+  "purpose": "Specify the executable solver contract needed before any ACT, Planck, DESI, matter-power, weak-lensing, or likelihood run, while explicitly not supplying numerical integration results or empirical comparison.",
+  "solver_inputs": {
+    "background_state": [
+      "a(eta)",
+      "Hc(eta)",
+      "phi_bar(eta)",
+      "theta_bar(eta)",
+      "rho_vis_bar(eta)",
+      "rho_gamma_bar(eta)",
+      "rho_DFM_MKC_bar(eta)"
+    ],
+    "perturbation_state": [
+      "Psi(k, eta)",
+      "Phi(k, eta)",
+      "delta_phi(k, eta)",
+      "delta_theta(k, eta)",
+      "delta_b(k, eta)",
+      "v_b(k, eta)",
+      "delta_gamma(k, eta)",
+      "v_gamma(k, eta)"
+    ],
+    "parameter_block": [
+      "H0",
+      "Omega_b",
+      "Omega_gamma",
+      "A_s",
+      "n_s",
+      "tau_reio",
+      "alpha",
+      "beta",
+      "U(phi)",
+      "phi_initial",
+      "theta_initial",
+      "dfm_mkc_coupling_profile"
+    ],
+    "grid_block": [
+      "k_grid",
+      "eta_grid",
+      "ell_grid",
+      "redshift_grid"
+    ],
+    "fit_status": "No fit is performed in this object."
+  },
+  "solver_equation_blocks": {
+    "background_ode_block": "FLRW-reduced DFM-MKC background equations inherited from DFM_MKC_FIELD_EQUATIONS_V1.",
+    "metric_constraint_block": "Poisson, momentum, and anisotropy constraints inherited from DFM_MKC_LINEAR_PERTURBATION_SYSTEM_V1.",
+    "dfm_mkc_scalar_block": "delta_phi and delta_theta perturbation equations inherited from DFM_MKC_LINEAR_PERTURBATION_SYSTEM_V1.",
+    "visible_matter_block": "Visible baryon continuity and Euler equations with photon-baryon drag placeholders.",
+    "radiation_block": "Photon continuity, Euler, and higher-moment hierarchy placeholders.",
+    "closure_block": "Recombination, visibility, photon hierarchy truncation, neutrino hierarchy, and lensing source closure are declared as required implementation modules but not supplied here."
+  },
+  "required_numerical_methods": {
+    "time_integrator": "Adaptive ODE integrator with stiffness detection or explicitly justified non-stiff regime.",
+    "constraint_monitoring": "Track Einstein constraint residuals over k and eta.",
+    "hierarchy_truncation": "Declare ell_max, closure rule, and convergence checks before use.",
+    "interpolation": "Declare interpolation scheme for transfer functions and observable projection kernels.",
+    "stability_checks": [
+      "finite output checks",
+      "constraint residual tolerance",
+      "grid refinement stability",
+      "ell_max convergence",
+      "k_grid convergence",
+      "eta_grid convergence"
+    ],
+    "implementation_status": "Required numerical methods are specified as a contract; no executable solver is supplied here."
+  },
+  "required_solver_outputs": {
+    "background_outputs": [
+      "a(eta)",
+      "Hc(eta)",
+      "phi_bar(eta)",
+      "theta_bar(eta)",
+      "rho_DFM_MKC_bar(eta)"
+    ],
+    "transfer_outputs": [
+      "T_Psi(k, eta)",
+      "T_Phi(k, eta)",
+      "T_delta_phi(k, eta)",
+      "T_delta_theta(k, eta)",
+      "T_delta_b(k, eta)",
+      "T_v_b(k, eta)",
+      "T_delta_gamma(k, eta)",
+      "T_v_gamma(k, eta)"
+    ],
+    "observable_outputs": [
+      "C_ell_TT_ACT",
+      "C_ell_TE_ACT",
+      "C_ell_EE_ACT",
+      "C_ell_lensing_ACT",
+      "C_ell_TT_Planck",
+      "C_ell_TE_Planck",
+      "C_ell_EE_Planck",
+      "C_ell_lensing_Planck",
+      "D_M_over_r_d",
+      "D_H_over_r_d",
+      "D_V_over_r_d",
+      "P_k_linear",
+      "sigma8",
+      "f_sigma8",
+      "C_ell_shear"
+    ],
+    "diagnostic_outputs": [
+      "constraint_residuals",
+      "stability_summary",
+      "grid_convergence_summary",
+      "solver_version",
+      "input_hashes",
+      "output_hashes"
+    ],
+    "numerical_output_status": "No numerical outputs are produced in this object."
+  },
+  "external_solver_binding_option": {
+    "allowed": true,
+    "allowed_targets": [
+      "CLASS-compatible external binding",
+      "CAMB-compatible external binding",
+      "custom first-party DFM-MKC solver"
+    ],
+    "required_binding_fields": [
+      "source_code_commit",
+      "environment_lock",
+      "input_schema",
+      "output_schema",
+      "unit_convention",
+      "observable_ordering",
+      "covariance_alignment",
+      "reproducibility_hashes"
+    ],
+    "binding_status": "No trusted external solver binding is supplied in this object."
+  },
+  "acceptance_test_result": {
+    "target": "DFM_MKC_NUMERICAL_BOLTZMANN_SOLVER_V1",
+    "source_dependencies_present": true,
+    "solver_inputs_present": true,
+    "equation_blocks_present": true,
+    "required_numerical_methods_present": true,
+    "required_solver_outputs_present": true,
+    "external_solver_binding_option_present": true,
+    "numerical_integration_supplied": false,
+    "executable_solver_supplied": false,
+    "trusted_external_binding_supplied": false,
+    "prediction_vector_computed": false,
+    "likelihood_run_supplied": false,
+    "data_comparison_run_supplied": false,
+    "empirical_status_promoted": false
+  },
+  "downstream_objects_still_required": [
+    "DFM_MKC_EXECUTABLE_SOLVER_IMPLEMENTATION_V1",
+    "DFM_MKC_TRUSTED_EXTERNAL_SOLVER_BINDING_V1",
+    "DFM_MKC_NUMERICAL_PREDICTION_VECTOR_RUN_V1",
+    "DFM_MKC_ACT_PLANCK_DESI_LIKELIHOOD_RUN_V1",
+    "INDEPENDENT_REPLICATION_PROTOCOL_V1"
+  ],
+  "does_not_prove": [
+    "DFM-MKC executable Boltzmann solver",
+    "DFM-MKC trusted external solver binding",
+    "DFM-MKC numerical prediction vector",
+    "DFM-MKC data comparison run",
+    "DFM-MKC likelihood improvement",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter replacement",
+    "dark matter is liquid",
+    "dark matter is solid",
+    "dark matter is a phase",
+    "galaxy rotation curve fit",
+    "CMB fit",
+    "ACT fit",
+    "Planck fit",
+    "DESI fit",
+    "BAO fit",
+    "weak lensing fit",
+    "Bullet Cluster explanation",
+    "Boltzmann solver implementation",
+    "matter power spectrum fit",
+    "cosmic shear fit",
+    "dark energy resolution",
+    "dark matter resolution",
+    "gravity closure",
+    "Chronos-RR",
+    "unrestricted H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "next_admissible_step": "Supply DFM_MKC_EXECUTABLE_SOLVER_IMPLEMENTATION_V1 or DFM_MKC_TRUSTED_EXTERNAL_SOLVER_BINDING_V1 before any numerical prediction-vector run."
+}
