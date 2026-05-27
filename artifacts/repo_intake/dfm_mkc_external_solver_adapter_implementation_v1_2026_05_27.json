@@ -1,0 +1,80 @@
+{
+  "id": "DFM_MKC_EXTERNAL_SOLVER_ADAPTER_IMPLEMENTATION_V1",
+  "date": "2026-05-27",
+  "status": "EXTERNAL_SOLVER_ADAPTER_IMPLEMENTATION_SURFACE_SUPPLIED_NO_EXTERNAL_RUN",
+  "source_dependencies": [
+    "DFM_MKC_TRUSTED_EXTERNAL_SOLVER_BINDING_V1",
+    "DFM_MKC_EXECUTABLE_SOLVER_IMPLEMENTATION_V1",
+    "DFM_MKC_NUMERICAL_BOLTZMANN_SOLVER_V1"
+  ],
+  "code_file": "src/dfm_mkc_solver/external_adapter_v1.py",
+  "allowed_external_targets": [
+    "CLASS-compatible external binding",
+    "CAMB-compatible external binding",
+    "custom first-party DFM-MKC solver"
+  ],
+  "adapter_entrypoints": [
+    "dfm_mkc_background_adapter",
+    "dfm_mkc_perturbation_adapter",
+    "dfm_mkc_observable_adapter",
+    "dfm_mkc_diagnostic_adapter",
+    "dfm_mkc_validate_external_binding"
+  ],
+  "required_binding_fields": [
+    "source_code_commit",
+    "environment_lock",
+    "input_schema",
+    "output_schema",
+    "unit_convention",
+    "observable_ordering",
+    "covariance_alignment",
+    "reproducibility_hashes"
+  ],
+  "acceptance_test_result": {
+    "target": "DFM_MKC_EXTERNAL_SOLVER_ADAPTER_IMPLEMENTATION_V1",
+    "code_file_present": true,
+    "adapter_entrypoints_present": true,
+    "binding_validation_present": true,
+    "external_solver_selected": false,
+    "external_solver_executed": false,
+    "numerical_prediction_vector_computed": false,
+    "likelihood_run_supplied": false,
+    "empirical_status_promoted": false
+  },
+  "downstream_objects_still_required": [
+    "DFM_MKC_EXTERNAL_SOLVER_VALIDATION_RUN_V1",
+    "DFM_MKC_NUMERICAL_PREDICTION_VECTOR_RUN_V1",
+    "DFM_MKC_ACT_PLANCK_DESI_LIKELIHOOD_RUN_V1",
+    "INDEPENDENT_REPLICATION_PROTOCOL_V1"
+  ],
+  "does_not_prove": [
+    "DFM-MKC trusted external solver execution",
+    "DFM-MKC numerical prediction vector",
+    "DFM-MKC data comparison run",
+    "DFM-MKC likelihood improvement",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter replacement",
+    "dark matter is liquid",
+    "dark matter is solid",
+    "dark matter is a phase",
+    "galaxy rotation curve fit",
+    "CMB fit",
+    "ACT fit",
+    "Planck fit",
+    "DESI fit",
+    "BAO fit",
+    "weak lensing fit",
+    "Bullet Cluster explanation",
+    "matter power spectrum fit",
+    "cosmic shear fit",
+    "dark energy resolution",
+    "dark matter resolution",
+    "gravity closure",
+    "Chronos-RR",
+    "unrestricted H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "next_admissible_step": "Run DFM_MKC_EXTERNAL_SOLVER_VALIDATION_RUN_V1 against a hash-locked external solver before any numerical prediction-vector run."
+}
