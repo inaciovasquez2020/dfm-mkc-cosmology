@@ -1,0 +1,97 @@
+{
+  "id": "DFM_MKC_TRUSTED_EXTERNAL_SOLVER_BINDING_V1",
+  "date": "2026-05-27",
+  "status": "TRUSTED_EXTERNAL_SOLVER_BINDING_CONTRACT_SUPPLIED_NO_EXTERNAL_RUN",
+  "source_dependencies": [
+    "DFM_MKC_NUMERICAL_BOLTZMANN_SOLVER_V1",
+    "DFM_MKC_EXECUTABLE_SOLVER_IMPLEMENTATION_V1"
+  ],
+  "source_artifacts": [
+    "artifacts/repo_intake/dfm_mkc_numerical_boltzmann_solver_v1_2026_05_27.json",
+    "artifacts/repo_intake/dfm_mkc_executable_solver_implementation_v1_2026_05_27.json"
+  ],
+  "object_type": "trusted external solver binding contract for CLASS-compatible, CAMB-compatible, or custom DFM-MKC solver execution",
+  "purpose": "Specify the external solver binding requirements needed before any numerical prediction-vector or likelihood run, while explicitly not executing or validating an external solver.",
+  "allowed_external_targets": [
+    "CLASS-compatible external binding",
+    "CAMB-compatible external binding",
+    "custom first-party DFM-MKC solver"
+  ],
+  "binding_contract": {
+    "source_code_commit": "Required immutable solver source commit.",
+    "environment_lock": "Required reproducible environment lockfile.",
+    "input_schema": "Required schema for cosmological, DFM-MKC, grid, nuisance, and solver parameters.",
+    "output_schema": "Required schema for background, transfer, observable, and diagnostic outputs.",
+    "unit_convention": "Required unit conventions for all inputs and outputs.",
+    "observable_ordering": "Required observable vector ordering.",
+    "covariance_alignment": "Required covariance, mask, and observable-order alignment.",
+    "reproducibility_hashes": "Required hashes for inputs, outputs, environment, and solver commit."
+  },
+  "adapter_requirements": {
+    "dfm_mkc_background_adapter": "Maps DFM-MKC background equations into the external solver background interface.",
+    "dfm_mkc_perturbation_adapter": "Maps DFM-MKC perturbation variables into the external solver perturbation interface.",
+    "observable_adapter": "Maps external solver outputs into ACT, Planck, DESI, matter-power, and weak-lensing slots.",
+    "diagnostic_adapter": "Maps external solver diagnostics into repository validation fields.",
+    "adapter_status": "Adapter requirements are declared only; no adapter is executed here."
+  },
+  "trust_gates": {
+    "schema_gate": "Input and output schemas must match DFM-MKC prediction-vector ordering before use.",
+    "hash_gate": "Solver source, environment, inputs, and outputs must be hash-locked before use.",
+    "diagnostic_gate": "Constraint residuals, finite-output checks, and convergence summaries must pass before prediction-vector promotion.",
+    "reproducibility_gate": "A clean rerun must reproduce output hashes or explain deterministic tolerances before use.",
+    "empirical_claim_gate": "No empirical claim is reachable from this binding contract alone."
+  },
+  "acceptance_test_result": {
+    "target": "DFM_MKC_TRUSTED_EXTERNAL_SOLVER_BINDING_V1",
+    "source_dependencies_present": true,
+    "allowed_external_targets_present": true,
+    "binding_contract_present": true,
+    "adapter_requirements_present": true,
+    "trust_gates_present": true,
+    "external_solver_selected": false,
+    "external_solver_executed": false,
+    "adapter_implemented": false,
+    "numerical_prediction_vector_computed": false,
+    "likelihood_run_supplied": false,
+    "data_comparison_run_supplied": false,
+    "empirical_status_promoted": false
+  },
+  "downstream_objects_still_required": [
+    "DFM_MKC_EXTERNAL_SOLVER_ADAPTER_IMPLEMENTATION_V1",
+    "DFM_MKC_EXTERNAL_SOLVER_VALIDATION_RUN_V1",
+    "DFM_MKC_NUMERICAL_PREDICTION_VECTOR_RUN_V1",
+    "DFM_MKC_ACT_PLANCK_DESI_LIKELIHOOD_RUN_V1",
+    "INDEPENDENT_REPLICATION_PROTOCOL_V1"
+  ],
+  "does_not_prove": [
+    "DFM-MKC external solver adapter implementation",
+    "DFM-MKC trusted external solver execution",
+    "DFM-MKC numerical prediction vector",
+    "DFM-MKC data comparison run",
+    "DFM-MKC likelihood improvement",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter replacement",
+    "dark matter is liquid",
+    "dark matter is solid",
+    "dark matter is a phase",
+    "galaxy rotation curve fit",
+    "CMB fit",
+    "ACT fit",
+    "Planck fit",
+    "DESI fit",
+    "BAO fit",
+    "weak lensing fit",
+    "Bullet Cluster explanation",
+    "matter power spectrum fit",
+    "cosmic shear fit",
+    "dark energy resolution",
+    "dark matter resolution",
+    "gravity closure",
+    "Chronos-RR",
+    "unrestricted H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "next_admissible_step": "Supply DFM_MKC_EXTERNAL_SOLVER_ADAPTER_IMPLEMENTATION_V1 or DFM_MKC_PRODUCTION_SOLVER_CODE_V1 before any numerical prediction-vector run."
+}
