@@ -1,0 +1,116 @@
+{
+  "id": "DFM_MKC_FIELD_EQUATIONS_V1",
+  "date": "2026-05-27",
+  "status": "CONCRETE_FIELD_EQUATIONS_DERIVED_PHENOMENOLOGICAL_ONLY",
+  "source_dependency": "DFM_MKC_CLOSED_ACTION_FUNCTIONAL_V1",
+  "source_artifact": "artifacts/repo_intake/dfm_mkc_closed_action_functional_v1_2026_05_27.json",
+  "object_type": "Euler-Lagrange and metric field equations derived from the closed DFM-MKC action functional V1",
+  "purpose": "Supply the second closed object in the dark-sector chain: the metric, rigidity-amplitude, and structural-phase field equations formally derived from DFM_MKC_CLOSED_ACTION_FUNCTIONAL_V1.",
+  "action_recalled": {
+    "lagrangian_density": "L_total = (R - 2 Lambda)/(16 pi G) - (alpha/2) g^{mu nu} nabla_mu phi nabla_nu phi - (beta/2) phi^2 g^{mu nu} nabla_mu theta nabla_nu theta - U(phi) + L_vis(psi_vis, g)",
+    "potential": "U(phi) = rho_star + (1/2) m_phi_squared phi^2 + (1/4) lambda_phi phi^4",
+    "potential_derivative": "U_prime(phi) = m_phi_squared phi + lambda_phi phi^3"
+  },
+  "metric_equation": {
+    "symbolic_statement": "G_{mu nu} + Lambda g_{mu nu} = 8 pi G (T_vis_{mu nu} + T_DFM_MKC_{mu nu})",
+    "einstein_tensor": "G_{mu nu} = R_{mu nu} - (1/2) R g_{mu nu}",
+    "visible_stress_energy": "T_vis_{mu nu} = -(2/sqrt(-g)) delta(sqrt(-g) L_vis)/delta g^{mu nu}",
+    "dark_sector_stress_energy": "T_DFM_MKC_{mu nu} = alpha nabla_mu phi nabla_nu phi + beta phi^2 nabla_mu theta nabla_nu theta - g_{mu nu}[(alpha/2)(nabla phi)^2 + (beta/2) phi^2 (nabla theta)^2 + U(phi)]",
+    "trace_reversal_status": "not used in V1",
+    "post_hoc_source_terms_added": false
+  },
+  "dark_sector_equations": {
+    "rigidity_amplitude_equation": "alpha Box_g phi - beta phi (nabla theta)^2 - U_prime(phi) = 0",
+    "structural_phase_equation": "nabla_mu(beta phi^2 nabla^mu theta) = 0",
+    "definitions": {
+      "Box_g phi": "nabla_mu nabla^mu phi",
+      "(nabla phi)^2": "g^{mu nu} nabla_mu phi nabla_nu phi",
+      "(nabla theta)^2": "g^{mu nu} nabla_mu theta nabla_nu theta"
+    },
+    "periodic_phase_status": "theta is interpreted modulo 2 pi; local field equation is written on a branch chart.",
+    "post_hoc_force_terms_added": false
+  },
+  "constraint_equations": {
+    "hamiltonian_momentum_constraints_status": "Available after choosing a 3+1 foliation; not expanded in this covariant V1 object.",
+    "covariant_constraint": "nabla^mu [T_vis_{mu nu} + T_DFM_MKC_{mu nu}] = 0 follows from diffeomorphism invariance when the field equations hold.",
+    "phase_current_conservation": "J_theta^mu = beta phi^2 nabla^mu theta satisfies nabla_mu J_theta^mu = 0."
+  },
+  "conservation_laws": {
+    "total_stress_energy_conservation": "nabla^mu (T_vis_{mu nu} + T_DFM_MKC_{mu nu}) = 0",
+    "phase_current_conservation": "nabla_mu(beta phi^2 nabla^mu theta) = 0",
+    "visible_sector_exchange_status": "In V1 minimal coupling, visible matter couples through g only; direct non-gravitational exchange with phi or theta is not introduced."
+  },
+  "stress_energy_tensor": {
+    "dark_sector_tensor": "T_DFM_MKC_{mu nu} = alpha nabla_mu phi nabla_nu phi + beta phi^2 nabla_mu theta nabla_nu theta - g_{mu nu}[(alpha/2)(nabla phi)^2 + (beta/2) phi^2 (nabla theta)^2 + U(phi)]",
+    "energy_density_in_local_inertial_frame": "rho_DFM_MKC = (alpha/2)[(partial_t phi)^2 + |grad phi|^2] + (beta/2) phi^2[(partial_t theta)^2 + |grad theta|^2] + U(phi), subject to the chosen local frame convention",
+    "pressure_anisotropy_status": "Possible when spatial gradients of phi or theta are nonzero.",
+    "perfect_fluid_reduction_status": "Requires homogeneous/isotropic specialization and is deferred to later cosmology objects."
+  },
+  "gauge_or_coordinate_conditions": {
+    "covariant_form": "No coordinate gauge is fixed in the V1 covariant equations.",
+    "metric_signature": "(-,+,+,+)",
+    "perturbation_gauge_status": "Deferred to DFM_MKC_LINEAR_PERTURBATION_SYSTEM_V1.",
+    "well_posedness_status": "Classical well-posedness is not proved here; standard hyperbolic gauge choices are required for PDE analysis."
+  },
+  "known_limit_recovery": [
+    {
+      "limit": "phi = 0 and rho_star absorbed into Lambda",
+      "recovered_equations": "Einstein equations with visible stress-energy and effective cosmological constant."
+    },
+    {
+      "limit": "theta constant",
+      "recovered_equations": "Einstein gravity coupled to one real scalar phi with potential U(phi)."
+    },
+    {
+      "limit": "g_{mu nu} -> eta_{mu nu}",
+      "recovered_equations": "Flat-spacetime amplitude equation alpha Box phi - beta phi (partial theta)^2 - U_prime(phi) = 0 and phase-current equation partial_mu(beta phi^2 partial^mu theta) = 0."
+    },
+    {
+      "limit": "alpha = beta = 0 and U(phi) constant",
+      "recovered_equations": "No propagating DFM-MKC field equations remain; the dark sector contributes only a vacuum-energy shift."
+    }
+  ],
+  "derivation_status": {
+    "metric_variation_performed": true,
+    "phi_variation_performed": true,
+    "theta_variation_performed": true,
+    "visible_sector_equation_deferred_to_L_vis": true,
+    "derived_without_post_hoc_terms": true,
+    "derived_from_closed_action_functional_v1": true
+  },
+  "acceptance_test_result": {
+    "target": "DFM_MKC_FIELD_EQUATIONS_V1",
+    "metric_equation_present": true,
+    "dark_sector_equations_present": true,
+    "constraint_equations_present": true,
+    "conservation_laws_present": true,
+    "stress_energy_tensor_present": true,
+    "gauge_or_coordinate_conditions_present": true,
+    "known_limit_recovery_present": true,
+    "empirical_status_promoted": false
+  },
+  "downstream_objects_still_required": [
+    "DFM_MKC_MATTER_COUPLING_RULE_V1",
+    "DFM_MKC_LINEAR_PERTURBATION_SYSTEM_V1",
+    "DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1"
+  ],
+  "does_not_prove": [
+    "DFM-MKC matter coupling law",
+    "DFM-MKC linear perturbation system",
+    "DFM-MKC ACT Planck DESI prediction vector",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter replacement",
+    "dark matter is liquid",
+    "dark matter is solid",
+    "dark matter is a phase",
+    "dark energy resolution",
+    "dark matter resolution",
+    "gravity closure",
+    "Chronos-RR",
+    "unrestricted H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "next_admissible_step": "Supply DFM_MKC_MATTER_COUPLING_RULE_V1 as the explicit visible-sector and photon coupling interface."
+}
