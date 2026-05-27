@@ -1,0 +1,103 @@
+{
+"id": "DFM_MKC_DATA_COMPARISON_PROTOCOL_V1",
+"date": "2026-05-27",
+"status": "DATA_COMPARISON_PROTOCOL_SUPPLIED_NO_EMPIRICAL_RUN",
+"source_dependencies": [
+"DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1"
+],
+"source_artifacts": [
+"artifacts/repo_intake/dfm_mkc_act_planck_desi_prediction_vector_v1_2026_05_27.json"
+],
+"object_type": "frozen empirical comparison protocol for DFM-MKC against baseline LCDM over ACT, Planck, DESI, BAO, lensing, and matter-power observables",
+"purpose": "Specify the comparison protocol required after the prediction-vector interface while explicitly deferring numerical likelihood execution and empirical conclusions.",
+"datasets_declared": {
+"act_dr6": "ACT DR6 CMB-only and lensing-compatible observable slots may be compared only after a trusted numerical prediction vector exists.",
+"planck": "Planck CMB temperature, polarization, and lensing slots may be compared only after a trusted numerical prediction vector exists.",
+"desi": "DESI BAO slots may be compared only after a trusted numerical prediction vector exists.",
+"matter_power": "Matter-power and growth slots may be compared only after a trusted numerical prediction vector exists.",
+"weak_lensing": "Weak-lensing slots may be compared only after a trusted numerical prediction vector exists."
+},
+"comparison_contract": {
+"baseline_model": "LCDM baseline prediction vector with matched dataset schema.",
+"candidate_model": "DFM-MKC prediction vector with matched dataset schema.",
+"schema_requirement": "Both vectors must share observable names, ordering, units, masks, covariance convention, and redshift or ell indexing.",
+"covariance_requirement": "Each comparison must bind an explicit covariance matrix or likelihood object before scoring.",
+"blindness_requirement": "Parameter choices and model-selection criteria must be frozen before empirical scoring.",
+"reproducibility_requirement": "All data hashes, code versions, solver settings, and parameter files must be recorded."
+},
+"metrics": {
+"primary": [
+"chi2",
+"delta_chi2",
+"log_likelihood",
+"delta_log_likelihood"
+],
+"model_selection": [
+"AIC",
+"BIC",
+"DIC_or_equivalent_if_sampler_supplied"
+],
+"diagnostics": [
+"residual_vector",
+"whitened_residual_vector",
+"covariance_condition_number",
+"pull_distribution",
+"jackknife_or_split_stability"
+],
+"status": "Metric names are specified only; no metric values are computed."
+},
+"acceptance_thresholds": {
+"minimum_protocol_gate": "All datasets, prediction vectors, covariance objects, masks, and parameter-freeze records must exist before any comparison run.",
+"empirical_claim_gate": "No empirical validation claim may be made from this protocol alone.",
+"lambda_cdm_failure_gate": "Lambda-CDM failure requires independent replicated evidence and is not reachable from this protocol object.",
+"dark_matter_replacement_gate": "Dark matter replacement requires independent physical and observational closure and is not reachable from this protocol object."
+},
+"acceptance_test_result": {
+"target": "DFM_MKC_DATA_COMPARISON_PROTOCOL_V1",
+"datasets_declared_present": true,
+"comparison_contract_present": true,
+"metrics_present": true,
+"acceptance_thresholds_present": true,
+"requires_prediction_vector": true,
+"numerical_run_supplied": false,
+"likelihood_values_supplied": false,
+"empirical_status_promoted": false,
+"lambda_cdm_failure_promoted": false,
+"dark_matter_replacement_promoted": false
+},
+"downstream_objects_still_required": [
+"DFM_MKC_NUMERICAL_BOLTZMANN_SOLVER_V1",
+"DFM_MKC_ACT_PLANCK_DESI_LIKELIHOOD_RUN_V1",
+"INDEPENDENT_REPLICATION_PROTOCOL_V1"
+],
+"does_not_prove": [
+"DFM-MKC numerical prediction vector",
+"DFM-MKC data comparison run",
+"DFM-MKC likelihood improvement",
+"DFM-MKC empirical validation",
+"Lambda-CDM failure",
+"dark matter replacement",
+"dark matter is liquid",
+"dark matter is solid",
+"dark matter is a phase",
+"galaxy rotation curve fit",
+"CMB fit",
+"ACT fit",
+"Planck fit",
+"DESI fit",
+"BAO fit",
+"weak lensing fit",
+"Bullet Cluster explanation",
+"Boltzmann solver implementation",
+"matter power spectrum fit",
+"cosmic shear fit",
+"dark energy resolution",
+"dark matter resolution",
+"gravity closure",
+"Chronos-RR",
+"unrestricted H4.1/FGL",
+"P vs NP",
+"any Clay problem"
+],
+"next_admissible_step": "Supply DFM_MKC_NUMERICAL_BOLTZMANN_SOLVER_V1 or a trusted external solver-binding object before any likelihood run."
+}

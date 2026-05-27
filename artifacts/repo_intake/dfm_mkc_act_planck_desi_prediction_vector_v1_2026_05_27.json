@@ -1,0 +1,164 @@
+{
+  "id": "DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1",
+  "date": "2026-05-27",
+  "status": "PREDICTION_VECTOR_INTERFACE_SUPPLIED_NO_NUMERICAL_EVALUATION",
+  "source_dependencies": [
+    "DFM_MKC_CLOSED_ACTION_FUNCTIONAL_V1",
+    "DFM_MKC_FIELD_EQUATIONS_V1",
+    "DFM_MKC_MATTER_COUPLING_RULE_V1",
+    "DFM_MKC_LINEAR_PERTURBATION_SYSTEM_V1"
+  ],
+  "source_artifacts": [
+    "artifacts/repo_intake/dfm_mkc_closed_action_functional_v1_2026_05_27.json",
+    "artifacts/repo_intake/dfm_mkc_field_equations_v1_2026_05_27.json",
+    "artifacts/repo_intake/dfm_mkc_matter_coupling_rule_v1_2026_05_27.json",
+    "artifacts/repo_intake/dfm_mkc_linear_perturbation_system_v1_2026_05_27.json"
+  ],
+  "object_type": "frozen prediction-vector interface for ACT, Planck, DESI, BAO, CMB, lensing, and matter-power observables",
+  "purpose": "Bind the observable output slots required after the DFM-MKC linear perturbation system while explicitly deferring numerical Boltzmann solving, likelihood evaluation, and empirical comparison to downstream executable objects.",
+  "input_parameter_block": {
+    "cosmological_background": [
+      "H0",
+      "Omega_b",
+      "Omega_gamma",
+      "Omega_k",
+      "A_s",
+      "n_s",
+      "tau_reio"
+    ],
+    "dfm_mkc_sector": [
+      "alpha",
+      "beta",
+      "U(phi)",
+      "phi_initial",
+      "theta_initial",
+      "dfm_mkc_coupling_profile"
+    ],
+    "nuisance_and_calibration": [
+      "ACT_calibration_parameters",
+      "Planck_calibration_parameters",
+      "DESI_BAO_covariance_controls",
+      "foreground_controls"
+    ],
+    "fit_status": "No parameters are fit in this object.",
+    "frozen_before_data_claim": true
+  },
+  "required_background_solver_outputs": {
+    "background_history": [
+      "a(eta)",
+      "Hc(eta)",
+      "phi_bar(eta)",
+      "theta_bar(eta)",
+      "rho_vis_bar(eta)",
+      "rho_gamma_bar(eta)",
+      "rho_DFM_MKC_bar(eta)"
+    ],
+    "status": "Required solver outputs are specified but not numerically supplied."
+  },
+  "required_perturbation_solver_outputs": {
+    "transfer_functions": [
+      "T_Psi(k, eta)",
+      "T_Phi(k, eta)",
+      "T_delta_phi(k, eta)",
+      "T_delta_theta(k, eta)",
+      "T_delta_b(k, eta)",
+      "T_v_b(k, eta)",
+      "T_delta_gamma(k, eta)",
+      "T_v_gamma(k, eta)"
+    ],
+    "status": "Transfer-function slots are specified but not numerically supplied."
+  },
+  "prediction_vector_slots": {
+    "act_dr6_cmb": [
+      "C_ell_TT_ACT",
+      "C_ell_TE_ACT",
+      "C_ell_EE_ACT",
+      "C_ell_lensing_ACT"
+    ],
+    "planck_cmb": [
+      "C_ell_TT_Planck",
+      "C_ell_TE_Planck",
+      "C_ell_EE_Planck",
+      "C_ell_lensing_Planck"
+    ],
+    "desi_bao": [
+      "D_M_over_r_d",
+      "D_H_over_r_d",
+      "D_V_over_r_d",
+      "F_AP",
+      "H_z",
+      "D_A_z"
+    ],
+    "matter_power": [
+      "P_k_linear",
+      "sigma8",
+      "f_sigma8"
+    ],
+    "weak_lensing": [
+      "C_ell_shear",
+      "C_ell_galaxy_shear",
+      "C_ell_galaxy_galaxy"
+    ],
+    "status": "Slots are declared only; no numerical vector is produced."
+  },
+  "observable_maps": {
+    "cmb_temperature": "Map DFM-MKC metric and photon transfer functions into C_ell_TT source functions.",
+    "cmb_polarization": "Map photon quadrupole and visibility source functions into C_ell_TE and C_ell_EE slots.",
+    "cmb_lensing": "Map Weyl-potential transfer functions into lensing-potential spectra.",
+    "bao": "Map background distance functions and sound horizon proxy into DESI BAO slots.",
+    "matter_power": "Map matter transfer functions and primordial spectrum into P_k_linear, sigma8, and f_sigma8 slots.",
+    "weak_lensing": "Map matter and Weyl-potential spectra into shear and galaxy-lensing spectra.",
+    "implementation_status": "Formal observable-map slots only; no validated numerical implementation."
+  },
+  "acceptance_test_result": {
+    "target": "DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1",
+    "input_parameter_block_present": true,
+    "background_solver_outputs_present": true,
+    "perturbation_solver_outputs_present": true,
+    "act_slots_present": true,
+    "planck_slots_present": true,
+    "desi_slots_present": true,
+    "matter_power_slots_present": true,
+    "weak_lensing_slots_present": true,
+    "observable_maps_present": true,
+    "numerical_prediction_vector_supplied": false,
+    "likelihood_supplied": false,
+    "data_comparison_supplied": false,
+    "empirical_status_promoted": false
+  },
+  "downstream_objects_still_required": [
+    "DFM_MKC_NUMERICAL_BOLTZMANN_SOLVER_V1",
+    "DFM_MKC_DATA_COMPARISON_PROTOCOL_V1",
+    "DFM_MKC_ACT_PLANCK_DESI_LIKELIHOOD_RUN_V1"
+  ],
+  "does_not_prove": [
+    "DFM-MKC numerical prediction vector",
+    "DFM-MKC data comparison",
+    "DFM-MKC likelihood improvement",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter replacement",
+    "dark matter is liquid",
+    "dark matter is solid",
+    "dark matter is a phase",
+    "galaxy rotation curve fit",
+    "CMB fit",
+    "ACT fit",
+    "Planck fit",
+    "DESI fit",
+    "BAO fit",
+    "weak lensing fit",
+    "Bullet Cluster explanation",
+    "Boltzmann solver implementation",
+    "matter power spectrum fit",
+    "cosmic shear fit",
+    "dark energy resolution",
+    "dark matter resolution",
+    "gravity closure",
+    "Chronos-RR",
+    "unrestricted H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "next_admissible_step": "Supply DFM_MKC_DATA_COMPARISON_PROTOCOL_V1 as a frozen comparison protocol without running empirical validation."
+}
