@@ -1,0 +1,131 @@
+{
+  "id": "DFM_MKC_MATTER_COUPLING_RULE_V1",
+  "date": "2026-05-27",
+  "status": "CONCRETE_MATTER_COUPLING_RULE_SUPPLIED_PHENOMENOLOGICAL_ONLY",
+  "source_dependency": "DFM_MKC_FIELD_EQUATIONS_V1",
+  "source_artifact": "artifacts/repo_intake/dfm_mkc_field_equations_v1_2026_05_27.json",
+  "object_type": "visible-sector and photon coupling interface for the DFM-MKC field-equation system",
+  "purpose": "Supply the explicit matter and photon coupling rule required after DFM_MKC_FIELD_EQUATIONS_V1, while leaving perturbations, prediction vectors, and data comparison as downstream objects.",
+  "coupling_principle": {
+    "name": "metric-only minimal visible coupling",
+    "statement": "Visible matter and photons couple to the spacetime metric g_{mu nu}; they do not directly couple to phi or theta in V1.",
+    "dark_sector_influence_route": "The DFM-MKC sector affects visible matter and light only through its contribution to T_DFM_MKC_{mu nu} in the metric field equation.",
+    "direct_phi_visible_coupling": false,
+    "direct_theta_visible_coupling": false,
+    "dataset_tuned_couplings_allowed": false
+  },
+  "ordinary_matter_coupling": {
+    "visible_action": "S_vis[psi_vis, g] = int_M d^4x sqrt(-g) L_vis(psi_vis, g)",
+    "stress_energy_definition": "T_vis_{mu nu} = -(2/sqrt(-g)) delta(sqrt(-g) L_vis)/delta g^{mu nu}",
+    "visible_equations": "delta S_vis / delta psi_vis = 0",
+    "test_particle_limit": "u^mu nabla_mu u^nu = 0 for freely falling massive visible test bodies.",
+    "baryonic_limit": "Baryons follow the metric geometry determined by G_{mu nu} + Lambda g_{mu nu} = 8 pi G (T_vis_{mu nu} + T_DFM_MKC_{mu nu}).",
+    "non_gravitational_visible_interactions": "Contained inside L_vis; no new DFM-MKC-specific non-gravitational coupling is introduced in V1."
+  },
+  "photon_coupling": {
+    "maxwell_action_option": "S_EM[A, g] = int_M d^4x sqrt(-g) [-(1/4) F_{mu nu} F^{mu nu}]",
+    "field_strength": "F_{mu nu} = nabla_mu A_nu - nabla_nu A_mu",
+    "geometric_optics_limit": "k^mu k_mu = 0 and k^mu nabla_mu k^nu = 0",
+    "photon_path_rule": "Photons follow null geodesics of g_{mu nu}.",
+    "direct_phi_photon_coupling": false,
+    "direct_theta_photon_coupling": false,
+    "lensing_origin": "Gravitational lensing is produced by the metric sourced by visible and DFM-MKC stress-energy."
+  },
+  "geodesic_or_optical_rule": {
+    "massive_probe_rule": "u^mu nabla_mu u^nu = 0",
+    "massless_probe_rule": "k^mu k_mu = 0 and k^mu nabla_mu k^nu = 0",
+    "optical_scalar_status": "Optical-scalar and weak-lensing observables are deferred to the perturbation and prediction-vector objects.",
+    "metric_source": "g_{mu nu} is solved from the DFM-MKC field equations."
+  },
+  "stress_energy_exchange_rule": {
+    "total_conservation": "nabla^mu (T_vis_{mu nu} + T_DFM_MKC_{mu nu}) = 0",
+    "visible_conservation_in_v1": "nabla^mu T_vis_{mu nu} = 0 when visible equations hold and L_vis is diffeomorphism invariant.",
+    "dark_sector_conservation_in_v1": "nabla^mu T_DFM_MKC_{mu nu} = 0 when phi and theta equations hold.",
+    "direct_exchange_current": "Q_nu = 0 in V1",
+    "exchange_status": "No direct non-gravitational energy-momentum exchange between visible matter and DFM-MKC fields is introduced."
+  },
+  "equivalence_principle_status": {
+    "weak_equivalence_principle": "Weak equivalence principle preserved at the V1 matter-coupling level through universal metric coupling for visible test bodies.",
+    "einstein_equivalence_principle": "Preserved for visible-sector local nongravitational physics under standard minimal coupling assumptions.",
+    "violation_terms_introduced": false,
+    "screening_or_environmental_coupling": "Not introduced in V1."
+  },
+  "lensing_prediction_rule": {
+    "rule_type": "metric lensing",
+    "statement": "Lensing is computed from null geodesics of g_{mu nu}; DFM-MKC changes lensing only by changing the metric solution.",
+    "weak_lensing_mapping_status": "Deferred to DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1.",
+    "strong_lensing_mapping_status": "Deferred to later prediction-vector or case-study objects.",
+    "bullet_cluster_relevance": "A cluster-collision lensing comparison requires solving the coupled field system and is not supplied by this coupling rule alone."
+  },
+  "radiation_limit": {
+    "radiation_stress_energy": "Standard traceless radiation stress-energy from minimally coupled photon fields.",
+    "photon_speed": "Null with respect to g_{mu nu}.",
+    "direct_dispersion_modification": false,
+    "frequency_dependent_lensing": "Not introduced in V1."
+  },
+  "baryonic_limit": {
+    "ordinary_baryon_dynamics": "Baryonic matter follows the visible-sector equations from L_vis(psi_vis, g).",
+    "dark_effect_route": "Baryons feel DFM-MKC only through the gravitational metric sourced by T_DFM_MKC_{mu nu}.",
+    "galaxy_rotation_curve_status": "Not predicted here; requires a solved metric and matter distribution in a later prediction object."
+  },
+  "downstream_pipeline_targets": [
+    {
+      "id": "DFM_MKC_LINEAR_PERTURBATION_SYSTEM_V1",
+      "status": "DOWNSTREAM_TARGET_NOT_SUPPLIED",
+      "role": "Linearize the metric, phi, theta, visible matter, and photon sector around a cosmological background."
+    },
+    {
+      "id": "DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1",
+      "status": "DOWNSTREAM_TARGET_NOT_SUPPLIED",
+      "role": "Generate reproducible ACT, Planck, and DESI-facing observable vectors."
+    },
+    {
+      "id": "DFM_MKC_DATA_COMPARISON_PROTOCOL_V1",
+      "status": "DOWNSTREAM_TARGET_NOT_SUPPLIED",
+      "role": "Compare the frozen DFM-MKC prediction vector against Lambda-CDM on public data with a fixed likelihood and boundary ledger."
+    }
+  ],
+  "acceptance_test_result": {
+    "target": "DFM_MKC_MATTER_COUPLING_RULE_V1",
+    "ordinary_matter_coupling_present": true,
+    "photon_coupling_present": true,
+    "geodesic_or_optical_rule_present": true,
+    "stress_energy_exchange_rule_present": true,
+    "equivalence_principle_status_present": true,
+    "lensing_prediction_rule_present": true,
+    "baryonic_limit_present": true,
+    "radiation_limit_present": true,
+    "direct_visible_dark_couplings_introduced": false,
+    "dataset_tuned_couplings_introduced": false,
+    "empirical_status_promoted": false
+  },
+  "downstream_objects_still_required": [
+    "DFM_MKC_LINEAR_PERTURBATION_SYSTEM_V1",
+    "DFM_MKC_ACT_PLANCK_DESI_PREDICTION_VECTOR_V1",
+    "DFM_MKC_DATA_COMPARISON_PROTOCOL_V1"
+  ],
+  "does_not_prove": [
+    "DFM-MKC linear perturbation system",
+    "DFM-MKC ACT Planck DESI prediction vector",
+    "DFM-MKC data comparison",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter replacement",
+    "dark matter is liquid",
+    "dark matter is solid",
+    "dark matter is a phase",
+    "galaxy rotation curve fit",
+    "CMB fit",
+    "BAO fit",
+    "weak lensing fit",
+    "Bullet Cluster explanation",
+    "dark energy resolution",
+    "dark matter resolution",
+    "gravity closure",
+    "Chronos-RR",
+    "unrestricted H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "next_admissible_step": "Supply DFM_MKC_LINEAR_PERTURBATION_SYSTEM_V1 from the field equations and matter coupling rule."
+}
