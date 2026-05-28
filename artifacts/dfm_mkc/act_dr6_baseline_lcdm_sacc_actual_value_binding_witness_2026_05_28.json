@@ -1,0 +1,40 @@
+{
+  "id": "ACT_DR6_BASELINE_LCDM_SACC_ACTUAL_VALUE_BINDING_WITNESS_2026_05_28",
+  "date": "2026-05-28",
+  "repository": "dfm-mkc-cosmology",
+  "status": "ACTUAL_VALUE_BINDING_WITNESS_ONLY_NO_NUMERICAL_VECTOR",
+  "object": "ACTDR6BaselineLCDM_SACC_ToBestFitLabelBindingRule actual-value witness",
+  "actual_values": {
+    "payload_path": "artifacts/public_payloads/act_lite_numeric_like_extracted_2026_05_21/DR6-ACT-lite-main__act_dr6_cmbonly__data__act_dr6_cmb_sacc.fits",
+    "payload_size_bytes": 5391360,
+    "payload_sha256": "9506da7b482c10b60571c5a3805fc392853d50f81244485754566d21b85219ad",
+    "payload_sha256_hex_length": 64,
+    "schema_pass_flag": true,
+    "schema_pass_integer": 1,
+    "baseline_lcdm_label": "ACT_DR6_CMBONLY_BASELINE_LCDM_BESTFIT",
+    "required_field_count": 5
+  },
+  "checks": [
+    "payload exists",
+    "payload_size_bytes is positive",
+    "payload_sha256 matches locked digest",
+    "payload_sha256_hex_length equals 64",
+    "schema_pass_flag equals true",
+    "schema_pass_integer equals 1",
+    "baseline_lcdm_label is explicit"
+  ],
+  "does_not_prove": [
+    "baseline LCDM prediction vector",
+    "DFM-MKC prediction vector",
+    "likelihood execution",
+    "empirical validation",
+    "Lambda-CDM failure",
+    "dark matter replacement",
+    "dark energy replacement",
+    "gravity closure",
+    "unrestricted Chronos-RR",
+    "unrestricted H4.1/FGL",
+    "P vs NP",
+    "Clay problem"
+  ]
+}
