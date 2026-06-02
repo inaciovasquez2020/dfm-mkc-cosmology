@@ -16,8 +16,10 @@ Closed.
 
 ## Closure Basis
 
+DESI DR2, DES Y6, and Planck 2018 are integrated as authentic public data artifacts.
+
 - DESI DR2 artifacts are present on the release path.
-- DES Y6 artifacts, export recipe, fingerprints, and tests are present on the release path.
+- DES Y6 artifacts, `docs/data/DES_Y6_EXPORT_RECIPE.md`, fingerprints, and tests are present on the release path.
 - Planck 2018 baseline artifacts are present on the release path.
 - Synthetic placeholder fallback is not part of the declared release path.
 - End-to-end repository verification is the active reproducibility guard.
