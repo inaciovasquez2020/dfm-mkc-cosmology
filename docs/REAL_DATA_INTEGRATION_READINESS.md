@@ -1,18 +1,37 @@
 # Real Data Integration Readiness
 
 ## Imported Real Data
+
 - DESI DR2
 - DES Y6
 - Planck 2018
 
-DESI DR2, DES Y6, and Planck 2018 are integrated as authentic public data artifacts.
-
 ## Remaining Open Data Objects
-- none
 
-`docs/data/DES_Y6_EXPORT_RECIPE.md` is the committed official export recipe for the DES Y6 surface.
-
-`artifacts/data/des_y6_fingerprints.json` is the frozen provenance artifact for the committed DES Y6 CSV pair.
+None on the declared repository reproducibility surface.
 
 ## Status
+
 Closed.
+
+## Closure Basis
+
+- DESI DR2 artifacts are present on the release path.
+- DES Y6 artifacts, export recipe, fingerprints, and tests are present on the release path.
+- Planck 2018 baseline artifacts are present on the release path.
+- Synthetic placeholder fallback is not part of the declared release path.
+- End-to-end repository verification is the active reproducibility guard.
+
+## Boundary
+
+This status is a repository-readiness statement only.
+
+It is not an identifiability theorem.
+
+It is not an independent likelihood reproduction.
+
+It is not a final cosmological truth claim.
+
+It is not a Lambda-CDM failure claim.
+
+It is not a dark-energy or dark-matter resolution claim.
