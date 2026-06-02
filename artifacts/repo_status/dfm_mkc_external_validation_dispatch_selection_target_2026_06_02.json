@@ -1,0 +1,20 @@
+{
+  "artifact": "dfm_mkc_external_validation_dispatch_selection_target_2026_06_02",
+  "status": "DISPATCH_SELECTION_TARGET_OPEN",
+  "input_status": "EXTERNAL_VALIDATION_OR_SUBMISSION_HANDOFF_READY",
+  "missing_input": "external_validator_recipient_or_submission_venue",
+  "weakest_sufficient_next_inputs": [
+    "ExternalValidatorRecipient",
+    "SubmissionVenue",
+    "ReviewerOrAdvisorRecipient"
+  ],
+  "allowed_next_object_after_input": "ExternalValidationRequestSentOrSubmissionRecorded",
+  "not_claimed": [
+    "completed_external_validation",
+    "sent_email",
+    "journal_submission",
+    "physical_interpretation_promotion"
+  ],
+  "decision": "PASS",
+  "boundary": "TARGET_ONLY_NO_DISPATCH_CLAIM"
+}
