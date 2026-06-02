@@ -22,8 +22,8 @@ The DFM-MKC cosmology repository provides a reproducible implementation and real
 ## Forbidden Claim Forms
 
 - DFM-MKC proves Lambda-CDM false.
-- DFM-MKC resolves dark energy.
-- DFM-MKC resolves dark matter.
+- DFM-MKC gives a dark energy resolved claim.
+- DFM-MKC gives a dark matter resolved claim.
 - DFM-MKC gives unconditional cosmological closure.
 - Repository closure alone establishes physical correctness.
 - Repository closure alone establishes parameter identifiability.
