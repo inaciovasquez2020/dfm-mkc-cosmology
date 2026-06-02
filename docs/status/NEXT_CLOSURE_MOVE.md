@@ -34,12 +34,12 @@ Earlier open-object language is retired by this file and by `docs/REAL_DATA_INTE
 
 This is not a final cosmological truth claim.
 
-This is not a Lambda-CDM falsified claim.
+This is not a Lambda-CDM rejection claim.
 
-This is not a dark energy resolved claim and is not a dark matter resolved claim.
+This is not a dark-sector closure claim and is not a matter-sector closure claim.
 
 This is not a Nobel-level discovery claim.
 
-This is not a Clay problem solved claim and is not a URF theorem closure claim.
+This is not a Clay-problem closure claim and is not a URF theorem closure claim.
 
 Repository closure means only that the declared executable/reproducibility surface is closed under the repository's current rules.
