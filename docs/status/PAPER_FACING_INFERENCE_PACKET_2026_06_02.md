@@ -24,7 +24,7 @@ The DFM-MKC cosmology repository provides a reproducible implementation and real
 - DFM-MKC proves Lambda-CDM false.
 - DFM-MKC resolves dark energy.
 - DFM-MKC resolves dark matter.
-- DFM-MKC gives final cosmological truth.
+- DFM-MKC gives unconditional cosmological closure.
 - Repository closure alone establishes physical correctness.
 - Repository closure alone establishes parameter identifiability.
 

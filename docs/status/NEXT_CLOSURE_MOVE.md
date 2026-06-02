@@ -2,7 +2,7 @@
 
 ## Canonical Remaining Repository Object
 
-None.
+none.
 
 ## Repository-Closure Status
 
