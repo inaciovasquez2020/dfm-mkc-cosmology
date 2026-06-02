@@ -36,6 +36,6 @@ It is not an independent likelihood reproduction.
 
 This is not a final cosmological truth claim.
 
-This is not a Lambda-CDM falsified claim.
+This is not a Lambda-CDM rejection claim.
 
-This is not a dark energy resolved claim and is not a dark matter resolved claim.
+This is not a dark-sector closure claim and is not a matter-sector closure claim.
