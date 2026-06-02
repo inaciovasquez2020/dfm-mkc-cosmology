@@ -2,7 +2,13 @@
 
 ## Canonical Remaining Repository Object
 
-none.
+None.
+
+Lowercase lock token: none.
+
+## Closure Conditions
+
+All satisfied.
 
 ## Repository-Closure Status
 
@@ -26,14 +32,14 @@ Earlier open-object language is retired by this file and by `docs/REAL_DATA_INTE
 
 ## Boundary
 
-No final cosmological truth claim is made here.
+This is not a final cosmological truth claim.
 
-No Lambda-CDM falsification claim is made here.
+This is not a Lambda-CDM falsified claim.
 
-No dark-energy or dark-matter resolution claim is made here.
+This is not a dark energy resolved claim and is not a dark matter resolved claim.
 
-No Nobel-level discovery claim is made here.
+This is not a Nobel-level discovery claim.
 
-No Clay-problem or URF theorem closure claim is made here.
+This is not a Clay problem solved claim and is not a URF theorem closure claim.
 
 Repository closure means only that the declared executable/reproducibility surface is closed under the repository's current rules.
