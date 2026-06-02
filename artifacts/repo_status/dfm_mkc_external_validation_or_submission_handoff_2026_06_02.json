@@ -1,0 +1,24 @@
+{
+  "artifact": "dfm_mkc_external_validation_or_submission_handoff_2026_06_02",
+  "status": "EXTERNAL_VALIDATION_OR_SUBMISSION_HANDOFF_READY",
+  "input_status": "POST_CLOSURE_EXTERNAL_VALIDATION_PACKET_OK",
+  "repository_surface": "CLOSED_REPRODUCIBILITY_SURFACE_ONLY",
+  "created_files": [
+    "docs/status/EXTERNAL_VALIDATION_OR_SUBMISSION_HANDOFF_2026_06_02.md",
+    "docs/submission/DFM_MKC_EXTERNAL_VALIDATION_REQUEST_2026_06_02.md"
+  ],
+  "next_admissible_objects": [
+    "ExternalIndependentLikelihoodValidation",
+    "SubmissionToReviewerOrJournal",
+    "IdentifiabilityGuaranteeOrDegeneracyTheorem",
+    "Stop"
+  ],
+  "not_claimed": [
+    "completed_external_validation",
+    "unconditional_cosmology_interpretation",
+    "unique_parameter_reconstruction",
+    "final_physical_correctness"
+  ],
+  "decision": "PASS",
+  "boundary": "HANDOFF_ONLY_NO_EXTERNAL_VALIDATION_CLAIM"
+}
