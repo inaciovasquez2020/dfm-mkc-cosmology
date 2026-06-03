@@ -1,0 +1,28 @@
+{
+  "archive_sha256": "18d089893ced79443235f75b75912b54d1b1efa6a361504a73bfe5aa67d57a74",
+  "archive_size_bytes": 10928281,
+  "date": "2026-06-03",
+  "forbidden_claims": [
+    "official PantheonPlus likelihood reproduced",
+    "cosmological parameters measured",
+    "Lambda_CDM_refuted",
+    "dark_energy_resolved",
+    "DFM_MKC_validated",
+    "new_physics_detected",
+    "publication_grade_cosmology_result"
+  ],
+  "large_scratch_payload_not_committed": true,
+  "local_archive": "/Users/inaciof.vasquez/pantheonplus_scratch_no_claims_package_2026_06_03.tar.gz",
+  "local_manifest": "/Users/inaciof.vasquez/pantheonplus_scratch_no_claims_package_2026_06_03/pantheonplus_scratch_no_claims_package_manifest_2026_06_03.json",
+  "local_package_dir": "/Users/inaciof.vasquez/pantheonplus_scratch_no_claims_package_2026_06_03",
+  "local_sha256s": "/Users/inaciof.vasquez/pantheonplus_scratch_no_claims_package_2026_06_03/SHA256SUMS",
+  "manifest_sha256": "c6fadb61bc5a2b84e56c3a7ae7c85acd323b5271431f7fb3b40eaf886a5de52d",
+  "next_object": "StopOrExternalArchiveScratchPackage",
+  "object": "PantheonPlusScratchNoClaimsPackageRepoStatus",
+  "package_file_count": 13,
+  "package_manifest_status": "SCRATCH_ARTIFACTS_PACKAGED_NO_COSMOLOGY_CLAIM",
+  "repo_records_only": true,
+  "sha256s_sha256": "d09b97f2db1db1d469cc0aa554bd10b593f9e58852c13958184e87cf8aad110b",
+  "status": "SCRATCH_PACKAGE_STATUS_RECORDED_NO_COSMOLOGY_CLAIM",
+  "valid_claim": "A local PantheonPlus scratch package was hash-recorded for provenance and boundary tracking."
+}
