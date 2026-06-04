@@ -1,0 +1,25 @@
+{
+  "artifact": "SourceBackedSPARCThetaTestReference",
+  "date": "2026-06-04",
+  "source_repository": "https://github.com/inaciovasquez2020/source-backed-sparc-theta-test",
+  "source_release": "https://github.com/inaciovasquez2020/source-backed-sparc-theta-test/releases/tag/v0.1.0",
+  "source_version": "v0.1.0",
+  "source_status": "PUBLIC_RELEASE_TAG_CREATED",
+  "classification": "SourceBackedNegativeBoundaryArtifact",
+  "repo_kind": "CosmologyNegativeResultReference",
+  "closed_as": [
+    "RepositoryPreservation",
+    "BoundedArchiveState",
+    "SourceBackedNegativeBoundaryArtifact"
+  ],
+  "not_closed_as": [
+    "DarkMatterSolution",
+    "ThetaAsDarkMatterSolutionUnderCurrentTestedLaws",
+    "EmpiricalGravityValidation",
+    "SPARCPredictiveSuccess",
+    "DFM_MKCSupport",
+    "TheoremClosure"
+  ],
+  "safe_statement": "source-backed-sparc-theta-test v0.1.0 records a bounded SPARC rotation-curve comparison and archive state; it closes repository preservation, not a dark-matter or gravity claim.",
+  "next_admissible_object": "Stop"
+}
