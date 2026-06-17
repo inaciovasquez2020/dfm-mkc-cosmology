@@ -1,0 +1,42 @@
+{
+  "id": "ACT_DR6_DFM_VS_LCDM_INTERNAL_PROBE_BLOCKED_NO_DFM_VECTOR_2026_06_17",
+  "status": "INTERNAL_PROBE_BLOCKED_NO_ACT_DR6_DFM_MKC_135_ROW_PREDICTION_VECTOR",
+  "program": "DFM_MKC_DARK_SECTOR_VALIDATION",
+  "created_utc_date": "2026-06-17",
+  "probe_type": "internal_nonclaiming_chi2_probe",
+  "observed_data_vector_shape": [
+    135
+  ],
+  "covariance_shape": [
+    135,
+    135
+  ],
+  "lcdm_baseline_candidate_available": true,
+  "lcdm_baseline_candidate_chi2": 153.61808801048306,
+  "dfm_mkc_vector_candidates_found": 0,
+  "dfm_mkc_chi2": null,
+  "comparison_result": "NOT_COMPUTABLE",
+  "missing_object": "ACT_DR6_DFM_MKC_135_ROW_PREDICTION_VECTOR_CANDIDATE",
+  "evidence_summary": [
+    "internal probe found ACT DR6 observed vector and covariance",
+    "internal probe recomputed LCDM candidate chi2",
+    "repository search found no finite numeric DFM/DFM-MKC vector of shape [135]",
+    "grep results show DFM-MKC targets/schemas/placeholders but no ACT DR6 135-row DFM prediction vector"
+  ],
+  "next_required_validation": "ACT_DR6_DFM_MKC_135_ROW_PREDICTION_VECTOR_CANDIDATE",
+  "does_not_prove": [
+    "DFM-MKC is better than Lambda-CDM",
+    "DFM-MKC is worse than Lambda-CDM",
+    "DFM-MKC prediction vector exists",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "Lambda-CDM rejection",
+    "dark matter resolution",
+    "dark energy resolution",
+    "gravity closure",
+    "Chronos-RR",
+    "H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ]
+}
