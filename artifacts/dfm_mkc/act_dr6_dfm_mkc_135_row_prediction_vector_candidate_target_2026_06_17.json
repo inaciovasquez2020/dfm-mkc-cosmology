@@ -1,0 +1,115 @@
+{
+  "id": "ACT_DR6_DFM_MKC_135_ROW_PREDICTION_VECTOR_CANDIDATE_TARGET_2026_06_17",
+  "status": "TARGET_ONLY_DFM_VECTOR_NOT_YET_MATERIALIZED",
+  "program": "DFM_MKC_DARK_SECTOR_VALIDATION",
+  "created_utc_date": "2026-06-17",
+  "target_object": "ACT_DR6_DFM_MKC_135_ROW_PREDICTION_VECTOR_CANDIDATE",
+  "source_blocked_probe": "artifacts/dfm_mkc/act_dr6_dfm_vs_lcdm_internal_probe_blocked_no_dfm_vector_2026_06_17.json",
+  "baseline_lcdm_reference": {
+    "candidate_artifact": "artifacts/dfm_mkc/act_dr6_baseline_lcdm_bandpower_projected_cmb_dat_vector_candidate_2026_06_17.json",
+    "materialization_artifact": "artifacts/dfm_mkc/act_dr6_baseline_lcdm_bandpower_projected_cmb_dat_vector_reproducible_materialization_2026_06_17.json",
+    "convention_audit_artifact": "artifacts/dfm_mkc/act_dr6_baseline_lcdm_bandpower_projected_cmb_dat_vector_official_convention_audit_2026_06_17.json",
+    "internal_lcdm_chi2": 153.61808801048306
+  },
+  "required_shape": [
+    135
+  ],
+  "required_ordering": {
+    "certificate": "artifacts/dfm_mkc/act_dr6_prediction_vector_ordering_certificate_2026_05_25.json",
+    "target_rows": [
+      {
+        "range": [
+          0,
+          44
+        ],
+        "data_type": "cl_00",
+        "meaning": "TT-like ACT CMB-only bandpowers"
+      },
+      {
+        "range": [
+          45,
+          89
+        ],
+        "data_type": "cl_0e",
+        "meaning": "TE-like ACT CMB-only bandpowers"
+      },
+      {
+        "range": [
+          90,
+          134
+        ],
+        "data_type": "cl_ee",
+        "meaning": "EE-like ACT CMB-only bandpowers"
+      }
+    ]
+  },
+  "required_numeric_contract": {
+    "dtype": "float64-compatible finite real values",
+    "shape": [
+      135
+    ],
+    "all_finite": true,
+    "same_covariance_basis": "artifacts/dfm_mkc/act_dr6_cmbonly_official_data_covariance_2026_05_25.npz",
+    "comparison_metric": "chi2 = (data - model)^T covariance^{-1} (data - model)"
+  },
+  "required_model_source_objects": [
+    "DFM_MKC_PARAMETER_TO_CMB_OBSERVABLE_MAP",
+    "DFM_MKC_ACT_DR6_CMBONLY_PARAMETER_POINT_OR_FIT_RULE",
+    "DFM_MKC_UNBINNED_TT_TE_EE_THEORY_TABLE_OR_DIRECT_BANDPOWER_RULE",
+    "DFM_MKC_ACT_DR6_BANDPOWER_WINDOW_PROJECTION_RULE_COMPATIBLE_WITH_LCDM_BASELINE",
+    "DFM_MKC_135_ROW_VECTOR_NUMERIC_MATERIALIZATION",
+    "DFM_MKC_VECTOR_CONVENTION_AUDIT"
+  ],
+  "accepted_materialization_routes": [
+    {
+      "route": "unbinned_theory_to_bandpowers",
+      "description": "Produce DFM-MKC unbinned D_ell TT/TE/EE values over ell 2..8501, then apply the same ACT SACC BandpowerWindow projection used by the LCDM candidate."
+    },
+    {
+      "route": "direct_bandpower_prediction",
+      "description": "Produce 45 TT, 45 TE, and 45 EE DFM-MKC bandpowers directly in the certified ACT DR6 CMB-only row ordering, with an independent convention audit."
+    }
+  ],
+  "minimum_candidate_artifact_fields": [
+    "id",
+    "status",
+    "source_model",
+    "parameter_values_or_fit_rule",
+    "projection_or_direct_bandpower_rule",
+    "vector_shape",
+    "vector_values",
+    "finite",
+    "numeric_digest",
+    "ordering_certificate",
+    "convention_audit",
+    "does_not_prove"
+  ],
+  "comparison_gate_after_candidate_exists": {
+    "next_probe": "ACT_DR6_DFM_VS_LCDM_INTERNAL_CHI2_COMPARISON",
+    "required_inputs": [
+      "ACT DR6 observed data vector shape [135]",
+      "ACT DR6 covariance matrix shape [135,135]",
+      "LCDM baseline candidate vector shape [135]",
+      "DFM-MKC candidate vector shape [135]"
+    ],
+    "better_than_lcdm_internal_condition": "dfm_mkc_chi2 < lcdm_chi2",
+    "claim_boundary": "internal numerical comparison only; not empirical validation"
+  },
+  "current_resolution": "The missing object is now precisely specified, but not yet materialized.",
+  "next_required_validation": "ACT_DR6_DFM_MKC_135_ROW_PREDICTION_VECTOR_CANDIDATE",
+  "does_not_prove": [
+    "ACT DR6 DFM-MKC 135-row prediction vector exists",
+    "DFM-MKC is better than Lambda-CDM",
+    "DFM-MKC is worse than Lambda-CDM",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "Lambda-CDM rejection",
+    "dark matter resolution",
+    "dark energy resolution",
+    "gravity closure",
+    "Chronos-RR",
+    "H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ]
+}
