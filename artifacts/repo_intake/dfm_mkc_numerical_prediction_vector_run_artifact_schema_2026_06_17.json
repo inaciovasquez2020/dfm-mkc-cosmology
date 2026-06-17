@@ -1,0 +1,173 @@
+{
+  "id": "DFM_MKC_NUMERICAL_PREDICTION_VECTOR_RUN_ARTIFACT_SCHEMA",
+  "date": "2026-06-17",
+  "status": "RUN_ARTIFACT_SCHEMA_SUPPLIED_NO_NUMERICAL_VECTOR",
+  "program": "DFM_MKC_DARK_SECTOR_VALIDATION",
+  "object_type": "schema for a future hash-locked DFM-MKC numerical prediction-vector run artifact",
+  "schema_target": "DFM_MKC_NUMERICAL_PREDICTION_VECTOR_RUN_V1",
+  "source_target_artifact": "artifacts/repo_intake/dfm_mkc_numerical_prediction_vector_run_v1_target_2026_06_17.json",
+  "purpose": "Define the exact future artifact shape required before any ACT DR6 DFM-MKC projection materializer may be adapted or executed.",
+  "required_top_level_fields": [
+    "id",
+    "date",
+    "status",
+    "program",
+    "source_target_id",
+    "input_hash_locks",
+    "solver_provenance",
+    "ell",
+    "D_ell_TT",
+    "D_ell_TE",
+    "D_ell_EE",
+    "diagnostics",
+    "act_projection_compatibility",
+    "does_not_prove"
+  ],
+  "required_status": "HASH_LOCKED_FINITE_D_ELL_OUTPUTS_SUPPLIED_NO_ACT_PROJECTION",
+  "input_hash_locks_schema": {
+    "required_fields": [
+      "parameter_block_sha256",
+      "grid_block_sha256",
+      "solver_environment_sha256",
+      "solver_source_commit",
+      "solver_config_sha256"
+    ],
+    "field_contract": {
+      "parameter_block_sha256": "64-character lowercase hexadecimal SHA-256 digest",
+      "grid_block_sha256": "64-character lowercase hexadecimal SHA-256 digest",
+      "solver_environment_sha256": "64-character lowercase hexadecimal SHA-256 digest",
+      "solver_source_commit": "immutable nonempty source commit identifier",
+      "solver_config_sha256": "64-character lowercase hexadecimal SHA-256 digest"
+    }
+  },
+  "solver_provenance_schema": {
+    "required_fields": [
+      "solver_route",
+      "solver_name",
+      "solver_version",
+      "source_commit",
+      "environment_lock_path",
+      "run_command",
+      "run_timestamp_utc"
+    ],
+    "allowed_solver_routes": [
+      "first_party_solver",
+      "trusted_external_solver_binding"
+    ]
+  },
+  "output_array_schema": {
+    "ell": {
+      "dtype": "integer",
+      "shape": [
+        8500
+      ],
+      "exact_values": {
+        "start": 2,
+        "stop": 8501,
+        "step": 1
+      }
+    },
+    "D_ell_TT": {
+      "dtype": "float64",
+      "shape": [
+        8500
+      ],
+      "finite": true,
+      "units": "microK^2"
+    },
+    "D_ell_TE": {
+      "dtype": "float64",
+      "shape": [
+        8500
+      ],
+      "finite": true,
+      "units": "microK^2"
+    },
+    "D_ell_EE": {
+      "dtype": "float64",
+      "shape": [
+        8500
+      ],
+      "finite": true,
+      "units": "microK^2"
+    }
+  },
+  "diagnostics_schema": {
+    "required_fields": [
+      "finite_output_check",
+      "ell_grid_check",
+      "hash_lock_check",
+      "constraint_residual_summary",
+      "grid_convergence_summary",
+      "output_digest_sha256"
+    ],
+    "required_boolean_pass_fields": [
+      "finite_output_check",
+      "ell_grid_check",
+      "hash_lock_check"
+    ]
+  },
+  "act_projection_compatibility_schema": {
+    "required_fields": [
+      "source_sacc_path",
+      "ell_min",
+      "ell_max",
+      "ell_count",
+      "compatible_with_existing_lcdm_projection_materializer",
+      "act_projection_performed"
+    ],
+    "required_values": {
+      "source_sacc_path": "data/act_dr6_cmbonly/dr6_data_cmbonly.fits",
+      "ell_min": 2,
+      "ell_max": 8501,
+      "ell_count": 8500,
+      "compatible_with_existing_lcdm_projection_materializer": true,
+      "act_projection_performed": false
+    }
+  },
+  "future_validator_contract": {
+    "validate_without_projection": [
+      "all top-level fields present",
+      "all required input hash locks present",
+      "ell is exactly integer range 2..8501",
+      "D_ell_TT has 8500 finite float64-compatible values",
+      "D_ell_TE has 8500 finite float64-compatible values",
+      "D_ell_EE has 8500 finite float64-compatible values",
+      "ACT projection compatibility fields match required values",
+      "act_projection_performed is false"
+    ],
+    "blocked_next_step_until_valid_run_artifact_exists": "Do not adapt the ACT projection materializer until a concrete artifact satisfying this schema exists."
+  },
+  "acceptance_test_result": {
+    "schema_declared": true,
+    "input_hash_lock_schema_declared": true,
+    "solver_provenance_schema_declared": true,
+    "ell_schema_declared": true,
+    "D_ell_TT_schema_declared": true,
+    "D_ell_TE_schema_declared": true,
+    "D_ell_EE_schema_declared": true,
+    "act_projection_compatibility_schema_declared": true,
+    "numerical_vector_supplied": false,
+    "act_projection_materializer_adapted": false,
+    "act_projection_performed": false,
+    "dfm_mkc_empirical_status_promoted": false
+  },
+  "next_admissible_step": "Add a future validator for a concrete run artifact satisfying this schema; do not adapt the ACT projection materializer yet.",
+  "does_not_prove": [
+    "DFM-MKC numerical integration run",
+    "DFM-MKC numerical prediction vector",
+    "ACT DR6 DFM-MKC 135-row prediction vector",
+    "ACT projection materializer adaptation",
+    "DFM-MKC data comparison run",
+    "DFM-MKC likelihood improvement",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "dark matter replacement",
+    "dark energy resolution",
+    "gravity closure",
+    "Chronos-RR",
+    "unrestricted H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ]
+}
