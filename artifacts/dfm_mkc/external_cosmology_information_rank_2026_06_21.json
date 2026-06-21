@@ -1,0 +1,70 @@
+{
+  "status": "DFM_MKC_EXTERNAL_COSMOLOGY_INFORMATION_RANK_2026_06_21",
+  "date": "2026-06-21",
+  "question": "Is there any new external information that helps solve DFM-MKC cosmology?",
+  "answer": "yes_but_not_solution",
+  "solves": false,
+  "weakest_missing_object": "DFM_MKC_parameter_to_observable_map_to_ACT_DR6_135_row_prediction_vector",
+  "ranked_external_information": [
+    {
+      "rank": 1,
+      "name": "ACT DR6.02 LAMBDA data release",
+      "source_url": "https://lambda.gsfc.nasa.gov/product/act/act_dr6.02/",
+      "usefulness": "strongest_actionable_external_input_surface",
+      "helps_by": [
+        "official ACT DR6.02 PSPIPE products",
+        "best-fit power spectra",
+        "sky masks",
+        "covariance matrices",
+        "likelihood SACC files",
+        "MCMC chains"
+      ],
+      "does_not_supply": "DFM-MKC forward model or ACT DR6 135-row DFM-MKC prediction vector"
+    },
+    {
+      "rank": 2,
+      "name": "DES Y6 cosmology results and data products",
+      "source_url": "https://www.darkenergysurvey.org/des-y6-cosmology-results-papers/",
+      "usefulness": "multiprobe_validation_target_improvement",
+      "helps_by": [
+        "public DES Y6 cosmology papers",
+        "Y6 cosmology data-products entry point",
+        "3x2pt large-scale-structure validation surface"
+      ],
+      "does_not_supply": "DFM-MKC parameter-to-observable map"
+    },
+    {
+      "rank": 3,
+      "name": "DESI DR2 cosmology chains and data products",
+      "source_url": "https://www.desi.lbl.gov/2025/10/06/desi-dr2-cosmology-chains-and-data-products-released/",
+      "usefulness": "baseline_reproducibility_and_late_time_validation_surface",
+      "helps_by": [
+        "published DR2 cosmology chains",
+        "best-fit parameter values",
+        "external BAO comparison surface"
+      ],
+      "does_not_supply": "DFM-MKC forward solver or closure proof"
+    },
+    {
+      "rank": 4,
+      "name": "DESI DR2 publications index",
+      "source_url": "https://data.desi.lbl.gov/doc/papers/dr2/",
+      "usefulness": "publication_and_dataset_locator",
+      "helps_by": [
+        "DR2 cosmology publication index",
+        "first-three-years DESI cosmology result locator"
+      ],
+      "does_not_supply": "DFM-MKC executable observable prediction"
+    }
+  ],
+  "classification": {
+    "external_data_surfaces_improved": true,
+    "external_prior_art_improved": true,
+    "direct_dfm_mkc_solver_found": false,
+    "act_dr6_prediction_vector_found": false,
+    "lambda_cdm_rejection_claim_admissible": false,
+    "dfm_mkc_validation_claim_admissible": false
+  },
+  "boundary": "external-information ranking only; no new theorem, no cosmology solution, no claim of Lambda-CDM rejection, no DFM-MKC validation, no ACT DR6 135-row prediction vector, and no parameter-to-observable forward-model construction",
+  "next_bounded_improvement": "bind ACT DR6.02 PSPIPE/SACC/covariance products as an external input surface while keeping DFM-MKC parameter-to-observable map to ACT DR6 135-row prediction vector as the weakest missing object"
+}
