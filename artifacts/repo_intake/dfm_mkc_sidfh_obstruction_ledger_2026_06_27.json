@@ -1,0 +1,38 @@
+{
+  "depends_on": [
+    "DFM_MKC_SIDFH_PHASE_FRONT_CHARGE_TARGET_2026_06_27",
+    "DFM_MKC_SIDFH_PHASE_FRONT_CHARGE_REDUCIBILITY_TEST_2026_06_27",
+    "DFM_MKC_SIDFH_SAME_METRIC_SAME_STRESS_WINDING_COUNTEREXAMPLE_TARGET_2026_06_27",
+    "DFM_MKC_SIDFH_PHASE_WINDING_TEST_VARIABLE_2026_06_27"
+  ],
+  "does_not_prove": [
+    "SIDFH is physically real",
+    "dark matter is explained",
+    "DFM-MKC empirical validation",
+    "Lambda-CDM failure",
+    "gravity closure",
+    "Chronos-RR",
+    "H4.1/FGL",
+    "P vs NP",
+    "any Clay problem"
+  ],
+  "id": "DFM_MKC_SIDFH_OBSTRUCTION_LEDGER_2026_06_27",
+  "object_type": "bounded obstruction ledger for DFM-MKC/SIDFH phase-front sector",
+  "ranked_gaps": [
+    {
+      "gap": "No proved same-metric same-stress winding counterexample.",
+      "rank": 1,
+      "weakest_next_object": "explicit witness schema for two configurations with equal metric/stress surface and distinct phase winding"
+    },
+    {
+      "gap": "No reduction from PhaseFrontCharge to existing metric/stress observables.",
+      "rank": 2,
+      "weakest_next_object": "bounded reducibility attempt against repository metric/stress surface"
+    },
+    {
+      "gap": "No empirical interpretation of SIDFH phase winding.",
+      "rank": 3,
+      "weakest_next_object": "negative-use boundary separating topological residual from dark-matter validation"
+    }
+  ]
+}
