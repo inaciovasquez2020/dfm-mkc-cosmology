@@ -42,15 +42,11 @@ def gamma_update_from_metric(g, Gamma, lr=0.1):
     return Gamma
 
 
-def covariant_derivative_full(v, Gamma):
-    return covariant_derivative(v, Gamma)
-
-
 def riemann_tensor(Gamma):
     """
-    True discrete rank-4 Riemann tensor:
+    Rank-4 discrete Riemann tensor:
     R^i_{jkl} = Γ^i_{km} Γ^m_{lj} - Γ^i_{lm} Γ^m_{kj}
-    + discrete derivative terms approximated via finite differences
+    + discrete directional difference correction
     """
 
     n = Gamma.shape[0]
@@ -60,19 +56,21 @@ def riemann_tensor(Gamma):
         for j in range(n):
             for k in range(n):
                 for l in range(n):
-                    quad = 0.0
 
+                    quad = 0.0
                     for m in range(n):
                         quad += (
                             Gamma[i, k, m] * Gamma[m, l, j]
                             - Gamma[i, l, m] * Gamma[m, k, j]
                         )
 
-                    # discrete derivative correction (minimal stencil)
-                    d = 0.0
-                    if k + 1 < n and l - 1 >= 0:
-                        d = Gamma[i, l, j] - Gamma[i, k, j]
+                    # TRUE discrete directional correction (index-consistent)
+                    dGamma = 0.0
+                    for m in range(n):
+                        dGamma += (
+                            Gamma[i, k, m] - Gamma[i, l, m]
+                        ) * Gamma[m, l, j]
 
-                    R[i, j, k, l] = quad + d
+                    R[i, j, k, l] = quad + dGamma
 
     return R
