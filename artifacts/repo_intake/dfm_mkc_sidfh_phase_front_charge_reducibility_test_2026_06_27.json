@@ -1,0 +1,34 @@
+{
+  "id": "DFM_MKC_SIDFH_PHASE_FRONT_CHARGE_REDUCIBILITY_TEST_2026_06_27",
+  "object_type": "bounded reducibility test for PhaseFrontCharge",
+  "depends_on": "DFM_MKC_SIDFH_PHASE_FRONT_CHARGE_TARGET_2026_06_27",
+  "tested_object": "PhaseFrontCharge(t,gamma) := (1 / 2pi) integral_gamma dtheta",
+  "known_data_package": [
+    "Lorentzian metric g",
+    "DFM-MKC stress-energy tensor T_DFM_MKC",
+    "standard null-cone geometry",
+    "dark_front(t)",
+    "closed loop gamma subset dark_front(t)"
+  ],
+  "reducibility_question": "Is PhaseFrontCharge(t,gamma) uniquely determined by the known_data_package?",
+  "counterexample_shape": {
+    "theta_1": "periodic structural phase field",
+    "theta_2": "periodic structural phase field",
+    "same_data_requirements": [
+      "same g",
+      "same T_DFM_MKC",
+      "same dark_front(t)",
+      "same gamma"
+    ],
+    "separation_requirement": "PhaseFrontCharge(theta_1,t,gamma) != PhaseFrontCharge(theta_2,t,gamma)"
+  },
+  "reduction_outcome": "If no counterexample exists, record wall-strengthening reduction: PhaseFrontCharge is fixed by metric, stress-energy, and null-cone data.",
+  "nonreduction_outcome": "If a counterexample exists, record first nonmetric DFM-MKC/SIDFH residual candidate.",
+  "guardrails": [
+    "Does not claim new physics.",
+    "Does not claim independence.",
+    "Does not claim empirical validation.",
+    "Only defines the bounded reducibility test."
+  ],
+  "next_admissible_step": "Construct or rule out a same-g same-stress-energy different-winding pair for theta."
+}
