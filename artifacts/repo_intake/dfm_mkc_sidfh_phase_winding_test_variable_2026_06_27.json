@@ -1,0 +1,27 @@
+{
+  "id": "DFM_MKC_SIDFH_PHASE_WINDING_TEST_VARIABLE_2026_06_27",
+  "object_type": "bounded test variable for SIDFH phase-front winding",
+  "depends_on": "DFM_MKC_SIDFH_SAME_METRIC_SAME_STRESS_WINDING_COUNTEREXAMPLE_TARGET_2026_06_27",
+  "variable": {
+    "name": "n_wind_gamma",
+    "definition": "n_wind_gamma := (1 / 2pi) integral_gamma dtheta",
+    "domain": "integer winding number if theta is globally S1-valued and gamma is closed",
+    "loop": "gamma subset dark_front(t)",
+    "field": "theta : M -> R / 2pi Z"
+  },
+  "test_condition": {
+    "same_data": [
+      "same Lorentzian metric g",
+      "same DFM-MKC stress-energy tensor T_DFM_MKC",
+      "same dark_front(t)",
+      "same loop gamma"
+    ],
+    "separation": "n_wind_gamma(theta_1) != n_wind_gamma(theta_2)"
+  },
+  "guardrails": [
+    "Does not claim such theta_1 and theta_2 exist.",
+    "Does not claim new physics.",
+    "Only records a test variable."
+  ],
+  "next_admissible_step": "Test whether n_wind_gamma is fixed by metric and stress-energy data."
+}
