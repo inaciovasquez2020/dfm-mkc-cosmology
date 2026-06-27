@@ -1,0 +1,28 @@
+{
+  "id": "DFM_MKC_SIDFH_PHASE_FRONT_CHARGE_TARGET_2026_06_27",
+  "object_type": "bounded target for a DFM-MKC/SIDFH phase-front charge candidate",
+  "status": "candidate_nonmetric_object_only",
+  "definition": {
+    "theta": "theta : M -> R / 2pi Z",
+    "dark_front": "dark_front(t) := boundary of Sigma_t \\ (J^+(S) cap Sigma_t)",
+    "gamma": "closed loop gamma subset dark_front(t)",
+    "phase_front_charge": "PhaseFrontCharge(t,gamma) := (1 / 2pi) integral_gamma dtheta"
+  },
+  "repo_evidence_inputs": [
+    "DFM-MKC V1 already contains periodic structural phase theta : M -> R / 2pi Z.",
+    "DFM-MKC V1 already contains phase current J_theta^mu = beta phi^2 nabla^mu theta.",
+    "DFM-MKC V1 already contains phase-current conservation nabla_mu J_theta^mu = 0."
+  ],
+  "guardrails": [
+    "Does not claim new physics.",
+    "Does not claim PhaseFrontCharge is independent.",
+    "Does not claim empirical validation.",
+    "Only records a candidate nonmetric DFM-MKC/SIDFH interface object."
+  ],
+  "reduction_test": {
+    "question": "Is PhaseFrontCharge fixed by g, T_DFM_MKC, and standard null-cone geometry?",
+    "reduction_outcome": "If fixed, record wall-strengthening reduction.",
+    "nonreduction_outcome": "If not fixed, isolate first candidate nonmetric SIDFH residual."
+  },
+  "next_admissible_step": "Prove or disprove that PhaseFrontCharge is uniquely determined by Lorentzian metric, stress-energy, and standard null-cone geometry."
+}
