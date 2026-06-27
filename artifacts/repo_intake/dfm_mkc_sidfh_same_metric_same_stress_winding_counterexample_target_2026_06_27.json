@@ -1,0 +1,32 @@
+{
+  "id": "DFM_MKC_SIDFH_SAME_METRIC_SAME_STRESS_WINDING_COUNTEREXAMPLE_TARGET_2026_06_27",
+  "object_type": "bounded counterexample target for PhaseFrontCharge nonreducibility",
+  "depends_on": "DFM_MKC_SIDFH_PHASE_FRONT_CHARGE_REDUCIBILITY_TEST_2026_06_27",
+  "candidate_counterexample": {
+    "goal": "Find two DFM-MKC phase configurations with identical metric and stress-energy data but distinct phase-front winding charge.",
+    "theta_1": "periodic structural phase field theta_1 : M -> R / 2pi Z",
+    "theta_2": "periodic structural phase field theta_2 : M -> R / 2pi Z",
+    "shared_requirements": [
+      "same Lorentzian metric g",
+      "same DFM-MKC stress-energy tensor T_DFM_MKC",
+      "same dark_front(t)",
+      "same closed loop gamma subset dark_front(t)"
+    ],
+    "separation_requirement": "PhaseFrontCharge(theta_1,t,gamma) != PhaseFrontCharge(theta_2,t,gamma)"
+  },
+  "mathematical_mechanism_to_test": [
+    "theta is periodic modulo 2pi",
+    "dtheta may carry winding data around closed loops",
+    "local stress-energy depends on local gradients and contractions",
+    "global winding may not be determined by local metric and stress-energy data alone"
+  ],
+  "reduction_outcome": "If no such pair can exist, record wall-strengthening theorem: PhaseFrontCharge is reducible to metric/stress/null-cone data under DFM-MKC V1 assumptions.",
+  "nonreduction_outcome": "If such a pair exists, record PhaseFrontCharge as first isolated nonmetric DFM-MKC/SIDFH residual candidate.",
+  "guardrails": [
+    "Does not claim the counterexample exists.",
+    "Does not claim new physics.",
+    "Does not claim empirical validation.",
+    "Only records the bounded counterexample target."
+  ],
+  "next_admissible_step": "Prove existence or impossibility of same-g same-T_DFM_MKC different-PhaseFrontCharge configurations."
+}
