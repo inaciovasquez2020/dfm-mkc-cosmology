@@ -1,5 +1,6 @@
 import json
 import subprocess
+import sys
 from pathlib import Path
 
 ART = Path("artifacts/cosmology/cobaya_runtime_environment_certification_record_2026_05_24.json")
@@ -43,7 +44,7 @@ def test_cobaya_runtime_environment_negative_lock():
 
 def test_cobaya_runtime_environment_verifier_passes():
     out = subprocess.check_output(
-        [".runtime_envs/cobaya_runtime_2026_05_24/bin/python", "tools/verify_cobaya_runtime_environment_certification_record.py"],
+        [sys.executable, "tools/verify_cobaya_runtime_environment_certification_record.py"],
         text=True
     )
     assert "COBAYA_RUNTIME_ENVIRONMENT_CERTIFICATION_RECORD_OK" in out
