@@ -1,0 +1,77 @@
+{
+  "artifact": "cosmology_claim_strength_internal",
+  "date": "2026-06-29",
+  "scope": "internal_repository_evidence_ranking_only",
+  "ranking_rule": {
+    "positive_repository_evidence": [
+      "observed_data_packet_present",
+      "h0_residuals_table_present",
+      "s8_consistency_table_present",
+      "bao_chi2_code_present",
+      "sn_chi2_code_present",
+      "w0wa_model_comparison_schema_present",
+      "claim_readiness_gate_present"
+    ],
+    "blocking_penalties": [
+      "claim_status_blocked",
+      "missing_frozen_prediction_vector_artifact",
+      "missing_covariance_ordered_prediction_residual_adapter",
+      "missing_preregistered_decision_rule",
+      "missing_null_model_comparison_result"
+    ]
+  },
+  "claim_strength_order": [
+    {
+      "rank": 1,
+      "claim": "chi_squared_likelihood_closure",
+      "status": "strongest_blocked_claim",
+      "why_stronger": [
+        "likelihoods/bao_chi2.py exists",
+        "likelihoods/sn_chi2.py exists",
+        "DESI DR2 BAO input packet exists",
+        "h0_residuals.csv and s8_consistency.csv exist"
+      ],
+      "weakest_missing_object": "covariance_ordered_prediction_residual_adapter"
+    },
+    {
+      "rank": 2,
+      "claim": "strict_w0wa_schema_constraint",
+      "status": "blocked",
+      "why_weaker_than_rank_1": [
+        "schema surface exists",
+        "but no dataset-scoped decision rule upgrades it into a strict constraint"
+      ],
+      "weakest_missing_object": "dataset_scoped_w0wa_constraint_decision_rule"
+    },
+    {
+      "rank": 3,
+      "claim": "LCDM_refutation_claim",
+      "status": "blocked",
+      "why_weaker_than_rank_2": [
+        "observational tension inputs exist",
+        "but no same-vector LCDM null comparison result exists"
+      ],
+      "weakest_missing_object": "same_covariance_LCDM_null_model_comparison"
+    },
+    {
+      "rank": 4,
+      "claim": "DFM_MKC_cosmology_validation_claim",
+      "status": "weakest_blocked_claim",
+      "why_weakest": [
+        "validation requires successful model prediction against external observations",
+        "current artifacts only certify data ingestion and blocked-claim readiness"
+      ],
+      "weakest_missing_object": "frozen_DFM_MKC_prediction_vector"
+    }
+  ],
+  "strongest_current_admissible_claim": {
+    "claim": "the repository now has a CI-enforced DESI DR2 BAO input packet and an internal claim-readiness gate",
+    "status": "supported"
+  },
+  "claim_boundaries_preserved": [
+    "BOUNDARY := \u00ac current_repo_supports_LCDM_refutation_claim",
+    "BOUNDARY := \u00ac current_repo_supports_DFM_MKC_cosmology_validation_claim",
+    "BOUNDARY := \u00ac current_repo_supports_strict_w0wa_schema_constraint",
+    "BOUNDARY := \u00ac current_repo_supports_chi_squared_likelihood_closure"
+  ]
+}
