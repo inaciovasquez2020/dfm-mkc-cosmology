@@ -1,0 +1,60 @@
+{
+  "artifact": "desi_dr2_bao_input_packet",
+  "boundary": [
+    "no_lcdm_refutation_claim",
+    "no_dfm_mkc_cosmology_validation_claim",
+    "no_strict_w0wa_schema_constraint",
+    "no_chi_squared_likelihood_claim"
+  ],
+  "date": "2026-06-29",
+  "files": [
+    {
+      "path": "public_data/desi_dr2/README.md",
+      "sha256": "fffd648c4f06fb41b3a18de0f967a6bd96c075f59ac4440f516311ec60ebf2e4",
+      "size_bytes": 386
+    },
+    {
+      "path": "public_data/desi_dr2/SOURCE.html",
+      "sha256": "e2ce68db2f12562f124d5cd4aa75d9135a99482920557b4c8a8954dc2dbdecf1",
+      "size_bytes": 74710
+    },
+    {
+      "path": "public_data/desi_dr2/cobaya/base/desi-bao-all/chain.1.txt",
+      "sha256": "fde589a17a4ca0fd58371b61290ada939dd672484cb3d523adacb8565a340ced",
+      "size_bytes": 8385894
+    },
+    {
+      "path": "public_data/desi_dr2/cobaya/base/desi-bao-all/chain.2.txt",
+      "sha256": "b6ce2202c5fd11049a0de5c277b017e91aa9fbc9c25d6fdce1d166e7f0ef72b7",
+      "size_bytes": 8091391
+    },
+    {
+      "path": "public_data/desi_dr2/cobaya/base/desi-bao-all/chain.3.txt",
+      "sha256": "fb0f68fbcd6e8704f7b7e785fcddf1efad23a32fc2c5a9fb2cc7d971e15fb697",
+      "size_bytes": 8095450
+    },
+    {
+      "path": "public_data/desi_dr2/cobaya/base/desi-bao-all/chain.4.txt",
+      "sha256": "ea1b353e6a6ca61172c540746f31df30c3d2db8a848936f9db654548b37605d2",
+      "size_bytes": 8876131
+    },
+    {
+      "path": "public_data/desi_dr2/iminuit/base/desi-bao-all/bestfit.minimum.txt",
+      "sha256": "bf8e35e2380ef35b137a77645dcb351af2ed2a93ca8da16c1fd71cb5dd7a1358",
+      "size_bytes": 902
+    }
+  ],
+  "local_source_root": "public_data/desi_dr2",
+  "repository_targets": {
+    "h0_residuals_csv": "h0_residuals.csv",
+    "s8_consistency_csv": "s8_consistency.csv"
+  },
+  "required_adapter_fields": [
+    "observable_label",
+    "z_eff",
+    "value",
+    "sigma_or_covariance_reference",
+    "units",
+    "source_file_sha256"
+  ]
+}
