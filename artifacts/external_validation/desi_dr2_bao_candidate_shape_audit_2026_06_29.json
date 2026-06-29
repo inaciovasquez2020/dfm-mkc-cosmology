@@ -1,0 +1,27 @@
+{
+  "artifact": "desi_dr2_bao_candidate_shape_audit",
+  "date": "2026-06-29",
+  "scope": "remote_candidate_shape_audit_after_failed_exact_36_pair_pin",
+  "source_repository": "https://github.com/CobayaSampler/bao_data",
+  "first_authoritative_failure": "MISSING_OBJECT := exact_DESI_DR2_BAO_36_vector_and_36x36_covariance_pair",
+  "candidate_family": "desi_bao_dr2/desi_gaussian_bao_*_GCcomb_{mean,cov}.txt",
+  "blocked_pin_targets": [
+    "public_data/desi_dr2/observed_bao_vector_36.csv",
+    "public_data/desi_dr2/observed_bao_covariance_36x36.csv"
+  ],
+  "status": "blocked_exact_36_pair_not_found_in_candidate_repository_layout",
+  "weakest_missing_object": "DESI_DR2_BAO_candidate_shape_adapter_from_available_blocks_to_repository_36_order",
+  "next_admissible_target": "audit_candidate_shapes_before_pinning_numeric_files",
+  "claim_status": {
+    "chi_squared_likelihood_closure": "blocked",
+    "LCDM_refutation_claim": "blocked",
+    "DFM_MKC_cosmology_validation_claim": "blocked",
+    "strict_w0wa_schema_constraint": "blocked"
+  },
+  "claim_boundaries_preserved": [
+    "BOUNDARY := \u00ac current_repo_supports_LCDM_refutation_claim",
+    "BOUNDARY := \u00ac current_repo_supports_DFM_MKC_cosmology_validation_claim",
+    "BOUNDARY := \u00ac current_repo_supports_strict_w0wa_schema_constraint",
+    "BOUNDARY := \u00ac current_repo_supports_chi_squared_likelihood_closure"
+  ]
+}
