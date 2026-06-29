@@ -1,0 +1,298 @@
+{
+  "artifact": "desi_dr2_bao_repository_36_authoritative_slot_label_source_search_audit",
+  "authoritative_36_slot_label_source_search_result": {
+    "accepted_authoritative_source_count": 0,
+    "candidate_rows_available": 26,
+    "candidate_text_hit_count": 4,
+    "candidate_text_hits": [
+      {
+        "audit_status": "candidate_text_hit_not_accepted_as_authoritative_36_slot_label_source_without_explicit_verified_schema",
+        "candidate_reasons": [
+          "contains_36",
+          "contains_slot_index_or_order_language",
+          "contains_label_observable_tracer_or_redshift_language",
+          "contains_DESI_DR2_BAO_language"
+        ],
+        "path": "desi_dr2_bao_full_remaining_claim_blocker_rollup_2026_06_29.json",
+        "scope_id": "current_repository_external_validation_artifacts",
+        "sha256": "9d8c21cdfbdde44f7bec5efca0c1d5f88f8410522f156f7f21aea6a58ba315ab"
+      },
+      {
+        "audit_status": "candidate_text_hit_not_accepted_as_authoritative_36_slot_label_source_without_explicit_verified_schema",
+        "candidate_reasons": [
+          "contains_36",
+          "contains_slot_index_or_order_language",
+          "contains_label_observable_tracer_or_redshift_language",
+          "contains_DESI_DR2_BAO_language"
+        ],
+        "path": "desi_dr2_bao_repository_36_semantic_slot_label_boundary_2026_06_29.json",
+        "scope_id": "current_repository_external_validation_artifacts",
+        "sha256": "18ddb0600322a0ec0287f8f58135eb609c81d32b1dd1b7980df985edcc97c159"
+      },
+      {
+        "audit_status": "candidate_text_hit_not_accepted_as_authoritative_36_slot_label_source_without_explicit_verified_schema",
+        "candidate_reasons": [
+          "contains_36",
+          "contains_slot_index_or_order_language",
+          "contains_label_observable_tracer_or_redshift_language",
+          "contains_DESI_DR2_BAO_language"
+        ],
+        "path": "desi_dr2_bao_repository_36_slot_manifest_boundary_2026_06_29.json",
+        "scope_id": "current_repository_external_validation_artifacts",
+        "sha256": "96fe63c883aad346b994b88b49b689a75df99fabdb0ece68d81e0c7d832f043a"
+      },
+      {
+        "audit_status": "candidate_text_hit_not_accepted_as_authoritative_36_slot_label_source_without_explicit_verified_schema",
+        "candidate_reasons": [
+          "contains_36",
+          "contains_slot_index_or_order_language",
+          "contains_label_observable_tracer_or_redshift_language",
+          "contains_DESI_DR2_BAO_language"
+        ],
+        "path": "frozen_dfm_mkc_prediction_vector_desi_order_2026_06_29.json",
+        "scope_id": "current_repository_external_validation_artifacts",
+        "sha256": "c76ac096f12b3e0ebd5c91b6b58cb0945eb42cb46cf29cf9c183182238bc1c3a"
+      }
+    ],
+    "reason": "available candidate files and current repository artifacts do not provide an accepted authoritative 36-slot semantic label source with explicit labels for repository slots 0..35",
+    "repository_slots_required": 36,
+    "resolved_repository_slot_label_count": 0,
+    "status": "not_found",
+    "unresolved_repository_slot_label_count": 36
+  },
+  "candidate_source_inventory": {
+    "candidate_component_count": 8,
+    "candidate_file_inventory": [
+      {
+        "matched_terms": [
+          "36",
+          "bao",
+          "desi"
+        ],
+        "path": "desi_bao_dr2/desi_gaussian_bao_ALL_GCcomb_cov.txt",
+        "sha256": "252a143274c8a07c78694c119617d36594f6d7965d00319ca611c6ffb886e509",
+        "text_file": true
+      },
+      {
+        "matched_terms": [
+          "bao",
+          "desi",
+          "mean"
+        ],
+        "path": "desi_bao_dr2/desi_gaussian_bao_ALL_GCcomb_mean.txt",
+        "sha256": "9ac154ab583ce759c0f7eef3c978c7c70a6ead2d18774caceadf1a350a640585",
+        "text_file": true
+      },
+      {
+        "matched_terms": [
+          "bao",
+          "desi"
+        ],
+        "path": "desi_bao_dr2/desi_gaussian_bao_BGS_BRIGHT-21.35_GCcomb_cov.txt",
+        "sha256": "06d7260009fa0030171753fe2f8ece92c5e167da5fdf57f3a98aa2dfe9dc142f",
+        "text_file": true
+      },
+      {
+        "matched_terms": [
+          "bao",
+          "desi",
+          "mean"
+        ],
+        "path": "desi_bao_dr2/desi_gaussian_bao_BGS_BRIGHT-21.35_GCcomb_mean.txt",
+        "sha256": "06fc72ca4f4b4a03973c514bf7568c856716ff76a8c05df02e42b93aca769d59",
+        "text_file": true
+      },
+      {
+        "matched_terms": [
+          "36",
+          "bao",
+          "desi"
+        ],
+        "path": "desi_bao_dr2/desi_gaussian_bao_ELG_LOPnotqso_GCcomb_z1.1-1.6_cov.txt",
+        "sha256": "8d1afedca817a80f44c9dd492101d6653f1f353a59da6f24a6bcb0f0d80ad6bc",
+        "text_file": true
+      },
+      {
+        "matched_terms": [
+          "bao",
+          "desi",
+          "mean"
+        ],
+        "path": "desi_bao_dr2/desi_gaussian_bao_ELG_LOPnotqso_GCcomb_z1.1-1.6_mean.txt",
+        "sha256": "75d2dd246d2f17145f202fccf80da0bd723a67270a76f83b5be204161e204794",
+        "text_file": true
+      },
+      {
+        "matched_terms": [
+          "bao",
+          "desi"
+        ],
+        "path": "desi_bao_dr2/desi_gaussian_bao_LRG+ELG_LOPnotqso_GCcomb_cov.txt",
+        "sha256": "8c8f5270dc3db24cbecd9aee1e463819a93e4fbfb0805fdf18357c39e5a8e95a",
+        "text_file": true
+      },
+      {
+        "matched_terms": [
+          "bao",
+          "desi",
+          "mean"
+        ],
+        "path": "desi_bao_dr2/desi_gaussian_bao_LRG+ELG_LOPnotqso_GCcomb_mean.txt",
+        "sha256": "c34585b9afdb683e68c2522e9715950fd24b63435ceb8a94ae52acd5d2626f4a",
+        "text_file": true
+      },
+      {
+        "matched_terms": [
+          "bao",
+          "desi"
+        ],
+        "path": "desi_bao_dr2/desi_gaussian_bao_LRG_GCcomb_z0.4-0.6_cov.txt",
+        "sha256": "1fc0b21fd34a0e194f3fce2601ea3d1f411b03c7c1006c5b865b9f66991b8740",
+        "text_file": true
+      },
+      {
+        "matched_terms": [
+          "bao",
+          "desi",
+          "mean"
+        ],
+        "path": "desi_bao_dr2/desi_gaussian_bao_LRG_GCcomb_z0.4-0.6_mean.txt",
+        "sha256": "86336445497058eee24ecf255e8a7486d8b46d709daa7a919566a58818dbed0c",
+        "text_file": true
+      },
+      {
+        "matched_terms": [
+          "bao",
+          "desi"
+        ],
+        "path": "desi_bao_dr2/desi_gaussian_bao_LRG_GCcomb_z0.6-0.8_cov.txt",
+        "sha256": "16fa8c323f54139ef1249a24f8f9c8663dbac7890d5a6d9c3b97e84ee89847ae",
+        "text_file": true
+      },
+      {
+        "matched_terms": [
+          "bao",
+          "desi",
+          "mean"
+        ],
+        "path": "desi_bao_dr2/desi_gaussian_bao_LRG_GCcomb_z0.6-0.8_mean.txt",
+        "sha256": "6d2f38d0727b2aefcd82fdd5a1c6df5a7d34ad8459437c195d575b5ad0c6ab32",
+        "text_file": true
+      },
+      {
+        "matched_terms": [
+          "36",
+          "bao",
+          "desi"
+        ],
+        "path": "desi_bao_dr2/desi_gaussian_bao_Lya_GCcomb_cov.txt",
+        "sha256": "02a049dbf3a1cd391189948516378a694abfd8d5b5cba1a15e97c6c5cf972357",
+        "text_file": true
+      },
+      {
+        "matched_terms": [
+          "bao",
+          "desi",
+          "mean"
+        ],
+        "path": "desi_bao_dr2/desi_gaussian_bao_Lya_GCcomb_mean.txt",
+        "sha256": "9b4ab92080d038d0a0a5d76b9abead4e3919d7227e343d1e7feab7103e1f30cb",
+        "text_file": true
+      },
+      {
+        "matched_terms": [
+          "36",
+          "bao",
+          "desi"
+        ],
+        "path": "desi_bao_dr2/desi_gaussian_bao_QSO_GCcomb_cov.txt",
+        "sha256": "7445c6bca01e2732b15ff29e832cc7b682c27d096f3b3ae8a171b63b20e8f6da",
+        "text_file": true
+      },
+      {
+        "matched_terms": [
+          "bao",
+          "desi",
+          "mean"
+        ],
+        "path": "desi_bao_dr2/desi_gaussian_bao_QSO_GCcomb_mean.txt",
+        "sha256": "9bffdd0bf27615ab5225e5232fcdf53e16318bf9d06b031a2756d6e89368dadd",
+        "text_file": true
+      }
+    ],
+    "candidate_numeric_row_count": 26,
+    "candidate_source_files_all_present_in_search_clone": true,
+    "required_candidate_source_file_count": 16,
+    "source_repository": "https://github.com/CobayaSampler/bao_data",
+    "source_subdirectory": "desi_bao_dr2"
+  },
+  "claim_status": {
+    "DFM_MKC_cosmology_validation_claim": "blocked",
+    "LCDM_refutation_claim": "blocked",
+    "chi_squared_likelihood_closure": "blocked",
+    "observed_numeric_pin": "blocked",
+    "strict_w0wa_schema_constraint": "blocked"
+  },
+  "date": "2026-06-29",
+  "forbidden_side_effects": {
+    "must_not_create_placeholder_observed_covariance": true,
+    "must_not_create_placeholder_observed_vector": true,
+    "must_not_enable_dfm_mkc_cosmology_validation_claim": true,
+    "must_not_enable_lcdm_refutation_claim": true,
+    "must_not_invent_repository_36_slot_labels": true,
+    "must_not_pad_or_duplicate_26_candidate_rows_to_36": true
+  },
+  "good_stopping_point": {
+    "reason": "the repository has a verifier-backed complete blocker rollup plus a search audit for the weakest remaining source object; remaining progress requires external authoritative data/schema input, not another internal placeholder boundary",
+    "status": "yes_after_merge_and_main_push_ci_success"
+  },
+  "input_rollup": "desi_dr2_bao_full_remaining_claim_blocker_rollup_2026_06_29",
+  "input_source_boundary": "desi_dr2_bao_authoritative_slot_label_source_boundary_2026_06_29",
+  "next_weakest_missing_object": "external_authoritative_DESI_DR2_BAO_36_slot_label_source_or_repository_target_order_revision",
+  "preserved_blockers": [
+    "DESI_DR2_BAO_repository_36_authoritative_slot_label_source",
+    "DESI_DR2_BAO_repository_36_semantic_slot_labels",
+    "DESI_DR2_BAO_candidate_to_repository_36_semantic_index_map",
+    "exact_DESI_DR2_BAO_36_vector_and_36x36_covariance_pair",
+    "public_data/desi_dr2/observed_bao_vector_36.csv",
+    "public_data/desi_dr2/observed_bao_covariance_36x36.csv",
+    "observed_DESI_DR2_BAO_numeric_data_vector_and_covariance_matrix_with_same_order",
+    "non-diagnostic_DFM_MKC_prediction_vector_bound_to_same_36_order",
+    "covariance_bound_chi_squared_likelihood_verifier",
+    "preregistered_decision_rule",
+    "strict_w0wa_schema_constraint",
+    "LCDM_refutation_claim",
+    "DFM_MKC_cosmology_validation_claim"
+  ],
+  "purpose": "Search/audit available repository and candidate DESI DR2 BAO sources for an authoritative 36-slot semantic label source without inventing labels or numeric data.",
+  "search_scope_count": 3,
+  "search_scopes": [
+    {
+      "authoritative_candidate_text_hit_count": 4,
+      "description": "current repository verifier-backed DESI/cosmology artifacts",
+      "exists": true,
+      "file_count": 13,
+      "matching_text_file_count": 13,
+      "scope_id": "current_repository_external_validation_artifacts",
+      "text_file_count": 13
+    },
+    {
+      "authoritative_candidate_text_hit_count": 0,
+      "description": "current repository DESI DR2 public data directory if present",
+      "exists": true,
+      "file_count": 7,
+      "matching_text_file_count": 6,
+      "scope_id": "current_repository_public_data_desi_dr2_if_present",
+      "text_file_count": 6
+    },
+    {
+      "authoritative_candidate_text_hit_count": 0,
+      "description": "CobayaSampler/bao_data desi_bao_dr2 source files",
+      "exists": true,
+      "file_count": 16,
+      "matching_text_file_count": 16,
+      "scope_id": "CobayaSampler_bao_data_desi_bao_dr2",
+      "text_file_count": 16
+    }
+  ]
+}
