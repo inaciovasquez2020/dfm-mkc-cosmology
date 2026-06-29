@@ -1,0 +1,34 @@
+{
+  "artifact": "observed_desi_dr2_bao_numeric_order_boundary",
+  "date": "2026-06-29",
+  "scope": "same_order_observed_data_boundary_only",
+  "status": "blocked_missing_observed_numeric_vector_and_covariance",
+  "source_packet": "desi_dr2_bao_input_packet_2026_06_29",
+  "prediction_vector_artifact": "frozen_dfm_mkc_prediction_vector_desi_order_2026_06_29",
+  "adapter_artifact": "covariance_ordered_prediction_residual_adapter_2026_06_29",
+  "required_numeric_objects": {
+    "observed_data_vector_csv": "public_data/desi_dr2/observed_bao_vector_36.csv",
+    "observed_covariance_matrix_csv": "public_data/desi_dr2/observed_bao_covariance_36x36.csv"
+  },
+  "required_order_contract": {
+    "block_dim": 36,
+    "order_index_base": 0,
+    "vector_length": 36,
+    "covariance_shape": [36, 36],
+    "same_order_required": true
+  },
+  "claim_status": {
+    "chi_squared_likelihood_closure": "blocked",
+    "LCDM_refutation_claim": "blocked",
+    "DFM_MKC_cosmology_validation_claim": "blocked",
+    "strict_w0wa_schema_constraint": "blocked"
+  },
+  "weakest_missing_object": "public_data/desi_dr2/observed_bao_vector_36.csv_and_public_data/desi_dr2/observed_bao_covariance_36x36.csv",
+  "next_admissible_target": "pin_real_DESI_DR2_BAO_numeric_vector_and_covariance_with_sha256",
+  "claim_boundaries_preserved": [
+    "BOUNDARY := \u00ac current_repo_supports_LCDM_refutation_claim",
+    "BOUNDARY := \u00ac current_repo_supports_DFM_MKC_cosmology_validation_claim",
+    "BOUNDARY := \u00ac current_repo_supports_strict_w0wa_schema_constraint",
+    "BOUNDARY := \u00ac current_repo_supports_chi_squared_likelihood_closure"
+  ]
+}
