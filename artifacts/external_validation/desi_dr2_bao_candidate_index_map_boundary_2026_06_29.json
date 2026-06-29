@@ -1,0 +1,133 @@
+{
+  "artifact": "desi_dr2_bao_candidate_index_map_boundary",
+  "blocked_objects": [
+    "public_data/desi_dr2/observed_bao_vector_36.csv",
+    "public_data/desi_dr2/observed_bao_covariance_36x36.csv",
+    "DESI_DR2_BAO_candidate_to_repository_36_semantic_index_map",
+    "DESI_DR2_BAO_repository_36_observable_slot_manifest"
+  ],
+  "candidate_source_order": {
+    "component_count": 8,
+    "source_order_segments": [
+      {
+        "component_id": "ALL_GCcomb",
+        "observable_length": 13,
+        "source_covariance_file": "desi_bao_dr2/desi_gaussian_bao_ALL_GCcomb_cov.txt",
+        "source_covariance_sha256": "252a143274c8a07c78694c119617d36594f6d7965d00319ca611c6ffb886e509",
+        "source_mean_file": "desi_bao_dr2/desi_gaussian_bao_ALL_GCcomb_mean.txt",
+        "source_mean_sha256": "9ac154ab583ce759c0f7eef3c978c7c70a6ead2d18774caceadf1a350a640585",
+        "source_offset_start_in_candidate_26_order": 0,
+        "source_offset_stop_exclusive_in_candidate_26_order": 13
+      },
+      {
+        "component_id": "BGS_BRIGHT-21.35_GCcomb",
+        "observable_length": 1,
+        "source_covariance_file": "desi_bao_dr2/desi_gaussian_bao_BGS_BRIGHT-21.35_GCcomb_cov.txt",
+        "source_covariance_sha256": "06d7260009fa0030171753fe2f8ece92c5e167da5fdf57f3a98aa2dfe9dc142f",
+        "source_mean_file": "desi_bao_dr2/desi_gaussian_bao_BGS_BRIGHT-21.35_GCcomb_mean.txt",
+        "source_mean_sha256": "06fc72ca4f4b4a03973c514bf7568c856716ff76a8c05df02e42b93aca769d59",
+        "source_offset_start_in_candidate_26_order": 13,
+        "source_offset_stop_exclusive_in_candidate_26_order": 14
+      },
+      {
+        "component_id": "ELG_LOPnotqso_GCcomb_z1.1-1.6",
+        "observable_length": 2,
+        "source_covariance_file": "desi_bao_dr2/desi_gaussian_bao_ELG_LOPnotqso_GCcomb_z1.1-1.6_cov.txt",
+        "source_covariance_sha256": "8d1afedca817a80f44c9dd492101d6653f1f353a59da6f24a6bcb0f0d80ad6bc",
+        "source_mean_file": "desi_bao_dr2/desi_gaussian_bao_ELG_LOPnotqso_GCcomb_z1.1-1.6_mean.txt",
+        "source_mean_sha256": "75d2dd246d2f17145f202fccf80da0bd723a67270a76f83b5be204161e204794",
+        "source_offset_start_in_candidate_26_order": 14,
+        "source_offset_stop_exclusive_in_candidate_26_order": 16
+      },
+      {
+        "component_id": "LRG+ELG_LOPnotqso_GCcomb",
+        "observable_length": 2,
+        "source_covariance_file": "desi_bao_dr2/desi_gaussian_bao_LRG+ELG_LOPnotqso_GCcomb_cov.txt",
+        "source_covariance_sha256": "8c8f5270dc3db24cbecd9aee1e463819a93e4fbfb0805fdf18357c39e5a8e95a",
+        "source_mean_file": "desi_bao_dr2/desi_gaussian_bao_LRG+ELG_LOPnotqso_GCcomb_mean.txt",
+        "source_mean_sha256": "c34585b9afdb683e68c2522e9715950fd24b63435ceb8a94ae52acd5d2626f4a",
+        "source_offset_start_in_candidate_26_order": 16,
+        "source_offset_stop_exclusive_in_candidate_26_order": 18
+      },
+      {
+        "component_id": "LRG_GCcomb_z0.4-0.6",
+        "observable_length": 2,
+        "source_covariance_file": "desi_bao_dr2/desi_gaussian_bao_LRG_GCcomb_z0.4-0.6_cov.txt",
+        "source_covariance_sha256": "1fc0b21fd34a0e194f3fce2601ea3d1f411b03c7c1006c5b865b9f66991b8740",
+        "source_mean_file": "desi_bao_dr2/desi_gaussian_bao_LRG_GCcomb_z0.4-0.6_mean.txt",
+        "source_mean_sha256": "86336445497058eee24ecf255e8a7486d8b46d709daa7a919566a58818dbed0c",
+        "source_offset_start_in_candidate_26_order": 18,
+        "source_offset_stop_exclusive_in_candidate_26_order": 20
+      },
+      {
+        "component_id": "LRG_GCcomb_z0.6-0.8",
+        "observable_length": 2,
+        "source_covariance_file": "desi_bao_dr2/desi_gaussian_bao_LRG_GCcomb_z0.6-0.8_cov.txt",
+        "source_covariance_sha256": "16fa8c323f54139ef1249a24f8f9c8663dbac7890d5a6d9c3b97e84ee89847ae",
+        "source_mean_file": "desi_bao_dr2/desi_gaussian_bao_LRG_GCcomb_z0.6-0.8_mean.txt",
+        "source_mean_sha256": "6d2f38d0727b2aefcd82fdd5a1c6df5a7d34ad8459437c195d575b5ad0c6ab32",
+        "source_offset_start_in_candidate_26_order": 20,
+        "source_offset_stop_exclusive_in_candidate_26_order": 22
+      },
+      {
+        "component_id": "Lya_GCcomb",
+        "observable_length": 2,
+        "source_covariance_file": "desi_bao_dr2/desi_gaussian_bao_Lya_GCcomb_cov.txt",
+        "source_covariance_sha256": "02a049dbf3a1cd391189948516378a694abfd8d5b5cba1a15e97c6c5cf972357",
+        "source_mean_file": "desi_bao_dr2/desi_gaussian_bao_Lya_GCcomb_mean.txt",
+        "source_mean_sha256": "9b4ab92080d038d0a0a5d76b9abead4e3919d7227e343d1e7feab7103e1f30cb",
+        "source_offset_start_in_candidate_26_order": 22,
+        "source_offset_stop_exclusive_in_candidate_26_order": 24
+      },
+      {
+        "component_id": "QSO_GCcomb",
+        "observable_length": 2,
+        "source_covariance_file": "desi_bao_dr2/desi_gaussian_bao_QSO_GCcomb_cov.txt",
+        "source_covariance_sha256": "7445c6bca01e2732b15ff29e832cc7b682c27d096f3b3ae8a171b63b20e8f6da",
+        "source_mean_file": "desi_bao_dr2/desi_gaussian_bao_QSO_GCcomb_mean.txt",
+        "source_mean_sha256": "9bffdd0bf27615ab5225e5232fcdf53e16318bf9d06b031a2756d6e89368dadd",
+        "source_offset_start_in_candidate_26_order": 24,
+        "source_offset_stop_exclusive_in_candidate_26_order": 26
+      }
+    ],
+    "total_observable_length": 26
+  },
+  "claim_boundaries_preserved": [
+    "BOUNDARY := \u00ac current_repo_supports_observed_DESI_DR2_BAO_numeric_pin",
+    "BOUNDARY := \u00ac current_repo_supports_chi_squared_likelihood_closure",
+    "BOUNDARY := \u00ac current_repo_supports_LCDM_refutation_claim",
+    "BOUNDARY := \u00ac current_repo_supports_DFM_MKC_cosmology_validation_claim",
+    "BOUNDARY := \u00ac current_repo_supports_strict_w0wa_schema_constraint"
+  ],
+  "claim_status": {
+    "DFM_MKC_cosmology_validation_claim": "blocked",
+    "LCDM_refutation_claim": "blocked",
+    "chi_squared_likelihood_closure": "blocked",
+    "observed_numeric_pin": "blocked",
+    "strict_w0wa_schema_constraint": "blocked"
+  },
+  "date": "2026-06-29",
+  "index_map_status": {
+    "candidate_source_length": 26,
+    "candidate_to_repository_36_index_map": "blocked",
+    "length_gap": 10,
+    "no_numeric_pin": true,
+    "no_padding_or_duplication_allowed": true,
+    "no_semantic_observable_slot_manifest": true,
+    "reason": "candidate block inventory has 26 observables while repository target contract requires 36 ordered observables",
+    "repository_target_length": 36
+  },
+  "input_contract": "desi_dr2_bao_candidate_shape_adapter_contract_2026_06_29",
+  "next_weakest_missing_object": "DESI_DR2_BAO_repository_36_observable_slot_manifest",
+  "purpose": "Record the candidate 8-block / 26-observable source-order segmentation and block any 36-order numeric pin until an explicit semantic index map exists.",
+  "repository_target_order": {
+    "required_covariance_shape": [
+      36,
+      36
+    ],
+    "required_vector_length": 36,
+    "same_order_required": true,
+    "target_covariance_path": "public_data/desi_dr2/observed_bao_covariance_36x36.csv",
+    "target_vector_path": "public_data/desi_dr2/observed_bao_vector_36.csv"
+  }
+}
