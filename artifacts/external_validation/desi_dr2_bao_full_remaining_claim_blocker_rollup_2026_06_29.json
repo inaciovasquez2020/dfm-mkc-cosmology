@@ -1,0 +1,177 @@
+{
+  "artifact": "desi_dr2_bao_full_remaining_claim_blocker_rollup",
+  "blocked_claims": {
+    "DFM_MKC_cosmology_validation_claim": "blocked",
+    "LCDM_refutation_claim": "blocked",
+    "chi_squared_likelihood_closure": "blocked",
+    "observed_numeric_pin": "blocked",
+    "strict_w0wa_schema_constraint": "blocked"
+  },
+  "claim_boundaries_preserved": [
+    "BOUNDARY := \u00ac current_repo_supports_observed_DESI_DR2_BAO_numeric_pin",
+    "BOUNDARY := \u00ac current_repo_supports_chi_squared_likelihood_closure",
+    "BOUNDARY := \u00ac current_repo_supports_strict_w0wa_schema_constraint",
+    "BOUNDARY := \u00ac current_repo_supports_LCDM_refutation_claim",
+    "BOUNDARY := \u00ac current_repo_supports_DFM_MKC_cosmology_validation_claim"
+  ],
+  "completed_support_objects": [
+    "DESI_DR2_BAO_INPUT_PACKET_OK",
+    "COSMOLOGY_CLAIM_READINESS_GATE_OK",
+    "COSMOLOGY_CLAIM_STRENGTH_INTERNAL_OK",
+    "COVARIANCE_ORDERED_PREDICTION_RESIDUAL_ADAPTER_OK",
+    "FROZEN_DFM_MKC_PREDICTION_VECTOR_DESI_ORDER_OK",
+    "OBSERVED_DESI_DR2_BAO_NUMERIC_ORDER_BOUNDARY_OK",
+    "DESI_DR2_BAO_CANDIDATE_SHAPE_AUDIT_OK",
+    "DESI_DR2_BAO_CANDIDATE_SHAPE_ADAPTER_CONTRACT_OK",
+    "DESI_DR2_BAO_CANDIDATE_INDEX_MAP_BOUNDARY_OK",
+    "DESI_DR2_BAO_REPOSITORY_36_SLOT_MANIFEST_BOUNDARY_OK",
+    "DESI_DR2_BAO_REPOSITORY_36_SEMANTIC_SLOT_LABEL_BOUNDARY_OK",
+    "DESI_DR2_BAO_AUTHORITATIVE_SLOT_LABEL_SOURCE_BOUNDARY_OK"
+  ],
+  "date": "2026-06-29",
+  "forbidden_side_effects": {
+    "must_not_create_placeholder_observed_covariance": true,
+    "must_not_create_placeholder_observed_vector": true,
+    "must_not_enable_dfm_mkc_cosmology_validation_claim": true,
+    "must_not_enable_lcdm_refutation_claim": true,
+    "must_not_invent_repository_36_slot_labels": true,
+    "must_not_pad_or_duplicate_26_candidate_rows_to_36": true
+  },
+  "missing_files": [
+    "public_data/desi_dr2/observed_bao_vector_36.csv",
+    "public_data/desi_dr2/observed_bao_covariance_36x36.csv"
+  ],
+  "next_weakest_missing_object": "DESI_DR2_BAO_repository_36_authoritative_slot_label_source_search_audit",
+  "purpose": "Single verifier-backed rollup covering all remaining DESI DR2 BAO / cosmology blockers after the authoritative slot-label source boundary.",
+  "remaining_object_count": 13,
+  "remaining_objects": [
+    {
+      "blocks": [
+        "DESI_DR2_BAO_repository_36_semantic_slot_labels",
+        "DESI_DR2_BAO_candidate_to_repository_36_semantic_index_map",
+        "observed_DESI_DR2_BAO_numeric_data_vector_and_covariance_matrix_with_same_order"
+      ],
+      "object": "DESI_DR2_BAO_repository_36_authoritative_slot_label_source",
+      "ordinal": 1,
+      "status": "still_missing",
+      "why": "current candidate source has 8 components / 26 rows, not authoritative 36-slot labels"
+    },
+    {
+      "blocks": [
+        "DESI_DR2_BAO_candidate_to_repository_36_semantic_index_map",
+        "public_data/desi_dr2/observed_bao_vector_36.csv",
+        "public_data/desi_dr2/observed_bao_covariance_36x36.csv"
+      ],
+      "current": "RESOLVED_REPOSITORY_SLOT_LABEL_COUNT := 0",
+      "left": "label all 36 repository slots from an authoritative source",
+      "object": "DESI_DR2_BAO_repository_36_semantic_slot_labels",
+      "ordinal": 2,
+      "status": "unresolved"
+    },
+    {
+      "blocks": [
+        "observed_DESI_DR2_BAO_numeric_data_vector_and_covariance_matrix_with_same_order",
+        "covariance_bound_chi_squared_likelihood_verifier"
+      ],
+      "object": "DESI_DR2_BAO_candidate_to_repository_36_semantic_index_map",
+      "ordinal": 3,
+      "status": "blocked",
+      "why": "cannot map 26 candidate rows into 36 repository slots without authoritative 36-slot semantics"
+    },
+    {
+      "blocks": [
+        "public_data/desi_dr2/observed_bao_vector_36.csv",
+        "public_data/desi_dr2/observed_bao_covariance_36x36.csv"
+      ],
+      "object": "exact_DESI_DR2_BAO_36_vector_and_36x36_covariance_pair",
+      "ordinal": 4,
+      "status": "missing",
+      "why": "prior audit found no exact pair in candidate source"
+    },
+    {
+      "blocks": [
+        "observed_numeric_pin",
+        "chi_squared_likelihood_closure",
+        "LCDM_refutation_claim",
+        "DFM_MKC_cosmology_validation_claim"
+      ],
+      "object": "public_data/desi_dr2/observed_bao_vector_36.csv",
+      "ordinal": 5,
+      "status": "missing"
+    },
+    {
+      "blocks": [
+        "covariance_bound_likelihood",
+        "chi_squared_likelihood_closure",
+        "LCDM_refutation_claim",
+        "DFM_MKC_cosmology_validation_claim"
+      ],
+      "object": "public_data/desi_dr2/observed_bao_covariance_36x36.csv",
+      "ordinal": 6,
+      "status": "missing"
+    },
+    {
+      "blocks": [
+        "observed_numeric_pin",
+        "covariance_bound_chi_squared_likelihood_verifier"
+      ],
+      "object": "observed_DESI_DR2_BAO_numeric_data_vector_and_covariance_matrix_with_same_order",
+      "ordinal": 7,
+      "status": "missing",
+      "why": "vector and covariance must share the same 36-slot order"
+    },
+    {
+      "blocks": [
+        "DFM_MKC_cosmology_validation_claim",
+        "strict_w0wa_schema_constraint"
+      ],
+      "current": "frozen diagnostic 36-entry zero baseline only",
+      "object": "non-diagnostic_DFM_MKC_prediction_vector_bound_to_same_36_order",
+      "ordinal": 8,
+      "status": "not_done"
+    },
+    {
+      "blocks": [
+        "chi_squared_likelihood_closure",
+        "LCDM_refutation_claim",
+        "DFM_MKC_cosmology_validation_claim"
+      ],
+      "object": "covariance_bound_chi_squared_likelihood_verifier",
+      "ordinal": 9,
+      "status": "missing"
+    },
+    {
+      "blocks": [
+        "claim_readiness_upgrade_from_boundary_to_empirical_comparison",
+        "LCDM_refutation_claim",
+        "DFM_MKC_cosmology_validation_claim"
+      ],
+      "object": "preregistered_decision_rule",
+      "ordinal": 10,
+      "status": "missing"
+    },
+    {
+      "blocks": [
+        "strict_w0wa_schema_constraint_claim"
+      ],
+      "object": "strict_w0wa_schema_constraint",
+      "ordinal": 11,
+      "status": "blocked",
+      "why": "no strict w0wa likelihood/schema closure exists"
+    },
+    {
+      "blocks": [],
+      "object": "LCDM_refutation_claim",
+      "ordinal": 12,
+      "status": "blocked",
+      "why": "no observed numeric pin, no covariance likelihood, no preregistered rule, no baseline comparison closure"
+    },
+    {
+      "blocks": [],
+      "object": "DFM_MKC_cosmology_validation_claim",
+      "ordinal": 13,
+      "status": "blocked",
+      "why": "current repo supports boundary/readiness objects only, not empirical validation"
+    }
+  ]
+}
