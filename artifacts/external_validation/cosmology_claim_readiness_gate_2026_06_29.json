@@ -1,0 +1,24 @@
+{
+  "artifact": "cosmology_claim_readiness_gate",
+  "date": "2026-06-29",
+  "claim_status": {
+    "lcdm_refutation_claim": "blocked",
+    "dfm_mkc_cosmology_validation_claim": "blocked",
+    "strict_w0wa_schema_constraint": "blocked",
+    "chi_squared_likelihood_closure": "blocked"
+  },
+  "blocked_claim_boundaries": [
+    "BOUNDARY := \u00ac current_repo_supports_LCDM_refutation_claim",
+    "BOUNDARY := \u00ac current_repo_supports_DFM_MKC_cosmology_validation_claim",
+    "BOUNDARY := \u00ac current_repo_supports_strict_w0wa_schema_constraint",
+    "BOUNDARY := \u00ac current_repo_supports_chi_squared_likelihood_closure"
+  ],
+  "required_prerequisites": [
+    "frozen_prediction_vector",
+    "observed_data_packet",
+    "covariance_bound_likelihood",
+    "preregistered_decision_rule"
+  ],
+  "weakest_missing_object": "covariance_ordered_prediction_residual_adapter",
+  "admissible_next_target": "frozen_prediction_vector"
+}
