@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Covariance Ordered Prediction Residual Adapter Diagnostic",
+  "type": "object",
+  "required": [
+    "adapter_id",
+    "finite_patch_trace",
+    "claim_status",
+    "block_dim",
+    "boundary"
+  ],
+  "properties": {
+    "adapter_id": {
+      "const": "covariance_ordered_prediction_residual_adapter"
+    },
+    "finite_patch_trace": {
+      "type": "number",
+      "minimum": 0
+    },
+    "claim_status": {
+      "const": "diagnostic_field_only_no_tensor_law"
+    },
+    "block_dim": {
+      "type": "integer",
+      "const": 36
+    },
+    "boundary": {
+      "type": "array",
+      "contains": {
+        "const": "no_LCDM_refutation_claim"
+      }
+    }
+  },
+  "additionalProperties": true
+}

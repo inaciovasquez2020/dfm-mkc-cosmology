@@ -1,0 +1,27 @@
+{
+  "artifact": "covariance_ordered_prediction_residual_adapter",
+  "date": "2026-06-29",
+  "scope": "finite_patch_diagnostic_only",
+  "block_dim": 36,
+  "input_policy": {
+    "covariance_matrix": "symmetric_finite_36_by_36",
+    "witness_matrix": "finite_36_by_36",
+    "deterministic_fixture": true
+  },
+  "output_fields": [
+    "adapter_id",
+    "finite_patch_trace",
+    "claim_status",
+    "block_dim",
+    "boundary"
+  ],
+  "diagnostic_csv_field": "adapter_diagnostic_trace",
+  "csv_write_policy": "no_mutation_of_h0_residuals_or_s8_consistency_by_verifier",
+  "claim_boundaries_preserved": [
+    "BOUNDARY := \u00ac current_repo_supports_LCDM_refutation_claim",
+    "BOUNDARY := \u00ac current_repo_supports_DFM_MKC_cosmology_validation_claim",
+    "BOUNDARY := \u00ac current_repo_supports_strict_w0wa_schema_constraint",
+    "BOUNDARY := \u00ac current_repo_supports_chi_squared_likelihood_closure"
+  ],
+  "weakest_missing_object_after_adapter": "frozen_DFM_MKC_prediction_vector_bound_to_DESI_DR2_BAO_covariance_order"
+}
