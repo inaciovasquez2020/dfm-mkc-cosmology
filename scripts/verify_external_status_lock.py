@@ -42,4 +42,11 @@ for pat in dangerous_patterns:
     if re.search(pat, readme_text, flags=re.IGNORECASE):
         raise SystemExit(f"dangerous README claim matched: {pat}")
 
+import subprocess
+import sys
+subprocess.run(
+    [sys.executable, "tools/verify_zero_day_falsification_interface_receipt.py"],
+    check=True,
+)
+
 print("external status lock: PASS")
