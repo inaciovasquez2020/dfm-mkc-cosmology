@@ -1,0 +1,43 @@
+{
+  "receipt": "Planck_ACT_DFM_MKC_CMB_Consistency_Test",
+  "date": "2026-07-06",
+  "status": "falsification_surface_only",
+  "source_repository": "zero_day_restricted_closures",
+  "local_repository": "dfm-mkc-cosmology",
+  "input_surface": "DFM_MKC_formula_to_observable_map",
+  "test_role": "third CMB consistency falsification surface",
+  "required_model_outputs": [
+    "theta_star",
+    "sound_horizon",
+    "angular_diameter_distance_to_last_scattering",
+    "linear perturbation transfer consistency",
+    "C_ell summary or likelihood-compatible compressed prediction"
+  ],
+  "required_test_inputs": [
+    "DFM_MKC executable formula source",
+    "parameter_vector",
+    "parameter_priors",
+    "multipole_or_compressed_CMB_domain",
+    "Planck consistency target",
+    "ACT consistency target",
+    "Planck_ACT covariance or likelihood surrogate",
+    "falsification_threshold"
+  ],
+  "falsification_rule": "reject only if Planck_ACT consistency likelihood mismatch exceeds declared threshold under stated assumptions",
+  "current_result": "PLANCK_ACT_CMB_CONSISTENCY_TEST_LINKED_BUT_NOT_EXECUTED",
+  "preserved_external_result": "DFM_MKC_FORMULA_SURFACE_FOUND_BUT_NO_ZD_CLOSURE_DERIVED",
+  "non_claims": [
+    "does not prove a DFM-MKC cosmology theorem",
+    "does not validate cosmology empirically",
+    "does not reject Lambda-CDM",
+    "does not independently reproduce Planck likelihoods",
+    "does not independently reproduce ACT likelihoods",
+    "does not claim Planck falsifies DFM-MKC",
+    "does not claim ACT falsifies DFM-MKC",
+    "does not claim Planck supports DFM-MKC",
+    "does not claim ACT supports DFM-MKC",
+    "does not prove ZeroDayClosure",
+    "does not prove unrestricted ZeroDayClosure"
+  ],
+  "next_weakest_point": "No executable Planck/ACT likelihood or compressed CMB observable operator is supplied in this receipt"
+}
