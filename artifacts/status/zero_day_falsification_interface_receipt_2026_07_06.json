@@ -1,0 +1,36 @@
+{
+  "receipt": "ZeroDayFalsificationInterfaceReceipt",
+  "date": "2026-07-06",
+  "status": "external_interface_only",
+  "source_repository": "zero_day_restricted_closures",
+  "source_main": "1a8190f",
+  "locked_external_surfaces": [
+    "DFM_MKC_formula_to_observable_map",
+    "DESI_DR2_BAO_DFM_MKC_Test",
+    "PantheonPlus_DFM_MKC_HubbleDiagram_Test"
+  ],
+  "local_repository_boundary": [
+    "not a final cosmological truth claim",
+    "not a Lambda-CDM rejection claim",
+    "not an identifiability theorem",
+    "not an independent likelihood reproduction",
+    "not a dark-sector closure claim",
+    "not a matter-sector closure claim"
+  ],
+  "falsification_alignment": [
+    "expansion-history background inconsistency",
+    "Type Ia supernova luminosity-distance mismatch",
+    "full-covariance degeneracy collapse"
+  ],
+  "preserved_external_result": "DFM_MKC_FORMULA_SURFACE_FOUND_BUT_NO_ZD_CLOSURE_DERIVED",
+  "non_claims": [
+    "does not prove a DFM-MKC cosmology theorem",
+    "does not validate cosmology empirically",
+    "does not reject Lambda-CDM",
+    "does not prove ZeroDayClosure",
+    "does not prove unrestricted ZeroDayClosure",
+    "does not independently reproduce DESI DR2 likelihoods",
+    "does not independently reproduce PantheonPlus likelihoods"
+  ],
+  "next_weakest_point": "Planck_ACT_DFM_MKC_CMB_Consistency_Test remains external and not locally receipt-locked"
+}
