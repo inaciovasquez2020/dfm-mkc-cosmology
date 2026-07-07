@@ -1,0 +1,45 @@
+{
+  "receipt": "sidfh_repository_route_receipt_2026_07_07",
+  "core_name": "SIDFH",
+  "expanded_name": "Shadow of Infinity Dark Front Hypothesis",
+  "primary_repo": "inaciovasquez2020/dfm-mkc-cosmology",
+  "role": "primary SIDFH cosmology and intake route",
+  "related_repos": {
+    "dfm-mkc-cosmology": "primary SIDFH cosmology/intake repository",
+    "chronos-urf-rr": "Lean/frontier formalization route for SIDFHTachSpeedInputSurface",
+    "urf-core": "canonical ShadowOfInfinity definition and MotionBandShadow boundary route",
+    "urf-textbook": "exposition and registry-facing Shadow of Infinity documentation"
+  },
+  "core_objects": [
+    "L(t)",
+    "D(t)",
+    "dark_front(t)",
+    "δ_SIDFH(t,n)",
+    "A_SIDFH(t)",
+    "R_{2,SIDFH}",
+    "C_SIDFH",
+    "Q_SIDFH",
+    "L_SIDFH",
+    "SIDFHTachSpeedInputSurface",
+    "SIDFHTachSpeedDerivationSurface",
+    "SIDFHTachSpeedProofTarget",
+    "MotionBandShadow(V,c,v) := V < v ∧ v < c"
+  ],
+  "classification": {
+    "sidfh_new_physics_proved": false,
+    "sidfh_independent_math_proved": false,
+    "sidfh_reduction_surface_supported": true,
+    "sidfh_tach_speed_input_surface_status": "input/assumption surface",
+    "v_min_physical_derivation_proved": false,
+    "motion_band_shadow_status": "bounded relation only"
+  },
+  "forbidden_claims": [
+    "SIDFH proves new cosmology",
+    "SIDFH proves dark matter",
+    "SIDFH proves a universal physical minimum nonzero speed",
+    "SIDFH derives v_min from physical first principles",
+    "MotionBandShadow proves a universal physical minimum nonzero speed",
+    "ShadowOfInfinity implies physical time dilation"
+  ],
+  "boundary": "BOUNDARY := ¬ current_work_proves_universal_physical_minimum_nonzero_speed"
+}
