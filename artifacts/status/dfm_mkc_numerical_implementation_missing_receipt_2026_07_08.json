@@ -1,0 +1,27 @@
+{
+  "id": "DFM_MKC_NUMERICAL_IMPLEMENTATION_MISSING_RECEIPT_2026_07_08",
+  "status": "NOT_DETERMINED_NUMERIC_DFM_VECTOR_MISSING",
+  "searched_contract_sources": [
+    "artifacts/repo_intake/dfm_mkc_executable_solver_implementation_v1_2026_05_27.json",
+    "artifacts/repo_intake/dfm_mkc_production_solver_code_v1_2026_05_27.json",
+    "src/dfm_mkc_solver/production_solver_v1.py"
+  ],
+  "implementation_result": {
+    "source_file_exists": true,
+    "source_type": "solver_contract_surface",
+    "physical_numeric_integration": false,
+    "numeric_prediction_vector_output": false
+  },
+  "missing_object": {
+    "required": "validated executable DFM-MKC ACT DR6 prediction vector",
+    "shape": [
+      135
+    ],
+    "ordering_certificate": "artifacts/dfm_mkc/act_dr6_prediction_vector_ordering_certificate_2026_05_25.json"
+  },
+  "chi2_gate": {
+    "status": "BLOCKED",
+    "reason": "DFM-MKC numeric vector unavailable"
+  },
+  "boundary": "BOUNDARY := \u00ac executable DFM-MKC ACT DR6 delta-chi2 comparison"
+}

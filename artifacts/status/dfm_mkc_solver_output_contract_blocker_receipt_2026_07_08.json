@@ -1,0 +1,24 @@
+{
+  "id": "DFM_MKC_SOLVER_OUTPUT_CONTRACT_BLOCKER_RECEIPT_2026_07_08",
+  "status": "BLOCKED_MISSING_EXECUTABLE_NUMERIC_OUTPUT",
+  "missing_object": "executable numeric DFM-MKC 135-row ACT DR6 prediction vector",
+  "required_output_contract": {
+    "shape": [
+      135
+    ],
+    "ordering_certificate": "artifacts/dfm_mkc/act_dr6_prediction_vector_ordering_certificate_2026_05_25.json",
+    "required_alignment": "ACT_DR6 row ordering",
+    "required_usage": "same covariance chi2 comparison against Lambda-CDM"
+  },
+  "solver_contract_sources": [
+    "artifacts/repo_intake/dfm_mkc_executable_solver_implementation_v1_2026_05_27.json",
+    "artifacts/repo_intake/dfm_mkc_production_solver_code_v1_2026_05_27.json",
+    "artifacts/repo_intake/dfm_mkc_numerical_prediction_vector_run_v1_target_2026_06_17.json"
+  ],
+  "current_state": {
+    "solver_contract": "PRESENT",
+    "solver_execution_output": "MISSING",
+    "act_dr6_numeric_vector": "MISSING"
+  },
+  "boundary": "BOUNDARY := \u00ac executable DFM-MKC ACT DR6 delta-chi2 comparison"
+}
