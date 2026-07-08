@@ -1,0 +1,26 @@
+{
+  "id": "DFM_MKC_VS_LCDM_SINGLE_QUANTITATIVE_COMPARISON_AXIS_RECEIPT_2026_07_08",
+  "status": "COMPARISON_AXIS_IDENTIFIED_NOT_EXECUTED",
+  "single_quantitative_prediction": {
+    "observable": "distance-redshift expansion observable",
+    "candidate_repository_axis": "DFM-MKC vs Lambda-CDM prediction vector comparison",
+    "required_shape": "same ordered observational rows for both models"
+  },
+  "independent_dataset_requirement": {
+    "same_dataset_for_both_models": true,
+    "minimum_payloads_required": [
+      "observed data vector",
+      "covariance matrix",
+      "DFM-MKC prediction vector",
+      "Lambda-CDM prediction vector",
+      "shared row-ordering certificate"
+    ]
+  },
+  "predefined_statistical_criterion": {
+    "primary": "delta_chi2",
+    "rule": "favor lower chi2 only after both models are evaluated on the same ordered data vector and covariance matrix"
+  },
+  "current_determination": "NOT_DETERMINED",
+  "blocked_reason": "No closed same-dataset DFM-MKC-vs-Lambda-CDM empirical comparison payload is identified by this receipt.",
+  "boundary": "BOUNDARY := \u00ac determined(DFM-MKC cosmology > Lambda-CDM)"
+}
