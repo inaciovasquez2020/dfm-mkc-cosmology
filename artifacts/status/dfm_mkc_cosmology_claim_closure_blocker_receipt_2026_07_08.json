@@ -1,0 +1,19 @@
+{
+  "id": "DFM_MKC_COSMOLOGY_CLAIM_CLOSURE_BLOCKER_RECEIPT_2026_07_08",
+  "status": "BLOCKED_NOT_PROVEN_OR_DISPROVEN",
+  "strongest_tracked_claim_file": "docs/status/ACT_DR6_OFFICIAL_BASELINE_LCDM_THEORY_VECTOR_PROVENANCE_CERTIFICATE_TARGET_2026_05_25.md",
+  "claim_file_score": 10,
+  "guarding_verifier_candidates": [
+    "tools/verify_act_dr6_official_baseline_lcdm_theory_vector_provenance_certificate_target.py"
+  ],
+  "comparison_result": {
+    "repository_tests_passed": "663 passed in local Python 3.11 environment",
+    "does_not_imply": [
+      "empirical closure",
+      "theoretical closure",
+      "proof of DFM-MKC cosmology",
+      "disproof of DFM-MKC cosmology"
+    ]
+  },
+  "boundary": "BOUNDARY := \u00ac empirical/theoretical closure of DFM-MKC cosmology"
+}
