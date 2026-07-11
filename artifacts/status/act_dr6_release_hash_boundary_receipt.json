@@ -1,0 +1,13 @@
+{
+  "object": "ACT_DR6_RELEASE_HASH_BOUNDARY_RECEIPT",
+  "status": "EXTERNAL_DIGEST_NOT_SUPPLIED",
+  "scope": "BOUNDARY_RECEIPT_ONLY",
+  "claims": [
+    "release hash validation path exists"
+  ],
+  "non_claims": [
+    "no independent release digest supplied",
+    "no likelihood execution performed",
+    "no empirical cosmology claim"
+  ]
+}
