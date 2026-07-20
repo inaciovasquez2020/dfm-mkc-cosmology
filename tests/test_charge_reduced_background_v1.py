@@ -65,6 +65,12 @@ def test_flat_potential_zero_charge_solution():
         atol=1.0e-12,
     )
     np.testing.assert_allclose(
+        solution.theta,
+        initial.theta,
+        rtol=0.0,
+        atol=1.0e-12,
+    )
+    np.testing.assert_allclose(
         solution.rho_m,
         expected_rho_m,
         rtol=2.0e-9,
@@ -83,7 +89,7 @@ def test_flat_potential_zero_charge_solution():
 
 
 def test_nonzero_charge_makes_beta_dynamical():
-    state = (1.0, 0.0, 0.3, 1.0e-4)
+    state = (1.0, 0.0, 0.0, 0.3, 1.0e-4)
 
     beta_one = module.ChargeReducedParameters(
         beta=1.0,
