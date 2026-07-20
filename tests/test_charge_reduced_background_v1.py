@@ -148,3 +148,41 @@ def test_charge_reduction_rejects_zero_phi():
             parameters,
             initial,
         )
+
+
+
+def test_phase_reconstruction_preserves_conserved_charge():
+    parameters = module.ChargeReducedParameters(
+        beta=1.3,
+        rho_star=1.0,
+        m_phi_squared=0.0,
+        lambda_phi=0.0,
+        Q_theta=0.05,
+    )
+    initial = module.ChargeReducedInitialData(
+        phi=1.5,
+        v=0.0,
+        theta=0.7,
+        rho_m=0.3,
+        rho_r=1.0e-4,
+    )
+    config = module.ChargeReducedSolverConfig(
+        N_initial=-0.2,
+        N_final=0.0,
+        samples=201,
+        rtol=1.0e-10,
+        atol=1.0e-12,
+    )
+
+    solution = module.solve_charge_reduced_background(
+        parameters,
+        initial,
+        config,
+    )
+
+    assert solution.theta[0] == pytest.approx(initial.theta)
+    assert np.all(np.diff(solution.theta) > 0.0)
+    assert np.max(
+        np.abs(solution.phase_charge_residual)
+    ) < 1.0e-12
+    assert np.all(np.isfinite(solution.theta))

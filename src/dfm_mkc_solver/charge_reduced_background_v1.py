@@ -45,6 +45,7 @@ class ChargeReducedInitialData:
 
     phi: float = 1.0
     v: float = 0.0
+    theta: float = 0.0
     rho_m: float = 0.9
     rho_r: float = 3.0e-4
 
@@ -68,7 +69,9 @@ class ChargeReducedBackgroundSolution:
     rho_r: np.ndarray
     H: np.ndarray
     rho_dfm_mkc: np.ndarray
+    theta: np.ndarray
     theta_dot: np.ndarray
+    phase_charge_residual: np.ndarray
     friedmann_constraint_residual: np.ndarray
     success: bool
     message: str
@@ -266,6 +269,7 @@ def solve_charge_reduced_background(
 
     validate_parameters(parameters)
     validate_solver_config(config)
+    _require_finite("theta", initial_data.theta)
 
     initial_state: State = (
         initial_data.phi,
@@ -344,6 +348,31 @@ def solve_charge_reduced_background(
             )
         )
 
+    dtheta_dN = theta_dot / H
+    theta = np.empty_like(N)
+    theta[0] = initial_data.theta
+
+    if len(N) > 1:
+        theta[1:] = (
+            initial_data.theta
+            + np.cumsum(
+                0.5
+                * (
+                    dtheta_dN[:-1]
+                    + dtheta_dN[1:]
+                )
+                * np.diff(N)
+            )
+        )
+
+    phase_charge_residual = (
+        a**3
+        * parameters.beta
+        * phi**2
+        * theta_dot
+        - parameters.Q_theta
+    )
+
     arrays = (
         N,
         a,
@@ -353,7 +382,9 @@ def solve_charge_reduced_background(
         rho_r,
         H,
         rho_dfm_mkc,
+        theta,
         theta_dot,
+        phase_charge_residual,
         constraint_residual,
     )
     if not all(np.all(np.isfinite(array)) for array in arrays):
@@ -368,7 +399,9 @@ def solve_charge_reduced_background(
         rho_r=rho_r,
         H=H,
         rho_dfm_mkc=rho_dfm_mkc,
+        theta=theta,
         theta_dot=theta_dot,
+        phase_charge_residual=phase_charge_residual,
         friedmann_constraint_residual=constraint_residual,
         success=True,
         message=integration.message,
