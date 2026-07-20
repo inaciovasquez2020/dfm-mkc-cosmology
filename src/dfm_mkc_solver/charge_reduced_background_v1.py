@@ -22,7 +22,7 @@ import numpy as np
 from scipy.integrate import solve_ivp
 
 
-State = tuple[float, float, float, float]
+State = tuple[float, float, float, float, float]
 
 
 @dataclass(frozen=True)
@@ -122,11 +122,12 @@ def validate_solver_config(config: ChargeReducedSolverConfig) -> None:
 
 
 def validate_state(state: State) -> None:
-    phi, v, rho_m, rho_r = state
+    phi, v, theta, rho_m, rho_r = state
 
     for name, value in (
         ("phi", phi),
         ("v", v),
+        ("theta", theta),
         ("rho_m", rho_m),
         ("rho_r", rho_r),
     ):
@@ -189,7 +190,7 @@ def friedmann_radicand(
     parameters: ChargeReducedParameters,
 ) -> float:
     validate_state(state)
-    phi, v, rho_m, rho_r = state
+    phi, v, _theta, rho_m, rho_r = state
 
     rho_total = (
         rho_m
@@ -226,7 +227,7 @@ def background_rhs(
     state: State = tuple(float(value) for value in state_array)  # type: ignore[assignment]
     validate_state(state)
 
-    phi, v, rho_m, rho_r = state
+    phi, v, _theta, rho_m, rho_r = state
     a = math.exp(N)
     H = friedmann_hubble(N, state, parameters)
 
@@ -241,6 +242,15 @@ def background_rhs(
     )
 
     dphi_dN = v / H
+    dtheta_dN = (
+        parameters.Q_theta
+        / (
+            parameters.beta
+            * a**3
+            * phi**2
+            * H
+        )
+    )
     dv_dN = (
         -3.0 * v
         + charge_force / H
@@ -251,7 +261,13 @@ def background_rhs(
     drho_r_dN = -4.0 * rho_r
 
     return np.array(
-        [dphi_dN, dv_dN, drho_m_dN, drho_r_dN],
+        [
+            dphi_dN,
+            dv_dN,
+            dtheta_dN,
+            drho_m_dN,
+            drho_r_dN,
+        ],
         dtype=float,
     )
 
@@ -274,6 +290,7 @@ def solve_charge_reduced_background(
     initial_state: State = (
         initial_data.phi,
         initial_data.v,
+        initial_data.theta,
         initial_data.rho_m,
         initial_data.rho_r,
     )
@@ -302,7 +319,7 @@ def solve_charge_reduced_background(
         )
 
     N = integration.t
-    phi, v, rho_m, rho_r = integration.y
+    phi, v, theta, rho_m, rho_r = integration.y
     a = np.exp(N)
 
     H = np.empty_like(N)
@@ -314,6 +331,7 @@ def solve_charge_reduced_background(
         state: State = (
             float(phi[index]),
             float(v[index]),
+            float(theta[index]),
             float(rho_m[index]),
             float(rho_r[index]),
         )
@@ -345,23 +363,6 @@ def solve_charge_reduced_background(
                 float(N_value),
                 state,
                 parameters,
-            )
-        )
-
-    dtheta_dN = theta_dot / H
-    theta = np.empty_like(N)
-    theta[0] = initial_data.theta
-
-    if len(N) > 1:
-        theta[1:] = (
-            initial_data.theta
-            + np.cumsum(
-                0.5
-                * (
-                    dtheta_dN[:-1]
-                    + dtheta_dN[1:]
-                )
-                * np.diff(N)
             )
         )
 
