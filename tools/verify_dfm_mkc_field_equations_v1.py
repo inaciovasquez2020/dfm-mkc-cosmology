@@ -2,6 +2,8 @@
 import json
 from pathlib import Path
 
+import sympy as sp
+
 ART = Path("artifacts/repo_intake/dfm_mkc_field_equations_v1_2026_05_27.json")
 DOC = Path("docs/status/DFM_MKC_FIELD_EQUATIONS_V1_2026_05_27.md")
 SOURCE = Path("artifacts/repo_intake/dfm_mkc_closed_action_functional_v1_2026_05_27.json")
@@ -89,7 +91,80 @@ def flatten_values(obj):
     else:
         yield str(obj)
 
+
+def verify_flat_flrw_reduction() -> None:
+    """Verify the homogeneous (-+++) FLRW reduction algebraically."""
+    alpha, beta, phi, phi_dot, phi_ddot = sp.symbols(
+        "alpha beta phi phi_dot phi_ddot",
+        nonzero=True,
+    )
+    theta_dot, H, a, U, U_prime, Q_theta = sp.symbols(
+        "theta_dot H a U U_prime Q_theta",
+        nonzero=True,
+    )
+
+    box_phi = -(phi_ddot + 3 * H * phi_dot)
+    nabla_theta_squared = -(theta_dot**2)
+
+    covariant_phi_equation = (
+        alpha * box_phi
+        - beta * phi * nabla_theta_squared
+        - U_prime
+    )
+    flrw_phi_equation = (
+        alpha * (phi_ddot + 3 * H * phi_dot)
+        - beta * phi * theta_dot**2
+        + U_prime
+    )
+
+    require(
+        sp.simplify(covariant_phi_equation + flrw_phi_equation) == 0,
+        "FLRW phi equation does not follow from the covariant equation",
+    )
+
+    rho = (
+        alpha * phi_dot**2 / 2
+        + beta * phi**2 * theta_dot**2 / 2
+        + U
+    )
+    pressure = (
+        alpha * phi_dot**2 / 2
+        + beta * phi**2 * theta_dot**2 / 2
+        - U
+    )
+
+    require(
+        sp.simplify(
+            rho
+            + pressure
+            - alpha * phi_dot**2
+            - beta * phi**2 * theta_dot**2
+        ) == 0,
+        "dark-sector rho+p identity failed",
+    )
+
+    theta_dot_from_charge = Q_theta / (a**3 * beta * phi**2)
+
+    require(
+        sp.simplify(
+            beta * phi**2 * theta_dot_from_charge**2 / 2
+            - Q_theta**2 / (2 * beta * a**6 * phi**2)
+        ) == 0,
+        "charge-reduced phase energy identity failed",
+    )
+
+    require(
+        sp.simplify(
+            beta * phi * theta_dot_from_charge**2
+            - Q_theta**2 / (beta * a**6 * phi**3)
+        ) == 0,
+        "charge-reduced phi-force identity failed",
+    )
+
+
 def main() -> None:
+    verify_flat_flrw_reduction()
+
     require(ART.exists(), f"missing artifact: {ART}")
     require(DOC.exists(), f"missing status doc: {DOC}")
     require(SOURCE.exists(), f"missing source action artifact: {SOURCE}")
