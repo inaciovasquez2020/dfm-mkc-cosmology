@@ -1,0 +1,82 @@
+{
+  "background_equations": [
+    "d rho / dN = -3 rho",
+    "H^2 = (8 pi G / 3) rho"
+  ],
+  "cases": [
+    {
+      "final_cdm_growth": 3.9999999999999667,
+      "final_dfm_growth": 3.9999999999999667,
+      "final_growth_ratio": 1.0,
+      "final_growth_suppression": 0.0,
+      "final_pressure_to_gravity_ratio": 0.0,
+      "maximum_cdm_growing_mode_error": 2.2611242129606242e-13,
+      "maximum_friedmann_residual": 0.0,
+      "maximum_pressure_to_gravity_ratio": 0.0,
+      "maximum_relative_density_scaling_error": 6.657743465470083e-13,
+      "maximum_relative_hubble_scaling_error": 3.330043214334526e-13,
+      "wave_number": 0.0
+    },
+    {
+      "final_cdm_growth": 3.9999999999999667,
+      "final_dfm_growth": 3.9849115207731596,
+      "final_growth_ratio": 0.9962278801932982,
+      "final_growth_suppression": 0.003772119806701779,
+      "final_pressure_to_gravity_ratio": 0.0026041666666646625,
+      "maximum_cdm_growing_mode_error": 2.2611242129606242e-13,
+      "maximum_friedmann_residual": 0.0,
+      "maximum_pressure_to_gravity_ratio": 0.010416666666666666,
+      "maximum_relative_density_scaling_error": 6.657743465470083e-13,
+      "maximum_relative_hubble_scaling_error": 3.330043214334526e-13,
+      "wave_number": 0.5
+    },
+    {
+      "final_cdm_growth": 3.9999999999999667,
+      "final_dfm_growth": 3.762321346819686,
+      "final_growth_ratio": 0.9405803367049294,
+      "final_growth_suppression": 0.059419663295070646,
+      "final_pressure_to_gravity_ratio": 0.0416666666666346,
+      "maximum_cdm_growing_mode_error": 2.2611242129606242e-13,
+      "maximum_friedmann_residual": 0.0,
+      "maximum_pressure_to_gravity_ratio": 0.16666666666666666,
+      "maximum_relative_density_scaling_error": 6.657743465470083e-13,
+      "maximum_relative_hubble_scaling_error": 3.330043214334526e-13,
+      "wave_number": 1.0
+    },
+    {
+      "final_cdm_growth": 3.9999999999999667,
+      "final_dfm_growth": 2.8757286487532876,
+      "final_growth_ratio": 0.7189321621883279,
+      "final_growth_suppression": 0.2810678378116721,
+      "final_pressure_to_gravity_ratio": 0.21093749999983766,
+      "maximum_cdm_growing_mode_error": 2.2611242129606242e-13,
+      "maximum_friedmann_residual": 0.0,
+      "maximum_pressure_to_gravity_ratio": 0.84375,
+      "maximum_relative_density_scaling_error": 6.657743465470083e-13,
+      "maximum_relative_hubble_scaling_error": 3.330043214334526e-13,
+      "wave_number": 1.5
+    }
+  ],
+  "claim_boundaries": [
+    "The calculation uses the averaged quadratic oscillatory matter branch.",
+    "The instantaneous phi/theta background is not evolved.",
+    "No Boltzmann hierarchy or observational likelihood is computed.",
+    "This is not empirical validation or a dark-matter replacement claim."
+  ],
+  "growth_equations": [
+    "delta_D,NN + (1/2) delta_D,N + [k^4/(4 mu^2 a^4 H^2) - 3/2] delta_D = 0",
+    "delta_C,NN + (1/2) delta_C,N - (3/2) delta_C = 0"
+  ],
+  "independent_variable": "N = ln(a)",
+  "object_id": "DFM_MKC_AVERAGED_MATTER_GROWTH_SUPPRESSION_V1",
+  "observable": "S(k,a_final) = D_DFM(k,a_final)/D_CDM(a_final)",
+  "parameters": {
+    "gravitational_constant": 1.0,
+    "hubble_at_unit_scale_factor": 1.0,
+    "integration_steps": 8192,
+    "mass_frequency": 2.0,
+    "scale_factor_final": 1.0,
+    "scale_factor_initial": 0.25
+  },
+  "status": "AVERAGED_MATTER_ERA_GROWTH_SUPPRESSION_COMPUTED"
+}
