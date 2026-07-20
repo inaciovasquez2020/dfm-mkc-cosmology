@@ -73,6 +73,7 @@ class ChargeReducedBackgroundSolution:
     theta_dot: np.ndarray
     phase_charge_residual: np.ndarray
     total_continuity_residual: np.ndarray
+    raychaudhuri_residual: np.ndarray
     friedmann_constraint_residual: np.ndarray
     success: bool
     message: str
@@ -407,6 +408,16 @@ def solve_charge_reduced_background(
         + 3.0 * (rho_total + pressure_total)
     )
 
+    hubble_derivative = np.gradient(
+        H,
+        N,
+        edge_order=gradient_edge_order,
+    )
+    raychaudhuri_residual = (
+        H * hubble_derivative
+        + 0.5 * (rho_total + pressure_total)
+    )
+
     arrays = (
         N,
         a,
@@ -420,6 +431,7 @@ def solve_charge_reduced_background(
         theta_dot,
         phase_charge_residual,
         total_continuity_residual,
+        raychaudhuri_residual,
         constraint_residual,
     )
     if not all(np.all(np.isfinite(array)) for array in arrays):
@@ -438,6 +450,7 @@ def solve_charge_reduced_background(
         theta_dot=theta_dot,
         phase_charge_residual=phase_charge_residual,
         total_continuity_residual=total_continuity_residual,
+        raychaudhuri_residual=raychaudhuri_residual,
         friedmann_constraint_residual=constraint_residual,
         success=True,
         message=integration.message,
