@@ -162,8 +162,118 @@ def verify_flat_flrw_reduction() -> None:
     )
 
 
+
+def verify_conditional_dust_radiation_charge_reduced_ivp() -> None:
+    """Verify the conditional dust-radiation charge-reduced IVP."""
+    a, alpha, beta, phi = sp.symbols(
+        "a alpha beta phi",
+        nonzero=True,
+    )
+    H, v, rho_m, rho_r = sp.symbols(
+        "H v rho_m rho_r",
+    )
+    G, Lambda, Q_theta = sp.symbols(
+        "G Lambda Q_theta",
+    )
+    rho_star, m_phi_squared, lambda_phi = sp.symbols(
+        "rho_star m_phi_squared lambda_phi",
+    )
+
+    potential = (
+        rho_star
+        + m_phi_squared * phi**2 / 2
+        + lambda_phi * phi**4 / 4
+    )
+    potential_prime = (
+        m_phi_squared * phi
+        + lambda_phi * phi**3
+    )
+
+    require(
+        sp.simplify(
+            sp.diff(potential, phi) - potential_prime
+        ) == 0,
+        "quartic potential derivative identity failed",
+    )
+
+    phase_energy = (
+        Q_theta**2
+        / (2 * beta * a**6 * phi**2)
+    )
+
+    rho_dfm = (
+        alpha * v**2 / 2
+        + phase_energy
+        + potential
+    )
+    pressure_dfm = (
+        alpha * v**2 / 2
+        + phase_energy
+        - potential
+    )
+
+    rho_visible = rho_m + rho_r
+    pressure_visible = rho_r / 3
+
+    require(
+        sp.simplify(
+            rho_visible
+            + pressure_visible
+            - rho_m
+            - sp.Rational(4, 3) * rho_r
+        ) == 0,
+        "visible dust-radiation rho+p identity failed",
+    )
+
+    rho_total = rho_visible + rho_dfm
+    pressure_total = pressure_visible + pressure_dfm
+
+    a_dot = a * H
+    phi_dot = v
+    v_dot = (
+        -3 * H * v
+        + Q_theta**2
+        / (alpha * beta * a**6 * phi**3)
+        - potential_prime / alpha
+    )
+    rho_m_dot = -3 * H * rho_m
+    rho_r_dot = -4 * H * rho_r
+
+    rho_total_dot = sp.simplify(
+        sp.diff(rho_total, a) * a_dot
+        + sp.diff(rho_total, phi) * phi_dot
+        + sp.diff(rho_total, v) * v_dot
+        + sp.diff(rho_total, rho_m) * rho_m_dot
+        + sp.diff(rho_total, rho_r) * rho_r_dot
+    )
+
+    require(
+        sp.simplify(
+            rho_total_dot
+            + 3 * H * (rho_total + pressure_total)
+        ) == 0,
+        "conditional total continuity identity failed",
+    )
+
+    H_dot = (
+        -4 * sp.pi * G
+        * (rho_total + pressure_total)
+    )
+
+    friedmann_derivative_residual = sp.simplify(
+        2 * H * H_dot
+        - (8 * sp.pi * G / 3) * rho_total_dot
+    )
+
+    require(
+        friedmann_derivative_residual == 0,
+        "Friedmann-Raychaudhuri compatibility identity failed",
+    )
+
+
 def main() -> None:
     verify_flat_flrw_reduction()
+    verify_conditional_dust_radiation_charge_reduced_ivp()
 
     require(ART.exists(), f"missing artifact: {ART}")
     require(DOC.exists(), f"missing status doc: {DOC}")
