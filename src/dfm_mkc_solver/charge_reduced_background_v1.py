@@ -72,6 +72,7 @@ class ChargeReducedBackgroundSolution:
     theta: np.ndarray
     theta_dot: np.ndarray
     phase_charge_residual: np.ndarray
+    total_continuity_residual: np.ndarray
     friedmann_constraint_residual: np.ndarray
     success: bool
     message: str
@@ -374,6 +375,38 @@ def solve_charge_reduced_background(
         - parameters.Q_theta
     )
 
+    phase_energy = (
+        parameters.Q_theta**2
+        / (
+            2.0
+            * parameters.beta
+            * a**6
+            * phi**2
+        )
+    )
+    potential_values = (
+        parameters.rho_star
+        + 0.5 * parameters.m_phi_squared * phi**2
+        + 0.25 * parameters.lambda_phi * phi**4
+    )
+    pressure_total = (
+        rho_r / 3.0
+        + 0.5 * parameters.alpha * v**2
+        + phase_energy
+        - potential_values
+    )
+    rho_total = rho_m + rho_r + rho_dfm_mkc
+    gradient_edge_order = 2 if len(N) >= 3 else 1
+    rho_total_derivative = np.gradient(
+        rho_total,
+        N,
+        edge_order=gradient_edge_order,
+    )
+    total_continuity_residual = (
+        rho_total_derivative
+        + 3.0 * (rho_total + pressure_total)
+    )
+
     arrays = (
         N,
         a,
@@ -386,6 +419,7 @@ def solve_charge_reduced_background(
         theta,
         theta_dot,
         phase_charge_residual,
+        total_continuity_residual,
         constraint_residual,
     )
     if not all(np.all(np.isfinite(array)) for array in arrays):
@@ -403,6 +437,7 @@ def solve_charge_reduced_background(
         theta=theta,
         theta_dot=theta_dot,
         phase_charge_residual=phase_charge_residual,
+        total_continuity_residual=total_continuity_residual,
         friedmann_constraint_residual=constraint_residual,
         success=True,
         message=integration.message,

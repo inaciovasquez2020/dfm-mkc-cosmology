@@ -192,3 +192,41 @@ def test_phase_reconstruction_preserves_conserved_charge():
         np.abs(solution.phase_charge_residual)
     ) < 1.0e-12
     assert np.all(np.isfinite(solution.theta))
+
+
+
+def test_independent_total_continuity_residual():
+    parameters = module.ChargeReducedParameters(
+        rho_star=1.0,
+        m_phi_squared=0.0,
+        lambda_phi=0.0,
+        Q_theta=0.0,
+    )
+    initial = module.ChargeReducedInitialData(
+        phi=1.25,
+        v=0.0,
+        theta=0.4,
+        rho_m=0.9,
+        rho_r=3.0e-4,
+    )
+    config = module.ChargeReducedSolverConfig(
+        N_initial=-1.0,
+        N_final=0.0,
+        samples=401,
+        rtol=1.0e-11,
+        atol=1.0e-13,
+    )
+
+    solution = module.solve_charge_reduced_background(
+        parameters,
+        initial,
+        config,
+    )
+
+    interior_residual = solution.total_continuity_residual[2:-2]
+
+    assert interior_residual.size > 0
+    assert np.max(np.abs(interior_residual)) < 1.0e-4
+    assert np.all(
+        np.isfinite(solution.total_continuity_residual)
+    )
