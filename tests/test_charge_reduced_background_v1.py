@@ -267,3 +267,65 @@ def test_nontrivial_expansion_satisfies_raychaudhuri_residual():
     assert solution.H[-1] < solution.H[0]
     assert np.all(np.isfinite(solution.raychaudhuri_residual))
     assert np.max(np.abs(interior_residual)) < 1.0e-4
+
+
+def test_derivative_residuals_converge_under_grid_refinement():
+    parameters = module.ChargeReducedParameters(
+        rho_star=1.0,
+        m_phi_squared=0.0,
+        lambda_phi=0.0,
+        Q_theta=0.0,
+    )
+    initial = module.ChargeReducedInitialData(
+        phi=1.25,
+        v=0.0,
+        theta=0.4,
+        rho_m=0.9,
+        rho_r=3.0e-4,
+    )
+
+    residual_maxima = []
+
+    for samples in (101, 201, 401):
+        solution = module.solve_charge_reduced_background(
+            parameters,
+            initial,
+            module.ChargeReducedSolverConfig(
+                N_initial=-1.0,
+                N_final=0.0,
+                samples=samples,
+                rtol=1.0e-12,
+                atol=1.0e-14,
+            ),
+        )
+
+        residual_maxima.append(
+            (
+                np.max(
+                    np.abs(
+                        solution.total_continuity_residual[2:-2]
+                    )
+                ),
+                np.max(
+                    np.abs(
+                        solution.raychaudhuri_residual[2:-2]
+                    )
+                ),
+            )
+        )
+
+    continuity_maxima = np.asarray(
+        [entry[0] for entry in residual_maxima]
+    )
+    raychaudhuri_maxima = np.asarray(
+        [entry[1] for entry in residual_maxima]
+    )
+
+    assert np.all(np.isfinite(continuity_maxima))
+    assert np.all(np.isfinite(raychaudhuri_maxima))
+
+    assert continuity_maxima[1] < 0.5 * continuity_maxima[0]
+    assert continuity_maxima[2] < 0.5 * continuity_maxima[1]
+
+    assert raychaudhuri_maxima[1] < 0.5 * raychaudhuri_maxima[0]
+    assert raychaudhuri_maxima[2] < 0.5 * raychaudhuri_maxima[1]
