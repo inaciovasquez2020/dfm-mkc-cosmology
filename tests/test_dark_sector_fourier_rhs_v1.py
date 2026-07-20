@@ -1,6 +1,13 @@
 import math
+import sys
+from pathlib import Path
 
 import pytest
+
+sys.path.insert(
+    0,
+    str(Path(__file__).resolve().parents[1] / "src"),
+)
 
 from dfm_mkc_solver.dark_sector_fourier_rhs_v1 import (
     dark_sector_fourier_right_hand_side,
