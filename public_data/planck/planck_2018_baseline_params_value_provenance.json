@@ -1,0 +1,94 @@
+{
+  "all_local_values_bound": true,
+  "baseline_likelihood": "Planck TT,TE,EE+lowE+lensing",
+  "calibrated_dfm_parameters_derived": false,
+  "calibrated_initial_conditions_derived": false,
+  "entries": [
+    {
+      "binding_kind": "exact_rounded_publication_value",
+      "canonical_parameter": "H0",
+      "csv_row": 2,
+      "local_parameter": "H0",
+      "local_value": 67.4,
+      "local_value_text": "67.4",
+      "source_locator": "Planck 2018 results VI, abstract, base-LambdaCDM inferred late-Universe parameters",
+      "source_value": 67.4,
+      "value_match_verified": true
+    },
+    {
+      "binding_kind": "derived_from_publication_values_then_rounded",
+      "canonical_parameter": "Omega_b",
+      "csv_row": 4,
+      "derivation": "Omega_b = (Omega_b h^2) / h^2; h = H0 / 100",
+      "local_parameter": "Omega_b",
+      "local_value": 0.0493,
+      "local_value_text": "0.0493",
+      "rounding_quantum": 0.0001,
+      "source_inputs": {
+        "H0_km_s_Mpc": 67.36,
+        "Omega_b_h2": 0.02237,
+        "h": 0.6736
+      },
+      "source_locator": "Planck 2018 results VI, Table 1, Planck TT,TE,EE+lowE+lensing marginalized constraints Omega_b h^2=0.02237 and H0=67.36",
+      "unrounded_derived_value": 0.04930169232852444,
+      "value_match_verified": true
+    },
+    {
+      "binding_kind": "exact_rounded_publication_value",
+      "canonical_parameter": "Omega_m",
+      "csv_row": 3,
+      "local_parameter": "Omega_m",
+      "local_value": 0.315,
+      "local_value_text": "0.315",
+      "source_locator": "Planck 2018 results VI, abstract, base-LambdaCDM inferred late-Universe parameters",
+      "source_value": 0.315,
+      "value_match_verified": true
+    },
+    {
+      "binding_kind": "exact_table_value",
+      "canonical_parameter": "n_s",
+      "csv_row": 5,
+      "local_parameter": "ns",
+      "local_value": 0.9649,
+      "local_value_text": "0.9649",
+      "source_locator": "Planck 2018 results VI, Table 1, Planck TT,TE,EE+lowE+lensing marginalized constraint",
+      "source_value": 0.9649,
+      "value_match_verified": true
+    },
+    {
+      "binding_kind": "exact_rounded_publication_value",
+      "canonical_parameter": "sigma8",
+      "csv_row": 6,
+      "local_parameter": "sigma8",
+      "local_value": 0.811,
+      "local_value_text": "0.811",
+      "source_locator": "Planck 2018 results VI, abstract, base-LambdaCDM inferred late-Universe parameters",
+      "source_value": 0.811,
+      "value_match_verified": true
+    },
+    {
+      "binding_kind": "exact_rounded_publication_value",
+      "canonical_parameter": "tau",
+      "csv_row": 7,
+      "local_parameter": "tau",
+      "local_value": 0.054,
+      "local_value_text": "0.054",
+      "source_locator": "Planck 2018 results VI, abstract, combined base-LambdaCDM analysis",
+      "source_value": 0.054,
+      "value_match_verified": true
+    }
+  ],
+  "entry_count": 6,
+  "local_parameter_table": "public_data/planck/planck_2018_baseline_params.csv",
+  "local_parameter_table_sha256": "3ed5134cf80858868c760a452aacf2d77967ff5b52715280644a770f961d70f5",
+  "natural_unit_mapping_derived": false,
+  "observational_likelihood_completed": false,
+  "publication": {
+    "arxiv": "1807.06209",
+    "doi": "10.1051/0004-6361/201833910",
+    "journal_reference": "A&A 641, A6 (2020)",
+    "title": "Planck 2018 results VI. Cosmological parameters"
+  },
+  "schema_version": 1,
+  "status": "PLANCK_LOCAL_VALUE_PROVENANCE_BOUND"
+}
