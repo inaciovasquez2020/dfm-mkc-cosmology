@@ -1,0 +1,121 @@
+{
+  "status": "DFM_CDM_MINIMAL_CIRCULAR_SOLUTION_RECEIPT_2026_07_21",
+  "classification": "conditional_numerical_background_calibration_solution",
+  "conditional": true,
+  "alpha": 1.0,
+  "beta": 1.0,
+  "target_w_dfm0": 0.0,
+  "branch_assumptions": {
+    "positive_charge": true,
+    "v_initial": 0.0,
+    "rho_star": 0.0,
+    "lambda_phi": 0.0,
+    "circular_force": 0.0
+  },
+  "unit_map_inputs": {
+    "H0_km_s_Mpc": 67.4,
+    "omega_b0": 0.049309230511847414,
+    "omega_cdm0": 0.264156592027754,
+    "omega_r0": 9.2e-05
+  },
+  "solver_config": {
+    "N_initial": -0.1,
+    "N_final": 0.0,
+    "samples": 101,
+    "rtol": 1e-10,
+    "atol": 1e-12
+  },
+  "parameter_names": [
+    "phi_initial",
+    "v_initial",
+    "rho_star",
+    "m_phi_squared",
+    "lambda_phi",
+    "Q_theta"
+  ],
+  "log_coordinates": [
+    -2.7481705307805546,
+    -3.0236808231183367
+  ],
+  "candidate_vector": [
+    0.06404492230824137,
+    0.0,
+    0.0,
+    256.0366189147147,
+    0.0,
+    0.048621919894669685
+  ],
+  "augmented_residual_names": [
+    "F_rho",
+    "F_w",
+    "C_v_initial",
+    "C_rho_star",
+    "C_lambda_phi",
+    "C_circular_force"
+  ],
+  "augmented_residual": [
+    -4.440892098500626e-16,
+    7.216449660063518e-16,
+    0.0,
+    0.0,
+    0.0,
+    -1.4210854715202004e-14
+  ],
+  "shooting_residual_names": [
+    "F_rho",
+    "F_w",
+    "F_H"
+  ],
+  "shooting_residual_with_F_H": [
+    -4.440892098500626e-16,
+    7.216449660063518e-16,
+    -1.1102230246251565e-16
+  ],
+  "maximum_absolute_augmented_residual": 1.4210854715202004e-14,
+  "full_augmented_jacobian": {
+    "relative_step": 1e-06,
+    "rank": 6,
+    "rank_tolerance": 0.00010967479548582116,
+    "condition_number": 3726291.3503318853,
+    "singular_values": [
+      1226.6918224142976,
+      13.735647947351332,
+      1.4069705486355453,
+      0.9999999999999772,
+      0.9999573805974601,
+      0.0003291991170537541
+    ]
+  },
+  "full_jacobian_step_stability": {
+    "relative_steps": [
+      0.0001,
+      3e-05,
+      1e-05,
+      3e-06,
+      1e-06,
+      3e-07,
+      1e-07,
+      3e-08,
+      1e-08
+    ],
+    "observed_ranks": [
+      6
+    ],
+    "minimum_rank_margin": 3.001592877120735,
+    "smallest_singular_value_variation_ratio": 1.0000248460669445
+  },
+  "reduced_log_coordinate_jacobian": {
+    "minimum_absolute_determinant": 0.3794387547618709,
+    "maximum_condition_number": 13.120237940984913,
+    "smallest_singular_value_variation_ratio": 1.000000500330148
+  },
+  "solves": {
+    "conditional_six_equation_background_calibration": true,
+    "growth_likelihood": false,
+    "parameter_to_observable_map": false,
+    "observational_validation": false
+  },
+  "boundary": "This is a conditional numerical background-calibration solution for alpha=beta=1 and the stated unit map, solver interval, tolerances, and minimal positive-charge circular-field closure. It is not a growth-likelihood result, a parameter-to-observable construction, or observational validation.",
+  "growth_likelihood_gate": "blocked",
+  "weakest_missing_object": "growth_observable_forward_model_and_likelihood_evaluation_from_the_converged_background"
+}
