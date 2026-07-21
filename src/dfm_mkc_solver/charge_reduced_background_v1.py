@@ -16,7 +16,7 @@ validation.
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 import numpy as np
 from scipy.integrate import solve_ivp
@@ -455,3 +455,525 @@ def solve_charge_reduced_background(
         success=True,
         message=integration.message,
     )
+
+
+MPC_IN_METERS = 3.085677581491367e22
+SHOOTING_PARAMETER_NAMES = (
+    "phi_initial",
+    "v_initial",
+    "rho_star",
+    "m_phi_squared",
+    "lambda_phi",
+    "Q_theta",
+)
+SHOOTING_RESIDUAL_NAMES = ("F_rho", "F_w", "F_H")
+
+
+@dataclass(frozen=True)
+class DFMCDMUnitMap:
+    """Dimensionless H0-normalized map for the DFM-as-CDM branch."""
+
+    H0_km_s_Mpc: float
+    H0_si: float
+    H0_code: float
+    G_code: float
+    omega_b0: float
+    omega_cdm0: float
+    omega_r0: float
+    omega_lambda0: float
+    rho_b0_code: float
+    rho_cdm0_code: float
+    rho_r0_code: float
+    Lambda_code: float
+
+    def fluid_initial_data(self, N_initial: float) -> tuple[float, float]:
+        """Return baryon and radiation densities at the shooting surface."""
+
+        _require_finite("N_initial", N_initial)
+        return (
+            self.rho_b0_code * math.exp(-3.0 * N_initial),
+            self.rho_r0_code * math.exp(-4.0 * N_initial),
+        )
+
+
+@dataclass(frozen=True)
+class DFMCDMShootingResiduals:
+    """Terminal calibration residuals for the DFM-as-CDM branch."""
+
+    F_rho: float
+    F_w: float
+    F_H: float
+    rho_dfm0: float
+    pressure_dfm0: float
+    H0_code: float
+
+    def as_array(self) -> np.ndarray:
+        return np.asarray((self.F_rho, self.F_w, self.F_H), dtype=float)
+
+
+@dataclass(frozen=True)
+class ShootingJacobianAnalysis:
+    """Local rank and null-space certificate for the shooting map."""
+
+    parameter_names: tuple[str, ...]
+    residual_names: tuple[str, ...]
+    parameter_vector: np.ndarray
+    residual_vector: np.ndarray
+    jacobian: np.ndarray
+    singular_values: np.ndarray
+    rank_tolerance: float
+    rank: int
+    nullity: int
+    null_space_basis: np.ndarray
+    friedmann_row_dependency_error: float
+    locally_identifiable: bool
+
+
+def _validated_dfm_cdm_shooting_vector(vector: np.ndarray) -> np.ndarray:
+    """Return a copied shooting vector after enforcing its physical domain."""
+
+    candidate = np.asarray(vector, dtype=float)
+    if candidate.shape != (len(SHOOTING_PARAMETER_NAMES),):
+        raise ValueError("shooting parameter vector has the wrong shape")
+    if not np.all(np.isfinite(candidate)):
+        raise ValueError("shooting parameter vector must be finite")
+
+    phi_initial, _v_initial, rho_star, m2, lambda_phi, _Q_theta = (
+        float(value) for value in candidate
+    )
+    if phi_initial <= 0.0:
+        raise ValueError("phi_initial must be positive on the radial-field branch")
+    if rho_star < 0.0:
+        raise ValueError("rho_star must be nonnegative")
+    if m2 < 0.0:
+        raise ValueError("m_phi_squared must be nonnegative")
+    if lambda_phi < 0.0:
+        raise ValueError("lambda_phi must be nonnegative")
+    return candidate.copy()
+
+
+@dataclass(frozen=True)
+class DFMCDMNullChart:
+    """Bounded local chart along four shooting-Jacobian null directions."""
+
+    base_vector: np.ndarray
+    null_basis: np.ndarray
+    eta_lower: np.ndarray
+    eta_upper: np.ndarray
+
+    def __post_init__(self) -> None:
+        parameter_count = len(SHOOTING_PARAMETER_NAMES)
+        nullity = parameter_count - 2
+        base_vector = _validated_dfm_cdm_shooting_vector(self.base_vector)
+        null_basis = np.asarray(self.null_basis, dtype=float)
+        eta_lower = np.asarray(self.eta_lower, dtype=float)
+        eta_upper = np.asarray(self.eta_upper, dtype=float)
+
+        if null_basis.shape != (parameter_count, nullity):
+            raise ValueError("null_basis must have shape (6, 4)")
+        if eta_lower.shape != (nullity,) or eta_upper.shape != (nullity,):
+            raise ValueError("eta bounds must each have shape (4,)")
+        if not np.all(np.isfinite(null_basis)):
+            raise ValueError("null_basis must be finite")
+        if not np.all(np.isfinite(eta_lower)) or not np.all(np.isfinite(eta_upper)):
+            raise ValueError("eta bounds must be finite")
+        if np.any(eta_lower > eta_upper):
+            raise ValueError("eta_lower must not exceed eta_upper")
+        if np.linalg.matrix_rank(null_basis) != nullity:
+            raise ValueError("null_basis must have four independent columns")
+
+        base_vector.setflags(write=False)
+        null_basis = null_basis.copy()
+        eta_lower = eta_lower.copy()
+        eta_upper = eta_upper.copy()
+        null_basis.setflags(write=False)
+        eta_lower.setflags(write=False)
+        eta_upper.setflags(write=False)
+        object.__setattr__(self, "base_vector", base_vector)
+        object.__setattr__(self, "null_basis", null_basis)
+        object.__setattr__(self, "eta_lower", eta_lower)
+        object.__setattr__(self, "eta_upper", eta_upper)
+
+    def candidate_vector(self, eta: np.ndarray) -> np.ndarray:
+        """Construct one bounded candidate and enforce the static domain."""
+
+        coordinates = np.asarray(eta, dtype=float)
+        if coordinates.shape != self.eta_lower.shape:
+            raise ValueError("eta must have shape (4,)")
+        if not np.all(np.isfinite(coordinates)):
+            raise ValueError("eta must be finite")
+        if np.any(coordinates < self.eta_lower) or np.any(coordinates > self.eta_upper):
+            raise ValueError("eta lies outside the null-chart bounds")
+        return _validated_dfm_cdm_shooting_vector(
+            self.base_vector + self.null_basis @ coordinates
+        )
+
+
+def build_dfm_cdm_unit_map(
+    *,
+    H0_km_s_Mpc: float,
+    omega_b0: float,
+    omega_cdm0: float,
+    omega_r0: float,
+    omega_lambda0: float | None = None,
+) -> DFMCDMUnitMap:
+    """Map measured density fractions into H0-normalized solver units.
+
+    The branch convention is H0_code = 1, G_code = 1/(8*pi), visible
+    pressureless matter = baryons, and DFM replaces cold dark matter.
+    """
+
+    for name, value in (
+        ("H0_km_s_Mpc", H0_km_s_Mpc),
+        ("omega_b0", omega_b0),
+        ("omega_cdm0", omega_cdm0),
+        ("omega_r0", omega_r0),
+    ):
+        _require_finite(name, value)
+    if H0_km_s_Mpc <= 0.0:
+        raise ValueError("H0_km_s_Mpc must be positive")
+    if min(omega_b0, omega_cdm0, omega_r0) < 0.0:
+        raise ValueError("density fractions must be nonnegative")
+
+    if omega_lambda0 is None:
+        omega_lambda0 = 1.0 - omega_b0 - omega_cdm0 - omega_r0
+    _require_finite("omega_lambda0", omega_lambda0)
+    if omega_lambda0 < 0.0:
+        raise ValueError("omega_lambda0 must be nonnegative")
+
+    closure = omega_b0 + omega_cdm0 + omega_r0 + omega_lambda0
+    if not math.isclose(closure, 1.0, rel_tol=0.0, abs_tol=1.0e-12):
+        raise ValueError("flat DFM-as-CDM branch requires density fractions to sum to one")
+
+    H0_si = H0_km_s_Mpc * 1000.0 / MPC_IN_METERS
+    return DFMCDMUnitMap(
+        H0_km_s_Mpc=H0_km_s_Mpc,
+        H0_si=H0_si,
+        H0_code=1.0,
+        G_code=1.0 / (8.0 * math.pi),
+        omega_b0=omega_b0,
+        omega_cdm0=omega_cdm0,
+        omega_r0=omega_r0,
+        omega_lambda0=omega_lambda0,
+        rho_b0_code=3.0 * omega_b0,
+        rho_cdm0_code=3.0 * omega_cdm0,
+        rho_r0_code=3.0 * omega_r0,
+        Lambda_code=3.0 * omega_lambda0,
+    )
+
+
+def dfm_pressure(
+    N: float,
+    phi: float,
+    v: float,
+    parameters: ChargeReducedParameters,
+) -> float:
+    """Return the homogeneous DFM pressure."""
+
+    return (
+        0.5 * parameters.alpha * v**2
+        + phase_energy_density(N, phi, parameters)
+        - potential(phi, parameters)
+    )
+
+
+def shoot_dfm_cdm_background(
+    *,
+    unit_map: DFMCDMUnitMap,
+    parameters: ChargeReducedParameters,
+    phi_initial: float,
+    v_initial: float,
+    config: ChargeReducedSolverConfig,
+) -> ChargeReducedBackgroundSolution:
+    """Integrate the canonical DFM-as-CDM branch to N=0."""
+
+    if not math.isclose(config.N_final, 0.0, rel_tol=0.0, abs_tol=1.0e-15):
+        raise ValueError("DFM-CDM shooting requires N_final = 0")
+    rho_b_initial, rho_r_initial = unit_map.fluid_initial_data(
+        config.N_initial
+    )
+    locked_parameters = replace(
+        parameters,
+        G=unit_map.G_code,
+        Lambda=unit_map.Lambda_code,
+    )
+    initial_data = ChargeReducedInitialData(
+        phi=phi_initial,
+        v=v_initial,
+        theta=0.0,
+        rho_m=rho_b_initial,
+        rho_r=rho_r_initial,
+    )
+    return solve_charge_reduced_background(
+        locked_parameters,
+        initial_data,
+        config,
+    )
+
+
+def dfm_cdm_shooting_residuals(
+    *,
+    unit_map: DFMCDMUnitMap,
+    parameters: ChargeReducedParameters,
+    phi_initial: float,
+    v_initial: float,
+    config: ChargeReducedSolverConfig,
+    target_w_dfm0: float = 0.0,
+) -> DFMCDMShootingResiduals:
+    """Compute F_rho, F_w, and F_H at the present surface."""
+
+    _require_finite("target_w_dfm0", target_w_dfm0)
+    locked_parameters = replace(
+        parameters,
+        G=unit_map.G_code,
+        Lambda=unit_map.Lambda_code,
+    )
+    solution = shoot_dfm_cdm_background(
+        unit_map=unit_map,
+        parameters=locked_parameters,
+        phi_initial=phi_initial,
+        v_initial=v_initial,
+        config=config,
+    )
+    rho_dfm0 = float(solution.rho_dfm_mkc[-1])
+    pressure_dfm0 = dfm_pressure(
+        float(solution.N[-1]),
+        float(solution.phi[-1]),
+        float(solution.v[-1]),
+        locked_parameters,
+    )
+    H0_code = float(solution.H[-1])
+    return DFMCDMShootingResiduals(
+        F_rho=rho_dfm0 - unit_map.rho_cdm0_code,
+        F_w=pressure_dfm0 - target_w_dfm0 * rho_dfm0,
+        F_H=H0_code - unit_map.H0_code,
+        rho_dfm0=rho_dfm0,
+        pressure_dfm0=pressure_dfm0,
+        H0_code=H0_code,
+    )
+
+
+def _shooting_vector_to_inputs(
+    vector: np.ndarray,
+    *,
+    alpha: float,
+    beta: float,
+    unit_map: DFMCDMUnitMap,
+) -> tuple[float, float, ChargeReducedParameters]:
+    if vector.shape != (len(SHOOTING_PARAMETER_NAMES),):
+        raise ValueError("shooting parameter vector has the wrong shape")
+    if not np.all(np.isfinite(vector)):
+        raise ValueError("shooting parameter vector must be finite")
+    phi_initial, v_initial, rho_star, m2, lambda_phi, Q_theta = (
+        float(value) for value in vector
+    )
+    return (
+        phi_initial,
+        v_initial,
+        ChargeReducedParameters(
+            G=unit_map.G_code,
+            Lambda=unit_map.Lambda_code,
+            alpha=alpha,
+            beta=beta,
+            rho_star=rho_star,
+            m_phi_squared=m2,
+            lambda_phi=lambda_phi,
+            Q_theta=Q_theta,
+        ),
+    )
+
+
+def dfm_cdm_shooting_residual_vector(
+    vector: np.ndarray,
+    *,
+    alpha: float,
+    beta: float,
+    unit_map: DFMCDMUnitMap,
+    config: ChargeReducedSolverConfig,
+    target_w_dfm0: float = 0.0,
+) -> np.ndarray:
+    """Evaluate the three-component shooting residual map."""
+
+    phi_initial, v_initial, parameters = _shooting_vector_to_inputs(
+        np.asarray(vector, dtype=float),
+        alpha=alpha,
+        beta=beta,
+        unit_map=unit_map,
+    )
+    return dfm_cdm_shooting_residuals(
+        unit_map=unit_map,
+        parameters=parameters,
+        phi_initial=phi_initial,
+        v_initial=v_initial,
+        config=config,
+        target_w_dfm0=target_w_dfm0,
+    ).as_array()
+
+
+def analyze_dfm_cdm_shooting_jacobian(
+    vector: np.ndarray,
+    *,
+    alpha: float,
+    beta: float,
+    unit_map: DFMCDMUnitMap,
+    config: ChargeReducedSolverConfig,
+    target_w_dfm0: float = 0.0,
+    relative_step: float = 1.0e-5,
+    rank_tolerance: float | None = None,
+) -> ShootingJacobianAnalysis:
+    """Compute the local Jacobian rank and an explicit null-space basis."""
+
+    if relative_step <= 0.0 or not math.isfinite(relative_step):
+        raise ValueError("relative_step must be positive and finite")
+    vector = np.asarray(vector, dtype=float)
+    residual = dfm_cdm_shooting_residual_vector(
+        vector,
+        alpha=alpha,
+        beta=beta,
+        unit_map=unit_map,
+        config=config,
+        target_w_dfm0=target_w_dfm0,
+    )
+    jacobian = np.empty(
+        (len(SHOOTING_RESIDUAL_NAMES), len(SHOOTING_PARAMETER_NAMES)),
+        dtype=float,
+    )
+    for column in range(vector.size):
+        step = relative_step * max(1.0, abs(float(vector[column])))
+        plus = vector.copy()
+        minus = vector.copy()
+        plus[column] += step
+        minus[column] -= step
+        if column == 4 and minus[column] < 0.0:
+            plus_residual = dfm_cdm_shooting_residual_vector(
+                plus,
+                alpha=alpha,
+                beta=beta,
+                unit_map=unit_map,
+                config=config,
+                target_w_dfm0=target_w_dfm0,
+            )
+            jacobian[:, column] = (plus_residual - residual) / step
+        else:
+            plus_residual = dfm_cdm_shooting_residual_vector(
+                plus,
+                alpha=alpha,
+                beta=beta,
+                unit_map=unit_map,
+                config=config,
+                target_w_dfm0=target_w_dfm0,
+            )
+            minus_residual = dfm_cdm_shooting_residual_vector(
+                minus,
+                alpha=alpha,
+                beta=beta,
+                unit_map=unit_map,
+                config=config,
+                target_w_dfm0=target_w_dfm0,
+            )
+            jacobian[:, column] = (
+                plus_residual - minus_residual
+            ) / (2.0 * step)
+
+    _u, singular_values, vh = np.linalg.svd(jacobian, full_matrices=True)
+    if rank_tolerance is None:
+        largest = float(singular_values[0]) if singular_values.size else 0.0
+        rank_tolerance = (
+            max(jacobian.shape)
+            * math.sqrt(np.finfo(float).eps)
+            * largest
+        )
+    if rank_tolerance < 0.0 or not math.isfinite(rank_tolerance):
+        raise ValueError("rank_tolerance must be nonnegative and finite")
+    rank = int(np.sum(singular_values > rank_tolerance))
+    null_space_basis = vh[rank:, :].T.copy()
+    nullity = int(null_space_basis.shape[1])
+
+    H0_code = residual[2] + unit_map.H0_code
+    expected_H_row = jacobian[0, :] / (6.0 * H0_code)
+    dependency_error = float(
+        np.linalg.norm(jacobian[2, :] - expected_H_row, ord=np.inf)
+    )
+    return ShootingJacobianAnalysis(
+        parameter_names=SHOOTING_PARAMETER_NAMES,
+        residual_names=SHOOTING_RESIDUAL_NAMES,
+        parameter_vector=vector.copy(),
+        residual_vector=residual,
+        jacobian=jacobian,
+        singular_values=singular_values,
+        rank_tolerance=float(rank_tolerance),
+        rank=rank,
+        nullity=nullity,
+        null_space_basis=null_space_basis,
+        friedmann_row_dependency_error=dependency_error,
+        locally_identifiable=rank == len(SHOOTING_PARAMETER_NAMES),
+    )
+
+
+def evaluate_dfm_cdm_null_chart_candidate(
+    chart: DFMCDMNullChart,
+    eta: np.ndarray,
+    *,
+    alpha: float,
+    beta: float,
+    unit_map: DFMCDMUnitMap,
+    config: ChargeReducedSolverConfig,
+    target_w_dfm0: float = 0.0,
+    relative_step: float = 1.0e-5,
+    rank_tolerance: float | None = None,
+) -> ShootingJacobianAnalysis:
+    """Accept a chart point only when its basis and evolved rank remain valid."""
+
+    candidate = chart.candidate_vector(eta)
+    base_analysis = analyze_dfm_cdm_shooting_jacobian(
+        chart.base_vector,
+        alpha=alpha,
+        beta=beta,
+        unit_map=unit_map,
+        config=config,
+        target_w_dfm0=target_w_dfm0,
+        relative_step=relative_step,
+        rank_tolerance=rank_tolerance,
+    )
+    if base_analysis.rank != 2:
+        raise ValueError(
+            f"null-chart base Jacobian rank must equal 2; got {base_analysis.rank}"
+        )
+
+    null_residual = float(
+        np.linalg.norm(base_analysis.jacobian @ chart.null_basis, ord=2)
+    )
+    jacobian_scale = float(np.linalg.norm(base_analysis.jacobian, ord=2))
+    basis_scale = float(np.linalg.norm(chart.null_basis, ord=2))
+    null_tolerance = (
+        10.0
+        * max(
+            base_analysis.rank_tolerance,
+            np.finfo(float).eps
+            * max(base_analysis.jacobian.shape)
+            * jacobian_scale,
+        )
+        * max(1.0, basis_scale)
+    )
+    if null_residual > null_tolerance:
+        raise ValueError(
+            "null_basis does not lie in the base Jacobian null space: "
+            f"residual {null_residual:.12e} exceeds tolerance "
+            f"{null_tolerance:.12e}"
+        )
+
+    analysis = analyze_dfm_cdm_shooting_jacobian(
+        candidate,
+        alpha=alpha,
+        beta=beta,
+        unit_map=unit_map,
+        config=config,
+        target_w_dfm0=target_w_dfm0,
+        relative_step=relative_step,
+        rank_tolerance=rank_tolerance,
+    )
+    if analysis.rank != 2:
+        raise ValueError(
+            f"null-chart candidate Jacobian rank must equal 2; got {analysis.rank}"
+        )
+    return analysis

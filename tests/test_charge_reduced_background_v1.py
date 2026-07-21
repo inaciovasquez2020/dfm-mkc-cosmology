@@ -329,3 +329,219 @@ def test_derivative_residuals_converge_under_grid_refinement():
 
     assert raychaudhuri_maxima[1] < 0.5 * raychaudhuri_maxima[0]
     assert raychaudhuri_maxima[2] < 0.5 * raychaudhuri_maxima[1]
+
+
+
+def _dfm_cdm_unit_map():
+    return module.build_dfm_cdm_unit_map(
+        H0_km_s_Mpc=67.4,
+        omega_b0=0.0224 / 0.674**2,
+        omega_cdm0=0.120 / 0.674**2,
+        omega_r0=9.2e-5,
+    )
+
+
+def _dfm_cdm_config():
+    return module.ChargeReducedSolverConfig(
+        N_initial=-0.1,
+        N_final=0.0,
+        samples=101,
+        rtol=1.0e-10,
+        atol=1.0e-12,
+    )
+
+
+def test_dfm_cdm_unit_map_locks_h0_g_and_density_budget():
+    unit_map = _dfm_cdm_unit_map()
+    assert unit_map.H0_code == 1.0
+    assert unit_map.G_code == pytest.approx(1.0 / (8.0 * np.pi))
+    assert unit_map.rho_b0_code == pytest.approx(3.0 * unit_map.omega_b0)
+    assert unit_map.rho_cdm0_code == pytest.approx(3.0 * unit_map.omega_cdm0)
+    assert unit_map.rho_r0_code == pytest.approx(3.0 * unit_map.omega_r0)
+    assert unit_map.Lambda_code == pytest.approx(3.0 * unit_map.omega_lambda0)
+    assert (
+        unit_map.omega_b0
+        + unit_map.omega_cdm0
+        + unit_map.omega_r0
+        + unit_map.omega_lambda0
+    ) == pytest.approx(1.0)
+
+
+def test_dfm_cdm_shooting_overrides_free_g_and_lambda_background_inputs():
+    unit_map = _dfm_cdm_unit_map()
+    config = _dfm_cdm_config()
+    common = dict(
+        alpha=1.0,
+        beta=1.0,
+        rho_star=0.2,
+        m_phi_squared=1.0,
+        lambda_phi=0.1,
+        Q_theta=0.6,
+    )
+    first = module.shoot_dfm_cdm_background(
+        unit_map=unit_map,
+        parameters=module.ChargeReducedParameters(
+            G=0.2,
+            Lambda=0.3,
+            **common,
+        ),
+        phi_initial=1.0,
+        v_initial=0.1,
+        config=config,
+    )
+    second = module.shoot_dfm_cdm_background(
+        unit_map=unit_map,
+        parameters=module.ChargeReducedParameters(
+            G=0.7,
+            Lambda=1.4,
+            **common,
+        ),
+        phi_initial=1.0,
+        v_initial=0.1,
+        config=config,
+    )
+    np.testing.assert_allclose(first.H, second.H, rtol=0.0, atol=0.0)
+    np.testing.assert_allclose(
+        first.rho_dfm_mkc,
+        second.rho_dfm_mkc,
+        rtol=0.0,
+        atol=0.0,
+    )
+
+
+def test_dfm_cdm_shooting_jacobian_has_rank_two_and_four_null_directions():
+    vector = np.asarray((1.0, 0.1, 0.2, 1.0, 0.1, 0.6), dtype=float)
+    analysis = module.analyze_dfm_cdm_shooting_jacobian(
+        vector,
+        alpha=1.0,
+        beta=1.0,
+        unit_map=_dfm_cdm_unit_map(),
+        config=_dfm_cdm_config(),
+    )
+    assert analysis.rank == 2
+    assert analysis.nullity == 4
+    assert analysis.locally_identifiable is False
+    assert analysis.null_space_basis.shape == (6, 4)
+    assert analysis.friedmann_row_dependency_error < 1.0e-8
+    np.testing.assert_allclose(
+        analysis.jacobian @ analysis.null_space_basis,
+        0.0,
+        rtol=0.0,
+        atol=2.0e-8,
+    )
+
+
+def _dfm_cdm_null_chart():
+    vector = np.asarray((1.0, 0.1, 0.2, 1.0, 0.1, 0.6), dtype=float)
+    analysis = module.analyze_dfm_cdm_shooting_jacobian(
+        vector,
+        alpha=1.0,
+        beta=1.0,
+        unit_map=_dfm_cdm_unit_map(),
+        config=_dfm_cdm_config(),
+    )
+    return module.DFMCDMNullChart(
+        base_vector=vector,
+        null_basis=analysis.null_space_basis,
+        eta_lower=-1.0e-4 * np.ones(4),
+        eta_upper=1.0e-4 * np.ones(4),
+    )
+
+
+def test_dfm_cdm_null_chart_rejects_non_null_basis():
+    vector = np.asarray((1.0, 0.1, 0.2, 1.0, 0.1, 0.6), dtype=float)
+    base_analysis = module.analyze_dfm_cdm_shooting_jacobian(
+        vector,
+        alpha=1.0,
+        beta=1.0,
+        unit_map=_dfm_cdm_unit_map(),
+        config=_dfm_cdm_config(),
+    )
+    bad_basis = base_analysis.null_space_basis.copy()
+    bad_basis[:, 0] = base_analysis.jacobian[0, :]
+    chart = module.DFMCDMNullChart(
+        base_vector=vector,
+        null_basis=bad_basis,
+        eta_lower=-1.0e-4 * np.ones(4),
+        eta_upper=1.0e-4 * np.ones(4),
+    )
+    with pytest.raises(ValueError, match="does not lie in the base Jacobian null space"):
+        module.evaluate_dfm_cdm_null_chart_candidate(
+            chart,
+            np.zeros(4),
+            alpha=1.0,
+            beta=1.0,
+            unit_map=_dfm_cdm_unit_map(),
+            config=_dfm_cdm_config(),
+        )
+
+
+def test_dfm_cdm_null_chart_accepts_bounded_rank_two_candidate():
+    analysis = module.evaluate_dfm_cdm_null_chart_candidate(
+        _dfm_cdm_null_chart(),
+        np.zeros(4),
+        alpha=1.0,
+        beta=1.0,
+        unit_map=_dfm_cdm_unit_map(),
+        config=_dfm_cdm_config(),
+    )
+    assert analysis.rank == 2
+    assert analysis.nullity == 4
+
+
+def test_dfm_cdm_null_chart_rejects_eta_outside_bounds():
+    with pytest.raises(ValueError, match="outside the null-chart bounds"):
+        _dfm_cdm_null_chart().candidate_vector(
+            np.asarray((2.0e-4, 0.0, 0.0, 0.0))
+        )
+
+
+def test_dfm_cdm_null_chart_rejects_static_physical_domain_failure():
+    chart = module.DFMCDMNullChart(
+        base_vector=np.asarray((1.0, 0.1, 0.2, 1.0, 0.1, 0.6)),
+        null_basis=np.asarray(
+            (
+                (1.0, 0.0, 0.0, 0.0),
+                (0.0, 0.0, 0.0, 0.0),
+                (0.0, 1.0, 0.0, 0.0),
+                (0.0, 0.0, 1.0, 0.0),
+                (0.0, 0.0, 0.0, 1.0),
+                (0.0, 0.0, 0.0, 0.0),
+            )
+        ),
+        eta_lower=-2.0 * np.ones(4),
+        eta_upper=2.0 * np.ones(4),
+    )
+    with pytest.raises(ValueError, match="phi_initial must be positive"):
+        chart.candidate_vector(np.asarray((-2.0, 0.0, 0.0, 0.0)))
+
+
+def test_dfm_cdm_null_chart_rejects_rank_change(monkeypatch):
+    chart = _dfm_cdm_null_chart()
+
+    class RankOneAnalysis:
+        rank = 1
+
+    monkeypatch.setattr(
+        module,
+        "analyze_dfm_cdm_shooting_jacobian",
+        lambda *args, **kwargs: RankOneAnalysis(),
+    )
+    with pytest.raises(ValueError, match="rank must equal 2; got 1"):
+        module.evaluate_dfm_cdm_null_chart_candidate(
+            chart,
+            np.zeros(4),
+            alpha=1.0,
+            beta=1.0,
+            unit_map=_dfm_cdm_unit_map(),
+            config=_dfm_cdm_config(),
+        )
+
+
+def test_canonical_action_supersedes_legacy_phi_and_locks_cdm_branch():
+    theory = Path("theory/deformation_field.md").read_text()
+    assert "supersedes the" in theory
+    assert "legacy `Phi` equations" in theory
+    assert "DFM–MKC is locked as a cold-dark-matter replacement" in theory
+    assert "rank at most two" in theory
+    assert "nullity" in theory

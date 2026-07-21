@@ -1,3 +1,54 @@
+## Canonical action and branch declaration
+
+For the present DFM–MKC cosmology branch, the canonical action is
+
+\[
+S
+=
+\int d^4x\,\sqrt{-g}
+\left[
+\frac{R-2\Lambda}{16\pi G}
+-
+\frac{\alpha}{2}g^{\mu\nu}\partial_\mu\phi\partial_\nu\phi
+-
+\frac{\beta}{2}\phi^2g^{\mu\nu}\partial_\mu\theta\partial_\nu\theta
+-
+U(\phi)
+\right]
++
+S_b[g,\Psi_b]
++
+S_r[g,\Psi_r],
+\]
+
+with
+
+\[
+U(\phi)
+=
+\rho_\star
++
+\frac12m_\phi^2\phi^2
++
+\frac14\lambda_\phi\phi^4.
+\]
+
+This action, together with its charge-reduced equations, supersedes the
+legacy `Phi` equations for physical interpretation, calibration, background
+prediction, and perturbation prediction. The legacy `Phi` system remains a
+toy or regression surface only. No equivalence between `Phi` and the
+canonical fields \(\phi,\theta\) is asserted.
+
+For the present branch, DFM–MKC is locked as a cold-dark-matter replacement:
+
+\[
+\Omega_{\mathrm{DFM},0}=\Omega_{c,0},
+\qquad
+\Omega_{m,0}=\Omega_{b,0}+\Omega_{c,0},
+\]
+
+while baryons, radiation, and \(\Lambda\) remain separate sectors.
+
 ## Covariant DFM–MKC FLRW Reduction
 
 Use the spatially flat FLRW convention
@@ -360,3 +411,95 @@ The dust-plus-radiation decomposition, separate component conservation,
 expanding Friedmann branch, and initial-data domain are additional
 background-model assumptions. They are not derived from
 \(L_{\mathrm{vis}}\) or from the existing metric-only coupling artifact.
+
+## Dimensionless calibration map and identifiability gate
+
+Use
+
+\[
+N=\ln a,
+\qquad
+H_{\mathrm{code}}=\frac{H}{H_0},
+\qquad
+H_{0,\mathrm{code}}=1,
+\qquad
+G_{\mathrm{code}}=\frac{1}{8\pi}.
+\]
+
+For a spatially flat DFM-as-CDM branch,
+
+\[
+\rho_{b0,\mathrm{code}}=3\Omega_{b0},
+\qquad
+\rho_{\mathrm{DFM},0,\mathrm{code}}=3\Omega_{c0},
+\qquad
+\rho_{r0,\mathrm{code}}=3\Omega_{r0},
+\qquad
+\Lambda_{\mathrm{code}}=3\Omega_{\Lambda0}.
+\]
+
+At an initial surface \(N_i\),
+
+\[
+\rho_b(N_i)=3\Omega_{b0}e^{-3N_i},
+\qquad
+\rho_r(N_i)=3\Omega_{r0}e^{-4N_i}.
+\]
+
+After integrating to \(N=0\), define
+
+\[
+F_\rho
+=
+\rho_{\mathrm{DFM}}(0)-3\Omega_{c0},
+\]
+
+\[
+F_w
+=
+p_{\mathrm{DFM}}(0)-w_{\mathrm{DFM},0}^{\mathrm{target}}
+\rho_{\mathrm{DFM}}(0),
+\]
+
+\[
+F_H
+=
+H(0)-1.
+\]
+
+For the six-dimensional shooting vector
+
+\[
+p=
+(\phi_i,\dot\phi_i,\rho_\star,m_\phi^2,\lambda_\phi,Q_\theta),
+\]
+
+the flat Friedmann constraint gives the row dependency
+
+\[
+\frac{\partial F_H}{\partial p}
+=
+\frac{1}{6H(0)}
+\frac{\partial F_\rho}{\partial p}.
+\]
+
+Therefore the three-residual Jacobian has structural rank at most two:
+
+\[
+\operatorname{rank}
+\frac{\partial(F_\rho,F_w,F_H)}{\partial p}
+\le 2,
+\qquad
+\operatorname{nullity}\ge4.
+\]
+
+The local null directions are parameterized by
+
+\[
+p=p_0+N\eta,
+\]
+
+where the columns of \(N\) form the computed Jacobian null-space basis.
+Growth likelihood work is blocked until four additional independent physical
+conditions are supplied or four null coordinates are explicitly fixed and
+reported.
