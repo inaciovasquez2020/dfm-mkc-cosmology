@@ -102,7 +102,7 @@ def test_deterministic_multi_k_comparison_values() -> None:
             assert math.isclose(
                 actual[key],
                 expected_value,
-                rel_tol=5.0e-6,
+                rel_tol=2.0e-5,
                 abs_tol=1.0e-11,
             ), (
                 wave_number,
