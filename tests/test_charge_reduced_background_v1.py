@@ -545,3 +545,126 @@ def test_canonical_action_supersedes_legacy_phi_and_locks_cdm_branch():
     assert "DFM–MKC is locked as a cold-dark-matter replacement" in theory
     assert "rank at most two" in theory
     assert "nullity" in theory
+
+
+def test_minimal_circular_closure_residual_formula():
+    vector = np.asarray(
+        (1.0, 0.1, 0.2, 1.0, 0.1, 0.6),
+        dtype=float,
+    )
+
+    closures = (
+        module.dfm_cdm_minimal_circular_closure_residuals(
+            vector,
+            beta=1.0,
+            N_initial=-0.1,
+        )
+    )
+
+    expected_force = (
+        1.0
+        + 0.1
+        - 0.6**2 * np.exp(0.6)
+    )
+
+    np.testing.assert_allclose(
+        closures.as_array(),
+        np.asarray(
+            (
+                0.1,
+                0.2,
+                0.1,
+                expected_force,
+            )
+        ),
+        rtol=0.0,
+        atol=1.0e-14,
+    )
+
+
+def test_minimal_circular_closure_requires_positive_beta_and_charge():
+    vector = np.asarray(
+        (1.0, 0.1, 0.2, 1.0, 0.1, 0.6),
+        dtype=float,
+    )
+
+    with pytest.raises(
+        ValueError,
+        match="beta to be positive",
+    ):
+        module.dfm_cdm_minimal_circular_closure_residuals(
+            vector,
+            beta=0.0,
+            N_initial=-0.1,
+        )
+
+    zero_charge = vector.copy()
+    zero_charge[5] = 0.0
+
+    with pytest.raises(
+        ValueError,
+        match="positive-charge branch",
+    ):
+        module.dfm_cdm_minimal_circular_closure_residuals(
+            zero_charge,
+            beta=1.0,
+            N_initial=-0.1,
+        )
+
+
+def test_dfm_cdm_augmented_residual_uses_six_independent_rows():
+    vector = np.asarray(
+        (1.0, 0.1, 0.2, 1.0, 0.1, 0.6),
+        dtype=float,
+    )
+
+    residual = module.dfm_cdm_augmented_residual_vector(
+        vector,
+        alpha=1.0,
+        beta=1.0,
+        unit_map=_dfm_cdm_unit_map(),
+        config=_dfm_cdm_config(),
+    )
+
+    assert residual.shape == (6,)
+    assert module.DFM_CDM_AUGMENTED_RESIDUAL_NAMES == (
+        "F_rho",
+        "F_w",
+        "C_v_initial",
+        "C_rho_star",
+        "C_lambda_phi",
+        "C_circular_force",
+    )
+
+
+def test_minimal_circular_closure_augmented_jacobian_has_rank_six():
+    vector = np.asarray(
+        (1.0, 0.1, 0.2, 1.0, 0.1, 0.6),
+        dtype=float,
+    )
+
+    analysis = module.analyze_dfm_cdm_augmented_jacobian(
+        vector,
+        alpha=1.0,
+        beta=1.0,
+        unit_map=_dfm_cdm_unit_map(),
+        config=_dfm_cdm_config(),
+    )
+
+    assert analysis.jacobian.shape == (6, 6)
+    assert analysis.rank == 6
+    assert analysis.locally_identifiable is True
+    assert np.isfinite(analysis.condition_number)
+    assert analysis.condition_number < 1.0e4
+    assert analysis.singular_values[-1] > analysis.rank_tolerance
+
+
+def test_minimal_circular_closure_is_documented_as_conditional():
+    theory = Path("theory/deformation_field.md").read_text()
+
+    assert "Minimal circular physical closure" in theory
+    assert r"C_{v_i}=v_i=0" in theory
+    assert r"C_{\rho_\star}=\rho_\star=0" in theory
+    assert r"C_{\lambda_\phi}=\lambda_\phi=0" in theory
+    assert "positive-charge branch" in theory
+    assert "Growth likelihood remains blocked" in theory
