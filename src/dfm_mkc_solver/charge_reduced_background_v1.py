@@ -977,3 +977,267 @@ def evaluate_dfm_cdm_null_chart_candidate(
             f"null-chart candidate Jacobian rank must equal 2; got {analysis.rank}"
         )
     return analysis
+
+
+DFM_CDM_PHYSICAL_CLOSURE_NAMES = (
+    "C_v_initial",
+    "C_rho_star",
+    "C_lambda_phi",
+    "C_circular_force",
+)
+
+DFM_CDM_AUGMENTED_RESIDUAL_NAMES = (
+    "F_rho",
+    "F_w",
+    *DFM_CDM_PHYSICAL_CLOSURE_NAMES,
+)
+
+
+@dataclass(frozen=True)
+class DFMCDMPhysicalClosureResiduals:
+    """Residuals defining the minimal circular DFM-as-CDM branch."""
+
+    C_v_initial: float
+    C_rho_star: float
+    C_lambda_phi: float
+    C_circular_force: float
+
+    def as_array(self) -> np.ndarray:
+        return np.asarray(
+            (
+                self.C_v_initial,
+                self.C_rho_star,
+                self.C_lambda_phi,
+                self.C_circular_force,
+            ),
+            dtype=float,
+        )
+
+
+@dataclass(frozen=True)
+class DFMCDMAugmentedJacobianAnalysis:
+    """Local rank certificate after imposing physical closures."""
+
+    parameter_names: tuple[str, ...]
+    residual_names: tuple[str, ...]
+    parameter_vector: np.ndarray
+    residual_vector: np.ndarray
+    jacobian: np.ndarray
+    singular_values: np.ndarray
+    rank_tolerance: float
+    rank: int
+    condition_number: float
+    locally_identifiable: bool
+
+
+def dfm_cdm_minimal_circular_closure_residuals(
+    vector: np.ndarray,
+    *,
+    beta: float,
+    N_initial: float,
+) -> DFMCDMPhysicalClosureResiduals:
+    """Evaluate the four minimal circular-branch closure equations."""
+
+    _require_finite("beta", beta)
+    _require_finite("N_initial", N_initial)
+
+    if beta <= 0.0:
+        raise ValueError(
+            "minimal circular closure requires beta to be positive"
+        )
+
+    candidate = _validated_dfm_cdm_shooting_vector(vector)
+
+    (
+        phi_initial,
+        v_initial,
+        rho_star,
+        m_phi_squared,
+        lambda_phi,
+        Q_theta,
+    ) = (float(value) for value in candidate)
+
+    if Q_theta <= 0.0:
+        raise ValueError(
+            "minimal circular closure requires the positive-charge branch"
+        )
+
+    circular_force = (
+        m_phi_squared * phi_initial
+        + lambda_phi * phi_initial**3
+        - (
+            Q_theta**2
+            * math.exp(-6.0 * N_initial)
+            / (beta * phi_initial**3)
+        )
+    )
+
+    return DFMCDMPhysicalClosureResiduals(
+        C_v_initial=v_initial,
+        C_rho_star=rho_star,
+        C_lambda_phi=lambda_phi,
+        C_circular_force=circular_force,
+    )
+
+
+def dfm_cdm_augmented_residual_vector(
+    vector: np.ndarray,
+    *,
+    alpha: float,
+    beta: float,
+    unit_map: DFMCDMUnitMap,
+    config: ChargeReducedSolverConfig,
+    target_w_dfm0: float = 0.0,
+) -> np.ndarray:
+    """Return two independent calibration residuals and four closures."""
+
+    candidate = _validated_dfm_cdm_shooting_vector(vector)
+
+    shooting = dfm_cdm_shooting_residual_vector(
+        candidate,
+        alpha=alpha,
+        beta=beta,
+        unit_map=unit_map,
+        config=config,
+        target_w_dfm0=target_w_dfm0,
+    )
+
+    closures = dfm_cdm_minimal_circular_closure_residuals(
+        candidate,
+        beta=beta,
+        N_initial=config.N_initial,
+    ).as_array()
+
+    # F_H is excluded because its Jacobian row is dependent on F_rho.
+    return np.concatenate((shooting[:2], closures))
+
+
+def analyze_dfm_cdm_augmented_jacobian(
+    vector: np.ndarray,
+    *,
+    alpha: float,
+    beta: float,
+    unit_map: DFMCDMUnitMap,
+    config: ChargeReducedSolverConfig,
+    target_w_dfm0: float = 0.0,
+    relative_step: float = 1.0e-6,
+    rank_tolerance: float | None = None,
+) -> DFMCDMAugmentedJacobianAnalysis:
+    """Analyze local identifiability of the physically closed system."""
+
+    if relative_step <= 0.0 or not math.isfinite(relative_step):
+        raise ValueError("relative_step must be positive and finite")
+
+    candidate = _validated_dfm_cdm_shooting_vector(vector)
+
+    residual = dfm_cdm_augmented_residual_vector(
+        candidate,
+        alpha=alpha,
+        beta=beta,
+        unit_map=unit_map,
+        config=config,
+        target_w_dfm0=target_w_dfm0,
+    )
+
+    parameter_count = len(SHOOTING_PARAMETER_NAMES)
+    jacobian = np.empty(
+        (
+            len(DFM_CDM_AUGMENTED_RESIDUAL_NAMES),
+            parameter_count,
+        ),
+        dtype=float,
+    )
+
+    for column in range(parameter_count):
+        step = relative_step * max(
+            1.0,
+            abs(float(candidate[column])),
+        )
+
+        plus = candidate.copy()
+        minus = candidate.copy()
+        plus[column] += step
+        minus[column] -= step
+
+        forward_difference = (
+            (column in (0, 5) and minus[column] <= 0.0)
+            or (column in (2, 3, 4) and minus[column] < 0.0)
+        )
+
+        plus_residual = dfm_cdm_augmented_residual_vector(
+            plus,
+            alpha=alpha,
+            beta=beta,
+            unit_map=unit_map,
+            config=config,
+            target_w_dfm0=target_w_dfm0,
+        )
+
+        if forward_difference:
+            jacobian[:, column] = (
+                plus_residual - residual
+            ) / step
+        else:
+            minus_residual = dfm_cdm_augmented_residual_vector(
+                minus,
+                alpha=alpha,
+                beta=beta,
+                unit_map=unit_map,
+                config=config,
+                target_w_dfm0=target_w_dfm0,
+            )
+            jacobian[:, column] = (
+                plus_residual - minus_residual
+            ) / (2.0 * step)
+
+    singular_values = np.linalg.svd(
+        jacobian,
+        compute_uv=False,
+    )
+
+    if rank_tolerance is None:
+        largest = (
+            float(singular_values[0])
+            if singular_values.size
+            else 0.0
+        )
+        rank_tolerance = (
+            max(jacobian.shape)
+            * math.sqrt(np.finfo(float).eps)
+            * largest
+        )
+
+    if rank_tolerance < 0.0 or not math.isfinite(rank_tolerance):
+        raise ValueError(
+            "rank_tolerance must be nonnegative and finite"
+        )
+
+    rank = int(
+        np.sum(singular_values > rank_tolerance)
+    )
+
+    parameter_vector = candidate.copy()
+    residual_vector = residual.copy()
+    jacobian_copy = jacobian.copy()
+    singular_values_copy = singular_values.copy()
+
+    for array in (
+        parameter_vector,
+        residual_vector,
+        jacobian_copy,
+        singular_values_copy,
+    ):
+        array.setflags(write=False)
+
+    return DFMCDMAugmentedJacobianAnalysis(
+        parameter_names=SHOOTING_PARAMETER_NAMES,
+        residual_names=DFM_CDM_AUGMENTED_RESIDUAL_NAMES,
+        parameter_vector=parameter_vector,
+        residual_vector=residual_vector,
+        jacobian=jacobian_copy,
+        singular_values=singular_values_copy,
+        rank_tolerance=float(rank_tolerance),
+        rank=rank,
+        condition_number=float(np.linalg.cond(jacobian)),
+        locally_identifiable=rank == parameter_count,
+    )

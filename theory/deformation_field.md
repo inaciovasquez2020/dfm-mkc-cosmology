@@ -503,3 +503,48 @@ where the columns of \(N\) form the computed Jacobian null-space basis.
 Growth likelihood work is blocked until four additional independent physical
 conditions are supplied or four null coordinates are explicitly fixed and
 reported.
+
+## Minimal circular physical closure
+
+Conditional on the minimal positive-charge circular-field branch, impose
+
+\[
+C_{v_i}=v_i=0,
+\qquad
+C_{\rho_\star}=\rho_\star=0,
+\qquad
+C_{\lambda_\phi}=\lambda_\phi=0,
+\]
+
+and
+
+\[
+C_{\mathrm{circ}}
+=
+m_\phi^2\phi_i
++
+\lambda_\phi\phi_i^3
+-
+\frac{Q_\theta^2e^{-6N_i}}{\beta\phi_i^3}
+=0,
+\qquad
+Q_\theta>0.
+\]
+
+The first condition selects an initially stationary radial field. The second
+prevents the constant DFM potential term from duplicating the separately
+fixed cosmological constant. The third selects the minimal quadratic
+potential. The fourth imposes initial effective-force balance between the
+potential and conserved phase charge.
+
+The positive-charge branch chooses one representative of the two
+background-equivalent charge signs because the homogeneous equations depend
+on \(Q_\theta^2\).
+
+Together with \(F_\rho=0\) and \(F_w=0\), these closures produce six
+independent equations for the six shooting parameters. The dependent
+Friedmann residual \(F_H\) remains a consistency diagnostic.
+
+This is an explicit conditional branch choice, not a unique consequence of
+the canonical action. Growth likelihood remains blocked until the nonlinear
+six-equation system is solved, reintegrated, and all residuals are reported.
