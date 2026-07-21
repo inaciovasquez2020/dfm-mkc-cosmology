@@ -16,22 +16,22 @@ from dfm_mkc_solver.charge_reduced_background_v1 import (
 
 EXPECTED = {
     0.005: {
-        "full_field_growth_factor": 15.0171262499332,
+        "full_field_growth_factor": 15.015555510338514,
         "averaged_growth_factor": 3.279556409787583,
-        "full_to_averaged_growth_ratio": 4.579011419079649,
-        "relative_growth_difference": 3.579011419079649,
+        "full_to_averaged_growth_ratio": 4.578532470283404,
+        "relative_growth_difference": 3.5785324702834043,
     },
     0.01: {
-        "full_field_growth_factor": 7.519441381217063,
+        "full_field_growth_factor": 7.519186015989355,
         "averaged_growth_factor": -0.09609440250175318,
-        "full_to_averaged_growth_ratio": -78.25056595861425,
-        "relative_growth_difference": -79.25056595861425,
+        "full_to_averaged_growth_ratio": -78.24790851737876,
+        "relative_growth_difference": -79.24790851737876,
     },
     0.02: {
-        "full_field_growth_factor": -1.026415841412059,
+        "full_field_growth_factor": -1.0264225430933964,
         "averaged_growth_factor": -0.9270459895254429,
-        "full_to_averaged_growth_ratio": 1.107189775921994,
-        "relative_growth_difference": 0.1071897759219944,
+        "full_to_averaged_growth_ratio": 1.1071970049930582,
+        "relative_growth_difference": 0.10719700499305818,
     },
 }
 

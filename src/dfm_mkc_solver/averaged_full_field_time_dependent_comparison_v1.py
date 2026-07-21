@@ -304,20 +304,43 @@ def compare_averaged_and_time_dependent_full_field_growth(
             )
         return derivative, certificate
 
+    perturbation_grid = np.asarray(
+        background.N,
+        dtype=float,
+    )
+    perturbation_grid_steps = np.diff(
+        perturbation_grid
+    )
+
+    if (
+        perturbation_grid.ndim != 1
+        or perturbation_grid.size < 2
+        or np.any(perturbation_grid_steps <= 0.0)
+    ):
+        raise ValueError(
+            "background log-scale-factor grid must be "
+            "strictly increasing"
+        )
+
+    minimum_grid_step = float(
+        np.min(perturbation_grid_steps)
+    )
+
     integration = solve_ivp(
         lambda log_scale_factor, state: evaluate(
             log_scale_factor,
             state,
         )[0],
         (
-            float(background.N[0]),
-            float(background.N[-1]),
+            float(perturbation_grid[0]),
+            float(perturbation_grid[-1]),
         ),
         np.asarray(fixed_point.initial_state, dtype=float),
-        t_eval=background.N,
-        method="Radau",
-        rtol=perturbation_rtol,
-        atol=perturbation_atol,
+        t_eval=perturbation_grid,
+        method="DOP853",
+        rtol=min(perturbation_rtol, 1.0e-11),
+        atol=min(perturbation_atol, 1.0e-13),
+        max_step=minimum_grid_step / 2.0,
     )
     if not integration.success:
         raise RuntimeError(
