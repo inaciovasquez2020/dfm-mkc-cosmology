@@ -21,8 +21,8 @@ from dataclasses import dataclass
 import numpy as np
 from scipy.integrate import solve_ivp
 
-from .averaged_full_field_matching_surface_v1 import (
-    match_averaged_mode_on_pressureless_phase_locked_slice,
+from .averaged_full_field_metric_fixed_point_v1 import (
+    solve_initial_metric_fixed_point,
 )
 from .averaged_matter_growth_suppression_v1 import (
     integrate_averaged_matter_growth_suppression,
@@ -204,29 +204,27 @@ def compare_averaged_and_time_dependent_full_field_growth(
         scale_factor_initial * float(background.theta_dot[0])
     )
 
-    matching = (
-        match_averaged_mode_on_pressureless_phase_locked_slice(
-            scale_factor=scale_factor_initial,
-            conformal_hubble=conformal_hubble_initial,
-            wave_number=wave_number,
-            phi_background=float(background.phi[0]),
-            phi_prime_background=phi_prime_initial,
-            theta_prime_background=theta_prime_initial,
-            phi_metric=0.0,
-            phi_metric_n=0.0,
-            psi_metric=0.0,
-            target_density_contrast=target_density_contrast,
-            target_density_contrast_n=target_density_contrast_n,
-            alpha=parameters.alpha,
-            beta=parameters.beta,
-            rho_star=parameters.rho_star,
-            m_phi_squared=parameters.m_phi_squared,
-            lambda_phi=parameters.lambda_phi,
-            nonzero_tolerance=denominator_tolerance,
-        )
+    fixed_point = solve_initial_metric_fixed_point(
+        scale_factor=scale_factor_initial,
+        conformal_hubble=conformal_hubble_initial,
+        wave_number=wave_number,
+        gravitational_constant=parameters.G,
+        phi_background=float(background.phi[0]),
+        phi_prime_background=phi_prime_initial,
+        theta_prime_background=theta_prime_initial,
+        target_density_contrast=target_density_contrast,
+        target_density_contrast_n=target_density_contrast_n,
+        alpha=parameters.alpha,
+        beta=parameters.beta,
+        rho_star=parameters.rho_star,
+        m_phi_squared=parameters.m_phi_squared,
+        lambda_phi=parameters.lambda_phi,
+        denominator_tolerance=denominator_tolerance,
     )
-    if not matching.matching_surface_closed:
-        raise RuntimeError("initial matching surface did not close")
+    if not fixed_point.initial_metric_fixed_point_solved:
+        raise RuntimeError(
+            "initial metric fixed-point matching did not close"
+        )
 
     def evaluate(
         log_scale_factor: float,
@@ -315,7 +313,7 @@ def compare_averaged_and_time_dependent_full_field_growth(
             float(background.N[0]),
             float(background.N[-1]),
         ),
-        np.asarray(matching.initial_state, dtype=float),
+        np.asarray(fixed_point.initial_state, dtype=float),
         t_eval=background.N,
         method="Radau",
         rtol=perturbation_rtol,
@@ -553,9 +551,11 @@ def compare_averaged_and_time_dependent_full_field_growth(
             minimum_abs_constraint_denominator
         ),
         initial_matching_surface_closed=(
-            matching.matching_surface_closed
+            fixed_point.matching_surface_closed
         ),
-        initial_metric_fixed_point_solved=False,
+        initial_metric_fixed_point_solved=(
+            fixed_point.initial_metric_fixed_point_solved
+        ),
         time_dependent_background_evolved=True,
         time_dependent_full_field_evolved=True,
         metric_constraints_solved_at_each_sample=(
