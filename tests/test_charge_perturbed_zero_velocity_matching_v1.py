@@ -16,6 +16,7 @@ from dfm_mkc_solver.charge_reduced_background_v1 import (
     build_dfm_cdm_unit_map,
     solve_charge_reduced_background,
 )
+import numpy as np
 
 
 RECEIPT = Path(
@@ -262,3 +263,131 @@ def test_zero_k_squared_implicit_tangent_matches_direct_tangent():
     assert all((__import__('math').isfinite(value) for value in implicit_tangent.normalized_coordinate_tangent))
     assert abs(implicit_tangent.growth_tangent - implicit_tangent.direct_growth_tangent) <= 2e-05
     assert abs(implicit_tangent.growth_tangent - 0.3690463889) <= 2e-05
+
+
+def test_regularized_k_squared_tangent_evolution_matches_two_forward_trajectory_derivatives():
+    from dfm_mkc_solver.averaged_full_field_time_dependent_comparison_v1 import (
+        integrate_regularized_k_squared_tangent_evolution,
+    )
+    from dfm_mkc_solver.charge_perturbed_zero_velocity_matching_v1 import (
+        solve_charge_perturbed_zero_velocity_matching_k_squared,
+    )
+    from dfm_mkc_solver.charge_reduced_background_v1 import (
+        ChargeReducedInitialData,
+        ChargeReducedParameters,
+        ChargeReducedSolverConfig,
+        build_dfm_cdm_unit_map,
+        solve_charge_reduced_background,
+    )
+
+    receipt = json.loads(RECEIPT.read_text())
+    (
+        phi_initial,
+        v_initial,
+        rho_star,
+        m_phi_squared,
+        lambda_phi,
+        q_theta,
+    ) = map(float, receipt["candidate_vector"])
+    unit_inputs = receipt["unit_map_inputs"]
+    unit_map = build_dfm_cdm_unit_map(
+        H0_km_s_Mpc=float(unit_inputs["H0_km_s_Mpc"]),
+        omega_b0=float(unit_inputs["omega_b0"]),
+        omega_cdm0=float(unit_inputs["omega_cdm0"]),
+        omega_r0=float(unit_inputs["omega_r0"]),
+    )
+    config_inputs = receipt["solver_config"]
+    config = ChargeReducedSolverConfig(
+        N_initial=float(config_inputs["N_initial"]),
+        N_final=float(config_inputs["N_final"]),
+        samples=int(config_inputs["samples"]),
+        rtol=float(config_inputs["rtol"]),
+        atol=float(config_inputs["atol"]),
+    )
+    rho_m_initial, rho_r_initial = unit_map.fluid_initial_data(
+        config.N_initial
+    )
+    parameters = ChargeReducedParameters(
+        G=unit_map.G_code,
+        Lambda=unit_map.Lambda_code,
+        alpha=float(receipt["alpha"]),
+        beta=float(receipt["beta"]),
+        rho_star=rho_star,
+        m_phi_squared=m_phi_squared,
+        lambda_phi=lambda_phi,
+        Q_theta=q_theta,
+    )
+    initial_data = ChargeReducedInitialData(
+        phi=phi_initial,
+        v=v_initial,
+        theta=0.0,
+        rho_m=rho_m_initial,
+        rho_r=rho_r_initial,
+    )
+    background = solve_charge_reduced_background(
+        parameters=parameters,
+        initial_data=initial_data,
+        config=config,
+    )
+    assert background.success
+
+    scale_factor = float(background.a[0])
+    common = dict(
+        scale_factor=scale_factor,
+        conformal_hubble=scale_factor * float(background.H[0]),
+        gravitational_constant=parameters.G,
+        phi_background=float(background.phi[0]),
+        phi_prime_background=scale_factor * float(background.v[0]),
+        theta_prime_background=(
+            scale_factor * float(background.theta_dot[0])
+        ),
+        target_density_contrast=1.0e-6,
+        alpha=parameters.alpha,
+        beta=parameters.beta,
+        rho_star=parameters.rho_star,
+        m_phi_squared=parameters.m_phi_squared,
+        lambda_phi=parameters.lambda_phi,
+    )
+    x_step = 1.0e-5
+    base = solve_charge_perturbed_zero_velocity_matching_k_squared(
+        wave_number_squared=0.0,
+        **common,
+    )
+    first = solve_charge_perturbed_zero_velocity_matching_k_squared(
+        wave_number_squared=x_step,
+        **common,
+    )
+    second = solve_charge_perturbed_zero_velocity_matching_k_squared(
+        wave_number_squared=2.0 * x_step,
+        **common,
+    )
+    base_state = np.asarray(base.initial_state, dtype=float)
+    initial_state_tangent = (
+        -3.0 * base_state
+        + 4.0 * np.asarray(first.initial_state, dtype=float)
+        - np.asarray(second.initial_state, dtype=float)
+    ) / (2.0 * x_step)
+
+    certificate = integrate_regularized_k_squared_tangent_evolution(
+        parameters=parameters,
+        initial_data=initial_data,
+        config=config,
+        initial_state=tuple(float(value) for value in base_state),
+        initial_state_tangent=tuple(
+            float(value) for value in initial_state_tangent
+        ),
+        sigma8_0=1.0,
+        wave_number_squared=0.0,
+        wave_number_squared_difference_step=x_step,
+        validation_tolerance=1.0e-1,
+    )
+
+    assert certificate.native_k_squared_rhs_used is True
+    assert certificate.variational_equation_integrated is True
+    assert certificate.two_noninitial_trajectory_checks_passed is True
+    assert certificate.validation_indices[0] > 0
+    assert certificate.validation_indices[1] > certificate.validation_indices[0]
+    assert certificate.maximum_validation_relative_error < 1.0e-1
+    assert np.all(np.isfinite(certificate.fsigma8_values))
+    assert np.all(np.isfinite(certificate.fsigma8_tangents))
+    assert np.max(np.abs(certificate.fsigma8_tangents)) > 0.0
