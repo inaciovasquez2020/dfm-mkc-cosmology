@@ -56,11 +56,11 @@ def _require_finite(name: str, value: float) -> None:
         raise ValueError(f"{name} must be finite")
 
 
-def dark_sector_amplitude_perturbation(
+def _dark_sector_amplitude_perturbation_k_squared_impl(
     *,
     scale_factor: float,
     conformal_hubble: float,
-    wave_number: float,
+    wave_number_squared: float,
     phi_background: float,
     phi_prime_background: float,
     theta_prime_background: float,
@@ -80,7 +80,7 @@ def dark_sector_amplitude_perturbation(
     for name, value in (
         ("scale_factor", scale_factor),
         ("conformal_hubble", conformal_hubble),
-        ("wave_number", wave_number),
+        ("wave_number_squared", wave_number_squared),
         ("phi_background", phi_background),
         ("phi_prime_background", phi_prime_background),
         ("theta_prime_background", theta_prime_background),
@@ -99,8 +99,10 @@ def dark_sector_amplitude_perturbation(
 
     if scale_factor <= 0.0:
         raise ValueError("scale_factor must be positive")
-    if wave_number < 0.0:
-        raise ValueError("wave_number must be nonnegative")
+    if wave_number_squared < 0.0:
+        raise ValueError(
+            "wave_number_squared must be nonnegative"
+        )
     if alpha <= 0.0:
         raise ValueError("alpha must be positive")
     if beta <= 0.0:
@@ -135,7 +137,7 @@ def dark_sector_amplitude_perturbation(
     )
 
     effective_frequency_squared = (
-        wave_number**2
+        wave_number_squared
         + scale_factor**2 * potential_curvature
         - (beta / alpha) * theta_prime_background**2
     )
@@ -143,7 +145,7 @@ def dark_sector_amplitude_perturbation(
     delta_phi_double_prime = (
         -2.0 * conformal_hubble * delta_phi_prime
         - (
-            wave_number**2
+            wave_number_squared
             + scale_factor**2 * potential_curvature
         )
         * delta_phi
@@ -164,7 +166,7 @@ def dark_sector_amplitude_perturbation(
             * conformal_hubble
             * delta_phi_prime
             + (
-                wave_number**2
+                wave_number_squared
                 + scale_factor**2 * potential_curvature
             )
             * delta_phi
@@ -218,4 +220,88 @@ def dark_sector_amplitude_perturbation(
         action_consistent_amplitude_equation_supplied=True,
         metric_derivatives_solved=False,
         complete_perturbation_system_closed=False,
+    )
+def dark_sector_amplitude_perturbation(
+    *,
+    scale_factor: float,
+    conformal_hubble: float,
+    wave_number: float,
+    phi_background: float,
+    phi_prime_background: float,
+    theta_prime_background: float,
+    delta_phi: float,
+    delta_phi_prime: float,
+    delta_theta_prime: float,
+    psi_metric: float,
+    psi_metric_prime: float,
+    phi_metric_prime: float,
+    alpha: float,
+    beta: float,
+    m_phi_squared: float,
+    lambda_phi: float,
+) -> AmplitudePerturbationCertificate:
+    """Solve the amplitude equation using the legacy k surface."""
+
+    _require_finite("wave_number", wave_number)
+    if wave_number < 0.0:
+        raise ValueError("wave_number must be nonnegative")
+
+    return _dark_sector_amplitude_perturbation_k_squared_impl(
+        scale_factor=scale_factor,
+        conformal_hubble=conformal_hubble,
+        wave_number_squared=wave_number**2,
+        phi_background=phi_background,
+        phi_prime_background=phi_prime_background,
+        theta_prime_background=theta_prime_background,
+        delta_phi=delta_phi,
+        delta_phi_prime=delta_phi_prime,
+        delta_theta_prime=delta_theta_prime,
+        psi_metric=psi_metric,
+        psi_metric_prime=psi_metric_prime,
+        phi_metric_prime=phi_metric_prime,
+        alpha=alpha,
+        beta=beta,
+        m_phi_squared=m_phi_squared,
+        lambda_phi=lambda_phi,
+    )
+
+
+def dark_sector_amplitude_perturbation_k_squared(
+    *,
+    scale_factor: float,
+    conformal_hubble: float,
+    wave_number_squared: float,
+    phi_background: float,
+    phi_prime_background: float,
+    theta_prime_background: float,
+    delta_phi: float,
+    delta_phi_prime: float,
+    delta_theta_prime: float,
+    psi_metric: float,
+    psi_metric_prime: float,
+    phi_metric_prime: float,
+    alpha: float,
+    beta: float,
+    m_phi_squared: float,
+    lambda_phi: float,
+) -> AmplitudePerturbationCertificate:
+    """Solve the amplitude equation directly in x = k^2."""
+
+    return _dark_sector_amplitude_perturbation_k_squared_impl(
+        scale_factor=scale_factor,
+        conformal_hubble=conformal_hubble,
+        wave_number_squared=wave_number_squared,
+        phi_background=phi_background,
+        phi_prime_background=phi_prime_background,
+        theta_prime_background=theta_prime_background,
+        delta_phi=delta_phi,
+        delta_phi_prime=delta_phi_prime,
+        delta_theta_prime=delta_theta_prime,
+        psi_metric=psi_metric,
+        psi_metric_prime=psi_metric_prime,
+        phi_metric_prime=phi_metric_prime,
+        alpha=alpha,
+        beta=beta,
+        m_phi_squared=m_phi_squared,
+        lambda_phi=lambda_phi,
     )

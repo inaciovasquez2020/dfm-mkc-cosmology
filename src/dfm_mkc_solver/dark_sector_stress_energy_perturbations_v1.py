@@ -93,10 +93,10 @@ def _require_finite(name: str, value: float) -> None:
         raise ValueError(f"{name} must be finite")
 
 
-def dark_sector_stress_energy_perturbations(
+def _dark_sector_stress_energy_perturbations_k_squared_impl(
     *,
     scale_factor: float,
-    wave_number: float,
+    wave_number_squared: float,
     phi_background: float,
     phi_prime_background: float,
     theta_prime_background: float,
@@ -115,7 +115,7 @@ def dark_sector_stress_energy_perturbations(
 
     for name, value in (
         ("scale_factor", scale_factor),
-        ("wave_number", wave_number),
+        ("wave_number_squared", wave_number_squared),
         ("phi_background", phi_background),
         ("phi_prime_background", phi_prime_background),
         ("theta_prime_background", theta_prime_background),
@@ -134,8 +134,10 @@ def dark_sector_stress_energy_perturbations(
 
     if scale_factor <= 0.0:
         raise ValueError("scale_factor must be positive")
-    if wave_number < 0.0:
-        raise ValueError("wave_number must be nonnegative")
+    if wave_number_squared < 0.0:
+        raise ValueError(
+            "wave_number_squared must be nonnegative"
+        )
     if alpha <= 0.0:
         raise ValueError("alpha must be positive")
     if beta <= 0.0:
@@ -251,7 +253,7 @@ def dark_sector_stress_energy_perturbations(
     )
 
     momentum_divergence_source = (
-        wave_number**2 * momentum_potential
+        wave_number_squared * momentum_potential
     )
 
     scalar_anisotropic_stress = 0.0
@@ -327,4 +329,84 @@ def dark_sector_stress_energy_perturbations(
         action_derived_sources_supplied=True,
         perturbation_evolution_solved=False,
         observational_prediction_computed=False,
+    )
+def dark_sector_stress_energy_perturbations(
+    *,
+    scale_factor: float,
+    wave_number: float,
+    phi_background: float,
+    phi_prime_background: float,
+    theta_prime_background: float,
+    delta_phi: float,
+    delta_phi_prime: float,
+    delta_theta: float,
+    delta_theta_prime: float,
+    psi_metric: float,
+    alpha: float,
+    beta: float,
+    rho_star: float,
+    m_phi_squared: float,
+    lambda_phi: float,
+) -> DarkSectorStressEnergyPerturbationCertificate:
+    """Evaluate the source formulas using the legacy k surface."""
+
+    _require_finite("wave_number", wave_number)
+    if wave_number < 0.0:
+        raise ValueError("wave_number must be nonnegative")
+
+    return _dark_sector_stress_energy_perturbations_k_squared_impl(
+        scale_factor=scale_factor,
+        wave_number_squared=wave_number**2,
+        phi_background=phi_background,
+        phi_prime_background=phi_prime_background,
+        theta_prime_background=theta_prime_background,
+        delta_phi=delta_phi,
+        delta_phi_prime=delta_phi_prime,
+        delta_theta=delta_theta,
+        delta_theta_prime=delta_theta_prime,
+        psi_metric=psi_metric,
+        alpha=alpha,
+        beta=beta,
+        rho_star=rho_star,
+        m_phi_squared=m_phi_squared,
+        lambda_phi=lambda_phi,
+    )
+
+
+def dark_sector_stress_energy_perturbations_k_squared(
+    *,
+    scale_factor: float,
+    wave_number_squared: float,
+    phi_background: float,
+    phi_prime_background: float,
+    theta_prime_background: float,
+    delta_phi: float,
+    delta_phi_prime: float,
+    delta_theta: float,
+    delta_theta_prime: float,
+    psi_metric: float,
+    alpha: float,
+    beta: float,
+    rho_star: float,
+    m_phi_squared: float,
+    lambda_phi: float,
+) -> DarkSectorStressEnergyPerturbationCertificate:
+    """Evaluate the source formulas directly in x = k^2."""
+
+    return _dark_sector_stress_energy_perturbations_k_squared_impl(
+        scale_factor=scale_factor,
+        wave_number_squared=wave_number_squared,
+        phi_background=phi_background,
+        phi_prime_background=phi_prime_background,
+        theta_prime_background=theta_prime_background,
+        delta_phi=delta_phi,
+        delta_phi_prime=delta_phi_prime,
+        delta_theta=delta_theta,
+        delta_theta_prime=delta_theta_prime,
+        psi_metric=psi_metric,
+        alpha=alpha,
+        beta=beta,
+        rho_star=rho_star,
+        m_phi_squared=m_phi_squared,
+        lambda_phi=lambda_phi,
     )
