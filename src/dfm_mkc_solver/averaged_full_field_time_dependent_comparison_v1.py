@@ -625,3 +625,442 @@ def compare_averaged_and_time_dependent_full_field_growth(
         averaged_full_field_comparison_computed=True,
         observational_calibration_completed=False,
     )
+
+
+@dataclass(frozen=True)
+class RegularizedKSquaredTangentEvolutionCertificate:
+    """Native-x variational trajectory and multi-redshift f-sigma8 tangent."""
+
+    log_scale_factors: tuple[float, ...]
+    scale_factors: tuple[float, ...]
+    base_states: tuple[tuple[float, float, float, float], ...]
+    tangent_states: tuple[tuple[float, float, float, float], ...]
+    density_contrasts: tuple[float, ...]
+    density_contrast_tangents: tuple[float, ...]
+    fsigma8_values: tuple[float, ...]
+    fsigma8_tangents: tuple[float, ...]
+    validation_indices: tuple[int, int]
+    validation_relative_errors: tuple[float, float]
+    maximum_validation_relative_error: float
+    native_k_squared_rhs_used: bool
+    variational_equation_integrated: bool
+    two_noninitial_trajectory_checks_passed: bool
+
+
+def integrate_regularized_k_squared_tangent_evolution(
+    *,
+    parameters: ChargeReducedParameters,
+    initial_data: ChargeReducedInitialData,
+    config: ChargeReducedSolverConfig,
+    initial_state: tuple[float, float, float, float],
+    initial_state_tangent: tuple[float, float, float, float],
+    sigma8_0: float,
+    wave_number_squared: float = 0.0,
+    state_difference_step: float = 1.0e-7,
+    wave_number_squared_difference_step: float = 1.0e-5,
+    denominator_tolerance: float = 1.0e-14,
+    perturbation_rtol: float = 1.0e-10,
+    perturbation_atol: float = 1.0e-12,
+    validation_tolerance: float = 1.0e-1,
+) -> RegularizedKSquaredTangentEvolutionCertificate:
+    """Integrate S_N = F_Y S + F_x and differentiate f-sigma8 in x=k^2."""
+
+    for name, value in (
+        ("sigma8_0", sigma8_0),
+        ("wave_number_squared", wave_number_squared),
+        ("state_difference_step", state_difference_step),
+        (
+            "wave_number_squared_difference_step",
+            wave_number_squared_difference_step,
+        ),
+        ("denominator_tolerance", denominator_tolerance),
+        ("perturbation_rtol", perturbation_rtol),
+        ("perturbation_atol", perturbation_atol),
+        ("validation_tolerance", validation_tolerance),
+    ):
+        _require_finite(name, value)
+
+    base_initial = np.asarray(initial_state, dtype=float)
+    tangent_initial = np.asarray(initial_state_tangent, dtype=float)
+    if base_initial.shape != (4,) or tangent_initial.shape != (4,):
+        raise ValueError("initial state and tangent must each have shape (4,)")
+    if not np.all(np.isfinite(base_initial)):
+        raise ValueError("initial_state must be finite")
+    if not np.all(np.isfinite(tangent_initial)):
+        raise ValueError("initial_state_tangent must be finite")
+    if sigma8_0 <= 0.0:
+        raise ValueError("sigma8_0 must be positive")
+    if wave_number_squared < 0.0:
+        raise ValueError("wave_number_squared must be nonnegative")
+    if state_difference_step <= 0.0:
+        raise ValueError("state_difference_step must be positive")
+    if wave_number_squared_difference_step <= 0.0:
+        raise ValueError(
+            "wave_number_squared_difference_step must be positive"
+        )
+    if denominator_tolerance <= 0.0:
+        raise ValueError("denominator_tolerance must be positive")
+    if perturbation_rtol <= 0.0 or perturbation_atol <= 0.0:
+        raise ValueError("perturbation tolerances must be positive")
+    if validation_tolerance <= 0.0:
+        raise ValueError("validation_tolerance must be positive")
+
+    from .dark_sector_fourier_rhs_v1 import (
+        dark_sector_fourier_right_hand_side_k_squared as native_k_squared_fourier_rhs,
+    )
+
+    background = solve_charge_reduced_background(
+        parameters=parameters,
+        initial_data=initial_data,
+        config=config,
+    )
+    if not background.success:
+        raise RuntimeError(background.message)
+
+    grid = np.asarray(background.N, dtype=float)
+    if grid.ndim != 1 or grid.size < 4 or np.any(np.diff(grid) <= 0.0):
+        raise ValueError(
+            "background log-scale-factor grid must contain at least four "
+            "strictly increasing samples"
+        )
+    minimum_grid_step = float(np.min(np.diff(grid)))
+
+    def evaluate_rhs(
+        log_scale_factor: float,
+        state: np.ndarray,
+        x_value: float,
+    ) -> tuple[np.ndarray, float]:
+        scale_factor = math.exp(log_scale_factor)
+        hubble = _interpolate(
+            log_scale_factor,
+            background.N,
+            background.H,
+        )
+        conformal_hubble = scale_factor * hubble
+        if conformal_hubble <= 0.0:
+            raise ValueError("conformal Hubble rate must remain positive")
+
+        phi_background = _interpolate(
+            log_scale_factor,
+            background.N,
+            background.phi,
+        )
+        phi_prime_background = scale_factor * _interpolate(
+            log_scale_factor,
+            background.N,
+            background.v,
+        )
+        theta_prime_background = scale_factor * _interpolate(
+            log_scale_factor,
+            background.N,
+            background.theta_dot,
+        )
+
+        certificate = native_k_squared_fourier_rhs(
+            scale_factor=scale_factor,
+            conformal_hubble=conformal_hubble,
+            wave_number_squared=x_value,
+            gravitational_constant=parameters.G,
+            phi_background=phi_background,
+            phi_prime_background=phi_prime_background,
+            theta_prime_background=theta_prime_background,
+            delta_phi=float(state[0]),
+            delta_phi_prime=float(state[1]),
+            delta_theta=float(state[2]),
+            delta_theta_prime=float(state[3]),
+            alpha=parameters.alpha,
+            beta=parameters.beta,
+            rho_star=parameters.rho_star,
+            m_phi_squared=parameters.m_phi_squared,
+            lambda_phi=parameters.lambda_phi,
+            denominator_tolerance=denominator_tolerance,
+        )
+        derivative = np.asarray(
+            (
+                state[1] / conformal_hubble,
+                certificate.delta_phi_double_prime / conformal_hubble,
+                state[3] / conformal_hubble,
+                certificate.delta_theta_double_prime / conformal_hubble,
+            ),
+            dtype=float,
+        )
+        background_density = (
+            certificate.stress_energy.background_energy_density
+        )
+        if background_density <= 0.0:
+            raise ValueError("full-field background density must remain positive")
+        density_contrast = (
+            certificate.stress_energy.delta_energy_density
+            / background_density
+        )
+        if not np.all(np.isfinite(derivative)) or not math.isfinite(
+            density_contrast
+        ):
+            raise ValueError("native-x perturbation evaluation became nonfinite")
+        return derivative, float(density_contrast)
+
+    def integrate_state(x_value: float, state0: np.ndarray):
+        integration = solve_ivp(
+            lambda n_value, state: evaluate_rhs(
+                float(n_value),
+                state,
+                x_value,
+            )[0],
+            (float(grid[0]), float(grid[-1])),
+            state0,
+            t_eval=grid,
+            method="DOP853",
+            rtol=min(perturbation_rtol, 1.0e-11),
+            atol=min(perturbation_atol, 1.0e-13),
+            max_step=minimum_grid_step / 2.0,
+        )
+        if not integration.success:
+            raise RuntimeError(
+                "native-x full-field integration failed: "
+                f"{integration.message}"
+            )
+        return integration
+
+    base_integration = integrate_state(
+        wave_number_squared,
+        base_initial,
+    )
+
+    sample_count = grid.size
+    jacobians = np.empty((sample_count, 4, 4), dtype=float)
+    forcings = np.empty((sample_count, 4), dtype=float)
+    density_gradients = np.empty((sample_count, 4), dtype=float)
+    density_direct_x = np.empty(sample_count, dtype=float)
+    density_contrasts = np.empty(sample_count, dtype=float)
+    x_step = wave_number_squared_difference_step
+
+    for index, n_value in enumerate(grid):
+        state = base_integration.y[:, index]
+        base_derivative, base_density = evaluate_rhs(
+            float(n_value),
+            state,
+            wave_number_squared,
+        )
+        density_contrasts[index] = base_density
+
+        for column in range(4):
+            step = state_difference_step * max(
+                1.0,
+                abs(float(state[column])),
+            )
+            plus_state = state.copy()
+            minus_state = state.copy()
+            plus_state[column] += step
+            minus_state[column] -= step
+            plus_derivative, plus_density = evaluate_rhs(
+                float(n_value),
+                plus_state,
+                wave_number_squared,
+            )
+            minus_derivative, minus_density = evaluate_rhs(
+                float(n_value),
+                minus_state,
+                wave_number_squared,
+            )
+            jacobians[index, :, column] = (
+                plus_derivative - minus_derivative
+            ) / (2.0 * step)
+            density_gradients[index, column] = (
+                plus_density - minus_density
+            ) / (2.0 * step)
+
+        if wave_number_squared >= x_step:
+            plus_derivative, plus_density = evaluate_rhs(
+                float(n_value),
+                state,
+                wave_number_squared + x_step,
+            )
+            minus_derivative, minus_density = evaluate_rhs(
+                float(n_value),
+                state,
+                wave_number_squared - x_step,
+            )
+            forcings[index] = (
+                plus_derivative - minus_derivative
+            ) / (2.0 * x_step)
+            density_direct_x[index] = (
+                plus_density - minus_density
+            ) / (2.0 * x_step)
+        else:
+            first_derivative, first_density = evaluate_rhs(
+                float(n_value),
+                state,
+                wave_number_squared + x_step,
+            )
+            second_derivative, second_density = evaluate_rhs(
+                float(n_value),
+                state,
+                wave_number_squared + 2.0 * x_step,
+            )
+            forcings[index] = (
+                -3.0 * base_derivative
+                + 4.0 * first_derivative
+                - second_derivative
+            ) / (2.0 * x_step)
+            density_direct_x[index] = (
+                -3.0 * base_density
+                + 4.0 * first_density
+                - second_density
+            ) / (2.0 * x_step)
+
+    def interpolate_vector(values: np.ndarray, n_value: float) -> np.ndarray:
+        return np.asarray(
+            [
+                np.interp(n_value, grid, values[:, row])
+                for row in range(values.shape[1])
+            ],
+            dtype=float,
+        )
+
+    def interpolate_matrix(values: np.ndarray, n_value: float) -> np.ndarray:
+        return np.asarray(
+            [
+                [
+                    np.interp(n_value, grid, values[:, row, column])
+                    for column in range(values.shape[2])
+                ]
+                for row in range(values.shape[1])
+            ],
+            dtype=float,
+        )
+
+    tangent_integration = solve_ivp(
+        lambda n_value, tangent: (
+            interpolate_matrix(jacobians, float(n_value)) @ tangent
+            + interpolate_vector(forcings, float(n_value))
+        ),
+        (float(grid[0]), float(grid[-1])),
+        tangent_initial,
+        t_eval=grid,
+        method="DOP853",
+        rtol=min(perturbation_rtol, 1.0e-11),
+        atol=min(perturbation_atol, 1.0e-13),
+        max_step=minimum_grid_step / 2.0,
+    )
+    if not tangent_integration.success:
+        raise RuntimeError(
+            "native-x variational integration failed: "
+            f"{tangent_integration.message}"
+        )
+
+    density_tangents = np.asarray(
+        [
+            density_gradients[index] @ tangent_integration.y[:, index]
+            + density_direct_x[index]
+            for index in range(sample_count)
+        ],
+        dtype=float,
+    )
+    density_n = np.gradient(
+        density_contrasts,
+        grid,
+        edge_order=2,
+    )
+    density_n_tangent = np.gradient(
+        density_tangents,
+        grid,
+        edge_order=2,
+    )
+    density_present = float(np.interp(0.0, grid, density_contrasts))
+    density_present_tangent = float(
+        np.interp(0.0, grid, density_tangents)
+    )
+    if abs(density_present) <= denominator_tolerance:
+        raise ValueError("present density contrast is numerically zero")
+
+    fsigma8_values = sigma8_0 * density_n / density_present
+    fsigma8_tangents = sigma8_0 * (
+        density_n_tangent / density_present
+        - density_n
+        * density_present_tangent
+        / density_present**2
+    )
+
+    first_perturbed = integrate_state(
+        wave_number_squared + x_step,
+        base_initial + x_step * tangent_initial,
+    )
+    second_perturbed = integrate_state(
+        wave_number_squared + 2.0 * x_step,
+        base_initial + 2.0 * x_step * tangent_initial,
+    )
+    trajectory_difference_tangent = (
+        -3.0 * base_integration.y
+        + 4.0 * first_perturbed.y
+        - second_perturbed.y
+    ) / (2.0 * x_step)
+
+    first_index = max(1, (sample_count - 1) // 3)
+    second_index = max(first_index + 1, 2 * (sample_count - 1) // 3)
+    second_index = min(second_index, sample_count - 1)
+    if first_index == second_index:
+        raise ValueError("two distinct noninitial validation samples are required")
+
+    validation_errors = []
+    for index in (first_index, second_index):
+        tangent = tangent_integration.y[:, index]
+        finite_difference = trajectory_difference_tangent[:, index]
+        scale = max(
+            float(np.linalg.norm(tangent, ord=2)),
+            float(np.linalg.norm(finite_difference, ord=2)),
+            denominator_tolerance,
+        )
+        validation_errors.append(
+            float(
+                np.linalg.norm(
+                    tangent - finite_difference,
+                    ord=2,
+                )
+                / scale
+            )
+        )
+
+    maximum_validation_error = max(validation_errors)
+    if maximum_validation_error > validation_tolerance:
+        raise ValueError(
+            "variational trajectory validation failed: "
+            f"{maximum_validation_error:.12e} exceeds "
+            f"{validation_tolerance:.12e}"
+        )
+    if not np.all(np.isfinite(fsigma8_values)):
+        raise ValueError("f-sigma8 trajectory became nonfinite")
+    if not np.all(np.isfinite(fsigma8_tangents)):
+        raise ValueError("f-sigma8 tangent became nonfinite")
+
+    base_states = tuple(
+        tuple(float(base_integration.y[row, index]) for row in range(4))
+        for index in range(sample_count)
+    )
+    tangent_states = tuple(
+        tuple(
+            float(tangent_integration.y[row, index])
+            for row in range(4)
+        )
+        for index in range(sample_count)
+    )
+
+    return RegularizedKSquaredTangentEvolutionCertificate(
+        log_scale_factors=tuple(float(value) for value in grid),
+        scale_factors=tuple(math.exp(float(value)) for value in grid),
+        base_states=base_states,
+        tangent_states=tangent_states,
+        density_contrasts=tuple(float(value) for value in density_contrasts),
+        density_contrast_tangents=tuple(
+            float(value) for value in density_tangents
+        ),
+        fsigma8_values=tuple(float(value) for value in fsigma8_values),
+        fsigma8_tangents=tuple(
+            float(value) for value in fsigma8_tangents
+        ),
+        validation_indices=(first_index, second_index),
+        validation_relative_errors=tuple(validation_errors),
+        maximum_validation_relative_error=maximum_validation_error,
+        native_k_squared_rhs_used=True,
+        variational_equation_integrated=True,
+        two_noninitial_trajectory_checks_passed=True,
+    )
