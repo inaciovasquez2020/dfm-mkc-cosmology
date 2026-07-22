@@ -55,11 +55,11 @@ def _require_finite(name: str, value: float) -> None:
         raise ValueError(f"{name} must be finite")
 
 
-def solve_charge_perturbed_zero_velocity_matching(
+def _solve_charge_perturbed_zero_velocity_matching_k_squared_impl(
     *,
     scale_factor: float,
     conformal_hubble: float,
-    wave_number: float,
+    wave_number_squared: float,
     gravitational_constant: float,
     phi_background: float,
     phi_prime_background: float,
@@ -76,10 +76,17 @@ def solve_charge_perturbed_zero_velocity_matching(
 ) -> ChargePerturbedZeroVelocityMatchingCertificate:
     """Solve the rank-three circular-tangent initial matching system."""
 
+    from dfm_mkc_solver.dark_sector_fourier_rhs_v1 import (
+        dark_sector_fourier_right_hand_side_k_squared,
+    )
+    from dfm_mkc_solver.dark_sector_stress_energy_perturbations_v1 import (
+        dark_sector_stress_energy_perturbations_k_squared,
+    )
+
     for name, value in (
         ("scale_factor", scale_factor),
         ("conformal_hubble", conformal_hubble),
-        ("wave_number", wave_number),
+        ("wave_number_squared", wave_number_squared),
         ("gravitational_constant", gravitational_constant),
         ("phi_background", phi_background),
         ("phi_prime_background", phi_prime_background),
@@ -99,8 +106,10 @@ def solve_charge_perturbed_zero_velocity_matching(
         raise ValueError("scale_factor must be positive")
     if conformal_hubble <= 0.0:
         raise ValueError("conformal_hubble must be positive")
-    if wave_number <= 0.0:
-        raise ValueError("wave_number must be positive")
+    if wave_number_squared < 0.0:
+        raise ValueError(
+            "wave_number_squared must be nonnegative"
+        )
     if gravitational_constant <= 0.0:
         raise ValueError("gravitational_constant must be positive")
     if alpha <= 0.0:
@@ -122,9 +131,9 @@ def solve_charge_perturbed_zero_velocity_matching(
     if abs(target_density_contrast) <= branch_tolerance:
         raise ValueError("target_density_contrast must be nonzero")
 
-    background = dark_sector_stress_energy_perturbations(
+    background = dark_sector_stress_energy_perturbations_k_squared(
         scale_factor=scale_factor,
-        wave_number=wave_number,
+        wave_number_squared=wave_number_squared,
         phi_background=phi_background,
         phi_prime_background=phi_prime_background,
         theta_prime_background=theta_prime_background,
@@ -188,9 +197,26 @@ def solve_charge_perturbed_zero_velocity_matching(
             float(normalized_coordinates[1])
             * target_density_contrast
         )
-        target_density_contrast_n = (
-            float(normalized_coordinates[2])
+        normalized_momentum_potential = float(
+            normalized_coordinates[2]
+        )
+        momentum_potential_scale = (
+            background.background_energy_density
             * target_density_contrast
+            / conformal_hubble
+        )
+        target_momentum_potential = (
+            normalized_momentum_potential
+            * momentum_potential_scale
+        )
+        target_density_contrast_n = (
+            3.0 * phi_metric_n
+            - wave_number_squared
+            * target_momentum_potential
+            / (
+                conformal_hubble
+                * background.background_energy_density
+            )
         )
 
         delta_phi_prime = (
@@ -201,16 +227,6 @@ def solve_charge_perturbed_zero_velocity_matching(
             * phi_background
             * conformal_hubble
             * target_density_contrast_n
-        )
-
-        target_momentum_potential = (
-            conformal_hubble
-            * background.background_energy_density
-            * (
-                3.0 * phi_metric_n
-                - target_density_contrast_n
-            )
-            / wave_number**2
         )
 
         delta_theta = (
@@ -233,10 +249,10 @@ def solve_charge_perturbed_zero_velocity_matching(
             delta_theta_prime,
         )
 
-        rhs = dark_sector_fourier_right_hand_side(
+        rhs = dark_sector_fourier_right_hand_side_k_squared(
             scale_factor=scale_factor,
             conformal_hubble=conformal_hubble,
-            wave_number=wave_number,
+            wave_number_squared=wave_number_squared,
             gravitational_constant=gravitational_constant,
             phi_background=phi_background,
             phi_prime_background=phi_prime_background,
@@ -259,7 +275,7 @@ def solve_charge_perturbed_zero_velocity_matching(
             / source.background_energy_density
         )
         reconstructed_density_contrast_n = (
-            -wave_number**2
+            -wave_number_squared
             * source.momentum_potential
             / (
                 conformal_hubble
@@ -336,7 +352,7 @@ def solve_charge_perturbed_zero_velocity_matching(
 
     solution = least_squares(
         normalized_metric_residual,
-        x0=np.asarray([0.0, 0.0, -0.5], dtype=float),
+        x0=np.asarray([-1.0 / 6.0, 0.0, 0.0], dtype=float),
         x_scale="jac",
         xtol=1.0e-14,
         ftol=1.0e-14,
@@ -443,4 +459,751 @@ def solve_charge_perturbed_zero_velocity_matching(
         metric_constraints_solved=True,
         matching_surface_closed=True,
         instantaneous_rhs_closed=True,
+    )
+
+
+def solve_charge_perturbed_zero_velocity_matching(
+    *,
+    scale_factor: float,
+    conformal_hubble: float,
+    wave_number: float,
+    gravitational_constant: float,
+    phi_background: float,
+    phi_prime_background: float,
+    theta_prime_background: float,
+    target_density_contrast: float,
+    alpha: float,
+    beta: float,
+    rho_star: float,
+    m_phi_squared: float,
+    lambda_phi: float,
+    branch_tolerance: float = 1.0e-10,
+    residual_tolerance: float = 1.0e-9,
+    rank_tolerance: float | None = None,
+) -> ChargePerturbedZeroVelocityMatchingCertificate:
+    """Solve the matching system using the legacy k surface."""
+
+    _require_finite("wave_number", wave_number)
+    if wave_number < 0.0:
+        raise ValueError("wave_number must be nonnegative")
+
+    return _solve_charge_perturbed_zero_velocity_matching_k_squared_impl(
+        scale_factor=scale_factor,
+        conformal_hubble=conformal_hubble,
+        wave_number_squared=wave_number**2,
+        gravitational_constant=gravitational_constant,
+        phi_background=phi_background,
+        phi_prime_background=phi_prime_background,
+        theta_prime_background=theta_prime_background,
+        target_density_contrast=target_density_contrast,
+        alpha=alpha,
+        beta=beta,
+        rho_star=rho_star,
+        m_phi_squared=m_phi_squared,
+        lambda_phi=lambda_phi,
+        branch_tolerance=branch_tolerance,
+        residual_tolerance=residual_tolerance,
+        rank_tolerance=rank_tolerance,
+    )
+
+
+def solve_charge_perturbed_zero_velocity_matching_k_squared(
+    *,
+    scale_factor: float,
+    conformal_hubble: float,
+    wave_number_squared: float,
+    gravitational_constant: float,
+    phi_background: float,
+    phi_prime_background: float,
+    theta_prime_background: float,
+    target_density_contrast: float,
+    alpha: float,
+    beta: float,
+    rho_star: float,
+    m_phi_squared: float,
+    lambda_phi: float,
+    branch_tolerance: float = 1.0e-10,
+    residual_tolerance: float = 1.0e-9,
+    rank_tolerance: float | None = None,
+) -> ChargePerturbedZeroVelocityMatchingCertificate:
+    """Solve the matching system directly in x = k^2."""
+
+    return _solve_charge_perturbed_zero_velocity_matching_k_squared_impl(
+        scale_factor=scale_factor,
+        conformal_hubble=conformal_hubble,
+        wave_number_squared=wave_number_squared,
+        gravitational_constant=gravitational_constant,
+        phi_background=phi_background,
+        phi_prime_background=phi_prime_background,
+        theta_prime_background=theta_prime_background,
+        target_density_contrast=target_density_contrast,
+        alpha=alpha,
+        beta=beta,
+        rho_star=rho_star,
+        m_phi_squared=m_phi_squared,
+        lambda_phi=lambda_phi,
+        branch_tolerance=branch_tolerance,
+        residual_tolerance=residual_tolerance,
+        rank_tolerance=rank_tolerance,
+    )
+
+from typing import NamedTuple as _NamedTuple
+
+
+class ChargePerturbedZeroVelocityImplicitTangentCertificate(
+    _NamedTuple
+):
+    normalized_coordinates_at_zero: tuple[float, float, float]
+    normalized_metric_residuals_at_zero: tuple[
+        float,
+        float,
+        float,
+    ]
+    jacobian_z: tuple[
+        tuple[float, float, float],
+        tuple[float, float, float],
+        tuple[float, float, float],
+    ]
+    forcing_x: tuple[float, float, float]
+    normalized_coordinate_tangent: tuple[
+        float,
+        float,
+        float,
+    ]
+    implicit_residual: tuple[float, float, float]
+    growth_tangent: float
+    direct_growth_tangent: float
+    growth_tangent_difference: float
+    forcing_refinement_difference: float
+    coordinate_affine_defect: float
+    jacobian_rank: int
+    jacobian_condition_number: float
+    wave_number_squared_step: float
+
+
+def evaluate_charge_perturbed_zero_velocity_matching_residuals_k_squared(
+    *,
+    normalized_coordinates: tuple[float, float, float],
+    scale_factor: float,
+    conformal_hubble: float,
+    wave_number_squared: float,
+    gravitational_constant: float,
+    phi_background: float,
+    phi_prime_background: float,
+    theta_prime_background: float,
+    target_density_contrast: float,
+    alpha: float,
+    beta: float,
+    rho_star: float,
+    m_phi_squared: float,
+    lambda_phi: float,
+    branch_tolerance: float = 1.0e-10,
+) -> tuple[float, float, float]:
+    """Evaluate F(z, x), the three normalized metric residuals."""
+
+    from dfm_mkc_solver.dark_sector_fourier_rhs_v1 import (
+        dark_sector_fourier_right_hand_side_k_squared,
+    )
+    from dfm_mkc_solver.dark_sector_stress_energy_perturbations_v1 import (
+        dark_sector_stress_energy_perturbations_k_squared,
+    )
+
+    if len(normalized_coordinates) != 3:
+        raise ValueError(
+            "normalized_coordinates must contain three values"
+        )
+
+    (
+        normalized_phi_metric_n,
+        normalized_psi_metric,
+        normalized_momentum_potential,
+    ) = (
+        float(normalized_coordinates[0]),
+        float(normalized_coordinates[1]),
+        float(normalized_coordinates[2]),
+    )
+
+    for name, value in (
+        ("normalized_phi_metric_n", normalized_phi_metric_n),
+        ("normalized_psi_metric", normalized_psi_metric),
+        (
+            "normalized_momentum_potential",
+            normalized_momentum_potential,
+        ),
+        ("scale_factor", scale_factor),
+        ("conformal_hubble", conformal_hubble),
+        ("wave_number_squared", wave_number_squared),
+        ("gravitational_constant", gravitational_constant),
+        ("phi_background", phi_background),
+        ("phi_prime_background", phi_prime_background),
+        ("theta_prime_background", theta_prime_background),
+        ("target_density_contrast", target_density_contrast),
+        ("alpha", alpha),
+        ("beta", beta),
+        ("rho_star", rho_star),
+        ("m_phi_squared", m_phi_squared),
+        ("lambda_phi", lambda_phi),
+        ("branch_tolerance", branch_tolerance),
+    ):
+        _require_finite(name, value)
+
+    if scale_factor <= 0.0:
+        raise ValueError("scale_factor must be positive")
+    if conformal_hubble <= 0.0:
+        raise ValueError("conformal_hubble must be positive")
+    if wave_number_squared < 0.0:
+        raise ValueError(
+            "wave_number_squared must be nonnegative"
+        )
+    if gravitational_constant <= 0.0:
+        raise ValueError(
+            "gravitational_constant must be positive"
+        )
+    if alpha <= 0.0:
+        raise ValueError("alpha must be positive")
+    if beta <= 0.0:
+        raise ValueError("beta must be positive")
+    if branch_tolerance <= 0.0:
+        raise ValueError("branch_tolerance must be positive")
+    if abs(phi_background) <= branch_tolerance:
+        raise ValueError("phi_background must be nonzero")
+    if abs(theta_prime_background) <= branch_tolerance:
+        raise ValueError(
+            "theta_prime_background must be nonzero"
+        )
+    if abs(phi_prime_background) > branch_tolerance:
+        raise ValueError(
+            "phi_prime_background must vanish on the selected branch"
+        )
+    if abs(target_density_contrast) <= branch_tolerance:
+        raise ValueError(
+            "target_density_contrast must be nonzero"
+        )
+
+    background = (
+        dark_sector_stress_energy_perturbations_k_squared(
+            scale_factor=scale_factor,
+            wave_number_squared=wave_number_squared,
+            phi_background=phi_background,
+            phi_prime_background=phi_prime_background,
+            theta_prime_background=theta_prime_background,
+            delta_phi=0.0,
+            delta_phi_prime=0.0,
+            delta_theta=0.0,
+            delta_theta_prime=0.0,
+            psi_metric=0.0,
+            alpha=alpha,
+            beta=beta,
+            rho_star=rho_star,
+            m_phi_squared=m_phi_squared,
+            lambda_phi=lambda_phi,
+        )
+    )
+
+    if background.background_energy_density <= 0.0:
+        raise ValueError(
+            "background energy density must be positive"
+        )
+    if abs(background.potential_slope) <= branch_tolerance:
+        raise ValueError("potential slope must be nonzero")
+
+    circular_force_residual = (
+        background.potential_slope
+        - beta
+        * phi_background
+        * theta_prime_background**2
+        / scale_factor**2
+    )
+
+    if abs(circular_force_residual) > branch_tolerance:
+        raise ValueError(
+            "background is not on the circular-force surface"
+        )
+    if abs(background.background_pressure) > branch_tolerance:
+        raise ValueError("background is not pressureless")
+
+    target_delta_rho = (
+        background.background_energy_density
+        * target_density_contrast
+    )
+
+    delta_phi = (
+        target_delta_rho
+        / (2.0 * background.potential_slope)
+    )
+
+    phi_metric = 0.0
+
+    phi_metric_n = (
+        normalized_phi_metric_n
+        * target_density_contrast
+    )
+
+    psi_metric = (
+        normalized_psi_metric
+        * target_density_contrast
+    )
+
+    momentum_potential_scale = (
+        background.background_energy_density
+        * target_density_contrast
+        / conformal_hubble
+    )
+
+    target_momentum_potential = (
+        normalized_momentum_potential
+        * momentum_potential_scale
+    )
+
+    target_density_contrast_n = (
+        3.0 * phi_metric_n
+        - wave_number_squared
+        * target_momentum_potential
+        / (
+            conformal_hubble
+            * background.background_energy_density
+        )
+    )
+
+    delta_phi_prime = (
+        0.5
+        * phi_prime_background
+        * target_density_contrast
+        + 0.5
+        * phi_background
+        * conformal_hubble
+        * target_density_contrast_n
+    )
+
+    delta_theta = (
+        scale_factor**2 * target_momentum_potential
+        - alpha * phi_prime_background * delta_phi
+    ) / (
+        beta
+        * phi_background**2
+        * theta_prime_background
+    )
+
+    delta_theta_prime = (
+        theta_prime_background * psi_metric
+    )
+
+    rhs = dark_sector_fourier_right_hand_side_k_squared(
+        scale_factor=scale_factor,
+        conformal_hubble=conformal_hubble,
+        wave_number_squared=wave_number_squared,
+        gravitational_constant=gravitational_constant,
+        phi_background=phi_background,
+        phi_prime_background=phi_prime_background,
+        theta_prime_background=theta_prime_background,
+        delta_phi=delta_phi,
+        delta_phi_prime=delta_phi_prime,
+        delta_theta=delta_theta,
+        delta_theta_prime=delta_theta_prime,
+        alpha=alpha,
+        beta=beta,
+        rho_star=rho_star,
+        m_phi_squared=m_phi_squared,
+        lambda_phi=lambda_phi,
+    )
+
+    residuals = (
+        (
+            rhs.metric_constraints.phi
+            - phi_metric
+        ) / target_density_contrast,
+        (
+            rhs.metric_constraints.phi_prime
+            / conformal_hubble
+            - phi_metric_n
+        ) / target_density_contrast,
+        (
+            rhs.metric_constraints.psi
+            - psi_metric
+        ) / target_density_contrast,
+    )
+
+    for index, value in enumerate(residuals):
+        _require_finite(
+            f"normalized_metric_residual_{index}",
+            value,
+        )
+
+    return tuple(float(value) for value in residuals)
+
+
+def solve_charge_perturbed_zero_velocity_matching_implicit_tangent_k_squared(
+    *,
+    scale_factor: float,
+    conformal_hubble: float,
+    gravitational_constant: float,
+    phi_background: float,
+    phi_prime_background: float,
+    theta_prime_background: float,
+    target_density_contrast: float,
+    alpha: float,
+    beta: float,
+    rho_star: float,
+    m_phi_squared: float,
+    lambda_phi: float,
+    branch_tolerance: float = 1.0e-10,
+    residual_tolerance: float = 1.0e-9,
+    rank_tolerance: float | None = None,
+    wave_number_squared_step: float | None = None,
+) -> ChargePerturbedZeroVelocityImplicitTangentCertificate:
+    """Solve J_z z_x = -F_x at x = k^2 = 0."""
+
+    import numpy as np
+
+    from dfm_mkc_solver.dark_sector_stress_energy_perturbations_v1 import (
+        dark_sector_stress_energy_perturbations_k_squared,
+    )
+
+    if wave_number_squared_step is None:
+        wave_number_squared_step = (
+            1.0e-4 * conformal_hubble**2
+        )
+
+    _require_finite(
+        "wave_number_squared_step",
+        wave_number_squared_step,
+    )
+
+    if wave_number_squared_step <= 0.0:
+        raise ValueError(
+            "wave_number_squared_step must be positive"
+        )
+
+    common = dict(
+        scale_factor=scale_factor,
+        conformal_hubble=conformal_hubble,
+        gravitational_constant=gravitational_constant,
+        phi_background=phi_background,
+        phi_prime_background=phi_prime_background,
+        theta_prime_background=theta_prime_background,
+        target_density_contrast=target_density_contrast,
+        alpha=alpha,
+        beta=beta,
+        rho_star=rho_star,
+        m_phi_squared=m_phi_squared,
+        lambda_phi=lambda_phi,
+        branch_tolerance=branch_tolerance,
+        residual_tolerance=residual_tolerance,
+        rank_tolerance=rank_tolerance,
+    )
+
+    zero_certificate = (
+        solve_charge_perturbed_zero_velocity_matching_k_squared(
+            wave_number_squared=0.0,
+            **common,
+        )
+    )
+
+    background = (
+        dark_sector_stress_energy_perturbations_k_squared(
+            scale_factor=scale_factor,
+            wave_number_squared=0.0,
+            phi_background=phi_background,
+            phi_prime_background=phi_prime_background,
+            theta_prime_background=theta_prime_background,
+            delta_phi=0.0,
+            delta_phi_prime=0.0,
+            delta_theta=0.0,
+            delta_theta_prime=0.0,
+            psi_metric=0.0,
+            alpha=alpha,
+            beta=beta,
+            rho_star=rho_star,
+            m_phi_squared=m_phi_squared,
+            lambda_phi=lambda_phi,
+        )
+    )
+
+    momentum_potential_scale = (
+        background.background_energy_density
+        * target_density_contrast
+        / conformal_hubble
+    )
+
+    selected_momentum_potential = (
+        alpha
+        * phi_prime_background
+        * zero_certificate.delta_phi
+        + beta
+        * phi_background**2
+        * theta_prime_background
+        * zero_certificate.delta_theta
+    ) / scale_factor**2
+
+    normalized_coordinates = np.asarray(
+        (
+            zero_certificate.phi_metric_n
+            / target_density_contrast,
+            zero_certificate.psi_metric
+            / target_density_contrast,
+            selected_momentum_potential
+            / momentum_potential_scale,
+        ),
+        dtype=float,
+    )
+
+    residual_common = dict(
+        scale_factor=scale_factor,
+        conformal_hubble=conformal_hubble,
+        gravitational_constant=gravitational_constant,
+        phi_background=phi_background,
+        phi_prime_background=phi_prime_background,
+        theta_prime_background=theta_prime_background,
+        target_density_contrast=target_density_contrast,
+        alpha=alpha,
+        beta=beta,
+        rho_star=rho_star,
+        m_phi_squared=m_phi_squared,
+        lambda_phi=lambda_phi,
+        branch_tolerance=branch_tolerance,
+    )
+
+    def residual(
+        coordinates: np.ndarray,
+        wave_number_squared: float,
+    ) -> np.ndarray:
+        return np.asarray(
+            evaluate_charge_perturbed_zero_velocity_matching_residuals_k_squared(
+                normalized_coordinates=tuple(
+                    float(value) for value in coordinates
+                ),
+                wave_number_squared=wave_number_squared,
+                **residual_common,
+            ),
+            dtype=float,
+        )
+
+    residual_zero = residual(
+        normalized_coordinates,
+        0.0,
+    )
+
+    jacobian_columns = []
+    coordinate_affine_defects = []
+
+    for index in range(3):
+        direction = np.zeros(3, dtype=float)
+        direction[index] = 1.0
+
+        plus = residual(
+            normalized_coordinates + direction,
+            0.0,
+        )
+        minus = residual(
+            normalized_coordinates - direction,
+            0.0,
+        )
+
+        jacobian_columns.append(
+            0.5 * (plus - minus)
+        )
+
+        coordinate_affine_defects.append(
+            float(
+                np.linalg.norm(
+                    plus + minus - 2.0 * residual_zero,
+                    ord=np.inf,
+                )
+            )
+        )
+
+    jacobian_z = np.column_stack(
+        jacobian_columns
+    )
+
+    def forward_five_point(step: float) -> np.ndarray:
+        values = [
+            residual(
+                normalized_coordinates,
+                multiplier * step,
+            )
+            for multiplier in range(5)
+        ]
+
+        return (
+            -25.0 * values[0]
+            + 48.0 * values[1]
+            - 36.0 * values[2]
+            + 16.0 * values[3]
+            - 3.0 * values[4]
+        ) / (12.0 * step)
+
+    forcing_coarse = forward_five_point(
+        wave_number_squared_step
+    )
+    forcing_fine = forward_five_point(
+        wave_number_squared_step / 2.0
+    )
+
+    forcing_x = forcing_fine
+
+    forcing_refinement_difference = float(
+        np.linalg.norm(
+            forcing_fine - forcing_coarse,
+            ord=np.inf,
+        )
+    )
+
+    normalized_coordinate_tangent = np.linalg.solve(
+        jacobian_z,
+        -forcing_x,
+    )
+
+    implicit_residual = (
+        jacobian_z @ normalized_coordinate_tangent
+        + forcing_x
+    )
+
+    growth_tangent = float(
+        3.0 * normalized_coordinate_tangent[0]
+        - normalized_coordinates[2]
+        / conformal_hubble**2
+    )
+
+    coarse_certificate = (
+        solve_charge_perturbed_zero_velocity_matching_k_squared(
+            wave_number_squared=wave_number_squared_step,
+            **common,
+        )
+    )
+
+    fine_certificate = (
+        solve_charge_perturbed_zero_velocity_matching_k_squared(
+            wave_number_squared=(
+                wave_number_squared_step / 2.0
+            ),
+            **common,
+        )
+    )
+
+    coarse_growth_tangent = (
+        coarse_certificate.selected_growth_rate
+        - zero_certificate.selected_growth_rate
+    ) / wave_number_squared_step
+
+    fine_growth_tangent = (
+        fine_certificate.selected_growth_rate
+        - zero_certificate.selected_growth_rate
+    ) / (
+        wave_number_squared_step / 2.0
+    )
+
+    direct_growth_tangent = float(
+        2.0 * fine_growth_tangent
+        - coarse_growth_tangent
+    )
+
+    growth_tangent_difference = abs(
+        growth_tangent - direct_growth_tangent
+    )
+
+    singular_values = np.linalg.svd(
+        jacobian_z,
+        compute_uv=False,
+    )
+
+    if rank_tolerance is None:
+        effective_rank_tolerance = (
+            max(jacobian_z.shape)
+            * np.finfo(float).eps
+            * singular_values[0]
+        )
+    else:
+        effective_rank_tolerance = rank_tolerance
+
+    jacobian_rank = int(
+        np.sum(
+            singular_values
+            > effective_rank_tolerance
+        )
+    )
+
+    jacobian_condition_number = float(
+        singular_values[0] / singular_values[-1]
+    )
+
+    arrays = (
+        residual_zero,
+        jacobian_z,
+        forcing_x,
+        normalized_coordinate_tangent,
+        implicit_residual,
+    )
+
+    if not all(
+        np.all(np.isfinite(array))
+        for array in arrays
+    ):
+        raise ValueError(
+            "implicit tangent arrays must be finite"
+        )
+
+    for name, value in (
+        ("growth_tangent", growth_tangent),
+        (
+            "direct_growth_tangent",
+            direct_growth_tangent,
+        ),
+        (
+            "growth_tangent_difference",
+            growth_tangent_difference,
+        ),
+        (
+            "forcing_refinement_difference",
+            forcing_refinement_difference,
+        ),
+        (
+            "jacobian_condition_number",
+            jacobian_condition_number,
+        ),
+    ):
+        _require_finite(name, value)
+
+    return (
+        ChargePerturbedZeroVelocityImplicitTangentCertificate(
+            normalized_coordinates_at_zero=tuple(
+                float(value)
+                for value in normalized_coordinates
+            ),
+            normalized_metric_residuals_at_zero=tuple(
+                float(value) for value in residual_zero
+            ),
+            jacobian_z=tuple(
+                tuple(float(value) for value in row)
+                for row in jacobian_z
+            ),
+            forcing_x=tuple(
+                float(value) for value in forcing_x
+            ),
+            normalized_coordinate_tangent=tuple(
+                float(value)
+                for value in normalized_coordinate_tangent
+            ),
+            implicit_residual=tuple(
+                float(value) for value in implicit_residual
+            ),
+            growth_tangent=growth_tangent,
+            direct_growth_tangent=direct_growth_tangent,
+            growth_tangent_difference=(
+                growth_tangent_difference
+            ),
+            forcing_refinement_difference=(
+                forcing_refinement_difference
+            ),
+            coordinate_affine_defect=max(
+                coordinate_affine_defects
+            ),
+            jacobian_rank=jacobian_rank,
+            jacobian_condition_number=(
+                jacobian_condition_number
+            ),
+            wave_number_squared_step=(
+                wave_number_squared_step
+            ),
+        )
     )

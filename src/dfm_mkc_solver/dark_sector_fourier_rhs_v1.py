@@ -79,11 +79,11 @@ def _require_finite(name: str, value: float) -> None:
         raise ValueError(f"{name} must be finite")
 
 
-def dark_sector_fourier_right_hand_side(
+def _dark_sector_fourier_right_hand_side_k_squared_impl(
     *,
     scale_factor: float,
     conformal_hubble: float,
-    wave_number: float,
+    wave_number_squared: float,
     gravitational_constant: float,
     phi_background: float,
     phi_prime_background: float,
@@ -103,10 +103,20 @@ def dark_sector_fourier_right_hand_side(
 ) -> DarkSectorFourierRightHandSideCertificate:
     """Return the closed instantaneous dark-sector Fourier-mode RHS."""
 
+    from dfm_mkc_solver.dark_sector_amplitude_perturbation_v1 import (
+        dark_sector_amplitude_perturbation_k_squared,
+    )
+    from dfm_mkc_solver.dark_sector_phase_perturbation_v1 import (
+        dark_sector_phase_perturbation_k_squared,
+    )
+    from dfm_mkc_solver.dark_sector_stress_energy_perturbations_v1 import (
+        dark_sector_stress_energy_perturbations_k_squared,
+    )
+
     for name, value in (
         ("scale_factor", scale_factor),
         ("conformal_hubble", conformal_hubble),
-        ("wave_number", wave_number),
+        ("wave_number_squared", wave_number_squared),
         ("gravitational_constant", gravitational_constant),
         ("phi_background", phi_background),
         ("phi_prime_background", phi_prime_background),
@@ -132,14 +142,18 @@ def dark_sector_fourier_right_hand_side(
     ):
         _require_finite(name, value)
 
-    if wave_number == 0.0:
-        raise ValueError("wave_number must be nonzero")
+    if wave_number_squared < 0.0:
+        raise ValueError(
+            "wave_number_squared must be nonnegative"
+        )
+
+    zero_wave_number = wave_number_squared == 0.0
     if denominator_tolerance <= 0.0:
         raise ValueError("denominator_tolerance must be positive")
 
-    zero_metric_stress = dark_sector_stress_energy_perturbations(
+    zero_metric_stress = dark_sector_stress_energy_perturbations_k_squared(
         scale_factor=scale_factor,
-        wave_number=abs(wave_number),
+        wave_number_squared=wave_number_squared,
         phi_background=phi_background,
         phi_prime_background=phi_prime_background,
         theta_prime_background=theta_prime_background,
@@ -162,12 +176,25 @@ def dark_sector_fourier_right_hand_side(
         * scale_factor**2
     )
 
-    wave_number_squared = wave_number**2
-
     total_momentum_divergence_source = (
         visible_momentum_divergence_source
         + zero_metric_stress.momentum_divergence_source
     )
+
+    if zero_wave_number:
+        if visible_momentum_divergence_source != 0.0:
+            raise ValueError(
+                "zero-mode visible momentum requires a finite "
+                "momentum-potential input"
+            )
+        total_momentum_potential = (
+            zero_metric_stress.momentum_potential
+        )
+    else:
+        total_momentum_potential = (
+            total_momentum_divergence_source
+            / wave_number_squared
+        )
 
     zero_metric_total_density = (
         visible_delta_energy_density
@@ -191,13 +218,12 @@ def dark_sector_fourier_right_hand_side(
         - 3.0
         * conformal_hubble
         * gravitational_prefactor
-        * total_momentum_divergence_source
-        / wave_number_squared
+        * total_momentum_potential
     ) / constraint_denominator
 
-    stress_energy = dark_sector_stress_energy_perturbations(
+    stress_energy = dark_sector_stress_energy_perturbations_k_squared(
         scale_factor=scale_factor,
-        wave_number=abs(wave_number),
+        wave_number_squared=wave_number_squared,
         phi_background=phi_background,
         phi_prime_background=phi_prime_background,
         theta_prime_background=theta_prime_background,
@@ -218,14 +244,51 @@ def dark_sector_fourier_right_hand_side(
         + stress_energy.delta_energy_density
     )
 
-    metric_constraints = eliminate_newtonian_metric_constraints(
-        wave_number=wave_number,
-        scale_factor=scale_factor,
-        conformal_hubble=conformal_hubble,
-        gravitational_constant=gravitational_constant,
-        delta_rho_total=total_delta_energy_density,
-        momentum_source=total_momentum_divergence_source,
-        enthalpy_sigma_total=0.0,
+    from dfm_mkc_solver.metric_constraint_elimination_v1 import (
+        MetricConstraintEliminationCertificate,
+    )
+
+    momentum_combination = (
+        gravitational_prefactor
+        * total_momentum_potential
+    )
+    metric_potential_prime = (
+        momentum_combination
+        - conformal_hubble * metric_potential
+    )
+    poisson_residual = (
+        wave_number_squared * metric_potential
+        + 3.0
+        * conformal_hubble
+        * (
+            metric_potential_prime
+            + conformal_hubble * metric_potential
+        )
+        + gravitational_prefactor
+        * total_delta_energy_density
+    )
+    momentum_residual = (
+        wave_number_squared
+        * (
+            metric_potential_prime
+            + conformal_hubble * metric_potential
+        )
+        - gravitational_prefactor
+        * total_momentum_divergence_source
+    )
+
+    metric_constraints = MetricConstraintEliminationCertificate(
+        phi=metric_potential,
+        psi=metric_potential,
+        phi_prime=metric_potential_prime,
+        momentum_combination=momentum_combination,
+        anisotropy_difference=0.0,
+        poisson_residual=poisson_residual,
+        momentum_residual=momentum_residual,
+        anisotropy_residual=0.0,
+        source_level_constraints_eliminated=True,
+        constrained_quadratic_action_derived=False,
+        perturbation_system_closed=False,
     )
 
     density_reconstruction_residual = (
@@ -241,10 +304,10 @@ def dark_sector_fourier_right_hand_side(
         metric_constraints.psi - metric_potential
     )
 
-    amplitude_equation = dark_sector_amplitude_perturbation(
+    amplitude_equation = dark_sector_amplitude_perturbation_k_squared(
         scale_factor=scale_factor,
         conformal_hubble=conformal_hubble,
-        wave_number=abs(wave_number),
+        wave_number_squared=wave_number_squared,
         phi_background=phi_background,
         phi_prime_background=phi_prime_background,
         theta_prime_background=theta_prime_background,
@@ -260,10 +323,10 @@ def dark_sector_fourier_right_hand_side(
         lambda_phi=lambda_phi,
     )
 
-    phase_equation = dark_sector_phase_perturbation(
+    phase_equation = dark_sector_phase_perturbation_k_squared(
         scale_factor=scale_factor,
         conformal_hubble=conformal_hubble,
-        wave_number=abs(wave_number),
+        wave_number_squared=wave_number_squared,
         phi_background=phi_background,
         phi_prime_background=phi_prime_background,
         theta_prime_background=theta_prime_background,
@@ -355,4 +418,102 @@ def dark_sector_fourier_right_hand_side(
         ),
         visible_sector_evolution_closed=False,
         numerical_mode_evolution_run=False,
+    )
+def dark_sector_fourier_right_hand_side(
+    *,
+    scale_factor: float,
+    conformal_hubble: float,
+    wave_number: float,
+    gravitational_constant: float,
+    phi_background: float,
+    phi_prime_background: float,
+    theta_prime_background: float,
+    delta_phi: float,
+    delta_phi_prime: float,
+    delta_theta: float,
+    delta_theta_prime: float,
+    alpha: float,
+    beta: float,
+    rho_star: float,
+    m_phi_squared: float,
+    lambda_phi: float,
+    visible_delta_energy_density: float = 0.0,
+    visible_momentum_divergence_source: float = 0.0,
+    denominator_tolerance: float = 1.0e-14,
+) -> DarkSectorFourierRightHandSideCertificate:
+    """Return the Fourier RHS using the legacy k surface."""
+
+    _require_finite("wave_number", wave_number)
+
+    return _dark_sector_fourier_right_hand_side_k_squared_impl(
+        scale_factor=scale_factor,
+        conformal_hubble=conformal_hubble,
+        wave_number_squared=wave_number**2,
+        gravitational_constant=gravitational_constant,
+        phi_background=phi_background,
+        phi_prime_background=phi_prime_background,
+        theta_prime_background=theta_prime_background,
+        delta_phi=delta_phi,
+        delta_phi_prime=delta_phi_prime,
+        delta_theta=delta_theta,
+        delta_theta_prime=delta_theta_prime,
+        alpha=alpha,
+        beta=beta,
+        rho_star=rho_star,
+        m_phi_squared=m_phi_squared,
+        lambda_phi=lambda_phi,
+        visible_delta_energy_density=visible_delta_energy_density,
+        visible_momentum_divergence_source=(
+            visible_momentum_divergence_source
+        ),
+        denominator_tolerance=denominator_tolerance,
+    )
+
+
+def dark_sector_fourier_right_hand_side_k_squared(
+    *,
+    scale_factor: float,
+    conformal_hubble: float,
+    wave_number_squared: float,
+    gravitational_constant: float,
+    phi_background: float,
+    phi_prime_background: float,
+    theta_prime_background: float,
+    delta_phi: float,
+    delta_phi_prime: float,
+    delta_theta: float,
+    delta_theta_prime: float,
+    alpha: float,
+    beta: float,
+    rho_star: float,
+    m_phi_squared: float,
+    lambda_phi: float,
+    visible_delta_energy_density: float = 0.0,
+    visible_momentum_divergence_source: float = 0.0,
+    denominator_tolerance: float = 1.0e-14,
+) -> DarkSectorFourierRightHandSideCertificate:
+    """Return the Fourier RHS directly in x = k^2."""
+
+    return _dark_sector_fourier_right_hand_side_k_squared_impl(
+        scale_factor=scale_factor,
+        conformal_hubble=conformal_hubble,
+        wave_number_squared=wave_number_squared,
+        gravitational_constant=gravitational_constant,
+        phi_background=phi_background,
+        phi_prime_background=phi_prime_background,
+        theta_prime_background=theta_prime_background,
+        delta_phi=delta_phi,
+        delta_phi_prime=delta_phi_prime,
+        delta_theta=delta_theta,
+        delta_theta_prime=delta_theta_prime,
+        alpha=alpha,
+        beta=beta,
+        rho_star=rho_star,
+        m_phi_squared=m_phi_squared,
+        lambda_phi=lambda_phi,
+        visible_delta_energy_density=visible_delta_energy_density,
+        visible_momentum_divergence_source=(
+            visible_momentum_divergence_source
+        ),
+        denominator_tolerance=denominator_tolerance,
     )
