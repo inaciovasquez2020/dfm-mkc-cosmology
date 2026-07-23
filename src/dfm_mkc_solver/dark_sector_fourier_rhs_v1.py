@@ -99,6 +99,8 @@ def _dark_sector_fourier_right_hand_side_k_squared_impl(
     lambda_phi: float,
     visible_delta_energy_density: float = 0.0,
     visible_momentum_divergence_source: float = 0.0,
+    visible_enthalpy_sigma_total: float = 0.0,
+    visible_enthalpy_sigma_total_prime: float = 0.0,
     denominator_tolerance: float = 1.0e-14,
 ) -> DarkSectorFourierRightHandSideCertificate:
     """Return the closed instantaneous dark-sector Fourier-mode RHS."""
@@ -138,6 +140,14 @@ def _dark_sector_fourier_right_hand_side_k_squared_impl(
             "visible_momentum_divergence_source",
             visible_momentum_divergence_source,
         ),
+        (
+            "visible_enthalpy_sigma_total",
+            visible_enthalpy_sigma_total,
+        ),
+        (
+            "visible_enthalpy_sigma_total_prime",
+            visible_enthalpy_sigma_total_prime,
+        ),
         ("denominator_tolerance", denominator_tolerance),
     ):
         _require_finite(name, value)
@@ -176,6 +186,35 @@ def _dark_sector_fourier_right_hand_side_k_squared_impl(
         * scale_factor**2
     )
 
+    if zero_wave_number:
+        if (
+            visible_enthalpy_sigma_total != 0.0
+            or visible_enthalpy_sigma_total_prime != 0.0
+        ):
+            raise ValueError(
+                "zero-mode visible anisotropic stress is undefined"
+            )
+        anisotropy_difference = 0.0
+        anisotropy_difference_prime = 0.0
+    else:
+        anisotropy_difference = (
+            3.0
+            * gravitational_prefactor
+            * visible_enthalpy_sigma_total
+            / wave_number_squared
+        )
+        anisotropy_difference_prime = (
+            3.0
+            * gravitational_prefactor
+            * (
+                visible_enthalpy_sigma_total_prime
+                + 2.0
+                * conformal_hubble
+                * visible_enthalpy_sigma_total
+            )
+            / wave_number_squared
+        )
+
     total_momentum_divergence_source = (
         visible_momentum_divergence_source
         + zero_metric_stress.momentum_divergence_source
@@ -199,6 +238,8 @@ def _dark_sector_fourier_right_hand_side_k_squared_impl(
     zero_metric_total_density = (
         visible_delta_energy_density
         + zero_metric_stress.delta_energy_density
+        + zero_metric_stress.background_enthalpy
+        * anisotropy_difference
     )
 
     constraint_denominator = (
@@ -231,7 +272,9 @@ def _dark_sector_fourier_right_hand_side_k_squared_impl(
         delta_phi_prime=delta_phi_prime,
         delta_theta=delta_theta,
         delta_theta_prime=delta_theta_prime,
-        psi_metric=metric_potential,
+        psi_metric=(
+            metric_potential - anisotropy_difference
+        ),
         alpha=alpha,
         beta=beta,
         rho_star=rho_star,
@@ -252,9 +295,16 @@ def _dark_sector_fourier_right_hand_side_k_squared_impl(
         gravitational_prefactor
         * total_momentum_potential
     )
+    psi_metric = (
+        metric_potential - anisotropy_difference
+    )
     metric_potential_prime = (
         momentum_combination
-        - conformal_hubble * metric_potential
+        - conformal_hubble * psi_metric
+    )
+    psi_metric_prime = (
+        metric_potential_prime
+        - anisotropy_difference_prime
     )
     poisson_residual = (
         wave_number_squared * metric_potential
@@ -262,7 +312,7 @@ def _dark_sector_fourier_right_hand_side_k_squared_impl(
         * conformal_hubble
         * (
             metric_potential_prime
-            + conformal_hubble * metric_potential
+            + conformal_hubble * psi_metric
         )
         + gravitational_prefactor
         * total_delta_energy_density
@@ -271,21 +321,28 @@ def _dark_sector_fourier_right_hand_side_k_squared_impl(
         wave_number_squared
         * (
             metric_potential_prime
-            + conformal_hubble * metric_potential
+            + conformal_hubble * psi_metric
         )
         - gravitational_prefactor
         * total_momentum_divergence_source
     )
+    anisotropy_residual = (
+        wave_number_squared
+        * (metric_potential - psi_metric)
+        - 3.0
+        * gravitational_prefactor
+        * visible_enthalpy_sigma_total
+    )
 
     metric_constraints = MetricConstraintEliminationCertificate(
         phi=metric_potential,
-        psi=metric_potential,
+        psi=psi_metric,
         phi_prime=metric_potential_prime,
         momentum_combination=momentum_combination,
-        anisotropy_difference=0.0,
+        anisotropy_difference=anisotropy_difference,
         poisson_residual=poisson_residual,
         momentum_residual=momentum_residual,
-        anisotropy_residual=0.0,
+        anisotropy_residual=anisotropy_residual,
         source_level_constraints_eliminated=True,
         constrained_quadratic_action_derived=False,
         perturbation_system_closed=False,
@@ -296,12 +353,12 @@ def _dark_sector_fourier_right_hand_side_k_squared_impl(
         - (
             zero_metric_stress.delta_energy_density
             - zero_metric_stress.background_enthalpy
-            * metric_potential
+            * psi_metric
         )
     )
 
     metric_closure_residual = (
-        metric_constraints.psi - metric_potential
+        metric_constraints.psi - psi_metric
     )
 
     amplitude_equation = dark_sector_amplitude_perturbation_k_squared(
@@ -315,7 +372,7 @@ def _dark_sector_fourier_right_hand_side_k_squared_impl(
         delta_phi_prime=delta_phi_prime,
         delta_theta_prime=delta_theta_prime,
         psi_metric=metric_constraints.psi,
-        psi_metric_prime=metric_constraints.phi_prime,
+        psi_metric_prime=psi_metric_prime,
         phi_metric_prime=metric_constraints.phi_prime,
         alpha=alpha,
         beta=beta,
@@ -335,7 +392,7 @@ def _dark_sector_fourier_right_hand_side_k_squared_impl(
         delta_theta=delta_theta,
         delta_theta_prime=delta_theta_prime,
         psi_metric=metric_constraints.psi,
-        psi_metric_prime=metric_constraints.phi_prime,
+        psi_metric_prime=psi_metric_prime,
         phi_metric=metric_constraints.phi,
         phi_metric_prime=metric_constraints.phi_prime,
         beta=beta,
@@ -439,6 +496,8 @@ def dark_sector_fourier_right_hand_side(
     lambda_phi: float,
     visible_delta_energy_density: float = 0.0,
     visible_momentum_divergence_source: float = 0.0,
+    visible_enthalpy_sigma_total: float = 0.0,
+    visible_enthalpy_sigma_total_prime: float = 0.0,
     denominator_tolerance: float = 1.0e-14,
 ) -> DarkSectorFourierRightHandSideCertificate:
     """Return the Fourier RHS using the legacy k surface."""
@@ -466,6 +525,12 @@ def dark_sector_fourier_right_hand_side(
         visible_momentum_divergence_source=(
             visible_momentum_divergence_source
         ),
+        visible_enthalpy_sigma_total=(
+            visible_enthalpy_sigma_total
+        ),
+        visible_enthalpy_sigma_total_prime=(
+            visible_enthalpy_sigma_total_prime
+        ),
         denominator_tolerance=denominator_tolerance,
     )
 
@@ -490,6 +555,8 @@ def dark_sector_fourier_right_hand_side_k_squared(
     lambda_phi: float,
     visible_delta_energy_density: float = 0.0,
     visible_momentum_divergence_source: float = 0.0,
+    visible_enthalpy_sigma_total: float = 0.0,
+    visible_enthalpy_sigma_total_prime: float = 0.0,
     denominator_tolerance: float = 1.0e-14,
 ) -> DarkSectorFourierRightHandSideCertificate:
     """Return the Fourier RHS directly in x = k^2."""
@@ -514,6 +581,12 @@ def dark_sector_fourier_right_hand_side_k_squared(
         visible_delta_energy_density=visible_delta_energy_density,
         visible_momentum_divergence_source=(
             visible_momentum_divergence_source
+        ),
+        visible_enthalpy_sigma_total=(
+            visible_enthalpy_sigma_total
+        ),
+        visible_enthalpy_sigma_total_prime=(
+            visible_enthalpy_sigma_total_prime
         ),
         denominator_tolerance=denominator_tolerance,
     )
