@@ -1,13 +1,13 @@
 {
   "admissible_next_step": "Manually classify any concrete equations/couplings/parameters found by this audit before replacing null fields in specs/DFM_MKC_dynamical_core_v1.json.",
   "aggregate_pattern_hits": {
-    "action_functional": 0,
-    "boundary_conditions": 2,
-    "dark_sector_coupling": 16,
-    "matter_coupling": 8,
-    "parameters": 15,
-    "prediction_vector": 8,
-    "primitive_field_equation": 5,
+    "action_functional": 5,
+    "boundary_conditions": 5,
+    "dark_sector_coupling": 29,
+    "matter_coupling": 23,
+    "parameters": 40,
+    "prediction_vector": 13,
+    "primitive_field_equation": 18,
     "source_terms": 1
   },
   "base_scaffold": "specs/DFM_MKC_dynamical_core_v1.json",
@@ -91,26 +91,348 @@
       "sha256": "9b259ae06703c7ad643ffd4b343101677a7ef39134f5e3f16285a5c9d1e42e22"
     },
     {
-      "bytes": 60,
+      "bytes": 8249,
       "exists": true,
-      "line_count": 2,
+      "line_count": 550,
       "path": "theory/deformation_field.md",
       "pattern_hits": {
-        "action_functional": [],
-        "boundary_conditions": [],
-        "dark_sector_coupling": [
+        "action_functional": [
           {
             "line": 1,
-            "text": "## Deformation Field Dynamics"
+            "text": "## Canonical action and branch declaration"
+          },
+          {
+            "line": 3,
+            "text": "For the present DFM\u2013MKC cosmology branch, the canonical action is"
+          },
+          {
+            "line": 36,
+            "text": "This action, together with its charge-reduced equations, supersedes the"
+          },
+          {
+            "line": 207,
+            "text": "action variables \\(\\phi\\), \\(\\alpha\\), and \\(\\beta\\). In particular, its"
+          },
+          {
+            "line": 549,
+            "text": "the canonical action. Growth likelihood remains blocked until the nonlinear"
           }
         ],
-        "matter_coupling": [],
-        "parameters": [],
-        "prediction_vector": [],
-        "primitive_field_equation": [],
+        "boundary_conditions": [
+          {
+            "line": 202,
+            "text": "## Implementation boundary"
+          },
+          {
+            "line": 208,
+            "text": "initial condition gives `Phi` the scaling of \\(H^2\\), and its right-hand"
+          },
+          {
+            "line": 408,
+            "text": "### Conditional boundary"
+          }
+        ],
+        "dark_sector_coupling": [
+          {
+            "line": 3,
+            "text": "For the present DFM\u2013MKC cosmology branch, the canonical action is"
+          },
+          {
+            "line": 42,
+            "text": "For the present branch, DFM\u2013MKC is locked as a cold-dark-matter replacement:"
+          },
+          {
+            "line": 52,
+            "text": "## Covariant DFM\u2013MKC FLRW Reduction"
+          },
+          {
+            "line": 73,
+            "text": "\\mathcal L_{\\mathrm{DFM\\text{-}MKC}"
+          },
+          {
+            "line": 81,
+            "text": "the homogeneous dark-sector density and pressure are"
+          },
+          {
+            "line": 84,
+            "text": "\\rho_{\\mathrm{DFM\\text{-}MKC}"
+          },
+          {
+            "line": 95,
+            "text": "p_{\\mathrm{DFM\\text{-}MKC}"
+          },
+          {
+            "line": 116,
+            "text": "\\rho_{\\mathrm{DFM\\text{-}MKC}"
+          },
+          {
+            "line": 179,
+            "text": "\\rho_{\\mathrm{DFM\\text{-}MKC}"
+          },
+          {
+            "line": 212,
+            "text": "covariant DFM\u2013MKC FLRW equations until it is replaced by an evolution"
+          },
+          {
+            "line": 228,
+            "text": "the metric-only matter-coupling rule."
+          },
+          {
+            "line": 276,
+            "text": "\\rho_{\\mathrm{DFM\\text{-}MKC}"
+          },
+          {
+            "line": 368,
+            "text": "\\rho_m+\\rho_r+\\rho_{\\mathrm{DFM\\text{-}MKC},"
+          },
+          {
+            "line": 413,
+            "text": "\\(L_{\\mathrm{vis}}\\) or from the existing metric-only coupling artifact."
+          }
+        ],
+        "matter_coupling": [
+          {
+            "line": 42,
+            "text": "For the present branch, DFM\u2013MKC is locked as a cold-dark-matter replacement:"
+          },
+          {
+            "line": 50,
+            "text": "while baryons, radiation, and \\(\\Lambda\\) remain separate sectors."
+          },
+          {
+            "line": 81,
+            "text": "the homogeneous dark-sector density and pressure are"
+          },
+          {
+            "line": 225,
+            "text": "## Conditional dust-plus-radiation charge-reduced IVP"
+          },
+          {
+            "line": 228,
+            "text": "the metric-only matter-coupling rule."
+          },
+          {
+            "line": 230,
+            "text": "Assume the visible background contains noninteracting pressureless matter"
+          },
+          {
+            "line": 231,
+            "text": "and radiation:"
+          },
+          {
+            "line": 234,
+            "text": "\\rho_{\\mathrm{vis}}=\\rho_m+\\rho_r,"
+          },
+          {
+            "line": 240,
+            "text": "\\dot\\rho_m=-3H\\rho_m,"
+          },
+          {
+            "line": 289,
+            "text": "x=(a,\\phi,v,\\rho_m,\\rho_r),"
+          },
+          {
+            "line": 313,
+            "text": "\\dot\\rho_m=-3H\\rho_m,"
+          },
+          {
+            "line": 328,
+            "text": "\\rho_m+\\rho_r"
+          },
+          {
+            "line": 351,
+            "text": "together with nonnegative matter and radiation densities and a"
+          },
+          {
+            "line": 368,
+            "text": "\\rho_m+\\rho_r+\\rho_{\\mathrm{DFM\\text{-}MKC},"
+          },
+          {
+            "line": 410,
+            "text": "The dust-plus-radiation decomposition, separate component conservation,"
+          }
+        ],
+        "parameters": [
+          {
+            "line": 14,
+            "text": "\\frac{\\beta}{2}\\phi^2g^{\\mu\\nu}\\partial_\\mu\\theta\\partial_\\nu\\theta"
+          },
+          {
+            "line": 40,
+            "text": "canonical fields \\(\\phi,\\theta\\) is asserted."
+          },
+          {
+            "line": 67,
+            "text": "\\theta=\\theta(t)."
+          },
+          {
+            "line": 77,
+            "text": "-\\frac{\\beta}{2}\\phi^2(\\nabla\\theta)^2"
+          },
+          {
+            "line": 89,
+            "text": "\\frac{\\beta}{2}\\phi^2\\dot\\theta^2"
+          },
+          {
+            "line": 100,
+            "text": "\\frac{\\beta}{2}\\phi^2\\dot\\theta^2"
+          },
+          {
+            "line": 132,
+            "text": "\\beta\\phi^2\\dot\\theta^2"
+          },
+          {
+            "line": 142,
+            "text": "\\beta\\phi\\dot\\theta^2"
+          },
+          {
+            "line": 154,
+            "text": "a^3\\beta\\phi^2\\dot\\theta"
+          },
+          {
+            "line": 163,
+            "text": "Q_\\theta"
+          },
+          {
+            "line": 165,
+            "text": "a^3\\beta\\phi^2\\dot\\theta"
+          },
+          {
+            "line": 171,
+            "text": "\\dot\\theta"
+          },
+          {
+            "line": 173,
+            "text": "\\frac{Q_\\theta}{a^3\\beta\\phi^2},"
+          },
+          {
+            "line": 184,
+            "text": "\\frac{Q_\\theta^2}{2\\beta a^6\\phi^2}"
+          },
+          {
+            "line": 195,
+            "text": "\\frac{Q_\\theta^2}{\\beta a^6\\phi^3}"
+          },
+          {
+            "line": 216,
+            "text": "(a,H,\\phi,\\dot\\phi,\\theta,\\dot\\theta)"
+          },
+          {
+            "line": 222,
+            "text": "(a,H,\\phi,\\dot\\phi,Q_\\theta)."
+          },
+          {
+            "line": 273,
+            "text": "For fixed conserved phase charge \\(Q_\\theta\\), define"
+          },
+          {
+            "line": 281,
+            "text": "\\frac{Q_\\theta^2}{2\\beta a^6\\phi^2}"
+          },
+          {
+            "line": 307,
+            "text": "\\frac{Q_\\theta^2}{\\alpha\\beta a^6\\phi^3}"
+          },
+          {
+            "line": 332,
+            "text": "\\frac{Q_\\theta^2}{2\\beta a^6\\phi^2}"
+          },
+          {
+            "line": 379,
+            "text": "\\frac{Q_\\theta^2}{2\\beta a^6\\phi^2}"
+          },
+          {
+            "line": 474,
+            "text": "(\\phi_i,\\dot\\phi_i,\\rho_\\star,m_\\phi^2,\\lambda_\\phi,Q_\\theta),"
+          },
+          {
+            "line": 528,
+            "text": "\\frac{Q_\\theta^2e^{-6N_i}}{\\beta\\phi_i^3}"
+          },
+          {
+            "line": 531,
+            "text": "Q_\\theta>0."
+          }
+        ],
+        "prediction_vector": [
+          {
+            "line": 38,
+            "text": "prediction, and perturbation prediction. The legacy `Phi` system remains a"
+          },
+          {
+            "line": 286,
+            "text": "The conditional state vector is"
+          },
+          {
+            "line": 470,
+            "text": "For the six-dimensional shooting vector"
+          },
+          {
+            "line": 486,
+            "text": "Therefore the three-residual Jacobian has structural rank at most two:"
+          },
+          {
+            "line": 546,
+            "text": "Friedmann residual \\(F_H\\) remains a consistency diagnostic."
+          }
+        ],
+        "primitive_field_equation": [
+          {
+            "line": 37,
+            "text": "legacy `Phi` equations for physical interpretation, calibration, background"
+          },
+          {
+            "line": 105,
+            "text": "The spatially flat background equations are"
+          },
+          {
+            "line": 227,
+            "text": "This section adds a background-fluid assumption that is not derived from"
+          },
+          {
+            "line": 230,
+            "text": "Assume the visible background contains noninteracting pressureless matter"
+          },
+          {
+            "line": 318,
+            "text": "Choose the expanding Friedmann branch"
+          },
+          {
+            "line": 352,
+            "text": "nonnegative Friedmann radicand."
+          },
+          {
+            "line": 361,
+            "text": "Friedmann branch rather than supplied independently."
+          },
+          {
+            "line": 397,
+            "text": "Consequently, differentiating the Friedmann constraint gives"
+          },
+          {
+            "line": 411,
+            "text": "expanding Friedmann branch, and initial-data domain are additional"
+          },
+          {
+            "line": 412,
+            "text": "background-model assumptions. They are not derived from"
+          },
+          {
+            "line": 477,
+            "text": "the flat Friedmann constraint gives the row dependency"
+          },
+          {
+            "line": 541,
+            "text": "background-equivalent charge signs because the homogeneous equations depend"
+          },
+          {
+            "line": 546,
+            "text": "Friedmann residual \\(F_H\\) remains a consistency diagnostic."
+          }
+        ],
         "source_terms": []
       },
-      "sha256": "435d99fc9af30bad4c4a3fad1ce046f19743cffab7cc42bfa0983c9542623f18"
+      "sha256": "c276dc7dbf39a54ce96b2336ff997d41c79cb4aa7cc62209494df3b319b3f67e"
     },
     {
       "bytes": 101,

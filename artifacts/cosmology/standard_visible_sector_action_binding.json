@@ -1,0 +1,126 @@
+{
+  "result_type": "standard_visible_sector_action_binding",
+  "branch_selection": "user_selected_irrotational_schutz_sorkin_baryon_radiation_baseline",
+  "novelty_claimed": false,
+  "visible_action_established": true,
+  "equations_of_state_established": true,
+  "first_metric_response_established": true,
+  "second_metric_response_established": true,
+  "boundary_contact_terms_established": true,
+  "ward_identity_established": true,
+  "hessian_symmetry_established": true,
+  "canonical_second_variation_ready": true,
+  "action_binding_established": true,
+  "fields": [
+    "g_mu_nu",
+    "J_b^mu",
+    "ell_b",
+    "J_r^mu",
+    "ell_r"
+  ],
+  "measure": "d^4x; q=sqrt(-g)",
+  "number_density_definition": "n_I=sqrt(-g_mu_nu J_I^mu J_I^nu)/sqrt(-g)",
+  "action_density": "L_vis=-sum_I[sqrt(-g)rho_I(n_I)+J_I^mu partial_mu ell_I]; rho_b=m_b n_b; rho_r=kappa_r n_r^(4/3)",
+  "equations_of_state": {
+    "identity": "p_I=n_I rho_I'(n_I)-rho_I",
+    "baryon": {
+      "rho": "m_b*n_b",
+      "p": "0",
+      "w": "0"
+    },
+    "radiation": {
+      "rho": "kappa_r*n_r**(4/3)",
+      "p": "kappa_r*n_r**(4/3)/3",
+      "w": "1/3"
+    }
+  },
+  "variational_convention": "All metric variations are at fixed contravariant vector densities J_b^mu,J_r^mu and scalar potentials ell_b,ell_r.",
+  "boundary_conditions": [
+    "delta ell_I=0 on initial and final temporal boundaries",
+    "J_I^mu n_mu=0 on the spatial boundary, or fluid perturbations have compact spatial support",
+    "metric variations and required normal derivatives obey the existing Einstein-Hilbert boundary prescription"
+  ],
+  "boundary_terms": [
+    "ell variation: -integral_boundary J_I^mu n_mu delta ell_I; temporal part vanishes by delta ell_I=0; spatial part vanishes by zero flux or compact support",
+    "J variation: no integration by parts and no boundary term",
+    "first and second fluid metric variations: algebraic, no integration by parts and zero fluid boundary contact term",
+    "Einstein-Hilbert boundary contacts are retained under the existing metric/normal-derivative prescription",
+    "diffeomorphism Ward integration: integral_boundary n_mu xi^mu L_I; it vanishes for compact-support xi or a diffeomorphism preserving the boundary data"
+  ],
+  "euler_lagrange_equations": {
+    "ell_I": "partial_mu J_I^mu = 0",
+    "J_I^mu": "partial_mu ell_I = rho_I'(n_I) u_I_mu, u_I^mu=J_I^mu/(sqrt(-g)n_I), u_I^mu u_I_mu=-1",
+    "g^mu_nu": "delta S_I/delta g^mu_nu = -sqrt(-g) T_I_mu_nu/2",
+    "diffeomorphism_Ward_identity": {
+      "off_shell": "integral_M [E_g_mu_nu Lie_xi g^mu_nu+E_J_I_mu Lie_xi J_I^mu+E_ell_I Lie_xi ell_I] = 0 for compact-support xi; Lie_xi J^mu=xi^nu partial_nu J^mu-J^nu partial_nu xi^mu+J^mu partial_nu xi^nu",
+      "on_shell": "nabla_mu T_I^mu_nu = 0",
+      "boundary": "integral_boundary n_mu xi^mu L_I = 0 because xi has compact support (or preserves the stated boundary data)"
+    }
+  },
+  "stress_tensor": "T_I^mu_nu=(rho_I+p_I)u_I^mu u_I_nu+p_I delta^mu_nu; u_I^mu=J_I^mu/(sqrt(-g)n_I)",
+  "first_metric_response": {
+    "delta_measure": "-h*q/2",
+    "delta_number_density_h": "n*(U_h + h)/2",
+    "delta_L_I_h": "q*(h*rho - n*rho_1*(U_h + h))/2",
+    "identity": "delta S_I=-1/2 integral sqrt(-g) T_I_mu_nu h^mu_nu"
+  },
+  "second_metric_response": {
+    "delta2_measure_hk": "q*(h*k + 2*hk)/4",
+    "delta_number_density_k": "n*(U_k + k)/2",
+    "delta2_number_density_hk": "-n*(2*U_h*U_k + 4*W_hk + 2*hk - (U_h + h)*(U_k + k))/4",
+    "delta2_L_I_hk": "-q*(U_h*U_k*n**2*rho_2 - U_h*U_k*n*rho_1 + U_h*k*n**2*rho_2 + U_k*h*n**2*rho_2 - 4*W_hk*n*rho_1 + h*k*n**2*rho_2 - h*k*n*rho_1 + h*k*rho - 2*hk*n*rho_1 + 2*hk*rho)/4",
+    "contractions": "h=g_mu_nu h^mu_nu; U_h=u_mu u_nu h^mu_nu; hk=h^mu_nu k_mu_nu; W_hk=u_mu h^mu_rho k^rho_nu u^nu=W_kh",
+    "potential_density_metric_response": "zero at fixed J_I^mu,ell_I"
+  },
+  "scalar_constraint_comparison": {
+    "derivation": "project delta S_vis=-1/2 integral sqrt(-g)T_mu_nu delta g^mu_nu into scalar Einstein equations G_mu_nu=8*pi*G*T_mu_nu and apply the carrier's 1/2 normalization",
+    "coefficients": {
+      "hamiltonian_delta_rho": {
+        "action_derived": "4*pi*G*a**2",
+        "existing_carrier": "4*pi*G*a**2",
+        "residual": "0"
+      },
+      "momentum_source": {
+        "action_derived": "-4*pi*G*a**2",
+        "existing_carrier": "-4*pi*G*a**2",
+        "residual": "0"
+      },
+      "anisotropy_enthalpy_sigma": {
+        "action_derived": "-12*pi*G*a**2",
+        "existing_carrier": "-12*pi*G*a**2",
+        "residual": "0"
+      }
+    },
+    "lapse_shift_second_variation": {
+      "number_density": "sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))/(N*a**3)",
+      "L_NN": "N*((J0**4*N/(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))**(3/2) + J0**2/(N*sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))) - 2*sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))/N**3)*Subs(Derivative(rho(_xi_1), _xi_1), _xi_1, sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))/(N*a**3)) - (J0**2/sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2)) - sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))/N**2)**2*Subs(Derivative(rho(_xi_1), (_xi_1, 2)), _xi_1, sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))/(N*a**3))/a**3) - 2*(J0**2/sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2)) - sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))/N**2)*Subs(Derivative(rho(_xi_1), _xi_1), _xi_1, sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))/(N*a**3))",
+      "L_Ns": "J0*(J0*s + Jx)*(-N*a**2*(J0**2/(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2)) + N**(-2))*Subs(Derivative(rho(_xi_1), _xi_1), _xi_1, sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))/(N*a**3)) + (J0**2/sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2)) - sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))/N**2)*Subs(Derivative(rho(_xi_1), (_xi_1, 2)), _xi_1, sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))/(N*a**3))/a + a**2*Subs(Derivative(rho(_xi_1), _xi_1), _xi_1, sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))/(N*a**3))/N)/sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))",
+      "L_ss": "J0**2*a**3*(a*(J0*s + Jx)**2*Subs(Derivative(rho(_xi_1), _xi_1), _xi_1, sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))/(N*a**3))/(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))**(3/2) + Subs(Derivative(rho(_xi_1), _xi_1), _xi_1, sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))/(N*a**3))/(a*sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))) - (J0*s + Jx)**2*Subs(Derivative(rho(_xi_1), (_xi_1, 2)), _xi_1, sqrt(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))/(N*a**3))/(N*a**2*(J0**2*N**2 - a**2*(Jy**2 + Jz**2 + (J0*s + Jx)**2))))",
+      "background_comoving": {
+        "L_NN": "0",
+        "L_Ns": "0",
+        "L_ss": "J0**2*a**2*Subs(Derivative(rho(_xi_1), _xi_1), _xi_1, Abs(J0)/a**3)/(N*Abs(J0))"
+      }
+    },
+    "all_residuals_zero": true,
+    "manually_entered_visible_constraint": false
+  },
+  "limitations": [
+    "photon recombination microphysics",
+    "baryon-photon scattering",
+    "photon polarization",
+    "free-streaming neutrino anisotropic stress",
+    "Boltzmann hierarchy",
+    "CMB transfer function",
+    "Weyl prediction vector",
+    "separation from Lambda-CDM",
+    "empirical evidence for DFM"
+  ],
+  "provenance": {
+    "selection": "explicit user-authorized standard baseline",
+    "symbolic_engine": "SymPy exact integers and rationals",
+    "module": "dfm_mkc_solver.visible_schutz_sorkin_action_v1",
+    "existing_carrier": "dfm_mkc_solver.scalar_constraint_variational_bridge_v1.scalar_constraint_source_vector",
+    "scientific_scope": "standard visible-sector modeling assumption; not new mathematics, visible-sector physics, or evidence for DFM"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "array_artifact_path": "artifacts/dfm_mkc/act_dr6_cmbonly_official_data_covariance_2026_05_25.npz",
-  "array_artifact_sha256": "cac7d7a0fdf88cf4461cdb99eb9d5195569643a2b46379cea927e8333f2eafd8",
+  "array_artifact_sha256": "dffe249e46c2aafafa7e8b3f78fbc8a3eaad1801e5afaa52acb4bcb7c567c563",
   "baseline_lcdm_prediction_vector_status": "NOT_AVAILABLE",
   "covariance_matrix_finite": true,
   "covariance_matrix_shape": [
@@ -8,7 +8,7 @@
     135
   ],
   "covariance_max_eigenvalue": 3063.3642661720723,
-  "covariance_min_eigenvalue": 0.024572478244932677,
+  "covariance_min_eigenvalue": 0.02457247824493277,
   "covariance_positive_semidefinite_numerical_status": "PASSED",
   "covariance_symmetry_max_abs_error": 0.0,
   "data_vector_finite": true,
