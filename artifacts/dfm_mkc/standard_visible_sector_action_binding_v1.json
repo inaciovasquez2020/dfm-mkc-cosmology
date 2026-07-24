@@ -1,0 +1,96 @@
+{
+  "result_type": "standard_visible_sector_action_binding",
+  "branch_selection": "user_selected_irrotational_schutz_sorkin_baryon_radiation_baseline",
+  "novelty_claimed": false,
+  "visible_action_established": true,
+  "equations_of_state_established": true,
+  "first_metric_response_established": true,
+  "second_metric_response_established": true,
+  "boundary_contact_terms_established": true,
+  "ward_identity_established": true,
+  "hessian_symmetry_established": true,
+  "canonical_second_variation_ready": true,
+  "action_binding_established": true,
+  "fields": [
+    "g_mu_nu",
+    "phi",
+    "theta",
+    "J_b^mu",
+    "ell_b",
+    "J_r^mu",
+    "ell_r"
+  ],
+  "measure": "d^4x; sqrt(-g) multiplies rho_I(n_I); J_I^mu is a density",
+  "number_density_definition": "n_I=sqrt(-g_mu_nu J_I^mu J_I^nu)/sqrt(-g)",
+  "action_density": "S_total=S_EH+S_DFM_MKC- sum_{I=b,r} integral d^4x [sqrt(-g)rho_I(n_I)+J_I^mu partial_mu ell_I]; rho_b=m_b n_b; rho_r=kappa_r n_r^(4/3)",
+  "equations_of_state": {
+    "identity": "p_I=n_I rho_I'(n_I)-rho_I",
+    "baryons": "p_b=0",
+    "radiation": "p_r=rho_r/3"
+  },
+  "variational_convention": "metric variations are at fixed contravariant vector densities J_b^mu,J_r^mu and fixed scalar potentials ell_b,ell_r",
+  "boundary_conditions": [
+    "temporal ell boundary: delta ell_I=0 on initial and final slices",
+    "spatial ell boundary: J_I^mu n_mu=0, or perturbations have compact spatial support",
+    "Einstein-Hilbert sector: metric variations and required normal derivatives obey the repository's existing Einstein-Hilbert boundary prescription",
+    "diffeomorphism variation: the total divergence integrates to integral_boundaryM dSigma_mu T_I^mu_nu xi^nu; it vanishes for compactly supported xi or boundary-preserving diffeomorphisms"
+  ],
+  "boundary_terms": [
+    "ell variation: -integral_M J_I^mu partial_mu(delta ell_I) = integral_M (partial_mu J_I^mu) delta ell_I - integral_boundaryM dSigma_mu J_I^mu delta ell_I",
+    "temporal ell boundary: delta ell_I=0 on initial and final slices",
+    "spatial ell boundary: J_I^mu n_mu=0, or perturbations have compact spatial support",
+    "J_I variation: no integration by parts and no boundary term",
+    "metric variation: the visible Lagrangian has no metric derivatives, so its first and second metric variations generate no derivative boundary term",
+    "Einstein-Hilbert sector: metric variations and required normal derivatives obey the repository's existing Einstein-Hilbert boundary prescription",
+    "diffeomorphism variation: the total divergence integrates to integral_boundaryM dSigma_mu T_I^mu_nu xi^nu; it vanishes for compactly supported xi or boundary-preserving diffeomorphisms"
+  ],
+  "euler_lagrange_equations": {
+    "ell_I": "partial_mu J_I^mu = 0",
+    "J_I^mu": "partial_mu ell_I = rho_I'(n_I) u_{I mu}",
+    "potential_flow": "u_{I mu} = partial_mu ell_I/rho_I'(n_I), u_I^mu u_{I mu}=-1",
+    "g^mu_nu": "delta S_I/delta g^{mu nu} = -sqrt(-g) T_{I mu nu}/2"
+  },
+  "stress_tensor": "T_I^mu_nu=(rho_I+p_I)u_I^mu u_{I nu}+p_I delta^mu_nu; p_I=n_I rho_I'(n_I)-rho_I",
+  "first_metric_response": "delta S_vis=-1/2 sum_I integral d^4x sqrt(-g) T_{I mu nu} delta g^{mu nu}; delta sqrt(-g)=-sqrt(-g) g_mu_nu delta g^{mu nu}/2; delta n_I=n_I(g_mu_nu+u_I_mu u_I_nu)delta g^{mu nu}/2",
+  "second_metric_response": "For h=delta_1 g^-1,k=delta_2 g^-1: delta_2delta_1[-D rho]=-rho delta2D-rho'[delta1D delta2n+delta2D delta1n]-D rho'' delta1n delta2n-D rho' delta2delta1n; delta2D=D[(tr h)(tr k)/4+(h:k)/2]; delta2delta1n=n[(P:h)(P:k)/4-(h:k)/2-u.h.g.k.u-(uuh)(uuk)/2]. No metric derivative boundary term.",
+  "scalar_constraint_comparison": {
+    "basis": [
+      "delta_rho_visible",
+      "momentum_source_visible",
+      "sigma_visible"
+    ],
+    "action_derived_coefficients": [
+      "4*pi*G*a^2",
+      "-4*pi*G*a^2",
+      "0"
+    ],
+    "existing_carrier_coefficients": [
+      "4*pi*G*a^2",
+      "-4*pi*G*a^2",
+      "0"
+    ],
+    "exact_symbolic_residual": [
+      "0",
+      "0",
+      "0"
+    ],
+    "derivation": "mixed scalar lapse-density and scalar shift-current terms of delta^2 S_vis; perfect-fluid scalar anisotropic stress is zero",
+    "flrw": [
+      "partial_mu J_I^mu=0 gives dot n_I=-3H n_I",
+      "dot rho_b=-3H rho_b",
+      "dot rho_r=-4H rho_r"
+    ]
+  },
+  "limitations": [
+    "photon recombination microphysics",
+    "baryon-photon scattering",
+    "photon polarization",
+    "free-streaming neutrino anisotropic stress",
+    "a Boltzmann hierarchy",
+    "a CMB transfer function",
+    "a Weyl prediction vector",
+    "separation from Lambda-CDM",
+    "empirical evidence for DFM"
+  ],
+  "provenance": "User-selected standard irrotational Schutz-Sorkin perfect-fluid baseline; exact SymPy derivation in src/dfm_mkc_solver/visible_sector_action_v1.py; no novelty claim"
+}
