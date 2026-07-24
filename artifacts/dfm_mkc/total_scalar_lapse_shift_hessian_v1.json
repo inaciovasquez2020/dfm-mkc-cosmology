@@ -32,5 +32,40 @@
   "certificates": "Every positive certificate flag is computed from an exact zero residual family: Fourier normalization, complete visible import, independent full-matrix ADM, original-action two-parameter Hamiltonian and momentum variations, exact formal adjoints, the derived background-chart residual decomposition, and original-action direct mixed differentiation with its explicit total-derivative boundary contribution.",
   "domain_conditions": "The background chart records every solved denominator and requires a!=0, G!=0, alpha!=0, beta!=0, phi_bar!=0 (in particular the nondegenerate beta*phi_bar^2 theta chart), Jbar_b^0!=0, and Jbar_r^0!=0; the declared physical domain additionally has these quantities positive where stated, m_b>0, kappa_r>0, and k^2>0. No division by these quantities is implicit. Also required are a nondegenerate Lorentzian ADM metric, smooth commuting variations, Fourier reality pairing, and the stated temporal and spatial boundary conditions.",
   "limitations": "This establishes only the canonical total scalar lapse-shift Hessian, its action-derived Hamiltonian and scalar momentum rows, auxiliary lapse-shift character, and readiness for later constraint elimination. It does not establish a reduced physical scalar action, action-bound Weyl observable, prediction vector, identifiability, LCDM separation, measurable margin, novelty, or new science.",
-  "provenance": "Exact SymPy jet derivation bound to theory/deformation_field.md, visible_sector_action_v1.py, visible_sector_offshell_scalar_hessian_v1.py and its artifact, scalar_constraint_variational_bridge_v1.py only as a multiplier carrier, scalar_bardeen_weyl_observable_v1.py, and metric_constraint_elimination_v1.py; no constraint-carrier coefficient was copied."
+  "provenance": "Exact SymPy jet derivation bound to theory/deformation_field.md, visible_sector_action_v1.py, visible_sector_offshell_scalar_hessian_v1.py and its artifact, scalar_constraint_variational_bridge_v1.py only as a multiplier carrier, scalar_bardeen_weyl_observable_v1.py, and metric_constraint_elimination_v1.py; no constraint-carrier coefficient was copied.",
+  "canonical_background_current_jet_order": 2,
+  "current_second_jet_symbols": ["Jbar_b_0_double_prime", "Jbar_r_0_double_prime"],
+  "current_total_derivative_rules": {
+    "D(Jbar_b_0)": "Jbar_b_0_prime",
+    "D(Jbar_b_0_prime)": "Jbar_b_0_double_prime",
+    "D(Jbar_r_0)": "Jbar_r_0_prime",
+    "D(Jbar_r_0_prime)": "Jbar_r_0_double_prime"
+  },
+  "differentiated_current_Euler_sources": ["baryon_continuity", "radiation_continuity"],
+  "differentiated_current_Euler_residuals": {
+    "baryon_continuity": "Jbar_b_0_double_prime",
+    "radiation_continuity": "Jbar_r_0_double_prime"
+  },
+  "differentiated_current_pivots": ["Jbar_b_0_double_prime", "Jbar_r_0_double_prime"],
+  "differentiated_current_substitutions": {
+    "Jbar_b_0_double_prime": "0",
+    "Jbar_r_0_double_prime": "0"
+  },
+  "differentiated_current_denominators": {
+    "Jbar_b_0_double_prime": "1",
+    "Jbar_r_0_double_prime": "1"
+  },
+  "differentiated_current_domain": [],
+  "differentiated_current_substitution_residuals": {
+    "baryon_continuity": "0",
+    "radiation_continuity": "0"
+  },
+  "background_current_differential_closure_proved": true,
+  "complete_background_differential_closure_proved": false,
+  "complete_gauge_Noether_identity_proved": false,
+  "F_zero_branch_classification": "unclassified",
+  "physical_strong_coupling_proved": false,
+  "gauge_fixing_used": false,
+  "constraint_elimination_used": false,
+  "next_required_object": "complete differential background Euler closure sufficient to reduce every coefficient of K R and R_dagger K"
 }

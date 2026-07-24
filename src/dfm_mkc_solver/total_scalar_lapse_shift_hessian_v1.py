@@ -63,7 +63,10 @@ def _symbols():
     Jb, Jr, mb, kr = sp.symbols(
         "Jbar_b_0 Jbar_r_0 m_b kappa_r", positive=True
     )
-    Jbp, Jrp = sp.symbols("Jbar_b_0_prime Jbar_r_0_prime")
+    Jbp, Jrp, Jbpp, Jrpp = sp.symbols(
+        "Jbar_b_0_prime Jbar_r_0_prime "
+        "Jbar_b_0_double_prime Jbar_r_0_double_prime"
+    )
     ellbp, ellrp, ellbpp, ellrpp = sp.symbols(
         "ell_bar_b_prime ell_bar_r_prime "
         "ell_bar_b_double_prime ell_bar_r_double_prime"
@@ -291,7 +294,9 @@ def _D_eta(expr):
         z["th"]: z["thp"],
         z["thp"]: z["thpp"],
         z["Jb"]: z["Jbp"],
+        z["Jbp"]: z["Jbpp"],
         z["Jr"]: z["Jrp"],
+        z["Jrp"]: z["Jrpp"],
         z["ellbp"]: z["ellbpp"],
         z["ellrp"]: z["ellrpp"],
     }
@@ -656,6 +661,73 @@ def background_residuals():
 
 
 @lru_cache(maxsize=1)
+def background_current_differential_closure():
+    """Close only the conserved-current second-derivative background jets."""
+    z = _symbols()
+    residuals = background_residuals()
+    source_names = ("baryon_continuity", "radiation_continuity")
+    sources = {name: residuals[name] for name in source_names}
+    differentiated = {
+        name: sp.factor(_D_eta(expression))
+        for name, expression in sources.items()
+    }
+    pivots = (z["Jbpp"], z["Jrpp"])
+    solved = sp.solve(
+        [differentiated[name] for name in source_names],
+        pivots, dict=True, simplify=False,
+    )
+    if len(solved) != 1 or set(solved[0]) != set(pivots):
+        raise ValueError(
+            "differentiated current residuals do not define both pivots"
+        )
+    substitution = {
+        pivot: sp.factor(solved[0][pivot]) for pivot in pivots
+    }
+    denominators = {
+        str(pivot): sp.factor(sp.denom(sp.cancel(substitution[pivot])))
+        for pivot in pivots
+    }
+    substitution_residuals = {
+        name: sp.simplify(
+            expression.subs(substitution, simultaneous=True)
+        )
+        for name, expression in differentiated.items()
+    }
+    if any(value != 0 for value in substitution_residuals.values()):
+        raise ValueError("current differential pivot substitution is not exact")
+    certificates = {
+        "canonical_current_jet_order": max(
+            2 if pivot in (z["Jbpp"], z["Jrpp"]) else 0
+            for pivot in pivots
+        ),
+        "total_derivative_rules": {
+            str(z["Jbp"]): _D_eta(z["Jbp"]) == z["Jbpp"],
+            str(z["Jrp"]): _D_eta(z["Jrp"]) == z["Jrpp"],
+        },
+        "differentiated_equations_derived": tuple(differentiated) == source_names,
+        "substitution_back_zero": {
+            name: value == 0
+            for name, value in substitution_residuals.items()
+        },
+        "F_zero_condition_used": False,
+        "gauge_fixing_used": False,
+        "constraint_elimination_used": False,
+        "complete_background_differential_closure": False,
+    }
+    return {
+        "source_residual_names": source_names,
+        "source_residuals": sources,
+        "differentiated_residuals": differentiated,
+        "pivots": pivots,
+        "pivot_substitution": substitution,
+        "denominators": denominators,
+        "domain_conditions": (),
+        "substitution_back_residuals": substitution_residuals,
+        "certificates": certificates,
+    }
+
+
+@lru_cache(maxsize=1)
 def background_on_shell_chart():
     """Solve the eight homogeneous residuals on one explicit regular chart."""
     z = _symbols()
@@ -807,6 +879,11 @@ def certificate():
         return sp.simplify(value) == 0
 
     decomposition = background_residual_decomposition()
+    current_closure = background_current_differential_closure()
+    current_rules = (
+        _D_eta(z["Jbp"]) == z["Jbpp"],
+        _D_eta(z["Jrp"]) == z["Jrpp"],
+    )
     flags = {
         "full_adm_plus_ghy_expansion":
             exact_zero_family(full_matrix_adm_residual()),
@@ -824,6 +901,17 @@ def certificate():
             exact_zero_family(decomposition["residual"]),
         "direct_mixed_differentiation":
             exact_zero_family(direct_mixed_differentiation_residual()),
+        "canonical_current_jet_reaches_second_order":
+            all(pivot in z.values() for pivot in current_closure["pivots"]),
+        "current_total_derivative_rules_present": all(current_rules),
+        "differentiated_current_Euler_equations_derived":
+            tuple(current_closure["source_residual_names"]) == (
+                "baryon_continuity", "radiation_continuity"
+            ),
+        "current_substitution_back_residuals_zero":
+            exact_zero_family(
+                current_closure["substitution_back_residuals"]
+            ),
     }
     return {
         **flags,
@@ -835,6 +923,13 @@ def certificate():
             "[delta J_I^0 delta ell_I]_{eta_i}^{eta_f}=0"
         ),
         "claim_boundaries": {
+            "complete_background_differential_closure": False,
+            "complete_gauge_Noether_identity": False,
+            "F_zero_branch_classification": "unclassified",
+            "F_zero_condition_used": False,
+            "physical_strong_coupling": False,
+            "gauge_fixing_used": False,
+            "constraint_elimination_used": False,
             "reduced_physical_scalar_action": False,
             "weyl_observable_action_bound": False,
             "prediction_vector": False,
