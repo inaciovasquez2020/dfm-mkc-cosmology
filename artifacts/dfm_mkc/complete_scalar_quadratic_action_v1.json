@@ -1,0 +1,60 @@
+{
+  "schema": "dfm_mkc.complete_scalar_quadratic_action.v1",
+  "canonical_field_order": [
+    "A",
+    "B",
+    "psi",
+    "E",
+    "delta_phi",
+    "delta_theta",
+    "delta_J_b_0",
+    "delta_J_b_L",
+    "delta_ell_b",
+    "delta_J_r_0",
+    "delta_J_r_L",
+    "delta_ell_r"
+  ],
+  "fourier_convention": "exp(i k x), k2 > 0, spatial Laplacian = -k2",
+  "time_derivative_convention": "D is the conformal-time total derivative and does not commute with background coefficients",
+  "exact_total_action_provenance": [
+    "Einstein-Hilbert plus Gibbons-Hawking-York in ADM form: total_scalar_lapse_shift_hessian_v1._sector_quadratic_densities",
+    "canonical DFM-MKC amplitude/phase action: theory/deformation_field.md and total_scalar_lapse_shift_hessian_v1._sector_quadratic_densities",
+    "pressureless Schutz-Sorkin action: visible_sector_action_v1 and total_scalar_lapse_shift_hessian_v1._sector_quadratic_densities",
+    "radiation Schutz-Sorkin action: visible_sector_action_v1 and total_scalar_lapse_shift_hessian_v1._sector_quadratic_densities"
+  ],
+  "quadratic_action_completeness": "complete",
+  "euler_row_coverage": [
+    "A", "B", "psi", "E", "delta_phi", "delta_theta",
+    "delta_J_b_0", "delta_J_b_L", "delta_ell_b",
+    "delta_J_r_0", "delta_J_r_L", "delta_ell_r"
+  ],
+  "nonzero_block_provenance": "Executable per-block inventory returned by block_provenance(); each block is detected by independently differentiating each of the four action summands.",
+  "required_derivative_order": {
+    "quadratic_lagrangian": 1,
+    "Euler_Hessian_operator": 2
+  },
+  "off_shell_versus_background_shell": "The exported action and 12x12 operator are off shell. Background-shell substitutions are separately provided by total_scalar_lapse_shift_hessian_v1.on_shell_reduction and are not applied here.",
+  "A_B_subblock_residuals": {
+    "off_shell": "all exact zero",
+    "background_shell": "all exact zero after the separately labelled merged background chart substitution"
+  },
+  "visible_sector_subblock_residuals": "all exact zero",
+  "dark_sector_principal_block_residuals": "all exact zero",
+  "formal_adjoint_residuals": "all exact zero",
+  "F_zero_used": false,
+  "gauge_fixing_used": false,
+  "constraint_elimination_used": false,
+  "every_retained_Schutz_Sorkin_field_included": true,
+  "no_lapse_shift_kinetic_certificate": true,
+  "no_placeholder_certificate": true,
+  "no_imported_eliminator_certificate": true,
+  "noether_ready": true,
+  "classification_ready": false,
+  "F_zero_branch_classification": "unclassified",
+  "limitations": [
+    "No gauge-Noether operator or comparison is constructed.",
+    "The F=0 lapse-shift branch is not classified.",
+    "No lapse-shift constraint is solved or eliminated.",
+    "No numerical observable is produced."
+  ]
+}
