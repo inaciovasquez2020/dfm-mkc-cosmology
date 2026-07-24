@@ -104,6 +104,60 @@ def test_offshell_and_onshell_are_separately_labelled():
     )
 
 
+def test_canonical_current_second_jet_and_total_derivative_rules():
+    z = total._symbols()
+    assert str(z["Jbpp"]) == "Jbar_b_0_double_prime"
+    assert str(z["Jrpp"]) == "Jbar_r_0_double_prime"
+    assert total._D_eta(z["Jbp"]) == z["Jbpp"]
+    assert total._D_eta(z["Jrp"]) == z["Jrpp"]
+
+
+def test_current_differential_closure_is_derived_and_exact():
+    z = total._symbols()
+    sources = total.background_residuals()
+    independently_differentiated = {
+        name: total._D_eta(sources[name])
+        for name in ("baryon_continuity", "radiation_continuity")
+    }
+    assert independently_differentiated["baryon_continuity"] == z["Jbpp"]
+    assert independently_differentiated["radiation_continuity"] == z["Jrpp"]
+
+    closure = total.background_current_differential_closure()
+    assert closure["source_residuals"] == {
+        name: sources[name] for name in closure["source_residual_names"]
+    }
+    assert closure["differentiated_residuals"] == independently_differentiated
+    assert closure["pivot_substitution"] == {
+        z["Jbpp"]: sp.Integer(0),
+        z["Jrpp"]: sp.Integer(0),
+    }
+    assert all(
+        expression.subs(
+            closure["pivot_substitution"], simultaneous=True
+        ) == 0
+        for expression in independently_differentiated.values()
+    )
+    assert all(
+        residual == 0
+        for residual in closure["substitution_back_residuals"].values()
+    )
+    assert closure["certificates"]["canonical_current_jet_order"] == 2
+    assert all(closure["certificates"]["total_derivative_rules"].values())
+    assert closure["certificates"]["differentiated_equations_derived"]
+    assert all(closure["certificates"]["substitution_back_zero"].values())
+    assert closure["certificates"]["F_zero_condition_used"] is False
+    assert closure["certificates"]["gauge_fixing_used"] is False
+    assert closure["certificates"]["constraint_elimination_used"] is False
+    assert (
+        closure["certificates"]["complete_background_differential_closure"]
+        is False
+    )
+    source = inspect.getsource(total.background_current_differential_closure)
+    assert "background_residuals()" in source
+    assert "_D_eta(expression)" in source
+    assert "sp.solve(" in source
+
+
 def test_certificates_are_not_source_level_shortcuts():
     module_source = inspect.getsource(total)
     direct_source = inspect.getsource(total.direct_mixed_differentiation_residual)
@@ -178,9 +232,17 @@ def test_artifact_schema_flags_and_claim_boundaries():
         "background_equations", "boundary_terms", "certificates",
         "domain_conditions", "limitations", "provenance",
     ]
-    assert list(payload) == expected
+    assert list(payload)[:len(expected)] == expected
     assert payload["result_type"] == "total_scalar_lapse_shift_hessian"
     assert payload["novelty_claimed"] is False
     assert all(payload[key] is True for key in expected[3:13])
     assert all(payload[key] is False for key in expected[13:19])
     assert all(payload[key] not in ("", [], {}) for key in expected[19:])
+    assert payload["canonical_background_current_jet_order"] == 2
+    assert payload["background_current_differential_closure_proved"] is True
+    assert payload["complete_background_differential_closure_proved"] is False
+    assert payload["complete_gauge_Noether_identity_proved"] is False
+    assert payload["F_zero_branch_classification"] == "unclassified"
+    assert payload["physical_strong_coupling_proved"] is False
+    assert "gauge fixing" not in payload["certificates"].lower()
+    assert "strong coupling" not in payload["limitations"].lower()
