@@ -342,11 +342,9 @@ def compare_averaged_and_time_dependent_full_field_growth(
         initial_metric_fixed_point_solved = (
             fixed_point.initial_metric_fixed_point_solved
         )
-        derived_initial_density_contrast = (
-            fixed_point.reconstructed_density_contrast
-        )
+        derived_initial_density_contrast = target_density_contrast
         derived_initial_density_contrast_n = (
-            fixed_point.reconstructed_density_contrast_n
+            target_density_contrast_n
         )
 
     def evaluate(
