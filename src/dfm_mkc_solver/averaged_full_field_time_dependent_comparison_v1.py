@@ -40,6 +40,10 @@ from .dark_sector_fourier_rhs_v1 import (
     DarkSectorFourierRightHandSideCertificate,
     dark_sector_fourier_right_hand_side,
 )
+from .regular_growing_mode_initial_state_v1 import (
+    RegularGrowingModeInitialStateCertificate,
+    construct_regular_growing_mode_initial_state,
+)
 
 State4 = tuple[float, float, float, float]
 
@@ -54,6 +58,8 @@ class AveragedFullFieldTimeDependentComparisonCertificate:
     initial_cycle_average: float
     final_cycle_average: float
     full_field_growth_factor: float
+    cdm_growth_factor: float
+    full_field_growth_suppression: float
     averaged_growth_factor: float
     full_to_averaged_growth_ratio: float
     relative_growth_difference: float
@@ -71,6 +77,11 @@ class AveragedFullFieldTimeDependentComparisonCertificate:
     phase_cycle_averaging_computed: bool
     averaged_full_field_comparison_computed: bool
     observational_calibration_completed: bool
+    derived_initial_density_contrast: float
+    derived_initial_density_contrast_n: float
+    regular_growing_mode_certificate: (
+        RegularGrowingModeInitialStateCertificate | None
+    )
 
 
 def _require_finite(name: str, value: float) -> None:
@@ -106,6 +117,26 @@ def _rhs_residual(
             .normalized_equation_residual
         ),
     )
+
+
+def _cosmic_hubble_n_from_background_fields(
+    *,
+    parameters: ChargeReducedParameters,
+    hubble: float,
+    phi: float,
+    velocity: float,
+    theta_dot: float,
+    matter_density: float,
+    radiation_density: float,
+) -> float:
+    """Return the exact Friedmann derivative from total continuity."""
+    total_enthalpy = (
+        matter_density
+        + (4.0 / 3.0) * radiation_density
+        + parameters.alpha * velocity**2
+        + parameters.beta * phi**2 * theta_dot**2
+    )
+    return -4.0 * math.pi * parameters.G * total_enthalpy / hubble
 
 
 def _cycle_average(
@@ -151,6 +182,8 @@ def compare_averaged_and_time_dependent_full_field_growth(
     denominator_tolerance: float = 1.0e-14,
     perturbation_rtol: float = 1.0e-8,
     perturbation_atol: float = 1.0e-10,
+    derive_regular_growing_mode_initial_state: bool = False,
+    initial_mode_amplitude: float = 1.0e-6,
 ) -> AveragedFullFieldTimeDependentComparisonCertificate:
     """Evolve and compare one averaged and one full-field growth mode."""
     for name, value in (
@@ -160,6 +193,7 @@ def compare_averaged_and_time_dependent_full_field_growth(
         ("denominator_tolerance", denominator_tolerance),
         ("perturbation_rtol", perturbation_rtol),
         ("perturbation_atol", perturbation_atol),
+        ("initial_mode_amplitude", initial_mode_amplitude),
     ):
         _require_finite(name, value)
 
@@ -206,8 +240,50 @@ def compare_averaged_and_time_dependent_full_field_growth(
     theta_prime_initial = (
         scale_factor_initial * float(background.theta_dot[0])
     )
+    cosmic_hubble_n_initial = _cosmic_hubble_n_from_background_fields(
+        parameters=parameters,
+        hubble=float(background.H[0]),
+        phi=float(background.phi[0]),
+        velocity=float(background.v[0]),
+        theta_dot=float(background.theta_dot[0]),
+        matter_density=float(background.rho_m[0]),
+        radiation_density=float(background.rho_r[0]),
+    )
 
-    if phi_prime_initial == 0.0:
+    regular_mode: RegularGrowingModeInitialStateCertificate | None = None
+    if derive_regular_growing_mode_initial_state:
+        regular_mode = construct_regular_growing_mode_initial_state(
+            source_log_scale_factor=float(background.N[0]),
+            scale_factor=scale_factor_initial,
+            conformal_hubble=conformal_hubble_initial,
+            wave_number=wave_number,
+            gravitational_constant=parameters.G,
+            phi_background=float(background.phi[0]),
+            phi_prime_background=phi_prime_initial,
+            theta_prime_background=theta_prime_initial,
+            cosmic_hubble_n=cosmic_hubble_n_initial,
+            alpha=parameters.alpha,
+            beta=parameters.beta,
+            rho_star=parameters.rho_star,
+            m_phi_squared=parameters.m_phi_squared,
+            lambda_phi=parameters.lambda_phi,
+            amplitude=initial_mode_amplitude,
+            denominator_tolerance=denominator_tolerance,
+        )
+        initial_state = regular_mode.initial_state
+        initial_matching_surface_closed = (
+            regular_mode.initial_matching_surface_closed
+        )
+        initial_metric_fixed_point_solved = (
+            regular_mode.metric_constraints_solved
+        )
+        derived_initial_density_contrast = (
+            regular_mode.derived_density_contrast
+        )
+        derived_initial_density_contrast_n = (
+            regular_mode.derived_density_contrast_n
+        )
+    elif phi_prime_initial == 0.0:
         zero_velocity_matching = (
             solve_charge_perturbed_zero_velocity_matching(
                 scale_factor=scale_factor_initial,
@@ -232,6 +308,10 @@ def compare_averaged_and_time_dependent_full_field_growth(
         initial_metric_fixed_point_solved = (
             zero_velocity_matching.metric_constraints_solved
             and zero_velocity_matching.instantaneous_rhs_closed
+        )
+        derived_initial_density_contrast = target_density_contrast
+        derived_initial_density_contrast_n = (
+            zero_velocity_matching.selected_density_contrast_n
         )
     else:
         fixed_point = solve_initial_metric_fixed_point(
@@ -261,6 +341,10 @@ def compare_averaged_and_time_dependent_full_field_growth(
         )
         initial_metric_fixed_point_solved = (
             fixed_point.initial_metric_fixed_point_solved
+        )
+        derived_initial_density_contrast = target_density_contrast
+        derived_initial_density_contrast_n = (
+            target_density_contrast_n
         )
 
     def evaluate(
@@ -528,6 +612,14 @@ def compare_averaged_and_time_dependent_full_field_growth(
         gravitational_constant=parameters.G,
     )
     averaged_growth_factor = averaged.final_dfm_growth
+    cdm_growth_factor = averaged.final_cdm_growth
+    if cdm_growth_factor <= 0.0:
+        raise ValueError(
+            "phase-matched CDM growing mode must remain positive"
+        )
+    full_field_growth_suppression = (
+        full_field_growth_factor / cdm_growth_factor
+    )
     if abs(averaged_growth_factor) <= denominator_tolerance:
         raise ValueError(
             "averaged growth factor is numerically zero"
@@ -544,6 +636,11 @@ def compare_averaged_and_time_dependent_full_field_growth(
         ("initial_cycle_average", initial_cycle_average),
         ("final_cycle_average", final_cycle_average),
         ("full_field_growth_factor", full_field_growth_factor),
+        ("cdm_growth_factor", cdm_growth_factor),
+        (
+            "full_field_growth_suppression",
+            full_field_growth_suppression,
+        ),
         ("averaged_growth_factor", averaged_growth_factor),
         (
             "full_to_averaged_growth_ratio",
@@ -591,6 +688,10 @@ def compare_averaged_and_time_dependent_full_field_growth(
         initial_cycle_average=initial_cycle_average,
         final_cycle_average=final_cycle_average,
         full_field_growth_factor=full_field_growth_factor,
+        cdm_growth_factor=cdm_growth_factor,
+        full_field_growth_suppression=(
+            full_field_growth_suppression
+        ),
         averaged_growth_factor=averaged_growth_factor,
         full_to_averaged_growth_ratio=(
             full_to_averaged_growth_ratio
@@ -624,6 +725,13 @@ def compare_averaged_and_time_dependent_full_field_growth(
         phase_cycle_averaging_computed=True,
         averaged_full_field_comparison_computed=True,
         observational_calibration_completed=False,
+        derived_initial_density_contrast=(
+            derived_initial_density_contrast
+        ),
+        derived_initial_density_contrast_n=(
+            derived_initial_density_contrast_n
+        ),
+        regular_growing_mode_certificate=regular_mode,
     )
 
 
