@@ -44,6 +44,10 @@ from .regular_growing_mode_initial_state_v1 import (
     RegularGrowingModeInitialStateCertificate,
     construct_regular_growing_mode_initial_state,
 )
+from .gauge_invariant_regular_mode_normalization_v1 import (
+    GaugeInvariantRegularModeNormalizationCertificate,
+    certify_gauge_invariant_regular_mode_normalization,
+)
 
 State4 = tuple[float, float, float, float]
 
@@ -81,6 +85,9 @@ class AveragedFullFieldTimeDependentComparisonCertificate:
     derived_initial_density_contrast_n: float
     regular_growing_mode_certificate: (
         RegularGrowingModeInitialStateCertificate | None
+    )
+    gauge_invariant_regular_mode_normalization_certificate: (
+        GaugeInvariantRegularModeNormalizationCertificate | None
     )
 
 
@@ -251,6 +258,9 @@ def compare_averaged_and_time_dependent_full_field_growth(
     )
 
     regular_mode: RegularGrowingModeInitialStateCertificate | None = None
+    gauge_invariant_normalization: (
+        GaugeInvariantRegularModeNormalizationCertificate | None
+    ) = None
     if derive_regular_growing_mode_initial_state:
         regular_mode = construct_regular_growing_mode_initial_state(
             source_log_scale_factor=float(background.N[0]),
@@ -282,6 +292,49 @@ def compare_averaged_and_time_dependent_full_field_growth(
         )
         derived_initial_density_contrast_n = (
             regular_mode.derived_density_contrast_n
+        )
+        initial_rhs_certificate = dark_sector_fourier_right_hand_side(
+            scale_factor=scale_factor_initial,
+            conformal_hubble=conformal_hubble_initial,
+            wave_number=wave_number,
+            gravitational_constant=parameters.G,
+            phi_background=float(background.phi[0]),
+            phi_prime_background=phi_prime_initial,
+            theta_prime_background=theta_prime_initial,
+            delta_phi=initial_state[0],
+            delta_phi_prime=initial_state[1],
+            delta_theta=initial_state[2],
+            delta_theta_prime=initial_state[3],
+            alpha=parameters.alpha,
+            beta=parameters.beta,
+            rho_star=parameters.rho_star,
+            m_phi_squared=parameters.m_phi_squared,
+            lambda_phi=parameters.lambda_phi,
+            denominator_tolerance=denominator_tolerance,
+        )
+        hubble_initial = float(background.H[0])
+        rho_total_initial = (
+            3.0 * hubble_initial**2
+            / (8.0 * math.pi * parameters.G)
+        )
+        rho_total_n_initial = (
+            3.0
+            * hubble_initial
+            * cosmic_hubble_n_initial
+            / (4.0 * math.pi * parameters.G)
+        )
+        gauge_invariant_normalization = (
+            certify_gauge_invariant_regular_mode_normalization(
+                psi=initial_rhs_certificate.metric_constraints.phi,
+                delta_rho=(
+                    rho_total_initial
+                    * regular_mode.derived_density_contrast
+                ),
+                rho_N=rho_total_n_initial,
+                initial_state=initial_state,
+                denominator_separation_tolerance=denominator_tolerance,
+                zeta_separation_tolerance=denominator_tolerance,
+            )
         )
     elif phi_prime_initial == 0.0:
         zero_velocity_matching = (
@@ -732,6 +785,9 @@ def compare_averaged_and_time_dependent_full_field_growth(
             derived_initial_density_contrast_n
         ),
         regular_growing_mode_certificate=regular_mode,
+        gauge_invariant_regular_mode_normalization_certificate=(
+            gauge_invariant_normalization
+        ),
     )
 
 

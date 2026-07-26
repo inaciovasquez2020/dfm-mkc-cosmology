@@ -6,6 +6,8 @@ from pathlib import Path
 import json
 import math
 
+import pytest
+
 from dfm_mkc_solver.averaged_full_field_time_dependent_comparison_v1 import (
     compare_averaged_and_time_dependent_full_field_growth,
 )
@@ -89,6 +91,11 @@ def test_merged_circular_complete_cycle_observable() -> None:
     assert comparison.time_dependent_full_field_evolved
     assert comparison.phase_cycle_averaging_computed
     assert comparison.averaged_full_field_comparison_computed
+    assert (
+        comparison
+        .gauge_invariant_regular_mode_normalization_certificate
+        is None
+    )
 
     assert comparison.phase_span > 2.0 * math.pi
     assert comparison.maximum_rhs_residual < 1.0e-14
@@ -223,6 +230,20 @@ def test_regular_mode_common_amplitude_rescaling_invariance() -> None:
         assert certificate.metric_constraints_solved
         assert certificate.initial_matching_surface_closed
         assert certificate.total_density_derivative_certified
+        normalization = (
+            result
+            .gauge_invariant_regular_mode_normalization_certificate
+        )
+        assert normalization is not None
+        assert normalization.background_density_derivative_separated
+        assert (
+            normalization
+            .initial_uniform_density_curvature_gauge_invariant
+        )
+        assert normalization.gauge_invariant_normalization_closed
+        assert not normalization.global_gauge_invariant_observable_completed
+        assert not normalization.lcdm_tangent_separation_completed
+        assert not normalization.observational_calibration_completed
         assert math.isclose(
             result.derived_initial_density_contrast_n,
             certificate.derived_density_contrast_n,
@@ -231,6 +252,19 @@ def test_regular_mode_common_amplitude_rescaling_invariance() -> None:
         )
         assert not result.observational_calibration_completed
         assert not certificate.observational_calibration_completed
+    assert results[0].gauge_invariant_regular_mode_normalization_certificate
+    base_normalized = (
+        results[0]
+        .gauge_invariant_regular_mode_normalization_certificate
+        .normalized_initial_state
+    )
+    for result in results[1:]:
+        assert (
+            result
+            .gauge_invariant_regular_mode_normalization_certificate
+            .normalized_initial_state
+            == pytest.approx(base_normalized, rel=2.0e-10, abs=2.0e-12)
+        )
     for field in (
         "full_field_growth_factor",
         "cdm_growth_factor",
