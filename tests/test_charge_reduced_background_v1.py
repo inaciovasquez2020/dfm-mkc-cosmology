@@ -668,3 +668,127 @@ def test_minimal_circular_closure_is_documented_as_conditional():
     assert r"C_{\lambda_\phi}=\lambda_\phi=0" in theory
     assert "positive-charge branch" in theory
     assert "Growth likelihood remains blocked" in theory
+
+
+def test_constant_w_dark_energy_preserves_lambda_baseline():
+    import numpy as np
+    import pytest
+
+    from dfm_mkc_solver.charge_reduced_background_v1 import (
+        ChargeReducedParameters,
+        dark_energy_density,
+        dark_energy_equation_of_state,
+        dark_energy_pressure,
+        dfm_energy_density,
+        friedmann_radicand,
+    )
+
+    parameters = ChargeReducedParameters(
+        G=1.0 / (8.0 * np.pi),
+        Lambda=2.1,
+        w0=-1.0,
+        wa=0.0,
+        alpha=1.0,
+        beta=1.0,
+        rho_star=0.2,
+        m_phi_squared=0.1,
+        lambda_phi=0.0,
+        Q_theta=0.0,
+    )
+    state = (1.0, 0.0, 0.0, 0.7, 2.0e-4)
+    expected_density = (
+        parameters.Lambda
+        / (8.0 * np.pi * parameters.G)
+    )
+
+    for N in (-4.0, -1.0, 0.0):
+        assert dark_energy_equation_of_state(
+            N,
+            parameters,
+        ) == pytest.approx(-1.0)
+        assert dark_energy_density(
+            N,
+            parameters,
+        ) == pytest.approx(expected_density)
+        assert dark_energy_pressure(
+            N,
+            parameters,
+        ) == pytest.approx(-expected_density)
+
+        old_radicand = (
+            parameters.Lambda / 3.0
+            + (
+                8.0 * np.pi * parameters.G / 3.0
+            )
+            * (
+                state[3]
+                + state[4]
+                + dfm_energy_density(
+                    N,
+                    state[0],
+                    state[1],
+                    parameters,
+                )
+            )
+        )
+        assert friedmann_radicand(
+            N,
+            state,
+            parameters,
+        ) == pytest.approx(
+            old_radicand,
+            rel=2.0e-15,
+            abs=2.0e-15,
+        )
+
+    constant_w = ChargeReducedParameters(
+        G=parameters.G,
+        Lambda=parameters.Lambda,
+        w0=-0.9,
+        wa=0.0,
+        alpha=parameters.alpha,
+        beta=parameters.beta,
+        rho_star=parameters.rho_star,
+        m_phi_squared=parameters.m_phi_squared,
+        lambda_phi=parameters.lambda_phi,
+        Q_theta=parameters.Q_theta,
+    )
+    N = -2.0
+    assert dark_energy_density(
+        N,
+        constant_w,
+    ) == pytest.approx(
+        expected_density
+        * np.exp(-3.0 * (1.0 + constant_w.w0) * N)
+    )
+
+    cpl = ChargeReducedParameters(
+        G=parameters.G,
+        Lambda=parameters.Lambda,
+        w0=-0.95,
+        wa=0.2,
+        alpha=parameters.alpha,
+        beta=parameters.beta,
+        rho_star=parameters.rho_star,
+        m_phi_squared=parameters.m_phi_squared,
+        lambda_phi=parameters.lambda_phi,
+        Q_theta=parameters.Q_theta,
+    )
+    a = np.exp(N)
+    expected_w = cpl.w0 + cpl.wa * (1.0 - a)
+    expected_cpl_density = expected_density * np.exp(
+        -3.0 * (1.0 + cpl.w0 + cpl.wa) * N
+        + 3.0 * cpl.wa * (a - 1.0)
+    )
+    assert dark_energy_equation_of_state(
+        N,
+        cpl,
+    ) == pytest.approx(expected_w)
+    assert dark_energy_density(
+        N,
+        cpl,
+    ) == pytest.approx(expected_cpl_density)
+    assert dark_energy_pressure(
+        N,
+        cpl,
+    ) == pytest.approx(expected_w * expected_cpl_density)

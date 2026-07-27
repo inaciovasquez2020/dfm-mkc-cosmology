@@ -282,3 +282,51 @@ def test_regular_mode_common_amplitude_rescaling_invariance() -> None:
             rel_tol=2.0e-9,
             abs_tol=2.0e-11,
         )
+
+def test_non_lambda_dark_energy_enthalpy_enters_hubble_derivative() -> None:
+    from dfm_mkc_solver.averaged_full_field_time_dependent_comparison_v1 import (
+        _cosmic_hubble_n_from_background_fields,
+    )
+
+    log_scale_factor = math.log(0.5)
+    parameters = ChargeReducedParameters(
+        G=1.0 / (8.0 * math.pi),
+        w0=-0.9,
+        wa=0.2,
+    )
+    dark_energy_density = 3.0
+    hubble = 2.0
+
+    actual = _cosmic_hubble_n_from_background_fields(
+        parameters=parameters,
+        log_scale_factor=log_scale_factor,
+        hubble=hubble,
+        phi=1.0,
+        velocity=0.0,
+        theta_dot=0.0,
+        matter_density=0.0,
+        radiation_density=0.0,
+        dark_energy_density=dark_energy_density,
+    )
+
+    scale_factor = math.exp(log_scale_factor)
+    equation_of_state = (
+        parameters.w0
+        + parameters.wa * (1.0 - scale_factor)
+    )
+    expected = (
+        -4.0
+        * math.pi
+        * parameters.G
+        * (1.0 + equation_of_state)
+        * dark_energy_density
+        / hubble
+    )
+
+    assert equation_of_state != -1.0
+    assert math.isclose(
+        actual,
+        expected,
+        rel_tol=1.0e-15,
+        abs_tol=1.0e-15,
+    )

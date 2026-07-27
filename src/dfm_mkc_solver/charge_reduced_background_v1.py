@@ -31,6 +31,8 @@ class ChargeReducedParameters:
 
     G: float = 1.0 / (8.0 * math.pi)
     Lambda: float = 0.0
+    w0: float = -1.0
+    wa: float = 0.0
     alpha: float = 1.0
     beta: float = 1.0
     rho_star: float = 1.0
@@ -69,6 +71,7 @@ class ChargeReducedBackgroundSolution:
     rho_r: np.ndarray
     H: np.ndarray
     rho_dfm_mkc: np.ndarray
+    rho_dark_energy: np.ndarray
     theta: np.ndarray
     theta_dot: np.ndarray
     phase_charge_residual: np.ndarray
@@ -88,6 +91,8 @@ def validate_parameters(parameters: ChargeReducedParameters) -> None:
     for name in (
         "G",
         "Lambda",
+        "w0",
+        "wa",
         "alpha",
         "beta",
         "rho_star",
@@ -186,6 +191,43 @@ def dfm_energy_density(
     )
 
 
+def dark_energy_equation_of_state(
+    N: float,
+    parameters: ChargeReducedParameters,
+) -> float:
+    # CPL equation of state w(a)=w0+wa(1-a).
+    _require_finite("N", N)
+    return parameters.w0 + parameters.wa * (1.0 - math.exp(N))
+
+
+def dark_energy_density(
+    N: float,
+    parameters: ChargeReducedParameters,
+) -> float:
+    # Present-day-normalized CPL dark-energy density.
+    _require_finite("N", N)
+    density_today = (
+        parameters.Lambda
+        / (8.0 * math.pi * parameters.G)
+    )
+    exponent = (
+        -3.0 * (1.0 + parameters.w0 + parameters.wa) * N
+        + 3.0 * parameters.wa * (math.exp(N) - 1.0)
+    )
+    return density_today * math.exp(exponent)
+
+
+def dark_energy_pressure(
+    N: float,
+    parameters: ChargeReducedParameters,
+) -> float:
+    # Pressure of the CPL dark-energy carrier.
+    return (
+        dark_energy_equation_of_state(N, parameters)
+        * dark_energy_density(N, parameters)
+    )
+
+
 def friedmann_radicand(
     N: float,
     state: State,
@@ -198,11 +240,12 @@ def friedmann_radicand(
         rho_m
         + rho_r
         + dfm_energy_density(N, phi, v, parameters)
+        + dark_energy_density(N, parameters)
     )
 
     return (
-        parameters.Lambda / 3.0
-        + (8.0 * math.pi * parameters.G / 3.0) * rho_total
+        (8.0 * math.pi * parameters.G / 3.0)
+        * rho_total
     )
 
 
@@ -326,6 +369,7 @@ def solve_charge_reduced_background(
 
     H = np.empty_like(N)
     rho_dfm_mkc = np.empty_like(N)
+    rho_dark_energy = np.empty_like(N)
     theta_dot = np.empty_like(N)
     constraint_residual = np.empty_like(N)
 
@@ -350,6 +394,11 @@ def solve_charge_reduced_background(
             state[1],
             parameters,
         )
+        rho_dark_energy[index] = dark_energy_density(
+            float(N_value),
+            parameters,
+        )
+
         theta_dot[index] = (
             parameters.Q_theta
             / (
@@ -395,8 +444,17 @@ def solve_charge_reduced_background(
         + 0.5 * parameters.alpha * v**2
         + phase_energy
         - potential_values
+        + (
+            parameters.w0
+            + parameters.wa * (1.0 - a)
+        ) * rho_dark_energy
     )
-    rho_total = rho_m + rho_r + rho_dfm_mkc
+    rho_total = (
+        rho_m
+        + rho_r
+        + rho_dfm_mkc
+        + rho_dark_energy
+    )
     gradient_edge_order = 2 if len(N) >= 3 else 1
     rho_total_derivative = np.gradient(
         rho_total,
@@ -427,6 +485,7 @@ def solve_charge_reduced_background(
         rho_r,
         H,
         rho_dfm_mkc,
+        rho_dark_energy,
         theta,
         theta_dot,
         phase_charge_residual,
@@ -446,6 +505,7 @@ def solve_charge_reduced_background(
         rho_r=rho_r,
         H=H,
         rho_dfm_mkc=rho_dfm_mkc,
+        rho_dark_energy=rho_dark_energy,
         theta=theta,
         theta_dot=theta_dot,
         phase_charge_residual=phase_charge_residual,
@@ -1241,3 +1301,5 @@ def analyze_dfm_cdm_augmented_jacobian(
         condition_number=float(np.linalg.cond(jacobian)),
         locally_identifiable=rank == parameter_count,
     )
+
+SPEED_OF_LIGHT_KM_S = 299_792.458
