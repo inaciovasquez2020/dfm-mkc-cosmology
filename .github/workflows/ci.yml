@@ -29,4 +29,4 @@ jobs:
       - name: Run tests
         run: |
           PYTHONPATH=src pytest -q --deselect=tests/test_total_scalar_lapse_shift_hessian_v1.py::test_formal_adjoint_boundary_and_direct_certificate
-          PYTHONPATH=src pytest -q tests/test_total_scalar_lapse_shift_hessian_v1.py::test_formal_adjoint_boundary_and_direct_certificate
+          PYTHONPATH=src timeout --signal=ABRT --kill-after=30s 300s python -X faulthandler -m pytest -vv -s -o faulthandler_timeout=60 tests/test_total_scalar_lapse_shift_hessian_v1.py::test_formal_adjoint_boundary_and_direct_certificate
