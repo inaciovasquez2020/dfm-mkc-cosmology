@@ -34,6 +34,7 @@ from .charge_reduced_background_v1 import (
     ChargeReducedInitialData,
     ChargeReducedParameters,
     ChargeReducedSolverConfig,
+    dark_energy_equation_of_state,
     solve_charge_reduced_background,
 )
 from .dark_sector_fourier_rhs_v1 import (
@@ -129,12 +130,14 @@ def _rhs_residual(
 def _cosmic_hubble_n_from_background_fields(
     *,
     parameters: ChargeReducedParameters,
+    log_scale_factor: float,
     hubble: float,
     phi: float,
     velocity: float,
     theta_dot: float,
     matter_density: float,
     radiation_density: float,
+    dark_energy_density: float,
 ) -> float:
     """Return the exact Friedmann derivative from total continuity."""
     total_enthalpy = (
@@ -142,6 +145,14 @@ def _cosmic_hubble_n_from_background_fields(
         + (4.0 / 3.0) * radiation_density
         + parameters.alpha * velocity**2
         + parameters.beta * phi**2 * theta_dot**2
+        + (
+            1.0
+            + dark_energy_equation_of_state(
+                log_scale_factor,
+                parameters,
+            )
+        )
+        * dark_energy_density
     )
     return -4.0 * math.pi * parameters.G * total_enthalpy / hubble
 
@@ -249,12 +260,14 @@ def compare_averaged_and_time_dependent_full_field_growth(
     )
     cosmic_hubble_n_initial = _cosmic_hubble_n_from_background_fields(
         parameters=parameters,
+        log_scale_factor=float(background.N[0]),
         hubble=float(background.H[0]),
         phi=float(background.phi[0]),
         velocity=float(background.v[0]),
         theta_dot=float(background.theta_dot[0]),
         matter_density=float(background.rho_m[0]),
         radiation_density=float(background.rho_r[0]),
+        dark_energy_density=float(background.rho_dark_energy[0]),
     )
 
     regular_mode: RegularGrowingModeInitialStateCertificate | None = None
