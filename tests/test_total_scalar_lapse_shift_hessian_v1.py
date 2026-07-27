@@ -50,7 +50,7 @@ def test_constraint_rows_are_independent_action_variations():
 
 
 def test_formal_adjoint_boundary_and_direct_certificate():
-    cert = total.certificate()
+    cert = total.formal_adjoint_certificate()
     assert cert["formal_adjoint_exchange_symmetry"]
     assert "eta_i" in cert["boundary_terms"]
     assert cert["direct_mixed_differentiation_residual"] == 0

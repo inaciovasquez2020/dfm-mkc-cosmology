@@ -862,6 +862,28 @@ def direct_mixed_differentiation_residual():
     return sp.simplify(direct - bulk_plus_boundary)
 
 
+
+@lru_cache(maxsize=1)
+def formal_adjoint_certificate():
+    """Return the formal-adjoint certificate without background reduction."""
+    residual = formal_adjoint_residual()
+    exact = all(
+        sp.simplify(value) == 0
+        for constraint in residual.values()
+        for pair in constraint.values()
+        for value in pair
+    )
+    return {
+        "formal_adjoint_exchange_symmetry": exact,
+        "boundary_terms": (
+            "[u H_{A,q}v-u(H_{q,A})^*v]_{eta_i}^{eta_f}=0; "
+            "[delta J_I^0 delta ell_I]_{eta_i}^{eta_f}=0"
+        ),
+        "direct_mixed_differentiation_residual":
+            direct_mixed_differentiation_residual(),
+    }
+
+
 def certificate():
     L2 = _action_quadratic_density()
     z = _symbols()
