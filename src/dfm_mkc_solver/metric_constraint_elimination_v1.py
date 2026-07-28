@@ -24,6 +24,72 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass
 
+import sympy as sp
+
+
+@dataclass(frozen=True)
+class SymbolicMetricConstraintElimination:
+    """Exact production representation of the three constraint equations."""
+
+    variables: sp.Matrix
+    constraint_matrix: sp.Matrix
+    source_vector: sp.Matrix
+    solution: dict[str, sp.Expr]
+
+
+def symbolic_metric_constraint_elimination(
+    *,
+    wave_number_squared,
+    scale_factor,
+    conformal_hubble,
+    gravitational_constant,
+    delta_rho_total,
+    momentum_source,
+    enthalpy_sigma_total,
+):
+    """Return the exact matrix, source vector, and algebraic solution."""
+
+    Phi, Psi, P = sp.symbols("Phi Psi P")
+    prefactor = (
+        4 * sp.pi * gravitational_constant * scale_factor**2
+    )
+    matrix = sp.Matrix((
+        (wave_number_squared, 0, 3 * conformal_hubble),
+        (0, 0, wave_number_squared),
+        (wave_number_squared, -wave_number_squared, 0),
+    ))
+    source = sp.Matrix((
+        prefactor * delta_rho_total,
+        -prefactor * momentum_source,
+        -3 * prefactor * enthalpy_sigma_total,
+    ))
+    momentum_combination = sp.cancel(
+        prefactor * momentum_source / wave_number_squared
+    )
+    phi = sp.cancel(
+        (-prefactor * delta_rho_total
+         - 3 * conformal_hubble * momentum_combination)
+        / wave_number_squared
+    )
+    psi = sp.cancel(
+        phi
+        - 3 * prefactor * enthalpy_sigma_total
+        / wave_number_squared
+    )
+    return SymbolicMetricConstraintElimination(
+        variables=sp.Matrix((Phi, Psi, P)),
+        constraint_matrix=matrix,
+        source_vector=source,
+        solution={
+            "Phi": phi,
+            "Psi": psi,
+            "P": momentum_combination,
+            "Phi_prime": sp.cancel(
+                momentum_combination - conformal_hubble * psi
+            ),
+        },
+    )
+
 
 @dataclass(frozen=True)
 class MetricConstraintEliminationCertificate:
