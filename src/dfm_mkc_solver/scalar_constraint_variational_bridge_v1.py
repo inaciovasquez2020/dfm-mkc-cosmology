@@ -72,6 +72,21 @@ CANONICAL_DFM_ACTION_FORMULA = (
 )
 
 
+def thin_plane_convergence_integrand(
+    *, weyl_sum, source_distance, lens_distance, transverse_wave_number
+):
+    """Production flat-sky single-plane convergence integrand."""
+
+    return sp.cancel(
+        -sp.Rational(1, 2)
+        * lens_distance
+        * (source_distance - lens_distance)
+        / source_distance
+        * transverse_wave_number**2
+        * weyl_sum
+    )
+
+
 def _require_finite(name, value):
     if not math.isfinite(value):
         raise ValueError("{} must be finite".format(name))
