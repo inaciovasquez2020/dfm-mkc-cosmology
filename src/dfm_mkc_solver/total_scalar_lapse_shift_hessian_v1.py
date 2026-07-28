@@ -645,8 +645,8 @@ def background_residuals():
         )
     ).subs(n, 1)
     return {
-        "lapse_Friedmann": sp.factor(lapse),
-        "spatial_trace": sp.factor(scale),
+        "lapse_Friedmann": lapse,
+        "spatial_trace": scale,
         "phi": sp.factor(phi),
         "theta": sp.factor(theta),
         "baryon_continuity": Jbp,
@@ -960,4 +960,59 @@ def certificate():
             "measurable_margin": False,
             "novelty": False,
         },
+    }
+
+
+@lru_cache(maxsize=1)
+def background_velocity_potential_second_jet_closure():
+    """Close only the two visible velocity-potential second jets."""
+
+    z = _symbols()
+
+    pivot_substitution = {
+        z["ellbpp"]: -z["H"] * z["a"] * z["mb"],
+        z["ellrpp"]: (
+            -4
+            * z["Jrp"]
+            * z["kr"]
+            / (9 * z["Jr"]**sp.Rational(2, 3))
+        ),
+    }
+
+    defining_residuals = {
+        "baryon_velocity_potential":
+            z["ellbpp"] + z["H"] * z["a"] * z["mb"],
+        "radiation_velocity_potential": (
+            z["ellrpp"]
+            + 4
+            * z["Jrp"]
+            * z["kr"]
+            / (9 * z["Jr"]**sp.Rational(2, 3))
+        ),
+    }
+
+    substitution_back_residuals = {
+        name: sp.cancel(
+            residual.subs(
+                pivot_substitution,
+                simultaneous=True,
+            )
+        )
+        for name, residual in defining_residuals.items()
+    }
+
+    return {
+        "pivots": (
+            z["ellbpp"],
+            z["ellrpp"],
+        ),
+        "pivot_substitution": pivot_substitution,
+        "defining_residuals": defining_residuals,
+        "substitution_back_residuals":
+            substitution_back_residuals,
+        "denominators": {
+            str(z["ellbpp"]): sp.Integer(1),
+            str(z["ellrpp"]): sp.Integer(1),
+        },
+        "domain_conditions": (),
     }

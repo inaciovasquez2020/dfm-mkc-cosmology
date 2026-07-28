@@ -1,3 +1,4 @@
+from dfm_mkc_solver import scalar_constraint_variational_bridge_v1 as module
 import numpy as np
 import pytest
 
@@ -166,3 +167,22 @@ def test_zero_wave_number_is_rejected():
             conformal_hubble=1.0,
             gravitational_constant=1.0,
         )
+
+
+
+def test_canonical_metric_constraint_action_binding_is_partial():
+    certificate = (
+        module.canonical_metric_constraint_action_binding_certificate()
+    )
+
+    assert certificate.hamiltonian_row_residuals_zero is True
+    assert certificate.momentum_row_residuals_zero is True
+    assert certificate.spatial_noether_identity_established is True
+    assert certificate.e_row_gauge_redundant is True
+    assert certificate.anisotropy_row_identified is True
+    assert (
+        certificate.canonical_second_variation_partially_identified
+        is True
+    )
+    assert certificate.canonical_second_variation_identified is True
+    assert certificate.action_binding_established is False
