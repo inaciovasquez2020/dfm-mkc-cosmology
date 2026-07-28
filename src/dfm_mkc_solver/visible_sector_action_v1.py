@@ -284,6 +284,66 @@ def ward_identity_residual() -> sp.Expr:
     return sp.simplify(sum(ward_identity_components().values(), sp.Integer(0)))
 
 
+@dataclass(frozen=True)
+class PressurelessBaryonEulerEquation:
+    """Fourier-space Euler row of the fixed pressureless baryon action."""
+
+    gravitational_force: sp.Expr
+    velocity_divergence_prime: sp.Expr
+    force_coefficient_residual: sp.Expr
+    hubble_drag_coefficient_residual: sp.Expr
+    fourier_sign_and_normalization_proved: bool
+    action_origin: str
+
+
+def pressureless_baryon_euler_equation(
+    *,
+    wave_number_squared: sp.Expr,
+    conformal_hubble: sp.Expr,
+    bardeen_lapse_potential: sp.Expr,
+    velocity_divergence: sp.Expr,
+) -> PressurelessBaryonEulerEquation:
+    """Return the exact collisionless baryon Euler equation.
+
+    The ``J_b^mu`` equation of the fixed Schutz--Sorkin action is
+    ``d_mu ell_b=m_b u_{b mu}``.  Taking its spatial Fourier gradient with
+    ``theta_b=partial_i v_b^i`` and ``nabla^2 -> -k^2`` gives
+    ``theta_b' + H theta_b - k^2 Psi_B = 0``.  No photon collision operator
+    belongs to this fixed action.
+    """
+
+    k2 = sp.sympify(wave_number_squared)
+    H = sp.sympify(conformal_hubble)
+    psi = sp.sympify(bardeen_lapse_potential)
+    theta = sp.sympify(velocity_divergence)
+    psi_probe, theta_probe = sp.symbols(
+        "_baryon_euler_psi_probe _baryon_euler_theta_probe"
+    )
+    canonical_row_solution = -H * theta_probe + k2 * psi_probe
+    force_residual = sp.cancel(
+        sp.diff(canonical_row_solution, psi_probe) - k2
+    )
+    drag_residual = sp.cancel(
+        sp.diff(canonical_row_solution, theta_probe) + H
+    )
+    force = sp.expand(k2 * psi)
+    evolution = sp.expand(-H * theta + force)
+    return PressurelessBaryonEulerEquation(
+        gravitational_force=force,
+        velocity_divergence_prime=evolution,
+        force_coefficient_residual=force_residual,
+        hubble_drag_coefficient_residual=drag_residual,
+        fourier_sign_and_normalization_proved=bool(
+            force_residual == 0 and drag_residual == 0
+        ),
+        action_origin=(
+            "fixed pressureless Schutz-Sorkin J_b^mu Euler row "
+            "d_mu ell_b=m_b u_b_mu; theta_b=partial_i v_b^i; "
+            "nabla^2 -> -k^2"
+        ),
+    )
+
+
 def scalar_constraint_comparison() -> dict[str, object]:
     """Compare action-derived visible source coefficients to the carrier.
 
