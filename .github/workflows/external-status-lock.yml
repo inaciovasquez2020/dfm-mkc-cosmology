@@ -8,7 +8,7 @@ jobs:
   external-status-lock:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Verify DESI DR2 BAO input packet
         run: python3 tools/verify_desi_dr2_bao_input_packet.py
 
