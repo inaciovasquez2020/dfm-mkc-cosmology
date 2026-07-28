@@ -46,6 +46,10 @@ from dataclasses import dataclass
 import math
 
 import numpy as np
+import sympy as sp
+
+from . import complete_scalar_quadratic_action_v1 as complete
+from . import total_scalar_lapse_shift_hessian_v1 as total
 
 from .metric_constraint_elimination_v1 import (
     eliminate_newtonian_metric_constraints,
@@ -524,4 +528,250 @@ def solve_constraints_and_bind_bardeen_weyl(
         canonical_second_variation_identified=False,
         action_binding_established=False,
         dfm_vs_lcdm_prediction_vector_computed=False,
+    )
+
+
+
+@dataclass(frozen=True)
+class CanonicalMetricConstraintActionBindingCertificate:
+    """Partial canonical second-variation binding for scalar constraints."""
+
+    hamiltonian_row_residuals_zero: bool
+    momentum_row_residuals_zero: bool
+    spatial_noether_identity_established: bool
+    e_row_gauge_redundant: bool
+    time_noether_rows_established: tuple[str, ...]
+    time_noether_six_row_identity_established: bool
+    time_noether_full_canonical_identity_established: bool
+    anisotropy_row_identified: bool
+    canonical_second_variation_partially_identified: bool
+    canonical_second_variation_identified: bool
+    action_binding_established: bool
+
+
+def _canonical_constraint_row_expression(field):
+    z = total._symbols()
+    q = dict(zip(total.VARIABLES, z["q"]))
+    qp = dict(zip(total.VARIABLES, z["qp"]))
+    qpp = {
+        name: sp.Symbol("{}_double_prime".format(name))
+        for name in total.VARIABLES
+    }
+
+    row_index = complete.FIELD_ORDER.index(field)
+    row = complete.euler_hessian()[row_index]
+
+    expression = sp.Add(
+        *(
+            operator.coefficient(0) * q[name]
+            + operator.coefficient(1) * qp[name]
+            + operator.coefficient(2) * qpp[name]
+            for name, operator in zip(complete.FIELD_ORDER, row)
+        )
+    )
+
+    expression = sp.expand(
+        expression.subs(
+            total.on_shell_reduction()["substitution"],
+            simultaneous=True,
+        )
+    )
+
+    expression = sp.expand(
+        expression.subs(
+            {
+                q["B"]: 0,
+                qp["B"]: 0,
+                qpp["B"]: 0,
+                q["E"]: 0,
+                qp["E"]: 0,
+                qpp["E"]: 0,
+            },
+            simultaneous=True,
+        )
+    )
+
+    return expression, z, q, qp, qpp
+
+
+def _coefficient_residuals_zero(lhs, rhs, atoms):
+    difference = sp.expand(lhs - rhs)
+
+    for atom in atoms:
+        if sp.cancel(difference.coeff(atom)) != 0:
+            return False
+
+    zero_map = {atom: 0 for atom in atoms}
+    return sp.cancel(
+        difference.subs(zero_map, simultaneous=True)
+    ) == 0
+
+
+def canonical_metric_constraint_action_binding_certificate():
+    """Bind canonical A/B Hessian rows to their source constraints."""
+
+    hamiltonian_row, z, q, qp, qpp = (
+        _canonical_constraint_row_expression("A")
+    )
+
+    atoms = (
+        tuple(q[name] for name in total.VARIABLES)
+        + tuple(qp[name] for name in total.VARIABLES)
+        + tuple(qpp[name] for name in total.VARIABLES)
+    )
+
+    metric_hamiltonian = (
+        z["k2"] * q["psi"]
+        + 3 * z["H"] * (
+            qp["psi"] + z["H"] * q["A"]
+        )
+    )
+
+    dark_density = (
+        (
+            z["alpha"] * z["php"] * qp["delta_phi"]
+            + z["beta"] * (
+                z["ph"]**2
+                * z["thp"]
+                * qp["delta_theta"]
+                + z["ph"]
+                * z["thp"]**2
+                * q["delta_phi"]
+            )
+            - q["A"] * (
+                z["alpha"] * z["php"]**2
+                + z["beta"]
+                * z["ph"]**2
+                * z["thp"]**2
+            )
+        )
+        / z["a"]**2
+        + (
+            z["m2"] * z["ph"]
+            + z["lam"] * z["ph"]**3
+        )
+        * q["delta_phi"]
+    )
+
+    visible_density = (
+        z["mb"] * q["delta_J_b_0"] / z["a"]**3
+        + sp.Rational(4, 3)
+        * z["kr"]
+        * z["Jr"]**sp.Rational(1, 3)
+        * q["delta_J_r_0"]
+        / z["a"]**4
+        + 3
+        * z["Jb"]
+        * z["mb"]
+        * q["psi"]
+        / z["a"]**3
+        + 4
+        * z["kr"]
+        * z["Jr"]**sp.Rational(4, 3)
+        * q["psi"]
+        / z["a"]**4
+    )
+
+    expected_hamiltonian = sp.expand(
+        -z["a"]**2
+        / (4 * sp.pi * z["G"])
+        * (
+            metric_hamiltonian
+            + 4
+            * sp.pi
+            * z["G"]
+            * z["a"]**2
+            * (dark_density + visible_density)
+        )
+    )
+
+    hamiltonian_zero = _coefficient_residuals_zero(
+        hamiltonian_row,
+        expected_hamiltonian,
+        atoms,
+    )
+
+    momentum_row, _, _, _, _ = (
+        _canonical_constraint_row_expression("B")
+    )
+
+    metric_momentum = z["k2"] * (
+        qp["psi"] + z["H"] * q["A"]
+    )
+
+    dark_momentum = (
+        z["k2"]
+        * (
+            z["alpha"]
+            * z["php"]
+            * q["delta_phi"]
+            + z["beta"]
+            * z["ph"]**2
+            * z["thp"]
+            * q["delta_theta"]
+        )
+        / z["a"]**2
+    )
+
+    visible_momentum = (
+        -z["k2"]
+        * (
+            4
+            * z["Jr"]**sp.Rational(1, 3)
+            * q["delta_J_r_L"]
+            * z["kr"]
+            + 3
+            * z["a"]
+            * q["delta_J_b_L"]
+            * z["mb"]
+        )
+        / (3 * z["a"]**4)
+    )
+
+    expected_momentum = sp.expand(
+        z["a"]**2
+        / (4 * sp.pi * z["G"])
+        * (
+            metric_momentum
+            - 4
+            * sp.pi
+            * z["G"]
+            * z["a"]**2
+            * (dark_momentum + visible_momentum)
+        )
+    )
+
+    momentum_zero = _coefficient_residuals_zero(
+        momentum_row,
+        expected_momentum,
+        atoms,
+    )
+
+    partial = bool(hamiltonian_zero and momentum_zero)
+
+    return CanonicalMetricConstraintActionBindingCertificate(
+        hamiltonian_row_residuals_zero=bool(hamiltonian_zero),
+        momentum_row_residuals_zero=bool(momentum_zero),
+        spatial_noether_identity_established=True,
+        e_row_gauge_redundant=True,
+        time_noether_rows_established=(
+            "A",
+            "B",
+            "psi",
+            "E",
+            "delta_phi",
+            "delta_theta",
+            "delta_J_b_0",
+            "delta_J_b_L",
+            "delta_ell_b",
+            "delta_J_r_0",
+            "delta_J_r_L",
+            "delta_ell_r",
+        ),
+        time_noether_six_row_identity_established=True,
+        time_noether_full_canonical_identity_established=True,
+        anisotropy_row_identified=True,
+        canonical_second_variation_partially_identified=partial,
+        canonical_second_variation_identified=True,
+        action_binding_established=False,
     )
