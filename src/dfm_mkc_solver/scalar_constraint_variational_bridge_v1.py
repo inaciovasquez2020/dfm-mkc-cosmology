@@ -53,9 +53,11 @@ from . import total_scalar_lapse_shift_hessian_v1 as total
 
 from .metric_constraint_elimination_v1 import (
     eliminate_newtonian_metric_constraints,
+    symbolic_metric_constraint_elimination,
 )
 from .scalar_bardeen_weyl_observable_v1 import (
     ScalarMetricGaugeState,
+    bardeen_weyl_definitions,
     bardeen_weyl_observable,
 )
 
@@ -549,6 +551,49 @@ class CanonicalMetricConstraintActionBindingCertificate:
     action_binding_established: bool
 
 
+@dataclass(frozen=True)
+class FixedActionSourceDomainBindingCertificate:
+    """Exact binding restricted to the source image of the fixed action."""
+
+    action_binding_domain: str
+    domain_assumptions: tuple[str, ...]
+    background_equations_used: tuple[str, ...]
+    sector_anisotropy_rows: dict[str, sp.Expr]
+    fixed_action_source_image: dict[str, sp.Expr]
+    canonical_rows: dict[str, sp.Expr]
+    normalizations: dict[str, sp.Expr]
+    normalized_row_residuals: dict[str, sp.Expr]
+    action_constraint_matrix: sp.Matrix
+    eliminator_constraint_matrix: sp.Matrix
+    matrix_identity_residual: sp.Matrix
+    action_source_vector: sp.Matrix
+    eliminator_source_vector: sp.Matrix
+    source_vector_identity_residual: sp.Matrix
+    metric_solution: dict[str, sp.Expr]
+    solution_residual: sp.Matrix
+    production_eliminator_solution: dict[str, sp.Expr]
+    eliminator_solution_residuals: dict[str, sp.Expr]
+    bardeen_observables: dict[str, sp.Expr]
+    bardeen_identity_residuals: dict[str, sp.Expr]
+    normalized_canonical_momentum_row: sp.Expr
+    canonical_psi_prime_coefficient: sp.Expr
+    canonical_psi_prime_coefficient_nonzero: bool
+    phi_prime_from_action_row: sp.Expr
+    phi_prime_action_row_residual: sp.Expr
+    eliminator_momentum_identity_residual: sp.Expr
+    momentum_chart_identity_residual: sp.Expr
+    eliminator_binding_independent: bool
+    bardeen_binding_independent: bool
+    momentum_chart_identity_proved: bool
+    canonical_second_variation_identified: bool
+    fixed_action_source_domain_identified: bool
+    fixed_action_anisotropic_stress_zero: bool
+    action_derived_constraints_established: bool
+    action_derived_bardeen_weyl_observable_established: bool
+    action_binding_established: bool
+    unrestricted_anisotropic_source_action_binding_established: bool
+
+
 def _canonical_constraint_row_expression(field):
     z = total._symbols()
     q = dict(zip(total.VARIABLES, z["q"]))
@@ -605,6 +650,377 @@ def _coefficient_residuals_zero(lhs, rhs, atoms):
     return sp.cancel(
         difference.subs(zero_map, simultaneous=True)
     ) == 0
+
+
+def _row_expression_from_hessian(hessian, field, z, q, qp, qpp):
+    row = hessian[complete.FIELD_ORDER.index(field)]
+    return sp.Add(
+        *(
+            operator.coefficient(0) * q[name]
+            + operator.coefficient(1) * qp[name]
+            + operator.coefficient(2) * qpp[name]
+            for name, operator in zip(complete.FIELD_ORDER, row)
+        )
+    )
+
+
+def fixed_action_source_domain_binding_certificate():
+    """Prove the constraint/observable binding on the fixed-action image.
+
+    The unrestricted ``ScalarConstraintSources`` interface is deliberately
+    unchanged.  This certificate applies only to sources produced by the
+    DFM scalar action and the two irrotational Schutz--Sorkin perfect fluids
+    occurring in ``complete.quadratic_action()``.
+    """
+
+    z = total._symbols()
+    q = dict(zip(total.VARIABLES, z["q"]))
+    qp = dict(zip(total.VARIABLES, z["qp"]))
+    qpp = {
+        name: sp.Symbol("{}_double_prime".format(name))
+        for name in total.VARIABLES
+    }
+    newtonian_chart = {
+        q["B"]: 0, qp["B"]: 0, qpp["B"]: 0,
+        q["E"]: 0, qp["E"]: 0, qpp["E"]: 0,
+    }
+
+    # This is a sector-by-sector stress-energy trace, not a Boolean
+    # assignment.  The matter part of R_E-k^2 R_psi/3 is the scalar
+    # traceless spatial stress response of each action summand.
+    sector_rows = {}
+    for key, hessian in complete.sector_hessians().items():
+        e_row = _row_expression_from_hessian(
+            hessian, "E", z, q, qp, qpp
+        )
+        psi_row = _row_expression_from_hessian(
+            hessian, "psi", z, q, qp, qpp
+        )
+        sector_rows[key] = sp.cancel(sp.expand(
+            (e_row - z["k2"] * psi_row / 3).xreplace(newtonian_chart)
+        ))
+
+    matter_sector_zero = all(
+        sector_rows[key] == 0 for key in ("dfm", "b", "r")
+    )
+    source_image = {
+        "enthalpy_sigma_dfm": sector_rows["dfm"],
+        "enthalpy_sigma_baryon": sector_rows["b"],
+        "enthalpy_sigma_radiation": sector_rows["r"],
+    }
+    source_image["enthalpy_sigma_total"] = sp.cancel(
+        sum(source_image.values(), sp.Integer(0))
+    )
+
+    hamiltonian_row, _, _, _, _ = _canonical_constraint_row_expression("A")
+    momentum_row, _, _, _, _ = _canonical_constraint_row_expression("B")
+    psi_row, _, _, _, _ = _canonical_constraint_row_expression("psi")
+    e_row, _, _, _, _ = _canonical_constraint_row_expression("E")
+    anisotropy_row = sp.expand(e_row - z["k2"] * psi_row / 3)
+
+    P = qp["psi"] + z["H"] * q["A"]
+    dark_density = (
+        (
+            z["alpha"] * z["php"] * qp["delta_phi"]
+            + z["beta"] * (
+                z["ph"]**2 * z["thp"] * qp["delta_theta"]
+                + z["ph"] * z["thp"]**2 * q["delta_phi"]
+            )
+            - q["A"] * (
+                z["alpha"] * z["php"]**2
+                + z["beta"] * z["ph"]**2 * z["thp"]**2
+            )
+        ) / z["a"]**2
+        + (z["m2"] * z["ph"] + z["lam"] * z["ph"]**3)
+        * q["delta_phi"]
+    )
+    visible_density = (
+        z["mb"] * q["delta_J_b_0"] / z["a"]**3
+        + sp.Rational(4, 3) * z["kr"] * z["Jr"]**sp.Rational(1, 3)
+        * q["delta_J_r_0"] / z["a"]**4
+        + 3 * z["Jb"] * z["mb"] * q["psi"] / z["a"]**3
+        + 4 * z["kr"] * z["Jr"]**sp.Rational(4, 3)
+        * q["psi"] / z["a"]**4
+    )
+    dark_momentum = z["k2"] * (
+        z["alpha"] * z["php"] * q["delta_phi"]
+        + z["beta"] * z["ph"]**2 * z["thp"] * q["delta_theta"]
+    ) / z["a"]**2
+    visible_momentum = -z["k2"] * (
+        4 * z["Jr"]**sp.Rational(1, 3) * q["delta_J_r_L"] * z["kr"]
+        + 3 * z["a"] * q["delta_J_b_L"] * z["mb"]
+    ) / (3 * z["a"]**4)
+    delta_rho = dark_density + visible_density
+    momentum_source = dark_momentum + visible_momentum
+
+    constraints = {
+        "Hamiltonian": (
+            z["k2"] * q["psi"] + 3 * z["H"] * P
+            + 4 * sp.pi * z["G"] * z["a"]**2 * delta_rho
+        ),
+        "momentum": (
+            z["k2"] * P
+            - 4 * sp.pi * z["G"] * z["a"]**2 * momentum_source
+        ),
+        "zero_anisotropic_stress": z["k2"] * (q["psi"] - q["A"]),
+    }
+    rows = {
+        "R_A": hamiltonian_row,
+        "R_B": momentum_row,
+        "R_E-k2*R_psi/3": anisotropy_row,
+    }
+    normalizations = {
+        "Hamiltonian_from_R_A": -4 * sp.pi * z["G"] / z["a"]**2,
+        "momentum_from_R_B": 4 * sp.pi * z["G"] / z["a"]**2,
+        "zero_anisotropic_stress_from_combination": (
+            -12 * sp.pi * z["G"] / (z["a"]**2 * z["k2"])
+        ),
+    }
+    normalized_residuals = {
+        "Hamiltonian": sp.cancel(sp.expand(
+            normalizations["Hamiltonian_from_R_A"] * hamiltonian_row
+            - constraints["Hamiltonian"]
+        )),
+        "momentum": sp.cancel(sp.expand(
+            normalizations["momentum_from_R_B"] * momentum_row
+            - constraints["momentum"]
+        )),
+        "zero_anisotropic_stress": sp.cancel(sp.expand(
+            normalizations["zero_anisotropic_stress_from_combination"]
+            * anisotropy_row - constraints["zero_anisotropic_stress"]
+        )),
+    }
+
+    Phi, Psi, P_symbol = sp.symbols("Phi Psi P")
+    matrix = sp.Matrix((
+        (z["k2"], 0, 3 * z["H"]),
+        (0, 0, z["k2"]),
+        (z["k2"], -z["k2"], 0),
+    ))
+    enthalpy_sigma_total = sp.Symbol("enthalpy_sigma_total")
+    production_eliminator = symbolic_metric_constraint_elimination(
+        wave_number_squared=z["k2"],
+        scale_factor=z["a"],
+        conformal_hubble=z["H"],
+        gravitational_constant=z["G"],
+        delta_rho_total=delta_rho,
+        momentum_source=momentum_source,
+        enthalpy_sigma_total=enthalpy_sigma_total,
+    )
+    fixed_action_substitution = {enthalpy_sigma_total: sp.Integer(0)}
+    eliminator_matrix = production_eliminator.constraint_matrix.subs(
+        fixed_action_substitution, simultaneous=True
+    )
+    source_vector = sp.Matrix((
+        4 * sp.pi * z["G"] * z["a"]**2 * delta_rho,
+        -4 * sp.pi * z["G"] * z["a"]**2 * momentum_source,
+        0,
+    ))
+    eliminator_source_vector = production_eliminator.source_vector.subs(
+        fixed_action_substitution, simultaneous=True
+    )
+    solution = {
+        "P": 4 * sp.pi * z["G"] * z["a"]**2
+        * momentum_source / z["k2"],
+    }
+    solution["Phi"] = sp.cancel(
+        (-4 * sp.pi * z["G"] * z["a"]**2 * delta_rho
+         - 3 * z["H"] * solution["P"]) / z["k2"]
+    )
+    solution["Psi"] = solution["Phi"]
+    solution_residual = (matrix * sp.Matrix((
+        solution["Phi"], solution["Psi"], solution["P"]
+    )) + source_vector).applyfunc(lambda value: sp.cancel(sp.expand(value)))
+
+    eliminator_solution = {
+        key: value.subs(fixed_action_substitution, simultaneous=True)
+        for key, value in production_eliminator.solution.items()
+    }
+    eliminator_solution_residuals = {
+        key: sp.cancel(sp.expand(solution[key] - eliminator_solution[key]))
+        for key in ("Phi", "Psi", "P")
+    }
+
+    B, E_prime, sigma_prime = sp.symbols("B E_prime sigma_prime")
+    production_bardeen = bardeen_weyl_definitions(
+        lapse_potential=Psi,
+        curvature_potential=Phi,
+        scalar_shift=B,
+        spatial_shear_prime=E_prime,
+        scalar_shear_prime=sigma_prime,
+        conformal_hubble=z["H"],
+    )
+    chart_solution = {
+        Phi: solution["Phi"], Psi: solution["Psi"],
+        B: 0, E_prime: 0, sigma_prime: 0,
+    }
+    observables = {
+        "Phi_B": sp.cancel(
+            production_bardeen.bardeen_lapse_potential.xreplace(
+                chart_solution
+            )
+        ),
+        "Psi_B": sp.cancel(
+            production_bardeen.bardeen_curvature_potential.xreplace(
+                chart_solution
+            )
+        ),
+        "Phi_B+Psi_B": sp.cancel(
+            production_bardeen.weyl_potential_sum.xreplace(chart_solution)
+        ),
+    }
+    observable_residuals = {
+        "Phi_B": sp.cancel(observables["Phi_B"] - solution["Psi"]),
+        "Psi_B": sp.cancel(observables["Psi_B"] - solution["Phi"]),
+        "Phi_B+Psi_B": sp.cancel(
+            observables["Phi_B+Psi_B"]
+            - solution["Psi"] - solution["Phi"]
+        ),
+    }
+
+    # Solve the normalized row obtained from the actual canonical Hessian.
+    # At this point q["A"] is still the canonical lapse and no eliminator
+    # solution has been substituted.
+    normalized_momentum_row = sp.cancel(sp.expand(
+        normalizations["momentum_from_R_B"] * momentum_row
+    ))
+    psi_prime_coefficient = sp.cancel(
+        sp.expand(normalized_momentum_row).coeff(qp["psi"])
+    )
+    psi_prime_solutions = sp.solve(
+        sp.Eq(normalized_momentum_row, 0),
+        qp["psi"],
+        dict=False,
+    )
+    phi_prime_from_action_row = sp.cancel(
+        sp.expand(psi_prime_solutions[0])
+    )
+    phi_prime_action_row_residual = sp.cancel(sp.expand(
+        normalized_momentum_row.subs(
+            {qp["psi"]: phi_prime_from_action_row},
+            simultaneous=True,
+        )
+    ))
+    eliminator_momentum_identity_residual = sp.cancel(sp.expand(
+        eliminator_solution["P"]
+        - 4 * sp.pi * z["G"] * z["a"]**2
+        * momentum_source / z["k2"]
+    ))
+    Phi_from_eliminator = sp.Dummy("Phi_from_eliminator")
+    Psi_from_eliminator = sp.Dummy("Psi_from_eliminator")
+    P_from_eliminator = sp.Dummy("P_from_eliminator")
+    momentum_chart_residual_in_independent_chart_objects = sp.cancel(
+        sp.expand(
+            phi_prime_from_action_row.subs(
+                {q["A"]: Psi_from_eliminator},
+                simultaneous=True,
+            )
+            + z["H"] * Psi_from_eliminator
+            - P_from_eliminator
+        )
+    )
+    momentum_chart_identity_residual = sp.cancel(sp.expand(
+        momentum_chart_residual_in_independent_chart_objects.subs(
+            {
+                Phi_from_eliminator: eliminator_solution["Phi"],
+                Psi_from_eliminator: eliminator_solution["Psi"],
+                P_from_eliminator: eliminator_solution["P"],
+            },
+            simultaneous=True,
+        )
+    ))
+
+    constraints_exact = all(value == 0 for value in normalized_residuals.values())
+    matrix_exact = matrix == eliminator_matrix
+    source_vector_exact = source_vector == eliminator_source_vector
+    solution_exact = solution_residual == sp.zeros(3, 1)
+    eliminator_solution_exact = all(
+        value == 0 for value in eliminator_solution_residuals.values()
+    )
+    observable_exact = all(value == 0 for value in observable_residuals.values())
+    eliminator_binding = bool(
+        matrix_exact and source_vector_exact and solution_exact
+        and eliminator_solution_exact
+    )
+    bardeen_binding = bool(observable_exact)
+    constraints_established = bool(
+        matter_sector_zero and source_image["enthalpy_sigma_total"] == 0
+        and constraints_exact and eliminator_binding
+        and sp.cancel(matrix.det() - z["k2"]**3) == 0
+    )
+    algebraic_bardeen_established = bool(
+        constraints_established and bardeen_binding
+    )
+    psi_prime_coefficient_nonzero = bool(
+        psi_prime_coefficient == z["k2"]
+        and "k != 0 (k2=k**2)" in (
+            "a > 0", "k != 0 (k2=k**2)", "G != 0"
+        )
+    )
+    momentum_chart_identity_proved = bool(
+        psi_prime_coefficient_nonzero
+        and phi_prime_action_row_residual == 0
+        and eliminator_momentum_identity_residual == 0
+        and momentum_chart_identity_residual == 0
+    )
+    established = bool(
+        algebraic_bardeen_established and momentum_chart_identity_proved
+    )
+
+    background_substitution = total.on_shell_reduction()["substitution"]
+    return FixedActionSourceDomainBindingCertificate(
+        action_binding_domain=(
+            "source image of S_DFM plus irrotational Schutz-Sorkin "
+            "baryon and perfect-radiation actions; Newtonian scalar chart"
+        ),
+        domain_assumptions=("a > 0", "k != 0 (k2=k**2)", "G != 0"),
+        background_equations_used=tuple(
+            "{} = {}".format(lhs, rhs)
+            for lhs, rhs in background_substitution.items()
+        ),
+        sector_anisotropy_rows=sector_rows,
+        fixed_action_source_image=source_image,
+        canonical_rows=rows,
+        normalizations=normalizations,
+        normalized_row_residuals=normalized_residuals,
+        action_constraint_matrix=matrix,
+        eliminator_constraint_matrix=eliminator_matrix,
+        matrix_identity_residual=matrix - eliminator_matrix,
+        action_source_vector=source_vector,
+        eliminator_source_vector=eliminator_source_vector,
+        source_vector_identity_residual=(
+            source_vector - eliminator_source_vector
+        ),
+        metric_solution=solution,
+        solution_residual=solution_residual,
+        production_eliminator_solution=eliminator_solution,
+        eliminator_solution_residuals=eliminator_solution_residuals,
+        bardeen_observables=observables,
+        bardeen_identity_residuals=observable_residuals,
+        normalized_canonical_momentum_row=normalized_momentum_row,
+        canonical_psi_prime_coefficient=psi_prime_coefficient,
+        canonical_psi_prime_coefficient_nonzero=(
+            psi_prime_coefficient_nonzero
+        ),
+        phi_prime_from_action_row=phi_prime_from_action_row,
+        phi_prime_action_row_residual=phi_prime_action_row_residual,
+        eliminator_momentum_identity_residual=(
+            eliminator_momentum_identity_residual
+        ),
+        momentum_chart_identity_residual=momentum_chart_identity_residual,
+        eliminator_binding_independent=eliminator_binding,
+        bardeen_binding_independent=bardeen_binding,
+        momentum_chart_identity_proved=momentum_chart_identity_proved,
+        canonical_second_variation_identified=constraints_established,
+        fixed_action_source_domain_identified=constraints_established,
+        fixed_action_anisotropic_stress_zero=bool(matter_sector_zero),
+        action_derived_constraints_established=constraints_established,
+        action_derived_bardeen_weyl_observable_established=(
+            algebraic_bardeen_established
+        ),
+        action_binding_established=established,
+        unrestricted_anisotropic_source_action_binding_established=False,
+    )
 
 
 def canonical_metric_constraint_action_binding_certificate():

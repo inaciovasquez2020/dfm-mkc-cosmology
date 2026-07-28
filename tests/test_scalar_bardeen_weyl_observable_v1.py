@@ -1,13 +1,37 @@
 import math
 
 import pytest
+import sympy as sp
 
 from dfm_mkc_solver.scalar_bardeen_weyl_observable_v1 import (
     ScalarMetricGaugeState,
+    bardeen_weyl_definitions,
     bardeen_weyl_observable,
     certify_bardeen_weyl_gauge_invariance,
     scalar_gauge_transform,
 )
+
+
+def test_symbolic_constructor_exposes_declared_production_definitions():
+    A, psi, B, E_prime, sigma_prime, H = sp.symbols(
+        "A psi B E_prime sigma_prime H"
+    )
+    definitions = bardeen_weyl_definitions(
+        lapse_potential=A,
+        curvature_potential=psi,
+        scalar_shift=B,
+        spatial_shear_prime=E_prime,
+        scalar_shear_prime=sigma_prime,
+        conformal_hubble=H,
+    )
+
+    assert definitions.bardeen_lapse_potential == (
+        A + H * (B - E_prime) + sigma_prime
+    )
+    assert definitions.bardeen_curvature_potential == (
+        psi - H * (B - E_prime)
+    )
+    assert definitions.weyl_potential_sum == A + psi + sigma_prime
 
 
 def test_scalar_shear_cancels_spatial_gauge_shift():

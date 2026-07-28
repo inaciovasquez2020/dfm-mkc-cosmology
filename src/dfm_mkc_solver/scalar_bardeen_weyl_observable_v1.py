@@ -46,6 +46,44 @@ from dataclasses import dataclass
 import math
 
 
+@dataclass(frozen=True)
+class BardeenWeylDefinitions:
+    """Production algebraic definitions, valid for numbers or symbols."""
+
+    scalar_shear: object
+    bardeen_lapse_potential: object
+    bardeen_curvature_potential: object
+    weyl_potential_sum: object
+
+
+def bardeen_weyl_definitions(
+    *,
+    lapse_potential,
+    curvature_potential,
+    scalar_shift,
+    spatial_shear_prime,
+    scalar_shear_prime,
+    conformal_hubble,
+):
+    """Construct the declared Bardeen/Weyl expressions exactly."""
+
+    scalar_shear = scalar_shift - spatial_shear_prime
+    bardeen_lapse = (
+        lapse_potential
+        + conformal_hubble * scalar_shear
+        + scalar_shear_prime
+    )
+    bardeen_curvature = (
+        curvature_potential - conformal_hubble * scalar_shear
+    )
+    return BardeenWeylDefinitions(
+        scalar_shear=scalar_shear,
+        bardeen_lapse_potential=bardeen_lapse,
+        bardeen_curvature_potential=bardeen_curvature,
+        weyl_potential_sum=bardeen_lapse + bardeen_curvature,
+    )
+
+
 def _require_finite(name, value):
     if not math.isfinite(value):
         raise ValueError("{} must be finite".format(name))
@@ -191,24 +229,21 @@ def bardeen_weyl_observable(*, state, conformal_hubble):
 
     _require_finite("conformal_hubble", conformal_hubble)
 
-    scalar_shear = state.scalar_shear
-    bardeen_lapse = (
-        state.lapse_potential
-        + conformal_hubble * scalar_shear
-        + state.scalar_shear_prime
+    definitions = bardeen_weyl_definitions(
+        lapse_potential=state.lapse_potential,
+        curvature_potential=state.curvature_potential,
+        scalar_shift=state.scalar_shift,
+        spatial_shear_prime=state.spatial_shear_prime,
+        scalar_shear_prime=state.scalar_shear_prime,
+        conformal_hubble=conformal_hubble,
     )
-    bardeen_curvature = (
-        state.curvature_potential
-        - conformal_hubble * scalar_shear
-    )
-    weyl_sum = bardeen_lapse + bardeen_curvature
 
     return BardeenWeylObservable(
-        bardeen_lapse_potential=bardeen_lapse,
-        bardeen_curvature_potential=bardeen_curvature,
-        weyl_potential_sum=weyl_sum,
-        weyl_potential_average=0.5 * weyl_sum,
-        scalar_shear=scalar_shear,
+        bardeen_lapse_potential=definitions.bardeen_lapse_potential,
+        bardeen_curvature_potential=definitions.bardeen_curvature_potential,
+        weyl_potential_sum=definitions.weyl_potential_sum,
+        weyl_potential_average=0.5 * definitions.weyl_potential_sum,
+        scalar_shear=definitions.scalar_shear,
         gauge_invariant_by_algebra=True,
         action_binding_established=False,
         dfm_vs_lcdm_prediction_vector_computed=False,
