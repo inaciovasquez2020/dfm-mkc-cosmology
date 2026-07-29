@@ -106,3 +106,27 @@ def test_certificate_and_artifact_boundaries():
     assert payload["novelty_claimed"] is False
     assert payload["full_scalar_diffeomorphism_generator_established"] is True
     assert all(payload[name] is False for name in later)
+
+
+def test_residual_newtonian_scalar_gauge_is_trivial():
+    assert _all_zero(
+        gauge.residual_newtonian_gauge_triviality_residuals().values()
+    )
+
+
+def test_reduced_newtonian_state_action_is_identity():
+    assert gauge.REDUCED_NEWTONIAN_STATE_ORDER == (
+        "delta_phi",
+        "delta_phi_prime",
+        "delta_theta",
+        "delta_theta_prime",
+    )
+    assert _all_zero(
+        gauge.reduced_newtonian_state_shift_residuals().values()
+    )
+
+
+def test_reduced_newtonian_trajectory_equivariance_identity():
+    assert _all_zero(
+        gauge.reduced_newtonian_trajectory_equivariance_residuals().values()
+    )

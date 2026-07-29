@@ -194,6 +194,116 @@ def test_phase_reconstruction_preserves_conserved_charge():
     assert np.all(np.isfinite(solution.theta))
 
 
+def test_exact_charge_reduced_constraint_certificate():
+    certificate = module.exact_charge_reduced_constraint_certificate()
+
+    assert set(certificate) == {
+        "dfm_continuity",
+        "friedmann_constraint",
+    }
+    assert certificate["dfm_continuity"] == 0
+    assert certificate["friedmann_constraint"] == 0
+
+
+def test_zero_alpha_dust_boundary_certificate():
+    certificate = module.exact_zero_alpha_dust_boundary_certificate()
+
+    assert set(certificate) == {
+        "phase_energy",
+        "mass_potential",
+        "rho_dfm",
+        "p_dfm",
+        "algebraic_radial_force",
+        "continuity",
+        "dust_density_equivalence",
+    }
+    assert all(expression == 0 for expression in certificate.values())
+
+
+def test_exact_finite_alpha_circular_dust_obstruction_certificate():
+    certificate = (
+        module.exact_finite_alpha_circular_dust_obstruction_certificate()
+    )
+
+    assert set(certificate) == {
+        "inertial_identity",
+        "radial_equation_identity",
+        "force_balance",
+        "pressure_identity",
+        "density_excess_identity",
+    }
+    assert all(expression == 0 for expression in certificate.values())
+
+
+def test_exact_finite_alpha_circular_tracking_coercivity_certificate():
+    certificate = (
+        module.exact_finite_alpha_circular_tracking_coercivity_certificate()
+    )
+
+    assert set(certificate) == {
+        "force_factorization",
+        "tracking_equation_decomposition",
+        "linear_restoring_coefficient",
+        "coercive_work_identity",
+        "restoring_coefficient_monotonicity",
+    }
+    assert all(expression == 0 for expression in certificate.values())
+
+
+def test_exact_finite_alpha_relative_tracking_energy_certificate():
+    certificate = (
+        module.exact_finite_alpha_relative_tracking_energy_certificate()
+    )
+
+    assert set(certificate) == {
+        "relative_equation_decomposition",
+        "energy_identity",
+        "potential_coercivity_identity",
+        "field_size_control_identity",
+        "young_square_identity",
+        "energy_majorant_remainder",
+        "forcing_bound_remainder",
+        "gronwall_ode_identity",
+        "gronwall_initial_identity",
+    }
+    assert all(expression == 0 for expression in certificate.values())
+
+
+
+def test_exact_coupled_friedmann_forcing_bound_certificate():
+    certificate = (
+        module.exact_coupled_friedmann_forcing_bound_certificate()
+    )
+
+    assert set(certificate) == {
+        "acceleration_pressure_identity",
+        "forcing_pressure_identity",
+        "rho_plus_pressure_decomposition",
+        "rho_minus_pressure_decomposition",
+        "dominant_energy_product_identity",
+        "hubble_monotonicity_identity",
+        "local_forcing_square_identity",
+        "interval_forcing_majorant_identity",
+    }
+    assert all(expression == 0 for expression in certificate.values())
+
+
+def test_exact_relative_energy_density_hubble_propagation_certificate():
+    certificate = (
+        module.exact_relative_energy_density_hubble_propagation_certificate()
+    )
+
+    assert set(certificate) == {
+        "density_excess_decomposition",
+        "density_energy_majorant_remainder",
+        "energy_bound_substitution",
+        "relative_density_majorant",
+        "friedmann_squared_difference",
+        "hubble_square_root_identity",
+        "hubble_majorant_remainder",
+    }
+    assert all(expression == 0 for expression in certificate.values())
+
 
 def test_independent_total_continuity_residual():
     parameters = module.ChargeReducedParameters(
