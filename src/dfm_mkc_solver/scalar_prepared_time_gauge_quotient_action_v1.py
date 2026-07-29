@@ -215,13 +215,69 @@ def _construction():
     )
     hqpp = dict(zip(H_CHART_FIELDS, hqpp_symbols))
 
+    background_symbols = tuple(
+        dict.fromkeys(
+            value
+            for value in z.values()
+            if isinstance(value, sp.Symbol)
+        )
+    )
+    background_generator_derivatives = {}
+    for symbol in background_symbols:
+        derivative = total._D_eta(symbol)
+        if derivative != 0:
+            background_generator_derivatives[symbol] = derivative
+
+    def D_background_sparse(expression):
+        terms = tuple(
+            sp.Mul(
+                sp.diff(expression, symbol),
+                derivative,
+                evaluate=False,
+            )
+            for symbol, derivative
+            in background_generator_derivatives.items()
+            if symbol in expression.free_symbols
+        )
+        if not terms:
+            return sp.Integer(0)
+        return sp.Add(*terms, evaluate=False)
+
     def D_eta_H(expression):
-        chain = sp.Add(*(
-            sp.diff(expression, hq[field]) * hqp[field]
-            + sp.diff(expression, hqp[field]) * hqpp[field]
-            for field in H_CHART_FIELDS
-        ))
-        return sp.Add(total._D_eta(expression), chain, evaluate=False)
+        chain_terms = []
+
+        for field in H_CHART_FIELDS:
+            configuration_coefficient = sp.diff(
+                expression,
+                hq[field],
+            )
+            if configuration_coefficient != 0:
+                chain_terms.append(
+                    sp.Mul(
+                        configuration_coefficient,
+                        hqp[field],
+                        evaluate=False,
+                    )
+                )
+
+            jet_coefficient = sp.diff(
+                expression,
+                hqp[field],
+            )
+            if jet_coefficient != 0:
+                chain_terms.append(
+                    sp.Mul(
+                        jet_coefficient,
+                        hqpp[field],
+                        evaluate=False,
+                    )
+                )
+
+        return sp.Add(
+            D_background_sparse(expression),
+            *chain_terms,
+            evaluate=False,
+        )
 
     momenta = {
         field: sp.diff(L_H, hqp[field]) for field in H_CHART_FIELDS
