@@ -397,14 +397,14 @@ def _construction():
     original_euler = quotient_euler.quotient_euler_data()["euler_rows"]
     euler_pullback_residuals = (
         euler_rows[field]
-        - original_euler[field].subs({
+        - original_euler[field].xreplace({
             **embedding,
             **{
                 quotient_euler.quotient_euler_data()["qpp"][name]:
                     (sp.Integer(0) if name == "psi" else hqpp[name])
                 for name in fields
             },
-        }, simultaneous=True)
+        })
         for field in H_CHART_FIELDS
     )
 
