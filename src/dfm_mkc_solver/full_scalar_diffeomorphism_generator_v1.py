@@ -190,6 +190,81 @@ def bardeen_invariance_residuals():
     }
 
 
+REDUCED_NEWTONIAN_STATE_ORDER = (
+    "delta_phi",
+    "delta_phi_prime",
+    "delta_theta",
+    "delta_theta_prime",
+)
+
+
+def residual_newtonian_gauge_triviality_residuals():
+    """Prove that scalar diffeomorphisms preserving B=E=0 are trivial."""
+    z = _symbols()
+    generator = scalar_diffeomorphism_generator()
+    jets = scalar_diffeomorphism_jet_generator()
+    return {
+        "E_shift_plus_L": _zero(generator["E"] + z["L"]),
+        "E_prime_shift_plus_L_prime": _zero(
+            jets["E_prime"] + z["L_prime"]
+        ),
+        "B_shift_after_L_zero_minus_T": _zero(
+            generator["B"].subs(z["L_prime"], 0) - z["T"]
+        ),
+        "B_prime_shift_after_L_zero_minus_T_prime": _zero(
+            jets["B_prime"].subs(z["L_double_prime"], 0)
+            - z["T_prime"]
+        ),
+    }
+
+
+def reduced_newtonian_state_shift_residuals():
+    """Restrict the four evolved scalar shifts to residual Newtonian gauge."""
+    z = _symbols()
+    generator = scalar_diffeomorphism_generator()
+    jets = scalar_diffeomorphism_jet_generator()
+    residual_gauge = {
+        z["L"]: 0,
+        z["L_prime"]: 0,
+        z["L_double_prime"]: 0,
+        z["T"]: 0,
+        z["T_prime"]: 0,
+        z["T_double_prime"]: 0,
+    }
+    shifts = (
+        generator["delta_phi"],
+        jets["delta_phi_prime"],
+        generator["delta_theta"],
+        jets["delta_theta_prime"],
+    )
+    return {
+        name: _zero(shift.subs(residual_gauge, simultaneous=True))
+        for name, shift in zip(REDUCED_NEWTONIAN_STATE_ORDER, shifts)
+    }
+
+
+def reduced_newtonian_trajectory_equivariance_residuals():
+    """Verify partial_N Phi + D Phi F = F o Phi for the reduced flow.
+
+    Newtonian-gauge preservation forces the residual scalar-gauge action to
+    be the identity. The equivariance residual therefore vanishes for every
+    four-component vector field, including the reduced comparison flow.
+    """
+    state = sp.Matrix(sp.symbols("y0:4"))
+    vector_field = sp.Matrix(sp.symbols("F0:4"))
+    shift = sp.Matrix(
+        tuple(reduced_newtonian_state_shift_residuals().values())
+    )
+    transformed_state = state + shift
+    residual = _zero(
+        transformed_state.jacobian(state) * vector_field - vector_field
+    )
+    return {
+        name: _zero(residual[index])
+        for index, name in enumerate(REDUCED_NEWTONIAN_STATE_ORDER)
+    }
+
+
 def certificate():
     families = {
         "metric_tensorial_lie_derivative":

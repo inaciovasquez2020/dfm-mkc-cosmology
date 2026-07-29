@@ -19,6 +19,7 @@ import math
 from dataclasses import dataclass, replace
 
 import numpy as np
+import sympy as sp
 from scipy.integrate import solve_ivp
 
 
@@ -189,6 +190,589 @@ def dfm_energy_density(
         + phase_energy_density(N, phi, parameters)
         + potential(phi, parameters)
     )
+
+
+def exact_charge_reduced_constraint_certificate() -> dict[str, sp.Expr]:
+    """Return exact continuity and Friedmann-constraint identities.
+
+    The returned expressions are obtained only by algebraic substitution of
+    the charge-reduced action equations.  They are independent of the
+    finite-difference diagnostics computed for numerical solutions below.
+    """
+
+    alpha, beta, a, phi, v, H = sp.symbols(
+        "alpha beta a phi v H",
+        nonzero=True,
+    )
+    Q_theta, m_phi_squared, lambda_phi = sp.symbols(
+        "Q_theta m_phi_squared lambda_phi",
+    )
+    G = sp.symbols("G")
+    rho_b, rho_r = sp.symbols("rho_b rho_r")
+
+    phase_energy = Q_theta**2 / (2 * beta * a**6 * phi**2)
+    potential_prime = m_phi_squared * phi + lambda_phi * phi**3
+    v_dot = (
+        -3 * H * v
+        + Q_theta**2 / (alpha * beta * a**6 * phi**3)
+        - potential_prime / alpha
+    )
+    phase_energy_dot = phase_energy * (-6 * H - 2 * v / phi)
+    rho_dfm_dot = sp.expand(
+        alpha * v * v_dot
+        + phase_energy_dot
+        + potential_prime * v
+    )
+    rho_dfm_plus_pressure = alpha * v**2 + 2 * phase_energy
+    dfm_continuity = sp.factor(
+        rho_dfm_dot + 3 * H * rho_dfm_plus_pressure
+    )
+
+    rho_total_plus_pressure = (
+        rho_b
+        + sp.Rational(4, 3) * rho_r
+        + rho_dfm_plus_pressure
+    )
+    rho_total_dot = -3 * H * rho_total_plus_pressure
+    H_dot = -4 * sp.pi * G * rho_total_plus_pressure
+    friedmann_constraint_dot = sp.factor(
+        2 * H * H_dot
+        - (8 * sp.pi * G / 3) * rho_total_dot
+    )
+
+    return {
+        "dfm_continuity": dfm_continuity,
+        "friedmann_constraint": friedmann_constraint_dot,
+    }
+
+
+def exact_zero_alpha_dust_boundary_certificate() -> dict[str, sp.Expr]:
+    """Certify the exact degenerate ``alpha = 0`` dust boundary identity.
+
+    ``alpha = 0`` is outside the currently validated canonical interior
+    ``alpha > 0``.  This proves an exact degenerate boundary identity only:
+    it does not prove convergence as alpha approaches zero from above, it
+    does not establish an admissible DFM-Lambda-CDM overlap, and it does not
+    establish a certified manifold lower bound.
+    """
+
+    a, beta, mu, q = sp.symbols(
+        "a beta mu q",
+        positive=True,
+    )
+    phi = sp.sqrt(q / (sp.sqrt(beta) * mu)) * a ** sp.Rational(-3, 2)
+
+    phase_energy = q**2 / (2 * beta * a**6 * phi**2)
+    mass_potential = sp.Rational(1, 2) * mu**2 * phi**2
+    rho_dfm = phase_energy + mass_potential
+    p_dfm = phase_energy - mass_potential
+    algebraic_radial_force = (
+        mu**2 * phi
+        - q**2 / (beta * a**6 * phi**3)
+    )
+
+    dust_density = q * mu / sp.sqrt(beta) * a**-3
+    component_density = (
+        q * mu / (2 * sp.sqrt(beta)) * a**-3
+    )
+    rho_cdm0 = q * mu / sp.sqrt(beta)
+
+    return {
+        "phase_energy": sp.simplify(phase_energy - component_density),
+        "mass_potential": sp.simplify(
+            mass_potential - component_density
+        ),
+        "rho_dfm": sp.simplify(rho_dfm - dust_density),
+        "p_dfm": sp.simplify(p_dfm),
+        "algebraic_radial_force": sp.simplify(
+            algebraic_radial_force
+        ),
+        "continuity": sp.simplify(
+            a * sp.diff(rho_dfm, a) + 3 * rho_dfm
+        ),
+        "dust_density_equivalence": sp.simplify(
+            rho_dfm - rho_cdm0 * a**-3
+        ),
+    }
+
+
+def exact_finite_alpha_circular_dust_obstruction_certificate(
+) -> dict[str, sp.Expr]:
+    """Certify the finite-alpha obstruction on the circular dust trajectory.
+
+    This proves an obstruction only for the same algebraic circular
+    trajectory.  It does not exclude other finite-alpha DFM trajectories,
+    and it does not prove or disprove convergence as alpha approaches zero.
+    It does not prove a complete DFM-Lambda-CDM manifold separation, and it
+    does not authorize a positive certified lower bound.
+    """
+
+    alpha, beta, mu, q, phi, a = sp.symbols(
+        "alpha beta mu q phi a",
+        positive=True,
+    )
+    H, H_dot = sp.symbols("H H_dot", real=True)
+
+    phi_dot = -sp.Rational(3, 2) * H * phi
+    phi_ddot = (
+        sp.Rational(9, 4) * H**2 * phi
+        - sp.Rational(3, 2) * H_dot * phi
+    )
+    inertial_term = phi_ddot + 3 * H * phi_dot
+    inertial_defect = (
+        -sp.Rational(3, 4) * (2 * H_dot + 3 * H**2) * phi
+    )
+
+    inverse_a6 = beta * mu**2 * phi**4 / q**2
+    inverse_a3 = sp.sqrt(beta) * mu * phi**2 / q
+    centrifugal_force = (
+        q**2 / (beta * phi**3) * inverse_a6
+    )
+    force_balance = mu**2 * phi - centrifugal_force
+    radial_equation = (
+        alpha * inertial_term + force_balance
+    )
+    radial_defect = (
+        -sp.Rational(3, 4)
+        * alpha
+        * (2 * H_dot + 3 * H**2)
+        * phi
+    )
+
+    phase_energy = (
+        q**2 / (2 * beta * phi**2) * inverse_a6
+    )
+    mass_potential = sp.Rational(1, 2) * mu**2 * phi**2
+    kinetic_energy = sp.Rational(1, 2) * alpha * phi_dot**2
+    rho_dfm = kinetic_energy + phase_energy + mass_potential
+    p_dfm = kinetic_energy + phase_energy - mass_potential
+    pressure_defect = (
+        sp.Rational(9, 8) * alpha * H**2 * phi**2
+    )
+    dust_density = (
+        q * mu / sp.sqrt(beta) * inverse_a3
+    )
+
+    return {
+        "inertial_identity": sp.simplify(
+            inertial_term - inertial_defect
+        ),
+        "radial_equation_identity": sp.simplify(
+            radial_equation - radial_defect
+        ),
+        "force_balance": sp.simplify(force_balance),
+        "pressure_identity": sp.simplify(
+            p_dfm - pressure_defect
+        ),
+        "density_excess_identity": sp.simplify(
+            rho_dfm - dust_density - pressure_defect
+        ),
+    }
+
+
+def exact_finite_alpha_circular_tracking_coercivity_certificate(
+) -> dict[str, sp.Expr]:
+    """Certify exact tracking around the algebraic circular trajectory.
+
+    The nonlinear radial force is strongly restoring on ``phi > 0``.  The
+    forcing term is O(alpha) on bounded backgrounds, but coercivity alone
+    does not prove convergence: well-prepared initial data and a uniform
+    energy estimate remain required.  No complete DFM-Lambda-CDM overlap or
+    separation result follows.
+    """
+
+    alpha, mu, phi_c, phi = sp.symbols(
+        "alpha mu phi_c phi",
+        positive=True,
+    )
+    H, H_dot, delta_dot, delta_ddot = sp.symbols(
+        "H H_dot delta_dot delta_ddot",
+        real=True,
+    )
+    delta = phi - phi_c
+
+    force = mu**2 * phi - mu**2 * phi_c**4 / phi**3
+    restoring_coefficient = mu**2 * (
+        1
+        + phi_c / phi
+        + phi_c**2 / phi**2
+        + phi_c**3 / phi**3
+    )
+
+    phi_c_dot = -sp.Rational(3, 2) * H * phi_c
+    phi_c_ddot = (
+        sp.Rational(9, 4) * H**2 * phi_c
+        - sp.Rational(3, 2) * H_dot * phi_c
+    )
+    complete_radial_equation = (
+        alpha
+        * (
+            phi_c_ddot
+            + delta_ddot
+            + 3 * H * (phi_c_dot + delta_dot)
+        )
+        + force
+    )
+    tracking_equation = (
+        alpha * (delta_ddot + 3 * H * delta_dot)
+        + force
+        - sp.Rational(3, 4)
+        * alpha
+        * (2 * H_dot + 3 * H**2)
+        * phi_c
+    )
+
+    coercive_remainder = (
+        mu**2
+        * delta**2
+        * (
+            phi_c / phi
+            + phi_c**2 / phi**2
+            + phi_c**3 / phi**3
+        )
+    )
+
+    y = sp.symbols("y", positive=True)
+    restoring_coefficient_y = mu**2 * (
+        1 + 1 / y + 1 / y**2 + 1 / y**3
+    )
+    restoring_coefficient_y_derivative = -mu**2 * (
+        1 / y**2 + 2 / y**3 + 3 / y**4
+    )
+
+    return {
+        "force_factorization": sp.simplify(
+            force - restoring_coefficient * delta
+        ),
+        "tracking_equation_decomposition": sp.simplify(
+            complete_radial_equation - tracking_equation
+        ),
+        "linear_restoring_coefficient": sp.simplify(
+            restoring_coefficient.subs(phi, phi_c) - 4 * mu**2
+        ),
+        "coercive_work_identity": sp.simplify(
+            force * delta - mu**2 * delta**2 - coercive_remainder
+        ),
+        "restoring_coefficient_monotonicity": sp.simplify(
+            sp.diff(restoring_coefficient_y, y)
+            - restoring_coefficient_y_derivative
+        ),
+    }
+
+
+def exact_finite_alpha_relative_tracking_energy_certificate(
+) -> dict[str, sp.Expr]:
+    """Certify finite-alpha relative tracking on a finite interval.
+
+    Here ``y = phi/phi_c`` removes the apparent Hubble damping exactly, and
+    the relative system is a forced stiff oscillator.  The energy estimate is
+    conditional on a uniform bound for
+    ``abs((3/4)*(2*H_dot+3*H**2))``.  Exactly prepared initial data give an
+    ``O(sqrt(alpha))`` relative-field bound.
+
+    This certificate does not yet establish a bound for the fully coupled
+    Hubble evolution.  It does not yet prove a DFM-Lambda-CDM manifold
+    overlap, and it does not authorize a positive or zero certified manifold
+    lower bound.
+    """
+
+    alpha, mu, phi_c, y, G = sp.symbols(
+        "alpha mu phi_c y G",
+        positive=True,
+    )
+    E0, t = sp.symbols("E0 t", nonnegative=True)
+    H, H_dot, y_dot, y_ddot, g = sp.symbols(
+        "H H_dot y_dot y_ddot g",
+        real=True,
+    )
+
+    phi_c_dot = -sp.Rational(3, 2) * H * phi_c
+    phi_c_ddot = (
+        sp.Rational(9, 4) * H**2 * phi_c
+        - sp.Rational(3, 2) * H_dot * phi_c
+    )
+    phi_dot = phi_c_dot * y + phi_c * y_dot
+    phi_ddot = (
+        phi_c_ddot * y
+        + 2 * phi_c_dot * y_dot
+        + phi_c * y_ddot
+    )
+    g_definition = sp.Rational(3, 4) * (2 * H_dot + 3 * H**2)
+    complete_relative_equation = (
+        alpha * (phi_ddot + 3 * H * phi_dot) / phi_c
+        + mu**2 * (y - y**-3)
+    )
+    relative_equation = (
+        alpha * y_ddot + mu**2 * (y - y**-3) - alpha * g * y
+    )
+
+    potential = sp.Rational(1, 2) * mu**2 * (
+        y**2 + y**-2 - 2
+    )
+    energy = sp.Rational(1, 2) * alpha * y_dot**2 + potential
+    y_ddot_equation = g * y - mu**2 * (y - y**-3) / alpha
+    energy_derivative = (
+        alpha * y_dot * y_ddot
+        + mu**2 * (y - y**-3) * y_dot
+    )
+
+    young_terms = (
+        sp.Rational(1, 2) * alpha * y_dot**2
+        + sp.Rational(1, 2) * alpha * g**2 * y**2
+    )
+    energy_majorant = energy + alpha * g**2 * (
+        1 + energy / mu**2
+    )
+    c = 1 + alpha * G**2 / mu**2
+    forcing_majorant = energy + alpha * g**2 * (
+        1 + energy / mu**2
+    )
+    B = (
+        E0 * sp.exp(c * t)
+        + alpha * G**2 * (sp.exp(c * t) - 1) / c
+    )
+
+    return {
+        "relative_equation_decomposition": sp.simplify(
+            complete_relative_equation
+            - relative_equation.subs(g, g_definition)
+        ),
+        "energy_identity": sp.simplify(
+            energy_derivative.subs(y_ddot, y_ddot_equation)
+            - alpha * g * y * y_dot
+        ),
+        "potential_coercivity_identity": sp.simplify(
+            potential
+            - sp.Rational(1, 2) * mu**2 * (y - 1)**2
+            - sp.Rational(1, 2)
+            * mu**2
+            * (y - 1)**2
+            * (2 * y + 1)
+            / y**2
+        ),
+        "field_size_control_identity": sp.simplify(
+            2 + 2 * energy / mu**2 - y**2
+            - alpha * y_dot**2 / mu**2
+            - y**-2
+        ),
+        "young_square_identity": sp.simplify(
+            young_terms
+            - alpha * g * y * y_dot
+            - sp.Rational(1, 2) * alpha * (y_dot - g * y)**2
+        ),
+        "energy_majorant_remainder": sp.simplify(
+            energy_majorant
+            - young_terms
+            - potential
+            - sp.Rational(1, 2)
+            * alpha
+            * g**2
+            * (alpha * y_dot**2 / mu**2 + y**-2)
+        ),
+        "forcing_bound_remainder": sp.simplify(
+            c * energy
+            + alpha * G**2
+            - forcing_majorant
+            - alpha * (G**2 - g**2) * (1 + energy / mu**2)
+        ),
+        "gronwall_ode_identity": sp.simplify(
+            sp.diff(B, t) - c * B - alpha * G**2
+        ),
+        "gronwall_initial_identity": sp.simplify(B.subs(t, 0) - E0),
+    }
+
+
+def exact_coupled_friedmann_forcing_bound_certificate():
+    """Certify the coupled Friedmann--Raychaudhuri forcing bound.
+
+    This is conditional on the positive-energy quadratic branch, with dark
+    energy restricted to a cosmological constant.  Under the declared
+    assumptions, rho_total +/- p_total are nonnegative, H is nonincreasing
+    on an expanding forward interval, and G_force = 9*H_i**2/4.  Combining
+    this with the relative energy certificate yields an O(sqrt(alpha))
+    relative-field estimate.  Density and Hubble convergence remain
+    unproved, and no DFM-Lambda-CDM manifold-overlap or lower-bound claim
+    follows.
+    """
+    alpha, beta, mu, q, a, phi, G_N, H, H_i = sp.symbols(
+        "alpha beta mu q a phi G_N H H_i",
+        positive=True,
+    )
+    rho_b, rho_r, rho_lambda = sp.symbols(
+        "rho_b rho_r rho_lambda",
+        nonnegative=True,
+    )
+    phi_dot = sp.symbols("phi_dot", real=True)
+
+    kinetic = alpha * phi_dot**2 / 2
+    phase = q**2 / (2 * beta * a**6 * phi**2)
+    mass = mu**2 * phi**2 / 2
+
+    rho_dfm = kinetic + phase + mass
+    p_dfm = kinetic + phase - mass
+    rho_total = rho_b + rho_r + rho_lambda + rho_dfm
+    p_total = rho_r / 3 - rho_lambda + p_dfm
+
+    H_squared = (8 * sp.pi * G_N / 3) * rho_total
+    H_dot = -4 * sp.pi * G_N * (rho_total + p_total)
+    g = sp.Rational(3, 4) * (2 * H_dot + 3 * H_squared)
+
+    rho_plus_pressure_expected = (
+        rho_b
+        + 4 * rho_r / 3
+        + alpha * phi_dot**2
+        + 2 * phase
+    )
+    rho_minus_pressure_expected = (
+        rho_b
+        + 2 * rho_r / 3
+        + 2 * rho_lambda
+        + 2 * mass
+    )
+    G_force = 9 * H_i**2 / 4
+
+    return {
+        "acceleration_pressure_identity": sp.simplify(
+            2 * H_dot + 3 * H_squared + 8 * sp.pi * G_N * p_total
+        ),
+        "forcing_pressure_identity": sp.simplify(
+            g + 6 * sp.pi * G_N * p_total
+        ),
+        "rho_plus_pressure_decomposition": sp.simplify(
+            rho_total + p_total - rho_plus_pressure_expected
+        ),
+        "rho_minus_pressure_decomposition": sp.simplify(
+            rho_total - p_total - rho_minus_pressure_expected
+        ),
+        "dominant_energy_product_identity": sp.simplify(
+            rho_total**2
+            - p_total**2
+            - (rho_total + p_total) * (rho_total - p_total)
+        ),
+        "hubble_monotonicity_identity": sp.simplify(
+            H_dot + 4 * sp.pi * G_N * rho_plus_pressure_expected
+        ),
+        "local_forcing_square_identity": sp.simplify(
+            (9 * H_squared / 4) ** 2
+            - g**2
+            - (6 * sp.pi * G_N) ** 2
+            * (rho_total**2 - p_total**2)
+        ),
+        "interval_forcing_majorant_identity": sp.simplify(
+            G_force**2
+            - g**2
+            - 81 * (H_i**4 - H_squared**2) / 16
+            - (6 * sp.pi * G_N) ** 2
+            * (rho_total**2 - p_total**2)
+        ),
+    }
+
+
+def exact_relative_energy_density_hubble_propagation_certificate():
+    """Certify relative-energy propagation to density and Hubble bounds.
+
+    This applies only to the positive-energy quadratic branch.  The
+    comparator shares the same visible sectors and cosmological constant,
+    and the circular dust normalization is fixed identically in both
+    models.  The density excess is nonnegative.  A relative energy
+    majorant B = O(alpha) gives density error O(alpha), while a positive
+    lower bound for H_LCDM gives Hubble error O(alpha).
+
+    This has not yet been propagated through D_H, D_M, D_V, or r_d.
+    Existence of the complete prepared alpha-dependent solution family
+    remains a separate analytical requirement.  No complete
+    DFM-Lambda-CDM manifold-overlap or lower-bound claim follows yet.
+    """
+    alpha, mu, phi_c, y, H, H_i, G_N, H_lower, rho_common = (
+        sp.symbols(
+            "alpha mu phi_c y H H_i G_N H_lower rho_common",
+            positive=True,
+        )
+    )
+    E, B = sp.symbols("E B", nonnegative=True)
+    y_dot = sp.symbols("y_dot", real=True)
+
+    rho_cdm = mu**2 * phi_c**2
+    phase = rho_cdm / (2 * y**2)
+    mass = rho_cdm * y**2 / 2
+    phi_dot = phi_c * (y_dot - 3 * H * y / 2)
+    kinetic = alpha * phi_dot**2 / 2
+    rho_dfm = kinetic + phase + mass
+    delta_rho = rho_dfm - rho_cdm
+
+    V = mu**2 * (y - y**-1) ** 2 / 2
+    E_expression = alpha * y_dot**2 / 2 + V
+    D_E = phi_c**2 * (
+        2 * E_expression
+        + 9 * alpha * H_i**2 / 2
+        * (1 + E_expression / mu**2)
+    )
+    D_B = phi_c**2 * (
+        2 * B
+        + 9 * alpha * H_i**2 / 2 * (1 + B / mu**2)
+    )
+
+    density_decomposition = phi_c**2 * (
+        V + alpha * (y_dot - 3 * H * y / 2) ** 2 / 2
+    )
+    density_majorant_remainder = phi_c**2 * (
+        V
+        + alpha * (y_dot + 3 * H * y / 2) ** 2 / 2
+        + 9 * alpha * (H_i**2 - H**2) * y**2 / 4
+        + 9 * alpha * H_i**2 / 4
+        * (alpha * y_dot**2 / mu**2 + y**-2)
+    )
+    energy_substitution = phi_c**2 * (B - E_expression) * (
+        2 + 9 * alpha * H_i**2 / (2 * mu**2)
+    )
+    relative_density_bound = (
+        2 * B / mu**2
+        + 9 * alpha * H_i**2 / (2 * mu**2)
+        * (1 + B / mu**2)
+    )
+
+    kappa = 8 * sp.pi * G_N / 3
+    H_DFM_squared = kappa * (rho_common + rho_dfm)
+    H_LCDM_squared = kappa * (rho_common + rho_cdm)
+    H_DFM = sp.sqrt(H_DFM_squared)
+    H_LCDM = sp.sqrt(H_LCDM_squared)
+    H_error_bound = kappa * D_B / (2 * H_lower)
+    hubble_majorant_remainder = (
+        kappa
+        * (
+            D_B * (H_DFM + H_LCDM - 2 * H_lower)
+            + 2 * H_lower * (D_B - delta_rho)
+        )
+        / (2 * H_lower * (H_DFM + H_LCDM))
+    )
+
+    return {
+        "density_excess_decomposition": sp.simplify(
+            delta_rho - density_decomposition
+        ),
+        "density_energy_majorant_remainder": sp.simplify(
+            D_E - delta_rho - density_majorant_remainder
+        ),
+        "energy_bound_substitution": sp.simplify(
+            D_B - D_E - energy_substitution
+        ),
+        "relative_density_majorant": sp.simplify(
+            D_B / rho_cdm - relative_density_bound
+        ),
+        "friedmann_squared_difference": sp.simplify(
+            H_DFM_squared - H_LCDM_squared - kappa * delta_rho
+        ),
+        "hubble_square_root_identity": sp.simplify(
+            H_DFM
+            - H_LCDM
+            - kappa * delta_rho / (H_DFM + H_LCDM)
+        ),
+        "hubble_majorant_remainder": sp.simplify(
+            H_error_bound
+            - (H_DFM - H_LCDM)
+            - hubble_majorant_remainder
+        ),
+    }
 
 
 def dark_energy_equation_of_state(
