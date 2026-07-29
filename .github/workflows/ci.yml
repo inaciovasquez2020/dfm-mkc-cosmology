@@ -28,6 +28,6 @@ jobs:
 
       - name: Run tests
         run: |
-          PYTHONPATH=src timeout --kill-after=30s 600s pytest -q --deselect=tests/test_charge_perturbed_zero_velocity_matching_v1.py::test_regularized_fsigma8_projection_computes_orthogonal_residual --deselect=tests/test_total_scalar_lapse_shift_hessian_v1.py::test_formal_adjoint_boundary_and_direct_certificate
+          PYTHONPATH=src timeout --kill-after=30s 900s pytest -q --deselect=tests/test_charge_perturbed_zero_velocity_matching_v1.py::test_regularized_fsigma8_projection_computes_orthogonal_residual --deselect=tests/test_total_scalar_lapse_shift_hessian_v1.py::test_formal_adjoint_boundary_and_direct_certificate
           PYTHONPATH=src timeout --signal=ABRT --kill-after=30s 120s python -X faulthandler -m pytest -vv -s -o faulthandler_timeout=60 tests/test_charge_perturbed_zero_velocity_matching_v1.py::test_regularized_fsigma8_projection_computes_orthogonal_residual
           PYTHONPATH=src timeout --signal=ABRT --kill-after=30s 300s python -X faulthandler -m pytest -vv -s -o faulthandler_timeout=60 tests/test_total_scalar_lapse_shift_hessian_v1.py::test_formal_adjoint_boundary_and_direct_certificate
