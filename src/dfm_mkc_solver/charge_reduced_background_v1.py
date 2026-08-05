@@ -1113,6 +1113,65 @@ SHOOTING_PARAMETER_NAMES = (
 SHOOTING_RESIDUAL_NAMES = ("F_rho", "F_w", "F_H")
 
 
+def exact_dfm_cdm_shooting_degeneracy_certificate() -> dict[str, sp.Expr]:
+    """Certify the exact Friedmann dependency of the shooting map.
+
+    On the flat H0-normalized branch, the visible and dark-energy sectors
+    are fixed while DFM replaces CDM.  The present Friedmann constraint
+    therefore gives
+
+        F_rho = 3 * F_H * (H_DFM + H_target).
+
+    Linearizing on the positive expanding branch gives
+
+        dF_H = dF_rho / (6 * H_DFM).
+
+    Hence the F_H Jacobian row is dependent on the F_rho row.  The
+    three-residual, six-parameter unaugmented shooting map has structural
+    rank at most two and nullity at least four wherever H_DFM is positive.
+    """
+
+    H_dfm, H_target = sp.symbols(
+        "H_dfm H_target",
+        positive=True,
+    )
+    rho_dfm, rho_cdm = sp.symbols(
+        "rho_dfm rho_cdm",
+        real=True,
+    )
+    dH, dF_rho = sp.symbols(
+        "dH dF_rho",
+        real=True,
+    )
+
+    F_rho = rho_dfm - rho_cdm
+    F_H = H_dfm - H_target
+    friedmann_constraint = (
+        H_dfm**2
+        - (3 * H_target**2 - rho_cdm + rho_dfm) / 3
+    )
+    linearized_friedmann_constraint = (
+        2 * H_dfm * dH - dF_rho / 3
+    )
+    dF_rho_on_shell = 6 * H_dfm * dH
+
+    return {
+        "present_constraint_factorization": sp.expand(
+            F_rho
+            - 3 * F_H * (H_dfm + H_target)
+            + 3 * friedmann_constraint
+        ),
+        "linearized_constraint_factorization": sp.simplify(
+            dH
+            - dF_rho / (6 * H_dfm)
+            - linearized_friedmann_constraint / (2 * H_dfm)
+        ),
+        "jacobian_row_dependency": sp.simplify(
+            dH - dF_rho_on_shell / (6 * H_dfm)
+        ),
+    }
+
+
 @dataclass(frozen=True)
 class DFMCDMUnitMap:
     """Dimensionless H0-normalized map for the DFM-as-CDM branch."""
