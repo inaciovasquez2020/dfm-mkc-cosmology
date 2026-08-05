@@ -305,6 +305,18 @@ def test_exact_relative_energy_density_hubble_propagation_certificate():
     assert all(expression == 0 for expression in certificate.values())
 
 
+def test_exact_dfm_cdm_shooting_degeneracy_certificate():
+    certificate = (
+        module.exact_dfm_cdm_shooting_degeneracy_certificate()
+    )
+    assert set(certificate) == {
+        "present_constraint_factorization",
+        "linearized_constraint_factorization",
+        "jacobian_row_dependency",
+    }
+    assert all(expression == 0 for expression in certificate.values())
+
+
 def test_independent_total_continuity_residual():
     parameters = module.ChargeReducedParameters(
         rho_star=1.0,
