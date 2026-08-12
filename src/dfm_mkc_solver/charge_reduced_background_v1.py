@@ -20,7 +20,7 @@ from dataclasses import dataclass, replace
 
 import numpy as np
 import sympy as sp
-from scipy.integrate import solve_ivp
+from scipy.integrate import quad, solve_ivp
 
 
 State = tuple[float, float, float, float, float]
@@ -141,7 +141,7 @@ def validate_state(state: State) -> None:
     ):
         _require_finite(name, value)
 
-    if abs(phi) <= 1.0e-12:
+    if phi == 0.0:
         raise ValueError("phi must remain nonzero in the charge-reduced system")
     if rho_m < 0.0:
         raise ValueError("rho_m must be nonnegative")
@@ -243,6 +243,373 @@ def exact_charge_reduced_constraint_certificate() -> dict[str, sp.Expr]:
     return {
         "dfm_continuity": dfm_continuity,
         "friedmann_constraint": friedmann_constraint_dot,
+    }
+
+
+def exact_dfm_antlia_tf_reduction_certificate(
+) -> dict[str, sp.Expr]:
+    """Exact DFM -> LRS/SFDM -> Gross-Pitaevskii/TF coefficient map.
+
+    Natural units hbar=c=1 are used for the symbolic coefficient map.
+    This certifies the algebraic reduction only; actual halo membership
+    in the Thomas-Fermi regime is a separate inequality gate.
+    """
+
+    alpha, beta = sp.symbols(
+        "alpha beta",
+        positive=True,
+    )
+    m_phi_squared, lambda_phi = sp.symbols(
+        "m_phi_squared lambda_phi",
+        positive=True,
+    )
+    phi, dphi, dtheta = sp.symbols(
+        "phi dphi dtheta",
+        real=True,
+    )
+    rho, G = sp.symbols(
+        "rho G",
+        positive=True,
+    )
+
+    # Canonically normalized polar field:
+    #
+    # R = sqrt(alpha) phi
+    # Theta = sqrt(beta/alpha) theta.
+    R = sp.sqrt(alpha) * phi
+    dR = sp.sqrt(alpha) * dphi
+    dTheta = sp.sqrt(beta / alpha) * dtheta
+
+    polar_kinetic_gap = sp.simplify(
+        sp.Rational(1, 2)
+        * (
+            dR**2
+            + R**2 * dTheta**2
+        )
+        - (
+            sp.Rational(1, 2) * alpha * dphi**2
+            + sp.Rational(1, 2)
+            * beta
+            * phi**2
+            * dtheta**2
+        )
+    )
+
+    # Canonical relativistic potential:
+    #
+    # V = 1/2 m^2 R^2 + 1/4 lambda_rel R^4.
+    m_squared = sp.simplify(
+        m_phi_squared / alpha
+    )
+    lambda_rel = sp.simplify(
+        lambda_phi / alpha**2
+    )
+
+    potential_gap = sp.simplify(
+        sp.Rational(1, 2)
+        * m_squared
+        * R**2
+        + sp.Rational(1, 4)
+        * lambda_rel
+        * R**4
+        - (
+            sp.Rational(1, 2)
+            * m_phi_squared
+            * phi**2
+            + sp.Rational(1, 4)
+            * lambda_phi
+            * phi**4
+        )
+    )
+
+    # LRS normalization:
+    #
+    # psi_LRS = sqrt(m) Phi_DFM
+    #
+    # L_LRS =
+    #   (1/(2m)) |d psi|^2
+    #   - (m/2) |psi|^2
+    #   - (g/2) |psi|^4.
+    #
+    # Matching the quartic term gives
+    #
+    #   g = lambda_rel/(2 m^2).
+    g = sp.simplify(
+        lambda_rel
+        / (2 * m_squared)
+    )
+
+    expected_g = sp.simplify(
+        lambda_phi
+        / (
+            2
+            * alpha
+            * m_phi_squared
+        )
+    )
+
+    g_gap = sp.simplify(
+        g - expected_g
+    )
+
+    # Antlia B uses g/m^2 as the self-interaction strength.
+    g_over_m_squared = sp.simplify(
+        g / m_squared
+    )
+
+    expected_g_over_m_squared = sp.simplify(
+        lambda_phi
+        / (
+            2
+            * m_phi_squared**2
+        )
+    )
+
+    g_over_m_squared_gap = sp.simplify(
+        g_over_m_squared
+        - expected_g_over_m_squared
+    )
+
+    alpha_independence = sp.simplify(
+        sp.diff(
+            g_over_m_squared,
+            alpha,
+        )
+    )
+
+    beta_independence = sp.simplify(
+        sp.diff(
+            g_over_m_squared,
+            beta,
+        )
+    )
+
+    # Gross-Pitaevskii/Madelung self-interaction pressure:
+    #
+    # V_SI = (g/m^2) rho
+    # P_SI = (g/(2m^2)) rho^2.
+    V_si = sp.simplify(
+        g * rho / m_squared
+    )
+
+    P_si = sp.simplify(
+        g * rho**2
+        / (2 * m_squared)
+    )
+
+    madelung_pressure_gap = sp.simplify(
+        sp.diff(P_si, rho) / rho
+        - sp.diff(V_si, rho)
+    )
+
+    # n=1 Thomas-Fermi polytrope:
+    #
+    # R_TF = pi sqrt(g/(4 pi G m^2)).
+    r_tf_squared = sp.simplify(
+        sp.pi
+        * g
+        / (
+            4
+            * G
+            * m_squared
+        )
+    )
+
+    expected_dfm_r_tf_squared = sp.simplify(
+        sp.pi
+        * lambda_phi
+        / (
+            8
+            * G
+            * m_phi_squared**2
+        )
+    )
+
+    tf_radius_gap = sp.simplify(
+        r_tf_squared
+        - expected_dfm_r_tf_squared
+    )
+
+    # Antlia B reports R_TF < 0.18 kpc (68%) and
+    # R_TF < 0.72 kpc (95%).  Equation (5) gives
+    #
+    #   g/m^2 proportional to R_TF^2.
+    #
+    # Therefore the 95% coupling corresponding to the reported
+    # radius must be derived quadratically from the 68% pair.
+    #
+    # Source: arXiv:2307.13035, Eq. (5), Sect. 5.1.
+    antlia_68_r_tf_kpc = sp.Rational(18, 100)
+    antlia_95_r_tf_kpc = sp.Rational(72, 100)
+
+    antlia_68_g_over_m2 = (
+        sp.Rational(52, 10) * sp.Integer(10) ** -20
+    )
+
+    antlia_95_g_over_m2_reported = (
+        sp.Rational(83, 10) * sp.Integer(10) ** -20
+    )
+
+    antlia_95_g_over_m2_from_radius = sp.simplify(
+        antlia_68_g_over_m2
+        * (
+            antlia_95_r_tf_kpc
+            / antlia_68_r_tf_kpc
+        ) ** 2
+    )
+
+    antlia_95_reported_consistency_gap = sp.simplify(
+        antlia_95_g_over_m2_from_radius
+        - antlia_95_g_over_m2_reported
+    )
+
+    lrs_lower = (
+        sp.Rational(95, 10) * sp.Integer(10) ** -19
+    )
+
+    interval_separation = sp.simplify(
+        lrs_lower
+        - antlia_95_g_over_m2_from_radius
+    )
+
+    return {
+        "polar_kinetic_gap": polar_kinetic_gap,
+        "potential_gap": potential_gap,
+        "g_gap": g_gap,
+        "g_over_m_squared_gap": g_over_m_squared_gap,
+        "alpha_independence": alpha_independence,
+        "beta_independence": beta_independence,
+        "madelung_pressure_gap": madelung_pressure_gap,
+        "tf_radius_gap": tf_radius_gap,
+        "m_squared": m_squared,
+        "lambda_rel": lambda_rel,
+        "g": g,
+        "g_over_m_squared": g_over_m_squared,
+        "r_tf_squared": r_tf_squared,
+        "antlia_95_g_over_m2_reported": (
+            antlia_95_g_over_m2_reported
+        ),
+        "antlia_95_g_over_m2_from_radius": (
+            antlia_95_g_over_m2_from_radius
+        ),
+        "antlia_95_reported_consistency_gap": (
+            antlia_95_reported_consistency_gap
+        ),
+        "interval_separation": interval_separation,
+    }
+
+
+def antlia_eq12_tf_hierarchy_ratio(
+    *,
+    particle_mass_eV: float,
+    minimum_halo_mass_solar: float,
+    r_tf_kpc: float,
+) -> float:
+    """Dimensionless Thomas-Fermi hierarchy ratio from Antlia-B Eq. (12).
+
+    Eq. (12) is equivalent to requiring
+
+        H_TF =
+            (m c^2 / 1e-21 eV)
+            * (M_200,min / 1e9 M_sun)^(1/3)
+            * (R_TF / 1 kpc)
+
+        >> 1.
+
+    This function returns H_TF only.  It deliberately does not choose
+    a numerical meaning for the asymptotic symbol ">>".
+    """
+
+    for name, value in (
+        ("particle_mass_eV", particle_mass_eV),
+        ("minimum_halo_mass_solar", minimum_halo_mass_solar),
+        ("r_tf_kpc", r_tf_kpc),
+    ):
+        _require_finite(name, value)
+
+        if value <= 0.0:
+            raise ValueError(
+                f"{name} must be positive"
+            )
+
+    hierarchy_ratio = (
+        particle_mass_eV / 1.0e-21
+        * (
+            minimum_halo_mass_solar / 1.0e9
+        ) ** (1.0 / 3.0)
+        * r_tf_kpc
+    )
+
+    _require_finite(
+        "hierarchy_ratio",
+        hierarchy_ratio,
+    )
+
+    return hierarchy_ratio
+
+
+def exact_positive_lambda_charge_normalization_obstruction_certificate(
+) -> dict[str, sp.Expr]:
+    """Certify the obstruction to exact CDM rest-mass charge normalization.
+
+    Consider the candidate sixth equality
+
+        Q_theta * sqrt(m_phi_squared / beta) = rho_cdm0.
+
+    If F_rho simultaneously requires the full DFM density to equal the same
+    rho_cdm0 and rho_star = 0, then the exact density difference is a sum of
+    nonnegative terms.  For lambda_phi > 0 and phi != 0 the quartic term is
+    strictly positive, so the two equalities cannot hold simultaneously.
+
+    This certificate does not modify the shooting closure.
+    """
+
+    alpha, beta, mu, q, phi, lambda_phi = sp.symbols(
+        "alpha beta mu q phi lambda_phi",
+        positive=True,
+    )
+    v = sp.symbols("v", real=True)
+
+    kinetic = sp.Rational(1, 2) * alpha * v**2
+    phase = q**2 / (2 * beta * phi**2)
+    mass = sp.Rational(1, 2) * mu**2 * phi**2
+    quartic = sp.Rational(1, 4) * lambda_phi * phi**4
+
+    rho_dfm = kinetic + phase + mass + quartic
+
+    rho_charge_rest_mass = q * mu / sp.sqrt(beta)
+
+    am_gm_square = sp.Rational(1, 2) * (
+        mu * phi
+        - q / (sp.sqrt(beta) * phi)
+    ) ** 2
+
+    density_gap = sp.expand(
+        rho_dfm - rho_charge_rest_mass
+    )
+
+    decomposed_gap = (
+        kinetic
+        + am_gm_square
+        + quartic
+    )
+
+    return {
+        "density_gap_factorization": sp.simplify(
+            density_gap - decomposed_gap
+        ),
+        "phase_mass_am_gm_identity": sp.simplify(
+            phase
+            + mass
+            - rho_charge_rest_mass
+            - am_gm_square
+        ),
+        "quartic_positive_floor_identity": sp.simplify(
+            decomposed_gap
+            - kinetic
+            - am_gm_square
+            - quartic
+        ),
     }
 
 
@@ -366,6 +733,1849 @@ def exact_finite_alpha_circular_dust_obstruction_certificate(
         ),
         "density_excess_identity": sp.simplify(
             rho_dfm - dust_density - pressure_defect
+        ),
+    }
+
+
+def positive_lambda_lrs_bbn_nonrealization_certificate(
+    unit_map: "DFMCDMUnitMap",
+    *,
+    alpha: float = 1.0,
+    beta: float = 1.0,
+    N_initial: float = -0.1,
+    T_gamma_MeV: float = 1.0,
+) -> dict[str, object]:
+    """Certify non-realization of the prepared positive-lambda LRS family.
+
+    Assumptions fixed by this theorem surface:
+
+        rho_star = 0,
+        alpha = beta = 1,
+        late-time DFM density calibrated to the CDM target,
+        v_initial = 0,
+        initial point on the algebraic circular manifold,
+        m_eV >= LRS_PARTICLE_MASS_LOWER_EV,
+        LRS_SELF_INTERACTION_LOWER_EV_INV_CM3
+            <= g/(m*c^2)^2
+            <= LRS_SELF_INTERACTION_UPPER_EV_INV_CM3,
+        repository BBN convention at T_gamma = 1 MeV.
+
+    Prior exact certificates establish
+
+        rho_exact(a) >= rho_circ(a),
+
+    particle-mass independence after the z=m_phi_squared*phi_c^2
+    reduction, and strict increase of rho_circ(BBN) with the LRS
+    self-interaction strength.
+
+    Therefore the global BBN minimum over the prepared LRS family
+    occurs at the lower LRS coupling endpoint.  This function
+    recomputes that minimum and fails closed unless it lies above
+    the repository two-sigma BBN upper bound.
+    """
+
+    for name, value in (
+        ("alpha", alpha),
+        ("beta", beta),
+        ("N_initial", N_initial),
+        ("T_gamma_MeV", T_gamma_MeV),
+    ):
+        _require_finite(name, value)
+
+    if alpha != 1.0:
+        raise ValueError(
+            "non-realization certificate currently requires alpha = 1"
+        )
+
+    if beta != 1.0:
+        raise ValueError(
+            "non-realization certificate currently requires beta = 1"
+        )
+
+    if N_initial >= 0.0:
+        raise ValueError(
+            "non-realization certificate requires N_initial < 0"
+        )
+
+    monotonicity = (
+        exact_positive_lambda_bbn_lrs_monotonicity_certificate()
+    )
+
+    failed_monotonicity = {
+        name: sp.simplify(residual)
+        for name, residual in monotonicity.items()
+        if sp.simplify(residual) != 0
+    }
+
+    if failed_monotonicity:
+        raise RuntimeError(
+            "BBN-LRS monotonicity certificate is not closed"
+        )
+
+    m2_floor = minimum_m_phi_squared_from_particle_mass(
+        unit_map=unit_map,
+        alpha=alpha,
+        particle_mass_lower_eV=LRS_PARTICLE_MASS_LOWER_EV,
+    )
+
+    lambda_lower, lambda_same = (
+        dfm_lambda_phi_interval_from_lrs(
+            unit_map=unit_map,
+            m_phi_squared=m2_floor,
+            lower_eV_inv_cm3=(
+                LRS_SELF_INTERACTION_LOWER_EV_INV_CM3
+            ),
+            upper_eV_inv_cm3=(
+                LRS_SELF_INTERACTION_LOWER_EV_INV_CM3
+            ),
+        )
+    )
+
+    if not math.isclose(
+        lambda_lower,
+        lambda_same,
+        rel_tol=2.0e-15,
+        abs_tol=0.0,
+    ):
+        raise RuntimeError(
+            "lower LRS coupling did not map to a unique lambda_phi"
+        )
+
+    a_initial = math.exp(N_initial)
+
+    rho_initial = (
+        unit_map.rho_cdm0_code
+        * math.exp(-3.0 * N_initial)
+    )
+
+    kappa = (
+        lambda_lower
+        / m2_floor**2
+    )
+
+    z_initial = (
+        2.0
+        * rho_initial
+        / (
+            1.0
+            + math.sqrt(
+                1.0
+                + 3.0
+                * kappa
+                * rho_initial
+            )
+        )
+    )
+
+    x_initial = (
+        z_initial
+        / m2_floor
+    )
+
+    Q_theta = math.sqrt(
+        beta
+        * a_initial**6
+        / m2_floor
+        * z_initial**2
+        * (
+            1.0
+            + kappa
+            * z_initial
+        )
+    )
+
+    reference = build_bbn_thermodynamic_reference(
+        unit_map,
+        T_gamma_MeV=T_gamma_MeV,
+    )
+
+    if reference.a >= a_initial:
+        raise ValueError(
+            "BBN surface must precede the prepared initial surface"
+        )
+
+    x_bbn = circular_phi_squared_positive_root(
+        a=reference.a,
+        beta=beta,
+        m_phi_squared=m2_floor,
+        lambda_phi=lambda_lower,
+        Q_theta=Q_theta,
+    )
+
+    rho_circ_bbn, _ = circular_energy_density_pressure(
+        a=reference.a,
+        beta=beta,
+        rho_star=0.0,
+        m_phi_squared=m2_floor,
+        lambda_phi=lambda_lower,
+        Q_theta=Q_theta,
+    )
+
+    rho_one_neutrino_species = (
+        reference.rho_gamma_code
+        * (7.0 / 8.0)
+        * (
+            reference.T_nu_MeV
+            / reference.T_gamma_MeV
+        ) ** 4
+    )
+
+    if rho_one_neutrino_species <= 0.0:
+        raise RuntimeError(
+            "one-neutrino-species BBN density must be positive"
+        )
+
+    delta_rho_lower = (
+        rho_circ_bbn
+        - reference.rho_cdm_reference_code
+    )
+
+    n_eff_global_lower = (
+        STANDARD_BBN_N_NU
+        + delta_rho_lower
+        / rho_one_neutrino_species
+    )
+
+    bbn_upper_2sigma = (
+        BBN_N_EFF_TARGET
+        + 2.0 * BBN_N_EFF_SIGMA
+    )
+
+    exclusion_margin = (
+        n_eff_global_lower
+        - bbn_upper_2sigma
+    )
+
+    if exclusion_margin <= 0.0:
+        raise RuntimeError(
+            "positive-lambda LRS family is not excluded by the "
+            "repository two-sigma BBN criterion"
+        )
+
+    return {
+        "theorem": (
+            "prepared positive-lambda LRS-family BBN non-realization"
+        ),
+        "rho_star": 0.0,
+        "alpha": alpha,
+        "beta": beta,
+        "N_initial": N_initial,
+        "T_gamma_MeV": T_gamma_MeV,
+        "a_bbn": reference.a,
+        "N_bbn": reference.N,
+        "particle_mass_lower_eV": (
+            LRS_PARTICLE_MASS_LOWER_EV
+        ),
+        "lrs_strength_lower_eV_inv_cm3": (
+            LRS_SELF_INTERACTION_LOWER_EV_INV_CM3
+        ),
+        "lrs_strength_upper_eV_inv_cm3": (
+            LRS_SELF_INTERACTION_UPPER_EV_INV_CM3
+        ),
+        "m_phi_squared_floor": m2_floor,
+        "lambda_phi_at_global_minimum": lambda_lower,
+        "kappa_at_global_minimum": kappa,
+        "x_initial_at_global_minimum": x_initial,
+        "Q_theta_at_global_minimum": Q_theta,
+        "x_bbn_at_global_minimum": x_bbn,
+        "rho_circ_bbn_global_minimum": rho_circ_bbn,
+        "rho_cdm_reference_bbn": (
+            reference.rho_cdm_reference_code
+        ),
+        "n_eff_global_lower": n_eff_global_lower,
+        "bbn_upper_2sigma": bbn_upper_2sigma,
+        "exclusion_margin": exclusion_margin,
+        "mass_independent": True,
+        "global_minimum_at_lrs_lower_coupling": True,
+        "rho_exact_gte_rho_circ": True,
+        "excluded_2sigma": True,
+    }
+
+
+def exact_positive_lambda_bbn_lrs_monotonicity_certificate(
+) -> dict[str, sp.Expr]:
+    """Certify mass-independence and coupling monotonicity of rho_circ.
+
+    Define
+
+        kappa = lambda_phi / m_phi_squared^2,
+        z     = m_phi_squared * phi_c^2,
+        t     = kappa*z.
+
+    Then
+
+        rho_circ = z + 3*kappa*z^2/4
+                 = f(t)/kappa,
+
+        f(t) = t + 3*t^2/4,
+
+    while the circular charge relation is proportional to
+
+        z^2*(1+kappa*z)
+          = h(t)/kappa^2,
+
+        h(t) = t^2*(1+t).
+
+    Between two scale factors the common mass and kappa factors
+    cancel, giving
+
+        h(t_f) = A*h(t_i),
+
+        A = (a_i/a_f)^6.
+
+    The density ratio is therefore
+
+        rho_f/rho_i = f(t_f)/f(t_i).
+
+    Its logarithmic elasticity with respect to h is
+
+        E(t) = d ln(f) / d ln(h)
+             = 2*(1+t)/(4+3*t),
+
+    and
+
+        E'(t) = 2/(4+3*t)^2 > 0.
+
+    For A>1, h strictly increasing implies t_f>t_i, hence
+
+        E(t_f)-E(t_i)
+          = 2*(t_f-t_i)
+            /[(4+3*t_f)*(4+3*t_i)] > 0.
+
+    Thus rho_f/rho_i increases with kappa. Since the physical
+    LRS strength is proportional to kappa, the smallest BBN
+    circular density occurs at the lower LRS coupling endpoint.
+
+    All explicit m_phi_squared dependence cancels.
+    """
+
+    t, t_i, t_f = sp.symbols(
+        "t t_i t_f",
+        positive=True,
+    )
+
+    kappa, z, m2 = sp.symbols(
+        "kappa z m2",
+        positive=True,
+    )
+
+    f = (
+        t
+        + sp.Rational(3, 4) * t**2
+    )
+
+    h = (
+        t**2 * (1 + t)
+    )
+
+    rho_z = (
+        z
+        + sp.Rational(3, 4)
+        * kappa
+        * z**2
+    )
+
+    charge_z = (
+        z**2
+        * (1 + kappa * z)
+        / m2
+    )
+
+    f_from_z = (
+        f.subs(t, kappa * z)
+        / kappa
+    )
+
+    h_from_z = (
+        h.subs(t, kappa * z)
+        / (
+            m2 * kappa**2
+        )
+    )
+
+    elasticity = sp.simplify(
+        (sp.diff(f, t) / f)
+        / (sp.diff(h, t) / h)
+    )
+
+    expected_elasticity = (
+        2 * (1 + t)
+        / (4 + 3 * t)
+    )
+
+    elasticity_derivative = sp.diff(
+        expected_elasticity,
+        t,
+    )
+
+    expected_elasticity_derivative = (
+        2
+        / (4 + 3 * t)**2
+    )
+
+    endpoint_elasticity_gap = sp.factor(
+        expected_elasticity.subs(t, t_f)
+        - expected_elasticity.subs(t, t_i)
+    )
+
+    expected_endpoint_gap = (
+        2
+        * (t_f - t_i)
+        / (
+            (4 + 3 * t_f)
+            * (4 + 3 * t_i)
+        )
+    )
+
+    return {
+        "density_scale_reduction": sp.factor(
+            rho_z - f_from_z
+        ),
+        "charge_scale_reduction": sp.factor(
+            charge_z - h_from_z
+        ),
+        "h_derivative_identity": sp.factor(
+            sp.diff(h, t)
+            - t * (2 + 3 * t)
+        ),
+        "f_derivative_identity": sp.factor(
+            sp.diff(f, t)
+            - (
+                1
+                + sp.Rational(3, 2) * t
+            )
+        ),
+        "elasticity_identity": sp.factor(
+            elasticity
+            - expected_elasticity
+        ),
+        "elasticity_derivative_identity": sp.factor(
+            elasticity_derivative
+            - expected_elasticity_derivative
+        ),
+        "endpoint_elasticity_gap_identity": sp.factor(
+            endpoint_elasticity_gap
+            - expected_endpoint_gap
+        ),
+    }
+
+
+def exact_positive_lambda_circular_density_lower_bound_certificate(
+) -> dict[str, sp.Expr]:
+    """Certify rho_exact >= rho_circ at every fixed scale factor.
+
+    For x = phi^2 > 0 define
+
+        U_eff(x)
+          = C/(2*x)
+            + m2*x/2
+            + lambda*x^2/4
+            + rho_star,
+
+        C = Q_theta^2/(beta*a^6) > 0.
+
+    The circular root x_c satisfies
+
+        C = m2*x_c^2 + lambda*x_c^3.
+
+    Since
+
+        U_eff''(x) = C/x^3 + lambda/2 > 0,
+
+    x_c is the unique global minimum on x>0.
+
+    The full finite-alpha density is
+
+        rho_exact
+          = alpha*phi_dot^2/2 + U_eff(phi^2),
+
+    so
+
+        rho_exact >= rho_circ
+
+    without any tracking or averaging assumption.
+    """
+
+    x, x_c = sp.symbols(
+        "x x_c",
+        positive=True,
+    )
+
+    alpha, m2, lambda_phi, C = sp.symbols(
+        "alpha m2 lambda_phi C",
+        positive=True,
+    )
+
+    rho_star, phi_dot = sp.symbols(
+        "rho_star phi_dot",
+        real=True,
+    )
+
+    U_eff = (
+        C / (2 * x)
+        + m2 * x / 2
+        + lambda_phi * x**2 / 4
+        + rho_star
+    )
+
+    dU = sp.diff(U_eff, x)
+    ddU = sp.diff(U_eff, x, 2)
+
+    circular_relation = (
+        C
+        - m2 * x_c**2
+        - lambda_phi * x_c**3
+    )
+
+    stationary_at_circular = sp.factor(
+        dU.subs(
+            {
+                x: x_c,
+                C: (
+                    m2 * x_c**2
+                    + lambda_phi * x_c**3
+                ),
+            }
+        )
+    )
+
+    rho_circ_from_minimum = sp.factor(
+        U_eff.subs(
+            {
+                x: x_c,
+                C: (
+                    m2 * x_c**2
+                    + lambda_phi * x_c**3
+                ),
+            }
+        )
+    )
+
+    expected_rho_circ = (
+        rho_star
+        + m2 * x_c
+        + sp.Rational(3, 4)
+        * lambda_phi
+        * x_c**2
+    )
+
+    exact_density = (
+        alpha * phi_dot**2 / 2
+        + U_eff
+    )
+
+    kinetic_gap = sp.factor(
+        exact_density - U_eff
+    )
+
+    return {
+        "circular_relation_identity": sp.factor(
+            circular_relation.subs(
+                C,
+                m2 * x_c**2
+                + lambda_phi * x_c**3,
+            )
+        ),
+        "stationary_at_circular": stationary_at_circular,
+        "strict_convexity_identity": sp.factor(
+            ddU
+            - (
+                C / x**3
+                + lambda_phi / 2
+            )
+        ),
+        "circular_minimum_density_identity": sp.factor(
+            rho_circ_from_minimum
+            - expected_rho_circ
+        ),
+        "nonnegative_kinetic_identity": sp.factor(
+            kinetic_gap
+            - alpha * phi_dot**2 / 2
+        ),
+    }
+
+
+def exact_positive_lambda_quartic_density_pressure_bridge_certificate(
+) -> dict[str, sp.Expr]:
+    """Certify exact finite-alpha rho/p deviations from the circular layer.
+
+    Put
+
+        x = phi_c^2,
+        L = lambda_phi*x,
+        s = phi_c_dot/phi_c,
+        phi = phi_c*y.
+
+    Then
+
+        phi_dot = phi_c*(y_dot + s*y).
+
+    Relative to the algebraic circular density and pressure,
+
+        Delta rho
+          = x*E_rel
+            + alpha*x*s*y*y_dot
+            + alpha*x*s^2*y^2/2,
+
+    where
+
+        E_rel = alpha*y_dot^2/2 + V_rel.
+
+    The pressure satisfies the exact relation
+
+        Delta p
+          = Delta rho
+            - x*(y^2-1)
+              *(L*y^2 + L + 2*m2)/2.
+
+    Thus density inherits the quadratic relative-energy control,
+    while pressure contains one additional term linear in the
+    displacement from the circular manifold.
+    """
+
+    alpha, x, m2, L, y = sp.symbols(
+        "alpha x m2 L y",
+        positive=True,
+    )
+
+    rho_star = sp.symbols(
+        "rho_star",
+        real=True,
+    )
+
+    s, y_dot = sp.symbols(
+        "s y_dot",
+        real=True,
+    )
+
+    kinetic = (
+        sp.Rational(1, 2)
+        * alpha
+        * x
+        * (y_dot + s * y)**2
+    )
+
+    phase = (
+        sp.Rational(1, 2)
+        * x
+        * (m2 + L)
+        * y**-2
+    )
+
+    potential = (
+        rho_star
+        + sp.Rational(1, 2)
+        * m2
+        * x
+        * y**2
+        + sp.Rational(1, 4)
+        * L
+        * x
+        * y**4
+    )
+
+    rho_exact = (
+        kinetic
+        + phase
+        + potential
+    )
+
+    p_exact = (
+        kinetic
+        + phase
+        - potential
+    )
+
+    rho_circ = (
+        rho_star
+        + m2 * x
+        + sp.Rational(3, 4) * L * x
+    )
+
+    p_circ = (
+        -rho_star
+        + sp.Rational(1, 4) * L * x
+    )
+
+    quadratic_shape = (
+        sp.Rational(1, 2)
+        * (
+            y**2
+            + y**-2
+            - 2
+        )
+    )
+
+    quartic_shape = (
+        sp.Rational(1, 4) * y**4
+        + sp.Rational(1, 2) * y**-2
+        - sp.Rational(3, 4)
+    )
+
+    V_rel = (
+        m2 * quadratic_shape
+        + L * quartic_shape
+    )
+
+    E_rel = (
+        sp.Rational(1, 2)
+        * alpha
+        * y_dot**2
+        + V_rel
+    )
+
+    delta_rho = sp.expand(
+        rho_exact - rho_circ
+    )
+
+    delta_p = sp.expand(
+        p_exact - p_circ
+    )
+
+    reduced_delta_rho = (
+        x * E_rel
+        + alpha * x * s * y * y_dot
+        + sp.Rational(1, 2)
+        * alpha
+        * x
+        * s**2
+        * y**2
+    )
+
+    pressure_correction = (
+        sp.Rational(1, 2)
+        * x
+        * (y**2 - 1)
+        * (
+            L * y**2
+            + L
+            + 2 * m2
+        )
+    )
+
+    return {
+        "density_decomposition_identity": sp.factor(
+            delta_rho
+            - reduced_delta_rho
+        ),
+        "pressure_from_density_identity": sp.factor(
+            delta_p
+            - (
+                delta_rho
+                - pressure_correction
+            )
+        ),
+        "circular_density_identity": sp.factor(
+            rho_exact.subs(
+                {
+                    y: 1,
+                    y_dot: -s,
+                }
+            )
+            - rho_circ
+        ),
+        "circular_pressure_identity": sp.factor(
+            p_exact.subs(
+                {
+                    y: 1,
+                    y_dot: -s,
+                }
+            )
+            - p_circ
+        ),
+    }
+
+
+def exact_positive_lambda_quartic_initial_energy_gronwall_certificate(
+) -> dict[str, sp.Expr]:
+    """Certify the prepared-seed initial energy and Gronwall solution.
+
+    On the circular manifold let
+
+        L = lambda_phi*phi_c^2,
+
+        u = d(log(phi_c))/dN
+          = -3*(m2+L)/(2*m2+3*L).
+
+    At the prepared shooting seed
+
+        y_i = 1,
+        phi_dot_i = 0,
+
+    so
+
+        y_dot_i = -phi_c_dot/phi_c
+                = -H_i*u_i
+                = 3*H_i*(m2+L_i)/(2*m2+3*L_i).
+
+    Since V_rel(1)=0,
+
+        E_i
+          = alpha*y_dot_i^2/2,
+
+        e_i
+          = E_i/m2
+          = 9*alpha*H_i^2*(m2+L_i)^2
+            /[2*m2*(2*m2+3*L_i)^2].
+
+    If
+
+        de/dN <= K*(e+1),
+        K <= K_max,
+
+    then the comparison majorant is
+
+        e_bar(N)
+          = (1+e_i)*exp(K_max*(N-N_i)) - 1.
+    """
+
+    alpha, H_i, m2, L_i = sp.symbols(
+        "alpha H_i m2 L_i",
+        positive=True,
+    )
+
+    K_max = sp.symbols(
+        "K_max",
+        nonnegative=True,
+    )
+
+    N, N_i = sp.symbols(
+        "N N_i",
+        real=True,
+    )
+
+    u_i = (
+        -3
+        * (m2 + L_i)
+        / (2 * m2 + 3 * L_i)
+    )
+
+    y_dot_i = -H_i * u_i
+
+    expected_y_dot_i = (
+        3
+        * H_i
+        * (m2 + L_i)
+        / (2 * m2 + 3 * L_i)
+    )
+
+    E_i = (
+        sp.Rational(1, 2)
+        * alpha
+        * y_dot_i**2
+    )
+
+    e_i = sp.simplify(
+        E_i / m2
+    )
+
+    expected_e_i = (
+        9
+        * alpha
+        * H_i**2
+        * (m2 + L_i)**2
+        / (
+            2
+            * m2
+            * (2 * m2 + 3 * L_i)**2
+        )
+    )
+
+    e_bar = (
+        (1 + e_i)
+        * sp.exp(
+            K_max
+            * (N - N_i)
+        )
+        - 1
+    )
+
+    comparison_ode_residual = (
+        sp.diff(e_bar, N)
+        - K_max * (e_bar + 1)
+    )
+
+    comparison_initial_residual = (
+        e_bar.subs(N, N_i)
+        - e_i
+    )
+
+    return {
+        "prepared_seed_y_dot_identity": sp.factor(
+            y_dot_i
+            - expected_y_dot_i
+        ),
+        "prepared_seed_energy_identity": sp.factor(
+            e_i
+            - expected_e_i
+        ),
+        "comparison_ode_identity": sp.factor(
+            comparison_ode_residual
+        ),
+        "comparison_initial_identity": sp.factor(
+            comparison_initial_residual
+        ),
+    }
+
+
+def exact_positive_lambda_quartic_uniform_young_envelope_certificate(
+) -> dict[str, sp.Expr]:
+    """Certify the analytic envelope used for uniform A/H control.
+
+    Put
+
+        r = lambda_phi*phi_c^2/m_phi_squared > 0,
+        q_H = -H_dot/H^2.
+
+    Then
+
+        gamma/H = 3*r/(2 + 3*r),
+
+    and
+
+        g_q/H^2
+          = -3*(1+r)/(2+3*r)*q_H
+            + 9*(1+r)*(2+9*r+6*r^2)/(2+3*r)^3.
+
+    For a nonnegative cosmological constant and matter/radiation/
+    circular components with w <= 1/3,
+
+        0 <= q_H <= 2.
+
+    The two coefficient estimates
+
+        (1+r)/(2+3*r) <= 1/2,
+
+        (2+9*r+6*r^2)/(2+3*r)^2 <= 1
+
+    give the conservative exact envelope
+
+        abs(g_q/H^2) <= 15/2.
+
+    Also r_N < 0, so
+
+        (2+3*r)/(3*r)
+
+    increases with N.  Since H decreases on the expanding branch,
+    a uniform interval bound is therefore
+
+        A/H
+          <= alpha*H_i^2/m2
+             *(15/2)^2
+             *(2+3*r_f)/(3*r_f),
+
+    where H_i is the initial Hubble value and r_f is the final
+    circular r value.
+    """
+
+    r, q_H = sp.symbols(
+        "r q_H",
+        nonnegative=True,
+    )
+
+    m2 = sp.symbols(
+        "m2",
+        positive=True,
+    )
+
+    first_ratio = (
+        (1 + r)
+        / (2 + 3 * r)
+    )
+
+    second_ratio = (
+        (2 + 9 * r + 6 * r**2)
+        / (2 + 3 * r)**2
+    )
+
+    first_gap = (
+        sp.Rational(1, 2)
+        - first_ratio
+    )
+
+    expected_first_gap = (
+        r
+        / (
+            2
+            * (2 + 3 * r)
+        )
+    )
+
+    second_gap = (
+        1
+        - second_ratio
+    )
+
+    expected_second_gap = (
+        2 + 3 * r + 3 * r**2
+    ) / (
+        2 + 3 * r
+    )**2
+
+    circular_w = (
+        r
+        / (4 + 3 * r)
+    )
+
+    circular_w_gap = (
+        sp.Rational(1, 3)
+        - circular_w
+    )
+
+    expected_circular_w_gap = (
+        4
+        / (
+            3
+            * (4 + 3 * r)
+        )
+    )
+
+    r_N = (
+        -6
+        * r
+        * (1 + r)
+        / (2 + 3 * r)
+    )
+
+    inverse_damping_factor = (
+        (2 + 3 * r)
+        / (3 * r)
+    )
+
+    inverse_damping_r_derivative = sp.diff(
+        inverse_damping_factor,
+        r,
+    )
+
+    expected_inverse_damping_r_derivative = (
+        -sp.Rational(2, 3)
+        / r**2
+    )
+
+    forcing_second_term = (
+        9
+        * first_ratio
+        * second_ratio
+    )
+
+    forcing_coarse_bound = (
+        sp.Rational(9, 2)
+    )
+
+    total_forcing_bound = (
+        sp.Rational(3, 2) * 2
+        + forcing_coarse_bound
+    )
+
+    return {
+        "first_ratio_gap_identity": sp.factor(
+            first_gap
+            - expected_first_gap
+        ),
+        "second_ratio_gap_identity": sp.factor(
+            second_gap
+            - expected_second_gap
+        ),
+        "circular_w_le_one_third_identity": sp.factor(
+            circular_w_gap
+            - expected_circular_w_gap
+        ),
+        "r_N_identity": sp.factor(
+            r_N
+            + 6
+            * r
+            * (1 + r)
+            / (2 + 3 * r)
+        ),
+        "inverse_damping_derivative_identity": sp.factor(
+            inverse_damping_r_derivative
+            - expected_inverse_damping_r_derivative
+        ),
+        "forcing_second_term_factorization": sp.factor(
+            forcing_second_term
+            - 9
+            * first_ratio
+            * second_ratio
+        ),
+        "total_forcing_bound_identity": sp.factor(
+            total_forcing_bound
+            - sp.Rational(15, 2)
+        ),
+    }
+
+
+def exact_positive_lambda_quartic_relative_energy_young_majorant_certificate(
+) -> dict[str, sp.Expr]:
+    """Certify a coercive Young majorant for quartic tracking energy.
+
+    Starting from
+
+        E_dot
+          = -alpha*gamma*y_dot^2
+            + alpha*g_q*y*y_dot
+            + L_dot*W(y),
+
+    with gamma > 0 and L_dot*W(y) <= 0, Young's inequality gives
+
+        alpha*g_q*y*y_dot
+          <= alpha*gamma*y_dot^2/2
+             + alpha*g_q^2*y^2/(2*gamma).
+
+    The positive relative potential also gives
+
+        y^2 <= 2 + 2*V_rel/m2
+             <= 2 + 2*E_rel/m2.
+
+    Therefore
+
+        E_dot
+          <= -alpha*gamma*y_dot^2/2
+             + alpha*g_q^2/gamma
+               * (1 + E_rel/m2),
+
+    and hence
+
+        E_dot <= A*E_rel + B,
+
+        A = alpha*g_q^2/(gamma*m2),
+        B = alpha*g_q^2/gamma.
+
+    This is an exact differential majorant.  It does not assert
+    that A or B are small on the physical branch.
+    """
+
+    alpha, H, m2, ell, y = sp.symbols(
+        "alpha H m2 ell y",
+        positive=True,
+    )
+
+    y_dot, g_q = sp.symbols(
+        "y_dot g_q",
+        real=True,
+    )
+
+    denominator = 2 * m2 + 3 * ell
+
+    gamma = (
+        3 * H * ell
+        / denominator
+    )
+
+    ell_dot = (
+        -6
+        * H
+        * ell
+        * (m2 + ell)
+        / denominator
+    )
+
+    quartic_shape = (
+        sp.Rational(1, 4) * y**4
+        + sp.Rational(1, 2) * y**-2
+        - sp.Rational(3, 4)
+    )
+
+    quartic_shape_factored = (
+        (y**2 - 1)**2
+        * (y**2 + 2)
+        / (4 * y**2)
+    )
+
+    quadratic_shape = (
+        sp.Rational(1, 2)
+        * (
+            y**2
+            + y**-2
+            - 2
+        )
+    )
+
+    potential = (
+        m2 * quadratic_shape
+        + ell * quartic_shape
+    )
+
+    energy = (
+        sp.Rational(1, 2)
+        * alpha
+        * y_dot**2
+        + potential
+    )
+
+    energy_dot = (
+        -alpha * gamma * y_dot**2
+        + alpha * g_q * y * y_dot
+        + ell_dot * quartic_shape
+    )
+
+    young_upper = (
+        sp.Rational(1, 2)
+        * alpha
+        * gamma
+        * y_dot**2
+        + alpha
+        * g_q**2
+        * y**2
+        / (2 * gamma)
+    )
+
+    young_gap = (
+        young_upper
+        - alpha * g_q * y * y_dot
+    )
+
+    expected_young_gap = (
+        alpha
+        * (
+            gamma * y_dot
+            - g_q * y
+        )**2
+        / (2 * gamma)
+    )
+
+    y_coercive_gap = (
+        2
+        + 2 * potential / m2
+        - y**2
+    )
+
+    expected_y_coercive_gap = (
+        y**-2
+        + 2 * ell * quartic_shape / m2
+    )
+
+    energy_coercive_gap = (
+        2
+        + 2 * energy / m2
+        - y**2
+    )
+
+    expected_energy_coercive_gap = (
+        y**-2
+        + alpha * y_dot**2 / m2
+        + 2 * ell * quartic_shape / m2
+    )
+
+    majorant = (
+        -sp.Rational(1, 2)
+        * alpha
+        * gamma
+        * y_dot**2
+        + alpha
+        * g_q**2
+        / gamma
+        * (
+            1
+            + energy / m2
+        )
+    )
+
+    gronwall_A = (
+        alpha
+        * g_q**2
+        / (gamma * m2)
+    )
+
+    gronwall_B = (
+        alpha
+        * g_q**2
+        / gamma
+    )
+
+    expected_majorant = (
+        -sp.Rational(1, 2)
+        * alpha
+        * gamma
+        * y_dot**2
+        + gronwall_A * energy
+        + gronwall_B
+    )
+
+    majorant_gap = sp.simplify(
+        majorant - energy_dot
+    )
+
+    expected_majorant_gap = (
+        expected_young_gap
+        + alpha
+        * g_q**2
+        / (2 * gamma)
+        * energy_coercive_gap
+        - ell_dot * quartic_shape
+    )
+
+    return {
+        "quartic_shape_factorization": sp.factor(
+            quartic_shape
+            - quartic_shape_factored
+        ),
+        "young_square_identity": sp.factor(
+            young_gap
+            - expected_young_gap
+        ),
+        "potential_y2_coercivity_identity": sp.factor(
+            y_coercive_gap
+            - expected_y_coercive_gap
+        ),
+        "energy_y2_coercivity_identity": sp.factor(
+            energy_coercive_gap
+            - expected_energy_coercive_gap
+        ),
+        "majorant_decomposition_identity": sp.factor(
+            majorant
+            - expected_majorant
+        ),
+        "majorant_gap_positive_decomposition": sp.factor(
+            majorant_gap
+            - expected_majorant_gap
+        ),
+        "gronwall_A_identity": sp.factor(
+            gronwall_A
+            - alpha
+            * g_q**2
+            * denominator
+            / (
+                3
+                * H
+                * ell
+                * m2
+            )
+        ),
+        "gronwall_B_identity": sp.factor(
+            gronwall_B
+            - alpha
+            * g_q**2
+            * denominator
+            / (
+                3
+                * H
+                * ell
+            )
+        ),
+    }
+
+
+def exact_positive_lambda_quartic_relative_energy_derivative_certificate(
+) -> dict[str, sp.Expr]:
+    """Certify the exact positive-lambda relative-energy derivative.
+
+    For the quartic relative equation
+
+        alpha*(y_ddot + gamma*y_dot)
+        + dV_rel/dy
+        - alpha*g_q*y
+        = 0,
+
+    define
+
+        E_rel = alpha*y_dot^2/2 + V_rel(y, L),
+
+        L = lambda_phi*phi_c^2,
+
+        gamma = 3*H*L/(2*m2 + 3*L).
+
+    Since
+
+        dL/dt
+          = -6*H*L*(m2 + L)/(2*m2 + 3*L),
+
+    the exact energy identity is
+
+        dE_rel/dt
+          = -alpha*gamma*y_dot^2
+            + alpha*g_q*y*y_dot
+            + L_dot*W(y),
+
+    where
+
+        W(y)
+          = y^4/4 + y^-2/2 - 3/4
+          = (y^2 - 1)^2*(y^2 + 2)/(4*y^2)
+          >= 0.
+
+    Thus for H>0, m2>0, L>0, y>0, the explicit
+    time-dependent quartic-potential contribution satisfies
+
+        L_dot*W(y) <= 0.
+
+    The new quartic time-dependence is therefore dissipative.
+    Only the moving-manifold forcing alpha*g_q*y*y_dot can
+    inject relative energy.
+
+    This certificate does not yet bound that forcing term.
+    """
+
+    alpha, H, m2, ell, y = sp.symbols(
+        "alpha H m2 ell y",
+        positive=True,
+    )
+
+    y_dot, y_ddot, g_q = sp.symbols(
+        "y_dot y_ddot g_q",
+        real=True,
+    )
+
+    denominator = (
+        2 * m2
+        + 3 * ell
+    )
+
+    gamma = (
+        3 * H * ell
+        / denominator
+    )
+
+    ell_dot = (
+        -6
+        * H
+        * ell
+        * (m2 + ell)
+        / denominator
+    )
+
+    quadratic_shape = (
+        sp.Rational(1, 2)
+        * (
+            y**2
+            + y**-2
+            - 2
+        )
+    )
+
+    quartic_shape = (
+        sp.Rational(1, 4) * y**4
+        + sp.Rational(1, 2) * y**-2
+        - sp.Rational(3, 4)
+    )
+
+    relative_potential = (
+        m2 * quadratic_shape
+        + ell * quartic_shape
+    )
+
+    restoring_force = sp.diff(
+        relative_potential,
+        y,
+    )
+
+    relative_equation = (
+        alpha
+        * (
+            y_ddot
+            + gamma * y_dot
+        )
+        + restoring_force
+        - alpha * g_q * y
+    )
+
+    y_ddot_on_shell = (
+        -gamma * y_dot
+        - restoring_force / alpha
+        + g_q * y
+    )
+
+    energy_dot = (
+        alpha * y_dot * y_ddot
+        + restoring_force * y_dot
+        + ell_dot * quartic_shape
+    )
+
+    energy_dot_on_shell = sp.simplify(
+        energy_dot.subs(
+            y_ddot,
+            y_ddot_on_shell,
+        )
+    )
+
+    expected_energy_dot = (
+        -alpha * gamma * y_dot**2
+        + alpha * g_q * y * y_dot
+        + ell_dot * quartic_shape
+    )
+
+    quartic_shape_factored = (
+        (y**2 - 1)**2
+        * (y**2 + 2)
+        / (4 * y**2)
+    )
+
+    quadratic_shape_factored = (
+        sp.Rational(1, 2)
+        * (y - y**-1)**2
+    )
+
+    explicit_quartic_dissipation = (
+        ell_dot * quartic_shape
+    )
+
+    expected_explicit_quartic_dissipation = (
+        -sp.Rational(3, 2)
+        * H
+        * ell
+        * (m2 + ell)
+        / denominator
+        * (
+            (y**2 - 1)**2
+            * (y**2 + 2)
+            / y**2
+        )
+    )
+
+    return {
+        "relative_equation_on_shell": sp.factor(
+            relative_equation.subs(
+                y_ddot,
+                y_ddot_on_shell,
+            )
+        ),
+        "energy_derivative_identity": sp.factor(
+            energy_dot_on_shell
+            - expected_energy_dot
+        ),
+        "quartic_shape_nonnegative_factorization": sp.factor(
+            quartic_shape
+            - quartic_shape_factored
+        ),
+        "quadratic_shape_nonnegative_factorization": sp.factor(
+            quadratic_shape
+            - quadratic_shape_factored
+        ),
+        "explicit_quartic_dissipation_factorization": sp.factor(
+            explicit_quartic_dissipation
+            - expected_explicit_quartic_dissipation
+        ),
+        "energy_at_circular_manifold": sp.factor(
+            relative_potential.subs(y, 1)
+        ),
+        "quartic_shape_at_circular_manifold": sp.factor(
+            quartic_shape.subs(y, 1)
+        ),
+        "restoring_force_at_circular_manifold": sp.factor(
+            restoring_force.subs(y, 1)
+        ),
+    }
+
+
+def exact_positive_lambda_quartic_relative_tracking_certificate(
+) -> dict[str, sp.Expr]:
+    """Certify the exact positive-lambda relative tracking equation.
+
+    The algebraic circular manifold is
+
+        m2*phi_c^4 + lambda*phi_c^6
+            = Q_theta^2/(beta*a^6).
+
+    With
+
+        y = phi/phi_c,
+        L = lambda*phi_c^2,
+
+    implicit differentiation gives
+
+        d(log(phi_c))/dN
+          = -3*(m2 + L)/(2*m2 + 3*L).
+
+    The exact finite-alpha relative radial equation is
+
+        alpha*(y_ddot + gamma*y_dot)
+        + dV_rel/dy
+        - alpha*g_q*y
+        = 0,
+
+    where
+
+        gamma
+          = 3*H*L/(2*m2 + 3*L),
+
+        dV_rel/dy
+          = m2*(y - y^-3)
+            + L*(y^3 - y^-3),
+
+    and g_q contains the exact acceleration of the moving
+    quartic circular manifold.
+
+    This certificate proves identities only.  It does not yet
+    provide an energy majorant or a bound on F_rho or F_w.
+    """
+
+    alpha, beta, m2, lambda_phi = sp.symbols(
+        "alpha beta m2 lambda_phi",
+        positive=True,
+    )
+    q, a, phi_c, y = sp.symbols(
+        "q a phi_c y",
+        positive=True,
+    )
+    H = sp.symbols(
+        "H",
+        positive=True,
+    )
+    H_dot, y_dot, y_ddot = sp.symbols(
+        "H_dot y_dot y_ddot",
+        real=True,
+    )
+
+    ell_symbol = sp.symbols(
+        "ell_symbol",
+        positive=True,
+    )
+
+    u_symbol = (
+        -3
+        * (m2 + ell_symbol)
+        / (2 * m2 + 3 * ell_symbol)
+    )
+
+    ell_N_symbol = (
+        2 * u_symbol * ell_symbol
+    )
+
+    u_N_symbol = sp.simplify(
+        sp.diff(
+            u_symbol,
+            ell_symbol,
+        )
+        * ell_N_symbol
+    )
+
+    ell = lambda_phi * phi_c**2
+
+    u = sp.simplify(
+        u_symbol.subs(
+            ell_symbol,
+            ell,
+        )
+    )
+
+    ell_N = sp.simplify(
+        ell_N_symbol.subs(
+            ell_symbol,
+            ell,
+        )
+    )
+
+    u_N = sp.simplify(
+        u_N_symbol.subs(
+            ell_symbol,
+            ell,
+        )
+    )
+
+    denominator = (
+        2 * m2
+        + 3 * ell
+    )
+
+    expected_ell_N = (
+        -6
+        * ell
+        * (m2 + ell)
+        / denominator
+    )
+
+    expected_u_N = (
+        -18
+        * m2
+        * ell
+        * (m2 + ell)
+        / denominator**3
+    )
+
+    phi_c_N = u * phi_c
+
+    circular_manifold_N_derivative = (
+        (
+            4 * m2 * phi_c**3
+            + 6 * lambda_phi * phi_c**5
+        )
+        * phi_c_N
+        + 6 * q**2 / (beta * a**6)
+    )
+
+    circular_manifold_N_derivative = (
+        circular_manifold_N_derivative.subs(
+            q**2 / (beta * a**6),
+            m2 * phi_c**4
+            + lambda_phi * phi_c**6,
+        )
+    )
+
+    phi_c_dot_over_phi_c = (
+        H * u
+    )
+
+    phi_c_ddot_over_phi_c = sp.simplify(
+        u * H_dot
+        + H**2 * u_N
+        + H**2 * u**2
+    )
+
+    gamma = sp.simplify(
+        H * (3 + 2 * u)
+    )
+
+    expected_gamma = (
+        3
+        * H
+        * ell
+        / denominator
+    )
+
+    g_quartic = sp.simplify(
+        -(
+            u * H_dot
+            + H**2
+            * (
+                u_N
+                + u**2
+                + 3 * u
+            )
+        )
+    )
+
+    expected_g_quartic = (
+        3
+        * (m2 + ell)
+        * H_dot
+        / denominator
+        + 9
+        * (m2 + ell)
+        * (
+            2 * m2**2
+            + 9 * m2 * ell
+            + 6 * ell**2
+        )
+        * H**2
+        / denominator**3
+    )
+
+    restoring_force = (
+        m2 * (y - y**-3)
+        + ell * (y**3 - y**-3)
+    )
+
+    relative_potential = (
+        sp.Rational(1, 2)
+        * m2
+        * (
+            y**2
+            + y**-2
+            - 2
+        )
+        + ell
+        * (
+            sp.Rational(1, 4) * y**4
+            + sp.Rational(1, 2) * y**-2
+            - sp.Rational(3, 4)
+        )
+    )
+
+    complete_relative_equation = (
+        alpha
+        * (
+            y_ddot
+            + (
+                2 * phi_c_dot_over_phi_c
+                + 3 * H
+            )
+            * y_dot
+            + (
+                phi_c_ddot_over_phi_c
+                + 3 * H * phi_c_dot_over_phi_c
+            )
+            * y
+        )
+        + restoring_force
+    )
+
+    reduced_relative_equation = (
+        alpha
+        * (
+            y_ddot
+            + gamma * y_dot
+        )
+        + restoring_force
+        - alpha * g_quartic * y
+    )
+
+    linear_restoring = sp.diff(
+        restoring_force,
+        y,
+    ).subs(
+        y,
+        1,
+    )
+
+    return {
+        "circular_manifold_N_derivative": sp.factor(
+            circular_manifold_N_derivative
+        ),
+        "quartic_coefficient_N_identity": sp.factor(
+            ell_N
+            - expected_ell_N
+        ),
+        "log_circular_field_N_derivative_identity": sp.factor(
+            u
+            + 3
+            * (m2 + ell)
+            / denominator
+        ),
+        "log_circular_field_second_N_identity": sp.factor(
+            u_N
+            - expected_u_N
+        ),
+        "relative_damping_identity": sp.factor(
+            gamma
+            - expected_gamma
+        ),
+        "quartic_forcing_identity": sp.factor(
+            g_quartic
+            - expected_g_quartic
+        ),
+        "relative_equation_decomposition": sp.factor(
+            complete_relative_equation
+            - reduced_relative_equation
+        ),
+        "relative_potential_derivative": sp.factor(
+            sp.diff(
+                relative_potential,
+                y,
+            )
+            - restoring_force
+        ),
+        "linear_restoring_coefficient": sp.factor(
+            linear_restoring
+            - (
+                4 * m2
+                + 6 * ell
+            )
+        ),
+        "quadratic_limit_log_field": sp.simplify(
+            sp.limit(
+                u,
+                lambda_phi,
+                0,
+            )
+            + sp.Rational(3, 2)
+        ),
+        "quadratic_limit_damping": sp.simplify(
+            sp.limit(
+                gamma,
+                lambda_phi,
+                0,
+            )
+        ),
+        "quadratic_limit_forcing": sp.simplify(
+            sp.limit(
+                g_quartic,
+                lambda_phi,
+                0,
+            )
+            - sp.Rational(3, 4)
+            * (
+                2 * H_dot
+                + 3 * H**2
+            )
         ),
     }
 
@@ -1102,6 +3312,447 @@ def solve_charge_reduced_background(
 
 
 MPC_IN_METERS = 3.085677581491367e22
+
+BOLTZMANN_MEV_PER_K = 8.617333262e-11
+T_CMB0_K = 2.7255
+T_CMB0_MEV = T_CMB0_K * BOLTZMANN_MEV_PER_K
+ELECTRON_MASS_MEV = 0.51099895069
+
+STANDARD_N_EFF_TODAY = 3.044
+STANDARD_BBN_N_NU = 3.0
+STANDARD_NEUTRINO_DECOUPLING_MEV = 3.0
+
+
+@dataclass(frozen=True)
+class BBNThermodynamicReference:
+    """Gamma/e+-/nu/CDM comparator on a photon-temperature surface."""
+
+    T_gamma_MeV: float
+    T_nu_MeV: float
+    a: float
+    N: float
+    g_s_em: float
+    rho_gamma_code: float
+    rho_e_pm_code: float
+    rho_nu_code: float
+    rho_radiation_code: float
+    rho_cdm_reference_code: float
+
+
+def _electron_equilibrium_thermodynamics(
+    T_gamma_MeV: float,
+) -> tuple[float, float, float]:
+    """Return rho_e/T^4, p_e/T^4, and e+- entropy degrees of freedom."""
+
+    _require_finite("T_gamma_MeV", T_gamma_MeV)
+    if T_gamma_MeV <= 0.0:
+        raise ValueError("T_gamma_MeV must be positive")
+
+    y = ELECTRON_MASS_MEV / T_gamma_MeV
+
+    if y >= 50.0:
+        return 0.0, 0.0, 0.0
+
+    def fermi_factor(energy: float) -> float:
+        weight = math.exp(-energy)
+        return weight / (1.0 + weight)
+
+    def rho_integrand(x: float) -> float:
+        energy = math.sqrt(x * x + y * y)
+        return x * x * energy * fermi_factor(energy)
+
+    def pressure_integrand(x: float) -> float:
+        energy = math.sqrt(x * x + y * y)
+        return x**4 / energy * fermi_factor(energy)
+
+    rho_integral = quad(
+        rho_integrand,
+        0.0,
+        math.inf,
+        epsabs=1.0e-12,
+        epsrel=1.0e-11,
+        limit=200,
+    )[0]
+
+    pressure_integral = quad(
+        pressure_integrand,
+        0.0,
+        math.inf,
+        epsabs=1.0e-12,
+        epsrel=1.0e-11,
+        limit=200,
+    )[0]
+
+    rho_over_T4 = 2.0 * rho_integral / math.pi**2
+    pressure_over_T4 = (
+        2.0 * pressure_integral / (3.0 * math.pi**2)
+    )
+
+    g_s_e_pm = (
+        45.0
+        * (rho_over_T4 + pressure_over_T4)
+        / (2.0 * math.pi**2)
+    )
+
+    return rho_over_T4, pressure_over_T4, g_s_e_pm
+
+
+def bbn_em_entropy_degrees(T_gamma_MeV: float) -> float:
+    """Electromagnetic entropy g_*s for gamma plus e+-."""
+
+    _, _, g_s_e_pm = _electron_equilibrium_thermodynamics(
+        T_gamma_MeV
+    )
+    return 2.0 + g_s_e_pm
+
+
+def bbn_scale_factor_from_temperature(
+    T_gamma_MeV: float,
+) -> float:
+    """Map photon temperature to a via electromagnetic entropy conservation."""
+
+    _require_finite("T_gamma_MeV", T_gamma_MeV)
+    if T_gamma_MeV <= 0.0:
+        raise ValueError("T_gamma_MeV must be positive")
+
+    g_s_em = bbn_em_entropy_degrees(T_gamma_MeV)
+
+    return (
+        T_CMB0_MEV
+        / T_gamma_MeV
+        * (2.0 / g_s_em) ** (1.0 / 3.0)
+    )
+
+
+def bbn_efold_from_temperature(T_gamma_MeV: float) -> float:
+    """Return solver N=ln(a) for a photon-temperature surface."""
+
+    return math.log(
+        bbn_scale_factor_from_temperature(T_gamma_MeV)
+    )
+
+
+def bbn_temperature_from_efold(N: float) -> float:
+    """Invert the monotone BBN N <-> T_gamma entropy map."""
+
+    _require_finite("N", N)
+
+    if N >= 0.0:
+        return T_CMB0_MEV * math.exp(-N)
+
+    naive_temperature = T_CMB0_MEV * math.exp(-N)
+
+    lower = (
+        naive_temperature
+        * (2.0 / 5.5) ** (1.0 / 3.0)
+        * 0.98
+    )
+    upper = naive_temperature * 1.02
+
+    def residual(temperature: float) -> float:
+        return bbn_efold_from_temperature(temperature) - N
+
+    lower_residual = residual(lower)
+    upper_residual = residual(upper)
+
+    if lower_residual < 0.0 or upper_residual > 0.0:
+        raise RuntimeError(
+            "failed to bracket the N-to-T_gamma inversion"
+        )
+
+    for _ in range(96):
+        midpoint = 0.5 * (lower + upper)
+        midpoint_residual = residual(midpoint)
+
+        if midpoint_residual > 0.0:
+            lower = midpoint
+        else:
+            upper = midpoint
+
+    return 0.5 * (lower + upper)
+
+
+def bbn_neutrino_temperature(
+    T_gamma_MeV: float,
+    *,
+    decoupling_temperature_MeV: float = (
+        STANDARD_NEUTRINO_DECOUPLING_MEV
+    ),
+) -> float:
+    """Instantaneous-decoupling neutrino reference temperature."""
+
+    _require_finite("T_gamma_MeV", T_gamma_MeV)
+    _require_finite(
+        "decoupling_temperature_MeV",
+        decoupling_temperature_MeV,
+    )
+
+    if T_gamma_MeV <= 0.0:
+        raise ValueError("T_gamma_MeV must be positive")
+
+    if decoupling_temperature_MeV <= 0.0:
+        raise ValueError(
+            "decoupling_temperature_MeV must be positive"
+        )
+
+    if T_gamma_MeV >= decoupling_temperature_MeV:
+        return T_gamma_MeV
+
+    g_s_em = bbn_em_entropy_degrees(T_gamma_MeV)
+    g_s_decoupling = bbn_em_entropy_degrees(
+        decoupling_temperature_MeV
+    )
+
+    return (
+        T_gamma_MeV
+        * (g_s_em / g_s_decoupling) ** (1.0 / 3.0)
+    )
+
+
+def build_bbn_thermodynamic_reference(
+    unit_map: "DFMCDMUnitMap",
+    *,
+    T_gamma_MeV: float = 1.0,
+    N_nu: float = STANDARD_BBN_N_NU,
+    N_eff_today: float = STANDARD_N_EFF_TODAY,
+    decoupling_temperature_MeV: float = (
+        STANDARD_NEUTRINO_DECOUPLING_MEV
+    ),
+) -> BBNThermodynamicReference:
+    """Construct gamma/e+-/nu/CDM reference densities at BBN."""
+
+    _require_finite("N_nu", N_nu)
+    _require_finite("N_eff_today", N_eff_today)
+
+    if N_nu < 0.0:
+        raise ValueError("N_nu must be nonnegative")
+    if N_eff_today < 0.0:
+        raise ValueError("N_eff_today must be nonnegative")
+
+    a = bbn_scale_factor_from_temperature(T_gamma_MeV)
+    N = math.log(a)
+
+    T_nu_MeV = bbn_neutrino_temperature(
+        T_gamma_MeV,
+        decoupling_temperature_MeV=(
+            decoupling_temperature_MeV
+        ),
+    )
+
+    (
+        electron_rho_over_T4,
+        _electron_pressure_over_T4,
+        electron_g_s,
+    ) = _electron_equilibrium_thermodynamics(
+        T_gamma_MeV
+    )
+
+    present_radiation_to_photon_ratio = (
+        1.0
+        + (7.0 / 8.0)
+        * N_eff_today
+        * (4.0 / 11.0) ** (4.0 / 3.0)
+    )
+
+    rho_gamma0_code = (
+        unit_map.rho_r0_code
+        / present_radiation_to_photon_ratio
+    )
+
+    temperature_ratio = T_gamma_MeV / T_CMB0_MEV
+
+    rho_gamma_code = (
+        rho_gamma0_code * temperature_ratio**4
+    )
+
+    photon_rho_over_T4 = math.pi**2 / 15.0
+
+    rho_e_pm_code = (
+        rho_gamma_code
+        * electron_rho_over_T4
+        / photon_rho_over_T4
+    )
+
+    rho_nu_code = (
+        rho_gamma_code
+        * (7.0 / 8.0)
+        * N_nu
+        * (T_nu_MeV / T_gamma_MeV) ** 4
+    )
+
+    rho_radiation_code = (
+        rho_gamma_code
+        + rho_e_pm_code
+        + rho_nu_code
+    )
+
+    rho_cdm_reference_code = (
+        unit_map.rho_cdm0_code * a**-3
+    )
+
+    return BBNThermodynamicReference(
+        T_gamma_MeV=T_gamma_MeV,
+        T_nu_MeV=T_nu_MeV,
+        a=a,
+        N=N,
+        g_s_em=2.0 + electron_g_s,
+        rho_gamma_code=rho_gamma_code,
+        rho_e_pm_code=rho_e_pm_code,
+        rho_nu_code=rho_nu_code,
+        rho_radiation_code=rho_radiation_code,
+        rho_cdm_reference_code=rho_cdm_reference_code,
+    )
+def bbn_dfm_density_excess(
+    *,
+    reference: BBNThermodynamicReference,
+    phi: float,
+    v: float,
+    parameters: ChargeReducedParameters,
+) -> float:
+    """Return rho_DFM - rho_CDM_ref without catastrophic cancellation."""
+
+    _require_finite("phi", phi)
+    _require_finite("v", v)
+
+    if phi == 0.0:
+        raise ValueError(
+            "phi must remain nonzero in the charge-reduced system"
+        )
+
+    delta_rho_dfm_code = (
+        0.5 * parameters.alpha * v**2
+        + phase_energy_density(
+            reference.N,
+            phi,
+            parameters,
+        )
+        + (
+            parameters.rho_star
+            - reference.rho_cdm_reference_code
+        )
+        + 0.5 * parameters.m_phi_squared * phi**2
+        + 0.25 * parameters.lambda_phi * phi**4
+    )
+
+    _require_finite(
+        "delta_rho_dfm_code",
+        delta_rho_dfm_code,
+    )
+
+    return delta_rho_dfm_code
+
+
+def bbn_dfm_effective_neutrino_number(
+    *,
+    reference: BBNThermodynamicReference,
+    phi: float,
+    v: float,
+    parameters: ChargeReducedParameters,
+    standard_bbn_n_nu: float = STANDARD_BBN_N_NU,
+) -> float:
+    """Convert DFM excess energy to the BBN effective neutrino number."""
+
+    _require_finite(
+        "standard_bbn_n_nu",
+        standard_bbn_n_nu,
+    )
+
+    if standard_bbn_n_nu < 0.0:
+        raise ValueError(
+            "standard_bbn_n_nu must be nonnegative"
+        )
+
+    rho_one_neutrino_species_code = (
+        reference.rho_gamma_code
+        * (7.0 / 8.0)
+        * (
+            reference.T_nu_MeV
+            / reference.T_gamma_MeV
+        ) ** 4
+    )
+
+    if rho_one_neutrino_species_code <= 0.0:
+        raise ValueError(
+            "one-neutrino-species BBN energy density must be positive"
+        )
+
+    delta_rho_dfm_code = bbn_dfm_density_excess(
+        reference=reference,
+        phi=phi,
+        v=v,
+        parameters=parameters,
+    )
+
+    n_eff_dfm = (
+        standard_bbn_n_nu
+        + delta_rho_dfm_code
+        / rho_one_neutrino_species_code
+    )
+
+    _require_finite(
+        "n_eff_dfm",
+        n_eff_dfm,
+    )
+
+    return n_eff_dfm
+
+
+BBN_N_EFF_TARGET = 2.898
+BBN_N_EFF_SIGMA = 0.141
+
+
+@dataclass(frozen=True)
+class BBNNeffLikelihood:
+    """Gaussian BBN N_eff likelihood/admissibility diagnostic."""
+
+    n_eff_dfm: float
+    target: float
+    sigma: float
+    residual: float
+    z_score: float
+    chi_squared: float
+    admissible_1sigma: bool
+
+
+def evaluate_bbn_neff_likelihood(
+    *,
+    reference: BBNThermodynamicReference,
+    phi: float,
+    v: float,
+    parameters: ChargeReducedParameters,
+    target: float = BBN_N_EFF_TARGET,
+    sigma: float = BBN_N_EFF_SIGMA,
+) -> BBNNeffLikelihood:
+    """Evaluate 2.898 +/- 0.141 without imposing an exact closure."""
+
+    _require_finite("target", target)
+    _require_finite("sigma", sigma)
+
+    if sigma <= 0.0:
+        raise ValueError("sigma must be positive")
+
+    n_eff_dfm = bbn_dfm_effective_neutrino_number(
+        reference=reference,
+        phi=phi,
+        v=v,
+        parameters=parameters,
+    )
+
+    residual = n_eff_dfm - target
+    z_score = residual / sigma
+    chi_squared = z_score**2
+
+    return BBNNeffLikelihood(
+        n_eff_dfm=n_eff_dfm,
+        target=target,
+        sigma=sigma,
+        residual=residual,
+        z_score=z_score,
+        chi_squared=chi_squared,
+        admissible_1sigma=(abs(z_score) <= 1.0),
+    )
+
+
 SHOOTING_PARAMETER_NAMES = (
     "phi_initial",
     "v_initial",
@@ -1363,6 +4014,792 @@ def build_dfm_cdm_unit_map(
         rho_r0_code=3.0 * omega_r0,
         Lambda_code=3.0 * omega_lambda0,
     )
+
+
+def dfm_particle_mass_eV(
+    *,
+    unit_map: DFMCDMUnitMap,
+    alpha: float,
+    m_phi_squared: float,
+) -> float:
+    """Convert the H0-normalized canonical DFM mass to physical eV."""
+
+    _require_finite("alpha", alpha)
+    _require_finite("m_phi_squared", m_phi_squared)
+
+    if alpha <= 0.0:
+        raise ValueError("alpha must be positive")
+    if m_phi_squared < 0.0:
+        raise ValueError("m_phi_squared must be nonnegative")
+
+    # Canonical mass:
+    #
+    #     m_code^2 = m_phi_squared / alpha.
+    #
+    # The DFM-CDM unit map fixes H0_code = 1, so one code inverse-time
+    # unit is H0_si.  In natural units E = hbar * omega.
+    hbar_eV_s = 6.582119569e-16
+
+    mass_eV = (
+        hbar_eV_s
+        * unit_map.H0_si
+        * math.sqrt(m_phi_squared / alpha)
+    )
+
+    _require_finite("mass_eV", mass_eV)
+    return mass_eV
+
+
+LRS_PARTICLE_MASS_LOWER_EV = 2.4e-21
+
+
+def minimum_m_phi_squared_from_particle_mass(
+    *,
+    unit_map: DFMCDMUnitMap,
+    alpha: float,
+    particle_mass_lower_eV: float = LRS_PARTICLE_MASS_LOWER_EV,
+) -> float:
+    """Invert the exact H0-normalized DFM mass map."""
+
+    _require_finite("alpha", alpha)
+    _require_finite(
+        "particle_mass_lower_eV",
+        particle_mass_lower_eV,
+    )
+
+    if alpha <= 0.0:
+        raise ValueError("alpha must be positive")
+
+    if particle_mass_lower_eV <= 0.0:
+        raise ValueError(
+            "particle_mass_lower_eV must be positive"
+        )
+
+    hbar_eV_s = 6.582119569e-16
+    one_code_mass_eV = hbar_eV_s * unit_map.H0_si
+
+    minimum_m_phi_squared = (
+        alpha
+        * (
+            particle_mass_lower_eV
+            / one_code_mass_eV
+        ) ** 2
+    )
+
+    _require_finite(
+        "minimum_m_phi_squared",
+        minimum_m_phi_squared,
+    )
+
+    return minimum_m_phi_squared
+
+
+LRS_SELF_INTERACTION_LOWER_EV_INV_CM3 = 9.5e-19
+LRS_SELF_INTERACTION_UPPER_EV_INV_CM3 = 4.0e-17
+
+HBAR_EV_S = 6.582119569e-16
+HBAR_C_EV_CM = 1.973269804e-5
+REDUCED_PLANCK_ENERGY_EV = 2.435323460e27
+
+
+def dfm_lrs_self_interaction_strength_eV_inv_cm3(
+    *,
+    unit_map: DFMCDMUnitMap,
+    m_phi_squared: float,
+    lambda_phi: float,
+) -> float:
+    """Map H0-normalized DFM parameters to LRS g/(mc^2)^2.
+
+    The DFM-CDM convention H0_code=1 and G_code=1/(8*pi)
+    implies the physical density unit
+
+        rho_unit = Mbar_Pl^2 H0^2.
+
+    Hence
+
+        lambda_rel
+          = lambda_phi H0^2 / (alpha^2 Mbar_Pl^2),
+
+        m^2
+          = H0^2 m_phi_squared / alpha,
+
+    so alpha cancels from
+
+        g/m^2 = lambda_rel / (2 m^4).
+
+    Conversion from natural eV^-4 units to eV^-1 cm^3
+    contributes (hbar c)^3.
+    """
+
+    _require_finite("m_phi_squared", m_phi_squared)
+    _require_finite("lambda_phi", lambda_phi)
+
+    if m_phi_squared <= 0.0:
+        raise ValueError(
+            "m_phi_squared must be positive"
+        )
+
+    if lambda_phi < 0.0:
+        raise ValueError(
+            "lambda_phi must be nonnegative"
+        )
+
+    expected_G_code = 1.0 / (8.0 * math.pi)
+
+    if not math.isclose(
+        unit_map.G_code,
+        expected_G_code,
+        rel_tol=0.0,
+        abs_tol=1.0e-15,
+    ):
+        raise ValueError(
+            "DFM-LRS map requires G_code = 1/(8*pi)"
+        )
+
+    H0_eV = HBAR_EV_S * unit_map.H0_si
+
+    strength = (
+        lambda_phi
+        * HBAR_C_EV_CM**3
+        / (
+            2.0
+            * m_phi_squared**2
+            * REDUCED_PLANCK_ENERGY_EV**2
+            * H0_eV**2
+        )
+    )
+
+    _require_finite(
+        "lrs_self_interaction_strength",
+        strength,
+    )
+
+    return strength
+
+
+def dfm_lambda_phi_interval_from_lrs(
+    *,
+    unit_map: DFMCDMUnitMap,
+    m_phi_squared: float,
+    lower_eV_inv_cm3: float = (
+        LRS_SELF_INTERACTION_LOWER_EV_INV_CM3
+    ),
+    upper_eV_inv_cm3: float = (
+        LRS_SELF_INTERACTION_UPPER_EV_INV_CM3
+    ),
+) -> tuple[float, float]:
+    """Return the DFM-code lambda_phi interval implied by LRS."""
+
+    _require_finite("m_phi_squared", m_phi_squared)
+    _require_finite(
+        "lower_eV_inv_cm3",
+        lower_eV_inv_cm3,
+    )
+    _require_finite(
+        "upper_eV_inv_cm3",
+        upper_eV_inv_cm3,
+    )
+
+    if m_phi_squared <= 0.0:
+        raise ValueError(
+            "m_phi_squared must be positive"
+        )
+
+    if lower_eV_inv_cm3 <= 0.0:
+        raise ValueError(
+            "lower_eV_inv_cm3 must be positive"
+        )
+
+    if upper_eV_inv_cm3 < lower_eV_inv_cm3:
+        raise ValueError(
+            "upper_eV_inv_cm3 must be >= lower_eV_inv_cm3"
+        )
+
+    H0_eV = HBAR_EV_S * unit_map.H0_si
+
+    conversion = (
+        2.0
+        * m_phi_squared**2
+        * REDUCED_PLANCK_ENERGY_EV**2
+        * H0_eV**2
+        / HBAR_C_EV_CM**3
+    )
+
+    lower = conversion * lower_eV_inv_cm3
+    upper = conversion * upper_eV_inv_cm3
+
+    _require_finite("lambda_phi_lower", lower)
+    _require_finite("lambda_phi_upper", upper)
+
+    return lower, upper
+
+
+def dfm_scattering_length_cm(
+    *,
+    unit_map: DFMCDMUnitMap,
+    alpha: float,
+    m_phi_squared: float,
+    lambda_phi: float,
+) -> float:
+    """Map a positive-lambda DFM point to the LRS s-wave scattering length.
+
+    LRS convention:
+        lambda_LRS = 4*pi*hbar^2*a_s/m
+
+    Equivalently, with
+        S = lambda_LRS/(m*c^2)^2,
+
+        a_s = S*(m*c^2)^3 / [4*pi*(hbar*c)^2].
+
+    Source:
+    https://arxiv.org/pdf/1310.6061
+    """
+
+    mass_eV = dfm_particle_mass_eV(
+        unit_map=unit_map,
+        alpha=alpha,
+        m_phi_squared=m_phi_squared,
+    )
+
+    strength = (
+        dfm_lrs_self_interaction_strength_eV_inv_cm3(
+            unit_map=unit_map,
+            m_phi_squared=m_phi_squared,
+            lambda_phi=lambda_phi,
+        )
+    )
+
+    scattering_length_cm = (
+        strength
+        * mass_eV**3
+        / (
+            4.0
+            * math.pi
+            * HBAR_C_EV_CM**2
+        )
+    )
+
+    _require_finite(
+        "scattering_length_cm",
+        scattering_length_cm,
+    )
+
+    if lambda_phi > 0.0 and scattering_length_cm <= 0.0:
+        raise RuntimeError(
+            "positive lambda_phi must map to positive scattering length"
+        )
+
+    return scattering_length_cm
+
+
+def dfm_lambda_phi_from_scattering_length_cm(
+    *,
+    unit_map: DFMCDMUnitMap,
+    alpha: float,
+    m_phi_squared: float,
+    scattering_length_cm: float,
+) -> float:
+    """Parameterize the surviving positive-lambda family by a_s > 0."""
+
+    _require_finite(
+        "scattering_length_cm",
+        scattering_length_cm,
+    )
+
+    if scattering_length_cm <= 0.0:
+        raise ValueError(
+            "scattering_length_cm must be positive"
+        )
+
+    mass_eV = dfm_particle_mass_eV(
+        unit_map=unit_map,
+        alpha=alpha,
+        m_phi_squared=m_phi_squared,
+    )
+
+    strength = (
+        4.0
+        * math.pi
+        * HBAR_C_EV_CM**2
+        * scattering_length_cm
+        / mass_eV**3
+    )
+
+    lower, upper = dfm_lambda_phi_interval_from_lrs(
+        unit_map=unit_map,
+        m_phi_squared=m_phi_squared,
+        lower_eV_inv_cm3=strength,
+        upper_eV_inv_cm3=strength,
+    )
+
+    if not math.isclose(
+        lower,
+        upper,
+        rel_tol=2.0e-15,
+        abs_tol=0.0,
+    ):
+        raise RuntimeError(
+            "single-strength lambda_phi inversion did not close"
+        )
+
+    if lower <= 0.0:
+        raise RuntimeError(
+            "positive scattering length must map to lambda_phi > 0"
+        )
+
+    return lower
+
+
+def dfm_lrs_antlia_scattering_length_intersection(
+    *,
+    particle_mass_eV: float,
+    minimum_halo_mass_solar: float = 1.66e9,
+) -> dict[str, object]:
+    """Compare the LRS and Antlia-B regions in (m, a_s).
+
+    The Antlia-B paper reports:
+      R_TF < 0.18 kpc at 68 percent,
+      R_TF < 0.72 kpc at 95 percent,
+      S < 5.2e-20 eV^-1 cm^3 at 68 percent,
+      S < 8.3e-20 eV^-1 cm^3 at 95 percent,
+
+    where S = g/(m*c^2)^2.
+
+    Its Eq. (5) has S proportional to R_TF^2, so this function
+    also derives the 95-percent strength from the published
+    68-percent pair and the published 95-percent radius.
+
+    No numerical replacement for the Eq. (12) condition ">> 1"
+    is introduced.
+    """
+
+    _require_finite(
+        "particle_mass_eV",
+        particle_mass_eV,
+    )
+    _require_finite(
+        "minimum_halo_mass_solar",
+        minimum_halo_mass_solar,
+    )
+
+    if particle_mass_eV <= 0.0:
+        raise ValueError(
+            "particle_mass_eV must be positive"
+        )
+
+    if minimum_halo_mass_solar <= 0.0:
+        raise ValueError(
+            "minimum_halo_mass_solar must be positive"
+        )
+
+    antlia_r_tf_68_kpc = 0.18
+    antlia_r_tf_95_kpc = 0.72
+
+    antlia_strength_68 = 5.2e-20
+    antlia_strength_95_printed = 8.3e-20
+
+    antlia_strength_95_eq5 = (
+        antlia_strength_68
+        * (
+            antlia_r_tf_95_kpc
+            / antlia_r_tf_68_kpc
+        ) ** 2
+    )
+
+    strength_to_scattering_length = (
+        particle_mass_eV**3
+        / (
+            4.0
+            * math.pi
+            * HBAR_C_EV_CM**2
+        )
+    )
+
+    lrs_a_s_lower_cm = (
+        LRS_SELF_INTERACTION_LOWER_EV_INV_CM3
+        * strength_to_scattering_length
+    )
+
+    lrs_a_s_upper_cm = (
+        LRS_SELF_INTERACTION_UPPER_EV_INV_CM3
+        * strength_to_scattering_length
+    )
+
+    antlia_a_s_95_printed_cm = (
+        antlia_strength_95_printed
+        * strength_to_scattering_length
+    )
+
+    antlia_a_s_95_eq5_cm = (
+        antlia_strength_95_eq5
+        * strength_to_scattering_length
+    )
+
+    overlap_with_printed_95 = (
+        lrs_a_s_lower_cm
+        <= min(
+            lrs_a_s_upper_cm,
+            antlia_a_s_95_printed_cm,
+        )
+    )
+
+    overlap_with_eq5_95 = (
+        lrs_a_s_lower_cm
+        <= min(
+            lrs_a_s_upper_cm,
+            antlia_a_s_95_eq5_cm,
+        )
+    )
+
+    tf_hierarchy_68 = antlia_eq12_tf_hierarchy_ratio(
+        particle_mass_eV=particle_mass_eV,
+        minimum_halo_mass_solar=minimum_halo_mass_solar,
+        r_tf_kpc=antlia_r_tf_68_kpc,
+    )
+
+    tf_hierarchy_95 = antlia_eq12_tf_hierarchy_ratio(
+        particle_mass_eV=particle_mass_eV,
+        minimum_halo_mass_solar=minimum_halo_mass_solar,
+        r_tf_kpc=antlia_r_tf_95_kpc,
+    )
+
+    return {
+        "particle_mass_eV": particle_mass_eV,
+        "lrs_a_s_lower_cm": lrs_a_s_lower_cm,
+        "lrs_a_s_upper_cm": lrs_a_s_upper_cm,
+        "antlia_a_s_95_printed_cm": (
+            antlia_a_s_95_printed_cm
+        ),
+        "antlia_a_s_95_eq5_cm": (
+            antlia_a_s_95_eq5_cm
+        ),
+        "antlia_strength_95_printed": (
+            antlia_strength_95_printed
+        ),
+        "antlia_strength_95_eq5": (
+            antlia_strength_95_eq5
+        ),
+        "antlia_95_internal_gap": (
+            antlia_strength_95_eq5
+            - antlia_strength_95_printed
+        ),
+        "antlia_95_printed_equals_eq5": (
+            antlia_strength_95_printed
+            == antlia_strength_95_eq5
+        ),
+        "overlap_with_printed_95": (
+            overlap_with_printed_95
+        ),
+        "overlap_with_eq5_95": (
+            overlap_with_eq5_95
+        ),
+        "tf_hierarchy_68": tf_hierarchy_68,
+        "tf_hierarchy_95": tf_hierarchy_95,
+    }
+
+
+def normalized_circular_force_residual(
+    *,
+    N: float,
+    phi: float,
+    beta: float,
+    m_phi_squared: float,
+    lambda_phi: float,
+    Q_theta: float,
+) -> float:
+    """Scale-free residual for the circular-force equation.
+
+    The zero set is exactly
+
+        m_phi_squared*phi
+        + lambda_phi*phi^3
+        - Q_theta^2*exp(-6N)/(beta*phi^3)
+        = 0,
+
+    but the returned residual is divided by the sum of the
+    magnitudes of the three force terms.  This avoids treating
+    floating-point cancellation between O(1e12) terms as an
+    O(1e-4) physical failure.
+    """
+
+    for name, value in (
+        ("N", N),
+        ("phi", phi),
+        ("beta", beta),
+        ("m_phi_squared", m_phi_squared),
+        ("lambda_phi", lambda_phi),
+        ("Q_theta", Q_theta),
+    ):
+        _require_finite(name, value)
+
+    if phi == 0.0:
+        raise ValueError(
+            "phi must be nonzero in the charge-reduced system"
+        )
+
+    if beta <= 0.0:
+        raise ValueError("beta must be positive")
+
+    mass_force = m_phi_squared * phi
+    quartic_force = lambda_phi * phi**3
+    charge_force = (
+        Q_theta**2
+        * math.exp(-6.0 * N)
+        / (beta * phi**3)
+    )
+
+    numerator = (
+        mass_force
+        + quartic_force
+        - charge_force
+    )
+
+    denominator = (
+        abs(mass_force)
+        + abs(quartic_force)
+        + abs(charge_force)
+    )
+
+    if denominator == 0.0:
+        raise ValueError(
+            "circular-force normalization scale must be nonzero"
+        )
+
+    residual = numerator / denominator
+
+    _require_finite(
+        "normalized_circular_force_residual",
+        residual,
+    )
+
+    return residual
+
+
+def circular_phi_squared_positive_root(
+    *,
+    a: float,
+    beta: float,
+    m_phi_squared: float,
+    lambda_phi: float,
+    Q_theta: float,
+) -> float:
+    """Return the unique positive x = phi^2 on the circular-force manifold.
+
+    Solves
+
+        lambda_phi*x^3
+        + m_phi_squared*x^2
+        - Q_theta^2/(beta*a^6)
+        = 0
+
+    for x > 0.
+
+    For beta > 0, m_phi_squared > 0, lambda_phi > 0,
+    a > 0, and Q_theta != 0, the polynomial is strictly
+    increasing for x > 0 and therefore has exactly one
+    positive root.
+
+    The numerical solve is performed on a dimensionless
+    monotone residual.  The upper bracket is the smaller of
+    the pure-mass and pure-quartic roots, so both normalized
+    positive terms remain <= 1 throughout the bracket.
+    """
+
+    for name, value in (
+        ("a", a),
+        ("beta", beta),
+        ("m_phi_squared", m_phi_squared),
+        ("lambda_phi", lambda_phi),
+        ("Q_theta", Q_theta),
+    ):
+        _require_finite(name, value)
+
+    if a <= 0.0:
+        raise ValueError("a must be positive")
+
+    if beta <= 0.0:
+        raise ValueError("beta must be positive")
+
+    if m_phi_squared <= 0.0:
+        raise ValueError(
+            "m_phi_squared must be positive"
+        )
+
+    if lambda_phi <= 0.0:
+        raise ValueError(
+            "lambda_phi must be positive"
+        )
+
+    if Q_theta == 0.0:
+        raise ValueError(
+            "Q_theta must be nonzero for a positive circular root"
+        )
+
+    # Compute C = Q^2/(beta*a^6) through logarithms so the
+    # physical mass-floor branch does not inherit unnecessary
+    # overflow/underflow from direct powers.
+    log_c = (
+        2.0 * math.log(abs(Q_theta))
+        - math.log(beta)
+        - 6.0 * math.log(a)
+    )
+
+    log_x_mass = 0.5 * (
+        log_c - math.log(m_phi_squared)
+    )
+
+    log_x_quartic = (
+        log_c - math.log(lambda_phi)
+    ) / 3.0
+
+    log_x_hi = min(
+        log_x_mass,
+        log_x_quartic,
+    )
+
+    x_hi = math.exp(log_x_hi)
+
+    if not math.isfinite(x_hi) or x_hi <= 0.0:
+        raise RuntimeError(
+            "positive circular-root bracket is not representable"
+        )
+
+    # Evaluate
+    #
+    #   m2*x^2/C + lambda*x^3/C - 1
+    #
+    # through ratios to the two one-term roots.  On
+    # [0, x_hi], neither positive contribution exceeds 1.
+    def scaled_residual(x: float) -> float:
+        if x == 0.0:
+            return -1.0
+
+        mass_ratio = math.exp(
+            2.0 * math.log(x)
+            - 2.0 * log_x_mass
+        )
+
+        quartic_ratio = math.exp(
+            3.0 * math.log(x)
+            - 3.0 * log_x_quartic
+        )
+
+        return mass_ratio + quartic_ratio - 1.0
+
+    f_hi = scaled_residual(x_hi)
+
+    if f_hi < 0.0:
+        raise RuntimeError(
+            "failed to bracket the unique positive circular root"
+        )
+
+    lo = 0.0
+    hi = x_hi
+
+    # Monotone bisection to the floating-point adjacency limit.
+    for _ in range(256):
+        mid = 0.5 * (lo + hi)
+
+        if mid == lo or mid == hi:
+            break
+
+        if scaled_residual(mid) < 0.0:
+            lo = mid
+        else:
+            hi = mid
+
+    root = 0.5 * (lo + hi)
+
+    if root == lo:
+        root = hi
+
+    if not math.isfinite(root) or root <= 0.0:
+        raise RuntimeError(
+            "unique positive circular root is not representable"
+        )
+
+    residual = scaled_residual(root)
+
+    if abs(residual) > 5.0e-14:
+        # Either adjacent endpoint can be the closer floating-point
+        # representation of the mathematical root.
+        candidates = (lo, root, hi)
+        root = min(
+            (
+                value
+                for value in candidates
+                if value > 0.0
+            ),
+            key=lambda value: abs(
+                scaled_residual(value)
+            ),
+        )
+        residual = scaled_residual(root)
+
+    if abs(residual) > 5.0e-14:
+        raise RuntimeError(
+            "positive circular root failed normalized identity check"
+        )
+
+    return root
+
+
+def circular_energy_density_pressure(
+    *,
+    a: float,
+    beta: float,
+    rho_star: float,
+    m_phi_squared: float,
+    lambda_phi: float,
+    Q_theta: float,
+) -> tuple[float, float]:
+    """Leading algebraic circular-manifold density and pressure.
+
+    For x = phi_c^2 satisfying
+
+        lambda_phi*x^3
+        + m_phi_squared*x^2
+        = Q_theta^2/(beta*a^6),
+
+    the circular-force identity gives
+
+        rho_circ
+          = rho_star
+            + m_phi_squared*x
+            + 3/4*lambda_phi*x^2,
+
+        p_circ
+          = -rho_star
+            + 1/4*lambda_phi*x^2.
+
+    Radial tracking kinetic energy is outside this algebraic layer.
+    """
+
+    _require_finite("rho_star", rho_star)
+
+    x = circular_phi_squared_positive_root(
+        a=a,
+        beta=beta,
+        m_phi_squared=m_phi_squared,
+        lambda_phi=lambda_phi,
+        Q_theta=Q_theta,
+    )
+
+    rho_circ = (
+        rho_star
+        + m_phi_squared * x
+        + 0.75 * lambda_phi * x**2
+    )
+
+    p_circ = (
+        -rho_star
+        + 0.25 * lambda_phi * x**2
+    )
+
+    _require_finite("rho_circ", rho_circ)
+    _require_finite("p_circ", p_circ)
+
+    return rho_circ, p_circ
 
 
 def dfm_pressure(
@@ -1780,6 +5217,107 @@ def dfm_cdm_minimal_circular_closure_residuals(
         C_rho_star=rho_star,
         C_lambda_phi=lambda_phi,
         C_circular_force=circular_force,
+    )
+
+
+DFM_CDM_POSITIVE_LAMBDA_FAMILY_RESIDUAL_NAMES = (
+    "F_rho",
+    "F_w",
+    "C_v_initial",
+    "C_rho_star",
+    "C_circular_force",
+)
+
+
+def dfm_cdm_positive_lambda_family_residual_vector(
+    vector: np.ndarray,
+    *,
+    alpha: float,
+    beta: float,
+    unit_map: DFMCDMUnitMap,
+    config: ChargeReducedSolverConfig,
+    target_w_dfm0: float = 0.0,
+) -> np.ndarray:
+    """Return the five equations defining the positive-lambda family.
+
+    This does not alter the existing six-row augmented residual.
+    C_lambda_phi is omitted only from this family evaluator.
+    """
+
+    candidate = _validated_dfm_cdm_shooting_vector(
+        np.asarray(vector, dtype=float)
+    )
+
+    if float(candidate[4]) <= 0.0:
+        raise ValueError(
+            "positive-lambda family requires lambda_phi > 0"
+        )
+
+    validate_solver_config(config)
+    _require_finite("target_w_dfm0", target_w_dfm0)
+
+    if not math.isclose(
+        config.N_final,
+        0.0,
+        rel_tol=0.0,
+        abs_tol=1.0e-15,
+    ):
+        raise ValueError(
+            "DFM-CDM positive-lambda family requires N_final = 0"
+        )
+
+    (
+        phi_initial,
+        _v_initial,
+        rho_star,
+        m_phi_squared,
+        lambda_phi,
+        Q_theta,
+    ) = (float(value) for value in candidate)
+
+    rho_circ0, p_circ0 = circular_energy_density_pressure(
+        a=1.0,
+        beta=beta,
+        rho_star=rho_star,
+        m_phi_squared=m_phi_squared,
+        lambda_phi=lambda_phi,
+        Q_theta=Q_theta,
+    )
+
+    F_rho_circ = (
+        rho_circ0
+        - unit_map.rho_cdm0_code
+    )
+
+    F_w_circ = (
+        p_circ0
+        - target_w_dfm0 * rho_circ0
+    )
+
+    closures = dfm_cdm_minimal_circular_closure_residuals(
+        candidate,
+        beta=beta,
+        N_initial=config.N_initial,
+    ).as_array()
+
+    circular_normalized = normalized_circular_force_residual(
+        N=config.N_initial,
+        phi=phi_initial,
+        beta=beta,
+        m_phi_squared=m_phi_squared,
+        lambda_phi=lambda_phi,
+        Q_theta=Q_theta,
+    )
+
+    return np.asarray(
+        (
+            F_rho_circ,
+            F_w_circ,
+            closures[0],
+            closures[1],
+            circular_normalized,
+        ),
+        dtype=float,
     )
 
 
