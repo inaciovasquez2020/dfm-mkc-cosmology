@@ -41,7 +41,7 @@ def _immutable(mapping):
 
 
 def _normalize(expression):
-    return sp.factor(sp.cancel(expression))
+    return sp.factor_terms(expression)
 
 
 def _strict_sign(expression):
