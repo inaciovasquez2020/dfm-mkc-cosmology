@@ -11,6 +11,13 @@ state
 
 on the prepared quadratic positive-charge branch.  The first leading minor
 whose strict sign is not certified is returned as the authoritative boundary.
+
+The original implementation formed each leading determinant independently with
+Berkowitz.  That is exact but exceeded the repository's 1200-second verifier
+budget.  This version uses exact sequential LDL^T Schur-complement pivots.
+Given positivity of all previous pivots, positivity of the next pivot is exactly
+equivalent to positivity of the next leading principal minor, so the Sylvester
+target is unchanged while avoiding repeated determinant expansion.
 """
 
 from __future__ import annotations
@@ -43,6 +50,72 @@ def _strict_sign(expression):
     if expression.is_negative is True:
         return "negative"
     return "unresolved"
+
+
+def _sequential_ldlt_sylvester(hessian):
+    """Classify leading-minor signs through exact LDL^T pivots.
+
+    For a symmetric matrix with all previous pivots strictly positive,
+
+        Delta_k = d_1 * ... * d_k,
+
+    where ``d_k`` is the kth LDL^T pivot.  Hence the first pivot that is not
+    exactly positive is also the first leading principal minor whose strict
+    positivity is not certified.  The Schur-complement update is exact over the
+    rational function field and is performed only after a pivot is certified
+    positive, so every division is by an already-proved nonzero expression.
+    """
+
+    size = hessian.rows
+    work = [
+        [sp.cancel(hessian[i, j]) for j in range(size)]
+        for i in range(size)
+    ]
+    pivots = []
+    pivot_statuses = []
+    leading_minors = []
+    leading_minor_statuses = []
+    first_obstruction = None
+    cumulative_minor = sp.Integer(1)
+
+    for k in range(size):
+        pivot = sp.factor(sp.cancel(work[k][k]))
+        status = _strict_sign(pivot)
+        pivots.append(pivot)
+        pivot_statuses.append(status)
+
+        cumulative_minor = sp.Mul(cumulative_minor, pivot, evaluate=False)
+        leading_minors.append(cumulative_minor)
+        leading_minor_statuses.append(status)
+
+        if status != "positive":
+            first_obstruction = (k + 1, status, cumulative_minor)
+            break
+
+        if k + 1 == size:
+            continue
+
+        # Exact symmetric Schur-complement update.  Only the trailing triangle
+        # is formed, then mirrored, avoiding the repeated determinant expansion
+        # that caused the authoritative CI timeout.
+        column = [work[i][k] for i in range(k + 1, size)]
+        for i in range(k + 1, size):
+            left = column[i - (k + 1)]
+            for j in range(i, size):
+                right = column[j - (k + 1)]
+                updated = sp.cancel(work[i][j] - left * right / pivot)
+                work[i][j] = updated
+                work[j][i] = updated
+
+    all_positive = first_obstruction is None and len(pivots) == size
+    return {
+        "ldlt_pivots": tuple(pivots),
+        "ldlt_pivot_statuses": tuple(pivot_statuses),
+        "leading_minors": tuple(leading_minors),
+        "leading_minor_statuses": tuple(leading_minor_statuses),
+        "first_obstruction": first_obstruction,
+        "all_leading_minors_strictly_positive": all_positive,
+    }
 
 
 @lru_cache(maxsize=1)
@@ -95,25 +168,16 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     if not symmetric:
         raise AssertionError("canonical energy Hessian is not symmetric")
 
-    leading_minors = []
-    statuses = []
-    first_obstruction = None
-    for size in range(1, len(state_atoms) + 1):
-        minor = sp.factor(sp.cancel(hessian[:size, :size].det(method="berkowitz")))
-        status = _strict_sign(minor)
-        leading_minors.append(minor)
-        statuses.append(status)
-        if status != "positive":
-            first_obstruction = (size, status, minor)
-            break
-
-    all_positive = first_obstruction is None and len(leading_minors) == len(state_atoms)
+    sylvester = _sequential_ldlt_sylvester(hessian)
+    all_positive = sylvester["all_leading_minors_strictly_positive"]
     return _immutable({
         "state_order": tuple(str(atom) for atom in state_atoms),
         "hessian_symmetric": symmetric,
-        "leading_minors": tuple(leading_minors),
-        "leading_minor_statuses": tuple(statuses),
-        "first_obstruction": first_obstruction,
+        "ldlt_pivots": sylvester["ldlt_pivots"],
+        "ldlt_pivot_statuses": sylvester["ldlt_pivot_statuses"],
+        "leading_minors": sylvester["leading_minors"],
+        "leading_minor_statuses": sylvester["leading_minor_statuses"],
+        "first_obstruction": sylvester["first_obstruction"],
         "all_leading_minors_strictly_positive": all_positive,
         "sylvester_coercivity_established": all_positive,
         "prepared_branch_substitution": _immutable(prepared_substitution),
