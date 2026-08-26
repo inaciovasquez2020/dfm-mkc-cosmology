@@ -1,6 +1,6 @@
 """Exact first coercivity probe for the prepared canonical scalar energy.
 
-This module does not assume positivity of the full reduced Hamiltonian.  It
+This module does not assume positivity of the full reduced Hamiltonian. It
 applies Sylvester's criterion to the quadratic energy on the canonical reduced
 state
 
@@ -9,8 +9,15 @@ state
      delta_J_b_0, delta_ell_b,
      delta_J_r_0, delta_ell_r)
 
-on the prepared quadratic positive-charge branch.  The first leading minor
-whose strict sign is not certified is returned as the authoritative boundary.
+on the prepared quadratic positive-charge branch. The first leading principal
+pivot whose strict sign is not certified is returned as the authoritative
+boundary.
+
+The implementation uses an exact incremental LDL^T factorization rather than
+recomputing every leading determinant by Berkowitz. For a symmetric matrix,
+strict positivity of every LDL^T pivot is equivalent to strict positivity of
+all leading principal minors, so the mathematical target is unchanged while
+avoiding the previous CI timeout.
 """
 
 from __future__ import annotations
@@ -33,9 +40,13 @@ def _immutable(mapping):
     return MappingProxyType(dict(mapping))
 
 
+def _normalize(expression):
+    return sp.factor(sp.cancel(expression))
+
+
 def _strict_sign(expression):
     """Return a conservative exact sign classification."""
-    expression = sp.factor(sp.cancel(expression))
+    expression = _normalize(expression)
     if expression == 0:
         return "zero"
     if expression.is_positive is True:
@@ -54,7 +65,7 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     z = total._symbols()
 
     # Exact prepared quadratic positive-charge branch used by the repository's
-    # existence theorem.  The replacement symbols encode only strict signs
+    # existence theorem. The replacement symbols encode only strict signs
     # already present in that branch; no sign is assigned to background time
     # derivatives.
     mu_squared = sp.symbols("prepared_mu_squared", positive=True)
@@ -95,26 +106,54 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     if not symmetric:
         raise AssertionError("canonical energy Hessian is not symmetric")
 
+    n = len(state_atoms)
+    L = [[sp.Integer(0) for _ in range(n)] for _ in range(n)]
+    pivots = []
+    pivot_statuses = []
     leading_minors = []
-    statuses = []
+    leading_minor_statuses = []
     first_obstruction = None
-    for size in range(1, len(state_atoms) + 1):
-        minor = sp.factor(sp.cancel(hessian[:size, :size].det(method="berkowitz")))
-        status = _strict_sign(minor)
-        leading_minors.append(minor)
-        statuses.append(status)
-        if status != "positive":
-            first_obstruction = (size, status, minor)
+    cumulative_minor = sp.Integer(1)
+
+    for k in range(n):
+        diagonal_correction = sum(
+            L[k][j] ** 2 * pivots[j]
+            for j in range(k)
+        )
+        pivot = _normalize(hessian[k, k] - diagonal_correction)
+        pivot_status = _strict_sign(pivot)
+        pivots.append(pivot)
+        pivot_statuses.append(pivot_status)
+
+        cumulative_minor = _normalize(cumulative_minor * pivot)
+        leading_minors.append(cumulative_minor)
+        leading_minor_statuses.append(_strict_sign(cumulative_minor))
+
+        if pivot_status != "positive":
+            first_obstruction = (k + 1, pivot_status, pivot)
             break
 
-    all_positive = first_obstruction is None and len(leading_minors) == len(state_atoms)
+        L[k][k] = sp.Integer(1)
+        for i in range(k + 1, n):
+            off_diagonal_correction = sum(
+                L[i][j] * L[k][j] * pivots[j]
+                for j in range(k)
+            )
+            L[i][k] = _normalize(
+                (hessian[i, k] - off_diagonal_correction) / pivot
+            )
+
+    all_positive = first_obstruction is None and len(pivots) == n
     return _immutable({
         "state_order": tuple(str(atom) for atom in state_atoms),
         "hessian_symmetric": symmetric,
+        "ldlt_pivots": tuple(pivots),
+        "ldlt_pivot_statuses": tuple(pivot_statuses),
         "leading_minors": tuple(leading_minors),
-        "leading_minor_statuses": tuple(statuses),
+        "leading_minor_statuses": tuple(leading_minor_statuses),
         "first_obstruction": first_obstruction,
         "all_leading_minors_strictly_positive": all_positive,
         "sylvester_coercivity_established": all_positive,
         "prepared_branch_substitution": _immutable(prepared_substitution),
+        "algorithm": "exact incremental LDL^T pivots",
     })
