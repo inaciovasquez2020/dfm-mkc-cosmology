@@ -65,18 +65,21 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     z = total._symbols()
 
     # Exact prepared quadratic positive-charge branch used by the repository's
-    # existence theorem. The positive-charge phase relation and Friedmann
-    # identity are already established background identities on this branch;
-    # encoding them here removes the spurious freedom that previously left the
-    # first energy pivot unresolved.
+    # existence theorem. The positive-charge phase relation, current-density
+    # identities, and Friedmann identity are already established background
+    # identities on this branch; encoding them here removes independent
+    # background variables without adding a sign assumption.
     mu_squared = sp.symbols("prepared_mu_squared", positive=True)
     phi_positive = sp.symbols("prepared_phi_bar", positive=True)
     charge_positive = sp.symbols("prepared_q", positive=True)
-    rho_lambda = sp.symbols("prepared_rho_lambda", nonnegative=True)
+    rho_b, rho_r, rho_lambda = sp.symbols(
+        "prepared_rho_b prepared_rho_r prepared_rho_lambda",
+        nonnegative=True,
+    )
 
     rho_total = (
-        z["mb"] * z["Jb"] / z["a"]**3
-        + z["kr"] * z["Jr"] ** sp.Rational(4, 3) / z["a"]**4
+        rho_b
+        + rho_r
         + rho_lambda
         + z["alpha"] * z["php"]**2 / (2 * z["a"]**2)
         + charge_positive**2
@@ -92,6 +95,10 @@ def scalar_prepared_canonical_energy_coercivity_probe():
             charge_positive
             / (z["beta"] * z["a"]**2 * phi_positive**2)
         ),
+        z["Jb"]: z["a"]**3 * rho_b / z["mb"],
+        z["Jr"]: (
+            z["a"]**4 * rho_r / z["kr"]
+        ) ** sp.Rational(3, 4),
         z["Lambda"]: 8 * sp.pi * z["G"] * rho_lambda,
         z["H"]**2: (
             8 * sp.pi * z["G"] * z["a"]**2 * rho_total / 3
