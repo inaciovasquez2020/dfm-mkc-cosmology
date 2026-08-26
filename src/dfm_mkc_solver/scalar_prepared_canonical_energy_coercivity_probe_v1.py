@@ -93,7 +93,7 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     )
 
     hessian = sp.Matrix([
-        [sp.cancel(sp.diff(energy_density, left, right)) for right in state_atoms]
+        [sp.diff(energy_density, left, right) for right in state_atoms]
         for left in state_atoms
     ])
     symmetric = all(
