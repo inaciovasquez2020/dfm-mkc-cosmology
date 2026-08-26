@@ -65,16 +65,37 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     z = total._symbols()
 
     # Exact prepared quadratic positive-charge branch used by the repository's
-    # existence theorem. The replacement symbols encode only strict signs
-    # already present in that branch; no sign is assigned to background time
-    # derivatives.
+    # existence theorem. The positive-charge phase relation and Friedmann
+    # identity are already established background identities on this branch;
+    # encoding them here removes the spurious freedom that previously left the
+    # first energy pivot unresolved.
     mu_squared = sp.symbols("prepared_mu_squared", positive=True)
     phi_positive = sp.symbols("prepared_phi_bar", positive=True)
+    charge_positive = sp.symbols("prepared_q", positive=True)
+    rho_lambda = sp.symbols("prepared_rho_lambda", nonnegative=True)
+
+    rho_total = (
+        z["mb"] * z["Jb"] / z["a"]**3
+        + z["kr"] * z["Jr"] ** sp.Rational(4, 3) / z["a"]**4
+        + rho_lambda
+        + z["alpha"] * z["php"]**2 / (2 * z["a"]**2)
+        + charge_positive**2
+        / (2 * z["beta"] * z["a"]**6 * phi_positive**2)
+        + mu_squared * phi_positive**2 / 2
+    )
     prepared_substitution = {
         z["lam"]: sp.Integer(0),
         z["rho_star"]: sp.Integer(0),
         z["m2"]: mu_squared,
         z["ph"]: phi_positive,
+        z["thp"]: (
+            charge_positive
+            / (z["beta"] * z["a"]**2 * phi_positive**2)
+        ),
+        z["Lambda"]: 8 * sp.pi * z["G"] * rho_lambda,
+        z["H"]**2: (
+            8 * sp.pi * z["G"] * z["a"]**2 * rho_total / 3
+        ),
     }
 
     energy_density = energy["canonical_energy_density"].subs(
