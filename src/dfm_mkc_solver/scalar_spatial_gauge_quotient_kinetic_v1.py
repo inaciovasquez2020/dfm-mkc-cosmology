@@ -102,7 +102,7 @@ def quotient_kinetic_rank_data():
 
     cofactor_null_vector = sp.Matrix(
         [
-            sp.cancel(b * e - c * d),
+            b * e - c * d,
             sp.cancel(b * c - a * e),
             pivot_minor,
         ]
