@@ -77,10 +77,8 @@ def scalar_prepared_canonical_energy_coercivity_probe():
         z["ph"]: phi_positive,
     }
 
-    energy_density = sp.cancel(
-        energy["canonical_energy_density"].subs(
-            prepared_substitution, simultaneous=True
-        )
+    energy_density = energy["canonical_energy_density"].subs(
+        prepared_substitution, simultaneous=True
     )
 
     state_atoms = (
