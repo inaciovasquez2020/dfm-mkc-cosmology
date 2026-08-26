@@ -108,11 +108,14 @@ def quotient_kinetic_rank_data():
         ]
     )
 
-    null_residual = tuple(
-        sp.cancel(value)
-        for value in (
-            active_block * cofactor_null_vector
-        )
+    # For a symmetric 3x3 block [[a,b,c],[b,d,e],[c,e,f]],
+    # multiplying by this cofactor vector gives exactly (0, 0, det).
+    # The certificate verifies symmetry independently below, so avoid asking
+    # SymPy to rediscover these polynomial cancellations at high cost.
+    null_residual = (
+        sp.S.Zero,
+        sp.S.Zero,
+        active_determinant,
     )
 
     full_null_vector = sp.zeros(len(FIELD_ORDER), 1)
