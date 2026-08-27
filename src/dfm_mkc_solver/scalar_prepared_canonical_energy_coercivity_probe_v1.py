@@ -27,7 +27,6 @@ from types import MappingProxyType
 
 import sympy as sp
 
-from . import scalar_prepared_auxiliary_elimination_v1 as auxiliary
 from . import scalar_prepared_canonical_energy_v1 as canonical
 from . import scalar_prepared_time_gauge_quotient_action_v1 as quotient
 from . import total_scalar_lapse_shift_hessian_v1 as total
@@ -66,16 +65,17 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     z = total._symbols()
 
     # Exact prepared quadratic positive-charge branch used by the repository's
-    # positive-visible-density H-chart theorem. The phase relation,
-    # current-density identities, and Friedmann identity are already
-    # established background identities on this branch.
+    # existence theorem. The positive-charge phase relation, current-density
+    # identities, and Friedmann identity are already established background
+    # identities on this branch; encoding them here removes independent
+    # background variables without adding a sign assumption.
     mu_squared = sp.symbols("prepared_mu_squared", positive=True)
     phi_positive = sp.symbols("prepared_phi_bar", positive=True)
     charge_positive = sp.symbols("prepared_q", positive=True)
-    rho_b, rho_r = sp.symbols(
-        "prepared_rho_b prepared_rho_r", positive=True
+    rho_b, rho_r, rho_lambda = sp.symbols(
+        "prepared_rho_b prepared_rho_r prepared_rho_lambda",
+        nonnegative=True,
     )
-    rho_lambda = sp.symbols("prepared_rho_lambda", nonnegative=True)
 
     rho_total = (
         rho_b
@@ -132,20 +132,6 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     if not symmetric:
         raise AssertionError("canonical energy Hessian is not symmetric")
 
-    # The first two state atoms are the physical scalar velocities. For an
-    # exact quadratic Lagrangian, the velocity Hessian of the Legendre energy
-    # equals the reduced Lagrangian kinetic Hessian. The repository's exact
-    # auxiliary Schur certificate writes that kinetic block as
-    # D - gamma*u*u^T and proves, on this prepared positive-density branch,
-    # gamma = 0. Hence the first Sylvester pivot is exactly D[0,0] = a^2*alpha.
-    auxiliary_data = auxiliary.scalar_prepared_auxiliary_elimination_data()
-    prepared_gamma = auxiliary_data["prepared_scalar_factors"]["gamma"]
-    if prepared_gamma != 0:
-        raise AssertionError(("prepared_kinetic_gamma", prepared_gamma))
-    certified_first_pivot = auxiliary_data["D"][0, 0]
-    if certified_first_pivot != z["a"]**2 * z["alpha"]:
-        raise AssertionError(("prepared_first_pivot", certified_first_pivot))
-
     n = len(state_atoms)
     L = [[sp.Integer(0) for _ in range(n)] for _ in range(n)]
     pivots = []
@@ -160,10 +146,7 @@ def scalar_prepared_canonical_energy_coercivity_probe():
             L[k][j] ** 2 * pivots[j]
             for j in range(k)
         )
-        if k == 0:
-            pivot = certified_first_pivot
-        else:
-            pivot = _normalize(hessian[k, k] - diagonal_correction)
+        pivot = _normalize(hessian[k, k] - diagonal_correction)
         pivot_status = _strict_sign(pivot)
         pivots.append(pivot)
         pivot_statuses.append(pivot_status)
@@ -198,6 +181,5 @@ def scalar_prepared_canonical_energy_coercivity_probe():
         "all_leading_minors_strictly_positive": all_positive,
         "sylvester_coercivity_established": all_positive,
         "prepared_branch_substitution": _immutable(prepared_substitution),
-        "first_pivot_source": "exact prepared auxiliary kinetic factorization",
         "algorithm": "exact incremental LDL^T pivots",
     })
