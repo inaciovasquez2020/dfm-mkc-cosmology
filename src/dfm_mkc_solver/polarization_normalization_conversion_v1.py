@@ -44,7 +44,7 @@ def polarization_normalization_conversion(
     if closure_tolerance < 0.0:
         raise ValueError("closure_tolerance must be nonnegative")
 
-    e_hu_white_2 = -e_repo_2 / math.sqrt(6.0)
+    e_hu_white_2 = -math.sqrt(6.0) * e_repo_2
     pi_repo = theta_2 + 6.0 * e_repo_2
     p_hu_white = (
         theta_2 - math.sqrt(6.0) * e_hu_white_2
