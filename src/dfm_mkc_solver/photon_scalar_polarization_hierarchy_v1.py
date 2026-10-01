@@ -45,13 +45,7 @@ def photon_scalar_polarization_step(
     theta_2: float,
     e_2: float,
 ) -> PhotonPolarizationHierarchyStep:
-    """Advance one scalar intensity/E-polarization multipole.
-
-    The recurrence is used for ell >= 3.  The Thomson source is absent for
-    ell >= 3, while ell=2 receives the standard scalar polarization source
-    through Pi = Theta_2 + 6 E_2.  The ell=1 polarization equation is not
-    represented here because the scalar E hierarchy starts at ell=2.
-    """
+    """Advance one scalar intensity/E-polarization multipole."""
 
     if ell < 2:
         raise ValueError("ell must be at least 2")
@@ -86,24 +80,14 @@ def photon_scalar_polarization_step(
     )
 
     if ell == 2:
-        intensity_prime += (
-            thomson_scattering_rate
-            * (
-                -theta_ell
-                + Pi / 10.0
-            )
+        intensity_prime += thomson_scattering_rate * (
+            -theta_ell + Pi / 10.0
         )
         polarization_prime = (
-            k
-            / 5.0
-            * (
-                2.0 * e_ell_minus_1
-                - 3.0 * e_ell_plus_1
-            )
-            + thomson_scattering_rate
-            * (
-                -3.0 * e_ell
-                + Pi / 10.0
+            k / 5.0
+            * (2.0 * e_ell_minus_1 - 3.0 * e_ell_plus_1)
+            + thomson_scattering_rate * (
+                -e_ell + Pi / 10.0
             )
         )
     else:
@@ -114,7 +98,7 @@ def photon_scalar_polarization_step(
                 ell * e_ell_minus_1
                 - (ell + 1.0) * e_ell_plus_1
             )
-            - 3.0 * thomson_scattering_rate * e_ell
+            - thomson_scattering_rate * e_ell
         )
 
     return PhotonPolarizationHierarchyStep(
