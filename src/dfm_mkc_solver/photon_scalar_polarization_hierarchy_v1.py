@@ -91,6 +91,7 @@ def photon_scalar_polarization_step(
             )
         )
     else:
+        intensity_prime -= thomson_scattering_rate * theta_ell
         polarization_prime = (
             k
             / (2.0 * ell + 1.0)
