@@ -3,9 +3,10 @@
 The repository convention uses Pi_repo = Theta_2 + 6 E_repo_2.
 The standard Hu-White convention uses P = (Theta_2 - sqrt(6) E_HW_2)/10.
 
-The two conventions are related by E_HW_2 = -E_repo_2/sqrt(6),
-so Pi_repo = 10 P. This module certifies only that algebraic
-normalization map; it does not alter the photon hierarchy.
+The repository normalization is related to the Hu-White expression by
+E_HW_2 = -sqrt(6) E_repo_2, which gives Pi_repo = 10 P. This module
+certifies only that algebraic normalization map; it does not alter the
+photon hierarchy.
 """
 
 from __future__ import annotations
