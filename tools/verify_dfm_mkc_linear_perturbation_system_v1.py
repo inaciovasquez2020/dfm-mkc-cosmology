@@ -137,7 +137,7 @@ def main() -> None:
         "k^2 Phi",
         "Phi_prime + Hc Psi",
         "alpha[delta_phi_double_prime",
-        "beta phi_bar^2 delta_theta_prime",
+        "phi_bar^2 delta_theta_prime",
         "delta_b_prime",
         "v_b_prime",
         "delta_gamma_prime",
