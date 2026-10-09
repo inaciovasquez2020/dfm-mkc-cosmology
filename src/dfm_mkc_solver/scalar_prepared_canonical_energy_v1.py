@@ -96,7 +96,9 @@ def scalar_prepared_canonical_energy_data():
         raise AssertionError("reduced Lagrangian still contains auxiliaries")
 
     canonical_momenta = {
-        field: sp.diff(L_phys, hqp[field])
+        field: sp.diff(L_H, hqp[field]).subs(
+            auxiliary_substitution, simultaneous=True
+        )
         for field in PHYSICAL_FIELDS
     }
     velocity_pairing = sp.Add(
@@ -123,7 +125,7 @@ def scalar_prepared_canonical_energy_data():
     )
     zero_state = {atom: sp.Integer(0) for atom in all_state_atoms}
     energy_zero_residual = _zero_scalar(
-        energy_density.subs(zero_state, simultaneous=True)
+        energy_density.xreplace(zero_state)
     )
     legendre_residual = _zero_scalar(
         energy_density - velocity_pairing + L_phys

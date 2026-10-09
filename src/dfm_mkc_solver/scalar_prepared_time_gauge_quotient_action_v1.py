@@ -206,7 +206,7 @@ def _construction():
     ])
     quadratic = sp.Matrix(len(x), len(x), lambda i, j: sp.diff(
         density, x[i], x[j]
-    ).subs(zero_configuration, simultaneous=True))
+    ).xreplace(zero_configuration))
     M_H = E_H.T * quadratic * E_H
     l_H = E_H.T * linear
 

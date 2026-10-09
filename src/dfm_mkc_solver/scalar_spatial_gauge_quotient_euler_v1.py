@@ -44,7 +44,35 @@ def quotient_euler_data():
     )
     qpp = dict(zip(FIELD_ORDER, qpp_symbols))
 
+    z = total._symbols()
+    background_derivative = {
+        z["a"]: z["a"] * z["H"],
+        z["H"]: z["Hp"],
+        z["ph"]: z["php"],
+        z["php"]: z["phpp"],
+        z["th"]: z["thp"],
+        z["thp"]: z["thpp"],
+        z["Jb"]: z["Jbp"],
+        z["Jbp"]: z["Jbpp"],
+        z["Jr"]: z["Jrp"],
+        z["Jrp"]: z["Jrpp"],
+        z["ellbp"]: z["ellbpp"],
+        z["ellrp"]: z["ellrpp"],
+    }
+
     def D_eta(expression):
+        background_chain = sp.Add(
+            *(
+                sp.Mul(
+                    sp.diff(expression, symbol),
+                    derivative,
+                    evaluate=False,
+                )
+                for symbol, derivative in background_derivative.items()
+                if symbol in expression.free_symbols
+            ),
+            evaluate=False,
+        )
         perturbation_chain = sp.Add(
             *(
                 sp.diff(expression, q[field]) * qp[field]
@@ -54,7 +82,7 @@ def quotient_euler_data():
         )
 
         return sp.Add(
-            total._D_eta(expression),
+            background_chain,
             perturbation_chain,
             evaluate=False,
         )
