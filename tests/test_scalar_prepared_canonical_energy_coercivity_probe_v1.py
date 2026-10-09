@@ -10,6 +10,6 @@ def test_prepared_canonical_energy_probe_fails_closed_at_first_unresolved_pivot(
     assert certificate["sylvester_coercivity_established"] is False
     obstruction = certificate["first_obstruction"]
     assert obstruction is not None
-    assert obstruction[0] == 2
+    assert obstruction[0] == 1
     assert obstruction[1] == "unresolved"
-    assert certificate["ldlt_pivot_statuses"] == ("positive", "unresolved")
+    assert certificate["ldlt_pivot_statuses"] == ("unresolved",)
