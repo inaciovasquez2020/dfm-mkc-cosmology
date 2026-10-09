@@ -72,10 +72,10 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     mu_squared = sp.symbols("prepared_mu_squared", positive=True)
     phi_positive = sp.symbols("prepared_phi_bar", positive=True)
     charge_positive = sp.symbols("prepared_q", positive=True)
-    rho_b, rho_r, rho_lambda = sp.symbols(
-        "prepared_rho_b prepared_rho_r prepared_rho_lambda",
-        nonnegative=True,
+    rho_b, rho_r = sp.symbols(
+        "prepared_rho_b prepared_rho_r", positive=True
     )
+    rho_lambda = sp.symbols("prepared_rho_lambda", nonnegative=True)
 
     rho_total = (
         rho_b
