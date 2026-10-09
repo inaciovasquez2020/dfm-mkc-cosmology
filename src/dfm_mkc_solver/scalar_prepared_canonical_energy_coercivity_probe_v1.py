@@ -143,6 +143,11 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     from . import scalar_prepared_auxiliary_elimination_v1 as auxiliary
 
     auxiliary_data = auxiliary.scalar_prepared_auxiliary_elimination_data()
+    gamma_t_under_probe_substitution = sp.factor(
+        (auxiliary_data["gamma"] * auxiliary_data["t"]).subs(
+            prepared_substitution, simultaneous=True
+        )
+    )
     effective_kinetic = auxiliary_data["structured_effective_kinetic"]
     effective_phi_pivot = effective_kinetic[0, 0].subs(
         prepared_substitution, simultaneous=True
@@ -208,5 +213,7 @@ def scalar_prepared_canonical_energy_coercivity_probe():
         "all_leading_minors_strictly_positive": all_positive,
         "sylvester_coercivity_established": all_positive,
         "prepared_branch_substitution": _immutable(prepared_substitution),
+        "gamma_t_under_probe_substitution": gamma_t_under_probe_substitution,
+        "gamma_t_zero_under_probe_substitution": gamma_t_under_probe_substitution == 0,
         "algorithm": "exact incremental LDL^T pivots",
     })
