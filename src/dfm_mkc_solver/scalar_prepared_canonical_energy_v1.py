@@ -96,7 +96,9 @@ def scalar_prepared_canonical_energy_data():
         raise AssertionError("reduced Lagrangian still contains auxiliaries")
 
     canonical_momenta = {
-        field: sp.diff(L_phys, hqp[field])
+        field: sp.diff(L_H, hqp[field]).subs(
+            auxiliary_substitution, simultaneous=True
+        )
         for field in PHYSICAL_FIELDS
     }
     velocity_pairing = sp.Add(
