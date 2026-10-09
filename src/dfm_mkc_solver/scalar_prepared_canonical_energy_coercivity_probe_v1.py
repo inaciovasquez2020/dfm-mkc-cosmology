@@ -136,12 +136,17 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     # action-derived auxiliary Schur complement in the same prepared chart.
     from . import scalar_prepared_auxiliary_elimination_v1 as auxiliary
 
-    effective_kinetic = auxiliary.scalar_prepared_auxiliary_elimination_data()[
-        "structured_effective_kinetic"
-    ]
+    auxiliary_data = auxiliary.scalar_prepared_auxiliary_elimination_data()
+    effective_kinetic = auxiliary_data["structured_effective_kinetic"]
     effective_phi_pivot = effective_kinetic[0, 0].subs(
         prepared_substitution, simultaneous=True
     )
+    # The auxiliary module separately reduces this same prepared branch
+    # through its established current-density and Friedmann substitutions.
+    # Use its exact gamma reduction only when the residual is literally zero.
+    prepared_gamma = auxiliary_data["prepared_factors"]["gamma"]
+    if prepared_gamma != 0:
+        raise AssertionError(("prepared_effective_kinetic_gamma_unresolved", prepared_gamma))
     first_velocity_hessian_residual = sp.expand(
         sp.together(hessian[0, 0] - effective_phi_pivot).as_numer_denom()[0]
     )
