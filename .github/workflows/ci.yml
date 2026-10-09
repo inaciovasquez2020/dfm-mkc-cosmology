@@ -26,6 +26,11 @@ jobs:
           pip install -e .
           pip install pytest
 
+      - name: Audit DFM-MKC scalar perturbation equations
+        run: |
+          python3 tools/audit_dfm_mkc_action_linearization_v1.py
+          python3 tools/verify_dfm_mkc_linear_perturbation_system_v1.py
+
       - name: Run tests
         run: |
           PYTHONPATH=src timeout --kill-after=30s 1200s pytest -q --deselect=tests/test_charge_perturbed_zero_velocity_matching_v1.py::test_regularized_fsigma8_projection_computes_orthogonal_residual --deselect=tests/test_total_scalar_lapse_shift_hessian_v1.py::test_formal_adjoint_boundary_and_direct_certificate
