@@ -41,11 +41,18 @@ def main() -> None:
     )
     assert sp.simplify(derived_time_coefficient - expected_time_coefficient) == 0
 
-    # Spatial current divergence contributes -a^2 beta phi_bar^2 k^2 delta_theta
-    # in the unmultiplied current equation; multiplying the full equation by -1
-    # yields the +k^2 term in the canonical form.
-    spatial_divergence_after_sign = a**2 * beta * phi**2 * k**2 * dtheta
-    assert sp.simplify(spatial_divergence_after_sign - a**2 * beta * phi**2 * k**2 * dtheta) == 0
+    # At first order, the spatial current coefficient multiplies only the
+    # first-order spatial gradient of delta_theta; perturbations of the
+    # coefficient times that gradient are second order.
+    sqrtg_gij_background = a**2
+    phi_squared_background = phi**2
+    spatial_current_divergence = (
+        -beta * sqrtg_gij_background * phi_squared_background * k**2 * dtheta
+    )
+    spatial_divergence_after_sign = -spatial_current_divergence
+    expected_spatial_divergence = a**2 * beta * phi**2 * k**2 * dtheta
+    assert sp.simplify(spatial_divergence_after_sign - expected_spatial_divergence) == 0
+    assert sp.simplify(spatial_current_divergence + expected_spatial_divergence) == 0
 
     data = json.loads(ART.read_text())
     equations = data["linearized_equations"]
