@@ -144,7 +144,7 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     # The auxiliary module separately reduces this same prepared branch
     # through its established current-density and Friedmann substitutions.
     # Use its exact gamma reduction only when the residual is literally zero.
-    prepared_gamma = auxiliary_data["prepared_factors"]["gamma"]
+    prepared_gamma = auxiliary_data["prepared_scalar_factors"]["gamma"]
     if prepared_gamma != 0:
         raise AssertionError(("prepared_effective_kinetic_gamma_unresolved", prepared_gamma))
     first_velocity_hessian_residual = sp.expand(
