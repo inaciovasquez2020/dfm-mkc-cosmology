@@ -132,6 +132,25 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     if not symmetric:
         raise AssertionError("canonical energy Hessian is not symmetric")
 
+    # The velocity Hessian of the Legendre energy must match the
+    # action-derived auxiliary Schur complement in the same prepared chart.
+    from . import scalar_prepared_auxiliary_elimination_v1 as auxiliary
+
+    effective_kinetic = auxiliary.scalar_prepared_auxiliary_elimination_data()[
+        "structured_effective_kinetic"
+    ]
+    effective_phi_pivot = effective_kinetic[0, 0].subs(
+        prepared_substitution, simultaneous=True
+    )
+    first_velocity_hessian_residual = sp.expand(
+        sp.together(hessian[0, 0] - effective_phi_pivot).as_numer_denom()[0]
+    )
+    if first_velocity_hessian_residual != 0:
+        raise AssertionError((
+            "prepared_velocity_hessian_schur_residual",
+            first_velocity_hessian_residual,
+        ))
+
     n = len(state_atoms)
     L = [[sp.Integer(0) for _ in range(n)] for _ in range(n)]
     pivots = []
