@@ -19,6 +19,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Install symbolic dependency
+        run: python3 -m pip install sympy
+
       - name: Invariant check
         run: ./scripts/cosmology check
 
