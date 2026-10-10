@@ -27,3 +27,6 @@ jobs:
 
       - name: Symbolic Ricci divergence identity
         run: python3 tools/verify_ricci_divergence_identity_4d_v1.py
+
+      - name: Corrected generalized-Proca scalar-sector audit
+        run: python3 tools/audit_generalized_proca_l4_scalar_sector_v1.py
