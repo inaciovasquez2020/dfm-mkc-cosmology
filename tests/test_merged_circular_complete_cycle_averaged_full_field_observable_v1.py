@@ -49,7 +49,7 @@ def test_merged_circular_complete_cycle_observable() -> None:
 
     config = ChargeReducedSolverConfig(
         N_initial=float(config_inputs["N_initial"]),
-        N_final=0.6,
+        N_final=0.7,
         samples=401,
         rtol=float(config_inputs["rtol"]),
         atol=float(config_inputs["atol"]),
@@ -160,7 +160,7 @@ def test_regular_mode_common_amplitude_rescaling_invariance() -> None:
     config_inputs = receipt["solver_config"]
     config = ChargeReducedSolverConfig(
         N_initial=float(config_inputs["N_initial"]),
-        N_final=0.6,
+        N_final=0.7,
         samples=401,
         rtol=float(config_inputs["rtol"]),
         atol=float(config_inputs["atol"]),
