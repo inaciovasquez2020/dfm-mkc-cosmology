@@ -85,20 +85,6 @@ def test_merged_circular_complete_cycle_observable() -> None:
         cycle_count=1,
     )
 
-    assert False, repr({
-        "phase_span": comparison.phase_span,
-        "full_field_growth_factor": comparison.full_field_growth_factor,
-        "cdm_growth_factor": comparison.cdm_growth_factor,
-        "full_field_growth_suppression": comparison.full_field_growth_suppression,
-        "averaged_growth_factor": comparison.averaged_growth_factor,
-        "full_to_averaged_growth_ratio": comparison.full_to_averaged_growth_ratio,
-        "relative_growth_difference": comparison.relative_growth_difference,
-        "initial_midpoint": comparison.initial_cycle_midpoint_scale_factor,
-        "final_midpoint": comparison.final_cycle_midpoint_scale_factor,
-        "maximum_rhs_residual": comparison.maximum_rhs_residual,
-        "minimum_abs_constraint_denominator": comparison.minimum_abs_constraint_denominator,
-    })
-
     assert comparison.initial_matching_surface_closed
     assert comparison.initial_metric_fixed_point_solved
     assert comparison.metric_constraints_solved_at_each_sample
@@ -111,7 +97,7 @@ def test_merged_circular_complete_cycle_observable() -> None:
         is None
     )
 
-    assert comparison.phase_span > 2.0 * math.pi
+    assert comparison.phase_span >= 4.0 * math.pi
     assert comparison.maximum_rhs_residual < 1.0e-14
     assert comparison.minimum_abs_constraint_denominator > 0.25
 
