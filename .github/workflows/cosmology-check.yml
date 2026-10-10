@@ -31,6 +31,9 @@ jobs:
       - name: Linearized spatial curvature of scalar psi
         run: python3 tools/verify_scalar_spatial_curvature_psi_v1.py
 
+      - name: Psi-retaining scalar action and constraint derivation
+        run: python3 tools/derive_psi_retaining_scalar_action_v1.py
+
       - name: Corrected generalized-Proca scalar-sector audit
         run: python3 tools/audit_generalized_proca_l4_scalar_sector_v1.py
 
