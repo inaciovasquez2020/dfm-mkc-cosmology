@@ -45,7 +45,7 @@ def test_linearized_equations_are_present():
     equations = "\n".join(str(v) for v in data()["linearized_equations"].values())
     assert "k^2 Phi" in equations
     assert "alpha[delta_phi_double_prime" in equations
-    assert "beta phi_bar^2 delta_theta_prime" in equations
+    assert "phi_bar^2 delta_theta_prime" in equations
     assert "delta_b_prime" in equations
     assert "v_gamma_prime" in equations
 

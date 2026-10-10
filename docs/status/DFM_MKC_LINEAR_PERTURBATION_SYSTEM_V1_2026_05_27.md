@@ -54,10 +54,11 @@ DFM-MKC rigidity-amplitude perturbation equation:
 alpha[
   delta_phi_double_prime
   + 2 Hc delta_phi_prime
-  + (k^2 + a^2 U_double_prime(phi_bar))delta_phi
+  + k^2 delta_phi
   - phi_bar_prime(Psi_prime + 3 Phi_prime)
-  + 2 a^2 Psi U_prime(phi_bar)
 ]
++ a^2 U_double_prime(phi_bar)delta_phi
++ 2 a^2 Psi U_prime(phi_bar)
 - beta[
   delta_phi theta_bar_prime^2
   + 2 phi_bar theta_bar_prime delta_theta_prime
@@ -65,11 +66,12 @@ alpha[
 ]
 = 0
 DFM-MKC phase perturbation equation:
-(beta phi_bar^2 delta_theta_prime)_prime
-+ 2 beta phi_bar phi_bar_prime delta_theta_prime
-+ beta phi_bar^2 k^2 delta_theta
-+ metric_source_theta
-+ amplitude_source_theta
+(a^2 beta[
+  phi_bar^2 delta_theta_prime
+  + 2 phi_bar theta_bar_prime delta_phi
+  - phi_bar^2 theta_bar_prime(Psi + 3 Phi)
+])_prime
++ a^2 beta phi_bar^2 k^2 delta_theta
 = 0
 Visible baryon continuity:
 delta_b_prime = -k v_b + 3 Phi_prime

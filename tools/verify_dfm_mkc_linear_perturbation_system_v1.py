@@ -137,13 +137,19 @@ def main() -> None:
         "k^2 Phi",
         "Phi_prime + Hc Psi",
         "alpha[delta_phi_double_prime",
-        "beta phi_bar^2 delta_theta_prime",
+        "phi_bar^2 delta_theta_prime",
         "delta_b_prime",
         "v_b_prime",
         "delta_gamma_prime",
         "v_gamma_prime",
     ]:
         require(term in equations_blob, f"missing linearized equation term: {term}")
+
+    amplitude_equation = data["linearized_equations"]["dfm_delta_phi_equation"]
+    require("] + a^2 U_double_prime(phi_bar)delta_phi + 2 a^2 Psi U_prime(phi_bar)" in amplitude_equation, "amplitude potential terms must be outside alpha bracket")
+    phase_equation = data["linearized_equations"]["dfm_delta_theta_equation"]
+    require("metric_source_theta" not in phase_equation and "amplitude_source_theta" not in phase_equation, "phase equation must contain explicit sources")
+    require(" + 2 beta phi_bar phi_bar_prime delta_theta_prime" not in phase_equation, "phase equation duplicates product-rule derivative")
 
     source_blob = "\n".join(flatten_values(data["source_terms"]))
     require("delta_rho_DFM_MKC" in source_blob, "missing DFM-MKC density source")
