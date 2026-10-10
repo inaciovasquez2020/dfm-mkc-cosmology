@@ -285,8 +285,8 @@ def main() -> None:
 
     if len(EL) != 6:
         raise AssertionError(f"Expected six linearized field equations, got {len(EL)}")
-    if sp.simplify(Lk - Lk.xreplace({})) != 0:
-        raise AssertionError("Fourier-reduced quadratic action did not remain symbolic")
+    if Lk.has(z):
+        raise AssertionError("Fourier-reduced quadratic action still depends on spatial coordinate z")
 
     print("ACTION_COMPLETION := F(phi)*R/2 plus linear generalized-Proca L4 completion")
     print("SCALAR_GAUGE := E=0; psi retained")
