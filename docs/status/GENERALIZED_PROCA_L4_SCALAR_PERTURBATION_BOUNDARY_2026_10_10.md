@@ -1,6 +1,6 @@
 # Generalized-Proca L4 scalar-sector audit and stopping boundary — 2026-10-10
 
-Status: `ACTION_IDENTITY_RESOLVED; COMPLETED_QUADRATIC_REBUILD_NOT_VERIFIED; PHYSICAL_DOF_COUNT_OPEN`
+Status: `CORRECTED_ACTION_REBUILT; IDENTITY_AND_FOURIER_AUDITS_ADDED; PHYSICAL_DOF_COUNT_OPEN`
 
 ## Scope
 
@@ -44,7 +44,7 @@ For `X = -A_mu A^mu/2`, the standard L4 structure is
 L4 = G4(X) R + G4_X(X) D.
 ```
 
-Choosing `G4_X = -xi/2` gives `G4(X) = C - xi X/2`. Taking `C = 0) as a convention gives the explicit completion
+Choosing `G4_X = -xi/2` gives `G4(X) = C - xi X/2`. Taking `C = 0` as a convention gives the explicit completion
 ```
 L_curvature = (1/2) F(phi) R - (xi/2) X R - (xi/2) D.
 ```
@@ -53,10 +53,10 @@ The `F(phi) R/2` term is retained as a separate scalar-tensor coupling. Since it
 
 ## Important implementation boundary
 
-The previously proposed source patch is a draft implementation only. It has not been executed against the supplied script, and its second-order output, identity residual, Fourier-reduced Lagrangian, and determinant have not been verified. Do not treat existing `/tmp/L2scal.pkl` or `/tmp/Lk.pkl` artifacts as outputs of the completed action unless they are regenerated from that action.
+A reproducible implementation is now present at `tools/audit_generalized_proca_l4_scalar_sector_v1.py` and is wired into `.github/workflows/cosmology-check.yml`. In the working SymPy session, the same corrected-action construction was executed: the Ricci/divergence residual on the supplied truncated off-diagonal ansatz simplified to zero; `L2` and the Fourier-reduced `Lk` were built; five Euler–Lagrange equations were generated; and the kinetic Hessian reduced to `diag(0, 0, alpha*a(t)^3/2, 0, a(t)/2)`. Three rational background/parameter samples gave frozen-symbol determinant degree four, and the auxiliary algebraic block was nonsingular at those three samples. These are bounded symbolic/sample checks, not a generic determinant theorem. GitHub's available status endpoint returned no check statuses for the merge commit, so CI success is not claimed.
 
 A valid computational continuation must:
-1. construct `X`, `D), and the linked `G4(X)R + G4_X D` term with consistent index conventions;
+1. construct `X`, `D`, and the linked `G4(X)R + G4_X D` term with consistent index conventions;
 2. verify the identity residual symbolically before continuing;
 3. regenerate the second-order Lagrangian and Fourier reduction from the corrected action;
 4. derive the Euler–Lagrange equations from that corrected reduced Lagrangian;
@@ -69,11 +69,13 @@ The metric ansatz in the supplied source has a lapse perturbation and a longitud
 - `RICCI_DIVERGENCE_IDENTITY := ESTABLISHED_ALGEBRAICALLY`
 - `STANDARD_L4_MATCH_FOR_ORIGINAL_ACTION := NOT_ESTABLISHED`
 - `LINEAR_G4_COMPLETION := SPECIFIED`
-- `CORRECTED_QUADRATIC_ACTION := NOT_REBUILT_OR_VERIFIED`
-- `FOURIER_REDUCTION_FOR_COMPLETED_ACTION := NOT_VERIFIED`
-- `HESSIAN_AND_CONSTRAINTS_FOR_COMPLETED_ACTION := OPEN`
+- `CORRECTED_QUADRATIC_ACTION := REBUILT_SYMBOLICALLY; AUDIT_SCRIPT_IN_MAIN`
+- `FOURIER_REDUCTION_FOR_COMPLETED_ACTION := BUILT_SYMBOLICALLY`
+- `KINETIC_HESSIAN := DIAG(0,0,alpha*a(t)^3/2,0,a(t)/2); RANK_2_IF_ALPHA_AND_A_NONZERO`
+- `AUXILIARY_ALGEBRAIC_BLOCK := NONSINGULAR_AT_3_RATIONAL_SAMPLES_ONLY`
+- `CI_STATUS := NOT_CONFIRMED_BY_AVAILABLE_STATUS_ENDPOINT`
 - `PHYSICAL_SCALAR_DOF_COUNT := OPEN`
 
 ## Stopping decision
 
-This is a good stopping point for the action-matching and scope audit. It is not a completed physical mode-count result. No claim is made that the completed action has passed a symbolic rebuild or that the physical scalar degrees of freedom have been established. The next admissible step is the verified corrected-action rebuild, not further interpretation of the old determinant.
+The corrected action has now been rebuilt symbolically, Fourier-reduced, and subjected to a bounded Hessian/sample-symbol audit. This is a good stopping point for the current restricted ansatz. It is not a completed physical mode-count result: the metric ansatz omits an explicit scalar spatial-curvature perturbation, the determinant degree was sampled rather than proved generically, and CI success is not confirmed. The next admissible mathematical step, if continuing, is to justify the scalar metric gauge/reduction or restore the missing spatial-curvature perturbation and repeat the constraint analysis.
