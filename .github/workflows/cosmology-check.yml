@@ -19,5 +19,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Install symbolic dependency
+        run: python3 -m pip install sympy
+
       - name: Invariant check
         run: ./scripts/cosmology check
+
+      - name: Symbolic Ricci divergence identity
+        run: python3 tools/verify_ricci_divergence_identity_4d_v1.py
