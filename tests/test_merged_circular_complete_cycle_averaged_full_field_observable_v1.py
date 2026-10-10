@@ -49,7 +49,7 @@ def test_merged_circular_complete_cycle_observable() -> None:
 
     config = ChargeReducedSolverConfig(
         N_initial=float(config_inputs["N_initial"]),
-        N_final=0.3,
+        N_final=0.6,
         samples=401,
         rtol=float(config_inputs["rtol"]),
         atol=float(config_inputs["atol"]),
@@ -84,6 +84,20 @@ def test_merged_circular_complete_cycle_observable() -> None:
         target_density_contrast=1.0e-6,
         cycle_count=1,
     )
+
+    assert False, repr({
+        "phase_span": comparison.phase_span,
+        "full_field_growth_factor": comparison.full_field_growth_factor,
+        "cdm_growth_factor": comparison.cdm_growth_factor,
+        "full_field_growth_suppression": comparison.full_field_growth_suppression,
+        "averaged_growth_factor": comparison.averaged_growth_factor,
+        "full_to_averaged_growth_ratio": comparison.full_to_averaged_growth_ratio,
+        "relative_growth_difference": comparison.relative_growth_difference,
+        "initial_midpoint": comparison.initial_cycle_midpoint_scale_factor,
+        "final_midpoint": comparison.final_cycle_midpoint_scale_factor,
+        "maximum_rhs_residual": comparison.maximum_rhs_residual,
+        "minimum_abs_constraint_denominator": comparison.minimum_abs_constraint_denominator,
+    })
 
     assert comparison.initial_matching_surface_closed
     assert comparison.initial_metric_fixed_point_solved
@@ -160,7 +174,7 @@ def test_regular_mode_common_amplitude_rescaling_invariance() -> None:
     config_inputs = receipt["solver_config"]
     config = ChargeReducedSolverConfig(
         N_initial=float(config_inputs["N_initial"]),
-        N_final=0.3,
+        N_final=0.6,
         samples=401,
         rtol=float(config_inputs["rtol"]),
         atol=float(config_inputs["atol"]),
