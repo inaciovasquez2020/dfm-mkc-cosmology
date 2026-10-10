@@ -312,9 +312,23 @@ def main() -> None:
 
     auxiliary = [amplitudes["Phi"], amplitudes["beta"], amplitudes["u"]]
     auxiliary_hessian = sp.hessian(Lk, auxiliary)
+    dynamic_velocities = [velocities[2], velocities[4]]
+    dynamic_hessian = sp.hessian(Lk, dynamic_velocities)
+    mixed_hessian = sp.Matrix(
+        [
+            [sp.diff(sp.diff(Lk, velocity), auxiliary_field) for auxiliary_field in auxiliary]
+            for velocity in dynamic_velocities
+        ]
+    )
     derivative_atoms = sorted(
         set().union(
-            *(entry.atoms(sp.Derivative) for entry in list(characteristic) + list(auxiliary_hessian))
+            *(
+                entry.atoms(sp.Derivative)
+                for entry in list(characteristic)
+                + list(auxiliary_hessian)
+                + list(dynamic_hessian)
+                + list(mixed_hessian)
+            )
         ),
         key=str,
     )
@@ -324,6 +338,8 @@ def main() -> None:
     }
     characteristic_without_derivatives = characteristic.xreplace(derivative_placeholders)
     auxiliary_without_derivatives = auxiliary_hessian.xreplace(derivative_placeholders)
+    dynamic_without_derivatives = dynamic_hessian.xreplace(derivative_placeholders)
+    mixed_without_derivatives = mixed_hessian.xreplace(derivative_placeholders)
 
     parameter_symbols = {
         "xi": xi,
@@ -343,6 +359,7 @@ def main() -> None:
     ]
     determinant_degrees = []
     auxiliary_nonzero = []
+    reduced_kinetic_nonzero = []
     for values, B_dot in samples:
         a0, a1, a2, phi0, phi1, phi2, B0, k0 = values[:8]
         substitutions = {
@@ -377,6 +394,17 @@ def main() -> None:
             raise AssertionError("Auxiliary algebraic block singular at a declared sample")
         auxiliary_nonzero.append(True)
 
+        numeric_dynamic = dynamic_without_derivatives.xreplace(substitutions)
+        numeric_mixed = mixed_without_derivatives.xreplace(substitutions)
+        reduced_kinetic = (
+            numeric_dynamic
+            - numeric_mixed * numeric_auxiliary.inv() * numeric_mixed.T
+        )
+        reduced_kinetic_det = sp.factor(reduced_kinetic.det(method="domain-ge"))
+        if reduced_kinetic_det == 0:
+            raise AssertionError("Reduced kinetic Schur complement singular at a declared sample")
+        reduced_kinetic_nonzero.append(True)
+
     print("RICCI_DIVERGENCE_IDENTITY_ON_PERTURBED_ANSATZ := PASS")
     print("CORRECTED_L2_BUILD := PASS")
     print("FOURIER_REDUCTION := PASS")
@@ -385,6 +413,8 @@ def main() -> None:
     print("KINETIC_HESSIAN_RANK := 2 conditional on a(t) != 0 and alpha != 0")
     print(f"FROZEN_SYMBOL_SAMPLE_DEGREES := {determinant_degrees}")
     print(f"AUXILIARY_BLOCK_NONZERO_SAMPLES := {len(auxiliary_nonzero)}/3")
+    print(f"REDUCED_KINETIC_SCHUR_COMPLEMENT_NONZERO_SAMPLES := {len(reduced_kinetic_nonzero)}/3")
+    print("BOUNDARY := off-shell rational samples; no positivity/stability claim")
     print("BOUNDARY := restricted metric ansatz; sampled symbol is not a generic theorem")
     print("PHYSICAL_SCALAR_DOF_COUNT := OPEN (spatial scalar metric perturbation omitted)")
 
