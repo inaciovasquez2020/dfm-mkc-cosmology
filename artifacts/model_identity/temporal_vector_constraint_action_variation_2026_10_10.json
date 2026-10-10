@@ -1,0 +1,50 @@
+{
+  "object_id": "TEMPORAL_VECTOR_CONSTRAINT_ACTION_VARIATION_2026_10_10",
+  "status": "EXACT_MINISUPERSPACE_A0_VARIATION_CONDITIONAL_ON_SUPPLIED_ACTION_AND_CONVENTIONS",
+  "date": "2026-10-10",
+  "source_action_spec": "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+  "scope": "Derive the homogeneous temporal-vector Euler equation directly from the supplied scalar-vector action, retaining the lapse N(t).",
+  "conventions": {
+    "metric_signature": "-+++",
+    "metric": "ds^2 = -N(t)^2 dt^2 + a(t)^2 gamma_ij dx^i dx^j",
+    "homogeneous_vector": "A_mu dx^mu = A_0(t) dt",
+    "field_strength": "F_mu_nu = 0 on this homogeneous ansatz",
+    "ricci_component": "R_00 = -3*(a_ddot/a - a_dot*N_dot/(a*N))",
+    "ricci_sign_convention": "The R_00 convention is the one used to state the supplied vector equation."
+  },
+  "reduced_A0_dependent_lagrangian_density": "L_A0 = a^3*A_0^2/(2*N)*(m_A^2 + beta_phi_A*phi^2 - xi_A*R_00/N^2)",
+  "derivation": [
+    "The Maxwell term contributes zero to the homogeneous A_0 Euler equation because F_mu_nu vanishes on the ansatz.",
+    "Since A_mu A^mu = -A_0^2/N^2, the vector mass and scalar-vector terms contribute a^3*A_0^2*(m_A^2 + beta_phi_A*phi^2)/(2*N).",
+    "Since A^0 = -A_0/N^2, the Ricci-vector term contributes -xi_A*a^3*R_00*A_0^2/(2*N^3).",
+    "Adding these terms gives the stated reduced A_0-dependent Lagrangian density.",
+    "Differentiating with respect to A_0 gives dL_A0/dA_0 = a^3*A_0/N*(m_A^2 + beta_phi_A*phi^2 - xi_A*R_00/N^2)."
+  ],
+  "euler_equation": "A_0*(m_A^2 + beta_phi_A*phi^2 - xi_A*R_00/N^2) = 0",
+  "equivalent_lapse_retained_form": "A_0*(m_A^2 + beta_phi_A*phi^2 + 3*xi_A/N^2*(a_ddot/a - a_dot*N_dot/(a*N))) = 0",
+  "cosmic_time_specialization_after_variation": "For N=1: A_0*(m_A^2 + beta_phi_A*phi^2 + 3*xi_A*(a_ddot/a)) = 0.",
+  "branch_interpretation": [
+    "A_0 = 0 is always an algebraic branch of this homogeneous equation.",
+    "A nonzero A_0 requires m_A^2 + beta_phi_A*phi^2 - xi_A*R_00/N^2 = 0 along the background.",
+    "The nonzero branch is a constraint on the background curvature and scalar, not an independently established propagating temporal-vector degree of freedom."
+  ],
+  "checks": {
+    "lapse_retained": true,
+    "variation_taken_before_cosmic_time_gauge": true,
+    "maxwell_background_term_identically_zero": true,
+    "temporal_vector_euler_equation_derived_from_supplied_action": true,
+    "full_metric_equations_derived": false,
+    "full_scalar_equation_derived": false,
+    "full_action_variation_verified": false,
+    "model_equivalence_established": false,
+    "numerical_prediction_claimed": false,
+    "empirical_validation_claimed": false
+  },
+  "boundary": [
+    "This is an exact A_0 variation of the stated homogeneous reduction, conditional on the supplied action and declared Ricci convention.",
+    "It does not derive the lapse or scale-factor equations, nor the complete scalar-vector FLRW system.",
+    "It does not establish equivalence with the repository's separate scalar-only DFM-MKC action used by the perturbation solver.",
+    "It does not establish a nonzero temporal-vector solution; that branch additionally requires the displayed coefficient to vanish."
+  ],
+  "next_missing_object": "Derive the lapse and scale-factor Euler equations from the same action without imposing N=1, including the metric dependence of R_{mu nu} A^mu A^nu."
+}
