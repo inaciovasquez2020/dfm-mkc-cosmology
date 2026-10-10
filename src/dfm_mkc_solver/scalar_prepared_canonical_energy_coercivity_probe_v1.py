@@ -121,12 +121,9 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     # Differentiate before imposing background identities. This is algebraically
     # equivalent because the substitutions contain no canonical state atoms,
     # and avoids differentiating the much larger substituted expression.
-    state_polynomial = sp.Poly(
-        canonical_energy_density, *state_atoms, domain="EX"
-    )
     hessian = sp.Matrix([
         [
-            state_polynomial.diff(left).diff(right).as_expr().subs(
+            sp.diff(canonical_energy_density, left, right).subs(
                 prepared_substitution, simultaneous=True
             )
             for right in state_atoms
