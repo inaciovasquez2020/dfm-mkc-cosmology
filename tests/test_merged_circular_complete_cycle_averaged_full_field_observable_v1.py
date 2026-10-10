@@ -49,7 +49,7 @@ def test_merged_circular_complete_cycle_observable() -> None:
 
     config = ChargeReducedSolverConfig(
         N_initial=float(config_inputs["N_initial"]),
-        N_final=0.7,
+        N_final=0.65,
         samples=401,
         rtol=float(config_inputs["rtol"]),
         atol=float(config_inputs["atol"]),
