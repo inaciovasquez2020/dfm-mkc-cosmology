@@ -418,11 +418,12 @@ def main() -> None:
     # a=N=1, phi=0, B=b!=0, all background derivatives zero, L0=mA2=0.
     # This is a background-specific determinant, not a complete physical mode count.
     b0 = sp.Symbol("b0", nonzero=True)
+    k0 = sp.Symbol("k0", nonzero=True)
     on_shell_subs = {
         a: sp.Integer(1),
         phi: sp.Integer(0),
         B: b0,
-        k: sp.Symbol("k0", nonzero=True),
+        k: k0,
         L0: sp.Integer(0),
         mA2: sp.Integer(0),
     }
@@ -454,6 +455,15 @@ def main() -> None:
         raise AssertionError(
             "Declared on-shell auxiliary block must have rank 1 and nullity 2"
         )
+    expected_on_shell_auxiliary = sp.diag(0, 0, k0**2 / 2)
+    expected_on_shell_nullspace = [
+        sp.Matrix([1, 0, 0]),
+        sp.Matrix([0, 1, 0]),
+    ]
+    if sp.simplify(on_shell_auxiliary - expected_on_shell_auxiliary) != sp.zeros(3):
+        raise AssertionError("On-shell auxiliary matrix differs from the exact expected matrix")
+    if on_shell_auxiliary_nullspace != expected_on_shell_nullspace:
+        raise AssertionError("On-shell auxiliary nullspace basis differs from the exact expected basis")
     print("FLAT_CONSTANT_TIMELIKE_BACKGROUND := SUBSTITUTED (a=1, phi=0, B=b0, L0=mA2=0)")
     print("ON_SHELL_AUXILIARY_MATRIX := " + sp.sstr(on_shell_auxiliary.applyfunc(sp.factor)))
     print("ON_SHELL_AUXILIARY_RANK := " + str(on_shell_auxiliary_rank))
