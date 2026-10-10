@@ -405,6 +405,26 @@ def main() -> None:
             raise AssertionError("Reduced kinetic Schur complement singular at a declared sample")
         reduced_kinetic_nonzero.append(True)
 
+    # Evaluate the auxiliary block on the exact flat, constant-field background:
+    # a=N=1, phi=0, B=b!=0, all background derivatives zero, L0=mA2=0.
+    # This is a background-specific determinant, not a complete physical mode count.
+    b0 = sp.Symbol("b0", nonzero=True)
+    on_shell_subs = {
+        a: sp.Integer(1),
+        phi: sp.Integer(0),
+        B: b0,
+        k: sp.Symbol("k0", nonzero=True),
+        L0: sp.Integer(0),
+        mA2: sp.Integer(0),
+    }
+    for derivative, placeholder in derivative_placeholders.items():
+        on_shell_subs[placeholder] = sp.Integer(0)
+    on_shell_auxiliary = sp.simplify(auxiliary_without_derivatives.xreplace(on_shell_subs))
+    on_shell_auxiliary_det = sp.factor(on_shell_auxiliary.det(method="domain-ge"))
+    print("FLAT_CONSTANT_TIMELIKE_BACKGROUND := SUBSTITUTED (a=1, phi=0, B=b0, L0=mA2=0)")
+    print("ON_SHELL_AUXILIARY_DETERMINANT := " + str(on_shell_auxiliary_det))
+    print("ON_SHELL_AUXILIARY_DETERMINANT_ZERO_TEST := " + str(sp.simplify(on_shell_auxiliary_det) == 0))
+
     print("RICCI_DIVERGENCE_IDENTITY_ON_PERTURBED_ANSATZ := PASS")
     print("CORRECTED_L2_BUILD := PASS")
     print("FOURIER_REDUCTION := PASS")
