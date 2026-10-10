@@ -448,6 +448,12 @@ def main() -> None:
     on_shell_auxiliary_nullspace = [
         vector.applyfunc(sp.factor) for vector in on_shell_auxiliary.nullspace()
     ]
+    if on_shell_auxiliary_det != 0:
+        raise AssertionError("Declared on-shell auxiliary determinant must vanish")
+    if on_shell_auxiliary_rank != 1 or len(on_shell_auxiliary_nullspace) != 2:
+        raise AssertionError(
+            "Declared on-shell auxiliary block must have rank 1 and nullity 2"
+        )
     print("FLAT_CONSTANT_TIMELIKE_BACKGROUND := SUBSTITUTED (a=1, phi=0, B=b0, L0=mA2=0)")
     print("ON_SHELL_AUXILIARY_MATRIX := " + sp.sstr(on_shell_auxiliary.applyfunc(sp.factor)))
     print("ON_SHELL_AUXILIARY_RANK := " + str(on_shell_auxiliary_rank))
