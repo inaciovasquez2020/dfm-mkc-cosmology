@@ -30,3 +30,6 @@ jobs:
 
       - name: Corrected generalized-Proca scalar-sector audit
         run: python3 tools/audit_generalized_proca_l4_scalar_sector_v1.py
+
+      - name: Lapse-retaining generalized-Proca background audit
+        run: python3 tools/audit_generalized_proca_l4_background_lapse_v1.py

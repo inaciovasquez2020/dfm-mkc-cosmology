@@ -53,7 +53,7 @@ The `F(phi) R/2` term is retained as a separate scalar-tensor coupling. Since it
 
 ## Important implementation boundary
 
-A reproducible implementation is now present at `tools/audit_generalized_proca_l4_scalar_sector_v1.py` and is wired into `.github/workflows/cosmology-check.yml`. In the working SymPy session, the same corrected-action construction was executed: the Ricci/divergence residual on the supplied truncated off-diagonal ansatz simplified to zero; `L2` and the Fourier-reduced `Lk` were built; five Euler–Lagrange equations were generated; and the kinetic Hessian reduced to `diag(0, 0, alpha*a(t)^3/2, 0, a(t)/2)`. Three rational background/parameter samples gave frozen-symbol determinant degree four, and the auxiliary algebraic block was nonsingular at those three samples. These are bounded symbolic/sample checks, not a generic determinant theorem. GitHub's available status endpoint returned no check statuses for the merge commit, so CI success is not claimed.
+A reproducible implementation is now present at `tools/audit_generalized_proca_l4_scalar_sector_v1.py` and is wired into `.github/workflows/cosmology-check.yml`. In the working SymPy session, the same corrected-action construction was executed: the Ricci/divergence residual on the supplied truncated off-diagonal ansatz simplified to zero; `L2` and the Fourier-reduced `Lk` were built; five Euler–Lagrange equations were generated; and the kinetic Hessian reduced to `diag(0, 0, alpha*a(t)^3/2, 0, a(t)/2)`. Three rational background/parameter samples gave frozen-symbol determinant degree four, and the auxiliary algebraic block was nonsingular at those three samples. These are bounded symbolic/sample checks, not a generic determinant theorem. The previously merged main-branch CI workflows were green; the new lapse audit in the current branch is not yet CI-validated.
 
 A valid computational continuation must:
 1. construct `X`, `D`, and the linked `G4(X)R + G4_X D` term with consistent index conventions;
@@ -63,6 +63,36 @@ A valid computational continuation must:
 5. inspect the kinetic Hessian and identify the actual constraints/gauge conditions before interpreting a characteristic determinant as a physical degree-of-freedom count.
 
 The ansatz sets scalar spatial-curvature and scalar-shear perturbations to zero, consistent with a spatially flat scalar gauge for nonzero k. The supplied source does not explicitly name or justify that gauge fixing. Record the gauge choice and treat k=0 separately before interpreting the reduced system as the complete scalar sector.
+
+## Lapse-retaining homogeneous background audit
+
+The new script `tools/audit_generalized_proca_l4_background_lapse_v1.py` uses
+```
+ds^2 = -N(t)^2 dt^2 + a(t)^2 d x^2
+A_mu = (B(t), 0, 0, 0)
+```
+where `B=A_0` is the covariant component. With the same curvature convention,
+```
+R = 6/N^2 * (a_ddot/a + a_dot^2/a^2 - a_dot*N_dot/(a*N))
+D = 6*B*a_dot/(a*N^4)*(B_dot - B*N_dot/N)
+    + 6*B^2*a_dot^2/(a^2*N^4)
+```
+and the homogeneous Lagrangian per comoving volume is
+```
+L = N*a^3 * [
+  (F/2 - xi*B^2/(4*N^2))*R - xi*D/2
+  + alpha*phi_dot^2/(2*N^2) - V + Q*B^2/(2*N^2)
+]
+```
+with `F=M2-xs*phi^2`, `Q=mA2+bet*phi^2`, and `V=L0+m2*phi^2/2+lam*phi^4/4`.
+
+The script integrates the `a_ddot` term by parts to obtain a first-derivative Lagrangian, then derives equations for `N,a,phi,B` before imposing `N=1`. A symbolic execution confirmed that the boundary-reduced Lagrangian has no second derivatives and that the temporal-vector equation is exactly
+```
+E_B = a*B/N^3 * (N^2*a^2*Q + 3*xi*(a*a_ddot - a_dot^2)) = 0.
+```
+This equation is algebraic in the homogeneous `B` amplitude (no `B_dot`), while depending on the scale-factor acceleration. The lapse constraint is generated before gauge-fixing the lapse.
+
+This is a verified background-equation milestone, not yet an on-shell perturbation result. The next step is to impose the full background equations on the scalar auxiliary block; no generic on-shell rank theorem or physical scalar count is claimed.
 
 ## Result ledger
 
@@ -74,9 +104,10 @@ The ansatz sets scalar spatial-curvature and scalar-shear perturbations to zero,
 - `KINETIC_HESSIAN := DIAG(0,0,alpha*a(t)^3/2,0,a(t)/2); RANK_2_IF_ALPHA_AND_A_NONZERO`
 - `AUXILIARY_ALGEBRAIC_BLOCK := NONSINGULAR_AT_3_RATIONAL_SAMPLES_ONLY`
 - `REDUCED_KINETIC_SCHUR_COMPLEMENT := NONZERO_AT_3_RATIONAL_SAMPLES_ONLY; NO_POSITIVITY_CLAIM`
-- `CI_STATUS := NOT_CONFIRMED_BY_AVAILABLE_STATUS_ENDPOINT`
+- `LAPSE_DEPENDENT_BACKGROUND_EQUATIONS := SYMBOLICALLY_DERIVED; TEMPORAL_VECTOR_EQUATION_CHECKED`
+- `NEW_BRANCH_CI_STATUS := PENDING`
 - `PHYSICAL_SCALAR_DOF_COUNT := OPEN`
 
 ## Stopping decision
 
-The corrected action has now been rebuilt symbolically, Fourier-reduced, and subjected to a bounded Hessian, auxiliary-block, and reduced-kinetic Schur-complement audit. This is a good stopping point for the current restricted ansatz. It is not a completed physical mode-count or stability result: the spatially flat gauge choice is implicit rather than documented, determinant degrees and reduced-block nonsingularity were sampled rather than proved on-shell, and CI success is not confirmed. The next admissible step is to document/fix the gauge and impose the background equations before making physical mode or stability claims.
+The corrected action, Fourier reduction, and bounded Hessian/auxiliary-block samples have been recorded. The lapse-dependent homogeneous equations are now generated without discarding the lapse constraint, and the temporal-vector equation has an exact symbolic check. This is still not a completed physical mode-count or stability result: the gauge choice is implicit in the perturbation ansatz, the on-shell auxiliary rank has not been established, and no positivity theorem is available. Continue only if the on-shell constraint substitution yields a structural result stronger than a routine numerical check.
