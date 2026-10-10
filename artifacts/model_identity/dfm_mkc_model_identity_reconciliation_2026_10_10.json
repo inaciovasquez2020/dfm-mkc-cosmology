@@ -1,0 +1,95 @@
+{
+  "object_id": "DFM_MKC_MODEL_IDENTITY_RECONCILIATION",
+  "date": "2026-10-10",
+  "status": "RECONCILIATION_COMPLETE_MODEL_EQUIVALENCE_NOT_ESTABLISHED",
+  "purpose": "Prevent action-level, scalar-core, and phenomenological-fluid descriptions from being silently combined.",
+  "repository_working_source_hierarchy": {
+    "action_based_derivation_target": {
+      "source": "specs/SUPPLIED_DFM_FIELD_EQUATIONS_AND_ACTION_FUNCTIONAL.json",
+      "model": "DFM-MKC scalar-vector action",
+      "role": "Use as the sole input for any next action-derived homogeneous equations unless this specification is explicitly superseded.",
+      "verification_status": "STRUCTURAL_CANDIDATE_ONLY_NOT_VALIDATED"
+    },
+    "legacy_candidate": {
+      "source": "artifacts/repo_intake/filled_closed_dfm_field_equations_action_functional_2026_05_22.json",
+      "model": "MINIMAL_INTERACTING_SCALAR_DFM_CORE_V1",
+      "role": "Separate scalar-only conformally coupled model; do not treat as a reduction of the scalar-vector action without a derived limit or field-elimination argument.",
+      "verification_status": "SUPPLIED_CANDIDATE_DYNAMICAL_CORE_ONLY_NO_VALIDATION"
+    },
+    "phenomenological_paper_model": {
+      "source": "docs/jcap.tex",
+      "model": "Fluid interaction with Q = 3 H xi(a) rho_c and constant intrinsic w_0",
+      "role": "Phenomenological target model; do not identify it with either action above without deriving its fluid equations and perturbation prescription from that action.",
+      "verification_status": "PAPER_FORMULATION; FULL_COVARIANT_PERTURBATION_CLOSURE_NOT_ESTABLISHED"
+    }
+  },
+  "conditional_matching_results": [
+    {
+      "premise": "The current action specification's structural matter-continuity equation is valid, matter is pressureless, and H and rho_c are nonzero.",
+      "action_level_continuity": "dot(rho_c) + 3 H rho_c = - gamma_m dot(phi) rho_c",
+      "paper_continuity": "dot(rho_c) + 3 H rho_c = 3 H xi(a) rho_c",
+      "conditional_identification": "xi_eff(a) = - gamma_m dot(phi) / (3 H)",
+      "status": "ALGEBRAIC_MATCH_ONLY",
+      "does_not_establish": [
+        "symbolically verified variation of the current action",
+        "equivalence of the full background systems",
+        "equivalence of perturbation equations or observables",
+        "independent freedom to choose xi(a)"
+      ]
+    },
+    {
+      "premise": "The legacy scalar-only core's supplied dust continuity equation is valid and H and rho_c are nonzero.",
+      "action_level_continuity": "dot(rho_c) + 3 H rho_c = -(beta/M_Pl) dot(Phi) rho_c",
+      "conditional_identification": "xi_eff(a) = - beta dot(Phi) / (3 M_Pl H)",
+      "status": "ALGEBRAIC_MATCH_ONLY",
+      "warning": "This is a different action and parameter convention from the current scalar-vector specification."
+    }
+  ],
+  "current_action_vector_boundary": {
+    "supplied_vector_equation": "alpha_A nabla_mu F^{mu nu} - m_A^2 A^nu - beta_phi_A phi^2 A^nu - xi_A R^nu_mu A^mu = 0",
+    "homogeneous_temporal_ansatz": "A_mu = (A_0(t), 0, 0, 0), so F_{mu nu} = 0 and R^0_0 = -R_00/N^2",
+    "coefficient_from_supplied_vector_equation": "m_A^2 + beta_phi_A phi^2 - xi_A R_00/N^2",
+    "constraint": "(m_A^2 + beta_phi_A phi^2 - xi_A R_00/N^2) A_0 = 0",
+    "discrepancy": "A previously recorded structural constraint used a plus sign before xi_A R_00/N^2. That sign does not follow from the supplied mixed-index vector equation with signature (-+++) and lapse N. Re-derive directly from the action before treating either form as verified.",
+    "conditional_consequence": "If the coefficient obtained from the supplied vector equation is nonzero, A_0 = 0; a nonzero homogeneous A_0 requires the coefficient to vanish.",
+    "status": "INDEX-RAISING SIGN CHECK; ACTION VARIATION NOT SYMBOLICALLY PROVED",
+    "not_established": [
+      "existence or stability of a viable exceptional branch",
+      "physical relevance of a nonzero temporal-vector background",
+      "the exact vector constraint from an independently verified variation of the action"
+    ]
+  },
+  "repository_status_reconciliation": {
+    "repository_closure": "STATUS.md and docs/status/NEXT_CLOSURE_MOVE.md declare the reproducibility surface closed.",
+    "scientific_boundary": "Those files explicitly do not claim final cosmological truth, Lambda-CDM rejection, dark-sector closure, or independent likelihood validation.",
+    "action_derivation_boundary": "The current action, variational check, and cosmological reduction ansatz explicitly remain structural; reduced equations are not marked as derived and symbolic variation is not proved.",
+    "interpretation": "Repository reproducibility closure and scientific derivation closure are distinct statuses; there is no logical contradiction once their scopes are kept separate."
+  },
+  "decision": {
+    "working_rule": "For action-derived work, start only from the current scalar-vector action specification. Treat the scalar-only core and the fluid-level paper model as separate until an explicit derivation establishes a relation.",
+    "not_claimed": [
+      "a unique physically canonical model has been selected by evidence",
+      "the three descriptions are equivalent",
+      "the interaction ansatz is empirically supported",
+      "any new cosmological prediction has been established"
+    ]
+  },
+  "next_admissible_step": {
+    "id": "DERIVE_CURRENT_ACTION_FLRW_EQUATIONS_WITH_UNFIXED_LAPSE",
+    "scope": [
+      "substitute the current action's FLRW metric and homogeneous scalar/temporal-vector ansatz",
+      "retain N(t) through reduction",
+      "derive the reduced Euler-Lagrange equations from the reduced action",
+      "compare the result against each supplied structural background target"
+    ],
+    "stop_condition": "Stop at the first sign, normalization, lapse-variation, or boundary-term ambiguity; do not produce predictions before the reduced equations are verified."
+  },
+  "validation_flags": {
+    "symbolic_variation_proved": false,
+    "reduced_equations_derived": false,
+    "full_model_equivalence_proved": false,
+    "numerical_prediction_claimed": false,
+    "empirical_validation_claimed": false,
+    "lambda_cdm_rejection_claimed": false
+  }
+}
