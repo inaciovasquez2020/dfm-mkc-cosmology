@@ -585,10 +585,10 @@ def compare_averaged_and_time_dependent_full_field_growth(
     density_array = np.asarray(density_contrasts, dtype=float)
     cycle_width = 2.0 * math.pi * cycle_count
     phase_span = float(phase[-1] - phase[0])
-    if phase_span < cycle_width:
+    if phase_span < 2.0 * cycle_width:
         raise ValueError(
-            "background does not contain the requested "
-            "complete phase cycle"
+            "background does not contain two disjoint requested "
+            "phase cycles"
         )
 
     initial_phase_lower = float(phase[0])
