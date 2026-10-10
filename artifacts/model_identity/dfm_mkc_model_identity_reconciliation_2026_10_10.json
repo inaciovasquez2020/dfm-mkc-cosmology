@@ -46,12 +46,17 @@
     }
   ],
   "current_action_vector_boundary": {
-    "structural_constraint": "(m_A^2 + beta_phi_A phi^2 + xi_A R_00/N^2) A_0 = 0",
-    "conditional_consequence": "If the coefficient is nonzero, A_0 = 0; a nonzero homogeneous A_0 requires the coefficient to vanish.",
-    "status": "BRANCH_CONSTRAINT_ONLY",
+    "supplied_vector_equation": "alpha_A nabla_mu F^{mu nu} - m_A^2 A^nu - beta_phi_A phi^2 A^nu - xi_A R^nu_mu A^mu = 0",
+    "homogeneous_temporal_ansatz": "A_mu = (A_0(t), 0, 0, 0), so F_{mu nu} = 0 and R^0_0 = -R_00/N^2",
+    "coefficient_from_supplied_vector_equation": "m_A^2 + beta_phi_A phi^2 - xi_A R_00/N^2",
+    "constraint": "(m_A^2 + beta_phi_A phi^2 - xi_A R_00/N^2) A_0 = 0",
+    "discrepancy": "A previously recorded structural constraint used a plus sign before xi_A R_00/N^2. That sign does not follow from the supplied mixed-index vector equation with signature (-+++) and lapse N. Re-derive directly from the action before treating either form as verified.",
+    "conditional_consequence": "If the coefficient obtained from the supplied vector equation is nonzero, A_0 = 0; a nonzero homogeneous A_0 requires the coefficient to vanish.",
+    "status": "INDEX-RAISING SIGN CHECK; ACTION VARIATION NOT SYMBOLICALLY PROVED",
     "not_established": [
       "existence or stability of a viable exceptional branch",
-      "physical relevance of a nonzero temporal-vector background"
+      "physical relevance of a nonzero temporal-vector background",
+      "the exact vector constraint from an independently verified variation of the action"
     ]
   },
   "repository_status_reconciliation": {
