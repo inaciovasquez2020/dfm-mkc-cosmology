@@ -589,7 +589,9 @@ def compare_averaged_and_time_dependent_full_field_growth(
         raise ValueError(
             "background does not contain two disjoint requested "
             f"phase cycles: span={phase_span:.16g}, "
-            f"required={2.0 * cycle_width:.16g}"
+            f"required={2.0 * cycle_width:.16g}, "
+            f"minimum_abs_constraint_denominator="
+            f"{minimum_abs_constraint_denominator:.16g}"
         )
 
     initial_phase_lower = float(phase[0])
