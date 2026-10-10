@@ -111,5 +111,9 @@ def test_deterministic_multi_k_comparison_values() -> None:
                 expected_value,
             )
 
+        assert math.isfinite(
+            certificate.maximum_relative_hubble_scaling_error
+        )
+        assert certificate.maximum_relative_hubble_scaling_error >= 0.0
         assert certificate.maximum_rhs_residual < 1.0e-7
         assert certificate.minimum_abs_constraint_denominator > 0.0
