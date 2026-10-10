@@ -421,7 +421,14 @@ def main() -> None:
         on_shell_subs[placeholder] = sp.Integer(0)
     on_shell_auxiliary = sp.simplify(auxiliary_without_derivatives.xreplace(on_shell_subs))
     on_shell_auxiliary_det = sp.factor(on_shell_auxiliary.det(method="domain-ge"))
+    on_shell_auxiliary_rank = on_shell_auxiliary.rank(simplify=True)
+    on_shell_auxiliary_nullspace = [
+        vector.applyfunc(sp.factor) for vector in on_shell_auxiliary.nullspace()
+    ]
     print("FLAT_CONSTANT_TIMELIKE_BACKGROUND := SUBSTITUTED (a=1, phi=0, B=b0, L0=mA2=0)")
+    print("ON_SHELL_AUXILIARY_MATRIX := " + sp.sstr(on_shell_auxiliary.applyfunc(sp.factor)))
+    print("ON_SHELL_AUXILIARY_RANK := " + str(on_shell_auxiliary_rank))
+    print("ON_SHELL_AUXILIARY_NULLSPACE := " + sp.sstr(on_shell_auxiliary_nullspace))
     print("ON_SHELL_AUXILIARY_DETERMINANT := " + str(on_shell_auxiliary_det))
     print("ON_SHELL_AUXILIARY_DETERMINANT_ZERO_TEST := " + str(sp.simplify(on_shell_auxiliary_det) == 0))
 
