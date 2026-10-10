@@ -62,7 +62,7 @@ A valid computational continuation must:
 4. derive the Euler–Lagrange equations from that corrected reduced Lagrangian;
 5. inspect the kinetic Hessian and identify the actual constraints/gauge conditions before interpreting a characteristic determinant as a physical degree-of-freedom count.
 
-The metric ansatz in the supplied source has a lapse perturbation and a longitudinal shift perturbation, but no explicit scalar spatial-curvature perturbation. Unless this is justified by a stated gauge fixing or a demonstrated constraint reduction, the ansatz alone is not a certificate that all scalar metric variables or constraints have been retained.
+The ansatz sets scalar spatial-curvature and scalar-shear perturbations to zero, consistent with a spatially flat scalar gauge for nonzero k. The supplied source does not explicitly name or justify that gauge fixing. Record the gauge choice and treat k=0 separately before interpreting the reduced system as the complete scalar sector.
 
 ## Result ledger
 
@@ -73,9 +73,10 @@ The metric ansatz in the supplied source has a lapse perturbation and a longitud
 - `FOURIER_REDUCTION_FOR_COMPLETED_ACTION := BUILT_SYMBOLICALLY`
 - `KINETIC_HESSIAN := DIAG(0,0,alpha*a(t)^3/2,0,a(t)/2); RANK_2_IF_ALPHA_AND_A_NONZERO`
 - `AUXILIARY_ALGEBRAIC_BLOCK := NONSINGULAR_AT_3_RATIONAL_SAMPLES_ONLY`
+- `REDUCED_KINETIC_SCHUR_COMPLEMENT := NONZERO_AT_3_RATIONAL_SAMPLES_ONLY; NO_POSITIVITY_CLAIM`
 - `CI_STATUS := NOT_CONFIRMED_BY_AVAILABLE_STATUS_ENDPOINT`
 - `PHYSICAL_SCALAR_DOF_COUNT := OPEN`
 
 ## Stopping decision
 
-The corrected action has now been rebuilt symbolically, Fourier-reduced, and subjected to a bounded Hessian/sample-symbol audit. This is a good stopping point for the current restricted ansatz. It is not a completed physical mode-count result: the metric ansatz omits an explicit scalar spatial-curvature perturbation, the determinant degree was sampled rather than proved generically, and CI success is not confirmed. The next admissible mathematical step, if continuing, is to justify the scalar metric gauge/reduction or restore the missing spatial-curvature perturbation and repeat the constraint analysis.
+The corrected action has now been rebuilt symbolically, Fourier-reduced, and subjected to a bounded Hessian, auxiliary-block, and reduced-kinetic Schur-complement audit. This is a good stopping point for the current restricted ansatz. It is not a completed physical mode-count or stability result: the spatially flat gauge choice is implicit rather than documented, determinant degrees and reduced-block nonsingularity were sampled rather than proved on-shell, and CI success is not confirmed. The next admissible step is to document/fix the gauge and impose the background equations before making physical mode or stability claims.
