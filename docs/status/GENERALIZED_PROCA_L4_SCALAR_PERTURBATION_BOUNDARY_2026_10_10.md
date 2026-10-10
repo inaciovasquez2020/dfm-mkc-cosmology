@@ -90,7 +90,7 @@ The script integrates the `a_ddot` term by parts to obtain a first-derivative La
 ```
 E_B = a*B/N^3 * (N^2*a^2*Q + 3*xi*(a*a_ddot - a_dot^2)) = 0.
 ```
-This equation is algebraic in the homogeneous `B) amplitude (no `B_dot`), while depending on the scale-factor acceleration. The lapse constraint is generated before gauge-fixing the lapse.
+This equation is algebraic in the homogeneous `B` amplitude (no `B_dot`), while depending on the scale-factor acceleration. The lapse constraint is generated before gauge-fixing the lapse.
 
 This is a verified background-equation milestone, not yet an on-shell perturbation result. The next step is to impose the full background equations on the scalar auxiliary block; no generic on-shell rank theorem or physical scalar count is claimed.
 
