@@ -36,7 +36,7 @@ def ricci_divergence_residual() -> sp.Expr:
     for r in range(n):
         for m in range(n):
             for v in range(n):
-                gamma[r][m][v] = sp.factor(
+                gamma[r][m][v] = sp.cancel(
                     sum(
                         inverse[r, ell]
                         * (
@@ -52,7 +52,7 @@ def ricci_divergence_residual() -> sp.Expr:
     ricci = sp.MutableDenseMatrix.zeros(n, n)
     for m in range(n):
         for v in range(n):
-            ricci[m, v] = sp.factor(
+            ricci[m, v] = sp.cancel(
                 sum(
                     sp.diff(gamma[r][m][v], coords[r])
                     - sp.diff(gamma[r][m][r], coords[v])
@@ -67,13 +67,13 @@ def ricci_divergence_residual() -> sp.Expr:
 
     A_cov = [A0, sp.S.Zero, sp.S.Zero, A3]
     A_up = [
-        sp.factor(sum(inverse[i, j] * A_cov[j] for j in range(n)))
+        sp.cancel(sum(inverse[i, j] * A_cov[j] for j in range(n)))
         for i in range(n)
     ]
     # nabla_cov[rho][sigma] = nabla_rho A_sigma
     nabla_cov = [
         [
-            sp.factor(
+            sp.cancel(
                 sp.diff(A_cov[sigma], coords[rho])
                 - sum(
                     gamma[ell][rho][sigma] * A_cov[ell]
@@ -87,7 +87,7 @@ def ricci_divergence_residual() -> sp.Expr:
     # nabla_up[mu][rho] = nabla_mu A^rho
     nabla_up = [
         [
-            sp.factor(
+            sp.cancel(
                 sp.diff(A_up[rho], coords[mu])
                 + sum(
                     gamma[rho][mu][ell] * A_up[ell]
@@ -99,8 +99,8 @@ def ricci_divergence_residual() -> sp.Expr:
         for mu in range(n)
     ]
 
-    div_A = sp.factor(sum(nabla_up[mu][mu] for mu in range(n)))
-    derivative_combination = sp.factor(
+    div_A = sp.cancel(sum(nabla_up[mu][mu] for mu in range(n)))
+    derivative_combination = sp.cancel(
         div_A**2
         - sum(
             inverse[sigma, mu]
@@ -111,7 +111,7 @@ def ricci_divergence_residual() -> sp.Expr:
             for mu in range(n)
         )
     )
-    ricci_vector_contraction = sp.factor(
+    ricci_vector_contraction = sp.cancel(
         sum(
             ricci[i, j] * A_up[i] * A_up[j]
             for i in range(n)
@@ -121,13 +121,13 @@ def ricci_divergence_residual() -> sp.Expr:
 
     # J^mu = A^mu div(A) - A^nu nabla_nu A^mu
     J_up = [
-        sp.factor(
+        sp.cancel(
             A_up[mu] * div_A
             - sum(A_up[nu] * nabla_up[nu][mu] for nu in range(n))
         )
         for mu in range(n)
     ]
-    div_J = sp.factor(
+    div_J = sp.cancel(
         sum(
             sp.diff(J_up[mu], coords[mu])
             + sum(gamma[mu][mu][nu] * J_up[nu] for nu in range(n))
@@ -136,9 +136,9 @@ def ricci_divergence_residual() -> sp.Expr:
     )
 
     # Convention-specific identity: D - R_mn A^m A^n - nabla_mu J^mu = 0.
-    return sp.factor(
+    return sp.cancel(sp.together(
         derivative_combination - ricci_vector_contraction - div_J
-    )
+    ))
 
 
 def main() -> None:
