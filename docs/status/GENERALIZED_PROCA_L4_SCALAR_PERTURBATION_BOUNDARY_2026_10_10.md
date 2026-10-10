@@ -1,0 +1,79 @@
+# Generalized-Proca L4 scalar-sector audit and stopping boundary — 2026-10-10
+
+Status: `ACTION_IDENTITY_RESOLVED; COMPLETED_QUADRATIC_REBUILD_NOT_VERIFIED; PHYSICAL_DOF_COUNT_OPEN`
+
+## Scope
+
+This note records the bounded result of the symbolic scalar-perturbation work discussed on 2026-10-10. The source supplied for that calculation defines a scalar-dependent curvature coefficient
+`F(phi) = M2 - xs*phi**2`, a vector background `A_0 = B(t)`, perturbations `u(t,z)` and `chi(t,z)`, a metric lapse perturbation `Phi(t,z)`, and a shift perturbation `beta(t,z)`. It includes `R_{μν} A^μ A^ν` and computes a second-order Lagrangian followed by a Fourier reduction.
+
+The calculations in this note distinguish the original model from a generalized-Proca L4-completed model. The completion changes the action; it is not a proof that the original and completed models have the same dynamics.
+
+## Curvature convention and identity
+
+The supplied Ricci implementation uses
+```
+R_mn = d_r Gamma^r_mn - d_n Gamma^r_mr
+       + Gamma^r_rl Gamma^l_mn - Gamma^r_nl Gamma^l_mr
+```
+
+With this convention, for
+`J^mu = A^mu nabla_nu A^nu - A^nu nabla_nu A^mu`,
+```
+D := (nabla_mu A^mu)^2
+     - (nabla_mu A^nu)(nabla_nu A^mu)
+
+nabla_mu J^mu = D - R_mn A^m A^n
+```
+and hence
+```
+R_mn A^m A^n = D - nabla_mu J^mu.
+```
+
+Therefore, with constant `xi`,
+```
+-(xi/2) R_mn A^m A^n
+  = -(xi/2) D + (xi/2) nabla_mu J^mu.
+```
+The last term is a boundary term in the action under boundary conditions that discard it.
+
+## Explicit linear generalized-Proca L4 completion
+
+For `X = -A_mu A^mu/2`, the standard L4 structure is
+```
+L4 = G4(X) R + G4_X(X) D.
+```
+
+Choosing `G4_X = -xi/2` gives `G4(X) = C - xi X/2`. Taking `C = 0) as a convention gives the explicit completion
+```
+L_curvature = (1/2) F(phi) R - (xi/2) X R - (xi/2) D.
+```
+
+The `F(phi) R/2` term is retained as a separate scalar-tensor coupling. Since it depends on the independent scalar `phi`, it is not itself the vector-dependent `G4(X) R` coefficient. Thus the original action with `F(phi)R/2 - xi R_mn A^m A^n/2` does not, for independent `phi` and `A_mu`, by itself establish the standard generalized-Proca L4 relation. The completion above is a specific extended model choice.
+
+## Important implementation boundary
+
+The previously proposed source patch is a draft implementation only. It has not been executed against the supplied script, and its second-order output, identity residual, Fourier-reduced Lagrangian, and determinant have not been verified. Do not treat existing `/tmp/L2scal.pkl` or `/tmp/Lk.pkl` artifacts as outputs of the completed action unless they are regenerated from that action.
+
+A valid computational continuation must:
+1. construct `X`, `D), and the linked `G4(X)R + G4_X D` term with consistent index conventions;
+2. verify the identity residual symbolically before continuing;
+3. regenerate the second-order Lagrangian and Fourier reduction from the corrected action;
+4. derive the Euler–Lagrange equations from that corrected reduced Lagrangian;
+5. inspect the kinetic Hessian and identify the actual constraints/gauge conditions before interpreting a characteristic determinant as a physical degree-of-freedom count.
+
+The metric ansatz in the supplied source has a lapse perturbation and a longitudinal shift perturbation, but no explicit scalar spatial-curvature perturbation. Unless this is justified by a stated gauge fixing or a demonstrated constraint reduction, the ansatz alone is not a certificate that all scalar metric variables or constraints have been retained.
+
+## Result ledger
+
+- `RICCI_DIVERGENCE_IDENTITY := ESTABLISHED_ALGEBRAICALLY`
+- `STANDARD_L4_MATCH_FOR_ORIGINAL_ACTION := NOT_ESTABLISHED`
+- `LINEAR_G4_COMPLETION := SPECIFIED`
+- `CORRECTED_QUADRATIC_ACTION := NOT_REBUILT_OR_VERIFIED`
+- `FOURIER_REDUCTION_FOR_COMPLETED_ACTION := NOT_VERIFIED`
+- `HESSIAN_AND_CONSTRAINTS_FOR_COMPLETED_ACTION := OPEN`
+- `PHYSICAL_SCALAR_DOF_COUNT := OPEN`
+
+## Stopping decision
+
+This is a good stopping point for the action-matching and scope audit. It is not a completed physical mode-count result. No claim is made that the completed action has passed a symbolic rebuild or that the physical scalar degrees of freedom have been established. The next admissible step is the verified corrected-action rebuild, not further interpretation of the old determinant.
