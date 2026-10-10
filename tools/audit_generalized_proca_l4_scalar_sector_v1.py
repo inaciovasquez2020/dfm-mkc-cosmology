@@ -392,6 +392,15 @@ def main() -> None:
         auxiliary_det = numeric_auxiliary.det(method="domain-ge")
         if auxiliary_det == 0:
             raise AssertionError("Auxiliary algebraic block singular at a declared sample")
+        auxiliary_rank = numeric_auxiliary.rank(simplify=True)
+        auxiliary_nullspace = numeric_auxiliary.nullspace()
+        if auxiliary_rank != 3 or auxiliary_nullspace:
+            raise AssertionError(
+                "Nonsingular sampled auxiliary block has unexpected rank/nullspace"
+            )
+        print(f"GENERIC_SAMPLE_{len(auxiliary_nonzero) + 1}_AUXILIARY_DETERMINANT := {auxiliary_det}")
+        print(f"GENERIC_SAMPLE_{len(auxiliary_nonzero) + 1}_AUXILIARY_RANK := {auxiliary_rank}")
+        print(f"GENERIC_SAMPLE_{len(auxiliary_nonzero) + 1}_AUXILIARY_NULLSPACE_DIM := {len(auxiliary_nullspace)}")
         auxiliary_nonzero.append(True)
 
         numeric_dynamic = dynamic_without_derivatives.xreplace(substitutions)
