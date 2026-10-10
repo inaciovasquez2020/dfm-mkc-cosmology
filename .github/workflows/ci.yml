@@ -31,6 +31,10 @@ jobs:
           python3 tools/audit_dfm_mkc_action_linearization_v1.py
           python3 tools/verify_dfm_mkc_linear_perturbation_system_v1.py
 
+      - name: Audit generalized-Proca L4 scalar sector and auxiliary Hessian
+        run: |
+          PYTHONPATH=src timeout --signal=ABRT --kill-after=30s 600s python -X faulthandler tools/audit_generalized_proca_l4_scalar_sector_v1.py
+
       - name: Verify prepared scalar canonical-energy coercivity
         run: |
           PYTHONPATH=src timeout --signal=ABRT --kill-after=30s 600s python -X faulthandler -m pytest -vv -s -o faulthandler_timeout=60 tests/test_scalar_prepared_canonical_energy_coercivity_probe_v1.py::test_prepared_canonical_energy_probe_fails_closed_at_first_unresolved_pivot

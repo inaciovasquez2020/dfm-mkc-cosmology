@@ -392,6 +392,15 @@ def main() -> None:
         auxiliary_det = numeric_auxiliary.det(method="domain-ge")
         if auxiliary_det == 0:
             raise AssertionError("Auxiliary algebraic block singular at a declared sample")
+        auxiliary_rank = numeric_auxiliary.rank(simplify=True)
+        auxiliary_nullspace = numeric_auxiliary.nullspace()
+        if auxiliary_rank != 3 or auxiliary_nullspace:
+            raise AssertionError(
+                "Nonsingular sampled auxiliary block has unexpected rank/nullspace"
+            )
+        print(f"GENERIC_SAMPLE_{len(auxiliary_nonzero) + 1}_AUXILIARY_DETERMINANT := {auxiliary_det}")
+        print(f"GENERIC_SAMPLE_{len(auxiliary_nonzero) + 1}_AUXILIARY_RANK := {auxiliary_rank}")
+        print(f"GENERIC_SAMPLE_{len(auxiliary_nonzero) + 1}_AUXILIARY_NULLSPACE_DIM := {len(auxiliary_nullspace)}")
         auxiliary_nonzero.append(True)
 
         numeric_dynamic = dynamic_without_derivatives.xreplace(substitutions)
@@ -419,9 +428,30 @@ def main() -> None:
     }
     for derivative, placeholder in derivative_placeholders.items():
         on_shell_subs[placeholder] = sp.Integer(0)
+    # Exact flat constant-field family: keep L0 and mA2 symbolic to expose
+    # the determinant-zero condition within this restricted background family.
+    flat_family_subs = dict(on_shell_subs)
+    flat_family_subs.pop(L0)
+    flat_family_subs.pop(mA2)
+    flat_family_auxiliary = sp.simplify(
+        auxiliary_without_derivatives.xreplace(flat_family_subs)
+    )
+    flat_family_determinant = sp.factor(
+        flat_family_auxiliary.det(method="domain-ge")
+    )
+    print("FLAT_CONSTANT_FIELD_FAMILY_AUXILIARY_DETERMINANT := " + sp.sstr(flat_family_determinant))
+    print("FLAT_CONSTANT_FIELD_FAMILY_DEGENERACY_CONDITION := determinant = 0")
+
     on_shell_auxiliary = sp.simplify(auxiliary_without_derivatives.xreplace(on_shell_subs))
     on_shell_auxiliary_det = sp.factor(on_shell_auxiliary.det(method="domain-ge"))
+    on_shell_auxiliary_rank = on_shell_auxiliary.rank(simplify=True)
+    on_shell_auxiliary_nullspace = [
+        vector.applyfunc(sp.factor) for vector in on_shell_auxiliary.nullspace()
+    ]
     print("FLAT_CONSTANT_TIMELIKE_BACKGROUND := SUBSTITUTED (a=1, phi=0, B=b0, L0=mA2=0)")
+    print("ON_SHELL_AUXILIARY_MATRIX := " + sp.sstr(on_shell_auxiliary.applyfunc(sp.factor)))
+    print("ON_SHELL_AUXILIARY_RANK := " + str(on_shell_auxiliary_rank))
+    print("ON_SHELL_AUXILIARY_NULLSPACE := " + sp.sstr(on_shell_auxiliary_nullspace))
     print("ON_SHELL_AUXILIARY_DETERMINANT := " + str(on_shell_auxiliary_det))
     print("ON_SHELL_AUXILIARY_DETERMINANT_ZERO_TEST := " + str(sp.simplify(on_shell_auxiliary_det) == 0))
 
