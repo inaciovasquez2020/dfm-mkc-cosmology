@@ -428,6 +428,20 @@ def main() -> None:
     }
     for derivative, placeholder in derivative_placeholders.items():
         on_shell_subs[placeholder] = sp.Integer(0)
+    # Exact flat constant-field family: keep L0 and mA2 symbolic to expose
+    # the determinant-zero condition within this restricted background family.
+    flat_family_subs = dict(on_shell_subs)
+    flat_family_subs.pop(L0)
+    flat_family_subs.pop(mA2)
+    flat_family_auxiliary = sp.simplify(
+        auxiliary_without_derivatives.xreplace(flat_family_subs)
+    )
+    flat_family_determinant = sp.factor(
+        flat_family_auxiliary.det(method="domain-ge")
+    )
+    print("FLAT_CONSTANT_FIELD_FAMILY_AUXILIARY_DETERMINANT := " + sp.sstr(flat_family_determinant))
+    print("FLAT_CONSTANT_FIELD_FAMILY_DEGENERACY_CONDITION := determinant = 0")
+
     on_shell_auxiliary = sp.simplify(auxiliary_without_derivatives.xreplace(on_shell_subs))
     on_shell_auxiliary_det = sp.factor(on_shell_auxiliary.det(method="domain-ge"))
     on_shell_auxiliary_rank = on_shell_auxiliary.rank(simplify=True)
