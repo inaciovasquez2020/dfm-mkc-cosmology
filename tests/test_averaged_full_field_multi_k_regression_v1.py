@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import math
-import warnings
 
 from dfm_mkc_solver.averaged_full_field_time_dependent_comparison_v1 import (
     compare_averaged_and_time_dependent_full_field_growth,
@@ -116,11 +115,5 @@ def test_deterministic_multi_k_comparison_values() -> None:
             certificate.maximum_relative_hubble_scaling_error
         )
         assert certificate.maximum_relative_hubble_scaling_error >= 0.0
-        warnings.warn(
-            "measured maximum relative Hubble scaling error: "
-            f"{wave_number=}, "
-            f"{certificate.maximum_relative_hubble_scaling_error:.16e}",
-            UserWarning,
-        )
         assert certificate.maximum_rhs_residual < 1.0e-7
         assert certificate.minimum_abs_constraint_denominator > 0.0
