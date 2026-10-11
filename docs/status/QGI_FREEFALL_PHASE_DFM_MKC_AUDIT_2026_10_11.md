@@ -8,9 +8,9 @@
 
 O. Dobkowski et al., “Observation of the quantum phase of free fall and the consistency with the equivalence principle,” *Science Advances* 12 (2026), DOI [10.1126/sciadv.aec8045](https://doi.org/10.1126/sciadv.aec8045).
 
-The Quantum Galileo Interferometer (QGI) compares an ultracold rubidium matter-wave arm held approximately stationary in the laboratory frame with an arm undergoing ballistic free fall, then measures the relative phase after recombination. The reported phase follows the predicted cubic dependence on free-fall time and agrees with the equivalence-principle prediction in the regime tested.
+The Quantum Galileo Interferometer (QGI) compares an ultracold rubidium matter-wave arm held approximately stationary in the laboratory frame with an arm undergoing ballistic free fall, then measures the relative phase after recombination. The reported phase agrees with the predicted quantum free-fall phase in the tested low-energy regime [primary paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC13537235/) and [Oxford research summary](https://www.physics.ox.ac.uk/news/scientists-observe-einsteins-gravity-quantum-world).
 
-The result is a test of quantum matter-wave phase in a gravitational field. It is not a demonstration of a complete quantum-gravity theory, nor does it establish that gravity itself is quantized.
+The result is a test of quantum matter-wave phase in a gravitational field. The authors describe it as a test of the interface between quantum theory and gravity; it does not demonstrate a unified quantum-gravity theory or establish that gravity itself is quantized [primary paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC13537235/).
 
 ## 2. What the repository's V1 action says
 
@@ -55,25 +55,24 @@ Consequently, the current V1 coupling rule does not predict a new composition-de
 
 ## 3. Standard phase and the missing model-specific quantity
 
-In the coordinate and phase convention of the cited treatment, the standard reference phase is
+### Source equation and convention
 
+The primary paper gives the gauge phase relating the Newtonian/laboratory and freely falling wavefunctions as
 \[
-\Delta\phi_{\rm std}(T,z)
-=\frac{m}{\hbar}\left(\frac{g^2T^3}{6}+gzT\right).
+\varphi_{\rm gauge}(z,t)=\frac{m}{\hbar}\left(-\frac{g^2t^3}{6}-gzt\right),
 \]
+in its stated convention (Eq. 1). For the idealized symmetric ballistic segment with endpoints at times \(\pm T\), it then gives the relative ballistic phase \(\varphi_{\rm ballistic}=-mg^2T^3/(3\hbar)\) (Eq. 2). The actual QGI observable includes the apparatus' magnetic-gradient kicks and pulse timing; the paper's full interferometer expression must be used for quantitative comparison. Source: [Dobkowski et al., primary paper, Eqs. (1)–(4)](https://pmc.ncbi.nlm.nih.gov/articles/PMC13537235/). The cubic time dependence is the characteristic free-fall signature. The earlier shorthand \(m(g^2T^3/6+gzT)/\hbar\) is the magnitude of the gauge-phase terms under a sign convention, not the complete measured QGI phase, and should not be labeled the experimental observable.
 
-The sign of a relative phase depends on arm and pulse conventions, so a quantitative comparison must reproduce the experiment's complete sequence. The $T^3$ dependence is the characteristic free-fall term.
+### Conditional potential-only correction derived here
 
-For a weak-field description in which a candidate solution induces a potential correction \(\delta\Phi\), a potential-only contribution would be
-
+If the same theory yields a nonrelativistic Hamiltonian \(H=p^2/(2m)+m\Phi(x,t)\), the potential contribution to the phase along one arm is \(-\hbar^{-1}\int m\Phi\,dt\). Subtracting the reference arm gives
 \[
 \delta\phi_{\rm pot}
 =-\frac{m}{\hbar}\int_0^{\mathcal T}
 \left[\delta\Phi(x_{\rm fall}(t),t)
--\delta\Phi(x_{\rm ref}(t),t)\right]dt,
+-\delta\Phi(x_{\rm ref}(t),t)\right]dt.
 \]
-
-where \(\mathcal T\) is the full evolution interval. This is only a conditional formula, not a computed DFM–MKC prediction. It excludes other metric, kinetic, internal-state, and pulse contributions unless their absence is derived.
+This expression is derived from the stated Hamiltonian, not quoted as an equation from the QGI paper. It is only a conditional potential contribution, not a computed DFM–MKC prediction; kinetic, metric, internal-state, and pulse contributions must be included unless shown negligible.
 
 The repository's present artifacts do not supply a solved, weak-field Earth-plus-apparatus metric for the DFM–MKC fields with boundary conditions matched to the QGI geometry. Without that solution, \(\delta\Phi\), the phase correction, and any numerical bound on model parameters are undetermined.
 
@@ -95,8 +94,9 @@ The separate generalized-Proca L4 audit dated 2026-10-10 records an explicit L4 
 
 ## References
 
-1. Dobkowski et al., *Science Advances* (2026), [doi:10.1126/sciadv.aec8045](https://doi.org/10.1126/sciadv.aec8045).
-2. [DFM–MKC closed action functional V1](../artifacts/repo_intake/dfm_mkc_closed_action_functional_v1_2026_05_27.json).
-3. [DFM–MKC field equations V1](../artifacts/repo_intake/dfm_mkc_field_equations_v1_2026_05_27.json).
-4. [DFM–MKC matter-coupling rule V1](../artifacts/repo_intake/dfm_mkc_matter_coupling_rule_v1_2026_05_27.json).
-5. [Generalized-Proca L4 scalar perturbation boundary, 2026-10-10](status/GENERALIZED_PROCA_L4_SCALAR_PERTURBATION_BOUNDARY_2026_10_10.md).
+1. O. Dobkowski et al., “Observation of the quantum phase of free fall and the consistency with the equivalence principle,” *Science Advances* 12(36), eaec8045 (2026), [primary full text](https://pmc.ncbi.nlm.nih.gov/articles/PMC13537235/), [DOI](https://doi.org/10.1126/sciadv.aec8045). The gauge phase and idealized ballistic phase are Eqs. (1)–(2); the apparatus-specific phase is developed later in the article and its supplement.
+2. University of Oxford, [research summary](https://www.physics.ox.ac.uk/news/scientists-observe-einsteins-gravity-quantum-world), corroborating the experimental setup and stated limits.
+3. [DFM–MKC closed action functional V1](../artifacts/repo_intake/dfm_mkc_closed_action_functional_v1_2026_05_27.json).
+4. [DFM–MKC field equations V1](../artifacts/repo_intake/dfm_mkc_field_equations_v1_2026_05_27.json).
+5. [DFM–MKC matter-coupling rule V1](../artifacts/repo_intake/dfm_mkc_matter_coupling_rule_v1_2026_05_27.json).
+6. [Generalized-Proca L4 scalar perturbation boundary, 2026-10-10](status/GENERALIZED_PROCA_L4_SCALAR_PERTURBATION_BOUNDARY_2026_10_10.md).
