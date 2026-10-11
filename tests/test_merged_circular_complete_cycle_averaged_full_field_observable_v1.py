@@ -100,6 +100,30 @@ def test_merged_circular_complete_cycle_observable() -> None:
     assert comparison.phase_span >= 4.0 * math.pi
     assert comparison.maximum_rhs_residual < 1.0e-14
     assert comparison.minimum_abs_constraint_denominator > 0.25
+    assert len(comparison.scale_factors) == config.samples
+    assert len(comparison.constraint_denominators) == config.samples
+    assert len(comparison.background_enthalpies) == config.samples
+    assert all(math.isfinite(value) for value in comparison.constraint_denominators)
+    assert all(math.isfinite(value) for value in comparison.background_enthalpies)
+    assert all(
+        math.isclose(
+            denominator,
+            0.005**2
+            - 4.0
+            * math.pi
+            * parameters.G
+            * scale_factor**2
+            * enthalpy,
+            rel_tol=1.0e-12,
+            abs_tol=1.0e-12,
+        )
+        for scale_factor, enthalpy, denominator in zip(
+            comparison.scale_factors,
+            comparison.background_enthalpies,
+            comparison.constraint_denominators,
+            strict=True,
+        )
+    )
 
     assert math.isclose(
         comparison.full_field_growth_factor,
