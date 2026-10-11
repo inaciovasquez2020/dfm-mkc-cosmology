@@ -51,7 +51,6 @@ G_{\mu\nu}+\Lambda_{\rm eff}g_{\mu\nu}
 \]
 Thus, on this branch, the exterior metric of a static spherical source is the usual Schwarzschild–de Sitter form (with the effective cosmological constant). The QGI phase is the standard metric-gravity phase after using the local metric and calibrated apparatus parameters; there is no additional DFM–MKC phase term on this branch. This is an exact **conditional null result**, not a statement that every nonconstant-field solution is equivalent to standard gravity. Stability or dynamical selection of this branch is not established.
 
-
 Consequently, the current V1 coupling rule does not predict a new composition-dependent QGI phase or an anomalous direct scalar force. Any difference from the standard prediction would have to arise through a different solved metric sourced by the DFM–MKC stress-energy, not through a new direct matter-wave coupling.
 
 ## 3. Standard phase and the missing model-specific quantity
@@ -63,7 +62,7 @@ In the coordinate and phase convention of the cited treatment, the standard refe
 =\frac{m}{\hbar}\left(\frac{g^2T^3}{6}+gzT\right).
 \]
 
-The sign of a relative phase depends on arm and pulse conventions, so a quantitative comparison must reproduce the experiment's complete sequence. The (T^3) dependence is the characteristic free-fall term.
+The sign of a relative phase depends on arm and pulse conventions, so a quantitative comparison must reproduce the experiment's complete sequence. The $T^3$ dependence is the characteristic free-fall term.
 
 For a weak-field description in which a candidate solution induces a potential correction \(\delta\Phi\), a potential-only contribution would be
 
