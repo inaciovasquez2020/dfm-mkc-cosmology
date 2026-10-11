@@ -19,9 +19,9 @@ with \(\alpha,\beta>0\), \(\lambda_\phi\ge0\), and \(m_\phi^2\in\mathbb R\). The
 
 A static radial phase \(\theta=\theta(r)\) has a conserved radial flux and is singular at a regular center when that flux is nonzero and \(\phi(0)\ne0\). The distinct stationary ansatz
 \[
-\theta(t,r)=\omega t,\qquad \phi=\phi(r)
+\theta(t,r)=\omega t,\qquad \phi(t,r)=\phi(r)
 \]
-has time-dependent fields but time-independent stress-energy. It is the amplitude-phase form of the harmonic complex-scalar ansatz used in standard boson-star models. This is a valid ansatz to test, not evidence that a solution exists.
+has time-dependent phase but time-independent stress-energy. It is the amplitude-phase form of the harmonic complex-scalar ansatz used in standard boson-star models. This is a valid ansatz to test, not evidence that a solution exists.
 
 ## 2. Reduced field equations
 
@@ -45,23 +45,24 @@ The amplitude equation is
 \]
 This sign follows directly from \(\alpha\Box\phi-\beta\phi(\nabla\theta)^2-U'(\phi)=0\).
 
-For compactness, define the energy density and radial pressure by
+For a self-consistent asymptotically flat calculation, tune the constant vacuum offset so that the asymptotic vacuum has zero effective cosmological constant. In the double-well analysis below, define
+\[
+V(\phi)=U(\phi)-U(v)=\frac{\lambda_\phi}{4}(\phi^2-v^2)^2,
+\qquad \Lambda_{\rm eff}=\Lambda+8\pi G U(v)=0.
+\]
+The radial equations then use this shifted potential \(V\), not \(U\):
 \[
 \rho=\frac{\alpha f}{2}\phi'^2+
-\frac{\beta\omega^2e^{-2\nu}}2\phi^2+U(\phi),
-\]
-\[
+\frac{\beta\omega^2e^{-2\nu}}2\phi^2+V(\phi),
+\quad
 p_r=\frac{\alpha f}{2}\phi'^2+
-\frac{\beta\omega^2e^{-2\nu}}2\phi^2-U(\phi).
+\frac{\beta\omega^2e^{-2\nu}}2\phi^2-V(\phi),
 \]
-The independent Einstein equations can be written
 \[
-M'=4\pi r^2\rho,
-\qquad
-\nu'=\frac{G\big(M+4\pi r^3p_r\big)}{r^2f}
--\frac{\Lambda r}{2f}.
+\boxed{M'=4\pi r^2\rho,\qquad
+\nu'=\frac{G\left(M+4\pi r^3p_r\right)}{r^2f}.}
 \]
-Here \(\Lambda\) is kept explicit in the metric equation; equivalently one can absorb a constant vacuum offset into an effective cosmological constant. The displayed \(\nu'\) equation uses \(G^t{}_t+\Lambda=8\pi G T^t{}_t\) and \(G^r{}_r+\Lambda=8\pi G T^r{}_r\) with the stated mass-function convention. (When \(\Lambda\ne0\), the definition \(f=1-2GM/r\) places the cosmological term explicitly in the equations rather than in \(f\).)
+These Einstein equations apply in the convention \(\Lambda_{\rm eff}=0\) with the vacuum offset absorbed consistently. If a different asymptotic vacuum is chosen, the cosmological constant and potential offset must be retuned together; one must not keep these equations unchanged while changing the vacuum subtraction.
 
 The temporal phase carries a conserved Noether charge; it is not the nonzero radial flux \(Q\) of the static radial-phase ansatz. No claim of stability follows from these reduced equations.
 
@@ -69,8 +70,7 @@ The temporal phase carries a conserved Noether charge; it is not the nonzero rad
 
 Let \(m_\phi^2<0\), \(\lambda_\phi>0\), and
 \[
-v^2=-\frac{m_\phi^2}{\lambda_\phi},\qquad
-U(\phi)-U(v)=\frac{\lambda_\phi}{4}(\phi^2-v^2)^2.
+v^2=-\frac{m_\phi^2}{\lambda_\phi}.
 \]
 The proposed localized, asymptotically flat configuration would normally require a regular center,
 \[
@@ -80,14 +80,14 @@ and a finite-mass asymptotic vacuum.
 
 There are two natural asymptotic amplitude candidates, and both expose a problem for \(\omega\ne0\):
 
-1. **Approach the double-well vacuum \(\phi\to\pm v\).** The phase contribution to \(\rho\) tends to \(\frac12\beta\omega^2v^2e^{-2\nu_\infty}\), which is nonzero when \(\omega v\ne0\). It therefore does not describe a localized finite-mass perturbation of an asymptotically flat vacuum. The amplitude equation also cannot approach a constant nonzero \(v\): its asymptotic algebraic residual contains \(\beta\omega^2e^{-2\nu_\infty}v\ne0\), since \(U'(v)=0\).
+1. **Approach the double-well vacuum \(\phi\to\pm v\).** The phase contribution to \(\rho\) tends to \(\frac12\beta\omega^2v^2e^{-2\nu_\infty}\), which is nonzero when \(\omega v\ne0\). It therefore does not describe a localized finite-mass perturbation of an asymptotically flat vacuum. The amplitude equation also cannot approach a constant nonzero \(v\): its asymptotic algebraic residual contains \(\beta\omega^2e^{-2\nu_\infty}v\ne0\), since \(V'(v)=0\).
 
-2. **Approach \(\phi\to0\).** Linearizing the amplitude equation in an asymptotically flat region with \(\nu\to0\), \(f\to1\), gives
+2. **Approach \(\phi\to0\).** With the vacuum subtraction fixed at \(v\), \(V(0)=\lambda_\phi v^4/4>0\), so \(\phi=0\) does not share the same asymptotically flat vacuum. Even if one separately retunes the constant vacuum term to cancel the energy at \(\phi=0\), linearizing the amplitude equation in an asymptotically flat region with \(\nu\to0\), \(f\to1\), gives
 \[
 \phi''+\frac2r\phi'+k^2\phi\simeq0,\qquad
 k^2=\frac{\beta\omega^2-m_\phi^2}{\alpha}>0.
 \]
-The leading radial modes are oscillatory, proportional to \(\sin(kr)/r\) and \(\cos(kr)/r\), not exponentially decaying localized modes. Moreover, \(\phi=0\) is not the minimum of the double-well potential. It cannot supply the ordinary decaying asymptotic tail required for the standard asymptotically flat boson-star construction.
+The leading radial modes are oscillatory, proportional to \(\sin(kr)/r\) and \(\cos(kr)/r\), not exponentially decaying localized modes. Moreover, \(\phi=0\) is not a minimum of the double-well potential.
 
 Consequently, under the canonical V1 action and the stated double-well signs, the usual regular-center, finite-mass, asymptotically flat harmonic-phase soliton is obstructed by its asymptotics. This is a branch-specific obstruction, not a theorem excluding all stationary DFM–MKC solutions.
 
@@ -95,7 +95,7 @@ Consequently, under the canonical V1 action and the stated double-well signs, th
 
 **Derived here**
 - The harmonic-phase ansatz gives stationary stress-energy while satisfying the phase equation.
-- Its coupled spherical Einstein–amplitude equations are given above.
+- Its coupled spherical Einstein–amplitude equations are given above, with the vacuum offset handled consistently.
 - For \(m_\phi^2<0,\lambda_\phi>0\), neither \(\phi\to\pm v\) nor the linearized \(\phi\to0\) branch provides the standard asymptotically flat, localized tail when \(\omega\ne0\).
 
 **Not established**
