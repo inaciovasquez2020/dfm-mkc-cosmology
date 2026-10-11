@@ -33,6 +33,25 @@ The matter-coupling artifact `artifacts/repo_intake/dfm_mkc_matter_coupling_rule
 - there is no direct V1 coupling of visible matter or photons to \(\phi\) or \(\theta\);
 - no equivalence-principle violation term or direct dark-sector exchange is introduced.
 
+### Exact constant-field null branch
+
+The V1 equations also permit an exact special branch:
+\[
+\phi=0,\qquad \theta=\theta_0\text{ (constant)}.
+\]
+For the specified potential, \(U'(0)=0\) and \(U(0)=\rho_*\), so the scalar-amplitude equation is satisfied and the phase equation is identically satisfied. The dark-sector stress tensor reduces to
+\[
+T^{\rm DFM\text{-}MKC}_{\mu\nu}=-\rho_* g_{\mu\nu}.
+\]
+Substitution into the metric equation gives
+\[
+G_{\mu\nu}+\Lambda_{\rm eff}g_{\mu\nu}
+=8\pi G T^{\rm vis}_{\mu\nu},\qquad
+\Lambda_{\rm eff}=\Lambda+8\pi G\rho_*.
+\]
+Thus, on this branch, the exterior metric of a static spherical source is the usual Schwarzschild–de Sitter form (with the effective cosmological constant). The QGI phase is the standard metric-gravity phase after using the local metric and calibrated apparatus parameters; there is no additional DFM–MKC phase term on this branch. This is an exact **conditional null result**, not a statement that every nonconstant-field solution is equivalent to standard gravity. Stability or dynamical selection of this branch is not established.
+
+
 Consequently, the current V1 coupling rule does not predict a new composition-dependent QGI phase or an anomalous direct scalar force. Any difference from the standard prediction would have to arise through a different solved metric sourced by the DFM–MKC stress-energy, not through a new direct matter-wave coupling.
 
 ## 3. Standard phase and the missing model-specific quantity
@@ -65,15 +84,15 @@ The separate generalized-Proca L4 audit dated 2026-10-10 records an explicit L4 
 
 ## 5. Finding and stop boundary
 
-**Finding:** Under the current V1 matter-coupling rule, QGI is a relevant consistency benchmark but not yet a discriminating test of DFM–MKC. The model preserves universal metric coupling at the stated interface level; a distinct predicted phase requires solving the local metric first.
+**Finding:** The exact constant-field branch predicts no QGI deviation beyond the standard metric-gravity phase, with the vacuum offset absorbed into an effective cosmological constant. The general nonconstant-field model is not yet a discriminating QGI prediction because its local Earth-plus-apparatus metric has not been solved.
 
 **Not established:**
-- a QGI phase shift specific to DFM–MKC;
+- a nonzero QGI phase shift for general nonconstant DFM–MKC field configurations;
 - a numerical constraint on \(\alpha,\beta,m_\phi^2,\lambda_\phi,\rho_*\);
 - a violation of the equivalence principle;
 - a new quantum-gravity law or experimentally observed deviation from standard gravity.
 
-**Next mathematical step:** Derive or identify a well-posed weak-field solution of the *same* V1 action around an Earth-like source, with explicit scalar/phase boundary conditions. Then derive the phase along the QGI arms and compare the predicted residual with the published uncertainty and systematic-error budget. If the local solution reduces to the standard metric within the measured regime, record that null result and stop; do not introduce a fitted correction.
+**Next mathematical step:** Determine whether the nonconstant-field branch admits a regular, stable, weak-field Earth-source solution under explicit boundary conditions. If it does, derive the QGI phase from that metric and compare the predicted residual with the published uncertainty and systematic-error budget. Do not transfer results from the separate generalized-Proca completion or fit a correction to the measurement.
 
 ## References
 
