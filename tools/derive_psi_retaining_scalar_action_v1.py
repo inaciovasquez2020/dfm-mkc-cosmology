@@ -232,9 +232,20 @@ def main() -> None:
 
     # Linear generalized-Proca L4 completion, separate from F(phi) R/2.
     G4 = -xi * X_A / 2
-    determinant_factor = (1 - 2 * eps * psi)**3 * (
-        1 + 2 * eps * Phi + eps**2 * beta**2 / (1 - 2 * eps * psi)
+    # Derive the volume factor from the actual perturbed metric, then
+    # compare it against the closed-form block-determinant expression.
+    determinant_factor = tr(-metric.det() / a**6)
+    expected_determinant_factor = tr(
+        (1 - 2 * eps * psi)**3
+        * (1 + 2 * eps * Phi + eps**2 * beta**2 / (1 - 2 * eps * psi))
     )
+    determinant_residual = sp.simplify(
+        determinant_factor - expected_determinant_factor
+    )
+    if determinant_residual != 0:
+        raise AssertionError(
+            f"Metric determinant/volume-factor identity failed: {determinant_residual}"
+        )
     sqrt_det_factor = sp.series(
         sp.sqrt(determinant_factor), eps, 0, 3
     ).removeO()
