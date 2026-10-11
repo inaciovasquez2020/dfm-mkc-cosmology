@@ -70,6 +70,7 @@ class AveragedFullFieldTimeDependentComparisonCertificate:
     relative_growth_difference: float
     initial_cycle_midpoint_scale_factor: float
     final_cycle_midpoint_scale_factor: float
+    maximum_relative_hubble_scaling_error: float
     phase_span: float
     cycle_width: float
     maximum_rhs_residual: float
@@ -658,6 +659,32 @@ def compare_averaged_and_time_dependent_full_field_growth(
         background.N,
         background.H,
     )
+    background_interval = np.concatenate((
+        np.asarray([initial_cycle_midpoint_n]),
+        background.N[
+            (background.N > initial_cycle_midpoint_n)
+            & (background.N < final_cycle_midpoint_n)
+        ],
+        np.asarray([final_cycle_midpoint_n]),
+    ))
+    exact_hubble_interval = np.interp(
+        background_interval, background.N, background.H
+    )
+    matter_hubble_interval = (
+        hubble_at_unit_scale_factor
+        * np.exp(-1.5 * background_interval)
+    )
+    if np.any(exact_hubble_interval <= 0.0) or np.any(
+        matter_hubble_interval <= 0.0
+    ):
+        raise ValueError("Hubble rates must remain positive on the matched interval")
+    maximum_relative_hubble_scaling_error = float(
+        np.max(
+            np.abs(
+                exact_hubble_interval / matter_hubble_interval - 1.0
+            )
+        )
+    )
     mass_frequency = math.sqrt(
         parameters.m_phi_squared / parameters.alpha
     )
@@ -717,6 +744,10 @@ def compare_averaged_and_time_dependent_full_field_growth(
             relative_growth_difference,
         ),
         ("phase_span", phase_span),
+        (
+            "maximum_relative_hubble_scaling_error",
+            maximum_relative_hubble_scaling_error,
+        ),
         ("cycle_width", cycle_width),
         ("maximum_rhs_residual", maximum_rhs_residual),
         (
@@ -770,6 +801,9 @@ def compare_averaged_and_time_dependent_full_field_growth(
         ),
         final_cycle_midpoint_scale_factor=(
             final_cycle_midpoint_scale_factor
+        ),
+        maximum_relative_hubble_scaling_error=(
+            maximum_relative_hubble_scaling_error
         ),
         phase_span=phase_span,
         cycle_width=cycle_width,
