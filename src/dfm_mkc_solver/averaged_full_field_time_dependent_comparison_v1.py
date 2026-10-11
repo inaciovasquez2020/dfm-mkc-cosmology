@@ -74,6 +74,8 @@ class AveragedFullFieldTimeDependentComparisonCertificate:
     cycle_width: float
     maximum_rhs_residual: float
     minimum_abs_constraint_denominator: float
+    constraint_denominators: tuple[float, ...]
+    background_enthalpies: tuple[float, ...]
     initial_matching_surface_closed: bool
     initial_metric_fixed_point_solved: bool
     time_dependent_background_evolved: bool
@@ -536,6 +538,8 @@ def compare_averaged_and_time_dependent_full_field_growth(
         )
 
     density_contrasts: list[float] = []
+    constraint_denominators: list[float] = []
+    background_enthalpies: list[float] = []
     maximum_rhs_residual = 0.0
     minimum_abs_constraint_denominator = math.inf
     all_metric_constraints_closed = True
@@ -560,6 +564,8 @@ def compare_averaged_and_time_dependent_full_field_growth(
         )
         _require_finite("density_contrast", density_contrast)
         density_contrasts.append(density_contrast)
+        constraint_denominators.append(float(certificate.constraint_denominator))
+        background_enthalpies.append(float(certificate.stress_energy.background_enthalpy))
 
         maximum_rhs_residual = max(
             maximum_rhs_residual,
@@ -780,6 +786,8 @@ def compare_averaged_and_time_dependent_full_field_growth(
         minimum_abs_constraint_denominator=(
             minimum_abs_constraint_denominator
         ),
+        constraint_denominators=tuple(constraint_denominators),
+        background_enthalpies=tuple(background_enthalpies),
         initial_matching_surface_closed=(
             initial_matching_surface_closed
         ),
