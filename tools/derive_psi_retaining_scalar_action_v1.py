@@ -236,8 +236,10 @@ def main() -> None:
     # compare it against the closed-form block-determinant expression.
     determinant_factor = tr(-metric.det() / a**6)
     expected_determinant_factor = tr(
-        (1 - 2 * eps * psi)**3
-        * (1 + 2 * eps * Phi + eps**2 * beta**2 / (1 - 2 * eps * psi))
+        sp.expand(
+            (1 - 2 * eps * psi)**3 * (1 + 2 * eps * Phi)
+            + eps**2 * beta**2 * (1 - 2 * eps * psi)**2
+        )
     )
     determinant_residual = sp.simplify(
         determinant_factor - expected_determinant_factor
