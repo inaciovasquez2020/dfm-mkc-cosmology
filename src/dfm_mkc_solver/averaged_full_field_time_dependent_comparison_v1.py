@@ -74,6 +74,7 @@ class AveragedFullFieldTimeDependentComparisonCertificate:
     cycle_width: float
     maximum_rhs_residual: float
     minimum_abs_constraint_denominator: float
+    minimum_relative_constraint_denominator: float
     constraint_denominators: tuple[float, ...]
     background_enthalpies: tuple[float, ...]
     initial_matching_surface_closed: bool
@@ -542,6 +543,7 @@ def compare_averaged_and_time_dependent_full_field_growth(
     background_enthalpies: list[float] = []
     maximum_rhs_residual = 0.0
     minimum_abs_constraint_denominator = math.inf
+    minimum_relative_constraint_denominator = math.inf
     all_metric_constraints_closed = True
 
     for index, log_scale_factor in enumerate(integration.t):
@@ -574,6 +576,21 @@ def compare_averaged_and_time_dependent_full_field_growth(
         minimum_abs_constraint_denominator = min(
             minimum_abs_constraint_denominator,
             abs(certificate.constraint_denominator),
+        )
+        denominator_enthalpy_term = (
+            4.0
+            * math.pi
+            * parameters.G
+            * math.exp(2.0 * float(log_scale_factor))
+            * certificate.stress_energy.background_enthalpy
+        )
+        denominator_scale = max(
+            wave_number**2,
+            abs(denominator_enthalpy_term),
+        )
+        minimum_relative_constraint_denominator = min(
+            minimum_relative_constraint_denominator,
+            abs(certificate.constraint_denominator) / denominator_scale,
         )
         all_metric_constraints_closed = (
             all_metric_constraints_closed
@@ -785,6 +802,9 @@ def compare_averaged_and_time_dependent_full_field_growth(
         maximum_rhs_residual=maximum_rhs_residual,
         minimum_abs_constraint_denominator=(
             minimum_abs_constraint_denominator
+        ),
+        minimum_relative_constraint_denominator=(
+            minimum_relative_constraint_denominator
         ),
         constraint_denominators=tuple(constraint_denominators),
         background_enthalpies=tuple(background_enthalpies),
