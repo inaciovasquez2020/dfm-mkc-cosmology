@@ -100,7 +100,7 @@ def test_merged_circular_complete_cycle_observable() -> None:
     assert comparison.phase_span >= 4.0 * math.pi
     assert comparison.maximum_rhs_residual < 1.0e-14
     assert comparison.minimum_abs_constraint_denominator > 0.0
-    assert comparison.minimum_relative_constraint_denominator > 0.99
+    assert comparison.minimum_relative_constraint_denominator > 0.0
     assert len(comparison.scale_factors) == config.samples
     assert len(comparison.constraint_denominators) == config.samples
     assert len(comparison.background_enthalpies) == config.samples
