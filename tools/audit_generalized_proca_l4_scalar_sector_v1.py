@@ -292,6 +292,25 @@ def main() -> None:
         for name, field in amplitudes.items()
     }
 
+    # Constraint-structure diagnostic: inventory time derivatives equation by equation,
+    # then rank the linear coefficient matrices for second- and first-time derivatives.
+    # These ranks diagnose the unreduced equations only; they are not a physical DOF count.
+    for order in (2, 1):
+        derivative_columns = [sp.diff(field, (t, order)) for field in fields]
+        coefficient_matrix = sp.Matrix([
+            [sp.diff(EL[name], derivative) for derivative in derivative_columns]
+            for name in amplitudes
+        ])
+        print(f"TIME_DERIVATIVE_ORDER_{order}_COEFFICIENT_MATRIX_SHAPE := {coefficient_matrix.shape}")
+        print(f"TIME_DERIVATIVE_ORDER_{order}_COEFFICIENT_MATRIX_RANK := {coefficient_matrix.rank()}")
+    for row_name, equation in EL.items():
+        derivative_inventory = sorted({
+            (str(d.expr), len(d.variables))
+            for d in equation.atoms(sp.Derivative)
+            if d.expr in fields and all(v == t for v in d.variables)
+        }, key=lambda item: (item[1], item[0]), reverse=True)
+        print(f"EQUATION_{row_name.upper()}_TIME_DERIVATIVES := {derivative_inventory}")
+
     # Kinetic Hessian: field order (Phi, beta, sigma, u, chi).
     velocities = [sp.diff(field, t) for field in fields]
     kinetic_hessian = sp.hessian(Lk, velocities)
