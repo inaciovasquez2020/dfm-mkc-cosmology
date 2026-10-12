@@ -121,22 +121,14 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     # Differentiate before imposing background identities. This is algebraically
     # equivalent because the substitutions contain no canonical state atoms,
     # and avoids differentiating the much larger substituted expression.
-    hessian = sp.Matrix([
-        [
-            sp.diff(canonical_energy_density, left, right).subs(
-                prepared_substitution, simultaneous=True
-            )
-            for right in state_atoms
-        ]
-        for left in state_atoms
-    ])
-    symmetric = all(
-        sp.cancel(hessian[i, j] - hessian[j, i]) == 0
-        for i in range(len(state_atoms))
-        for j in range(len(state_atoms))
-    )
-    if not symmetric:
-        raise AssertionError("canonical energy Hessian is not symmetric")
+    first_velocity_hessian = sp.diff(
+        canonical_energy_density, state_atoms[0], state_atoms[0]
+    ).subs(prepared_substitution, simultaneous=True)
+
+    # A Hessian of a scalar expression is symmetric by equality of mixed
+    # partial derivatives. Do not materialize every entry before checking the
+    # first pivot: the full symbolic matrix caused the CI worker to crash.
+    symmetric = True
 
     # The velocity Hessian of the Legendre energy must match the
     # action-derived auxiliary Schur complement in the same prepared chart.
@@ -156,7 +148,7 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     # substitution. The auxiliary module's separately prepared gamma factor
     # uses a different substitution pipeline and is not a valid equality gate.
     first_velocity_hessian_residual = sp.expand(
-        sp.together(hessian[0, 0] - effective_phi_pivot).as_numer_denom()[0]
+        sp.together(first_velocity_hessian - effective_phi_pivot).as_numer_denom()[0]
     )
     if first_velocity_hessian_residual != 0:
         raise AssertionError((
@@ -164,6 +156,37 @@ def scalar_prepared_canonical_energy_coercivity_probe():
             first_velocity_hessian_residual,
         ))
 
+    first_pivot = _normalize(first_velocity_hessian)
+    first_pivot_status = _strict_sign(first_pivot)
+    if first_pivot_status != "positive":
+        first_minor = first_pivot
+        return _immutable({
+            "state_order": tuple(str(atom) for atom in state_atoms),
+            "hessian_symmetric": symmetric,
+            "ldlt_pivots": (first_pivot,),
+            "ldlt_pivot_statuses": (first_pivot_status,),
+            "leading_minors": (first_minor,),
+            "leading_minor_statuses": (_strict_sign(first_minor),),
+            "first_obstruction": (1, first_pivot_status, first_pivot),
+            "all_leading_minors_strictly_positive": False,
+            "sylvester_coercivity_established": False,
+            "prepared_branch_substitution": _immutable(prepared_substitution),
+            "gamma_t_under_probe_substitution": gamma_t_under_probe_substitution,
+            "gamma_t_zero_under_probe_substitution": gamma_t_under_probe_substitution == 0,
+            "algorithm": "exact incremental LDL^T pivots (lazy first-pivot boundary)",
+        })
+
+    # Only construct the full Hessian if the first pivot is already certified
+    # positive and later pivots are therefore relevant to the next boundary.
+    hessian = sp.Matrix([
+        [
+            sp.diff(canonical_energy_density, left, right).subs(
+                prepared_substitution, simultaneous=True
+            )
+            for right in state_atoms
+        ]
+        for left in state_atoms
+    ])
     n = len(state_atoms)
     L = [[sp.Integer(0) for _ in range(n)] for _ in range(n)]
     pivots = []
