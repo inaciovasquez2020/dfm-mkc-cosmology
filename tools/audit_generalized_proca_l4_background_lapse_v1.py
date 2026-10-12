@@ -78,6 +78,36 @@ def main() -> None:
     print("LAPSE_DEPENDENT_FLRW_ACTION := BUILT")
     print("BOUNDARY_REDUCTION_TO_FIRST_DERIVATIVES := PASS")
     print("EULER_LAGRANGE_EQUATIONS := DERIVED (N, a, phi, B)")
+    b0 = sp.Symbol("b0", nonzero=True)
+    background_subs = {
+        N: sp.Integer(1),
+        a: sp.Integer(1),
+        phi: sp.Integer(0),
+        B: b0,
+        L0: sp.Integer(0),
+        mA2: sp.Integer(0),
+    }
+    background_derivatives = {
+        derivative: sp.Integer(0)
+        for equation in equations.values()
+        for derivative in equation.atoms(sp.Derivative)
+    }
+    background_subs.update(background_derivatives)
+    background_residuals = {
+        field: sp.factor(equation.xreplace(background_subs))
+        for field, equation in equations.items()
+    }
+    print(
+        "FLAT_CONSTANT_TIMELIKE_BACKGROUND_RESIDUALS :=",
+        {str(field): str(residual)
+         for field, residual in background_residuals.items()},
+    )
+    if any(residual != 0 for residual in background_residuals.values()):
+        raise AssertionError(
+            "Proposed flat constant-field background fails background equations"
+        )
+    print("FLAT_CONSTANT_TIMELIKE_BACKGROUND := ON_SHELL_FOR_CHECKED_MODEL")
+
     print("LAPSE_CONSTRAINT := DERIVED_BEFORE_SETTING_N_TO_1")
     print("TEMPORAL_VECTOR_EQUATION := PASS")
     print("E_B := a*B/N^3 * (N^2*a^2*Q + 3*xi*(a*a_ddot - a_dot^2))")
