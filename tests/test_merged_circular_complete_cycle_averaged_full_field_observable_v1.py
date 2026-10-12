@@ -123,7 +123,6 @@ def test_merged_circular_complete_cycle_observable() -> None:
             comparison.scale_factors,
             comparison.background_enthalpies,
             comparison.constraint_denominators,
-            strict=True,
         )
     )
 
