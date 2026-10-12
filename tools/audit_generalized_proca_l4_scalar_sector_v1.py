@@ -210,6 +210,29 @@ def main() -> None:
         )
     )
 
+    homogeneous_subs = {
+        eps: sp.Integer(0),
+        Phi: sp.Integer(0),
+        beta: sp.Integer(0),
+        delta_phi: sp.Integer(0),
+        u: sp.Integer(0),
+        chi: sp.Integer(0),
+    }
+    homogeneous_D4 = sp.simplify(D4.subs(homogeneous_subs))
+    expected_homogeneous_D4 = (
+        6 * B * sp.diff(a, t) * sp.diff(B, t) / a
+        + 6 * B**2 * sp.diff(a, t)**2 / a**2
+    )
+    homogeneous_D4_residual = sp.simplify(
+        homogeneous_D4 - expected_homogeneous_D4
+    )
+    if homogeneous_D4_residual != 0:
+        raise AssertionError(
+            "Homogeneous D4 identity failed: "
+            + sp.sstr(homogeneous_D4_residual)
+        )
+    print("HOMOGENEOUS_D4_IDENTITY := PASS")
+
     J_up = [
         tr(
             A_up[mu] * div_A
