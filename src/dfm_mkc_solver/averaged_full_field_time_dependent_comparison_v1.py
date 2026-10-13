@@ -75,6 +75,9 @@ class AveragedFullFieldTimeDependentComparisonCertificate:
     cycle_width: float
     maximum_rhs_residual: float
     minimum_abs_constraint_denominator: float
+    minimum_relative_constraint_denominator: float
+    constraint_denominators: tuple[float, ...]
+    background_enthalpies: tuple[float, ...]
     initial_matching_surface_closed: bool
     initial_metric_fixed_point_solved: bool
     time_dependent_background_evolved: bool
@@ -537,8 +540,11 @@ def compare_averaged_and_time_dependent_full_field_growth(
         )
 
     density_contrasts: list[float] = []
+    constraint_denominators: list[float] = []
+    background_enthalpies: list[float] = []
     maximum_rhs_residual = 0.0
     minimum_abs_constraint_denominator = math.inf
+    minimum_relative_constraint_denominator = math.inf
     all_metric_constraints_closed = True
 
     for index, log_scale_factor in enumerate(integration.t):
@@ -561,6 +567,8 @@ def compare_averaged_and_time_dependent_full_field_growth(
         )
         _require_finite("density_contrast", density_contrast)
         density_contrasts.append(density_contrast)
+        constraint_denominators.append(float(certificate.constraint_denominator))
+        background_enthalpies.append(float(certificate.stress_energy.background_enthalpy))
 
         maximum_rhs_residual = max(
             maximum_rhs_residual,
@@ -569,6 +577,21 @@ def compare_averaged_and_time_dependent_full_field_growth(
         minimum_abs_constraint_denominator = min(
             minimum_abs_constraint_denominator,
             abs(certificate.constraint_denominator),
+        )
+        denominator_enthalpy_term = (
+            4.0
+            * math.pi
+            * parameters.G
+            * math.exp(2.0 * float(log_scale_factor))
+            * certificate.stress_energy.background_enthalpy
+        )
+        denominator_scale = max(
+            wave_number**2,
+            abs(denominator_enthalpy_term),
+        )
+        minimum_relative_constraint_denominator = min(
+            minimum_relative_constraint_denominator,
+            abs(certificate.constraint_denominator) / denominator_scale,
         )
         all_metric_constraints_closed = (
             all_metric_constraints_closed
@@ -586,10 +609,13 @@ def compare_averaged_and_time_dependent_full_field_growth(
     density_array = np.asarray(density_contrasts, dtype=float)
     cycle_width = 2.0 * math.pi * cycle_count
     phase_span = float(phase[-1] - phase[0])
-    if phase_span < cycle_width:
+    if phase_span < 2.0 * cycle_width:
         raise ValueError(
-            "background does not contain the requested "
-            "complete phase cycle"
+            "background does not contain two disjoint requested "
+            f"phase cycles: span={phase_span:.16g}, "
+            f"required={2.0 * cycle_width:.16g}, "
+            f"minimum_abs_constraint_denominator="
+            f"{minimum_abs_constraint_denominator:.16g}"
         )
 
     initial_phase_lower = float(phase[0])
@@ -811,6 +837,11 @@ def compare_averaged_and_time_dependent_full_field_growth(
         minimum_abs_constraint_denominator=(
             minimum_abs_constraint_denominator
         ),
+        minimum_relative_constraint_denominator=(
+            minimum_relative_constraint_denominator
+        ),
+        constraint_denominators=tuple(constraint_denominators),
+        background_enthalpies=tuple(background_enthalpies),
         initial_matching_surface_closed=(
             initial_matching_surface_closed
         ),

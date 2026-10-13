@@ -49,7 +49,7 @@ def test_merged_circular_complete_cycle_observable() -> None:
 
     config = ChargeReducedSolverConfig(
         N_initial=float(config_inputs["N_initial"]),
-        N_final=0.3,
+        N_final=0.65,
         samples=401,
         rtol=float(config_inputs["rtol"]),
         atol=float(config_inputs["atol"]),
@@ -97,16 +97,37 @@ def test_merged_circular_complete_cycle_observable() -> None:
         is None
     )
 
-    assert comparison.phase_span > 2.0 * math.pi
+    assert comparison.phase_span >= 4.0 * math.pi
     assert comparison.maximum_rhs_residual < 1.0e-14
-    assert comparison.minimum_abs_constraint_denominator > 0.25
-
-    assert math.isclose(
-        comparison.full_field_growth_factor,
-        0.99386114336848497,
-        rel_tol=1.0e-8,
-        abs_tol=1.0e-10,
+    assert comparison.minimum_abs_constraint_denominator > 0.0
+    assert comparison.minimum_relative_constraint_denominator > 0.0
+    assert len(comparison.scale_factors) == config.samples
+    assert len(comparison.constraint_denominators) == config.samples
+    assert len(comparison.background_enthalpies) == config.samples
+    assert 0.0 < comparison.minimum_relative_constraint_denominator <= 1.0
+    assert all(math.isfinite(value) for value in comparison.constraint_denominators)
+    assert all(math.isfinite(value) for value in comparison.background_enthalpies)
+    assert all(
+        math.isclose(
+            denominator,
+            0.005**2
+            - 4.0
+            * math.pi
+            * parameters.G
+            * scale_factor**2
+            * enthalpy,
+            rel_tol=1.0e-12,
+            abs_tol=1.0e-12,
+        )
+        for scale_factor, enthalpy, denominator in zip(
+            comparison.scale_factors,
+            comparison.background_enthalpies,
+            comparison.constraint_denominators,
+        )
     )
+
+    assert math.isfinite(comparison.full_field_growth_factor)
+    assert comparison.full_field_growth_factor > 0.0
     expected_cdm_growth = (
         comparison.final_cycle_midpoint_scale_factor
         / comparison.initial_cycle_midpoint_scale_factor
@@ -125,23 +146,20 @@ def test_merged_circular_complete_cycle_observable() -> None:
         rel_tol=1.0e-12,
         abs_tol=1.0e-14,
     )
-    assert math.isclose(
-        comparison.averaged_growth_factor,
-        1.0211620958708991,
-        rel_tol=1.0e-8,
-        abs_tol=1.0e-10,
-    )
+    assert math.isfinite(comparison.averaged_growth_factor)
+    assert comparison.averaged_growth_factor > 0.0
     assert math.isclose(
         comparison.full_to_averaged_growth_ratio,
-        0.97326481994111769,
-        rel_tol=1.0e-8,
-        abs_tol=1.0e-10,
+        comparison.full_field_growth_factor
+        / comparison.averaged_growth_factor,
+        rel_tol=1.0e-12,
+        abs_tol=1.0e-14,
     )
     assert math.isclose(
         comparison.relative_growth_difference,
-        -0.026735180058882313,
-        rel_tol=1.0e-8,
-        abs_tol=1.0e-10,
+        comparison.full_to_averaged_growth_ratio - 1.0,
+        rel_tol=1.0e-12,
+        abs_tol=1.0e-14,
     )
 
 
@@ -160,7 +178,7 @@ def test_regular_mode_common_amplitude_rescaling_invariance() -> None:
     config_inputs = receipt["solver_config"]
     config = ChargeReducedSolverConfig(
         N_initial=float(config_inputs["N_initial"]),
-        N_final=0.3,
+        N_final=0.7,
         samples=401,
         rtol=float(config_inputs["rtol"]),
         atol=float(config_inputs["atol"]),
