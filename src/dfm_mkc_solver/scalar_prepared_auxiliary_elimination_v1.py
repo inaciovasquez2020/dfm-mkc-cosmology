@@ -243,7 +243,7 @@ def scalar_prepared_auxiliary_elimination_data():
         result = value
         for substitution in scalar_substitutions:
             result = result.subs(substitution, simultaneous=True)
-        return result
+        return sp.cancel(sp.together(result))
 
     scalar_quantities = {
         "det_D": det_D,
