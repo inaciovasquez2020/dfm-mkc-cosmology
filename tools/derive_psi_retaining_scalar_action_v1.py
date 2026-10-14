@@ -282,6 +282,12 @@ def main() -> None:
     Lk = sp.expand(L2.subs(replacements).doit())
     Lk = sp.simplify(sp.integrate(Lk, (z, 0, 2 * sp.pi / k)) * k / (2 * sp.pi))
 
+    fields = list(amplitudes.values())
+    EL = {
+        name: euler_lagrange_time(Lk, field, t)
+        for name, field in amplitudes.items()
+    }
+
     # Bounded on-shell specialization for the already-audited flat,
     # constant-field branch: a=1, phi=0, B=b0, L0=mA2=0.
     # This is a diagnostic of the six-field equations, not a proof that
@@ -344,12 +350,6 @@ def main() -> None:
         "modulo the full linearized equations"
     )
     print("PHYSICAL_SCALAR_DOF_COUNT := OPEN")
-
-    fields = list(amplitudes.values())
-    EL = {
-        name: euler_lagrange_time(Lk, field, t)
-        for name, field in amplitudes.items()
-    }
 
     # Psi-retaining action and all six linearized Euler-Lagrange equations.
     # Phi, beta, and u are varied as constraint candidates; no physical mode
