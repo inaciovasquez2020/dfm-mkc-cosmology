@@ -292,6 +292,74 @@ def main() -> None:
         for name, field in amplitudes.items()
     }
 
+
+    # Full equation-level constraint relations and their evolution test.
+    # Field order is (Phi, beta, sigma, u, chi). The reported null vector
+    # cancels sigma-dot in c*E_Phi + E_beta only on the denominator-nonzero
+    # chart; the denominator-zero branch is intentionally not divided through.
+    sigma_dot = sp.diff(amplitudes["sigma"], t)
+    sigma_ddot = sp.diff(amplitudes["sigma"], (t, 2))
+    chi_dot = sp.diff(amplitudes["chi"], t)
+    chi_ddot = sp.diff(amplitudes["chi"], (t, 2))
+    constraint_names = ("Phi", "beta", "u")
+    for constraint_name in constraint_names:
+        print(
+            f"FULL_CONSTRAINT_EQUATION_{constraint_name.upper()} := "
+            + sp.sstr(sp.factor(EL[constraint_name]))
+        )
+    first_null_denominator = (
+        alpha * a * sp.diff(phi, t) + 6 * xs * phi * sp.diff(a, t)
+    )
+    first_null_coefficient = -2 * k * xs * phi / first_null_denominator
+    null_combination = sp.factor(
+        sp.together(first_null_coefficient * EL["Phi"] + EL["beta"])
+    )
+    perturbation_derivatives_in_null_combination = sorted(
+        str(d)
+        for d in null_combination.atoms(sp.Derivative)
+        if d.expr in fields and all(v == t for v in d.variables)
+    )
+    print("FIRST_NULL_DENOMINATOR := " + sp.sstr(first_null_denominator))
+    print("FIRST_NULL_COMBINATION_C_PHI_BETA := " + sp.sstr(null_combination))
+    print(
+        "FIRST_NULL_COMBINATION_PERTURBATION_DERIVATIVES := "
+        + sp.sstr(perturbation_derivatives_in_null_combination)
+    )
+    print(
+        "FIRST_NULL_COMBINATION_IS_ALGEBRAIC_IN_PERTURBATIONS := "
+        + str(not perturbation_derivatives_in_null_combination)
+    )
+    null_combination_dot = sp.factor(sp.diff(null_combination, t))
+    print("FIRST_NULL_COMBINATION_TIME_DERIVATIVE := " + sp.sstr(null_combination_dot))
+
+    # Propagation check: differentiate each constraint equation, eliminate
+    # sigma-double-dot with E_sigma and chi-double-dot with E_chi, and retain
+    # the resulting residuals. A nonzero residual is not called a failure
+    # unless it is reduced modulo the original constraints and background
+    # equations; it is an explicit unresolved compatibility condition.
+    sigma_acceleration_solution = sp.solve(EL["sigma"], sigma_ddot, dict=True)
+    chi_acceleration_solution = sp.solve(EL["chi"], chi_ddot, dict=True)
+    if len(sigma_acceleration_solution) != 1 or len(chi_acceleration_solution) != 1:
+        raise AssertionError("Could not uniquely solve the two dynamical equations for their accelerations")
+    acceleration_substitutions = {
+        sigma_ddot: sigma_acceleration_solution[0][sigma_ddot],
+        chi_ddot: chi_acceleration_solution[0][chi_ddot],
+    }
+    for constraint_name in constraint_names:
+        propagated = sp.factor(
+            sp.diff(EL[constraint_name], t).subs(
+                acceleration_substitutions, simultaneous=True
+            )
+        )
+        print(
+            f"DIFFERENTIATED_CONSTRAINT_AFTER_DYNAMICAL_ACCELERATION_ELIMINATION_{constraint_name.upper()} := "
+            + sp.sstr(propagated)
+        )
+        print(
+            f"DIFFERENTIATED_CONSTRAINT_RESIDUAL_IDENTICALLY_ZERO_{constraint_name.upper()} := "
+            + str(sp.simplify(propagated) == 0)
+        )
+
     # Constraint-structure diagnostic: inventory time derivatives equation by equation,
     # then rank the linear coefficient matrices for second- and first-time derivatives.
     # These ranks diagnose the unreduced equations only; they are not a physical DOF count.
