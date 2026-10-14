@@ -303,6 +303,12 @@ def main() -> None:
         ])
         print(f"TIME_DERIVATIVE_ORDER_{order}_COEFFICIENT_MATRIX_SHAPE := {coefficient_matrix.shape}")
         print(f"TIME_DERIVATIVE_ORDER_{order}_COEFFICIENT_MATRIX_RANK := {coefficient_matrix.rank()}")
+        right_nullspace = coefficient_matrix.nullspace()
+        left_nullspace = coefficient_matrix.T.nullspace()
+        print(f"TIME_DERIVATIVE_ORDER_{order}_RIGHT_NULLITY := {len(right_nullspace)}")
+        print(f"TIME_DERIVATIVE_ORDER_{order}_RIGHT_NULLSPACE := {[vector.T.tolist()[0] for vector in right_nullspace]}")
+        print(f"TIME_DERIVATIVE_ORDER_{order}_LEFT_NULLITY := {len(left_nullspace)}")
+        print(f"TIME_DERIVATIVE_ORDER_{order}_LEFT_NULLSPACE := {[vector.T.tolist()[0] for vector in left_nullspace]}")
     for row_name, equation in EL.items():
         derivative_inventory = sorted({
             (str(d.expr), len(d.variables))
