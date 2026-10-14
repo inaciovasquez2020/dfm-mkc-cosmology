@@ -288,6 +288,69 @@ def main() -> None:
         for name, field in amplitudes.items()
     }
 
+    # Bounded on-shell specialization for the already-audited flat,
+    # constant-field branch: a=1, phi=0, B=b0, L0=mA2=0.
+    # This is a diagnostic of the six-field equations, not a proof that
+    # constraints propagate. Raw differentiated residuals must still be
+    # reduced modulo the complete linearized system and verified background
+    # equations; no pivot or denominator is silently assumed here.
+    b0 = sp.Symbol("b0", nonzero=True)
+    background_fields = (a, phi, B)
+    flat_branch_subs = {
+        a: sp.Integer(1),
+        phi: sp.Integer(0),
+        B: b0,
+        L0: sp.Integer(0),
+        mA2: sp.Integer(0),
+    }
+    flat_branch_subs.update({
+        derivative: sp.Integer(0)
+        for equation in EL.values()
+        for derivative in equation.atoms(sp.Derivative)
+        if derivative.expr in background_fields
+    })
+    flat_branch_equations = {
+        name: sp.factor(equation.xreplace(flat_branch_subs))
+        for name, equation in EL.items()
+    }
+    if any(
+        derivative.expr in background_fields
+        for equation in flat_branch_equations.values()
+        for derivative in equation.atoms(sp.Derivative)
+    ):
+        raise AssertionError(
+            "Flat-branch specialization left background derivatives unresolved"
+        )
+    print("FLAT_CONSTANT_TIMELIKE_BRANCH := a=1, phi=0, B=b0, L0=0, mA2=0")
+    print("FLAT_BRANCH_SPECIALIZATION := EXACT_XREPLACE; NO_SOLVER_PIVOTS")
+    for name in ("Phi", "beta", "u", "psi", "sigma", "chi"):
+        equation = flat_branch_equations[name]
+        print(
+            f"FLAT_BRANCH_LINEARIZED_EQUATION_{name.upper()}_IS_ZERO := "
+            + str(sp.simplify(equation) == 0)
+        )
+        print(
+            f"FLAT_BRANCH_LINEARIZED_EQUATION_{name.upper()} := "
+            + sp.sstr(equation)
+        )
+    for name in ("Phi", "beta", "u"):
+        raw_derivative = sp.factor(
+            sp.diff(flat_branch_equations[name], t)
+        )
+        print(
+            f"FLAT_BRANCH_RAW_DIFFERENTIATED_CONSTRAINT_{name.upper()}_IS_ZERO := "
+            + str(sp.simplify(raw_derivative) == 0)
+        )
+        print(
+            f"FLAT_BRANCH_RAW_DIFFERENTIATED_CONSTRAINT_{name.upper()} := "
+            + sp.sstr(raw_derivative)
+        )
+    print(
+        "CONSTRAINT_PROPAGATION := OPEN; raw derivatives are not reduced "
+        "modulo the full linearized equations"
+    )
+    print("PHYSICAL_SCALAR_DOF_COUNT := OPEN")
+
     # Psi-retaining action and all six linearized Euler-Lagrange equations.
     # Phi, beta, and u are varied as constraint candidates; no physical mode
     # count is inferred from their Hessian alone.
