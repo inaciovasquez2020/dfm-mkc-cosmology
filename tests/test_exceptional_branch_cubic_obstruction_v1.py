@@ -69,3 +69,10 @@ def test_exceptional_branch_has_nonzero_cubic_noether_residual():
     )
     assert sp.simplify(residual + 3 * sp.pi * A**2 * b0**2 * q / 4) == 0
     assert residual != 0
+
+
+if __name__ == "__main__":
+    test_exceptional_branch_has_nonzero_cubic_noether_residual()
+    print("EXCEPTIONAL_BRANCH_CUBIC_OBSTRUCTION := VERIFIED")
+    print("INTEGRATED_CUBIC_VARIATION := -3*pi*A**2*b0**2*q/4")
+    print("SCOPE := RESTRICTED_STATIC_MODE_TRIAD; NOT_A_FULL_NONLINEAR_DOF_PROOF")
