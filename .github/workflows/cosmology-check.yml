@@ -22,6 +22,9 @@ jobs:
       - name: Install symbolic dependency
         run: python3 -m pip install sympy
 
+      - name: Exceptional-branch cubic obstruction certificate
+        run: python3 tests/test_exceptional_branch_cubic_obstruction_v1.py
+
       - name: Invariant check
         run: ./scripts/cosmology check
 
