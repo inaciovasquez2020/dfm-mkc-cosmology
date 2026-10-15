@@ -57,7 +57,7 @@ def main() -> None:
         "xi xs alpha m2 bet mA2 lam L0 M2"
     )
 
-    def tr(expr: sp.Expr, order: int = 2) -> sp.Expr:
+    def tr(expr: sp.Expr, order: int = 3) -> sp.Expr:
         return trunc(expr, eps, order)
 
     metric = sp.Matrix(
