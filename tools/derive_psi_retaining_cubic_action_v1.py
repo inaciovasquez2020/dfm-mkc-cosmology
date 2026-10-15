@@ -1,17 +1,14 @@
 #!/usr/bin/env python3
 """Cubic-order symbolic construction for the six-field linear-G4 scalar perturbation ansatz.
 
-This rebuilds the supplied t,z-dependent metric/vector/scalar ansatz with the
-explicit completion G4(X) = -xi*X/2, G4_X = -xi/2, and retains F(phi) R/2
-as a separate scalar-tensor term. It checks the Ricci/divergence identity,
-rebuilds L2 and the Fourier-reduced Lagrangian, derives Euler-Lagrange
-equations, and tests the frozen-coefficient characteristic determinant at
-three rational parameter/background samples.
+Rebuilds the covariant density through epsilon^3 for the explicit completion
+G4(X) = -xi*X/2, G4_X = -xi/2, with F(phi) R/2 kept as a separate
+scalar-tensor term. Extracts the cubic action density before Fourier
+restriction, retaining (Phi, psi, beta, sigma, u, chi) and E=0 gauge.
 
-This is a psi-retaining quadratic-action and linearized-constraint derivation.
-It fixes the scalar spatial shear E=0 but retains the spatial-curvature mode psi.
-It does not by itself certify a physical degree-of-freedom count or stability.
-Requires SymPy.
+This action is conditional on the explicit model completion and ansatz. It
+does not alone establish the full adjoint solvability projection or a physical
+degree-of-freedom count. Requires SymPy.
 """
 from __future__ import annotations
 
