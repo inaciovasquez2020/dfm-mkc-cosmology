@@ -34,6 +34,10 @@ jobs:
       - name: Psi-retaining scalar action and constraint derivation
         run: python3 tools/derive_psi_retaining_scalar_action_v1.py
 
+      - name: Full six-field cubic action derivation
+        timeout-minutes: 20
+        run: python3 tools/derive_psi_retaining_cubic_action_v1.py
+
       - name: Corrected generalized-Proca scalar-sector audit
         run: python3 tools/audit_generalized_proca_l4_scalar_sector_v1.py
 
