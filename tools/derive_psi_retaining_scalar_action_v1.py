@@ -381,6 +381,44 @@ def main() -> None:
         "constraint-propagation proof"
     )
 
+    # Exact generic-C reduction of the remaining metric equation.  On C != 0,
+    # E_Phi=0 forces psi=0; E_u=0 then gives u=-dot(chi)/k.  Reduce E_psi
+    # by these constraints without solving for any additional field.
+    psi_t = amplitudes["psi"]
+    beta_t = amplitudes["beta"]
+    u_t = amplitudes["u"]
+    chi_t = amplitudes["chi"]
+    generic_constraint_subs = {
+        psi_t: sp.Integer(0),
+        sp.diff(psi_t, t): sp.Integer(0),
+        sp.diff(psi_t, (t, 2)): sp.Integer(0),
+        u_t: -sp.diff(chi_t, t) / k,
+    }
+    reduced_psi_equation = sp.simplify(
+        flat_branch_equations["psi"].subs(generic_constraint_subs)
+    )
+    expected_reduced_psi = -constraint_factor * k * (
+        k * amplitudes["Phi"] - sp.diff(beta_t, t)
+    ) / 2
+    if sp.simplify(reduced_psi_equation - expected_reduced_psi) != 0:
+        raise AssertionError(
+            "Generic-C reduction of E_psi failed: "
+            f"{sp.sstr(reduced_psi_equation)}"
+        )
+    print("FLAT_BRANCH_GENERIC_C_REDUCED_E_PSI := EXACT")
+    print(
+        "FLAT_BRANCH_GENERIC_C_REMAINDER := "
+        + sp.sstr(reduced_psi_equation)
+    )
+    print(
+        "FLAT_BRANCH_GENERIC_C_METRIC_RELATION := k*Phi - d(beta)/dt = 0 "
+        "for C!=0 and k!=0"
+    )
+    print(
+        "BOUNDARY := reduced equation-level consistency on the flat "
+        "constant-field branch only; no generic-background theorem"
+    )
+
     for name in ("Phi", "beta", "u"):
         raw_derivative = sp.factor(
             sp.diff(flat_branch_equations[name], t)
