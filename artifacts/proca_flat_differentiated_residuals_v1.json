@@ -1,0 +1,63 @@
+{
+  "schema": "dfm-mkc-proca-flat-differentiated-residuals-v1",
+  "status": "PARTIAL_EXACT_IDENTITIES_PROPAGATION_OPEN",
+  "repository": "inaciovasquez2020/dfm-mkc-cosmology",
+  "base_merge_commit": "7303e3344ef3708b84a80cc4f2a4664d6427e1fd",
+  "source": "tools/derive_psi_retaining_scalar_action_v1.py",
+  "branch": {
+    "background": "a=1, phi=0, B=b0, L0=0, mA2=0 with background derivatives set to zero",
+    "mode_assumption": "k != 0",
+    "constraint_factor": "C = 2*M2 + b0**2*xi"
+  },
+  "equation_convention": {
+    "E_Phi": "-k**2*C*psi/2",
+    "E_beta": "-k*C*dot(psi)/2",
+    "E_u": "k*(2*b0*k*xi*psi + k*u + dot(chi))/2",
+    "E_chi": "-(2*b0*k*xi*dot(psi) + k*dot(u) + ddot(chi))/2"
+  },
+  "exact_differentiated_residual_identities": [
+    {
+      "residual": "R_Phi := d(E_Phi)/dt",
+      "identity": "R_Phi = k*E_beta",
+      "status": "EXACT",
+      "scope": "specialized flat constant-field branch"
+    },
+    {
+      "residual": "R_beta := d(E_beta)/dt",
+      "identity": "R_beta = d(E_beta)/dt = ddot(E_Phi)/k",
+      "status": "EXACT_DIFFERENTIAL_IDENTITY",
+      "scope": "specialized flat constant-field branch",
+      "caveat": "This is a differential consequence of the beta/Phi identity, not an independent evolution estimate or an initial-data constraint-propagation theorem."
+    },
+    {
+      "residual": "R_u := d(E_u)/dt",
+      "identity": "R_u = -k*E_chi",
+      "status": "EXACT",
+      "scope": "specialized flat constant-field branch"
+    }
+  ],
+  "generic_branch": {
+    "assumptions": ["k != 0", "C != 0"],
+    "deductions_already_checked": [
+      "E_Phi=0 implies psi=0",
+      "E_u=0 then implies u=-dot(chi)/k",
+      "E_psi after those substitutions equals -C*k*(k*Phi-dot(beta))/2"
+    ]
+  },
+  "exceptional_branch": {
+    "assumption": "C = 0",
+    "checked_fact": "E_Phi and E_beta vanish identically",
+    "consequence": "R_Phi and R_beta vanish identically on this specialization; they provide no constraint on psi there.",
+    "remaining_issue": "The full C=0 system, including E_u, E_psi, E_sigma, and E_chi, has not been reduced as an evolution/constraint system."
+  },
+  "not_established": [
+    "Constraint propagation from admissible initial data",
+    "Reduction of all differentiated constraints using an explicitly selected evolution subsystem with verified pivots",
+    "Exceptional-branch complete constraint analysis",
+    "Generic-background constraint propagation",
+    "Physical scalar degree-of-freedom count",
+    "Stability"
+  ],
+  "interpretation": "The three displayed residual identities are exact symbolic consequences on the specialized branch. They do not by themselves prove constraint propagation: R_beta is only the time derivative of the beta constraint. No degree-of-freedom claim is licensed.",
+  "next_weakest_obligation": "Choose an evolution subsystem from the full six equations, state its coefficient matrix and determinant/pivot assumptions, and reduce R_beta modulo that subsystem and the independent constraints without using R_beta=dot(E_beta) as a circular propagation argument."
+}
