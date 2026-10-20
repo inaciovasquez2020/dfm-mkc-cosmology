@@ -333,6 +333,54 @@ def main() -> None:
             f"FLAT_BRANCH_LINEARIZED_EQUATION_{name.upper()} := "
             + sp.sstr(equation)
         )
+    # Exact flat-branch equation identities.  k is assumed nonzero by the
+    # positive-symbol declaration above.  These identities are algebraic
+    # consequences of the derived six-field equations, not solver-pivot
+    # reductions and not a generic-background constraint theorem.
+    constraint_factor = sp.factor(2 * M2 + b0**2 * xi)
+    phi_beta_identity = sp.simplify(
+        flat_branch_equations["beta"]
+        - sp.diff(flat_branch_equations["Phi"], t) / k
+    )
+    u_chi_identity = sp.simplify(
+        flat_branch_equations["chi"]
+        + sp.diff(flat_branch_equations["u"], t) / k
+    )
+    if phi_beta_identity != 0:
+        raise AssertionError(
+            f"Flat-branch beta/Phi derivative identity failed: {phi_beta_identity}"
+        )
+    if u_chi_identity != 0:
+        raise AssertionError(
+            f"Flat-branch chi/u derivative identity failed: {u_chi_identity}"
+        )
+    exceptional_phi = sp.simplify(
+        flat_branch_equations["Phi"].subs(constraint_factor, 0)
+    )
+    exceptional_beta = sp.simplify(
+        flat_branch_equations["beta"].subs(constraint_factor, 0)
+    )
+    if exceptional_phi != 0 or exceptional_beta != 0:
+        raise AssertionError(
+            "Exceptional branch C=2*M2+b0**2*xi=0 did not annihilate "
+            "the Phi/beta equations as expected"
+        )
+    print("FLAT_BRANCH_IDENTITY_BETA_EQUALS_D_PHI_OVER_K := EXACT")
+    print("FLAT_BRANCH_IDENTITY_CHI_EQUALS_MINUS_D_U_OVER_K := EXACT")
+    print("FLAT_BRANCH_CONSTRAINT_FACTOR_C := " + sp.sstr(constraint_factor))
+    print(
+        "FLAT_BRANCH_EXCEPTIONAL_C_ZERO_PHI_BETA_EQUATIONS := IDENTICALLY_ZERO"
+    )
+    print(
+        "FLAT_BRANCH_GENERIC_C_NONZERO_PHI_EQUATION := "
+        "implies psi=0 for k!=0 and C!=0"
+    )
+    print(
+        "BOUNDARY := exact flat-branch equation identities only; "
+        "exceptional C=0 loses these two equations and is not a full "
+        "constraint-propagation proof"
+    )
+
     for name in ("Phi", "beta", "u"):
         raw_derivative = sp.factor(
             sp.diff(flat_branch_equations[name], t)
