@@ -1,0 +1,120 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\title{Zero Day -- Test 242: Numerical Robustness of the Bounce and Recollapse}
+\author{Inacio F. Vasquez\\Independent Researcher, United States}
+\date{20 October 2026}
+
+\begin{document}
+\maketitle
+
+\section{Scope}
+This note preserves a proposed numerical comparison for an illustrative
+zero-charge, closed-FLRW trajectory. The event times listed below were
+reported previously, but they have \emph{not} been independently reproduced
+in this work. No solver execution or raw event log is attached to this note.
+Accordingly, these values are unverified inputs, not established research
+results.
+
+\section{Reported values (unverified)}
+The previously reported event times are:
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Solver & Maximum-size time & Time to $a=0.1$\\
+\midrule
+DOP853, $10^{-10}$ & 397.749693853 & 792.771209639\\
+DOP853, $10^{-12}$ & 397.749689824 & 792.771145029\\
+RK45, $10^{-10}$ & 397.750427766 & 792.782148826\\
+\bottomrule
+\end{tabular}
+\end{center}
+These figures are retained only to identify what must be checked. Their
+differences do not establish numerical convergence, and no accuracy claim is
+made from them.
+
+\section{Proposed reproduction specification}
+The assumed potential and initial matter contents were reported as
+\[
+U(\phi)=\frac12\phi^2+\frac14\phi^4,\qquad
+\phi(0)=1,\quad \dot\phi(0)=0,
+\]
+\[
+\rho_m(0)=0.1,\qquad \rho_r(0)=0.1,\qquad H(0)=0.
+\]
+The reported initial density is $\rho_0=0.95$ in the chosen units. For
+curvature $k=+1$ and $G=1$, the constraint-based initial scale factor would be
+\[
+a_0=\sqrt{\frac{3}{8\pi G\rho_0}}
+=0.3544695181296627\ldots
+\]
+provided the stated Friedmann convention and parameters are the intended ones.
+
+The proposed first-order system is
+\[
+\dot a=aH,\qquad \dot\phi=v,\qquad
+\dot v=-3Hv-U'(\phi),
+\]
+\[
+\dot\rho_m=-3H\rho_m,\qquad
+\dot\rho_r=-4H\rho_r,
+\]
+\[
+\rho=\frac12v^2+U(\phi)+\rho_m+\rho_r,\qquad
+p=\frac12v^2-U(\phi)+\frac13\rho_r,
+\]
+\[
+\dot H=-4\pi G(\rho+p)+\frac{1}{a^2},\qquad
+H^2=\frac{8\pi G}{3}\rho-\frac{1}{a^2}.
+\]
+This is a proposed reproduction specification, not a verified execution
+record. A valid reproduction must retain the exact initial constraint,
+solver versions and tolerances, event definitions, raw event output, and
+constraint residuals throughout integration.
+
+\section{Result}
+\textbf{RESULT: NOT VERIFIED.} No conclusion about turnaround-time
+stability, recollapse, or endpoint behavior follows from the reported numbers
+until the stated initial-value problem is independently executed and its raw
+outputs are checked. Even a successful reproduction would validate only the
+specified assumed equations and initial data, not derive them from the
+canonical spatially flat DFM--MKC action or validate them empirically.
+
+Adaptive integration tolerances do not validate the physical equations,
+potential, or model assumptions.
+
+\section{Weakest missing result}
+A controlled endpoint study is still needed. Monitor curvature invariants,
+including the Kretschmann scalar
+\[
+K=R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma},
+\]
+alongside $a(t)$ and $H(t)$. Repeat the contracting-phase integration with
+appropriate independent formulations and endpoint-aware variables, and
+demonstrate convergence over a sequence of smaller scale factors. A divergence
+of $K$ as $a\to0$, if established under the stated equations, would support
+curvature singularity classification; it would not alone prove every form of
+geodesic incompleteness. If $K$ remains bounded, further invariants and
+extension analysis may still be required.
+
+\section{Boundary}
+\[
+\texttt{BOUNDARY :=}
+\]
+This calculation does not derive its closed-FLRW equations from the DFM--MKC
+action, does not constitute an empirical cosmology fit, and does not prove a
+beginningless universe or geodesic incompleteness.
+
+\section{Next actions}
+\begin{enumerate}
+  \item Preserve the exact initial data, solver settings, and raw event output.
+  \item Check curvature invariants along the contracting branch.
+  \item Test endpoint convergence with independent numerical formulations.
+  \item Derive the governing equations from the action before extending the claim.
+\end{enumerate}
+
+\end{document}
