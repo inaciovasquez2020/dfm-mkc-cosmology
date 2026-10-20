@@ -389,16 +389,30 @@ def main() -> None:
     beta_t = amplitudes["beta"]
     u_t = amplitudes["u"]
     chi_t = amplitudes["chi"]
+    # Protect time derivatives before setting the undifferentiated psi
+    # amplitude to zero: SymPy's ordinary subs(psi(t), 0) also rewrites
+    # Derivative(psi(t), t, ...) to derivatives of zero.
+    psi_dot_symbol = sp.Symbol("psi_dot")
+    psi_ddot_symbol = sp.Symbol("psi_ddot")
+    derivative_subs = {
+        sp.diff(psi_t, t, 2): psi_ddot_symbol,
+        sp.diff(psi_t, t): psi_dot_symbol,
+    }
+    psi_equation_with_derivative_symbols = flat_branch_equations["psi"].subs(
+        derivative_subs, simultaneous=True
+    )
     generic_constraint_subs = {
         psi_t: sp.Integer(0),
         u_t: -sp.diff(chi_t, t) / k,
     }
     reduced_psi_equation = sp.factor(
-        flat_branch_equations["psi"].subs(generic_constraint_subs)
+        psi_equation_with_derivative_symbols.subs(
+            generic_constraint_subs, simultaneous=True
+        )
     )
     expected_reduced_psi = -constraint_factor * (
         k * (k * amplitudes["Phi"] - sp.diff(beta_t, t))
-        - 3 * sp.diff(psi_t, (t, 2))
+        - 3 * psi_ddot_symbol
     ) / 2
     if sp.simplify(reduced_psi_equation - expected_reduced_psi) != 0:
         raise AssertionError(
