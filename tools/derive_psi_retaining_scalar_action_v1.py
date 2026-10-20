@@ -381,42 +381,60 @@ def main() -> None:
         "constraint-propagation proof"
     )
 
-    # Exact generic-C reduction of the remaining metric equation.  On C != 0,
-    # E_Phi=0 forces psi=0; E_u=0 then gives u=-dot(chi)/k.  Reduce E_psi
-    # by these constraints without solving for any additional field.
+    # Non-circular generic-C reduction.  Use psi=0 and E_u=0, but do
+    # NOT substitute dot(psi)=0 or ddot(psi)=0 into E_psi here.  The latter
+    # substitutions require a separate time-evolution argument and must not
+    # be assumed while deriving the metric relation.
     psi_t = amplitudes["psi"]
     beta_t = amplitudes["beta"]
     u_t = amplitudes["u"]
     chi_t = amplitudes["chi"]
+    # Protect time derivatives before setting the undifferentiated psi
+    # amplitude to zero: SymPy's ordinary subs(psi(t), 0) also rewrites
+    # Derivative(psi(t), t, ...) to derivatives of zero.
+    psi_dot_symbol = sp.Symbol("psi_dot")
+    psi_ddot_symbol = sp.Symbol("psi_ddot")
+    derivative_subs = {
+        sp.diff(psi_t, t, 2): psi_ddot_symbol,
+        sp.diff(psi_t, t): psi_dot_symbol,
+    }
+    psi_equation_with_derivative_symbols = flat_branch_equations["psi"].subs(
+        derivative_subs, simultaneous=True
+    )
     generic_constraint_subs = {
         psi_t: sp.Integer(0),
-        sp.diff(psi_t, t): sp.Integer(0),
-        sp.diff(psi_t, (t, 2)): sp.Integer(0),
         u_t: -sp.diff(chi_t, t) / k,
     }
-    reduced_psi_equation = sp.simplify(
-        flat_branch_equations["psi"].subs(generic_constraint_subs)
+    reduced_psi_equation = sp.factor(
+        psi_equation_with_derivative_symbols.subs(
+            generic_constraint_subs, simultaneous=True
+        )
     )
-    expected_reduced_psi = -constraint_factor * k * (
-        k * amplitudes["Phi"] - sp.diff(beta_t, t)
+    expected_reduced_psi = -constraint_factor * (
+        k * (k * amplitudes["Phi"] - sp.diff(beta_t, t))
+        - 3 * psi_ddot_symbol
     ) / 2
     if sp.simplify(reduced_psi_equation - expected_reduced_psi) != 0:
         raise AssertionError(
-            "Generic-C reduction of E_psi failed: "
+            "Non-circular generic-C reduction of E_psi failed: "
             f"{sp.sstr(reduced_psi_equation)}"
         )
-    print("FLAT_BRANCH_GENERIC_C_REDUCED_E_PSI := EXACT")
+    print("FLAT_BRANCH_GENERIC_C_REDUCED_E_PSI := EXACT_WITH_DDOT_PSI_RETAINED")
     print(
         "FLAT_BRANCH_GENERIC_C_REMAINDER := "
         + sp.sstr(reduced_psi_equation)
     )
     print(
-        "FLAT_BRANCH_GENERIC_C_METRIC_RELATION := k*Phi - d(beta)/dt = 0 "
-        "for C!=0 and k!=0"
+        "FLAT_BRANCH_GENERIC_C_E_PSI_RELATION := "
+        "k*(k*Phi-d(beta)/dt)-3*ddot(psi)=0 for C!=0"
     )
     print(
-        "BOUNDARY := reduced equation-level consistency on the flat "
-        "constant-field branch only; no generic-background theorem"
+        "FLAT_BRANCH_GENERIC_C_METRIC_RELATION := NOT_INDEPENDENTLY_ESTABLISHED "
+        "BY E_psi ALONE; it follows only after ddot(psi)=0 is separately justified"
+    )
+    print(
+        "BOUNDARY := exact non-circular algebraic reduction on the flat "
+        "constant-field branch; no initial-data propagation or generic-background theorem"
     )
 
     for name in ("Phi", "beta", "u"):
