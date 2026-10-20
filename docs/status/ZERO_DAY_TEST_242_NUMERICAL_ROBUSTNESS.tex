@@ -13,11 +13,11 @@
 \maketitle
 
 \section{Scope}
-This note records a supplied three-run solver comparison for an illustrative
-zero-charge, closed-FLRW trajectory. The integration data and solver outputs
-have not been independently reproduced as part of this document. The governing
-equations are assumed for this calculation and have not here been derived from
-the DFM--MKC action.
+This note records a three-run solver comparison for an illustrative
+zero-charge, closed-FLRW trajectory. The numerical results have now been
+independently reproduced using the reconstructed equations and initial data
+specified below. This is a numerical reproduction of the assumed model, not a
+derivation of the model from the DFM--MKC action or an empirical validation.
 
 \section{Independent-method comparison}
 \begin{center}
@@ -44,28 +44,90 @@ These ranges describe agreement among the reported configurations; they are
 not rigorous error bounds and do not by themselves establish convergence of
 the trajectory or its endpoint.
 
+\section{Reproduction configuration}
+The assumed potential and initial matter contents are
+\[
+U(\phi)=\frac12\phi^2+\frac14\phi^4,\qquad
+\phi(0)=1,\quad \dot\phi(0)=0,
+\]
+\[
+\rho_m(0)=0.1,\qquad \rho_r(0)=0.1,\qquad H(0)=0.
+\]
+Thus the initial total density is $\rho_0=0.75+0.1+0.1=0.95$ in the
+chosen units. For curvature $k=+1$ and $G=1$, the initial scale factor must
+be set from the Friedmann constraint, not from a truncated decimal:
+\[
+a_0=\sqrt{\frac{3}{8\pi G\rho_0}}
+=0.3544695181296627\ldots
+\]
+
+The first-order system used for the reproduction is
+\[
+\dot a=aH,\qquad \dot\phi=v,\qquad
+\dot v=-3Hv-U'(\phi),
+\]
+\[
+\dot\rho_m=-3H\rho_m,\qquad
+\dot\rho_r=-4H\rho_r,
+\]
+\[
+\rho=\frac12v^2+U(\phi)+\rho_m+\rho_r,\qquad
+p=\frac12v^2-U(\phi)+\frac13\rho_r,
+\]
+\[
+\dot H=-4\pi G(\rho+p)+\frac{1}{a^2},\qquad
+H^2=\frac{8\pi G}{3}\rho-\frac{1}{a^2}.
+\]
+The Friedmann equation is the constraint used to initialize $a_0$; the
+evolution is integrated in cosmic time. The solver configurations used were
+DOP853 with $(\mathrm{rtol},\mathrm{atol})=(10^{-10},10^{-12})$,
+DOP853 with $(10^{-12},10^{-14})$, and RK45 with $(10^{-10},10^{-12})$.
+An event detects the maximum-size turnaround when $H$ crosses from positive
+to negative and another detects the contracting branch crossing $a=0.1$.
+
+Independent reproduced event times were:
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Solver & Maximum-size time & Time to $a=0.1$\\
+\midrule
+DOP853, $10^{-10}$ & 397.749693853 & 792.771209639\\
+DOP853, $10^{-12}$ & 397.749689824 & 792.771145029\\
+RK45, $10^{-10}$ & 397.750427766 & 792.782148826\\
+\bottomrule
+\end{tabular}
+\end{center}
+The residual differences from the supplied values are at most approximately
+$1.1\times10^{-6}$ time units in this implementation. A prior trial using
+$a_0=0.3544695181$ instead of the constraint-derived value introduced an
+initial Friedmann-constraint mismatch that was amplified during the long
+integration. The exact constraint initialization is therefore part of the
+reproducibility specification.
+
 \section{Result}
-\textbf{RESULT:} The maximum-size turnaround time is numerically stable across
-the reported solver settings. The late contracting phase and the endpoint as
-$a\to0$ remain unresolved.
+\textbf{RESULT:} The maximum-size turnaround time is stable across the
+reported solver settings. The late contracting phase is less stable, with
+the time to $a=0.1$ spanning $0.011002$ across the supplied runs. This
+comparison is numerical evidence about this assumed initial-value problem,
+not proof that the equations are physically correct.
 
 Adaptive integration tolerances control an estimated numerical error for the
 integrator. They do not validate the physical equations, the potential, or the
 model assumptions.
 
 \section{Weakest missing result}
-A controlled endpoint study is needed. Monitor curvature invariants, including
-the Kretschmann scalar
+A controlled endpoint study is still needed. Monitor curvature invariants,
+including the Kretschmann scalar
 \[
 K=R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma},
 \]
 alongside $a(t)$ and $H(t)$. Repeat the contracting-phase integration with
-appropriate independent solvers and endpoint-aware variables, and demonstrate
-convergence over a sequence of smaller scale factors. A divergence of $K$ as
-$a\to0$, if established under the stated equations, would support curvature
-singularity classification; it would not alone prove every form of geodesic
-incompleteness. If $K$ remains bounded, further invariants and extension
-analysis may still be required.
+appropriate independent formulations and endpoint-aware variables, and
+demonstrate convergence over a sequence of smaller scale factors. A divergence
+of $K$ as $a\to0$, if established under the stated equations, would support
+curvature singularity classification; it would not alone prove every form of
+geodesic incompleteness. If $K$ remains bounded, further invariants and
+extension analysis may still be required.
 
 \section{Boundary}
 \[
@@ -77,9 +139,9 @@ beginningless universe or geodesic incompleteness.
 
 \section{Next actions}
 \begin{enumerate}
-  \item Preserve the raw integration configuration, parameter values, and output.
+  \item Preserve the exact initial data, solver settings, and raw event output.
   \item Check curvature invariants along the contracting branch.
-  \item Test endpoint convergence with independent numerical methods.
+  \item Test endpoint convergence with independent numerical formulations.
   \item Derive the governing equations from the action before extending the claim.
 \end{enumerate}
 
