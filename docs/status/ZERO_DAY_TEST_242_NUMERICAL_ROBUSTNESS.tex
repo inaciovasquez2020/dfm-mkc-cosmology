@@ -1,0 +1,86 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\title{Zero Day -- Test 242: Numerical Robustness of the Bounce and Recollapse}
+\author{Inacio F. Vasquez\\Independent Researcher, United States}
+\date{20 October 2026}
+
+\begin{document}
+\maketitle
+
+\section{Scope}
+This note records a supplied three-run solver comparison for an illustrative
+zero-charge, closed-FLRW trajectory. The integration data and solver outputs
+have not been independently reproduced as part of this document. The governing
+equations are assumed for this calculation and have not here been derived from
+the DFM--MKC action.
+
+\section{Independent-method comparison}
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Solver & Tolerance & Maximum-size time & Time to $a=0.1$\\
+\midrule
+DOP853 & $10^{-10}$ & 397.749694 & 792.771210\\
+DOP853 & $10^{-12}$ & 397.749690 & 792.771146\\
+RK45   & $10^{-10}$ & 397.750428 & 792.782148\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The maximum-size time spans
+\[
+397.750428-397.749690=0.000738
+\]
+across the three reported runs. The time to $a=0.1$ spans
+\[
+792.782148-792.771146=0.011002.
+\]
+These ranges describe agreement among the reported configurations; they are
+not rigorous error bounds and do not by themselves establish convergence of
+the trajectory or its endpoint.
+
+\section{Result}
+\textbf{RESULT:} The maximum-size turnaround time is numerically stable across
+the reported solver settings. The late contracting phase and the endpoint as
+$a\to0$ remain unresolved.
+
+Adaptive integration tolerances control an estimated numerical error for the
+integrator. They do not validate the physical equations, the potential, or the
+model assumptions.
+
+\section{Weakest missing result}
+A controlled endpoint study is needed. Monitor curvature invariants, including
+the Kretschmann scalar
+\[
+K=R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma},
+\]
+alongside $a(t)$ and $H(t)$. Repeat the contracting-phase integration with
+appropriate independent solvers and endpoint-aware variables, and demonstrate
+convergence over a sequence of smaller scale factors. A divergence of $K$ as
+$a\to0$, if established under the stated equations, would support curvature
+singularity classification; it would not alone prove every form of geodesic
+incompleteness. If $K$ remains bounded, further invariants and extension
+analysis may still be required.
+
+\section{Boundary}
+\[
+\texttt{BOUNDARY :=}
+\]
+This calculation does not derive its closed-FLRW equations from the DFM--MKC
+action, does not constitute an empirical cosmology fit, and does not prove a
+beginningless universe or geodesic incompleteness.
+
+\section{Next actions}
+\begin{enumerate}
+  \item Preserve the raw integration configuration, parameter values, and output.
+  \item Check curvature invariants along the contracting branch.
+  \item Test endpoint convergence with independent numerical methods.
+  \item Derive the governing equations from the action before extending the claim.
+\end{enumerate}
+
+\end{document}
