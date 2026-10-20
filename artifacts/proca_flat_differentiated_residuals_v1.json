@@ -42,9 +42,9 @@
       "C != 0"
     ],
     "deductions_already_checked": [
-      "E_Phi=0 implies psi=0",
+      "E_Phi=0 implies psi=0 for k != 0 and C != 0",
       "E_u=0 then implies u=-dot(chi)/k",
-      "E_psi after those substitutions equals -C*k*(k*Phi-dot(beta))/2"
+      "After these substitutions, E_psi retains the term ddot(psi): -C*(k*(k*Phi-dot(beta))-3*ddot(psi))/2"
     ],
     "non_circular_reduction": {
       "assumptions": [
