@@ -57,6 +57,6 @@ The result is conditional on the assumed equations, potential, initial data, uni
 
 Run from the repository root with Python, NumPy, and SciPy installed:
 
-`python3 tools/reproduce_zero_day_test_242.py > artifacts/status/zero_day_test_242_reproduction_2026_10_21.json`
+`python3 tools/reproduce_zero_day_test_242.py`
 
-The generated JSON records the runtime versions, solver tolerances, event times, sampled constraint residuals, and endpoint data.
+The committed JSON is a concise receipt of the run. The script prints a fuller JSON record to stdout, including event states and normalized endpoint residuals.
