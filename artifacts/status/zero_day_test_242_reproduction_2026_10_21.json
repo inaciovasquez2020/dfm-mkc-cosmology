@@ -1,0 +1,84 @@
+{
+  "receipt": "ZeroDayTest242IndependentNumericalReproduction",
+  "date": "2026-10-21",
+  "status": "conditional_numerical_reproduction",
+  "source_specification": "docs/status/ZERO_DAY_TEST_242_NUMERICAL_ROBUSTNESS.tex",
+  "reproduction_script": "tools/reproduce_zero_day_test_242.py",
+  "environment": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "initial_data": {
+    "G": 1.0,
+    "potential": "U(phi)=0.5*phi^2+0.25*phi^4",
+    "phi0": 1.0,
+    "v0": 0.0,
+    "rho_m0": 0.1,
+    "rho_r0": 0.1,
+    "rho0": 0.95,
+    "a0": 0.3544695181296627,
+    "H0": 0.0
+  },
+  "full_system_runs": [
+    {
+      "method": "DOP853",
+      "rtol": 1e-10,
+      "atol": 1e-12,
+      "turnaround_time": 397.7496937365544,
+      "maximum_scale_factor": 252.12802308327588,
+      "contracting_a_0_1_time": 792.7712079273099,
+      "max_normalized_friedmann_residual_sampled_steps": 1.1748409480502888e-8,
+      "nfev": 32129
+    },
+    {
+      "method": "DOP853",
+      "rtol": 1e-12,
+      "atol": 1e-14,
+      "turnaround_time": 397.74968999185097,
+      "maximum_scale_factor": 252.1280192322549,
+      "contracting_a_0_1_time": 792.7711474863438,
+      "max_normalized_friedmann_residual_sampled_steps": 6.849560258399784e-10,
+      "nfev": 54173
+    },
+    {
+      "method": "RK45",
+      "rtol": 1e-10,
+      "atol": 1e-12,
+      "turnaround_time": 397.7504276670132,
+      "maximum_scale_factor": 252.12886464398656,
+      "contracting_a_0_1_time": 792.7821473598176,
+      "max_normalized_friedmann_residual_sampled_steps": 1.7537198241295206e-6,
+      "nfev": 86918
+    }
+  ],
+  "constraint_reduced_endpoint_study": {
+    "method": "DOP853 in x=ln(a), H algebraically constrained on contracting branch",
+    "rtol_values": [1e-11, 1e-12],
+    "sampled_scale_factors": [0.1, 0.05, 0.02, 0.01],
+    "kretschmann_K": [
+      2.992441527557328e23,
+      1.225704047368214e27,
+      7.305765430637975e31,
+      2.9924415201726535e35
+    ],
+    "K_times_a12": [
+      299244152755.733,
+      299244152189.50555,
+      299244152038.9315,
+      299244152017.26544
+    ],
+    "relative_K_difference_between_rtol_1e_11_and_1e_12_at_a_0_01": 5.031297512920433e-12,
+    "relative_spread_of_K_times_a12_over_sampled_range": 2.467775975967169e-9
+  },
+  "claims": {
+    "reported_event_times_reproduced_to_close_tolerance": true,
+    "turnaround_and_recollapse_under_assumed_equations": true,
+    "sampled_K_scales_approximately_as_a_minus_12": true,
+    "curvature_singularity_proved": false,
+    "geodesic_incompleteness_proved": false,
+    "equations_derived_from_DFM_MKC_action": false,
+    "empirical_cosmology_validated": false
+  },
+  "boundary": "Conditional numerical evidence for the stated closed-FLRW equations, potential, initial data, units, and numerical formulations only. The endpoint scaling is strongly supported over a finite sampled range but does not by itself prove a curvature singularity classification or geodesic incompleteness."
+}
