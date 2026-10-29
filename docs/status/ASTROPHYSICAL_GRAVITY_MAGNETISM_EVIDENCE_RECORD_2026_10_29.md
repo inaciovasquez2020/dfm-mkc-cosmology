@@ -29,7 +29,7 @@ Do not overwrite the repository's CODATA constant input with this measurement. T
 
 **Primary source**
 
-Shimizu et al., “BlackTHUNDER: Evidence of three massive black holes in a z ∼ 5 galaxy,” *Astronomy & Astrophysics* 712, A80 (2026).
+“BlackTHUNDER: Evidence of three massive black holes in a z ∼ 5 galaxy,” *Astronomy & Astrophysics* 712, A80 (2026).
 
 - DOI: https://doi.org/10.1051/0004-6361/202557419
 - Instrument/data: JWST/NIRSpec integral-field spectroscopy.
