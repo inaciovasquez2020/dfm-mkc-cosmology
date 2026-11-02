@@ -133,3 +133,23 @@ def test_nonzero_temporal_vector_desitter_solution_of_source_action():
     altered = dict(witness, **{})  # preserve exact witness dictionary
     altered[Lambda] = sp.Integer(2)
     assert sp.simplify(euler_raw(lapse).xreplace(altered)) != 0
+
+    # Distinct genuinely coupled solution on the same exceptional A0 branch.
+    # Here phi, A0, beta_phi_A, xi_A are all nonzero, and the scalar
+    # potential balances the scalar-vector mass contribution.
+    coupled = dict(witness)
+    coupled.update({
+        phi: sp.Integer(1),
+        Lambda: sp.Integer(1),
+        mA2: sp.Integer(2),
+        mPhi2: sp.Integer(1),
+        beta: sp.Integer(1),
+    })
+    assert all(coupled[x] != 0 for x in (phi, A0, beta, xiA))
+    assert coupled[mA2] + coupled[beta] * coupled[phi]**2 + 3 * coupled[xiA] == 0
+    for field in (lapse, a, A0, phi):
+        assert sp.simplify(euler_raw(field).xreplace(coupled)) == 0
+        assert sp.simplify(euler_first_order(field).xreplace(coupled)) == 0
+    broken_coupling = dict(coupled)
+    broken_coupling[beta] = sp.Integer(2)
+    assert sp.simplify(euler_raw(A0).xreplace(broken_coupling)) != 0
