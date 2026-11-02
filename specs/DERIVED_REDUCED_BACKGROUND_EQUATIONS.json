@@ -30,7 +30,7 @@
       "equation_id": "friedmann_constraint",
       "source_target": "friedmann_constraint_target",
       "source_equation": "metric_equation",
-      "structural_equation": "E_N := 3 M_Pl^2 (H^2 + k/a^2) - rho_m - rho_phi - rho_A - rho_interaction - rho_nonminimal - Lambda_0 = 0",
+      "structural_equation": "E_N := 3 F (H^2 + k/a^2) + 3 H D_t(F) - (alpha_phi/2) (D_t(phi))^2 - Lambda_0 - (m_phi^2/2) phi^2 - (lambda_phi/4) phi^4 - rho_m - (m_A^2 + beta_phi_A phi^2) (A_0/N)^2/2 - 3 xi_A ((A_0/N)^2 D_t(H) - H (A_0/N) D_t(A_0/N)) = 0; F := M_Pl^2 - xi_phi phi^2; H := dot(a)/(N a); D_t := (1/N) d/dt; lapse variation holds covariant A_0 fixed (not A_0/N); structural candidate only",
       "principal_variables": [
         "N(t)",
         "a(t)",
