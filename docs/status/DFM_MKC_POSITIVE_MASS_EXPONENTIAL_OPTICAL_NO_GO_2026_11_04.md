@@ -145,6 +145,48 @@ But the original example \(n_{\rm analog}(r)=1-\varepsilon e^{-r/R}\), with \(0<
 
 **BOUNDARY:** This does **not** contradict the finite-annulus analog-optical construction itself, and does not exclude a two-function gravitational metric, other matter, altered scalar potential, nonconstant phase, or a local-to-global matching construction. The positive-inner-mass global-tail theorem above also remains logically separate.
 
+## Draft clarification: radial null energy and two-function boundary data
+
+**Status:** `CONDITIONAL_LOCAL_NEC_OBSTRUCTION; TWO_FUNCTION_EXISTENCE_OPEN`. This is a mathematical check of the *spacetime* interpretation of the January 19 optical analogue, not a claim that passive analogue optical media violate energy conditions.
+
+For the exact one-function metric on `r_0 \le r \le r_1`, with `0<r_0<r_1<\infty`, set `c=1`, `n(r)=1-\varepsilon e^{-r/R}` (`0<\varepsilon<1,\ R>0`) and `N(r)=n(r)^{-1}`:
+\[
+ds^2=-N(r)^2dt^2+dr^2+r^2d\Omega^2.
+\]
+Direct calculation of the mixed Einstein tensor gives
+\[
+G^t{}_t=0,\qquad
+G^r{}_r=\frac{2N'}{rN}
+=-\frac{2\varepsilon e^{-r/R}}{Rr(1-\varepsilon e^{-r/R})}.
+\]
+For ordinary Einstein equations with the constant vacuum term absorbed into `\Lambda_{\rm eff}=0`, the orthonormal energy density and radial pressure are
+\[
+\rho_{\rm matter}=-\frac{G^t{}_t}{8\pi G}=0,\qquad
+p_r=\frac{G^r{}_r}{8\pi G}
+=-\frac{\varepsilon e^{-r/R}}{4\pi GRr(1-\varepsilon e^{-r/R})}<0.
+\]
+For the orthonormal radial null vector `k^{\hat a}=(1,1,0,0)`,
+\[
+T_{\hat a\hat b}k^{\hat a}k^{\hat b}
+=\rho_{\rm matter}+p_r
+=-\frac{\varepsilon e^{-r/R}}{4\pi GRr(1-\varepsilon e^{-r/R})}<0.
+\]
+Thus **the exact one-function spacetime metric violates the radial null energy condition at every point of the annulus**, independently of adding a cosmological-constant term (which drops out on null contraction). This is not a statement about an arbitrary two-function metric, modified field equations, or an optical material. For the canonical V1 constant-phase scalar with positive kinetic coupling, by contrast, `\rho_{\rm scalar}+p_r=\alpha f(\phi')^2\ge0` when `f>0`; hence it cannot source this exact one-function metric.
+
+**Next mathematical problem (not solved here).** On the same finite areal-radius annulus, allow two independent metric functions:
+\[
+ds^2=-e^{2\nu(r)}dt^2+\frac{dr^2}{f(r)}+r^2d\Omega^2,\quad
+f(r)=1-\frac{2Gm(r)}r>0.
+\]
+Define an increasing isotropic radius by `d\log\rho/dr=1/(r\sqrt f)` and fix its multiplicative normalization through an asymptotically flat continuation (`\rho/r\to1`). The precise optical-profile constraint to test on the annulus is
+\[
+\frac{r(\rho)}{\rho}e^{-\nu(r(\rho))}
+=1-\varepsilon e^{-\rho/R}.
+\]
+Do not substitute areal `r` for isotropic `\rho` when `f\ne1`. Seek `C^2` metric and scalar functions satisfying the **existing** canonical V1 Einstein--scalar equations and all of the following independent conditions: `r_0>2Gm(r_0)` with `m(r_0)=m_0>0`; finite `\nu(r_0),\phi(r_0),\phi'(r_0)`; `f>0` and `0<n<\infty` on the closed annulus; and a regular exterior continuation with `m(r)\to M_{\rm ADM}>0`, `\nu(r)\to0`, `\phi(r)\to0`. At `r_1`, require continuity of the induced metric and extrinsic curvature (no Israel thin shell), plus continuity of the scalar and its unit-normal derivative (no scalar surface source). In these areal coordinates this requires, in particular, matching `m,\nu,\nu',\phi,\sqrt f\,\phi'` across the interface, with a single time normalization. Test the energy conditions throughout. An exterior *continuation* may change the optical profile outside the annulus: the global exact-tail obstruction above remains unchanged.
+
+**BOUNDARY:** No existence, admissible stress-energy, smooth matching, stability, numerical solution, or physical realization is asserted for this two-function boundary-value problem. Retain PR draft status and its documentation-only classification.
+
 ## Repository dependencies
 
 - [DFM–MKC V1 field equations](DFM_MKC_FIELD_EQUATIONS_V1_2026_05_27.md)
