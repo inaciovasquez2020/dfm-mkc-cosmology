@@ -120,6 +120,31 @@ An exact match throughout the exterior would require \(M_{\rm ADM}=0\), contradi
 
 **BOUNDARY :=** No conclusion about non-asymptotically flat or nonlocalized solutions, altered potentials, nonconstant phase, nonzero exterior visible sources, different optical profiles, or unrestricted DFM–MKC gravity. No ray tracing or general-relativity deflection comparison is authorized for this excluded branch. No new theorem-level physical claim is promoted.
 
+## Separate finite-annulus compatibility check (not the global-tail theorem)
+
+The January 19, 2026 [original finite-capacity optical essay](https://github.com/inaciovasquez2020/urf-textbook/blob/main/docs/essays/GRF_2026_FINITE_CAPACITY_SPACETIME_DEFLECTION.tex) uses the **one-function spatially flat** metric
+\[
+ds^2=-A(r)\,dt^2+dr^2+r^2d\Omega^2,\qquad
+n_{\rm analog}(r)=A(r)^{-1/2},
+\]
+on a bounded annulus \(r_0\le r\le r_1<\infty\). In this ansatz \(r\) is both areal radius and a Euclidean isotropic radius, so its optical radial-coordinate interpretation is fixed.
+
+**Conditional compatibility test:** Ask whether this *exact* one-function spacetime metric is simultaneously a solution of the canonical DFM–MKC V1 Einstein–scalar equations, with constant phase, no exterior visible matter, vacuum-normalized cosmological constant, \(m_\phi^2>0\), \(\lambda_\phi\ge0\), and \(\alpha>0\). This is a separate question from whether the analog refractive-index profile is mathematically realizable in an optical medium.
+
+The general spherical metric has \(g_{rr}=1/f(r)\) and \(f=1-2Gm/r\). The one-function metric enforces \(f\equiv1\), hence \(m\equiv0\) and \(m'\equiv0\) on the annulus. Since
+\[
+m'=4\pi r^2\left[\frac{\alpha}{2}(\phi')^2+V(\phi)\right]=0,
+\]
+and both summands are nonnegative, \(\phi'=0\) and \(V(\phi)=0\). Because \(m_\phi^2>0\), \(\phi=0\), so \(p_r=0\). The exact lapse equation yields
+\[
+\nu'=\frac{G(m+4\pi r^3p_r)}{r^2 f}=0,
+\qquad A(r)=e^{2\nu(r)}=\text{constant},
+\qquad n_{\rm analog}'(r)=0.
+\]
+But the original example \(n_{\rm analog}(r)=1-\varepsilon e^{-r/R}\), with \(0<\varepsilon<1\), \(R>0\), has \(n_{\rm analog}'(r)=(\varepsilon/R)e^{-r/R}>0\) everywhere on the annulus. **Therefore that exact one-function metric cannot be a canonical constant-phase DFM–MKC V1 Einstein–scalar solution under these matter assumptions, even locally.**
+
+**BOUNDARY:** This does **not** contradict the finite-annulus analog-optical construction itself, and does not exclude a two-function gravitational metric, other matter, altered scalar potential, nonconstant phase, or a local-to-global matching construction. The positive-inner-mass global-tail theorem above also remains logically separate.
+
 ## Repository dependencies
 
 - [DFM–MKC V1 field equations](DFM_MKC_FIELD_EQUATIONS_V1_2026_05_27.md)
