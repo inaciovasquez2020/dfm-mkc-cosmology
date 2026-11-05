@@ -25,7 +25,7 @@ where \(\rho\) is an asymptotically normalized isotropic radius.
 - Static amplitude \(\phi=\phi(r)\), constant phase \(\theta=\theta_0\); \(\alpha,\beta>0\), \(m_\phi^2>0\), \(\lambda_\phi\ge0\).
 - Vacuum normalization \(\Lambda+8\pi G\rho_*=0\), so \(V(\phi)=\frac12m_\phi^2\phi^2+\frac14\lambda_\phi\phi^4\ge0\).
 - Independent inner data: \(m(r_0)=m_0>0\), \(r_0>2Gm_0\), with finite \(\phi(r_0)=\phi_0\), \(\phi'(r_0)=\psi_0\).
-- Hypothesize a smooth static exterior solution with \(f>0\), finite ADM mass, \(\nu(\infty)=0\), \(\phi\to0\), and sufficiently localized scalar stresses (\(r^3p_r\to0\)) for the standard asymptotic mass expansion. Use the isotropic normalization \(\rho/r\to1\).
+- Hypothesize a smooth static exterior solution with \(f>0\), finite ADM mass, \(\nu(\infty)=0\), and \(\phi\to0\). Use the isotropic normalization \(\rho/r\to1\). No pointwise pressure-decay hypothesis is needed.
 
 ## Field equations and mass inequality
 
@@ -51,6 +51,38 @@ The phase equation is identically satisfied. Thus
 \[
 M_{\rm ADM}=\lim_{r\to\infty}m(r)\ge m_0>0.
 \]
+
+## Integrated pressure-tail lemma (derived, not assumed)
+
+Write \(K=\alpha f(\phi')^2/2\ge0\). As \(V\ge0\), the canonical scalar equations give \(\rho_{\rm scalar}=K+V\) and \(p_r=K-V\); hence \(|p_r|\le \rho_{\rm scalar}\). Finite ADM mass and \(m'=4\pi r^2\rho_{\rm scalar}\) yield
+
+\[
+\int_{r_0}^\infty s^2|p_r(s)|\,ds
+\le\frac{M_{\rm ADM}-m_0}{4\pi}<\infty.
+\]
+
+Because \(m(s)\to M_{\rm ADM}\) and \(f(s)=1-2Gm(s)/s\to1\), for large \(s\) we have \(1/f(s)\le2\). Integrate the exact lapse equation with \(\nu(\infty)=0\):
+
+\[
+\nu(r)=-G\int_r^\infty\frac{m(s)}{s^2 f(s)}\,ds
+-4\pi G\int_r^\infty\frac{s p_r(s)}{f(s)}\,ds.
+\]
+
+The first integral equals \(-GM_{\rm ADM}/r+o(r^{-1})\) after its negative sign. The second term satisfies
+
+\[
+\left|4\pi G\int_r^\infty\frac{s p_r(s)}{f(s)}\,ds\right|
+\le\frac{8\pi G}{r}\int_r^\infty s^2|p_r(s)|\,ds
+=o(r^{-1}).
+\]
+
+Therefore the exact coupled equations already imply
+
+\[
+\boxed{\nu(r)=-\frac{GM_{\rm ADM}}r+o(r^{-1}).}
+\]
+
+**SCOPE:** This proves the asymptotic expansion needed below; it does not assert the stronger pointwise limit \(r^3p_r(r)\to0\). The latter has been removed as an unnecessary hypothesis.
 
 ## Exact optical relation and contradiction
 
