@@ -187,6 +187,75 @@ Do not substitute areal `r` for isotropic `\rho` when `f\ne1`. Seek `C^2` metric
 
 **BOUNDARY:** No existence, admissible stress-energy, smooth matching, stability, numerical solution, or physical realization is asserted for this two-function boundary-value problem. Retain PR draft status and its documentation-only classification.
 
+## Draft-only certificate: local two-function scalar obstruction
+
+**Date:** 2026-11-05  
+**Status:** `DRAFT_SYMBOLIC_REPRODUCTION_PASS; EXTERNAL_REVIEW_PENDING; NOVELTY_UNVERIFIED`  
+**Scope:** Strictly local statement on a nonempty open annulus. The exact isotropic optical profile is `n(\varrho)=1-\varepsilon e^{-\varrho/R}` with `0<\varepsilon<1,\ R>0`. Metric: `ds^2=-e^{2\nu(r)}dt^2+dr^2/u(r)^2+r^2d\Omega^2`, `u>0`, `m(r)=r(1-u^2)/(2G)>0`. Only a static, minimally coupled canonical radial scalar with positive kinetic coefficient and constant phase sources the metric; no additional visible matter or direct photon coupling. Arbitrary scalar potential and effective cosmological constant do not affect the two tensor identities used below. Smoothness is assumed for all displayed derivatives.
+
+**Independent symbolic reproduction method:** Compute Christoffel symbols, Ricci tensor, and mixed Einstein tensor directly from the diagonal metric, rather than assuming the reduced field equations. A standalone SymPy 4-coordinate computation independently reproduced:
+\[
+\begin{aligned}
+G^t{}_t&=\frac{u^2-1+2ruu'}{r^2},\\
+G^r{}_r&=\frac{u^2-1+2ru^2\nu'}{r^2},\\
+G^\vartheta{}_\vartheta&=u^2(\nu''+\nu'^2+\nu'/r)+uu'(\nu'+1/r).
+\end{aligned}
+\]
+For a static canonical radial scalar `T^t{}_t=T^\vartheta{}_\vartheta`, while `T^r{}_r-T^t{}_t=\alpha u^2(\phi')^2\ge0`. Thus the Einstein equations imply `G^\vartheta{}_\vartheta-G^t{}_t=0` and `G^r{}_r-G^t{}_t\ge0`.
+
+Set
+\[
+x=\frac{\varrho}{R}>0,\quad
+z=\varepsilon e^{-x}\in(0,1),\quad
+q=\frac{xz}{1-z}>0,\quad
+t=\frac{x(1+z)}{1-z},\quad
+a=1-u .
+\]
+The isotropic-radius relation `d\log\varrho/dr=1/(ru)` and exact optical constraint `n=(r/\varrho)e^{-\nu}` imply
+\[
+\nu'=\frac{u-1-q}{ru},\qquad
+\frac{dx}{dr}=\frac{x}{ru}.
+\]
+Substitution into the independently obtained tensor components gives
+\[
+r^2(G^\vartheta{}_\vartheta-G^t{}_t)
+=q^2-xq_x+2(1+q)(1-u)=0,
+\]
+hence
+\[
+a=\frac{xq_x-q^2}{2(1+q)}
+=\frac{q(1-t)}{2(1+q)}.
+\]
+The radial null-energy condition, meanwhile, gives
+\[
+ru'\le u-1-q=-a-q
+\quad\Longleftrightarrow\quad
+\frac{x a_x}{u}\ge a+q.
+\]
+Because `m>0` and `u>0`, we have `0<u<1`, hence `a>0`. The angular identity forces `t<1`, which also yields `0<a<1/2` and `u>1/2`. In this range,
+\[
+xq_x=q\left(1-\frac{x}{1-z}\right)<q,\qquad
+t_x=\frac{1-z^2-2xz}{(1-z)^2}>0 .
+\]
+The last positivity follows from `t<1`, i.e. `x<(1-z)/(1+z)`. Differentiating `a=q(1-t)/[2(1+q)]` yields
+\[
+x a_x=
+\frac{xq_x(1-t)}{2(1+q)^2}
+-\frac{xqt_x}{2(1+q)}
+<\frac{q}{2(1+q)^2}<\frac q2,
+\]
+and consequently `x a_x/u<q`. This contradicts `x a_x/u\ge a+q>q`. **No metric satisfying these exact simultaneous local assumptions exists on a nonempty annulus.**
+
+**Reproduction evidence:** Independent Christoffel/Ricci calculation of all three mixed tensor components `PASS`; optical substitution and angular identity `PASS`; exponential derivative identities `PASS`; numerical sign-domain checks for several `\varepsilon` and isotropic radii `PASS`. These calculations were run in an isolated SymPy environment, but not reproduced by an external reviewer; a computational check is not a substitute for mathematical peer review.
+
+**Prior-art boundary (not an exhaustive novelty clearance):**
+- Perlick, *Phys. Rev. D* **69**, 064017 (2004), https://doi.org/10.1103/PhysRevD.69.064017: exact spherical-static lens equations, not this scalar-source profile obstruction.
+- Bronnikov, *Phys. Rev. D* **64**, 064013 (2001), https://doi.org/10.1103/PhysRevD.64.064013: related global scalar no-go and causal-structure conclusions.
+- Herdeiro and Oliveira, *Class. Quantum Grav.* **36**, 105015 (2019), https://doi.org/10.1088/1361-6382/ab1859: globally regular soliton no-go under different global hypotheses.
+- Zhdanov and Stashko, *Phys. Rev. D* **101**, 064064 (2020), https://doi.org/10.1103/PhysRevD.101.064064: global and asymptotic properties of spherical scalar configurations.
+
+**BOUNDARY:** Draft mathematical certificate only; no claim of mathematical novelty, experimental relevance, or a new gravitational solution. In particular, this excludes the *exact* exponential optical profile on the annulus under the stated restricted scalar branch; it does not exclude other optical profiles, additional matter, a varying phase, noncanonical couplings, or alternative field equations. **External mathematical review remains outstanding.**
+
 ## Repository dependencies
 
 - [DFM–MKC V1 field equations](DFM_MKC_FIELD_EQUATIONS_V1_2026_05_27.md)
