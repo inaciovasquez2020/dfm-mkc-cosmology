@@ -1,0 +1,338 @@
+{
+  "schema": "bbn_conversation_receipts_v1",
+  "captured_utc_date": "2026-11-08",
+  "provenance": {
+    "source": "User-pasted macOS terminal output in ChatGPT conversation, 2026-11-08 UTC",
+    "exact_source_files_available": false,
+    "caveat": "Machine receipts/log excerpts transcribed as reported. Original Mac files, source scripts, and raw CSV/JSON bytes are not available to independently verify their reported SHA-256 digests in this environment. No Mac rerun is claimed. Local machine path prefixes removed for publication.",
+    "mac_python": "Python 3.12.16 for PRIMAT (Homebrew); system Python 3.9.6 was incompatible",
+    "baryon_to_photon_ratio": "6.10e-10",
+    "neutron_lifetime_s": "880.3"
+  },
+  "alterbbn": {
+    "name": "Legacy AlterBBN modified expansion T^6 proxy",
+    "status": "MAC_REPORTED_COMPUTATION_PASS",
+    "upstream_source_commit": "d3cc09ade68eac73a864323ae3c3a5fa130675be",
+    "source_patch": "Temporary-only yY[NNUC] -> yY[NNUC+1] in src/bbn.c; no research-repository changes",
+    "nuclides": 26,
+    "reactions": 100,
+    "normalization": "rho_X(T) proportional to T^6 (proxy); r10=rho_X/rho_rad at T=10 MeV",
+    "headers": [
+      "r10",
+      "dd0",
+      "Yp",
+      "D_H",
+      "C12_H",
+      "C13_H",
+      "CNO_raw_H"
+    ],
+    "cases": [
+      [
+        "0",
+        "0",
+        "0.247209873587",
+        "2.4612547635e-05",
+        "4.56228362365e-16",
+        "9.69294247923e-17",
+        "6.03243032298e-16"
+      ],
+      [
+        "0.1",
+        "0.00101179465544",
+        "0.247331195573",
+        "2.46558215433e-05",
+        "4.56706031614e-16",
+        "9.70180250092e-17",
+        "6.03826085266e-16"
+      ],
+      [
+        "0.5",
+        "0.00505897327718",
+        "0.247832786819",
+        "2.45560023286e-05",
+        "4.59838313551e-16",
+        "9.76663013544e-17",
+        "6.07975973167e-16"
+      ],
+      [
+        "1",
+        "0.0101179465544",
+        "0.248450472789",
+        "2.45939770937e-05",
+        "4.63592417848e-16",
+        "9.84311256639e-17",
+        "6.12900171561e-16"
+      ],
+      [
+        "3",
+        "0.0303538396631",
+        "0.250856216257",
+        "2.48690606841e-05",
+        "4.78070429308e-16",
+        "1.01371818035e-16",
+        "6.31840877246e-16"
+      ],
+      [
+        "7",
+        "0.0708256258805",
+        "0.255418503882",
+        "2.51500585394e-05",
+        "5.06883302974e-16",
+        "1.07217728946e-16",
+        "6.69580300391e-16"
+      ],
+      [
+        "30",
+        "0.303538396631",
+        "0.276943894208",
+        "2.64306234068e-05",
+        "6.61899528772e-16",
+        "1.38161058092e-16",
+        "8.71764018742e-16"
+      ]
+    ],
+    "completed_cases": 7,
+    "mac_temp_receipt_dir_basename": "dfm-bbn.b5g60lDs",
+    "mac_reported_sha256": {
+      "scan.c": "db8daa1afdc89fab24aedbf9acd0bd0f2aba60425e891ba4946221bf87ec435b",
+      "results.csv": "76c244cc0c28ce763b254e718b01b8dddd4bc2ade4d3f9000f7321f817e12aac"
+    },
+    "caveat": "CNO_raw_H includes unstable tracked isotopes; not a post-decay stable CNO yield. Proxy is not fully entropy-consistent."
+  },
+  "primat_baseline": {
+    "name": "PRIMAT 0.3.3 429-reaction independent standard baseline",
+    "status": "MAC_REPORTED_COMPUTATION_PASS",
+    "package": "primat==0.3.3",
+    "network": "large",
+    "nuclides": 59,
+    "reactions": 429,
+    "headers": [
+      "precision_case",
+      "Yp",
+      "D_H",
+      "CNO_H",
+      "nuclides"
+    ],
+    "cases": [
+      [
+        "standard",
+        "0.24733406010142206",
+        "2.463379689190534e-05",
+        "7.818942835819604e-16",
+        "59"
+      ],
+      [
+        "tight",
+        "0.24733375261145113",
+        "2.4633973875408495e-05",
+        "7.818909255381964e-16",
+        "59"
+      ]
+    ],
+    "completed_cases": 2,
+    "relative_CNO_numerical_tolerance_difference": "4.294772652166365e-06",
+    "PRIMAT_over_AlterBBN_CNO_ratio": "1.2961513713691886",
+    "mac_temp_receipt_dir_basename": "dfm-primat.1Mt4adFK",
+    "mac_reported_sha256": {
+      "check.py": "a1dc7af0f603ea0f9b27c1e421cc5d982ee8d04c43f6ef745e2f1e378eca3349",
+      "results.json": "cd2e9215321098befe4440722da86367682ef567ead6270b519968156adf6728"
+    },
+    "caveat": "Nuclear rates and network coverage differ from legacy AlterBBN; percent-level comparison is not a controlled same-network experiment."
+  },
+  "primat_stiff": {
+    "name": "PRIMAT 0.3.3 with DFM-MKC-compatible restricted free-scalar a^-6 background contribution",
+    "status": "MAC_REPORTED_COMPUTATION_PASS",
+    "network": "large",
+    "nuclides": 59,
+    "reactions": 429,
+    "model": "rho_phi(T) = r10*(pi^2/30)*10.75*(10 MeV)^4*[a_standard(10 MeV)/a_standard(T)]^6",
+    "r10_note": "Reference rho_rad(10 MeV) used ideal g*=10.75; not automatically identical to AlterBBN's radiation normalization.",
+    "background_assumption": "PRIMAT standard a(T) and standard neutrino-decoupling history held fixed while adding rho_phi to Friedmann expansion. Not full coupled DFM-MKC kinetic dynamics.",
+    "headers": [
+      "r10",
+      "Yp",
+      "D_H",
+      "CNO_H"
+    ],
+    "cases": [
+      [
+        "0",
+        "0.24733406010142206",
+        "2.463379689190534e-05",
+        "7.818942835819604e-16"
+      ],
+      [
+        "0.1",
+        "0.24736102902326285",
+        "2.46353558785543e-05",
+        "7.821985574804245e-16"
+      ],
+      [
+        "0.5",
+        "0.24746863438908856",
+        "2.4641313785322727e-05",
+        "7.834171577323945e-16"
+      ],
+      [
+        "1",
+        "0.2476025688400781",
+        "2.46488044020937e-05",
+        "7.849345721840598e-16"
+      ],
+      [
+        "3",
+        "0.24813640473355256",
+        "2.4678575545559443e-05",
+        "7.910101108050993e-16"
+      ]
+    ],
+    "completed_cases": 5,
+    "scalar_a_minus_six_identity": "PASS (mac reported)",
+    "baseline_relative_error": "0.0",
+    "r10_1_CNO_tolerance_error": "1.593391329990368e-08",
+    "numerical_gate": "PASS",
+    "mac_temp_receipt_dir_basename": "dfm-stiff.TktGzeWz",
+    "mac_reported_sha256": {
+      "test.py": "61034a407f4e89d1334c4d342738267853efde69bd135e888fcdcd2bb8ef2d79",
+      "results.json": "85a8b320f9bd42d5a2cec13913af215769050199e66555b84ea573db918d83fb"
+    }
+  },
+  "isotope_audit": {
+    "name": "PRIMAT baseline isotope composition and r10 scan C12 response",
+    "status": "MAC_REPORTED_ISOTOPE_AUDIT_COMPLETE",
+    "primary_receipts_checked_on_mac": "Both PRIMAT results.json SHA-256 digests reported VERIFIED before this audit",
+    "baseline_CNO_isotope_number_percent_by_name": [
+      [
+        "C12",
+        "71.805223"
+      ],
+      [
+        "C13",
+        "18.748786"
+      ],
+      [
+        "N14",
+        "8.926399"
+      ],
+      [
+        "C14",
+        "0.359512"
+      ],
+      [
+        "N15",
+        "0.147759"
+      ],
+      [
+        "O16",
+        "0.012299"
+      ],
+      [
+        "O18",
+        "0.000022"
+      ],
+      [
+        "O17",
+        "0.000001"
+      ],
+      [
+        "N16",
+        "0.000000"
+      ],
+      [
+        "C11",
+        "0.000000"
+      ],
+      [
+        "N13",
+        "0.000000"
+      ],
+      [
+        "C15",
+        "0.000000"
+      ],
+      [
+        "O19",
+        "0.000000"
+      ],
+      [
+        "O15",
+        "0.000000"
+      ],
+      [
+        "C10",
+        "0.000000"
+      ],
+      [
+        "C9",
+        "0.000000"
+      ],
+      [
+        "N17",
+        "0.000000"
+      ],
+      [
+        "O20",
+        "0.000000"
+      ],
+      [
+        "C16",
+        "0.000000"
+      ],
+      [
+        "O14",
+        "0.000000"
+      ],
+      [
+        "N12",
+        "0.000000"
+      ],
+      [
+        "O13",
+        "0.000000"
+      ]
+    ],
+    "C12_response_headers": [
+      "r10",
+      "C12_fraction_percent",
+      "C12_H"
+    ],
+    "C12_response": [
+      [
+        "0",
+        "71.805223",
+        "5.614409308634e-16"
+      ],
+      [
+        "0.1",
+        "71.805238",
+        "5.616595363153e-16"
+      ],
+      [
+        "0.5",
+        "71.805256",
+        "5.625346974312e-16"
+      ],
+      [
+        "1",
+        "71.805298",
+        "5.636246117925e-16"
+      ],
+      [
+        "3",
+        "71.805444",
+        "5.679883204916e-16"
+      ]
+    ],
+    "note": "Percentages printed to 6 decimal places; zero at that precision does not establish exact zero."
+  },
+  "research_claim_boundaries": {
+    "numerical_screens": "MAC_REPORTED_COMPUTATION_PASS",
+    "exact_mac_source_replay_in_this_environment": "NOT_RUN",
+    "independent_sha256_reverification_of_mac_results": "NOT_AVAILABLE",
+    "direct_coupling_in_canonical_DFM_MKC_V1": "NONE",
+    "carbon_specific_gravity": "OPEN",
+    "full_neutrino_decoherence_and_scalar_backreaction": "OPEN",
+    "independent_ab_initio_carbon_specific_force": "OPEN",
+    "repository_scope": "Supporting BBN numerical evidence only; no alteration to canonical DFM-MKC V1."
+  }
+}
