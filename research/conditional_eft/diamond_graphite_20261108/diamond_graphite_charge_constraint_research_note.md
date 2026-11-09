@@ -1,6 +1,6 @@
 # Diamond–graphite scalar charge: microscopic EFT derivation and a conditional fifth-force constraint
 
-Date: 2026-11-08. Scope: a **new conditional low-energy EFT**, not the canonical DFM-MKC V1 action. No user repository was edited. This note's Python audit is `/mnt/data/diamond_graphite_charge_constrain.py`, with a JSON receipt.
+Date: 2026-11-08. Scope: a **new conditional low-energy EFT**, not the canonical DFM-MKC V1 action. No user repository was edited. This note's Python audit is `research/conditional_eft/diamond_graphite_20261108/diamond_graphite_charge_constrain.py`; its JSON receipt is located alongside the script in the same repository directory.
 
 ## 0. Canonical-action boundary
 
@@ -56,17 +56,17 @@ The direct constraint is on `|q_Earth (q_Ti-q_Pt)|`, multiplied by the Yukawa fa
 
 ### Illustrative one-operator result
 
-Set `d_g=d_mhat=d_deltam=d_me=0`, only `d_alpha` nonzero **at a fixed low-energy scale**; the known electromagnetic self-energy contribution to `d_C` is small but nonzero. Assume `mu r <<1`, no screening, and use simplified Damour/Donoghue dilaton charge factors from Cyncynates & Simon (2025) Table I: `Q'_e(Earth)=1.90e-3` (their illustrative Earth composition), `|Q'_e(Pt-Ti)|=1.94e-3` (Ti/Pt alloys). The charge-prime factors ignore small element-dependent offsets and RG mixing: this is an illustrative, order-of-magnitude bound, **not a global experimental analysis**.
+Set `d_g=d_mhat=d_deltam=d_me=0`, only `d_alpha` nonzero **at a fixed low-energy scale**; the known electromagnetic self-energy contribution to `d_C` is small but nonzero. Assume `mu r <<1`, no screening, and use simplified Damour/Donoghue dilaton charge factors from Cyncynates & Simon (2025) Table 1 (Pt–Ti ordering, both charge differences negative): `Q'_e(Earth)=1.90e-3` (their illustrative Earth composition), `|Q'_e(Pt-Ti)|=1.94e-3` (Ti/Pt alloys). The charge-prime factors ignore small element-dependent offsets and RG mixing: this is an illustrative, order-of-magnitude bound, **not a global experimental analysis**.
 
 Then `eta_TiPt ~=2*(1.90e-3)*(1.94e-3)*d_alpha^2`, so `|d_alpha| <= 3.08e-5` under these restrictive assumptions. The material coefficient gives `|Delta q_DG| <= approximately 8.85e-17`, and corresponding `|eta_DG| <= approximately 1.04e-23` toward the same Earth model. The small `Q_alpha^C*d_alpha` correction reduces the value slightly, so the estimate is conservative within this approximate model. **Do not interpret this as a model-independent 95% exclusion.** If the scalar range is short, screening occurs, or couplings cancel, this bound does not apply.
 
 ### Explicit cancellation counterexample
 
-With two nonzero low-energy couplings `d_me` and `d_alpha`, the MICROSCOPE test combination can be cancelled, using the same published approximate charge factors: `DeltaQme(Pt-Ti)=-3.13e-5`, `DeltaQalpha(Pt-Ti)=-1.94e-3`. Setting `d_me/d_alpha=-61.98083067` gives `Delta q_TiPt=0`. Yet `A_m*(d_me-d_C)+A_alpha*d_alpha` is generically **nonzero**, for example about `-1e-10*d_alpha` neglecting the small atomic `d_C` response. Scaling both couplings by any sufficiently small nonzero factor keeps the cancellation and EFT perturbativity. Therefore MICROSCOPE **alone cannot constrain an unrestricted operator-basis structural charge**. Other composition pairs, clocks, source geometries, ranges, and a joint likelihood are needed.
+With two nonzero low-energy couplings `d_me` and `d_alpha`, the MICROSCOPE test combination can be cancelled, using the same published approximate charge factors: `DeltaQme(Pt-Ti)=-3.13e-5`, `DeltaQalpha(Pt-Ti)=-1.94e-3`. These signs are taken together from the published Pt–Ti row: electron-mass charge difference −3.13×10⁻⁵ and electromagnetic charge difference −1.94×10⁻³. Reversing just one sign would not follow that convention and would invalidate the cancellation. Setting `d_me/d_alpha=-61.98083067` gives `Delta q_TiPt=0`. Yet `A_m*(d_me-d_C)+A_alpha*d_alpha` is generically **nonzero**, for example about `-1e-10*d_alpha` neglecting the small atomic `d_C` response. Scaling both couplings by any sufficiently small nonzero factor keeps the cancellation and EFT perturbativity. Therefore MICROSCOPE **alone cannot constrain an unrestricted operator-basis structural charge**. Other composition pairs, clocks, source geometries, ranges, and a joint likelihood are needed.
 
 ## 6. Verification and status
 
-The accompanying standard-library Python script checks the exact common-denominator identity on 9,375 rational tuples, universal-rescaling cancellation on 375 tuples, numeric coefficient intervals, conservative illustrative MICROSCOPE bound, and a nontrivial Ti–Pt null-direction example: 9,756 passing checks. No ab-initio electronic structure or phonon spectra were computed. The canonical V1 action was not modified.
+The accompanying standard-library Python script checks the exact common-denominator identity on 9,375 rational tuples, universal-rescaling cancellation on 375 tuples, numeric coefficient intervals, conservative illustrative MICROSCOPE bound, and a nontrivial Ti–Pt null-direction example: 9,750 exact rational-grid equality assertions and 3 additional Decimal assertions (9,753 assertions total); the 3 derived bound quantities are calculations, not independently asserted checks. No ab-initio electronic structure or phonon spectra were computed. The canonical V1 action was not modified.
 
 `EXACT_IDENTITY := PROVED (cross-multiplication)`;
 `FINITE_AUDIT := COMPUTATION_PASS`;
@@ -74,7 +74,7 @@ The accompanying standard-library Python script checks the exact common-denomina
 `ONE_OPERATOR_LONG_RANGE_BOUND := CONDITIONAL`;
 `FULL_FIVE_OPERATOR_DELTA_Q_BOUND := OPEN`;
 `CARBON_SPECIFIC_FIFTH_FORCE := NOT_ESTABLISHED`;
-`USER_REPO_CHANGES := NONE`.
+`USER_REPO_CHANGES := NOTE_AND_RECEIPT_UPDATED_IN_PR_334`.
 
 ## Primary sources
 
