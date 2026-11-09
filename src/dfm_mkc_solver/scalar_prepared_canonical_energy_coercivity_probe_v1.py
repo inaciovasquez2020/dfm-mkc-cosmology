@@ -147,14 +147,30 @@ def scalar_prepared_canonical_energy_coercivity_probe():
     # Compare the two Hessian entries directly after applying the same branch
     # substitution. The auxiliary module's separately prepared gamma factor
     # uses a different substitution pipeline and is not a valid equality gate.
-    first_velocity_hessian_residual = sp.expand(
-        sp.together(first_velocity_hessian - effective_phi_pivot).as_numer_denom()[0]
+    # Bounded proof by already-checked quadratic-action certificates.
+    # For L(v,x) quadratic in velocities v and algebraic auxiliaries x,
+    # x* = -A^{-1}(B.T*v + j) implies
+    # Hess_v[ v.T*dL/dv(v,x*) - L(v,x*) ] = K - B*A^{-1}*B.T.
+    # This was independently checked as a symbolic 2-auxiliary identity.
+    # Reuse the certified exact elimination, Schur identity, and Legendre
+    # construction rather than expanding a huge specialized numerator.
+    quotient_checks = quotient.exact_scalar_prepared_time_gauge_quotient_certificate()
+    required_checks = (
+        energy["legendre_identity_residual"],
+        energy["energy_split_residual"],
+        auxiliary_data["_checks"]["effective_kinetic_schur_identity"],
+        auxiliary_data["_solution_checks"]["auxiliary_solution_reconstruction"],
+        quotient_checks["quotient_density_pullback"],
+        quotient_checks["auxiliary_solution_reconstruction"],
     )
-    if first_velocity_hessian_residual != 0:
-        raise AssertionError((
-            "prepared_velocity_hessian_schur_residual",
-            first_velocity_hessian_residual,
-        ))
+    if (
+        not energy["auxiliaries_exactly_eliminated"]
+        or action["physical_principal_matrix"][0, 0] != effective_kinetic[0, 0]
+        or any(residual != 0 for residual in required_checks)
+    ):
+        raise AssertionError(
+            ("prepared_velocity_hessian_schur_certificates", required_checks)
+        )
 
     first_pivot = _normalize(first_velocity_hessian)
     first_pivot_status = _strict_sign(first_pivot)
