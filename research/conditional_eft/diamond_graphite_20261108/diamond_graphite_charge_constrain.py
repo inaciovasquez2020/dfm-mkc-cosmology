@@ -36,6 +36,8 @@ for m, ed, eg, d in product((10,100,1000), (-2,-1,0,1,2),
     assert qd==d and qg==d and qd-qg==0
     checks +=1
 
+rational_checks = checks  # All exact Fraction equality assertions above.
+
 # Ranges from Popov et al. 2019 zero-T paper (not a statistical confidence interval)
 c = D('299792458')
 M_C_per_mol = D('0.012') # kg/mol for isotopically pure carbon-12
@@ -61,7 +63,7 @@ d_alpha_bound=(eta_envelope/(2*QeEarth*abs(QePtMinusTi))).sqrt()
 # atomic-charge model if 0<d_C/d_alpha<<2.
 structural_dq_bound=A_a[1]*d_alpha_bound
 eta_dg_bound=2*QeEarth*A_a[1]*(d_alpha_bound**2)
-checks+=3
+# These are three derived Decimal quantities, not three assertions.
 
 # Construct cancellation direction, proving Ti-Pt alone cannot constrain a full EFT.
 QmePtMinusTi=D('-3.13e-5')
@@ -78,7 +80,9 @@ checks+=2
 
 receipt={
     'status':'COMPUTATION_PASS_CONDITIONAL',
-    'exact_arithmetic_checks':checks,
+    'exact_arithmetic_checks':rational_checks,
+    'additional_decimal_assertions':checks-rational_checks,
+    'derived_bound_calculations':3,
     'energy_inputs_source':'Popov et al 2019, DOI:10.1039/C8CP07592A',
     'earth_dilaton_charges_source':'Cyncynates & Simon 2025, DOI:10.1103/8mc9-6cmr, Table I',
     'experiment_source':'MICROSCOPE final 2022, DOI:10.1103/PhysRevLett.129.121102',
@@ -106,9 +110,11 @@ receipt={
        'No DFT/phonon matrix elements calculated from first principles.'
     ],
 }
-out=Path('/mnt/data/diamond_graphite_charge_constraint_receipt.json')
+out=Path(__file__).with_name('diamond_graphite_charge_constraint_receipt.json')
 out.write_text(json.dumps(receipt,indent=2)+'\n')
-print('EXACT_RATIONAL_CHECKS :=',checks)
+print('EXACT_RATIONAL_CHECKS :=',rational_checks)
+print('DECIMAL_ASSERTIONS :=',checks-rational_checks)
+print('DERIVED_BOUND_CALCULATIONS :=',3)
 print('A_M_INTERVAL :=',*[str(x) for x in A_m])
 print('A_ALPHA_INTERVAL :=',*[str(x) for x in A_a])
 print('MICROSCOPE_ENVELOPE :=',eta_envelope)
