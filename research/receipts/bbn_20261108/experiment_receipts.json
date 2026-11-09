@@ -331,7 +331,7 @@
     "independent_sha256_reverification_of_mac_results": "NOT_AVAILABLE",
     "direct_coupling_in_canonical_DFM_MKC_V1": "NONE",
     "carbon_specific_gravity": "OPEN",
-    "full_neutrino_decoherence_and_scalar_backreaction": "OPEN",
+    "full_neutrino_decoupling_and_scalar_backreaction": "OPEN",
     "independent_ab_initio_carbon_specific_force": "OPEN",
     "repository_scope": "Supporting BBN numerical evidence only; no alteration to canonical DFM-MKC V1."
   }

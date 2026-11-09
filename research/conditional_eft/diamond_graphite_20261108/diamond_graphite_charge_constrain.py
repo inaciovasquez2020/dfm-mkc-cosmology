@@ -12,6 +12,9 @@ from math import isfinite
 import hashlib
 import json
 
+if not __debug__:
+    raise SystemExit('AUDIT_ERROR: Python optimization disables assertions; rerun without -O / PYTHONOPTIMIZE')
+
 getcontext().prec = 55
 D = Decimal
 checks = 0

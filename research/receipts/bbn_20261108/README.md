@@ -22,7 +22,7 @@ Machine-readable reported values and source-hash strings are in `experiment_rece
 - Standard PRIMAT CNO/H: **7.818942835819604 × 10⁻¹⁶**; standard AlterBBN CNO_raw/H: **6.03243032298 × 10⁻¹⁶**. The ratio is **1.2961513713691886**, but the source reaction tables and unstable-isotope conventions differ.
 - PRIMAT's standard a(T) history plus added `rho_phi ∝ a^-6` gives CNO/H **7.849345721840598 × 10⁻¹⁶** at r10=1 versus **7.818942835819604 × 10⁻¹⁶** at r10=0, about **+0.389%**.
 - At r10=3, CNO/H is **7.910101108050993 × 10⁻¹⁶**, approximately **+1.166%**, with helium `Yp=0.24813640473355256` and D/H `2.4678575545559443e-05`. The same model does not establish improvement over standard BBN.
-- Carbon-12 accounts for ~71.8% and carbon-13 ~18.75% of the baseline CNO number abundance. The stable-isotope response is small and monotonic for the tested cases.
+- Carbon-12 accounts for ~71.8% and carbon-13 ~18.75% of the baseline CNO number abundance. The reported C12 response is small and monotonic for the tested cases.
 
 ## Physics limitations and open boundary
 
