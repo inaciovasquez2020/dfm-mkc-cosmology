@@ -36,7 +36,7 @@ def evaluate(terms, values):
     for coefficient,powers in terms.values():
         t=coefficient
         for v,e in zip(values,powers):
-            if e:t*=v**e
+            if e:t*=Fraction(v)**e
         result+=t
     return result
 
