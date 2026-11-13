@@ -243,3 +243,46 @@ D E_(g*,varphi*,A*) [ d/db0(g_b0,varphi_b0,A_b0)|_(b*) ] = 0.
 This is an exact on-shell solution of the **linearized coupled field equations**. In a parametrization by `s=log b0`, its circle-metric component is `delta g_ww=2g_ww`, while `delta varphi=0` and the circle Maxwell potential (fixed by `A_w(0)=0`) varies as `delta A_w=A_w`. The perturbation is nonzero and changes the physical circle circumference at fixed `w~w+2π`; a constant real rescaling of `w` is not a globally valid degree-one diffeomorphism of the fixed-period circle. Thus the background has a *genuine continuous radius-parameter degeneracy*: the field equations do not pick out `b0`.
 
 **Qualification:** On a time-dependent background, a parametric Jacobi field is **not** automatically a Fourier normal mode with zero mass; its norm, boundary conditions, gauge constraints, linear energy, and coupled stability have not been assessed. The result excludes the claim that this exact reconstructed model uniquely *selects* a finite circle size, but does not independently prove nonlinear instability. A radius-fixing dynamical condition remains OPEN.
+
+
+## Sharp maximal connected shrinking/NEC/accelerating episode
+
+**PROVED for this exact background and inverse-engineered scalar–Maxwell action, not for all five-dimensional cosmologies.** Write the circle Hubble parameter `F_c(t)=t-1/10` and the scalar kinetic function `C(t)=rho+p_w=3/10+(264/25)t-(198/25)t²`. The lower root of `C` is exactly
+
+```text
+t_- = 2/3 - sqrt(2101)/66 ≈ -0.02782828.
+```
+
+The largest **connected open interval containing t=0** on which the three-space expands, the circle strictly shrinks, the 4D Einstein-frame scale factor expands and accelerates, the five-dimensional NEC/DEC hold, and the canonical scalar–Maxwell reconstruction has `C>0`, `D>0`, `V>0`, `f>0`, is
+
+```text
+t_- < t < 1/10.
+```
+
+**Exact boundary proof.** The rational values of `C` at `-7/250=-0.028` and `-27/1000=-0.027` have opposite signs, and `C'(t)>0` throughout `[-0.028,0.1]`; thus the unique lower root in that bracket is `t_-`. Every other required inequality has **strictly positive quadratic Bernstein coefficients** over the full *larger* interval `[-0.028,0.1]`, verified as exact Fractions. Therefore no other condition fails before the circle-contraction rate reaches `F_c=0` at `t=0.1`. For `t<t_-` close to the root, circle NEC fails; for `t>0.1`, the circle grows. At `t=t_-`, the canonical scalar speed `dot(varphi)=sqrt(C)` vanishes, so the inverse-scalar-clock construction ceases to be a local diffeomorphism; the strict physical-action interval excludes the endpoint.
+
+The Einstein-frame logarithmic scale factor is `log a_E(t)=19t/20-7t²/20`. The supremum of accelerated e-folds within this **maximal connected episode** is
+
+```text
+N_max = 29*sqrt(2101)/3960 - 21529/99000
+      ≈ 0.11820791157,
+117/1000 < N_max < 119/1000 < 1.
+```
+
+The exact script `research/5d/nec_transient_maximal_window_audit.py` verifies the root bracket, monotonicity, full-interval Bernstein positivity, and a rigorous rational enclosure of the e-fold supremum. It does not use finite grid sampling to claim global positivity. This **sharpens** the previous 0.101805-e-fold closed subinterval: one may extend the construction slightly further, but **cannot obtain even one e-fold without changing the metric, action solution branch, or required properties**. Adjusting the free constant circle prefactor `b0` has no effect on `H,F_c,C,D,A` or `Delta N_E`.
+
+### General circle-NEC acceleration identity
+
+For an arbitrary smooth homogeneous metric `-dt²+a(t)² dvecx²+b(t)²dw²` in standard 5D Einstein gravity, with `H=dot a/a`, `F_c=dot b/b`, and `kappa5²=1`, the exact circle-null stress is
+
+```text
+rho+p_w = -3 [dot H+H²-H*F_c].
+```
+
+The Einstein-frame acceleration numerator `A=dot H+dot F_c/2+H²+H*F_c/2` consequently satisfies the **identity**
+
+```text
+A = (dot F_c+3H*F_c)/2 - (rho+p_w)/3.
+```
+
+Thus under the circle NEC, `A>0` requires `dot F_c+3H*F_c>0`; equivalently `d(a³ F_c)/dt>0`. With `F_c<0`, the contraction rate weighted by 3-volume must move toward zero. This is a **necessary** condition only, not a global no-go theorem; the transient counterexample in this PR meets it. The sharp 0.1182-e-fold result belongs solely to the constructed metric.
