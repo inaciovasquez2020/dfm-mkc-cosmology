@@ -38,6 +38,10 @@ assert ratio_hi==F(20000000,18840197)
 assert ratio_lo>F(1)
 assert ratio_hi<F(107,100)
 assert F(1)/F(19,20)==F(20,19)
+# log a_E(t)=19*t/20-7*t*t/20, hence across [-r,r]:
+# Delta N_E=log[a_E(r)/a_E(-r)]=19*r/10=19/1000 e-folds.
+efolds=F(19,10)*r
+assert efolds==F(19,1000) and efolds<F(1,50)
 
 # For all w-Fourier indices n, the mass/Hubble ratio scales |n|.
 # n=1 does not decouple parametrically: ratio lies near one.
@@ -50,6 +54,7 @@ print("EINSTEIN_FRAME_HUBBLE := (19/20-7*t/10)/sqrt(b)")
 print("EXACT_KK_HUBBLE_RATIO_AT_ZERO := 20/19")
 print("FULL_INTERVAL_RATIO_STRICT_BOUNDS := ",ratio_lo," < m1,E/H_E < ",ratio_hi)
 print("FULL_INTERVAL_SIMPLE_BOUND := 1 < m1,E/H_E < 107/100")
+print("TOTAL_EINSTEIN_FRAME_EFOLDS_ON_CERTIFIED_INTERVAL := 19/1000")
 print("PARAMETRIC_KK_HUBBLE_SEPARATION := NOT_ESTABLISHED")
 print("ZERO_MODE_LOW_ENERGY_TRUNCATION_AT_HUBBLE_SCALE := NOT_CONTROLLED_BY_KK_GAP")
 print("MASS_SPECTRUM_FOR_MIXED_GRAVITATIONAL_MATTER_MODES := NOT_RUN")
