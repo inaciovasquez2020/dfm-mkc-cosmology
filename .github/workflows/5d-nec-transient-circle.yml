@@ -6,6 +6,7 @@ on:
       - 'research/5d/nec_transient_scalar_maxwell_action_audit.py'
       - 'research/5d/nec_transient_kk_hubble_gap_audit.py'
       - 'research/5d/nec_transient_extended_interval_radius_audit.py'
+      - 'research/5d/nec_transient_maximal_window_audit.py'
       - 'research/5d/NEC_TRANSIENT_ACCELERATING_CIRCLE_STATUS.md'
       - '.github/workflows/5d-nec-transient-circle.yml'
   push:
@@ -14,6 +15,7 @@ on:
       - 'research/5d/nec_transient_scalar_maxwell_action_audit.py'
       - 'research/5d/nec_transient_kk_hubble_gap_audit.py'
       - 'research/5d/nec_transient_extended_interval_radius_audit.py'
+      - 'research/5d/nec_transient_maximal_window_audit.py'
       - 'research/5d/NEC_TRANSIENT_ACCELERATING_CIRCLE_STATUS.md'
       - '.github/workflows/5d-nec-transient-circle.yml'
 permissions:
@@ -34,3 +36,5 @@ jobs:
         run: python3 -B research/5d/nec_transient_kk_hubble_gap_audit.py
       - name: Wider exact interval and radius-adjustable KK hierarchy
         run: python3 -B research/5d/nec_transient_extended_interval_radius_audit.py
+      - name: Maximal connected shrinking/NEC/acceleration interval and e-fold cap
+        run: python3 -B research/5d/nec_transient_maximal_window_audit.py
