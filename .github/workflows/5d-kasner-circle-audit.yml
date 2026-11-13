@@ -1,0 +1,26 @@
+name: Exact 5D vacuum Kasner circle audit
+on:
+  pull_request:
+    paths:
+      - 'research/5d/kasner_shrinking_circle_exact_audit.py'
+      - 'research/5d/KASNER_SHRINKING_CIRCLE_STATUS.md'
+      - '.github/workflows/5d-kasner-circle-audit.yml'
+  push:
+    paths:
+      - 'research/5d/kasner_shrinking_circle_exact_audit.py'
+      - 'research/5d/KASNER_SHRINKING_CIRCLE_STATUS.md'
+      - '.github/workflows/5d-kasner-circle-audit.yml'
+permissions:
+  contents: read
+jobs:
+  exact-kasner-vacuum:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: Install exact symbolic dependency
+        run: python3 -m pip install sympy
+      - name: Exact 5D Kasner Ricci, reduction and KK hierarchy
+        run: python3 -B research/5d/kasner_shrinking_circle_exact_audit.py
