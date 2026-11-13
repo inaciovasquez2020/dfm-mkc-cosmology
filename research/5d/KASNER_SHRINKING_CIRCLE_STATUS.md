@@ -70,3 +70,23 @@ python3 -B research/5d/kasner_shrinking_circle_exact_audit.py
 ```
 
 Source script independently verifies two nonstatic branches, 25-component Ricci zero, Einstein-frame Friedmann/Klein–Gordon equations, deceleration, Kretschmann value, the KK/Hubble ratios and a nonvacuum negative-control exponent. A timeout or missing SymPy is **INCOMPLETE**, never PASS. Local Mac branch and worktree not inspected.
+
+
+## New: five-dimensional NEC power-law acceleration obstruction (2026-11-13)
+
+**PROVED under stated hypotheses.** This is a narrow special-case consequence of classical higher-dimensional no-go results, **not a new general theorem**. Let the same diagonal homogeneous metric have arbitrary positive 3-space expansion exponent `p>0` and *shrinking* circle exponent `q<0`; allow an arbitrary source, cosmological constant and positive gravitational coupling, but require standard 5D Einstein equations and the five-dimensional null energy condition (NEC).
+
+For the null vectors consisting of one unit timelike vector plus a unit 3-space or circle vector, direct Ricci contraction gives
+
+```text
+t² Ric5(V_circle,V_circle) = -3 p (p-q-1)
+t² Ric5(V_space,V_space)  = 2p+q+pq-q².
+```
+
+The cosmological and metric-scalar terms vanish in null contractions of Einstein's equations. Therefore NEC forces `p(p-q-1)<=0`. Since `p>0`, this is `p<=1+q<1`; in particular `q>-1`. The four-dimensional Einstein proper time is `tau=t^(1+q/2)/(1+q/2)`; the reduced scale factor is `aE=t^(p+q/2)`. If the Einstein-frame universe is expanding, its power-law index is `n=(p+q/2)/(1+q/2)`. Because `q>-1`, its denominator is positive; `p<1` implies **n<1**, so acceleration is impossible. (If `n<=0`, it is not an expanding solution.) Thus there is no expanding, accelerating 4D Einstein-frame power-law with a shrinking circle and 5D NEC in this ansatz.
+
+**Independent exact bounded adversarial check:** `research/5d/shrinking_circle_nec_power_law_audit.py` enumerates 512 rational pairs `p=i/8` (`1<=i<=32`), `q=j/8` (`-16<=j<=-1`), evaluates both NEC contractions, and checks none of the 16 NEC-admissible pairs accelerates. A deliberately accelerating `p=3/2, q=-1/4` negative control fails circle NEC; the exact vacuum Kasner pair `p=1/2,q=-1/2` saturates both conditions. These finite counts challenge the symbolic theorem but do not prove unrestricted metrics.
+
+**Prior art:** Wesley, *Oxidised cosmic acceleration*, JCAP 01 (2009) 041, DOI https://doi.org/10.1088/1475-7516/2009/01/041, proves substantially broader no-go/e-fold bounds for dynamical extra dimensions under stated energy conditions. This elementary power-law consequence is not claimed novel. Other potential loopholes—non-power-law transients, warping, extra stresses violating NEC, and modified gravity—remain outside this theorem. This result rules out **one exact combination of desired features**; it does not imply that all 5D accelerating cosmologies are impossible, nor that a KK origin could be inferred from 4D event data.
+
+**Verification:** run `python3 -B research/5d/shrinking_circle_nec_power_law_audit.py` and the existing exact Kasner script at the same exact HEAD; CI must report both green before promotion. No Lean theorem is claimed.
