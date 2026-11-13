@@ -73,6 +73,14 @@ assert F(9,10)<V[0]<=V[1]<F(91,100)
 assert F(5,4)<V2[0]<=V2[1]<F(13,10)
 # Canonical radion phi=sqrt(3/2)log b: m_phi²=(2/3)*b²*V''.
 assert times(V2,F(2,3))[0]>0
+# On a de Sitter stationary point H_E²=V/3 and radion m_phi²=2V''/3.
+# Thus (m_phi/H_E)²=2V''/V. Interval bounds show a positive but
+# Hubble-scale radion, not a second parametrically decoupled mode.
+radH2_lo=2*V2[0]/V[1]
+radH2_hi=2*V2[1]/V[0]
+assert radH2_lo>F(33,20)**2
+assert radH2_hi<F(17,10)**2
+print("RADION_MASS_OVER_H := STRICTLY_BETWEEN_33/20_AND_17/10")
 
 # B=3/(64*pi^6), and pi>3 implies B<1/10000.
 # For this normalization m1,KK,E=1 (b=1) while H²=V/3.
