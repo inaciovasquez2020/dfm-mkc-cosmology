@@ -1,0 +1,24 @@
+name: Exact 5D massive periodic boson Casimir no-go
+on:
+  pull_request:
+    paths:
+      - 'research/5d/massive_periodic_boson_casimir_no_ds_exact.py'
+      - 'research/5d/MASSIVE_PERIODIC_BOSON_CASIMIR_NO_GO.md'
+      - '.github/workflows/5d-massive-periodic-boson-no-go.yml'
+  push:
+    paths:
+      - 'research/5d/massive_periodic_boson_casimir_no_ds_exact.py'
+      - 'research/5d/MASSIVE_PERIODIC_BOSON_CASIMIR_NO_GO.md'
+      - '.github/workflows/5d-massive-periodic-boson-no-go.yml'
+permissions:
+  contents: read
+jobs:
+  exact-massive-periodic-boson:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: Exact spectral derivative quartic and radion no-go
+        run: python3 -B research/5d/massive_periodic_boson_casimir_no_ds_exact.py
