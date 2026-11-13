@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'research/5d/kasner_shrinking_circle_exact_audit.py'
+      - 'research/5d/shrinking_circle_nec_power_law_audit.py'
       - 'research/5d/KASNER_SHRINKING_CIRCLE_STATUS.md'
       - '.github/workflows/5d-kasner-circle-audit.yml'
   push:
@@ -24,3 +25,5 @@ jobs:
         run: python3 -m pip install sympy
       - name: Exact 5D Kasner Ricci, reduction and KK hierarchy
         run: python3 -B research/5d/kasner_shrinking_circle_exact_audit.py
+      - name: NEC and Einstein-frame acceleration power-law obstruction
+        run: python3 -B research/5d/shrinking_circle_nec_power_law_audit.py
