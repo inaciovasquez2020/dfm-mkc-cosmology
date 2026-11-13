@@ -165,6 +165,8 @@ At `t=0` the ratio is exactly `20/19 ≈ 1.05263`. For **all** `|t|≤1/100`, th
 19979/19140 < m_(1,E)/HE < 20000000/18840197 < 107/100.
 ```
 
+The exact accumulated Einstein-frame e-fold count on the certified interval is only `Delta N_E = log[a_E(1/100)/a_E(-1/100)] = 19/1000 = 0.019`, because `log a_E(t)=19t/20-7t²/20`. Thus the result is a **short transient**, not a sustained inflationary phase.
+
 Hence the first extra-dimensional Fourier excitation is **of the same order as the Hubble scale throughout the entire certified accelerating interval**. This is a decisive *lack of parametric separation*: the low-energy zero-mode truncation is **not justified by a large KK mass/Hubble ratio** in the constructed example. It does not by itself prove that any mode is a ghost, tachyon, or unstable, and a complete coupled fluctuation analysis remains NOT_RUN.
 
 The standalone stdlib exact checker `research/5d/nec_transient_kk_hubble_gap_audit.py` verifies the rational inequalities without evaluating any floating-point functions. The compactification remains local and inverse-engineered. Do not interpret the additional action as a completed physical five-dimensional cosmology, or treat the background's acceleration as a distinctive Chronos observable. The zero-mode observables remain reproducible by an appropriately matched 4D effective theory.
