@@ -45,7 +45,7 @@ for n,b,q,xi_w,r,theta in product(
     if q and xi_w:
         assert theta_prime!=theta
     count+=1
-assert count==6*3*3*3*3*3
+assert count==6*3*3*3*3*2
 # Under 4D Fourier diffeomorphisms with xi^w=0, an
 # isolated graviphoton B_mu,n transforms by k xi_mu/b².
 for k,b,xi_mu,dxi_w in product((Q(-3),Q(1),Q(4)),
