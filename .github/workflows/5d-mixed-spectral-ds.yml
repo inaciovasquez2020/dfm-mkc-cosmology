@@ -5,6 +5,7 @@ on:
       - 'research/5d/mixed_periodic_spectral_ds_certificate.py'
       - 'research/5d/mixed_spectral_completeness_cutoff_audit.py'
       - 'research/5d/mixed_spectral_large_radius_scaling_audit.py'
+      - 'research/5d/mixed_spectral_quantum_nec_background_audit.py'
       - 'research/5d/MIXED_PERIODIC_SPECTRAL_DS_STATUS.md'
       - '.github/workflows/5d-mixed-spectral-ds.yml'
   push:
@@ -12,6 +13,7 @@ on:
       - 'research/5d/mixed_periodic_spectral_ds_certificate.py'
       - 'research/5d/mixed_spectral_completeness_cutoff_audit.py'
       - 'research/5d/mixed_spectral_large_radius_scaling_audit.py'
+      - 'research/5d/mixed_spectral_quantum_nec_background_audit.py'
       - 'research/5d/MIXED_PERIODIC_SPECTRAL_DS_STATUS.md'
       - '.github/workflows/5d-mixed-spectral-ds.yml'
 permissions:
@@ -30,3 +32,5 @@ jobs:
         run: python3 -B research/5d/mixed_spectral_completeness_cutoff_audit.py
       - name: Exact large-radius scaling and persistent omitted-boson obstruction
         run: python3 -B research/5d/mixed_spectral_large_radius_scaling_audit.py
+      - name: Verify Casimir null stress needed by de Sitter background Einstein equation
+        run: python3 -B research/5d/mixed_spectral_quantum_nec_background_audit.py
