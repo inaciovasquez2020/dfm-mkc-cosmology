@@ -148,3 +148,46 @@ V''_(extra)(R)/[B R^-8] = V''_(truncated)(1)/B - 30*zeta(5) < -28
 for every `R>0`. The corresponding canonical radion mass squared remains negative for all radii. Thus merely increasing the circle radius **does not repair the actual missing-field-content question**.
 
 **Scope of achievement:** A formal *parametrically scale-separated region* exists for the explicitly **truncated and tuned one-loop potential**, so the reference cutoff problem is avoidable. This does not prove higher-loop suppression for the complete action, quantum consistency, the correct winding/graviphoton determinant, or a viable de Sitter state. The smallest physical blocker remains computing and auditing the full coupled five-dimensional fluctuation spectrum, not further tuning the radius.
+
+
+## Stationary de Sitter background needs quantum circle-null stress
+
+**PROVED as a necessary on-background identity for the specified reduced Casimir potential; not a complete covariant 5D quantum source or fluctuation operator.** At the candidate stationary radius `b*=1`, the 4D Einstein-frame de Sitter vacuum has `H_E²=V_E(1)/3`, and the 5D background `ds5²=g_J+b²dw²` has Jordan-frame `H_J=sqrt(b)H_E`. With unit-normalized future time vector `u` and circle vector `e_w`, the null vector `N=u+e_w` satisfies
+
+```text
+Ric5(N,N)=-3H_J²=-3b H_E²=-b V_E.
+```
+
+The bare bulk cosmological constant does not contribute to `T(N,N)`. With fixed scalar winding `q`, the canonical winding contribution satisfies `T_winding(N,N)=q²/(2b²)`. For the specific benchmark `A=q²/4=B/2` and `b=1`, this equals `B`, where `B=3/(64π^6)`.
+
+Define the **Jordan reduced Casimir energy per coordinate-circle length** by `W_J(b)=b² V_Cas,E(b)`. Its symmetry-preserving stress response is `rho_C=W_J/b` and `p_w,C=-W_J'(b)`; hence
+
+```text
+T_Cas(N,N)=rho_C+p_w,C=W_J/b-W_J'
+          =-b V_Cas,E-b² V'_Cas,E.
+```
+
+For the actual truncated spectrum `V_Cas,E(b)=B G(b)/b^6` with `G(b)=4S(mb)-ζ(5)`, this gives at `b=1`:
+
+```text
+T_Cas(N,N)/B = 5G(1)-G'(1).
+```
+
+Using the **exact stationary condition** `Λ/B=-3/2+G'(1)-6G(1)`, and the certified `V_E(1)/B=-1+G'(1)-5G(1)`, the full 5D circle-null equation becomes the identity
+
+```text
+[ T_winding(N,N)+T_Cas(N,N) ] / B
+     = 1 + 5G(1)-G'(1)
+     = - V_E(1)/B
+     = Ric5(N,N)/B.
+```
+
+The full infinite-series rational certificate establishes
+
+```text
+-191/100 < T_Cas(N,N)/B < -19/10.
+```
+
+**Conclusion:** A negative quantum circle-null stress contribution is **required** for the candidate positive-curvature compactification. It is not automatically unphysical: renormalized quantum Casimir stress is not constrained by the classical pointwise NEC. However, the classical Einstein–winding action **alone does not solve the 5D background equations** at this de Sitter point, so evaluating only its unconstrained classical Hessian around that background would be an *off-shell*, incomplete fluctuation test. The reduced one-loop Casimir potential supplies consistent **homogeneous background stress and radion response**, but not the full nonlocal covariant quantum action's second variation with respect to all `w`-dependent metric, winding, and gauge fluctuations. It also omits graviton and winding/graviphoton determinants as already documented. Thus **the complete gauge-fixed quadratic Hessian remains OPEN**, despite the present background identity passing.
+
+Reproduce using the exact standard-library checker `research/5d/mixed_spectral_quantum_nec_background_audit.py`, now required by the dedicated workflow. This computation does not establish a violation of a quantum-averaged energy condition, a complete quantum stress tensor, nor any physically stable 5D spacetime.
