@@ -39,6 +39,17 @@ In the standard massless case `p=6`, three exact rational witnesses at `A=b=1` s
 
 The last row establishes **only zero-mode radion curvature**, not full KK perturbation stability.
 
+## Exact adversarial two-power boundary
+
+The single-power hypothesis is essential. As a **purely algebraic effective-potential counterexample**, consider
+
+```text
+V(b) = Lambda/b + A/b³ + C/b⁶ + D/b⁷,
+Lambda=-1/10, A=1, C=-2, D=13/10, b*=1.
+```
+
+A direct exact-fraction calculation gives `V(b*)=1/5>0`, `V'(b*)=0`, and `V''(b*)=3/5>0`. Thus the four-dimensional canonical radion has positive mass curvature and de Sitter vacuum energy at this stationary point. **This is NOT a constructed five-dimensional quantum field theory:** the two coefficients/powers have not been derived from any consistent spectrum, boundary conditions, renormalization scheme or UV completion. It illustrates why the no-go is a theorem about one inverse-power correction and not a prohibition on all nonmonomial Casimir corrections. The independent test is included in the same exact verifier.
+
 ## Consequences for the active 5D program
 
 1. **Winding breaks the scaling degeneracy** of the homogeneous electric Maxwell family in PR #340 because the winding term scales as `1/b` in the 5D Jordan homogeneous Lagrangian, while that family's other terms all scale linearly with `b`. Breaking the degeneracy is not itself evidence of a stable accelerating vacuum.
