@@ -27,7 +27,7 @@ Therefore
 (∂chi)²_5 = (dtheta-qB)²_gJ + q²/b².
 ```
 
-The inverse-metric identity is checked directly for eight exact nontrivial 5×5 rational metrics, including Lorentzian signature, and 128 exact choices of winding and scalar-gradient data. It also follows algebraically for arbitrary nondegenerate `gJ` by Schur complements; the finite checks are adversarial sanity tests, not the proof.
+The inverse-metric identity is checked directly for eight exact nontrivial 5×5 rational metrics, including Lorentzian signature, and 64 exact combined tests of metric, winding and scalar-gradient data. It also follows algebraically for arbitrary nondegenerate `gJ` by Schur complements; the finite checks are adversarial sanity tests, not the proof.
 
 The five-dimensional coordinate transformation `w' = w-lambda(x)` induces `B'=B+d lambda`, `theta'=theta+q lambda`; therefore `dtheta-qB` is gauge invariant. A globally single-valued `lambda` gives an ordinary connected gauge transformation. One can use unitary gauge `theta=0` locally for `q≠0`, but this is not justification for deleting the longitudinal polarization: the vector acquires it.
 
