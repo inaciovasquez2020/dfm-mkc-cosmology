@@ -56,6 +56,16 @@ assert (L,V,V2)==(F(-12,5),F(-3,2),F(3))
 # phi=sqrt(3/2) log(b), (db/dphi)^2=2 b²/3.
 assert F(2,3)*F(1)**2*F(-9)<0
 assert F(2,3)*F(1)**2*F(3)>0
+# Two distinct inverse powers evade the *single-power potential* theorem.
+# Purely algebraic example: not a derived one-loop Casimir spectrum.
+# V=L/b+A/b³+C/b⁶+D/b⁷, with L=-1/10,A=1,C=-2,D=13/10,b=1.
+L,A,C,D,b=F(-1,10),F(1),F(-2),F(13,10),F(1)
+V=L/b+A/b**3+C/b**6+D/b**7
+Vp=-L/b**2-3*A/b**4-6*C/b**7-7*D/b**8
+Vpp=2*L/b**3+12*A/b**5+42*C/b**8+56*D/b**9
+assert (V,Vp,Vpp)==(F(1,5),F(0),F(3,5))
+print("TWO_POWER_POSITIVE_ENERGY_POSITIVE_RADION_CURVATURE_WITNESS := PASS")
+print("TWO_POWER_TERMS_FROM_CONSISTENT_5D_QUANTUM_MATTER := NOT_ESTABLISHED")
 print("MASSLESS_CASIMIR_p6 := PASS")
 print("DE_SITTER_STATIONARY_MAXIMUM := PASS")
 print("MINKOWSKI_STATIONARY_NEGATIVE_CURVATURE := PASS")
