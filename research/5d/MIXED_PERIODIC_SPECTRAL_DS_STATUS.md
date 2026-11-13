@@ -115,3 +115,36 @@ M4²/M5² = 2*pi  (at b*=1/M5).
 Therefore **the first KK excitation is at the nominal 5D Planck scale**, and the massive Dirac field is also of the same order. The previously certified `m_KK/H>100` is a hierarchy relative to curvature, **not a hierarchy below the gravitational cutoff**. Without further parameter scaling and control of gravitational loops, this concrete numerical example does not establish a reliable five-dimensional EFT.
 
 These two objections are independently audited in `research/5d/mixed_spectral_completeness_cutoff_audit.py` (Python stdlib, exact interval arithmetic), now required by the dedicated workflow. **A stable physical de Sitter compactification is NOT ESTABLISHED.** The credible result is a stable local radion minimum in the explicitly truncated one-loop potential, plus a demonstrated lack of robustness to an extra bosonic determinant. Before promotion as a physical source, the complete coupled determinant and a parameter regime with `1/b\ll M5`, `m_f\ll M5`, and controlled quantum corrections must be constructed.
+
+
+## Constructive large-radius scaling: solves the reference cutoff issue, not spectral completeness
+
+The cutoff issue `b*M5=1` is a limitation of the **numerical reference normalization**, not a universal no-go for the truncated one-loop spectral shape. In units `M5=1`, put `b=R x`, fix `R>0`, and scale the microscopic input parameters as
+
+```text
+m_Dirac(R)=5/(2*pi*R),
+A(R)=B/(2 R³),   Lambda(R)=Lambda0/R^5,
+Lambda0/B=-3/2+G1-6G0.
+```
+
+The integer winding remains `n=1`, but its scalar period/kinetic coefficient must be tuned so that the winding slope `q²=4A(R)` scales as `R^-3`. These choices **change the microscopic couplings across the family**; they do not follow dynamically from the action's equations.
+
+At fixed dimensionless `x=b/R`, the complete **included** one-loop potential satisfies exactly
+
+```text
+V_R(R*x)=V_1(x)/R^6,
+V'_R(R*x)=V'_1(x)/R^7,
+V''_R(R*x)=V''_1(x)/R^8.
+```
+
+The stationary point and positive zero-mode curvature of the **truncated** model therefore persist, with `H_E²~R^-6` and `m_radion²~R^-6`. The Einstein-frame first spectator KK mass scales as `R^-3/2`, so `m_KK/H_E~R^(3/2)`. In the local 5D Jordan frame, `m_KK/M5=R^-1`, and `m_Dirac/M5=5/(2πR)`. Thus `R≫1` can put the KK tower and Dirac mass well below the nominal 5D gravitational scale while retaining a large KK/H ratio **in this tuned potential family**.
+
+For a rigorous example, `R=100` yields `m_KK/M5=1/100`, `m_Dirac/M5<1/100`, and `m_KK/H_E>100000`, using the exact previously certified spectral energy bound and `π>3`. The independent stdlib checker `research/5d/mixed_spectral_large_radius_scaling_audit.py` tests the exact scaling identity at bounded rational inputs and checks these inequalities without floats.
+
+**However, the missing-spectrum instability is scale-invariant:** adding the independent free massless bosonic determinant and readjusting `Lambda(R)` gives
+```text
+V''_(extra)(R)/[B R^-8] = V''_(truncated)(1)/B - 30*zeta(5) < -28
+```
+for every `R>0`. The corresponding canonical radion mass squared remains negative for all radii. Thus merely increasing the circle radius **does not repair the actual missing-field-content question**.
+
+**Scope of achievement:** A formal *parametrically scale-separated region* exists for the explicitly **truncated and tuned one-loop potential**, so the reference cutoff problem is avoidable. This does not prove higher-loop suppression for the complete action, quantum consistency, the correct winding/graviphoton determinant, or a viable de Sitter state. The smallest physical blocker remains computing and auditing the full coupled five-dimensional fluctuation spectrum, not further tuning the radius.
