@@ -149,3 +149,24 @@ which the standalone exact-rational verifier checks coefficient by coefficient. 
 **Remaining OPEN:** Why the particular reconstructed `V,f` should be selected by independent physics; extension beyond the local interval; radion and full perturbative/KK mode stability; empirical 5D-specific predictions and an observationally distinguishing Chronos event-sample law. A local action admitting a given solution does not mean the solution is an attractor or a physical model of our universe.
 
 **Prior-art context:** Scalar-dependent gauge kinetic functions and anisotropic Einstein–scalar–vector cosmologies are established constructions; see Do and Kao, *Anisotropic power-law inflation of the five dimensional scalar–vector and scalar-Kalb–Ramond model*, European Physical Journal C 78, 531 (2018), https://doi.org/10.1140/epjc/s10052-018-6008-5. Neither this source-reconstruction mechanism nor the locally engineered solution is presented as a novel physical result.
+
+
+## Independent KK/Hubble separation audit (2026-11-13)
+
+**COMPUTATION_PASS for the exact interval bound; physical EFT control NOT ESTABLISHED.** This audit concerns a *minimally coupled five-dimensional massless spectator scalar* with periodic coordinate `w ~ w+2π`, rather than the full coupled metric–scalar–Maxwell fluctuation spectrum. Its instantaneous Fourier mass for mode `n` in the 4D Einstein frame is `m_(n,E)=|n| b^(-3/2)`; this follows from the Jordan circle gradient contribution `n²/b²` and the conformal map `gE=b*gJ`. The Einstein-frame Hubble parameter is `HE=(H+F_c/2)/sqrt(b)`. Therefore the first Fourier mode obeys the **exact identity**
+
+```text
+m_(1,E)/HE = 1/[b(t)*(19/20-7t/10)].
+```
+
+At `t=0` the ratio is exactly `20/19 ≈ 1.05263`. For **all** `|t|≤1/100`, the logarithm `x=log b=-t/10+t²/2` satisfies `|x|≤21/20000`. Applying the elementary bounds `1-u≤exp(x)≤1/(1-u)` for `|x|≤u<1`, and `943/1000 ≤ H+F_c/2 ≤ 957/1000`, gives strict rational bounds
+
+```text
+19979/19140 < m_(1,E)/HE < 20000000/18840197 < 107/100.
+```
+
+Hence the first extra-dimensional Fourier excitation is **of the same order as the Hubble scale throughout the entire certified accelerating interval**. This is a decisive *lack of parametric separation*: the low-energy zero-mode truncation is **not justified by a large KK mass/Hubble ratio** in the constructed example. It does not by itself prove that any mode is a ghost, tachyon, or unstable, and a complete coupled fluctuation analysis remains NOT_RUN.
+
+The standalone stdlib exact checker `research/5d/nec_transient_kk_hubble_gap_audit.py` verifies the rational inequalities without evaluating any floating-point functions. The compactification remains local and inverse-engineered. Do not interpret the additional action as a completed physical five-dimensional cosmology, or treat the background's acceleration as a distinctive Chronos observable. The zero-mode observables remain reproducible by an appropriately matched 4D effective theory.
+
+**Current weakest obstruction:** construct a demonstrably healthy fluctuation spectrum with a controlled regime `m_KK/H_E ≫ 1` if an effectively 4D cosmology is intended, **and** find a measurable difference relative to an equally specified 4D comparator. For this exact background the first hierarchy condition already fails quantitatively; further fitting of its scalar potential cannot fix that fact without changing its geometry or normalization.
