@@ -172,3 +172,61 @@ Hence the first extra-dimensional Fourier excitation is **of the same order as t
 The standalone stdlib exact checker `research/5d/nec_transient_kk_hubble_gap_audit.py` verifies the rational inequalities without evaluating any floating-point functions. The compactification remains local and inverse-engineered. Do not interpret the additional action as a completed physical five-dimensional cosmology, or treat the background's acceleration as a distinctive Chronos observable. The zero-mode observables remain reproducible by an appropriately matched 4D effective theory.
 
 **Current weakest obstruction:** construct a demonstrably healthy fluctuation spectrum with a controlled regime `m_KK/H_E ≫ 1` if an effectively 4D cosmology is intended, **and** find a measurable difference relative to an equally specified 4D comparator. For this exact background the first hierarchy condition already fails quantitatively; further fitting of its scalar potential cannot fix that fact without changing its geometry or normalization.
+
+
+## Refined interval and tunable radius: corrected scope (2026-11-13)
+
+**PROVED for this specific inverse-engineered local action family; not an observational or stability result.** The earlier `I=[-1/100,1/100]`, `0.019` e-fold and `m_{1,E}/H_E≈1` statements remain correct for the **particular unit-radius normalization** and originally checked interval. They are **not universal limitations** of the family.
+
+### A rigorously longer interval
+
+The analytic geometry and matter functions can be continued on the closed rational interval
+
+```text
+I_extended = [-1/50,9/100] = [-0.02,0.09].
+```
+
+A new independent standard-library certificate, `research/5d/nec_transient_extended_interval_radius_audit.py`, verifies strict positivity of all necessary quadratic (or lower-degree) polynomials on the **entire interval** using Bernstein coefficients, not grid sampling. The guarded quantities are: `H>0`, `-F_c>0`, `rho>0`, `rho±p3>0`, `rho±pw>0`, `C=rho+pw>0`, `D=p3-pw>0`, `V>0`, `H+F_c/2>0`, and the exact 4D acceleration numerator `A>0`. The scalar clock is strictly monotone and the reconstructed positive `f(varphi)` remains smooth; the field equations continue to hold as exact identities.
+
+Since `log aE(t)=19t/20-7t²/20`, the complete certified extended episode accumulates
+
+```text
+Delta N_E = 20361/200000 = 0.101805 e-folds.
+```
+
+This is longer than the original 0.019-e-fold certificate, but remains **far from sustained inflation**; no arbitrary-duration acceleration is asserted.
+
+### One-parameter exact circle-radius family
+
+The background ansatz allows an arbitrary constant prefactor `b0>0`:
+
+```text
+b_(b0)(t)=b0 exp(-t/10+t²/2).
+```
+
+The logarithmic rates `H` and `F_c` and therefore the 5D Einstein tensor in an orthonormal frame are independent of `b0`. The *same* scalar clock `varphi(t)`, potential `V(varphi)`, and positive coupling `f(varphi)=a(t)^(-6)/D(t)` remain unchanged. Choose instead the circle-directed Maxwell field
+
+```text
+dot A_w = b_(b0)(t) a(t)^3 D(t).
+```
+
+Then the circle electric energy `f(dot A_w/b)^2/2=D/2`, and the conserved Maxwell flux `a³ f dot A_w/b=1`; hence the Einstein equations and scalar equation persist **exactly** for each `b0>0`. The action is held fixed, but this is a **continuous solution family**, not a dynamically fixed or selected circle size. Flux and compact-gauge Wilson-line quantum restrictions have not been independently audited.
+
+For an explicitly named *minimally coupled massless 5D spectator scalar* on a unit coordinate circle, the first KK-to-Einstein-Hubble ratio is
+
+```text
+m_(1,E)/H_E = 1/[b0 exp(-t/10+t²/2)(19/20-7t/10)].
+```
+
+Taking `b0=1/100`, exact rational exponential inequalities certify throughout the extended interval:
+
+```text
+98695/964 < m_(1,E)/H_E < 2000000000/17508493,
+100 < m_(1,E)/H_E < 120.
+```
+
+Thus **the previous order-one KK ratio is a normalization-dependent obstruction only for the original `b0=1` background**, and a large *spectator* KK/Hubble hierarchy can be arranged at a different radius with the same reconstructed functional action. This does **not** establish stabilization, full graviton–scalar–Maxwell perturbative stability, cosmological naturalness, quantum consistency, or any empirical fifth-dimension signature. It also changes the effective 4D Newton normalization/size of the compactification, which must be accounted for in any physical comparison.
+
+**Corrected mathematical boundary:** For this local class, *existence of transient acceleration and a tunable spectator KK/Hubble gap* are established; **dynamical selection and stability of the radius, prolonged acceleration, the coupled KK spectrum and a discriminating Chronos observable remain OPEN**. Do not continue citing the original `20/19` as a no-go for every member of the family.
+
+**Reproduction:** `python3 -B research/5d/nec_transient_extended_interval_radius_audit.py` from the PR HEAD, plus the source/action verifiers. If any step fails or times out, validation is FAIL/INCOMPLETE, never PASS.
