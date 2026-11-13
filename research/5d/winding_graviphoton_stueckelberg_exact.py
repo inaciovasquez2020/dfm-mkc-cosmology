@@ -41,7 +41,7 @@ for b in (F(1,7),F(1),F(3,2),F(9)):
         g,ginv=test_metric((F(-1),F(2),F(3),F(5)),b,B)
         for q in (F(-2),F(0),F(1,3),F(7)):
             for dth in ((F(0),)*4,(F(1,2),F(-4),F(3,7),F(9))):
-                dv=list(dth)+(q,)
+                dv=list(dth)+[q]
                 kinetic=sum(ginv[i][j]*dv[i]*dv[j]
                             for i,j in product(range(5),repeat=2))
                 reduced=sum((dth[i]-q*B[i])**2/
