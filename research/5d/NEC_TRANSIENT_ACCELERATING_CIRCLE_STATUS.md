@@ -326,3 +326,38 @@ The comparison bound is sharp for the NEC-saturating `b=constant, a(t)=t` metric
 **What this rules out:** within standard 5D Einstein gravity and this unwarped homogeneous ansatz, an expanding 3-space with a perpetually nonexpanding circle bounded away from zero, 5D NEC, and a positive constant limiting Einstein-frame Hubble rate cannot coexist. **What remains outside scope:** transient acceleration, circles that turn around or expand, circles collapsing to zero, warping, spatially varying sources, modified gravity, NEC violations, and extra-dimensional physics that is observationally distinct from an effective 4D theory.
 
 The local #340 scalar–Maxwell background contracts only until `t=1/10` and is defined as an engineered solution over a finite interval; it does **not** satisfy the theorem's eternal shrinking-circle hypotheses. No global consequence for #340 beyond that finite regime is claimed.
+
+
+## General off-shell radius scaling obstruction in the homogeneous sector
+
+**PROVED for the five-dimensional Einstein–canonical-scalar–Maxwell action with arbitrary smooth `V(varphi)` and `f(varphi)>0`, for the homogeneous, diagonal, circle-independent ansatz.** This strengthens the previous *solution-specific* radius-family observation. It does **not** establish a no-go for all five-dimensional stabilization actions or for arbitrary w-dependent fluctuations.
+
+Allow lapse `N(t)>0`, spatial scale `a(t)>0`, circle radius `b(t)>0`, scalar `varphi(t)`, and a circle-directed Maxwell potential `A=A_w(t)dw`. After integrating over `w~w+2π` and over an arbitrary unit comoving 3-volume, the action `R5/2-(dvarphi)^2/2-V(varphi)-f(varphi)F²/4`, up to homogeneous total derivatives, is
+
+```text
+L/(2π) = -3 a b (dot a)^2/N - 3 a² (dot a)(dot b)/N
+       + a³ b (dot varphi)^2/(2N) - N a³ b V(varphi)
+       + a³ f(varphi) (dot A_w)^2/(2 N b).
+```
+
+For every constant `c>0`, transform `b -> c b`, `dot b -> c dot b`, `A_w -> c A_w`, `dot A_w -> c dot A_w`, and hold `a,N,varphi,V,f` fixed. Each of the five displayed terms scales by exactly `c`. Therefore
+
+```text
+L(a,N,varphi,c b,c A_w) = c L(a,N,varphi,b,A_w).
+```
+
+Since multiplication of an action by a nonzero constant leaves its stationary points unchanged, this invertible field transformation maps **every solution of the homogeneous Euler–Lagrange equations** to another solution of the **same fixed potential and gauge coupling**. It also preserves the conserved circle-electric momentum
+
+```text
+P_A = a³ f(varphi) dot A_w/(N b).
+```
+
+The argument is **off shell** and does not rely on the specially reconstructed solution of this PR. The circle identification is held fixed, so the proper circumference `2π b` changes. The transformation is not a degree-one diffeomorphism of the fixed-period circle; hence these geometries differ physically as compactified backgrounds. Any isolated-radius selection within this ansatz would contradict this continuous solution family, unless additional boundary conditions, quantum restrictions or symmetry-breaking sources remove it.
+
+The symbolic term-by-term scaling weights and adversarial rational evaluations are checked without external dependencies in `research/5d/homogeneous_circle_rescaling_no_selection.py`. The identity is the proof; pointwise evaluations are sanity checks only.
+
+**Sharp boundary:** A new scalar winding gradient `dchi=q dw` with fixed quantized `q`, geometric/internal flux, a brane, circle-dependent fields or modified terms can break this scaling. Indeed the action of a winding scalar contributes `a³ N q²/(4b)`, which scales as `c^(-1)`, rather than `c`, at fixed `q`. This explains *why* the separately checked winding example #336 can select a radius whereas the homogeneous circle-electric Maxwell action in #340 cannot. A winding-generated radius minimum, when available, need not be de Sitter, and healthy full KK propagation remains unverified.
+
+**Not inferred:** The parametric family is a nontrivial solution of the linearized coupled equations, but on a time-dependent background that is not automatically a massless normal mode with an established positive norm. The theorem does not audit global circle gauge holonomies, fixed potential boundary conditions, charge quantization, nonhomogeneous 5D perturbations or UV physics. No unconditionally stable 5D compactification or physical extra dimension has been established.
+
+**Prior art:** Flat compactification radii and radion moduli, consistent circle reduction, and the need for stabilization are standard in Kaluza–Klein theory. See standard lecture notes on Kaluza–Klein reduction and the toroidal zero-mode stability literature. This is a specifically scoped model-check theorem, **not a novelty claim**.
