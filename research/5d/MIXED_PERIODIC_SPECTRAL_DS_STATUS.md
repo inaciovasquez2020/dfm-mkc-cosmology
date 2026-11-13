@@ -191,3 +191,35 @@ The full infinite-series rational certificate establishes
 **Conclusion:** A negative quantum circle-null stress contribution is **required** for the candidate positive-curvature compactification. It is not automatically unphysical: renormalized quantum Casimir stress is not constrained by the classical pointwise NEC. However, the classical Einstein–winding action **alone does not solve the 5D background equations** at this de Sitter point, so evaluating only its unconstrained classical Hessian around that background would be an *off-shell*, incomplete fluctuation test. The reduced one-loop Casimir potential supplies consistent **homogeneous background stress and radion response**, but not the full nonlocal covariant quantum action's second variation with respect to all `w`-dependent metric, winding, and gauge fluctuations. It also omits graviton and winding/graviphoton determinants as already documented. Thus **the complete gauge-fixed quadratic Hessian remains OPEN**, despite the present background identity passing.
 
 Reproduce using the exact standard-library checker `research/5d/mixed_spectral_quantum_nec_background_audit.py`, now required by the dedicated workflow. This computation does not establish a violation of a quantum-averaged energy condition, a complete quantum stress tensor, nor any physically stable 5D spacetime.
+
+
+## A constructive non-identifiability theorem for the full KK Hessian
+
+**PROVED (covariant counterexample, with an exact rational audit):** Even knowing the **entire homogeneous** radion potential `V(b)` and all of its radius derivatives is insufficient to determine the full five-dimensional quadratic fluctuation operator. This is not merely a lack of numerical precision.
+
+Start from any five-dimensional local action `S0[g,chi,...]` admitting the circle-independent winding backgrounds
+```text
+ds5² = g4_munu(x) dx^mu dx^nu + b(x)² dw²,
+w~w+2*pi, chi=q*w (locally, with globally quantized winding).
+```
+The local scalar `Box5 chi = (sqrt|g5|)^(-1) partial_A (sqrt|g5| g5^{AB} partial_B chi)` vanishes **identically** on this entire background family: `sqrt|g5|=b sqrt|g4|`, `g5^{ww}=1/b²`, `g5^{mu w}=0`, and the only nonzero divergence would be `partial_w(q sqrt|g4|/b)=0`.
+
+Now consider a distinct, fully five-dimensional diffeomorphism-invariant action
+```text
+S_lambda = S0 + (lambda/2) ∫d⁵x sqrt|g5| (Box5 chi)².
+```
+The new term and its **first variation** vanish on every background of the displayed family, for every `lambda`. Consequently, `S0` and `S_lambda` have the same reduced homogeneous action, radius potential `V(b)`, all its derivatives, and the same equations evaluated on those backgrounds. But their **second variation** differs:
+```text
+delta² S_lambda - delta² S0 = lambda ∫sqrt|g5| [delta(Box5 chi)]²
+                             (at Box5 chi=0).
+```
+For the explicit nonzero Fourier perturbation `delta chi=epsilon cos(n w)`, `n!=0`, at fixed flat `g4` and constant `b>0`, the added `O(epsilon²)` action per unit four-volume is exactly
+```text
+Delta S^(2)/Vol4 = lambda * pi * epsilon² * n⁴ / (2 b³) != 0
+                   for lambda !=0.
+```
+This follows from `delta Box5 chi = -(n²/b²)epsilon cos(nw)` and `integral_0^(2pi) cos²(nw)dw=pi`. It is independently audited with exact rational coefficients and 96 nonzero mode/radius/coupling cases in `research/5d/mixed_spectral_hessian_nonidentifiability_audit.py`, gated by CI.
+
+**Sharp interpretation:** The background `V(b)` cannot uniquely reconstruct the nonzero Fourier Hessian; the full microscopic/effective action and its higher-derivative operators are separate required inputs. The operator displayed here is a **counterexample action**, *not* an assertion that the term belongs to the original minimal Einstein–winding theory or that arbitrary `lambda` gives a healthy quantum EFT. It may introduce extra higher-derivative excitations outside its regime of validity. For the already fixed minimal classical action one could derive a unique **classical** Hessian, but the candidate de Sitter background relies on a nonlocal **quantum Casimir contribution** whose full covariant quadratic response is not encoded by its homogeneous potential. Without a completed covariant quantum effective action (or an equivalent full mode/ghost spectral calculation), the missing nonzero-KK stability and determinant tests are mathematically **UNDERDETERMINED**, rather than merely not yet run.
+
+**Physical consequence:** The robust next task is to compute the second functional variation of the actual one-loop matter determinants about a source-corrected 5D background, with all metric, winding-scalar and graviphoton constraints and ghost contributions; then verify the resulting spectrum. No sign of full 5D stability or distinctive Chronos signal follows from the homogeneous potential alone.
