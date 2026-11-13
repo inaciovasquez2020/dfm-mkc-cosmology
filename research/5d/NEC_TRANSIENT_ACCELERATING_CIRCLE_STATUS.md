@@ -230,3 +230,16 @@ Thus **the previous order-one KK ratio is a normalization-dependent obstruction 
 **Corrected mathematical boundary:** For this local class, *existence of transient acceleration and a tunable spectator KK/Hubble gap* are established; **dynamical selection and stability of the radius, prolonged acceleration, the coupled KK spectrum and a discriminating Chronos observable remain OPEN**. Do not continue citing the original `20/19` as a no-go for every member of the family.
 
 **Reproduction:** `python3 -B research/5d/nec_transient_extended_interval_radius_audit.py` from the PR HEAD, plus the source/action verifiers. If any step fails or times out, validation is FAIL/INCOMPLETE, never PASS.
+
+
+### Radius-modulus Jacobi field (linearized degeneracy)
+
+**PROVED, conditional on the exact family above.** Let `E(g,varphi,A)=0` denote the coupled Euler–Lagrange equations for the *single, fixed* reconstructed action (same `V` and `f`, same circle period). For every `b0>0`, the displayed metric, scalar and circle electric field solve `E=0`. Differentiating the smooth family at any `b0=b*` gives
+
+```text
+D E_(g*,varphi*,A*) [ d/db0(g_b0,varphi_b0,A_b0)|_(b*) ] = 0.
+```
+
+This is an exact on-shell solution of the **linearized coupled field equations**. In a parametrization by `s=log b0`, its circle-metric component is `delta g_ww=2g_ww`, while `delta varphi=0` and the circle Maxwell potential (fixed by `A_w(0)=0`) varies as `delta A_w=A_w`. The perturbation is nonzero and changes the physical circle circumference at fixed `w~w+2π`; a constant real rescaling of `w` is not a globally valid degree-one diffeomorphism of the fixed-period circle. Thus the background has a *genuine continuous radius-parameter degeneracy*: the field equations do not pick out `b0`.
+
+**Qualification:** On a time-dependent background, a parametric Jacobi field is **not** automatically a Fourier normal mode with zero mass; its norm, boundary conditions, gauge constraints, linear energy, and coupled stability have not been assessed. The result excludes the claim that this exact reconstructed model uniquely *selects* a finite circle size, but does not independently prove nonlinear instability. A radius-fixing dynamical condition remains OPEN.
