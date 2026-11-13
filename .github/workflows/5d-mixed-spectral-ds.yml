@@ -3,11 +3,13 @@ on:
   pull_request:
     paths:
       - 'research/5d/mixed_periodic_spectral_ds_certificate.py'
+      - 'research/5d/mixed_spectral_completeness_cutoff_audit.py'
       - 'research/5d/MIXED_PERIODIC_SPECTRAL_DS_STATUS.md'
       - '.github/workflows/5d-mixed-spectral-ds.yml'
   push:
     paths:
       - 'research/5d/mixed_periodic_spectral_ds_certificate.py'
+      - 'research/5d/mixed_spectral_completeness_cutoff_audit.py'
       - 'research/5d/MIXED_PERIODIC_SPECTRAL_DS_STATUS.md'
       - '.github/workflows/5d-mixed-spectral-ds.yml'
 permissions:
@@ -22,3 +24,5 @@ jobs:
           persist-credentials: false
       - name: Certify entire periodic KK sum and positive dS radion curvature
         run: python3 -B research/5d/mixed_periodic_spectral_ds_certificate.py
+      - name: Audit missing bosonic determinant sensitivity and 5D Planck cutoff
+        run: python3 -B research/5d/mixed_spectral_completeness_cutoff_audit.py
