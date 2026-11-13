@@ -286,3 +286,43 @@ A = (dot F_c+3H*F_c)/2 - (rho+p_w)/3.
 ```
 
 Thus under the circle NEC, `A>0` requires `dot F_c+3H*F_c>0`; equivalently `d(a³ F_c)/dt>0`. With `F_c<0`, the contraction rate weighted by 3-volume must move toward zero. This is a **necessary** condition only, not a global no-go theorem; the transient counterexample in this PR meets it. The sharp 0.1182-e-fold result belongs solely to the constructed metric.
+
+
+## General NEC comparison theorem: a nonexpanding circle forbids asymptotic 4D de Sitter (2026-11-13)
+
+**PROVED under explicit hypotheses; no novelty claimed.** This is a special-case corollary of established higher-dimensional no-go results such as Wesley, *Oxidised cosmic acceleration*, JCAP 01 (2009) 041, https://doi.org/10.1088/1475-7516/2009/01/041. It extends the constant-radius NEC check of PR #338 and does **not** require a power law or assume the specifically reconstructed scalar–Maxwell action.
+
+Let the smooth 5D metric on `[t0,∞)` be the flat, homogeneous, diagonal, unwarped ansatz
+
+```text
+ds5² = -dt² + a(t)² (dx²+dy²+dz²) + b(t)²dw²,
+H=dot a/a > 0, F=dot b/b <= 0, b(t)>=b_min>0.
+```
+
+Assume ordinary five-dimensional Einstein equations with positive Newton coupling, an arbitrary cosmological constant, and a stress tensor satisfying the five-dimensional null energy condition at all times. The circle-directed null contraction of Einstein's equations is
+
+```text
+kappa5²*T(u+e_w,u+e_w)=Ric5(u+e_w,u+e_w)
+                       =-3*(dot H+H²-H F) >= 0.
+```
+
+Therefore `dot H<=-H²+HF<=-H²`. Because `H>0`, differentiating `1/H` gives `d(1/H)/dt=-dot H/H²>=1`. Integration yields, **for every t>=t0**,
+
+```text
+0 < H(t) <= H(t0)/(1+H(t0)*(t-t0)).
+```
+
+The four-dimensional Einstein-frame Hubble rate is `H_E=(H+F/2)/sqrt(b)`; since `F<=0` and `b>=b_min>0`,
+
+```text
+H_E(t) <= H(t)/sqrt(b_min)
+        <= H(t0)/[sqrt(b_min)*(1+H(t0)*(t-t0))] -> 0.
+```
+
+Thus no solution with *all* these hypotheses can have a strictly positive asymptotic 4D de Sitter Hubble rate. If `H_E` is also positive eventually, it must tend to zero from above. The statement is a one-sided upper bound; without assuming eventual 4D Einstein-frame expansion it does not establish that `H_E` converges to zero rather than becoming negative.
+
+The comparison bound is sharp for the NEC-saturating `b=constant, a(t)=t` metric (`H=1/t`), and holds strictly for the shrinking-circle vacuum Kasner branch. The stdlib certificate `research/5d/nec_nonexpanding_circle_hubble_bound.py` checks these exact rational controls, a fixed-radius de Sitter negative control, and 27 bounded rational adversarial configurations. The symbolic inequality and integration, **not the finite checks**, prove the theorem.
+
+**What this rules out:** within standard 5D Einstein gravity and this unwarped homogeneous ansatz, an expanding 3-space with a perpetually nonexpanding circle bounded away from zero, 5D NEC, and a positive constant limiting Einstein-frame Hubble rate cannot coexist. **What remains outside scope:** transient acceleration, circles that turn around or expand, circles collapsing to zero, warping, spatially varying sources, modified gravity, NEC violations, and extra-dimensional physics that is observationally distinct from an effective 4D theory.
+
+The local #340 scalar–Maxwell background contracts only until `t=1/10` and is defined as an engineered solution over a finite interval; it does **not** satisfy the theorem's eternal shrinking-circle hypotheses. No global consequence for #340 beyond that finite regime is claimed.
