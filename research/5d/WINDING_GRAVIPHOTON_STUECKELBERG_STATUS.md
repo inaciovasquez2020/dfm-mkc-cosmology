@@ -84,3 +84,29 @@ Runs with Python 3 standard library and no downloads. Assertions disabled means 
 **Prior art:** Biswas, Juberi and Kamal, *Quality Time in Extra Dimensions: Axion Quality and Radion Cosmology*, arXiv:2611.12765v1, https://arxiv.org/abs/2611.12765, §5.2.3 explicitly exhibits winding scalar/graviphoton Stückelberg coupling. General canonical Kaluza–Klein graviphoton reduction is standard.
 
 **NEXT MISSING OBJECT:** Build and diagonalize the full gauge-fixed 5D quadratic fluctuation operator about the specified background, including the graviton, winding scalar, nonzero Fourier levels and gauge ghosts. Derive the renormalized determinant and recheck the vacuum rather than substituting an assumed free scalar. **PHYSICAL_5D := OPEN.**
+
+
+## Nonzero Fourier gauge closure: an exact new obstruction
+
+**PROVED as an identity of linearized 5D diffeomorphism transformations, not a physical normal-mode spectrum.** Around the constant-radius `B_mu=0` background `ds5²=g4+b²dw²` with winding `chi=q w`, decompose perturbations and gauge parameters into Fourier modes `e^(i n w)`. Define `r_n=delta g_ww,n/(2b²)`, `theta_n=delta chi_n`, and `B_mu,n=delta g_mu w,n/b²`. For any nonzero integer `n`, put `k=i n`. The linearized Lie derivatives give
+
+```text
+delta_gauge theta_n = q xi^w_n,
+delta_gauge r_n = k xi^w_n,
+delta_gauge B_mu,n = partial_mu xi^w_n+(k/b²) xi_mu,n,
+delta_gauge h_mu nu,n = nabla_mu xi_nu,n+nabla_nu xi_mu,n.
+```
+
+Consequently the combination
+
+```text
+Z_n = theta_n-(q/k)r_n  (n!=0)
+```
+
+is **exactly invariant under the full linearized 5D diffeomorphisms at this background**. There is no singular `n=0` counterpart: there, the winding scalar shifts and is Stückelberg-eaten by the graviphoton, as established above. At `n!=0`, `r_n` and `h_mu nu,n` **cannot** in general be discarded while treating the remaining `theta_n,B_mu,n` as a closed gauge subsystem, because their transformations contain `xi^w_n` and `xi_mu,n`.
+
+This is a concrete obstruction to modeling every nonzero winding scalar level as a free uncoupled periodic boson without first diagonalizing the gravitational constraints. Although `Z_n` is a gauge-invariant **off-shell variable**, its physical propagation, constraint status, kinetic norm and mass **are not determined** without the full gauge-fixed quadratic action. No assertion is made that it contributes a separate positive determinant to the one-loop potential.
+
+The exact standard-library algebraic certificate `research/5d/winding_nonzero_fourier_gauge_audit.py` checks 1458 rational adversarial values of winding charge, radius, Fourier number and scalar/radion perturbations, plus vector mixing identities. Complex Fourier `k=in` is handled by proving the rational-function identity in the nonzero formal parameter `k`; the identity therefore holds at `k=in`. Finite tests are supporting evidence; linearized Lie derivatives supply the actual proof. All checks are gated by the PR's dedicated workflow.
+
+**OPEN boundary remains:** Compute the quadratic Hessian for `(h_mu nu,n,B_mu,n,r_n,theta_n)`, properly fix all 5D diffeomorphisms and ghosts, diagonalize the propagating sectors, and derive the renormalized mixed one-loop determinant. The candidate PR #343 dS minimum remains a **truncated-spectrum benchmark**, not an established stable physical five-dimensional vacuum.
