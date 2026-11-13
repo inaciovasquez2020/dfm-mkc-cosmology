@@ -1,6 +1,6 @@
 # Certified positive-energy radion minimum from a fixed mixed 5D periodic spectrum
 
-**Date:** 2026-11-13. **Status:** PROVED for the explicitly defined one-loop 4D Einstein-frame radion effective potential, with exact rational enclosures of the full infinite spectral sums. **Lean:** NOT_RUN. **Full coupled 5D/quantum perturbations:** OPEN. **Novelty:** NOT CLAIMED; construction overlaps the 2026 Biswas–Juberi–Kamal mixed-spectrum mechanism.
+**Date:** 2026-11-13. **Status:** PROVED for a deliberately **truncated one-loop 4D radion potential**, with exact rational enclosures of every included infinite spectral sum. **NOT A COMPLETE 5D ONE-LOOP VACUUM:** the winding scalar's mixed fluctuations, graviphoton, gravitons, and their spectral shifts have not been included. A single additional independent periodic bosonic determinant destabilizes this candidate. **Lean:** NOT_RUN. **Full coupled 5D/quantum perturbations:** OPEN. **Novelty:** NOT CLAIMED; construction overlaps the 2026 Biswas–Juberi–Kamal mixed-spectrum mechanism.
 
 ## 5D spectrum and prescribed action data
 
@@ -81,3 +81,37 @@ python3 -B research/5d/mixed_periodic_spectral_ds_certificate.py
 At the exact PR revision require a successful dedicated GitHub Actions job plus other required status gates; a queued, failed or timed-out job is **NOT PASS**. Local Mac checkout and toolchains were not inspected.
 
 **STATUS:** ONE_LOOP_RADION_DS_LOCAL_MINIMUM := PROVED; INFINITE_SERIES_SIGN := COMPUTATION_PASS only after verifier execution; COUPLED_5D_STABILITY := OPEN; PHYSICAL_5D := OPEN; LEAN_VERIFIED := NOT_RUN; NOVELTY := NOT_CLAIMED.
+
+
+## Independent completeness and EFT cutoff audit — decisive qualification
+
+The exact series certificate proves a **mathematical property of the included determinant terms**. It does **not** establish that these terms form the entire one-loop spectrum of the purported five-dimensional action. In particular, the winding scalar is itself dynamical, and its fluctuations can mix with the Kaluza–Klein graviphoton. Gravitational fluctuations also contribute quantum determinants. The primary treatment explicitly warns that free-field Casimir formulas need not apply where winding-induced splittings and mixings matter (Biswas–Juberi–Kamal, arXiv:2611.12765v1, Section 4.2.2, note 6).
+
+A **quantified adversarial sensitivity test**, rigorously certified using the same existing infinite-series interval bounds, adds only **one extra independent free periodic massless real bosonic determinant** to the truncated potential:
+
+```text
+Delta V(b) = -B*zeta(5)/b^6,  B=3/(64*pi^6).
+```
+
+Keep the winding parameter `A=B/2`, the massive fermion content, and the stationary reference `b*=1` fixed, but readjust the bulk cosmological constant to restore `V'(1)=0`. The exact changes in units of `B` are
+
+```text
+Delta Lambda/B = +6*zeta(5),
+Delta V(1)/B   = +5*zeta(5),
+Delta V''(1)/B = -30*zeta(5).
+```
+
+Since `zeta(5)>1` and the **truncated** spectral certificate has `V''(1)/B<1.30`, the modified stationary point obeys `V''(1)/B< -28` while retaining **positive vacuum energy**. Thus **one additional independent massless boson destroys this particular local radion minimum**. This is an exact counterexample to treating the result as robust under completion of its particle content. It does **not** imply the true mixed winding-scalar–graviphoton determinant equals an independent free scalar: that is precisely the missing calculation.
+
+The reference Einstein–Hilbert action is `M5^3 R5/2`, with the selected numerical example using `M5=1`, `b*=1`. In the five-dimensional local/Jordan frame,
+
+```text
+b* M5 = 1,
+m_1,KK / M5 = 1,
+m_Dirac / M5 = 5/(2*pi), strictly between 35/44 and 5/6,
+M4²/M5² = 2*pi  (at b*=1/M5).
+```
+
+Therefore **the first KK excitation is at the nominal 5D Planck scale**, and the massive Dirac field is also of the same order. The previously certified `m_KK/H>100` is a hierarchy relative to curvature, **not a hierarchy below the gravitational cutoff**. Without further parameter scaling and control of gravitational loops, this concrete numerical example does not establish a reliable five-dimensional EFT.
+
+These two objections are independently audited in `research/5d/mixed_spectral_completeness_cutoff_audit.py` (Python stdlib, exact interval arithmetic), now required by the dedicated workflow. **A stable physical de Sitter compactification is NOT ESTABLISHED.** The credible result is a stable local radion minimum in the explicitly truncated one-loop potential, plus a demonstrated lack of robustness to an extra bosonic determinant. Before promotion as a physical source, the complete coupled determinant and a parameter regime with `1/b\ll M5`, `m_f\ll M5`, and controlled quantum corrections must be constructed.
