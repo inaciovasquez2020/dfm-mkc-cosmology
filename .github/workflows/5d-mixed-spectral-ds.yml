@@ -4,12 +4,14 @@ on:
     paths:
       - 'research/5d/mixed_periodic_spectral_ds_certificate.py'
       - 'research/5d/mixed_spectral_completeness_cutoff_audit.py'
+      - 'research/5d/mixed_spectral_large_radius_scaling_audit.py'
       - 'research/5d/MIXED_PERIODIC_SPECTRAL_DS_STATUS.md'
       - '.github/workflows/5d-mixed-spectral-ds.yml'
   push:
     paths:
       - 'research/5d/mixed_periodic_spectral_ds_certificate.py'
       - 'research/5d/mixed_spectral_completeness_cutoff_audit.py'
+      - 'research/5d/mixed_spectral_large_radius_scaling_audit.py'
       - 'research/5d/MIXED_PERIODIC_SPECTRAL_DS_STATUS.md'
       - '.github/workflows/5d-mixed-spectral-ds.yml'
 permissions:
@@ -26,3 +28,5 @@ jobs:
         run: python3 -B research/5d/mixed_periodic_spectral_ds_certificate.py
       - name: Audit missing bosonic determinant sensitivity and 5D Planck cutoff
         run: python3 -B research/5d/mixed_spectral_completeness_cutoff_audit.py
+      - name: Exact large-radius scaling and persistent omitted-boson obstruction
+        run: python3 -B research/5d/mixed_spectral_large_radius_scaling_audit.py
