@@ -61,6 +61,11 @@ Thus `V'(1)=0`, `V(1)>0` and `V''(1)>0` for the **full infinite spectrum**. For 
 
 For one minimally coupled 5D massless **spectator** with unit coordinate circle and reference radius `b*=1`, the nominal Einstein-frame first KK mass equals one and `H_E²=V(1)/3`. Since `B=3/(64π⁶)<1/10000` (using `π>3`), the certified vacuum bound gives `m_KK/H_E>100` in the chosen normalization. This is not a full gravitational/matter spectral gap or a controlled one-loop expansion test.
 
+The same interval certificate also fixes the **radion/Hubble ratio**:
+`(m_phi/H_E)^2=2V''(1)/V(1)` and therefore `33/20<m_phi/H_E<17/10` (approximately 1.68). The **radion is not parametrically decoupled** at the Hubble scale despite the heavy spectator KK excitation. A matched four-dimensional effective theory must retain the radion as a light dynamical scalar; eliminating it would not be justified by this certificate.
+
+**EFT scale qualification:** The normalization `b*=1` and 5D Einstein coefficient `R5/2` puts the circle radius at the reference five-dimensional Planck length. Therefore the statement `m_KK/H_E>100` alone **does not show the KK level is well below the gravitational cutoff** or that the one-loop Casimir approximation is perturbatively controlled. A hierarchy involving the 5D Planck scale, field masses, compactification radius and higher loops remains to be established.
+
 ## Prior literature, scope and blockers
 
 This is a self-contained numerical-rigor reproduction of a known mechanism, **not a new 5D theory**. Biswas, Juberi and Kamal, *Quality Time in Extra Dimensions: Axion Quality and Radion Cosmology*, arXiv:2611.12765v1 (November 9, 2026), https://arxiv.org/abs/2611.12765, Section 4 and Appendix B, derive the massive periodic scalar determinant, reverse the sign for fermions, and obtain radion Minkowski/dS minima using mixed neutral spectra. The present configuration uses one specifically stated Dirac field and massless real scalar rather than asserting the physical benchmark values in that paper.
