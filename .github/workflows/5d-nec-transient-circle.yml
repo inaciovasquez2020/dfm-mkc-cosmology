@@ -4,12 +4,14 @@ on:
     paths:
       - 'research/5d/nec_transient_accelerating_circle_exact.py'
       - 'research/5d/nec_transient_scalar_maxwell_action_audit.py'
+      - 'research/5d/nec_transient_kk_hubble_gap_audit.py'
       - 'research/5d/NEC_TRANSIENT_ACCELERATING_CIRCLE_STATUS.md'
       - '.github/workflows/5d-nec-transient-circle.yml'
   push:
     paths:
       - 'research/5d/nec_transient_accelerating_circle_exact.py'
       - 'research/5d/nec_transient_scalar_maxwell_action_audit.py'
+      - 'research/5d/nec_transient_kk_hubble_gap_audit.py'
       - 'research/5d/NEC_TRANSIENT_ACCELERATING_CIRCLE_STATUS.md'
       - '.github/workflows/5d-nec-transient-circle.yml'
 permissions:
@@ -26,3 +28,5 @@ jobs:
         run: python3 -B research/5d/nec_transient_accelerating_circle_exact.py
       - name: Explicit canonical scalar-Maxwell action reconstruction and EOM audit
         run: python3 -B research/5d/nec_transient_scalar_maxwell_action_audit.py
+      - name: Exact whole-interval KK mass versus 4D Hubble hierarchy
+        run: python3 -B research/5d/nec_transient_kk_hubble_gap_audit.py
