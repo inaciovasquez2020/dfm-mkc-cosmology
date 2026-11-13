@@ -84,7 +84,7 @@ assert E(Fc,l)<0
 # =183/2000 - (29/60)t + 7/528
 constant=Q(183,2000)+Q(7,528)
 coefficient=-Q(29,60)
-assert constant==Q(863,8250)  # verify independent rational normalization
+assert constant==Q(3457,33000)  # verify independent rational normalization
 assert coefficient<0
 # t_- in [-.028,-.027] implies 0.117 < N < 0.119, no floats.
 N_lower=constant+coefficient*u
