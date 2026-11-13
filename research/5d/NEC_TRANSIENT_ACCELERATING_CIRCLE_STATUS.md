@@ -1,6 +1,6 @@
 # Transient 4D Einstein-frame acceleration with a shrinking 5D circle and NEC/DEC matter
 
-**DATE:** 2026-11-13. **STATUS:** PROVED as a local exact geometric Einstein–stress construction with rational interval inequalities; COMPUTATION_PASS of independent polynomial checks; LEAN_VERIFIED NOT_RUN; **physical matter action OPEN**. No novelty claim.
+**DATE:** 2026-11-13. **STATUS:** PROVED as a local exact geometric Einstein–stress construction with rational interval inequalities; COMPUTATION_PASS of independent polynomial checks; LEAN_VERIFIED NOT_RUN; **locally inverse-engineered covariant matter action CONSTRUCTED; microphysical justification OPEN**. No novelty claim.
 
 ## Geometry and scope
 
@@ -12,7 +12,7 @@ w ~ w+2π,
 a(t)=exp(t-3t²/5), b(t)=exp(-t/10+t²/2).
 ```
 
-Let `H=dot(a)/a=1-6t/5`, `F=dot(b)/b=-1/10+t`. The stress-energy is **defined** by the five-dimensional Einstein tensor `T_AB=G_AB`. This specifies a mathematically exact Einstein–stress solution for a conserved diagonal fluid. It is **not yet** an independently specified covariant matter model or microscopic source Lagrangian.
+Let `H=dot(a)/a=1-6t/5`, `F=dot(b)/b=-1/10+t`. The stress-energy is **defined** by the five-dimensional Einstein tensor `T_AB=G_AB`. This independently specifies the effective stress tensor; a compatible local covariant canonical-scalar–Maxwell action is constructed in the later section. Its potential and gauge coupling are inverse-engineered from the geometry, not independently motivated by microphysics.
 
 ## Full effective stress tensor
 
@@ -42,7 +42,7 @@ dot rho+3H(rho+p3)+F(rho+pw)=0
 
 holds as a polynomial identity (also follows from Bianchi).
 
-For any polynomial `f(t)=sum c_i t^i`, on `|t|≤1/100` its exact lower bound is `c_0 - sum_(i≥1) |c_i|/100^i`. The independent verifier applies this bound, with no floating point, to `H,-F,rho,rho±p3,rho±pw` and the 4D Einstein-frame expansion and acceleration numerators. Every bound is **strictly positive**, so the effective source satisfies **both 5D NEC and 5D DEC** throughout `I`. This is stronger than checking sampled times.
+For any polynomial `f(t)=sum c_i t^i`, on `|t|≤1/100` its exact lower bound is `c_0 - sum_(i≥1) |c_i|/100^i`. The independent verifier applies this bound, with no floating point, to `H,-F,rho,rho±p3,rho±pw` and the 4D Einstein-frame expansion and acceleration numerators. Every bound is **strictly positive**, so the effective source satisfies **both 5D NEC and 5D DEC** throughout `I`. This is stronger than checking sampled times. The local scalar–Maxwell reconstruction below also produces these same stress components from a positive-sign covariant action.
 
 ## Four-dimensional reduction and acceleration
 
@@ -60,7 +60,7 @@ rho+p3=129/100>0, rho+pw=3/10>0,
 Einstein-frame acceleration numerator = 1/4>0.
 ```
 
-**Conclusion:** The NEC **power-law** no-go from [Cosmology PR #339](https://github.com/inaciovasquez2020/dfm-mkc-cosmology/pull/339) is **not an unrestricted no-go theorem for arbitrary smooth time-dependent scale factors**. The two claims are consistent: the present time dependence is non-power-law and acceleration is transient. This model does not exhibit exact de Sitter expansion or a stabilized finite circle.
+**Conclusion:** The NEC **power-law** no-go from [Cosmology PR #339](https://github.com/inaciovasquez2020/dfm-mkc-cosmology/pull/339) is **not an unrestricted no-go theorem for arbitrary smooth time-dependent scale factors**. The two claims are consistent: the present time dependence is non-power-law and acceleration is transient. This model does not exhibit exact de Sitter expansion or a stabilized finite circle. The matter action constructed below is local and engineered; it does not establish a realistic cosmology.
 
 ## Exact verification and primary literature
 
