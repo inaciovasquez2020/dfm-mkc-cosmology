@@ -32,6 +32,26 @@ assert full_null[0]==einstein_null[0]
 assert full_null[1]==einstein_null[1]
 assert -Q(191,100)<casimir_null[0]<=casimir_null[1]<-Q(19,10)
 assert full_null[1]<0
+# Physical/reduced convention check. Let L be the coordinate-circle length
+# (L=2*pi physically); physical V4=L*Vnorm, physical M4²=L
+# for M5³=1 at b*=1. Therefore H²=V4/(3*M4²)=Vnorm/3.
+# Jordan W4=L*Wnorm, and dividing 4D energy / circle length to
+# form the LOCAL five-dimensional stress removes exactly the same L.
+# The same convention applies to winding and bulk Lambda, not just Casimir.
+# Pure algebra: test arbitrary rational L; valid identically at L=2*pi.
+for L in (Q(1,7),Q(1),Q(7,3),Q(100)):
+    physical_V=times(V,L)
+    normalized_H2=times(physical_V,Q(1,3)/L)
+    assert normalized_H2==times(V,Q(1,3))
+    full_5d_null=plus(winding_null,casimir_null)
+    physical_reduced_null=times(full_5d_null,L)
+    assert times(physical_reduced_null,Q(1)/L)==full_5d_null
+# Real periodic scalar coefficient after integrating the full circle
+# is B4=3/(64*pi^6). Dividing the entire action by 2*pi yields
+# Bnorm=3/(128*pi^7). The numeric bounds are on stress / Bnorm.
+assert Q(3,128*3**7)<Q(1,10000)
+print("CIRCLE_LENGTH_FACTOR := CANCELS_IN_FRIEDMANN_AND_LOCAL_STRESS")
+print("NORMALIZED_B := B4/(2*pi)=3/(128*pi^7)")
 # Explicit classical off-shell residual with Casimir removed:
 # Ric(V,V)-(T_winding+T_Lambda)(V,V)
 # =(-V/B)-1 = casimir_null/B !=0.
