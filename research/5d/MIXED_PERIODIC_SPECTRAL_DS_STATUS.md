@@ -6,7 +6,9 @@
 
 Consider a five-dimensional Einstein theory with a circle `w~w+2π`, physical radius `b>0`, renormalized bulk vacuum energy `Lambda`, and a **positive-kinetic compact scalar** with fixed integer winding `n=1`, producing `A/b³` in the 4D Einstein-frame potential (`A=q²/4>0` in the canonical scalar normalization). Include **one real periodic massless neutral scalar** and **one periodic massive neutral 5D Dirac fermion** (four fermionic physical degrees of freedom) of fixed proper mass `m=5/(2π)`, both minimally coupled to the 5D metric. The Dirac fermion's Grassmann determinant reverses the scalar Casimir sign.
 
-Poisson resummation of the periodic KK determinants, with the local zero-winding bulk term subtracted into renormalized `Lambda`, yields the single-real-boson normalization `B=3/(64π⁶)>0` and full Einstein-frame potential
+Poisson resummation of the periodic KK determinants, with the local zero-winding bulk term subtracted into renormalized `Lambda`, yields the **circle-length-normalized** single-real-boson coefficient `B=3/(128π⁷)>0` and the following normalized Einstein-frame potential.
+ 
+**Convention audit:** The full real scalar one-loop Casimir energy after integrating the coordinate circle of period `2π` has coefficient `B_physical=3/(64π⁶)`. The 5D classical action `∫dw sqrt(-g5)[R5/2−(∂χ)²/4−Λ5]` has an overall `2π` on circle-independent backgrounds. We **divide the entire reduced 4D action by `2π`**, including the full physical Casimir determinant, and use `B=B_physical/(2π)=3/(128π⁷)`. Thus the normalized Einstein-frame action has gravitational term `R_E/2` and potential `V=V_physical/(2π)`, while the physical Einstein-frame Planck coefficient is `M4²=2π M5³` at reference `b=1`. Therefore the physical Friedmann equation `H_E²=V_physical/(3 M4²)` is **exactly** `H_E²=V/3` in this shared normalization. Likewise `A=q²/4` and `Λ=Λ5` are **normalized** coefficients; no standalone `2π` multiplies only the Casimir term. All local 5D stress components are obtained by undoing the same common reduction factor. This resolves the Planck-factor objection without modifying the dimensionless sign and ratio certificates.
 
 ```text
 V(b)=Lambda/b+A/b³+B/b⁶ [4 S(mb)-zeta(5)],
@@ -59,7 +61,7 @@ The certified strict rational bounds are
 
 Thus `V'(1)=0`, `V(1)>0` and `V''(1)>0` for the **full infinite spectrum**. For canonical 4D radion `phi=sqrt(3/2)log b`, the squared zero-mode radion mass at the stationary point is `m_phi²=(2/3)V''(1)>0`. By ordinary second-derivative calculus, this is a strict local minimum and an effective de Sitter radion vacuum. No truncated-sum sign assumption is used.
 
-For one minimally coupled 5D massless **spectator** with unit coordinate circle and reference radius `b*=1`, the nominal Einstein-frame first KK mass equals one and `H_E²=V(1)/3`. Since `B=3/(64π⁶)<1/10000` (using `π>3`), the certified vacuum bound gives `m_KK/H_E>100` in the chosen normalization. This is not a full gravitational/matter spectral gap or a controlled one-loop expansion test.
+For one minimally coupled 5D massless **spectator** with unit coordinate circle and reference radius `b*=1`, the nominal Einstein-frame first KK mass equals one and `H_E²=V(1)/3`. Since `B=3/(128π⁷)<1/10000` (using `π>3`), the certified vacuum bound gives `m_KK/H_E>100` in the chosen normalization. This is not a full gravitational/matter spectral gap or a controlled one-loop expansion test.
 
 The same interval certificate also fixes the **radion/Hubble ratio**:
 `(m_phi/H_E)^2=2V''(1)/V(1)` and therefore `33/20<m_phi/H_E<17/10` (approximately 1.68). The **radion is not parametrically decoupled** at the Hubble scale despite the heavy spectator KK excitation. A matched four-dimensional effective theory must retain the radion as a light dynamical scalar; eliminating it would not be justified by this certificate.
@@ -90,7 +92,7 @@ The exact series certificate proves a **mathematical property of the included de
 A **quantified adversarial sensitivity test**, rigorously certified using the same existing infinite-series interval bounds, adds only **one extra independent free periodic massless real bosonic determinant** to the truncated potential:
 
 ```text
-Delta V(b) = -B*zeta(5)/b^6,  B=3/(64*pi^6).
+Delta V(b) = -B*zeta(5)/b^6,  B=3/(128*pi^7).
 ```
 
 Keep the winding parameter `A=B/2`, the massive fermion content, and the stationary reference `b*=1` fixed, but readjust the bulk cosmological constant to restore `V'(1)=0`. The exact changes in units of `B` are
