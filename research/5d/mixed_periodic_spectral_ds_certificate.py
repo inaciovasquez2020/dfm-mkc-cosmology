@@ -4,7 +4,7 @@
 Field content: one periodic massless real scalar, one periodic massive 5D
 Dirac fermion (four real-spin degrees), and a circle-winding compact scalar.
 One-loop Einstein-frame V(b)=Lambda/b+A/b^3 + B*(4*S(m*b)-zeta(5))/b^6,
-B=3/(64*pi^6), S(x)=sum_(n>=1) exp(-2*pi*n*x)*P(2*pi*n*x)/n^5,
+B=3/(128*pi^7), S(x)=sum_(n>=1) exp(-2*pi*n*x)*P(2*pi*n*x)/n^5,
 P(z)=1+z+z²/3. Parameters: b*=1, 2*pi*m=5, A=B/2.
 The bare bulk Lambda is fixed analytically by V'(1)=0.
 No floating point, external dependencies, finite-grid inference or network.
@@ -82,10 +82,10 @@ assert radH2_lo>F(33,20)**2
 assert radH2_hi<F(17,10)**2
 print("RADION_MASS_OVER_H := STRICTLY_BETWEEN_33/20_AND_17/10")
 
-# B=3/(64*pi^6), and pi>3 implies B<1/10000.
+# B=3/(128*pi^7), and pi>3 implies B<1/10000.
 # For this normalization m1,KK,E=1 (b=1) while H²=V/3.
 # Hence m1,KK,E/H > sqrt(3*10000/.91) > 100.
-assert 3*F(91,100)<F(3) and F(3,64*3**6)<F(1,10000)
+assert 3*F(91,100)<F(3) and F(3,128*3**7)<F(1,10000)
 assert (F(91,100)*F(1,10000))/3 < F(1,10000)
 print("SPECTRAL_EXPONENTIAL_AND_ZETA_TAILS := RIGOROUS_FRACTION_BOUNDS")
 print("FIELD_CONTENT := ONE_PERIODIC_MASSLESS_REAL_SCALAR_PLUS_ONE_PERIODIC_MASSIVE_5D_DIRAC")
