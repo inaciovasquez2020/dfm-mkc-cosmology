@@ -21,7 +21,7 @@ plus,times=(c[k] for k in ("plus","times"))
 
 # Base in M5=1 units:
 # V0(x)=L0/x+(B/2)/x³+B G(x)/x^6,
-# G(x)=4*S[5*x/(2*pi)]-zeta(5), B=3/(64*pi^6).
+# G(x)=4*S[5*x/(2*pi)]-zeta(5), B=3/(128*pi^7).
 # For arbitrary radius R>0, define:
 # b=R*x, m_R=5/(2*pi*R), A_R=B/(2*R³), L_R=L0/R^5.
 # Then V_R(R*x)=V0(x)/R^6, exactly. Derivatives in physical b
@@ -51,7 +51,7 @@ assert 1/R==F(1,100)
 assert F(5,6)/R<F(1,100)
 # mKK,H_E² ratio: 3 R^3/[B*(V0/B)].
 # From exact full-spectral certificate, 0<V0/B<91/100 and
-# B=3/(64*pi^6) <1/10000 (because pi>3).
+# B=3/(128*pi^7) <1/10000 (because pi>3).
 ratio_KK_H_squared_lower=3*R**3/(F(91,100)*F(1,10000))
 assert ratio_KK_H_squared_lower>100000**2
 
