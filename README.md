@@ -11,12 +11,12 @@ Cosmology statement
 
 The core cosmological claim supported by this repository is stated independently of the implementation details:
 
-docs/COSMOLOGY_STATEMENT.md
+[Cosmology statement](docs/COSMOLOGY_STATEMENT.md)
 
 Readers interested in the physics result should start there. This repository exists to make that claim checkable and reproducible.
 
 ## Overview
-The `dfm-mkc-cosmology` module provides specialized analysis and data structures for cosmological applications within the Universal Reference Frame (URF) context.
+The `dfm-mkc-cosmology` module provides specialized analysis and data structures for cosmological applications within the Unified Rigidity Framework (URF) context.
 
 ## Canonical Registry
 This repository is a registered module of the Vasquez Index. Stable references, archival DOIs, and reproducibility links are maintained at:
@@ -32,7 +32,6 @@ This repository is a registered module of the Vasquez Index. Stable references, 
 
 * **Repository Handle:** inaciovasquez2020/dfm-mkc-cosmology
 * **Stability:** Refer to the Vasquez Index for the latest stable DOI and version history.
-* **Infrastructure:** [scientific-infrastructure](https://github.com/inaciovasquez2020/scientific-infrastructure)
 
 ## References
 - Unified framework context: https://inaciovasquez2020.github.io
@@ -42,7 +41,7 @@ This repository is a registered module of the Vasquez Index. Stable references, 
 
 ## Technical Notes
 * **Integration:** This module is designed to interface with `urf-core` and `urf-axioms`.
-* **Reproducibility:** To ensure consistent computational results, utilize the environment configurations defined in the `scientific-infrastructure` module.
+* **Reproducibility:** See [Python dependencies](requirements.txt) and the [cosmology CI workflow](.github/workflows/cosmology-check.yml).
 * **Access:** This is a public repository supporting open science and reproducibility.
 
 ## Citation
@@ -56,16 +55,21 @@ If you use this research or implementation in your work, please cite it as follo
   url    = {[https://github.com/inaciovasquez2020/dfm-mkc-cosmology](https://github.com/inaciovasquez2020/dfm-mkc-cosmology)}
 }
 
-## Quickstart (60 seconds)
+## Quickstart
+
+Run the repository integrity check from the checkout root. It checks required files, tracked generated artifacts, and script permissions.
 
 ```bash
 ./scripts/cosmology check
 ```
 
+For the separate [expanding-circle model audit](research/5d/EXPANDING_CIRCLE_STATUS.md), install SymPy in your Python environment and run:
 
-In addition to unit tests, the codebase includes basic cosmology consistency checks (e.g. monotonic expansion and distance scaling) to guard against numerical or refactoring regressions.
+```bash
+python3 research/5d/expanding_circle_exact_audit.py
+```
 
-This project relies on shared tooling and reproducibility infrastructure provided by the scientific-infrastructure repository; it contains domain-specific research code only.
+The exact model has an evolving circle radius. Radion stabilization and the coefficient match to [Chronos](https://github.com/inaciovasquez2020/chronos-urf-rr) remain **OPEN**.
 
 ## External status
 
