@@ -3,7 +3,8 @@
 
 Analytic theorem: circle NEC gives dot H <= -H^2+HF.
 With H>0 and F<=0, derivative (1/H)>=1.
-With b>=b_min>0, H_E<=(H/sqrt(b_min))->0.
+With b>=b_min>0, H_E <= H/sqrt(b_min), whose upper bound tends to zero.
+Thus limsup H_E <= 0; H_E tends to zero if eventually nonnegative.
 No finite sweep is substituted for this symbolic inequality.
 """
 from fractions import Fraction as Q
@@ -53,6 +54,7 @@ print("INTEGRATED_COMPARISON_H(t)_LE_H0/(1+H0*(t-t0)) := PROVED")
 print("RATIONAL_ADVERSARIAL_SAMPLES := 27")
 print("SHRINKING_KASNER_AND_SHARP_STATIC_CIRCLE_CONTROLS := PASS")
 print("DE_SITTER_STATIC_CIRCLE_NEC_VIOLATION := PASS")
-print("IF_b_GE_bmin>0_THEN_H_E_TO_ZERO := PROVED")
+print("IF_b_GE_bmin>0_THEN_LIMSUP_H_E_LE_ZERO := PROVED")
+print("IF_ALSO_EVENTUALLY_H_E_GE_ZERO_THEN_H_E_TO_ZERO := PROVED")
 print("ASYMPTOTIC_POSITIVE_DE_SITTER_WITH_NONEXPANDING_CIRCLE_NEC := IMPOSSIBLE")
 print("FULL_COUPLED_STABILITY_AND_CHRONOS_DISCRIMINANT := OPEN")
