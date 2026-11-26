@@ -1,6 +1,6 @@
 # Exact Einstein–Gauss–Bonnet winding de Sitter × circle background
 
-**Status (2026-11-13):** PROVED product-background equations by exact curvature contraction; COMPUTATION_PASS independently for all 25 tensor components. Linearized radion mass is a **formal restricted zero-mode result**. Full ghost, hyperbolicity, KK, and nonlinear stability OPEN. Lean NOT_RUN; no physical fifth dimension or novelty claimed.
+**Status (2026-11-13):** PROVED product-background equations by exact curvature contraction; COMPUTATION_PASS independently for all 25 tensor components. Linearized radion mass is a **formal restricted zero-mode result**. Unrestricted classical KK tower stability is REFUTED for the winding-supported de Sitter branch by the spin-2 principal-symbol obstruction below. The remaining full ghost, characteristic and nonlinear analyses are OPEN. Lean NOT_RUN; no physical fifth dimension or novelty claimed.
 
 ## Specified source and solution
 
@@ -43,7 +43,7 @@ Related established approaches include Canfora, Giacomini & Pavluchenko, *Dynami
 
 Unlike the minimal Einstein–winding construction [PR #336](https://github.com/inaciovasquez2020/dfm-mkc-cosmology/pull/336), which has a stabilized AdS rather than dS background, a higher-curvature source admits an exact dS background. This does **not** imply that the model describes our universe or has a distinctive observable against a matched 4D theory.
 
-**Next decisive obstruction:** derive the complete gauge-fixed quadratic 5D perturbation action, determine kinetic signatures/characteristics and KK spectrum. Chronos observable transfer, observational necessity and Lean validation remain OPEN.
+**Remaining perturbation questions:** derive the complete gauge-fixed quadratic 5D perturbation action and determine all kinetic signatures, characteristics and KK masses. The negative circle-direction spin-2 principal coefficient below already excludes full classical tower stability. Chronos observable transfer, observational necessity and Lean validation remain OPEN.
 
 Reproduce with Python standard library: python3 -B research/5d/egb_winding_ds4_exact_audit.py. Do not optimize Python; assertions must be active. No Mac worktree or local-only research was inspected.
 
@@ -53,6 +53,6 @@ Reproduce with Python standard library: python3 -B research/5d/egb_winding_ds4_e
 
 The separate exact verifier research/5d/egb_winding_kk_tensor_symbol.py perturbs the five-dimensional algebraic Riemann tensor by an off-diagonal transverse polarization with unit component delta R_(1,4,2,4). It differentiates **every curvature term** in the Lanczos tensor and checks delta Ric_12=1 and delta H_12=4k. Consequently the coefficient of the second derivative of h_12 along the circle in the linearized 5D equation is C=1+4alpha*k, while its four-dimensional propagation coefficient is positive: the reduced constant-radius Einstein term is bR4/2 and the 4D GB4 term at constant b is topological.
 
-For Fourier index n around a circle of radius b, the high-n spin-2 dispersion has principal contribution omega^2=|spatial momentum|^2+C*n^2/b^2+O(k). At fixed 4D momentum and k, arbitrarily large n make omega^2 negative. The explicit rational witness has C=-1/3 and circle contribution -2n^2/9. This is a **classical unrestricted Kaluza–Klein tensor gradient/tachyon obstruction**. It rules out treating this particular dS4×S1 solution as linearly stable across its entire classical KK tower, despite the positive restricted radion mass. It is not a claim about a UV-cutoff effective theory, possible modified actions, or all 5D models.
+For Fourier index n around a circle of radius b, the local orthonormal-frame principal dispersion relation is omega^2=|spatial momentum|^2+C*n^2/b^2. This is a characteristic/high-frequency statement, not a claim of globally conserved frequency on de Sitter spacetime. At fixed background and external spatial momentum, arbitrarily large |n| make the leading omega^2 negative; lower-order terms cannot remove the negative circle principal coefficient. The explicit rational witness has C=-1/3 and circle contribution -2n^2/9. This is a **classical unrestricted Kaluza–Klein tensor gradient/tachyon obstruction**. It rules out treating this particular dS4×S1 solution as linearly stable across its entire classical KK tower, despite the positive restricted radion mass. It is not a claim about a UV-cutoff effective theory, possible modified actions, or all 5D models.
 
 **Revised status:** exact dS background = PROVED/COMPUTATION_PASS; healthy full classical 5D compactification = REFUTED for this winding-supported product branch by the negative spin-2 circle principal coefficient; stable accelerating physical universe = OPEN for different actions. Full tensor kinetic and hyperbolicity analysis should independently cross-check this principal symbol; it does not repair the identified sign.
