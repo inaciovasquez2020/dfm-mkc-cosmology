@@ -1,0 +1,24 @@
+name: Exact 5D single-power Casimir dS no-go
+on:
+  pull_request:
+    paths:
+      - 'research/5d/single_power_casimir_no_ds_exact.py'
+      - 'research/5d/SINGLE_POWER_CASIMIR_DS_NO_GO.md'
+      - '.github/workflows/5d-single-power-casimir-no-go.yml'
+  push:
+    paths:
+      - 'research/5d/single_power_casimir_no_ds_exact.py'
+      - 'research/5d/SINGLE_POWER_CASIMIR_DS_NO_GO.md'
+      - '.github/workflows/5d-single-power-casimir-no-go.yml'
+permissions:
+  contents: read
+jobs:
+  rational-radion-obstruction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: Audit single-power Casimir critical point and zero-mode radion curvature
+        run: python3 -B research/5d/single_power_casimir_no_ds_exact.py

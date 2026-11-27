@@ -141,9 +141,16 @@ Stability conditions depend on the microphysical completion (fluid closure / EFT
 
 In a flat universe,
 \begin{equation}
-H^2(a) = H_0^2\Big[\Omega_{\rm r}a^{-4} + \Omega_{\rm m}a^{-3} + \Omega_{\rm de}(a)\Big],
+H^2(a) = H_0^2\Big[\Omega_{\rm r,0}a^{-4}
++ \Omega_{\rm b,0}a^{-3}
++ \frac{\rho_{\rm c}(a)+\rho_{\rm de}(a)}{\rho_{\rm crit,0}}\Big],
 \end{equation}
-where $\Omega_{\rm m}=\Omega_{\rm b}+\Omega_{\rm c}$ and radiation/neutrinos may be included as needed.
+where $\rho_{\rm crit,0}=3H_0^2/(8\pi G)$ and the displayed radiation and baryon terms assume separately conserved radiation and pressureless baryons. Integrating Eq.~\eqref{eq:dm_cont} with Eq.~\eqref{eq:Q_def} gives
+\begin{equation}
+\rho_{\rm c}(a)=\rho_{\rm c,0}a^{-3}
+\exp\!\left(3\int_1^a \xi(s)\frac{ds}{s}\right).
+\end{equation}
+Thus interacting cold dark matter does not generally scale as $a^{-3}$. The effective dark-energy logarithmic equation below requires positive $\rho_{\rm de}$ on the interval considered.
 
 Given \weff$(a)$, the DE density evolves as
 \begin{equation}
@@ -211,7 +218,7 @@ We adopt the following non-negotiable checks:
 \item Posterior stability under dataset subsets: BAO+SN; BAO+CMB; BAO+CMB+SN; and optional WL inclusion.
 \item Stability under alternative coupling parameterizations (Eqs.~\eqref{eq:xi_cpl} vs \eqref{eq:xi_switch}).
 \item Consistency between background-preferred regions and growth/lensing constraints.
-\item Null recovery: $\xi\to 0$ reproduces \LCDM limits within the same pipeline.
+\item Null recovery: $\xi=0$ gives uncoupled constant-$w_0$ background evolution; the \LCDM background limit requires $w_0=-1$ as well (for nonzero dark-energy density). Perturbation-level recovery requires a consistent closure.
 \end{enumerate}
 
 % =========================================================
@@ -268,7 +275,7 @@ and (iv) explicit stability criteria (no ghosts / no gradient instabilities) for
 Implementation guidance:
 \begin{itemize}
 \item CLASS/CAMB modification notes for background and perturbations under Eq.~\eqref{eq:Q_def}.
-\item Validation by recovering \LCDM as $\xi\to 0$.
+\item Validation by recovering the \LCDM background at $\xi=0$ and $w_0=-1$, with separate perturbation-level checks.
 \item Unit tests for $H(z)$, $D_M(z)$, and growth observables against baseline pipelines.
 \end{itemize}
 
