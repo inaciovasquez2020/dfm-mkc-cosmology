@@ -1,0 +1,44 @@
+{
+  "status": "COMPUTATION_PASS_CONDITIONAL",
+  "exact_arithmetic_checks": 9750,
+  "additional_decimal_assertions": 3,
+  "derived_bound_calculations": 3,
+  "energy_inputs_source": "Popov et al 2019, DOI:10.1039/C8CP07592A",
+  "earth_dilaton_charges_source": "Cyncynates & Simon 2025, DOI:10.1103/8mc9-6cmr, Table I",
+  "experiment_source": "MICROSCOPE final 2022, DOI:10.1103/PhysRevLett.129.121102",
+  "rest_energy_kJ_per_mol": "1078506214484.181168",
+  "zero_T_total_kJ_per_mol": [
+    "1.39",
+    "1.55"
+  ],
+  "zero_T_zp_kJ_per_mol": [
+    "0.77",
+    "1.15"
+  ],
+  "coeff_d_me_minus_d_C": [
+    "1.645794874579310597590841406337681445919475059327548512E-12",
+    "1.970317807594949306974950979418351026805005352716079205E-12"
+  ],
+  "coeff_d_alpha": [
+    "2.577639296524216034536641751897889813890783473200329501E-12",
+    "2.874345978138514283116399075857359144986125455726986134E-12"
+  ],
+  "microscope_conservative_two_sigma_envelope": "6.991812087098392335159147165879888385596136938980085566E-15",
+  "Qe_earth_assumption": "0.00190",
+  "Qe_Pt_minus_Ti_assumption": "-0.00194",
+  "max_abs_d_alpha_one_operator_long_range": "0.00003079656016770546073211728907232823022274900218791926048",
+  "max_abs_Deltaq_one_operator_long_range_approx": "8.851996885854495999807903806091035399993891591946433722E-17",
+  "max_abs_eta_diamond_graphite_one_operator_long_range_approx": "1.035922007858325543183491261671174603479301743898884902E-23",
+  "cancellation_d_me_div_d_alpha": "-61.98083067092651757188498402555910543130990415335463259",
+  "cancellation_microscope_channel": "0E-57",
+  "cancellation_structural_direction_toy": "-9.943009414385477947109378407222677488527156844678191050E-11",
+  "limitations": [
+    "Only canonical normalisation and low-energy linear EFT, not DFM-MKC V1.",
+    "Condensed-matter Born-Oppenheimer/harmonic scaling; neglects relativistic, finite-T, and higher EFT operator effects.",
+    "Literature energy intervals are not rigorous error bars; electronic energy sign has disputed calculations.",
+    "Earth model and MICROSCOPE charge table are approximations; envelope is not statistical 95% posterior.",
+    "One-operator numerical bound assumes ultra-long scalar range, no screening, no tuning, no independent couplings.",
+    "No experimental bound on Delta q for unrestricted five-parameter EFT.",
+    "No DFT/phonon matrix elements calculated from first principles."
+  ]
+}

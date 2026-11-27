@@ -1,0 +1,40 @@
+name: Exact mixed periodic 5D Casimir de Sitter radion certificate
+on:
+  pull_request:
+    paths:
+      - 'research/5d/mixed_periodic_spectral_ds_certificate.py'
+      - 'research/5d/mixed_spectral_completeness_cutoff_audit.py'
+      - 'research/5d/mixed_spectral_large_radius_scaling_audit.py'
+      - 'research/5d/mixed_spectral_quantum_nec_background_audit.py'
+      - 'research/5d/mixed_spectral_hessian_nonidentifiability_audit.py'
+      - 'research/5d/MIXED_PERIODIC_SPECTRAL_DS_STATUS.md'
+      - '.github/workflows/5d-mixed-spectral-ds.yml'
+  push:
+    paths:
+      - 'research/5d/mixed_periodic_spectral_ds_certificate.py'
+      - 'research/5d/mixed_spectral_completeness_cutoff_audit.py'
+      - 'research/5d/mixed_spectral_large_radius_scaling_audit.py'
+      - 'research/5d/mixed_spectral_quantum_nec_background_audit.py'
+      - 'research/5d/mixed_spectral_hessian_nonidentifiability_audit.py'
+      - 'research/5d/MIXED_PERIODIC_SPECTRAL_DS_STATUS.md'
+      - '.github/workflows/5d-mixed-spectral-ds.yml'
+permissions:
+  contents: read
+jobs:
+  mixed-spectral-exact-radion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: Certify entire periodic KK sum and positive dS radion curvature
+        run: python3 -B research/5d/mixed_periodic_spectral_ds_certificate.py
+      - name: Audit missing bosonic determinant sensitivity and 5D Planck cutoff
+        run: python3 -B research/5d/mixed_spectral_completeness_cutoff_audit.py
+      - name: Exact large-radius scaling and persistent omitted-boson obstruction
+        run: python3 -B research/5d/mixed_spectral_large_radius_scaling_audit.py
+      - name: Verify Casimir null stress needed by de Sitter background Einstein equation
+        run: python3 -B research/5d/mixed_spectral_quantum_nec_background_audit.py
+      - name: Covariant Hessian non-identifiability counterexample from identical radion backgrounds
+        run: python3 -B research/5d/mixed_spectral_hessian_nonidentifiability_audit.py
