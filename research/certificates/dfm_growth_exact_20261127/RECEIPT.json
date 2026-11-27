@@ -1,0 +1,48 @@
+{
+  "status": "COMPUTATION_PASS_SCOPED",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "repository_revision": "ea4f548e5c9b3160ea0a4dde76cab74be6a4964f",
+  "q_count": 63,
+  "ode_integrations": 126,
+  "total_rhs_evaluations": 331152,
+  "analytic_grid_checks": 40383,
+  "max_exact_vs_ode_error": 1.4879875109841123e-11,
+  "max_independent_ode_difference": 2.1760704349560456e-11,
+  "max_late_limit_error": 2.220446049250313e-16,
+  "repository_cases": [
+    {
+      "k": 0.0,
+      "q": 0.0,
+      "exact_ratio": 1.0,
+      "repository_ratio": 1.0,
+      "absolute_error": 0.0,
+      "late_transfer": 1.0
+    },
+    {
+      "k": 0.5,
+      "q": 0.015625,
+      "exact_ratio": 0.9962278801932912,
+      "repository_ratio": 0.9962278801932982,
+      "absolute_error": 6.994405055138486e-15,
+      "late_transfer": 0.9937639347574543
+    },
+    {
+      "k": 1.0,
+      "q": 0.25,
+      "exact_ratio": 0.9405803367048978,
+      "repository_ratio": 0.9405803367049294,
+      "absolute_error": 3.1530333899354446e-14,
+      "late_transfer": 0.9035060368192712
+    },
+    {
+      "k": 1.5,
+      "q": 1.265625,
+      "exact_ratio": 0.7189321621882098,
+      "repository_ratio": 0.7189321621883279,
+      "absolute_error": 1.1812772982011666e-13,
+      "late_transfer": 0.5771756636744914
+    }
+  ],
+  "scope": "averaged EdS equation only; signed IVP transfer, not full-field or empirical power spectrum"
+}
