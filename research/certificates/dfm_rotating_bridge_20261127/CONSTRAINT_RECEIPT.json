@@ -1,0 +1,6 @@
+{
+  "status": "EXACT_SYMBOLIC_PASS",
+  "sympy": "1.14.0",
+  "constraint_derivative_plus_3H_constraint": 0,
+  "spatial_trace_residual": 0
+}
