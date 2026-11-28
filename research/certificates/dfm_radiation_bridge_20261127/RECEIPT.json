@@ -1,0 +1,561 @@
+{
+  "status": "COMPUTATION_PASS_SCOPED",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "sympy": "1.14.0",
+  "symbolic": {
+    "constraint_propagation": 0,
+    "trace_residual": 0,
+    "jeans_determinant_residual": 0
+  },
+  "integrations": 68,
+  "full_rhs_evaluations": 874280,
+  "cases": [
+    {
+      "s": 0.5,
+      "b": 0.2,
+      "radiation": 0.3,
+      "Lambda_fraction": 0.0,
+      "kappa": 1.0,
+      "acoustic": [
+        1.0,
+        0.4
+      ],
+      "m": 32,
+      "matter_error": 0.19676935704072473,
+      "acoustic_error": 0.2575262739653782,
+      "solver_error": 6.15204776011069e-10,
+      "background_error": 0.00015720000349284113,
+      "min_relative_denominator": 0.9765625
+    },
+    {
+      "s": 0.5,
+      "b": 0.2,
+      "radiation": 0.3,
+      "Lambda_fraction": 0.0,
+      "kappa": 1.0,
+      "acoustic": [
+        1.0,
+        0.4
+      ],
+      "m": 64,
+      "matter_error": 0.10914069200971555,
+      "acoustic_error": 0.12920369267723397,
+      "solver_error": 4.492606286987666e-10,
+      "background_error": 3.922651234877783e-05,
+      "min_relative_denominator": 0.98828125
+    },
+    {
+      "s": 0.5,
+      "b": 0.2,
+      "radiation": 0.3,
+      "Lambda_fraction": 0.0,
+      "kappa": 1.0,
+      "acoustic": [
+        1.0,
+        0.4
+      ],
+      "m": 128,
+      "matter_error": 0.05643118853356954,
+      "acoustic_error": 0.06482100577455452,
+      "solver_error": 3.32545546655183e-10,
+      "background_error": 9.860868039446302e-06,
+      "min_relative_denominator": 0.994140625
+    },
+    {
+      "s": 0.5,
+      "b": 0.2,
+      "radiation": 0.3,
+      "Lambda_fraction": 0.0,
+      "kappa": 1.0,
+      "acoustic": [
+        1.0,
+        0.4
+      ],
+      "m": 256,
+      "matter_error": 0.029114670246704888,
+      "acoustic_error": 0.032585358145054255,
+      "solver_error": 2.9641866738927547e-10,
+      "background_error": 2.4592597294148533e-06,
+      "min_relative_denominator": 0.9970703125
+    },
+    {
+      "s": 0.5,
+      "b": 0.2,
+      "radiation": 0.3,
+      "Lambda_fraction": 0.0,
+      "kappa": 1.0,
+      "acoustic": [
+        0.0,
+        0.0
+      ],
+      "m": 32,
+      "matter_error": 0.10381664665206158,
+      "acoustic_error": 0.20625125427535798,
+      "solver_error": 5.40344657906644e-10,
+      "background_error": 0.00015720000349284113,
+      "min_relative_denominator": 0.9765625
+    },
+    {
+      "s": 0.5,
+      "b": 0.2,
+      "radiation": 0.3,
+      "Lambda_fraction": 0.0,
+      "kappa": 1.0,
+      "acoustic": [
+        0.0,
+        0.0
+      ],
+      "m": 64,
+      "matter_error": 0.05419075174755594,
+      "acoustic_error": 0.12157480307580722,
+      "solver_error": 4.209712578528979e-10,
+      "background_error": 3.9226512348999876e-05,
+      "min_relative_denominator": 0.98828125
+    },
+    {
+      "s": 0.5,
+      "b": 0.2,
+      "radiation": 0.3,
+      "Lambda_fraction": 0.0,
+      "kappa": 1.0,
+      "acoustic": [
+        0.0,
+        0.0
+      ],
+      "m": 128,
+      "matter_error": 0.02768848118322942,
+      "acoustic_error": 0.06111798452456935,
+      "solver_error": 3.2350322420882094e-10,
+      "background_error": 9.860868039890391e-06,
+      "min_relative_denominator": 0.994140625
+    },
+    {
+      "s": 0.5,
+      "b": 0.2,
+      "radiation": 0.3,
+      "Lambda_fraction": 0.0,
+      "kappa": 1.0,
+      "acoustic": [
+        0.0,
+        0.0
+      ],
+      "m": 256,
+      "matter_error": 0.013810168363518116,
+      "acoustic_error": 0.03066605053897241,
+      "solver_error": 2.915854224738723e-10,
+      "background_error": 2.4592597280825856e-06,
+      "min_relative_denominator": 0.9970703125
+    },
+    {
+      "s": 0.5,
+      "b": 0.2,
+      "radiation": 0.3,
+      "Lambda_fraction": 0.0,
+      "kappa": 4.0,
+      "acoustic": [
+        1.0,
+        0.4
+      ],
+      "m": 32,
+      "matter_error": 0.06002400131488006,
+      "acoustic_error": 0.06574495352391263,
+      "solver_error": 4.597635605563255e-10,
+      "background_error": 0.00015720000349239704,
+      "min_relative_denominator": 0.994140625
+    },
+    {
+      "s": 0.5,
+      "b": 0.2,
+      "radiation": 0.3,
+      "Lambda_fraction": 0.0,
+      "kappa": 4.0,
+      "acoustic": [
+        1.0,
+        0.4
+      ],
+      "m": 64,
+      "matter_error": 0.032899852544097996,
+      "acoustic_error": 0.03287249073424081,
+      "solver_error": 1.587858733387293e-10,
+      "background_error": 3.9226512346113296e-05,
+      "min_relative_denominator": 0.9970703125
+    },
+    {
+      "s": 0.5,
+      "b": 0.2,
+      "radiation": 0.3,
+      "Lambda_fraction": 0.0,
+      "kappa": 4.0,
+      "acoustic": [
+        1.0,
+        0.4
+      ],
+      "m": 128,
+      "matter_error": 0.01847107612601695,
+      "acoustic_error": 0.02296908955080934,
+      "solver_error": 2.2195612014996868e-10,
+      "background_error": 9.86086803833608e-06,
+      "min_relative_denominator": 0.99853515625
+    },
+    {
+      "s": 0.5,
+      "b": 0.2,
+      "radiation": 0.3,
+      "Lambda_fraction": 0.0,
+      "kappa": 4.0,
+      "acoustic": [
+        1.0,
+        0.4
+      ],
+      "m": 256,
+      "matter_error": 0.010051866941304777,
+      "acoustic_error": 0.012889993032634661,
+      "solver_error": 6.016382947393595e-10,
+      "background_error": 2.459259724529872e-06,
+      "min_relative_denominator": 0.999267578125
+    },
+    {
+      "s": 0.5,
+      "b": 0.2,
+      "radiation": 0.3,
+      "Lambda_fraction": 0.0,
+      "kappa": 4.0,
+      "acoustic": [
+        0.0,
+        0.0
+      ],
+      "m": 32,
+      "matter_error": 0.0541805524681902,
+      "acoustic_error": 0.059644503027455754,
+      "solver_error": 5.185480933533881e-10,
+      "background_error": 0.00015720000349284113,
+      "min_relative_denominator": 0.994140625
+    },
+    {
+      "s": 0.5,
+      "b": 0.2,
+      "radiation": 0.3,
+      "Lambda_fraction": 0.0,
+      "kappa": 4.0,
+      "acoustic": [
+        0.0,
+        0.0
+      ],
+      "m": 64,
+      "matter_error": 0.029983641412006934,
+      "acoustic_error": 0.030303292736792702,
+      "solver_error": 1.5920242901756865e-10,
+      "background_error": 3.922651234544716e-05,
+      "min_relative_denominator": 0.9970703125
+    },
+    {
+      "s": 0.5,
+      "b": 0.2,
+      "radiation": 0.3,
+      "Lambda_fraction": 0.0,
+      "kappa": 4.0,
+      "acoustic": [
+        0.0,
+        0.0
+      ],
+      "m": 128,
+      "matter_error": 0.015271507245243399,
+      "acoustic_error": 0.015277292738835723,
+      "solver_error": 1.7194667911724082e-10,
+      "background_error": 9.8608680374479e-06,
+      "min_relative_denominator": 0.99853515625
+    },
+    {
+      "s": 0.5,
+      "b": 0.2,
+      "radiation": 0.3,
+      "Lambda_fraction": 0.0,
+      "kappa": 4.0,
+      "acoustic": [
+        0.0,
+        0.0
+      ],
+      "m": 256,
+      "matter_error": 0.007869714008235551,
+      "acoustic_error": 0.007677984100424379,
+      "solver_error": 2.2761481588418064e-10,
+      "background_error": 2.4592597258621396e-06,
+      "min_relative_denominator": 0.999267578125
+    },
+    {
+      "s": 0.26,
+      "b": 0.05,
+      "radiation": 0.09,
+      "Lambda_fraction": 0.6,
+      "kappa": 1.0,
+      "acoustic": [
+        1.0,
+        0.4
+      ],
+      "m": 32,
+      "matter_error": 0.11666929626142264,
+      "acoustic_error": 0.10749583245944849,
+      "solver_error": 2.608688820515681e-10,
+      "background_error": 8.813400189011666e-05,
+      "min_relative_denominator": 0.9878125
+    },
+    {
+      "s": 0.26,
+      "b": 0.05,
+      "radiation": 0.09,
+      "Lambda_fraction": 0.6,
+      "kappa": 1.0,
+      "acoustic": [
+        1.0,
+        0.4
+      ],
+      "m": 64,
+      "matter_error": 0.06339026851066332,
+      "acoustic_error": 0.05546871821252608,
+      "solver_error": 2.3055801712246193e-10,
+      "background_error": 2.207261462006116e-05,
+      "min_relative_denominator": 0.99390625
+    },
+    {
+      "s": 0.26,
+      "b": 0.05,
+      "radiation": 0.09,
+      "Lambda_fraction": 0.6,
+      "kappa": 1.0,
+      "acoustic": [
+        1.0,
+        0.4
+      ],
+      "m": 128,
+      "matter_error": 0.03159473076655228,
+      "acoustic_error": 0.027808059326434043,
+      "solver_error": 1.7869283830407312e-10,
+      "background_error": 5.531647899292835e-06,
+      "min_relative_denominator": 0.996953125
+    },
+    {
+      "s": 0.26,
+      "b": 0.05,
+      "radiation": 0.09,
+      "Lambda_fraction": 0.6,
+      "kappa": 1.0,
+      "acoustic": [
+        1.0,
+        0.4
+      ],
+      "m": 256,
+      "matter_error": 0.0159964933643697,
+      "acoustic_error": 0.013943224678985233,
+      "solver_error": 1.753084344358058e-10,
+      "background_error": 1.3814836148373644e-06,
+      "min_relative_denominator": 0.9984765625
+    },
+    {
+      "s": 0.26,
+      "b": 0.05,
+      "radiation": 0.09,
+      "Lambda_fraction": 0.6,
+      "kappa": 1.0,
+      "acoustic": [
+        0.0,
+        0.0
+      ],
+      "m": 32,
+      "matter_error": 0.0882961965556297,
+      "acoustic_error": 0.09068766516415086,
+      "solver_error": 2.4092727812785597e-10,
+      "background_error": 8.813400188967258e-05,
+      "min_relative_denominator": 0.9878125
+    },
+    {
+      "s": 0.26,
+      "b": 0.05,
+      "radiation": 0.09,
+      "Lambda_fraction": 0.6,
+      "kappa": 1.0,
+      "acoustic": [
+        0.0,
+        0.0
+      ],
+      "m": 64,
+      "matter_error": 0.04612488714325891,
+      "acoustic_error": 0.05337850018948711,
+      "solver_error": 2.231375084704723e-10,
+      "background_error": 2.2072614619839115e-05,
+      "min_relative_denominator": 0.99390625
+    },
+    {
+      "s": 0.26,
+      "b": 0.05,
+      "radiation": 0.09,
+      "Lambda_fraction": 0.6,
+      "kappa": 1.0,
+      "acoustic": [
+        0.0,
+        0.0
+      ],
+      "m": 128,
+      "matter_error": 0.02356477854236516,
+      "acoustic_error": 0.02726683285739871,
+      "solver_error": 1.762034962382586e-10,
+      "background_error": 5.531647899958969e-06,
+      "min_relative_denominator": 0.996953125
+    },
+    {
+      "s": 0.26,
+      "b": 0.05,
+      "radiation": 0.09,
+      "Lambda_fraction": 0.6,
+      "kappa": 1.0,
+      "acoustic": [
+        0.0,
+        0.0
+      ],
+      "m": 256,
+      "matter_error": 0.011779520509786812,
+      "acoustic_error": 0.013814040337727857,
+      "solver_error": 1.7446155631262172e-10,
+      "background_error": 1.381483612838963e-06,
+      "min_relative_denominator": 0.9984765625
+    },
+    {
+      "s": 0.26,
+      "b": 0.05,
+      "radiation": 0.09,
+      "Lambda_fraction": 0.6,
+      "kappa": 4.0,
+      "acoustic": [
+        1.0,
+        0.4
+      ],
+      "m": 32,
+      "matter_error": 0.05240293434102683,
+      "acoustic_error": 0.027951524779532333,
+      "solver_error": 5.047644524580619e-10,
+      "background_error": 8.813400188900644e-05,
+      "min_relative_denominator": 0.996953125
+    },
+    {
+      "s": 0.26,
+      "b": 0.05,
+      "radiation": 0.09,
+      "Lambda_fraction": 0.6,
+      "kappa": 4.0,
+      "acoustic": [
+        1.0,
+        0.4
+      ],
+      "m": 64,
+      "matter_error": 0.02883055742199825,
+      "acoustic_error": 0.014043999539709473,
+      "solver_error": 1.8155832393063065e-10,
+      "background_error": 2.2072614618062758e-05,
+      "min_relative_denominator": 0.9984765625
+    },
+    {
+      "s": 0.26,
+      "b": 0.05,
+      "radiation": 0.09,
+      "Lambda_fraction": 0.6,
+      "kappa": 4.0,
+      "acoustic": [
+        1.0,
+        0.4
+      ],
+      "m": 128,
+      "matter_error": 0.014601392342259878,
+      "acoustic_error": 0.007019348294377226,
+      "solver_error": 1.65989888500917e-10,
+      "background_error": 5.531647900181014e-06,
+      "min_relative_denominator": 0.99923828125
+    },
+    {
+      "s": 0.26,
+      "b": 0.05,
+      "radiation": 0.09,
+      "Lambda_fraction": 0.6,
+      "kappa": 4.0,
+      "acoustic": [
+        1.0,
+        0.4
+      ],
+      "m": 256,
+      "matter_error": 0.007512101873330623,
+      "acoustic_error": 0.004125156893396875,
+      "solver_error": 1.9360079511754336e-10,
+      "background_error": 1.381483612838963e-06,
+      "min_relative_denominator": 0.999619140625
+    },
+    {
+      "s": 0.26,
+      "b": 0.05,
+      "radiation": 0.09,
+      "Lambda_fraction": 0.6,
+      "kappa": 4.0,
+      "acoustic": [
+        0.0,
+        0.0
+      ],
+      "m": 32,
+      "matter_error": 0.05071146043780739,
+      "acoustic_error": 0.026586393913516207,
+      "solver_error": 5.225304633427186e-10,
+      "background_error": 8.813400188856235e-05,
+      "min_relative_denominator": 0.996953125
+    },
+    {
+      "s": 0.26,
+      "b": 0.05,
+      "radiation": 0.09,
+      "Lambda_fraction": 0.6,
+      "kappa": 4.0,
+      "acoustic": [
+        0.0,
+        0.0
+      ],
+      "m": 64,
+      "matter_error": 0.028069233536786253,
+      "acoustic_error": 0.013634383236139672,
+      "solver_error": 1.8149104441533837e-10,
+      "background_error": 2.2072614618728892e-05,
+      "min_relative_denominator": 0.9984765625
+    },
+    {
+      "s": 0.26,
+      "b": 0.05,
+      "radiation": 0.09,
+      "Lambda_fraction": 0.6,
+      "kappa": 4.0,
+      "acoustic": [
+        0.0,
+        0.0
+      ],
+      "m": 128,
+      "matter_error": 0.014246712523715566,
+      "acoustic_error": 0.006912065651679101,
+      "solver_error": 1.6588441731357761e-10,
+      "background_error": 5.531647897960568e-06,
+      "min_relative_denominator": 0.99923828125
+    },
+    {
+      "s": 0.26,
+      "b": 0.05,
+      "radiation": 0.09,
+      "Lambda_fraction": 0.6,
+      "kappa": 4.0,
+      "acoustic": [
+        0.0,
+        0.0
+      ],
+      "m": 256,
+      "matter_error": 0.00735064822049547,
+      "acoustic_error": 0.00348394736141507,
+      "solver_error": 1.7731216495064928e-10,
+      "background_error": 1.3814836137271413e-06,
+      "min_relative_denominator": 0.999619140625
+    }
+  ],
+  "grid_samples": 301,
+  "scope": "independently conserved perfect radiation, no collision or anisotropic stress; finite forward Jeans scaling"
+}
