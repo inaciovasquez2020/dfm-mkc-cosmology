@@ -1,0 +1,91 @@
+{
+  "status": "COMPUTATION_PASS_SCOPED",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "repo_revision": "ea4f548e5c9b3160ea0a4dde76cab74be6a4964f",
+  "source": "July 21 conditional calibration receipt; Cartesian continuation, not new shooting or early-time calibration",
+  "grid_points": 4001,
+  "redshift_max": 2.33,
+  "runs": [
+    {
+      "method": "DOP853",
+      "rtol": 1e-10,
+      "atol": 1e-12,
+      "nfev": 964,
+      "max_charge_error": 5.640668487849609e-12,
+      "present_H": 1.0000000000021005,
+      "present_rho": 0.7924697760958652,
+      "present_p": 6.555367360050468e-12,
+      "H_at_max_z": 3.580661133390354,
+      "epsilon_max": 0.3356629750554791,
+      "comoving_E_ratio_min": 0.981749028120908,
+      "comoving_E_ratio_max": 1.0562143076216024,
+      "max_abs_H_fractional_difference_from_matched_LCDM": 0.02209508104204083,
+      "earliest_energy_ratio_bounds": [
+        0.539048419045593,
+        2.016795005140545
+      ],
+      "profiled_A": 29.930152583301858,
+      "chi2": 24.82312711999824,
+      "predictions": [
+        7.983354104339946,
+        13.386060248474758,
+        22.5120262159218,
+        17.543135790896518,
+        20.02460975819463,
+        21.815627816312134,
+        17.447196867464697,
+        27.819964969774098,
+        13.85989132583659,
+        29.987538602982983,
+        12.760512248253365,
+        8.358834156127601,
+        38.7835571973582
+      ]
+    },
+    {
+      "method": "RK45",
+      "rtol": 2e-12,
+      "atol": 2e-14,
+      "nfev": 3910,
+      "max_charge_error": 2.7363528110058155e-13,
+      "present_H": 1.0000000000008036,
+      "present_rho": 0.7924697760880834,
+      "present_p": 6.882772130012427e-12,
+      "H_at_max_z": 3.5806611333982494,
+      "epsilon_max": 0.3356629750562192,
+      "comoving_E_ratio_min": 0.9817490281305498,
+      "comoving_E_ratio_max": 1.0562143076377708,
+      "max_abs_H_fractional_difference_from_matched_LCDM": 0.022095081044294584,
+      "earliest_energy_ratio_bounds": [
+        0.5390484190444506,
+        2.0167950051446693
+      ],
+      "profiled_A": 29.930152583348725,
+      "chi2": 24.8231271205753,
+      "predictions": [
+        7.983354104342809,
+        13.386060248481664,
+        22.512026215912137,
+        17.543135790899267,
+        20.024609758188642,
+        21.815627816318436,
+        17.447196867465145,
+        27.8199649697755,
+        13.859891325827324,
+        29.987538602973512,
+        12.760512248246409,
+        8.358834156122258,
+        38.78355719735167
+      ]
+    }
+  ],
+  "matched_fixed_LCDM": {
+    "profiled_A": 29.891163088502676,
+    "chi2": 13.665284286737995
+  },
+  "delta_chi2_canonical_minus_matched": 11.157842833260245,
+  "early_time_sound_horizon": "NOT_RUN",
+  "growth": "NOT_RUN",
+  "joint_fit": "NOT_RUN"
+}
